@@ -4,9 +4,9 @@ services:
       context: .
       dockerfile: schematron-worker/Dockerfile
     environment:
-      - NATS_URL=nats://qwacback:4222
-      - SCHEMATRON_PATH=/app/schematron/ddi_custom_rules.sch
-      - XSD_PATH=/app/xml/codebook.xsd
+      - NATS_URL=nats://qwacback:${NATS_PORT:-4222}
+      - SCHEMATRON_PATH=${SCHEMATRON_PATH:-/app/schematron/ddi_custom_rules.sch}
+      - XSD_PATH=${XSD_PATH:-/app/xml/codebook.xsd}
     depends_on:
       - qwacback
     restart: always
@@ -14,14 +14,14 @@ services:
   qwacback:
     build: .
     ports:
-      - "8090:8080"
+      - "${PB_PORT:-8090}:8080"
     environment:
-      - PB_ADMIN_EMAIL=admin@example.com
-      - PB_ADMIN_PASSWORD=yourpassword123
-      - PB_USER_EMAIL=user@example.com
-      - PB_USER_PASSWORD=userpassword123
-      - GOMEMLIMIT=512MiB
-      - NATS_PORT=4222
+      - PB_ADMIN_EMAIL=${PB_ADMIN_EMAIL:-admin@example.com}
+      - PB_ADMIN_PASSWORD=${PB_ADMIN_PASSWORD:-yourpassword123}
+      - PB_USER_EMAIL=${PB_USER_EMAIL:-user@example.com}
+      - PB_USER_PASSWORD=${PB_USER_PASSWORD:-userpassword123}
+      - GOMEMLIMIT=${GOMEMLIMIT:-512MiB}
+      - NATS_PORT=${NATS_PORT:-4222}
     volumes:
       - pb_data:/app/pb_data
     restart: always
