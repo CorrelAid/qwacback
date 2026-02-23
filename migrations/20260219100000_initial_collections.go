@@ -1,0 +1,94 @@
+package migrations
+
+import (
+	"github.com/pocketbase/pocketbase/core"
+	m "github.com/pocketbase/pocketbase/migrations"
+)
+
+func init() {
+	m.Register(func(app core.App) error {
+		// 1. Create 'studies' collection
+		studies := core.NewBaseCollection("studies")
+		studies.Fields.Add(
+			&core.TextField{Name: "title"},
+			&core.TextField{Name: "id_no"},
+			&core.TextField{Name: "abstract"},
+			&core.TextField{Name: "time_period"},
+			&core.TextField{Name: "nation"},
+			&core.TextField{Name: "universe"},
+			&core.TextField{Name: "author"},
+			&core.TextField{Name: "author_affiliation"},
+			&core.TextField{Name: "producer"},
+			&core.TextField{Name: "producer_affiliation"},
+			&core.TextField{Name: "holdings_uri"},
+			&core.TextField{Name: "holdings_description"},
+			&core.TextField{Name: "analysis_unit"},
+			&core.TextField{Name: "data_kind"},
+			&core.JSONField{Name: "topic_classifications", MaxSize: 0},
+		)
+		if err := app.Save(studies); err != nil {
+			return err
+		}
+
+		// 2. Create 'variable_groups' collection
+		groups := core.NewBaseCollection("variable_groups")
+		groups.Fields.Add(
+			&core.RelationField{
+				Name:          "study",
+				CollectionId:  studies.Id,
+				Required:      true,
+				MaxSelect:     1,
+				CascadeDelete: true,
+			},
+			&core.TextField{Name: "ddi_id"},
+			&core.TextField{Name: "label"},
+			&core.TextField{Name: "description"},
+			&core.TextField{Name: "type"},
+		)
+		if err := app.Save(groups); err != nil {
+			return err
+		}
+
+		// 3. Create 'variables' collection
+		variables := core.NewBaseCollection("variables")
+		variables.Fields.Add(
+			&core.RelationField{
+				Name:          "study",
+				CollectionId:  studies.Id,
+				Required:      true,
+				MaxSelect:     1,
+				CascadeDelete: true,
+			},
+			&core.RelationField{
+				Name:         "group",
+				CollectionId: groups.Id,
+				MaxSelect:    1,
+			},
+			&core.TextField{Name: "ddi_id"},
+			&core.TextField{Name: "name"},
+			&core.TextField{Name: "label"},
+			&core.TextField{Name: "question"},
+			&core.TextField{Name: "prequestion_text"},
+			&core.TextField{Name: "ivu_instructions"},
+			&core.TextField{Name: "interval"},
+			&core.TextField{Name: "var_format_type"},
+			&core.JSONField{Name: "categories", MaxSize: 0},
+		)
+		if err := app.Save(variables); err != nil {
+			return err
+		}
+
+		// 4. Set auth-required rules on all collections
+		rule := `@request.auth.id != ""`
+		for _, name := range []string{"studies", "variable_groups", "variables"} {
+			c, _ := app.FindCollectionByNameOrId(name)
+			if c != nil {
+				c.ListRule = &rule
+				c.ViewRule = &rule
+				app.Save(c)
+			}
+		}
+
+		return nil
+	}, nil)
+}

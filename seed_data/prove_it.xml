@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codeBook xmlns="ddi:codebook:2_5" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>Prove It! Toolkit Questionnaire</titl>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="New Economics Foundation (NEF)">New Economics Foundation</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer affiliation="New Economics Foundation (NEF)">New Economics Foundation</producer>
+      </prodStmt>
+      <holdings URI="https://www.nefconsulting.com/what-we-do/evaluation-impact-assessment/prove-it/downloads/">
+        Source questionnaire available from NEF Consulting downloads page.
+      </holdings>
+    </citation>
+
+    <stdyInfo>
+      <subject>
+        <topcClas>Impact Assessment</topcClas>
+        <topcClas>Template</topcClas>
+      </subject>
+      <abstract>
+        <xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">
+          To make the survey in the <xhtml:em>Prove It!</xhtml:em> Toolkit as simple to administer as possible we have chosen a Core List of the most powerful indicators of a project's impact on social capital and quality of life. For each indicator there are between one and three simple questions to be asked of project participants and members of non-project-participating members of the wider community.
+        </xhtml:p>
+        <xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">
+          This core list of suggested indicators relates to the potential effects of a project on:
+        </xhtml:p>
+        <xhtml:ol xmlns:xhtml="http://www.w3.org/1999/xhtml">
+          <xhtml:li>Frequency of use of the new space or facility</xhtml:li>
+          <xhtml:li>Attractiveness of the neighbourhood</xhtml:li>
+          <xhtml:li>Levels of community safety</xhtml:li>
+          <xhtml:li>People's inclusion, involvement and trust in local decision-making processes</xhtml:li>
+          <xhtml:li>People's networks and contacts:
+            <xhtml:ul>
+              <xhtml:li>for achieving change</xhtml:li>
+              <xhtml:li>for feeling connected to a community</xhtml:li>
+              <xhtml:li>in case of a need for help</xhtml:li>
+            </xhtml:ul>
+          </xhtml:li>
+        </xhtml:ol>
+        <xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">
+          To these, you, as project manager, may add further indicators that will be specific to your project. In addition there are some readymade demographic questions that can help you to establish and report which specific groups of people have been involved or affected by your project.
+        </xhtml:p>
+        <xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">
+          The current wording and layout of the questions represents how a simple social capital survey could be conducted. We acknowledge that although many overriding aims are similar, every project is different and we have set it up in a way that allows the individual wording of each question to be altered to suit local circumstance.
+        </xhtml:p>
+      </abstract>
+      <sumDscr>
+        <anlyUnit>Individuals</anlyUnit>
+        <universe>Participants in community programmes and social enterprise beneficiaries</universe>
+        <dataKind>Survey Data</dataKind>
+      </sumDscr>
+    </stdyInfo>
+  </stdyDscr>
+
+  <dataDscr>
+  <!-- Variable Group: Knowledge of Contacts (Grid) -->
+  <varGrp ID="VG1" type="grid" var="V4a V4b V4c V4d">
+    <labl>Knowledge of Contacts</labl>
+    <txt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</txt>
+  </varGrp>
+  
+  <!-- Variable Group: Social Interactions (Grid) -->
+  <varGrp ID="VG2" type="grid" var="V5a V5b V5c V5d">
+    <labl>Social Interactions</labl>
+    <txt>As part of my participation in this project, I have had conversations with</txt>
+  </varGrp>
+  
+  <!-- Variable Group: Demographics (Section) -->
+  <varGrp ID="VG3" type="section" var="V10a V10b V10c V10d V10e V10f V10g">
+    <labl>Demographics</labl>
+    <txt>Questions about yourself…(for all Respondents)</txt>
+  </varGrp>
+
+  <!-- Variable: q1a - Frequency of Green Space use -->
+  <var ID="V1a" name="q1a" intrvl="discrete">
+    <labl>Frequency of Green Space use</labl>
+    <qstn ID="Q1a" responseDomainType="category">
+      <qstnLit>How often do you use your local Green Space? (insert name of specific project/space)</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Frequently</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Sometimes</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Rarely</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Never</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q1b - Project area attractiveness -->
+  <var ID="V1b" name="q1b" intrvl="discrete">
+    <labl>Project area attractiveness</labl>
+    <qstn ID="Q1b" responseDomainType="category">
+      <qstnLit>I think that my (project related) is more attractive than it was six months ago (or replace for time period relevant to project)</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Strongly Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Not sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Disagree</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Strongly Disagree</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q2a - Safety during day -->
+  <var ID="V2a" name="q2a" intrvl="discrete">
+    <labl>Safety during day</labl>
+    <qstn ID="Q2a" responseDomainType="category">
+      <qstnLit>I feel safe out and about in (PROJECT AREA) during the day.</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Strongly Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Not sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Disagree</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Strongly Disagree</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q2b - Safety at night -->
+  <var ID="V2b" name="q2b" intrvl="discrete">
+    <labl>Safety at night</labl>
+    <qstn ID="Q2b" responseDomainType="category">
+      <qstnLit>I feel safe out and about in (PROJECT AREA) at night.</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Strongly Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Not sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Disagree</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Strongly Disagree</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q2c - Change in local crime -->
+  <var ID="V2c" name="q2c" intrvl="discrete">
+    <labl>Change in local crime</labl>
+    <qstn ID="Q2c" responseDomainType="category">
+      <qstnLit>How would you say that the amount of local crime has changed over the past (PROJECT SPECIFIC)?</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Increased a lot more</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Increased a little more</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Not Changed at all</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Decreased a little</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Decreased a lot</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q3a - Ability to change attitudes -->
+  <var ID="V3a" name="q3a" intrvl="discrete">
+    <labl>Ability to change attitudes</labl>
+    <qstn ID="Q3a" responseDomainType="category">
+      <qstnLit>I feel I could help change attitudes around here.</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Strongly Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Not sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Disagree</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Strongly Disagree</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q3b - Ability to improve things -->
+  <var ID="V3b" name="q3b" intrvl="discrete">
+    <labl>Ability to improve things</labl>
+    <qstn ID="Q3b" responseDomainType="category">
+      <qstnLit>I feel I could help improve things around here.</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Strongly Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Not Sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Disagree</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Strongly Disagree</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q3c - Tools for decision making -->
+  <var ID="V3c" name="q3c" intrvl="discrete">
+    <labl>Tools for decision making</labl>
+    <qstn ID="Q3c" responseDomainType="category">
+      <qstnLit>I feel this project has given me the tools I need to participate in making decisions about my community.</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Strongly Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Agree</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Not Sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Disagree</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Strongly Disagree</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q4a - Contact: Local Community Groups (Grid) -->
+  <var ID="V4a" name="q4a" intrvl="discrete">
+    <labl>Contact: Local Community Groups</labl>
+    <qstn ID="Q4a" responseDomainType="category">
+      <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
+      <qstnLit>Local Community Groups</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Not Sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q4b - Contact: At the council (Grid) -->
+  <var ID="V4b" name="q4b" intrvl="discrete">
+    <labl>Contact: At the council</labl>
+    <qstn ID="Q4b" responseDomainType="category">
+      <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
+      <qstnLit>At the council</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Not Sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q4c - Contact: Other agencies (Groundwork) (Grid) -->
+  <var ID="V4c" name="q4c" intrvl="discrete">
+    <labl>Contact: Other agencies (Groundwork)</labl>
+    <qstn ID="Q4c" responseDomainType="category">
+      <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
+      <qstnLit>In other agencies like Groundwork</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Not Sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q4d - Contact: People in neighbourhood (Grid) -->
+  <var ID="V4d" name="q4d" intrvl="discrete">
+    <labl>Contact: People in neighbourhood</labl>
+    <qstn ID="Q4d" responseDomainType="category">
+      <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
+      <qstnLit>Among people in the neighbourhood</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Not Sure</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q5a - Conversation: Different age (Grid) -->
+  <var ID="V5a" name="q5a" intrvl="discrete">
+    <labl>Conversation: Different age</labl>
+    <qstn ID="Q5a" responseDomainType="category">
+      <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
+      <qstnLit>A new person of different age from me</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>A great deal</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Some</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q5b - Conversation: Different ethnic background (Grid) -->
+  <var ID="V5b" name="q5b" intrvl="discrete">
+    <labl>Conversation: Different ethnic background</labl>
+    <qstn ID="Q5b" responseDomainType="category">
+      <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
+      <qstnLit>A new person of a different ethnic background</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>A great deal</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Some</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q5c - Conversation: Local Council members (Grid) -->
+  <var ID="V5c" name="q5c" intrvl="discrete">
+    <labl>Conversation: Local Council members</labl>
+    <qstn ID="Q5c" responseDomainType="category">
+      <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
+      <qstnLit>Members of the Local Council</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>A great deal</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Some</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q5d - Conversation: Other communities (Grid) -->
+  <var ID="V5d" name="q5d" intrvl="discrete">
+    <labl>Conversation: Other communities</labl>
+    <qstn ID="Q5d" responseDomainType="category">
+      <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
+      <qstnLit>People from other communities</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>A great deal</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Some</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q6 - Friends in neighbourhood -->
+  <var ID="V6" name="q6" intrvl="discrete">
+    <labl>Friends in neighbourhood</labl>
+    <qstn ID="Q6" responseDomainType="category">
+      <qstnLit>Would you say that most of your friends live in this neighbourhood?</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>No</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Don't Know</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q7 - Neighbours act in best interest -->
+  <var ID="V7" name="q7" intrvl="discrete">
+    <labl>Neighbours act in best interest</labl>
+    <qstn ID="Q7" responseDomainType="category">
+      <qstnLit>Do you think that your neighbours act in your best interests?</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>No</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Don't Know</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q8 - Trust local council -->
+  <var ID="V8" name="q8" intrvl="discrete">
+    <labl>Trust local council</labl>
+    <qstn ID="Q8" responseDomainType="category">
+      <qstnLit>Do you trust your local council to act in your best interest?</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>No</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Don't Know</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q9 - Neighbours help each other -->
+  <var ID="V9" name="q9" intrvl="discrete">
+    <labl>Neighbours help each other</labl>
+    <qstn ID="Q9" responseDomainType="category">
+      <qstnLit>Are your neighbours willing to help each other out?</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>No</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Don't Know</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q10a - Language preference (Demographics) -->
+  <var ID="V10a" name="q10a" intrvl="discrete">
+    <labl>Language preference</labl>
+    <qstn ID="Q10a" responseDomainType="category">
+      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <qstnLit>I prefer to use a language other than English</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>No</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>No response</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q10b - Employment Status (Demographics) -->
+  <var ID="V10b" name="q10b" intrvl="discrete">
+    <labl>Employment Status</labl>
+    <qstn ID="Q10b" responseDomainType="category">
+      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <qstnLit>Employment Status</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Employed</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Self-employed</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>Retired</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>Un-employed</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>Housewife/ House-husband</labl>
+    </catgry>
+    <catgry>
+      <catValu>6</catValu>
+      <labl>Student</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q10c - Age (Demographics) -->
+  <var ID="V10c" name="q10c" intrvl="discrete">
+    <labl>Age</labl>
+    <qstn ID="Q10c" responseDomainType="category">
+      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <qstnLit>Age</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>0-15</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>16-24</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>25-44</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>45-59</labl>
+    </catgry>
+    <catgry>
+      <catValu>5</catValu>
+      <labl>60-74</labl>
+    </catgry>
+    <catgry>
+      <catValu>6</catValu>
+      <labl>75+</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q10d - Gender (Demographics) -->
+  <var ID="V10d" name="q10d" intrvl="discrete">
+    <labl>Gender</labl>
+    <qstn ID="Q10d" responseDomainType="category">
+      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <qstnLit>Gender</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Male</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>Female</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q10e - Length of residence (Demographics) -->
+  <var ID="V10e" name="q10e" intrvl="discrete">
+    <labl>Length of residence</labl>
+    <qstn ID="Q10e" responseDomainType="category">
+      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <qstnLit>I have lived in this neighbourhood for</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Less than a year</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>1-2 years</labl>
+    </catgry>
+    <catgry>
+      <catValu>3</catValu>
+      <labl>3-5 years</labl>
+    </catgry>
+    <catgry>
+      <catValu>4</catValu>
+      <labl>More than 5 years</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q10f - Home ownership (Demographics) -->
+  <var ID="V10f" name="q10f" intrvl="discrete">
+    <labl>Home ownership</labl>
+    <qstn ID="Q10f" responseDomainType="category">
+      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <qstnLit>I own a house in this community</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>Yes</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>No</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+
+  <!-- Variable: q10g - Respondent type (Demographics) -->
+  <var ID="V10g" name="q10g" intrvl="discrete">
+    <labl>Respondent type</labl>
+    <qstn ID="Q10g" responseDomainType="category">
+      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <qstnLit>The person answering these questions is….</qstnLit>
+    </qstn>
+    <catgry>
+      <catValu>1</catValu>
+      <labl>A Project Participant</labl>
+    </catgry>
+    <catgry>
+      <catValu>2</catValu>
+      <labl>A member of the wider community</labl>
+    </catgry>
+    <varFormat type="numeric" schema="other"/>
+  </var>
+  </dataDscr>
+
+</codeBook>
