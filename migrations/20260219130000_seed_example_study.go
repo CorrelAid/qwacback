@@ -30,38 +30,54 @@ func init() {
 			return nil
 		}
 
-		// Read the Prove It! seed data
-		xmlData, err := os.ReadFile("seed_data/prove_it.xml")
-		if err != nil {
-			log.Printf("Warning: could not find seed file seed_data/prove_it.xml: %v", err)
-			return nil
+		seedFiles := []string{
+			"seed_data/prove_it.xml",
+			"seed_data/demo.xml",
 		}
 
-		// Validation via embedded NATS (optional, only if NATS_PORT is set)
+		// Optional NATS client for validation
+		var client schematron.Client
 		natsPort := os.Getenv("NATS_PORT")
 		if natsPort != "" {
-			client, err := schematron.NewNatsClient("nats://localhost:" + natsPort)
+			c, err := schematron.NewNatsClient("nats://localhost:" + natsPort)
 			if err != nil {
 				log.Printf("Warning: Could not connect to NATS for seed validation: %v", err)
 			} else {
-				defer client.Close()
-				resp, err := client.Validate(xmlData)
-				if err != nil {
-					log.Printf("Warning: Schematron validation unavailable for seed: %v", err)
-				} else if !resp.Valid {
-					return fmt.Errorf("seed data failed Schematron validation: %v", resp.Errors)
-				} else {
-					log.Println("Seed data passed Schematron validation.")
-				}
+				defer c.Close()
+				client = c
 			}
 		}
 
-		// Parse and import
-		mv, err := mxj.NewMapXml(xmlData)
-		if err != nil {
-			return err
+		for _, path := range seedFiles {
+			xmlData, err := os.ReadFile(path)
+			if err != nil {
+				log.Printf("Warning: could not find seed file %s: %v", path, err)
+				continue
+			}
+
+			if client != nil {
+				resp, err := client.Validate(xmlData)
+				if err != nil {
+					log.Printf("Warning: Schematron validation unavailable for %s: %v", path, err)
+				} else if !resp.Valid {
+					return fmt.Errorf("seed data %s failed Schematron validation: %v", path, resp.Errors)
+				} else {
+					log.Printf("Seed data %s passed Schematron validation.", path)
+				}
+			}
+
+			mv, err := mxj.NewMapXml(xmlData)
+			if err != nil {
+				return fmt.Errorf("failed to parse %s: %w", path, err)
+			}
+
+			if err := importer.ImportCodebookData(app, mv, xmlData); err != nil {
+				return fmt.Errorf("failed to import %s: %w", path, err)
+			}
+
+			log.Printf("Seeded %s successfully.", path)
 		}
 
-		return importer.ImportCodebookData(app, mv, xmlData)
+		return nil
 	}, nil)
 }

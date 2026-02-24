@@ -1,0 +1,1003 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5">
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>Demographische Standards: Ausgabe 2024</titl>
+        <IDNo>10.21241/ssoar.94099</IDNo>
+      </titlStmt>
+    </citation>
+    <stdyInfo>
+      <subject>
+        <keyword>Demografie</keyword>
+        <keyword>Sozialstruktur</keyword>
+        <keyword>Bildung</keyword>
+        <keyword>Erwerbstätigkeit</keyword>
+        <keyword>Einkommen</keyword>
+        <keyword>Migration</keyword>
+        <keyword>Staatsangehörigkeit</keyword>
+        <keyword>Familienstand</keyword>
+        <keyword>Haushalt</keyword>
+        <keyword>Telekommunikation</keyword>
+        <keyword>Internetnutzung</keyword>
+        <topcClas>Template</topcClas>
+      </subject>
+      <abstract>Eine gemeinsame Empfehlung des ADM Arbeitskreis Deutscher Markt- und Sozialforschungsinstitute e.V., der Arbeitsgemeinschaft Sozialwissenschaftlicher Institute e.V. (ASI) und des Statistischen Bundesamtes. Die Demographischen Standards haben die Aufgabe, sozialstrukturelle Erhebungsmerkmale in Befragungen zu vereinheitlichen, um dadurch die Vergleichbarkeit zwischen einzelnen Umfragen zu ermöglichen.</abstract>
+      <sumDscr>
+        <timePrd event="single">2024</timePrd>
+        <nation>Deutschland</nation>
+        <universe>Bevölkerung in Deutschland</universe>
+      </sumDscr>
+    </stdyInfo>
+  </stdyDscr>
+  <dataDscr>
+    <var ID="V1" name="geschlecht" intrvl="discrete">
+      <qstn ID="Q1" responseDomainType="category">
+        <qstnLit>Welches Geschlecht haben Sie?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>männlich</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>weiblich</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>divers</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V2" name="geburtsdatum" intrvl="discrete">
+      <qstn ID="Q2" responseDomainType="numeric">
+        <qstnLit>Wann sind Sie geboren worden?</qstnLit>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V3" name="deutsche_staatsangehoerigkeit" intrvl="discrete">
+      <qstn ID="Q3" responseDomainType="category">
+        <qstnLit>Haben Sie die deutsche Staatsangehörigkeit?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V4" name="erwerb_deutsche_staatsangehoerigkeit" intrvl="discrete">
+      <qstn ID="Q4" responseDomainType="category">
+        <qstnLit>Wie haben Sie die deutsche Staatsangehörigkeit erhalten?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>durch Geburt</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>durch Adoption</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>durch Einbürgerung</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>als Aussiedler*in</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V5" name="jahr_erwerb_deutsche_staatsangehoerigkeit" intrvl="discrete">
+      <qstn ID="Q5" responseDomainType="numeric">
+        <qstnLit>In welchem Jahr haben Sie die deutsche Staatsangehörigkeit erhalten?</qstnLit>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V6" name="zweite_staatsangehoerigkeit" intrvl="discrete">
+      <qstn ID="Q6" responseDomainType="category">
+        <qstnLit>Haben Sie zusätzlich eine andere Staatsangehörigkeit?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V7" name="eu_staatsangehoerigkeit" intrvl="discrete">
+      <qstn ID="Q7" responseDomainType="category">
+        <qstnLit>Haben Sie die Staatsangehörigkeit eines Landes der Europäischen Union?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V8" name="arbeitserlaubnis" intrvl="discrete">
+      <qstn ID="Q8" responseDomainType="category">
+        <qstnLit>Haben Sie eine Arbeitserlaubnis?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V9" name="geboren_in_deutschland" intrvl="discrete">
+      <qstn ID="Q9" responseDomainType="category">
+        <qstnLit>Sind Sie in Deutschland geboren?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V10" name="jahr_erster_umzug_nach_deutschland" intrvl="discrete">
+      <qstn ID="Q10" responseDomainType="numeric">
+        <qstnLit>Wann sind Sie zum ersten Mal nach Deutschland gezogen? Bitte geben Sie das Jahr an.</qstnLit>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V11" name="vater_geboren_in_deutschland" intrvl="discrete">
+      <qstn ID="Q11" responseDomainType="category">
+        <qstnLit>Ist Ihr Vater in Deutschland geboren worden?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V12" name="mutter_geboren_in_deutschland" intrvl="discrete">
+      <qstn ID="Q12" responseDomainType="category">
+        <qstnLit>Ist Ihre Mutter in Deutschland geboren worden?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V13" name="familienstand" intrvl="discrete">
+      <qstn ID="Q13" responseDomainType="category">
+        <qstnLit>Welchen Familienstand haben Sie?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ledig, war noch nie verheiratet</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>verheiratet oder Eingetragene Lebenspartnerschaft, zusammenlebend</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>verheiratet oder Eingetragene Lebenspartnerschaft, aber in Trennung lebend</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>geschieden, Eingetragene Lebenspartnerschaft aufgehoben</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>verwitwet, Eingetragene*r Lebenspartner*in verstorben</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V14" name="partnerschaft_im_haushalt" intrvl="discrete">
+      <qstn ID="Q14" responseDomainType="category">
+        <qstnLit>Leben Sie zurzeit mit einer Person aus Ihrem Haushalt in einer Partnerschaft?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V15" name="hoechster_schulabschluss" intrvl="discrete">
+      <qstn ID="Q15" responseDomainType="category">
+        <qstnLit>Welchen höchsten allgemeinbildenden Schulabschluss haben Sie?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Schüler*in an einer allgemeinbildenden Schule</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>von der Schule abgegangen ohne Schulabschluss</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Hauptschulabschluss, Volksschulabschluss oder vergleichbarer Abschluss</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Polytechnische Oberschule der DDR mit Abschluss der 8. oder 9. Klasse</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Realschulabschluss, Mittlere Reife oder vergleichbarer Abschluss</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Polytechnische Oberschule der DDR mit Abschluss der 10. Klasse</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>Fachhochschulreife</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>Abitur, Allgemeine oder Fachgebundene Hochschulreife, Gymnasium bzw. EOS, auch EOS mit Lehre</labl>
+      </catgry>
+      <catgry>
+        <catValu>9</catValu>
+        <labl>einen anderen Schulabschluss</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V16" name="angestrebter_schulabschluss" intrvl="discrete">
+      <qstn ID="Q16" responseDomainType="category">
+        <qstnLit>Welchen allgemeinbildenden Schulabschluss streben Sie an?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Hauptschulabschluss</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Realschulabschluss, Mittlere Reife</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fachhochschulreife</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Abitur, Allgemeine oder Fachgebundene Hochschulreife</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V17" name="hoechster_beruflicher_abschluss" intrvl="discrete">
+      <qstn ID="Q17" responseDomainType="category">
+        <qstnLit>Welchen höchsten beruflichen Ausbildungsabschluss haben Sie?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>noch in Ausbildung, Studium (auch Berufsvorbereitungsjahr, Praktikum, [Berufs-]Fachschule oder Ähnliches)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>kein beruflicher Abschluss und bin nicht in beruflicher Ausbildung</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Lehre (beruflich-betriebliche Berufsausbildung)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>berufsqualifizierender Abschluss einer beruflich-schulischen Ausbildung (z.B. an einer Berufsfachschule oder einer Kollegschule)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Abschluss einer Fach-, Meister-, Technikerschule, Verwaltungs- und Wirtschaftsakademie, Berufs- oder Fachakademie</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Bachelor, Diplom (FH)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>Master, Diplom (Uni), Magister, Staatsexamen, Promotion</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>einen anderen beruflichen Abschluss</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V18" name="haupttaetigkeit" intrvl="discrete">
+      <qstn ID="Q18" responseDomainType="category">
+        <qstnLit>Was machen Sie zurzeit hauptsächlich?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Besuch einer allgemeinbildenden Schule</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Studium</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Berufliche Ausbildung</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Umschulung</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Freiwilliger Wehrdienst</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Bundesfreiwilligendienst, freiwilliges soziales oder ökologisches Jahr</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>Erwerbsunterbrechung wegen Pflegezeit, Mutterschutz, Elternzeit ohne Teilzeit-Tätigkeit</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>Erwerbstätig in Vollzeit, Teilzeit (auch in Altersteilzeit) oder geringfügig</labl>
+      </catgry>
+      <catgry>
+        <catValu>9</catValu>
+        <labl>Rentner*in, Pensionär*in</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>arbeitslos</labl>
+      </catgry>
+      <catgry>
+        <catValu>11</catValu>
+        <labl>dauerhaft erwerbsunfähig</labl>
+      </catgry>
+      <catgry>
+        <catValu>12</catValu>
+        <labl>Hausfrau/Hausmann</labl>
+      </catgry>
+      <catgry>
+        <catValu>13</catValu>
+        <labl>Sonstiges</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V19" name="erwerbssituation" intrvl="discrete">
+      <qstn ID="Q19" responseDomainType="category">
+        <qstnLit>Welche Erwerbssituation passt für Sie?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Vollzeiterwerbstätig gemäß den branchenüblichen oder betrieblichen Regeln</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Teilzeiterwerbstätig, auch Midijob, aber kein Minijob</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>in einer geringfügigen, gelegentlichen, kurzfristigen oder unregelmäßigen Beschäftigung (z.B. 538-Euro-Job, Minijob, Ein-Euro-Job, Saisonarbeit)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>gehe keiner bezahlten Tätigkeit nach</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V20" name="fruehere_erwerbstaetigkeit" intrvl="discrete">
+      <qstn ID="Q20" responseDomainType="category">
+        <qstnLit>Waren Sie früher einmal vollzeit- oder teilzeiterwerbstätig?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V21" name="anzahl_beschaeftigungsverhaeltnisse" intrvl="discrete">
+      <qstn ID="Q21" responseDomainType="category">
+        <qstnLit>Wie viele Beschäftigungsverhältnisse in abhängiger Beschäftigung haben Sie zurzeit?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>eins</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>zwei</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>drei oder mehr</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>nicht abhängig beschäftigt, ausschließlich selbstständig oder freiberuflich tätig</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V22" name="zusatzlich_selbstaendig" intrvl="discrete">
+      <qstn ID="Q22" responseDomainType="category">
+        <qstnLit>Sind Sie zusätzlich selbstständig oder freiberuflich tätig?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V23" name="woechentliche_arbeitsstunden" intrvl="discrete">
+      <qstn ID="Q23" responseDomainType="numeric">
+        <qstnLit>Wie viele Stunden arbeiten Sie normalerweise insgesamt pro Woche?</qstnLit>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V24" name="berufliche_taetigkeit" intrvl="contin">
+      <qstn ID="Q24" responseDomainType="text">
+        <qstnLit>Welche berufliche Tätigkeit üben Sie aus? Wenn Sie nicht mehr Voll- oder Teilzeit erwerbstätig sind: Welche Tätigkeit haben Sie bei Ihrer früheren hauptberuflichen Erwerbstätigkeit zuletzt ausgeübt?</qstnLit>
+      </qstn>
+      <varFormat type="character" schema="other"/>
+    </var>
+    <var ID="V25" name="berufliche_stellung" intrvl="discrete">
+      <qstn ID="Q25" responseDomainType="category">
+        <qstnLit>Welche berufliche Stellung haben oder hatten Sie in Ihrer hauptsächlich ausgeübten Erwerbstätigkeit?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Selbstständige*r Landwirt*in oder Genossenschaftsbauer</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Akademiker*in in freiem Beruf (Art/Ärztin, Rechtsanwalt/Rechtsanwältin, Steuerberater*in und Ähnliches)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Selbstständig im Handel, im Gastgewerbe, im Handwerk, in der Industrie, in der Dienstleistung, auch Ich-AG oder PGH-Mitglied</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Beamter/Beamtin, Richter*in, Berufssoldat*in</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Angestellte*r</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Arbeiter*in</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>in einer beruflichen Ausbildung/Lehre</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>Mithelfende*r Familienangehörige*r</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V26" name="landwirt_flaeche" intrvl="discrete">
+      <qstn ID="Q26" responseDomainType="category">
+        <qstnLit>Selbstständige*r Landwirt*in oder Genossenschaftsbauer</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>mit einer landwirtschaftlich genutzten Fläche bis unter 10 ha</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>mit einer landwirtschaftlich genutzten Fläche von 10 und mehr ha</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Genossenschaftsbauer/-bäuerin, ehemals LPG</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V27" name="akademiker_mitarbeiter" intrvl="discrete">
+      <qstn ID="Q27" responseDomainType="category">
+        <qstnLit>Akademiker*in in freiem Beruf (Arzt/Ärztin, Rechtsanwalt/Rechtsanwältin, Steuerberater*in und Ähnliches) und habe/hatte …</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>keine weiteren Mitarbeiter*innen</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>1 bis 4 Mitarbeiter*innen</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>5 und mehr Mitarbeiter*innen</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V28" name="selbstaendig_mitarbeiter" intrvl="discrete">
+      <qstn ID="Q28" responseDomainType="category">
+        <qstnLit>Selbstständig im Handel, im Gastgewerbe, im Handwerk, in der Industrie, in der Dienstleistung, auch Ich-AG oder PGH-Mitglied und habe/hatte …</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>keine weiteren Mitarbeiter*innen</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>1 bis 4 Mitarbeiter*innen</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>5 und mehr Mitarbeiter*innen</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>PGH-Mitglied</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V29" name="beamter_dienst" intrvl="discrete">
+      <qstn ID="Q29" responseDomainType="category">
+        <qstnLit>Beamter/Beamtin, Richter*in, Berufssoldat*in, und zwar …</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>im einfachen Dienst oder in einer vergleichbaren Laufbahngruppe</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>im mittleren Dienst oder in einer vergleichbaren Laufbahngruppe</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>im gehobenen Dienst oder in einer vergleichbaren Laufbahngruppe</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>im höheren Dienst oder in einer vergleichbaren Laufbahngruppe</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V30" name="angestellte_taetigkeit" intrvl="discrete">
+      <qstn ID="Q30" responseDomainType="category">
+        <qstnLit>Angestellte*r, und zwar …</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>mit ausführender Tätigkeit nach allgemeiner Anweisung (z.B. Verkäufer*in, Datentypist*in, Sekretariatsassistent*in, Pflegehelfer*in)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>mit einer qualifizierten Tätigkeit, die nach Anweisung erledigt wird (z.B. Sachbearbeiter*in, Buchhalter*in, Technische*r Zeichner*in)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>mit eigenständiger Leistung in verantwortlicher Tätigkeit bzw. mit Fachverantwortung für Personal (z.B. wissenschaftliche*r Mitarbeiter*in, Prokurist*in, Abteilungsleiter*in bzw. Meister*in im Angestelltenverhältnis)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>mit umfassenden Führungsaufgaben und Entscheidungsbefugnissen (z.B. Direktor*in, Geschäftsführer*in, Mitglied des Vorstandes)</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V31" name="arbeiter_qualifikation" intrvl="discrete">
+      <qstn ID="Q31" responseDomainType="category">
+        <qstnLit>Arbeiter*in, und zwar …</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ungelernt</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>angelernt</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Facharbeiter*in</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Vorbereiter*in, Kolonnenführer*in</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Meister*in, Polier*in, Brigadier*in</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V32" name="handy_nutzung" intrvl="discrete">
+      <qstn ID="Q32" responseDomainType="category">
+        <qstnLit>Werden in Ihrem Haushalt Handys oder Smartphones benutzt?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V33" name="anzahl_handynummern" intrvl="discrete">
+      <qstn ID="Q33" responseDomainType="category">
+        <qstnLit>Wie viele Handynummern nutzen Sie persönlich derzeit für Telefongespräche, egal ob privat oder beruflich?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>eine</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>mehr als eine</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V34" name="festnetz_verfuegbar" intrvl="discrete">
+      <qstn ID="Q34" responseDomainType="category">
+        <qstnLit>Ist Ihr Haushalt über ein Festnetztelefon erreichbar?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>weiß nicht</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V35" name="anzahl_festnetznummern" intrvl="discrete">
+      <qstn ID="Q35" responseDomainType="category">
+        <qstnLit>Wie viele Festnetznummern gibt es in Ihrem Haushalt?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>eine</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>mehr als eine</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V36" name="letzte_internetnutzung" intrvl="discrete">
+      <qstn ID="Q36" responseDomainType="category">
+        <qstnLit>Wann haben Sie, abgesehen von heute, zuletzt das Internet genutzt, egal ob zu Hause, am Arbeitsplatz, in der Schule, in der Universität oder an einem anderen Ort und egal mit welchem Gerät (Smartphone, PC)?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>gestern</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>vorgestern</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>vor 3 bis 7 Tagen</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>vor 1 bis 2 Wochen</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>vor 3 bis 4 Wochen</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>vor 1 bis 3 Monaten</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>länger her</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>nie</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V37" name="internetnutzung_haeufigkeit" intrvl="discrete">
+      <qstn ID="Q37" responseDomainType="category">
+        <qstnLit>Wie oft haben Sie im Durchschnitt in den letzten 3 Monaten das Internet genutzt?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>mehrmals täglich</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>einmal täglich oder fast jeden Tag</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>mindestens einmal in der Woche, aber nicht jeden Tag</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>weniger als einmal in der Woche</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V38" name="haushaltsgroesse" intrvl="discrete">
+      <qstn ID="Q38" responseDomainType="category">
+        <qstnLit>Wie viele Personen leben ständig in Ihrem Haushalt?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>eine Person</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>mehrere Personen</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V39" name="haushaltsmitglieder" intrvl="discrete">
+      <qstn ID="Q39" responseDomainType="numeric">
+        <qstnLit>Wie viele Personen in Ihrem Haushalt sind …</qstnLit>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V40" name="einkommensbezieher_im_haushalt" intrvl="discrete">
+      <qstn ID="Q40" responseDomainType="category">
+        <qstnLit>Wie viele Personen tragen insgesamt zum Haushaltseinkommen bei?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>eine Person</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>mehrere Personen</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V41" name="haushaltsnettoeinkommen" intrvl="discrete">
+      <qstn ID="Q41" responseDomainType="numeric">
+        <qstnLit>Wie hoch ist das durchschnittliche monatliche Nettoeinkommen Ihres Haushalts insgesamt?</qstnLit>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V42" name="haushaltsnettoeinkommen_klasse" intrvl="discrete">
+      <qstn ID="Q42" responseDomainType="category">
+        <qstnLit>Wenn Sie nicht einen exakten Betrag nennen können oder wollen, dann ordnen Sie bitte die Höhe Ihres monatlichen Haushaltsnettoeinkommens einer der hier gelisteten Größenklassen zu.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>unter 500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>500 bis unter 750 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>750 bis unter 1.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>1.000 bis unter 1.250 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>1.250 bis unter 1.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>1.500 bis unter 1.750 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>1.750 bis unter 2.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>2.000 bis unter 2.250 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>9</catValu>
+        <labl>2.250 bis unter 2.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>2.500 bis unter 2.750 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>11</catValu>
+        <labl>2.750 bis unter 3.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>12</catValu>
+        <labl>3.000 bis unter 3.250 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>13</catValu>
+        <labl>3.250 bis unter 3.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>14</catValu>
+        <labl>3.500 bis unter 4.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>15</catValu>
+        <labl>4.000 bis unter 4.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>16</catValu>
+        <labl>4.500 bis unter 5.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>17</catValu>
+        <labl>5.000 bis unter 6.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>18</catValu>
+        <labl>6.000 bis unter 7.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>19</catValu>
+        <labl>7.000 bis unter 8.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>20</catValu>
+        <labl>8.000 bis unter 10.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>21</catValu>
+        <labl>10.000 bis unter 15.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>22</catValu>
+        <labl>15.000 bis unter 25.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>23</catValu>
+        <labl>25.000 Euro oder mehr</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V43" name="persoenliches_nettoeinkommen" intrvl="discrete">
+      <qstn ID="Q43" responseDomainType="numeric">
+        <qstnLit>Wie hoch ist Ihr durchschnittliches monatliches Nettoeinkommen insgesamt?</qstnLit>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V44" name="persoenliches_nettoeinkommen_klasse" intrvl="discrete">
+      <qstn ID="Q44" responseDomainType="category">
+        <qstnLit>Wenn Sie nicht einen exakten Betrag nennen können oder wollen, dann ordnen Sie bitte die Höhe Ihres monatlichen Nettoeinkommens einer der hier gelisteten Größenklassen zu.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>unter 500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>500 bis unter 750 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>750 bis unter 1.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>1.000 bis unter 1.250 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>1.250 bis unter 1.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>1.500 bis unter 1.750 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>1.750 bis unter 2.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>2.000 bis unter 2.250 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>9</catValu>
+        <labl>2.250 bis unter 2.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>2.500 bis unter 2.750 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>11</catValu>
+        <labl>2.750 bis unter 3.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>12</catValu>
+        <labl>3.000 bis unter 3.250 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>13</catValu>
+        <labl>3.250 bis unter 3.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>14</catValu>
+        <labl>3.500 bis unter 4.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>15</catValu>
+        <labl>4.000 bis unter 4.500 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>16</catValu>
+        <labl>4.500 bis unter 5.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>17</catValu>
+        <labl>5.000 bis unter 6.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>18</catValu>
+        <labl>6.000 bis unter 7.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>19</catValu>
+        <labl>7.000 bis unter 8.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>20</catValu>
+        <labl>8.000 bis unter 10.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>21</catValu>
+        <labl>10.000 bis unter 15.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>22</catValu>
+        <labl>15.000 bis unter 25.000 Euro</labl>
+      </catgry>
+      <catgry>
+        <catValu>23</catValu>
+        <labl>25.000 Euro oder mehr</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+  </dataDscr>
+</codeBook>
