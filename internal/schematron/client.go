@@ -28,11 +28,16 @@ type NatsClient struct {
 }
 
 // NewNatsClient creates a new NATS-backed Schematron client.
-func NewNatsClient(natsURL string) (*NatsClient, error) {
-	nc, err := nats.Connect(natsURL,
+// Pass a non-empty token to authenticate against the NATS server.
+func NewNatsClient(natsURL, token string) (*NatsClient, error) {
+	opts := []nats.Option{
 		nats.MaxReconnects(-1),
-		nats.ReconnectWait(2*time.Second),
-	)
+		nats.ReconnectWait(2 * time.Second),
+	}
+	if token != "" {
+		opts = append(opts, nats.Token(token))
+	}
+	nc, err := nats.Connect(natsURL, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to NATS: %w", err)
 	}

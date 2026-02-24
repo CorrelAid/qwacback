@@ -11,6 +11,18 @@ import (
 
 var abstractRe = regexp.MustCompile(`(?s)<abstract[^>]*>(.*?)</abstract>`)
 
+// textAt extracts the text content of an mxj path, handling elements that
+// have XML attributes. mxj represents <foo bar="x">text</foo> as a map
+// {"-bar":"x","#text":"text"}, so we try the #text sub-key first and fall
+// back to the plain path for elements without attributes.
+func textAt(mv mxj.Map, path string) string {
+	if v, err := mv.ValueForPathString(path + ".#text"); err == nil && v != "" {
+		return v
+	}
+	v, _ := mv.ValueForPathString(path)
+	return v
+}
+
 // inferQuestionType maps DDI responseDomainType + group type to an XLSForm question type.
 func inferQuestionType(responseDomainType, groupType string) string {
 	switch responseDomainType {
@@ -32,14 +44,14 @@ func inferQuestionType(responseDomainType, groupType string) string {
 
 // ImportCodebookData parses the XML and inserts studies, groups, variables and categories into PocketBase.
 func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
-	// Extract Study info
-	title, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.titlStmt.titl")
-	idNo, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.titlStmt.IDNo")
-	timePeriod, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.timePrd")
-	nation, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.nation")
-	universe, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.universe")
-	analysisUnit, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.anlyUnit")
-	dataKind, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.dataKind")
+	// Extract Study info — use textAt() for fields that may carry XML attributes
+	title := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.titl")
+	idNo := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.IDNo")
+	timePeriod := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.timePrd")   // has event attr
+	nation := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.nation")         // has abbr attr
+	universe := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.universe")     // has clusion attr
+	analysisUnit := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.anlyUnit")
+	dataKind := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.dataKind")
 
 	// Elements with attributes need #text to get just the text content
 	author, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.rspStmt.AuthEnty.#text")
@@ -128,10 +140,10 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			vM := mxj.Map(vMap)
 			ddiId, _ := vM.ValueForPathString("-ID")
 			vName, _ := vM.ValueForPathString("-name")
-			vLabel, _ := vM.ValueForPathString("labl")
-			vQuest, _ := vM.ValueForPathString("qstn.qstnLit")
-			vPreQ, _ := vM.ValueForPathString("qstn.preQTxt")
-			vIvInstr, _ := vM.ValueForPathString("qstn.ivuInstr")
+			vLabel := textAt(vM, "labl")         // labl may have xml:lang attr
+			vQuest := textAt(vM, "qstn.qstnLit") // qstnLit may have xml:lang attr
+			vPreQ := textAt(vM, "qstn.preQTxt")
+			vIvInstr := textAt(vM, "qstn.ivuInstr")
 			vQstnType, _ := vM.ValueForPathString("qstn.-responseDomainType")
 			vIntrvl, _ := vM.ValueForPathString("-intrvl")
 			vFmtType, _ := vM.ValueForPathString("varFormat.-type")
@@ -145,8 +157,8 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 					continue
 				}
 				cM := mxj.Map(cMap)
-				val, _ := cM.ValueForPathString("catValu")
-				lab, _ := cM.ValueForPathString("labl")
+				val := textAt(cM, "catValu")
+				lab := textAt(cM, "labl")
 				missing, _ := cM.ValueForPathString("-missing")
 
 				categories = append(categories, map[string]interface{}{
@@ -193,8 +205,8 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			}
 			gM := mxj.Map(gMap)
 			gId, _ := gM.ValueForPathString("-ID")
-			gLab, _ := gM.ValueForPathString("labl")
-			gTxt, _ := gM.ValueForPathString("txt")
+			gLab := textAt(gM, "labl")
+			gTxt := textAt(gM, "txt")
 			gType, _ := gM.ValueForPathString("-type")
 			varIdsAttr, _ := gM.ValueForPathString("-var") // Space separated IDs
 

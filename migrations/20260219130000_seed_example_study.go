@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"qwacback/internal/importer"
 	"qwacback/internal/schematron"
 
@@ -30,16 +31,20 @@ func init() {
 			return nil
 		}
 
-		seedFiles := []string{
-			"seed_data/prove_it.xml",
-			"seed_data/demo.xml",
+		seedFiles, err := filepath.Glob("seed_data/*.xml")
+		if err != nil {
+			return fmt.Errorf("failed to scan seed_data directory: %w", err)
+		}
+		if len(seedFiles) == 0 {
+			log.Println("No XML files found in seed_data/.")
+			return nil
 		}
 
 		// Optional NATS client for validation
 		var client schematron.Client
 		natsPort := os.Getenv("NATS_PORT")
 		if natsPort != "" {
-			c, err := schematron.NewNatsClient("nats://localhost:" + natsPort)
+			c, err := schematron.NewNatsClient("nats://localhost:"+natsPort, os.Getenv("NATS_TOKEN"))
 			if err != nil {
 				log.Printf("Warning: Could not connect to NATS for seed validation: %v", err)
 			} else {
@@ -51,7 +56,7 @@ func init() {
 		for _, path := range seedFiles {
 			xmlData, err := os.ReadFile(path)
 			if err != nil {
-				log.Printf("Warning: could not find seed file %s: %v", path, err)
+				log.Printf("Warning: could not read seed file %s: %v", path, err)
 				continue
 			}
 

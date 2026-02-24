@@ -4,6 +4,7 @@ import net.sf.saxon.TransformerFactoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
@@ -35,6 +36,10 @@ public class SchematronValidator {
 
         // Use Saxon as the XSLT 3.0 processor
         TransformerFactory factory = new TransformerFactoryImpl();
+        // Disable external entity/DTD access to prevent XXE attacks
+        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
 
         // Load SchXslt2's transpilation stylesheet from classpath
         Source transpileXsl = new StreamSource(
@@ -87,6 +92,11 @@ public class SchematronValidator {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
+        // Disable DTDs and external entities to prevent XXE in SVRL output parsing
+        dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        dbf.setFeature("http://xml.org/sax/features/external-general-entities", false);
+        dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+        dbf.setExpandEntityReferences(false);
         Document doc = dbf.newDocumentBuilder().parse(
             new ByteArrayInputStream(svrl.getBytes("UTF-8"))
         );

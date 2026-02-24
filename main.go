@@ -33,15 +33,23 @@ func main() {
 	// Start embedded NATS server if NATS_PORT is set
 	var schClient schematron.Client
 	natsPort := os.Getenv("NATS_PORT")
+	natsToken := os.Getenv("NATS_TOKEN")
 	if natsPort != "" {
 		port, err := strconv.Atoi(natsPort)
 		if err != nil {
 			log.Fatalf("Invalid NATS_PORT: %v", err)
 		}
 
-		ns, err := server.NewServer(&server.Options{
+		opts := &server.Options{
 			Port: port,
-		})
+		}
+		if natsToken != "" {
+			opts.Authorization = natsToken
+		} else {
+			log.Println("WARNING: NATS_TOKEN not set; NATS server is unauthenticated")
+		}
+
+		ns, err := server.NewServer(opts)
 		if err != nil {
 			log.Fatalf("Failed to create embedded NATS server: %v", err)
 		}
@@ -53,7 +61,7 @@ func main() {
 		log.Printf("Embedded NATS server listening on port %d", port)
 
 		natsURL := fmt.Sprintf("nats://localhost:%d", port)
-		client, err := schematron.NewNatsClient(natsURL)
+		client, err := schematron.NewNatsClient(natsURL, natsToken)
 		if err != nil {
 			log.Printf("WARNING: Could not connect to embedded NATS: %v", err)
 		} else {

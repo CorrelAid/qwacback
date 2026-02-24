@@ -27,13 +27,20 @@ public class SchematronWorker {
         log.info("Initializing Schematron validator from {}", schPath);
         SchematronValidator schValidator = new SchematronValidator(Paths.get(schPath));
 
-        Options options = new Options.Builder()
+        String natsToken = System.getenv("NATS_TOKEN");
+
+        Options.Builder optBuilder = new Options.Builder()
             .server(natsUrl)
             .reconnectWait(Duration.ofSeconds(2))
             .maxReconnects(-1)
             .connectionListener((conn, type) ->
-                log.info("NATS connection event: {}", type))
-            .build();
+                log.info("NATS connection event: {}", type));
+        if (natsToken != null && !natsToken.isBlank()) {
+            optBuilder.token(natsToken.toCharArray());
+        } else {
+            log.warn("NATS_TOKEN not set; connecting without authentication");
+        }
+        Options options = optBuilder.build();
 
         Connection nc = Nats.connect(options);
         log.info("Connected to NATS at {}", natsUrl);

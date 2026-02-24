@@ -24,7 +24,7 @@ func init() {
 			&core.TextField{Name: "holdings_description"},
 			&core.TextField{Name: "analysis_unit"},
 			&core.TextField{Name: "data_kind"},
-			&core.JSONField{Name: "topic_classifications", MaxSize: 0},
+			&core.JSONField{Name: "topic_classifications", MaxSize: 65536}, // 64 KB
 		)
 		if err := app.Save(studies); err != nil {
 			return err
@@ -74,20 +74,20 @@ func init() {
 			&core.TextField{Name: "interval"},
 			&core.TextField{Name: "var_format_type"},
 			&core.TextField{Name: "question_type"},
-			&core.JSONField{Name: "categories", MaxSize: 0},
+			&core.JSONField{Name: "categories", MaxSize: 524288}, // 512 KB
 			&core.NumberField{Name: "order"},
 		)
 		if err := app.Save(variables); err != nil {
 			return err
 		}
 
-		// 4. Set auth-required rules on all collections
-		rule := `@request.auth.id != ""`
+		// 4. Set public read rules on all collections (write stays admin-only)
+		publicRule := ""
 		for _, name := range []string{"studies", "variable_groups", "variables"} {
 			c, _ := app.FindCollectionByNameOrId(name)
 			if c != nil {
-				c.ListRule = &rule
-				c.ViewRule = &rule
+				c.ListRule = &publicRule
+				c.ViewRule = &publicRule
 				app.Save(c)
 			}
 		}

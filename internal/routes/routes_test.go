@@ -72,8 +72,8 @@ func TestStudiesAccess(t *testing.T) {
 			Name:            "try as guest (aka. no Authorization header)",
 			Method:          http.MethodGet,
 			URL:             "/api/collections/studies/records",
-			ExpectedStatus:  403,
-			ExpectedContent: []string{`"message":"The current user is not allowed to perform this action."`},
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"items":`},
 			TestAppFactory:  setupTestApp,
 		},
 		{
@@ -183,11 +183,12 @@ func TestXMLFragmentRoutes(t *testing.T) {
 	scenarios := []tests.ApiScenario{
 		// --- Variable XML ---
 		{
-			Name:           "variable xml as guest",
-			Method:         http.MethodGet,
-			URL:            "/api/variables/" + varID + "/xml",
-			ExpectedStatus: 401,
-			TestAppFactory: setupTestApp,
+			Name:            "variable xml as guest",
+			Method:          http.MethodGet,
+			URL:             "/api/variables/" + varID + "/xml",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`<var`, `<qstn`, `responseDomainType=`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
 			Name:   "variable xml as authenticated user",
@@ -201,22 +202,20 @@ func TestXMLFragmentRoutes(t *testing.T) {
 			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:   "variable xml not found",
-			Method: http.MethodGet,
-			URL:    "/api/variables/nonexistent00/xml",
-			Headers: map[string]string{
-				"Authorization": userToken,
-			},
+			Name:           "variable xml not found",
+			Method:         http.MethodGet,
+			URL:            "/api/variables/nonexistent00/xml",
 			ExpectedStatus: 404,
 			TestAppFactory: setupTestApp,
 		},
 		// --- Variable group XML ---
 		{
-			Name:           "variable group xml as guest",
-			Method:         http.MethodGet,
-			URL:            "/api/variable-groups/" + groupID + "/xml",
-			ExpectedStatus: 401,
-			TestAppFactory: setupTestApp,
+			Name:            "variable group xml as guest",
+			Method:          http.MethodGet,
+			URL:             "/api/variable-groups/" + groupID + "/xml",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`<varGrp`, `type=`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
 			Name:   "variable group xml as authenticated user",
@@ -230,22 +229,20 @@ func TestXMLFragmentRoutes(t *testing.T) {
 			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:   "variable group xml not found",
-			Method: http.MethodGet,
-			URL:    "/api/variable-groups/nonexistent00/xml",
-			Headers: map[string]string{
-				"Authorization": userToken,
-			},
+			Name:           "variable group xml not found",
+			Method:         http.MethodGet,
+			URL:            "/api/variable-groups/nonexistent00/xml",
 			ExpectedStatus: 404,
 			TestAppFactory: setupTestApp,
 		},
 		// --- Study XML ---
 		{
-			Name:           "study xml as guest",
-			Method:         http.MethodGet,
-			URL:            "/api/studies/" + studyID + "/xml",
-			ExpectedStatus: 401,
-			TestAppFactory: setupTestApp,
+			Name:            "study xml as guest",
+			Method:          http.MethodGet,
+			URL:             "/api/studies/" + studyID + "/xml",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`<stdyDscr>`, `<titl>Prove It!`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
 			Name:   "study xml as authenticated user",
@@ -259,12 +256,9 @@ func TestXMLFragmentRoutes(t *testing.T) {
 			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:   "study xml not found",
-			Method: http.MethodGet,
-			URL:    "/api/studies/nonexistent00/xml",
-			Headers: map[string]string{
-				"Authorization": userToken,
-			},
+			Name:           "study xml not found",
+			Method:         http.MethodGet,
+			URL:            "/api/studies/nonexistent00/xml",
 			ExpectedStatus: 404,
 			TestAppFactory: setupTestApp,
 		},

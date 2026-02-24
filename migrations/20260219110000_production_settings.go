@@ -27,6 +27,19 @@ func init() {
 		// 3. Configure Logs
 		settings.Logs.MaxDays = 30
 
+		// 4. Configure Rate Limiting
+		settings.RateLimits.Enabled = true
+		settings.RateLimits.Rules = []core.RateLimitRule{
+			// Guest limits (stricter)
+			{Label: "/api/", MaxRequests: 60, Duration: 10, Audience: core.RateLimitRuleAudienceGuest},
+			// Authenticated limits
+			{Label: "/api/", MaxRequests: 300, Duration: 10, Audience: core.RateLimitRuleAudienceAuth},
+			// Auth endpoints (prevent brute force)
+			{Label: "*:auth", MaxRequests: 5, Duration: 10},
+			// Import (expensive, auth-only)
+			{Label: "POST /api/validate", MaxRequests: 5, Duration: 60},
+		}
+
 		if err := app.Save(settings); err != nil {
 			return err
 		}

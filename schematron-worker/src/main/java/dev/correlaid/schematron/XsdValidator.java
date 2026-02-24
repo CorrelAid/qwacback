@@ -29,6 +29,14 @@ public class XsdValidator {
     public XsdValidator(Path xsdPath) throws SAXException {
         log.info("Loading XSD schema: {}", xsdPath);
         SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        // During schema compilation we must allow "file" access because codebook.xsd legitimately
+        // imports xml.xsd, ddi-xhtml11.xsd, dcterms.xsd (ACCESS_EXTERNAL_SCHEMA), and the
+        // XHTML sub-schemas reference DTD entity files like xhtml-lat1.ent (ACCESS_EXTERNAL_DTD).
+        // Network access is still blocked; only local file:// URIs are permitted here.
+        // XXE protection is enforced on each Validator instance below (which validates untrusted XML).
+        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        factory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "file");
+        factory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "file");
         this.schema = factory.newSchema(xsdPath.toFile());
         log.info("XSD schema loaded successfully");
     }
@@ -40,6 +48,14 @@ public class XsdValidator {
     public List<ValidationError> validate(byte[] xmlBytes) {
         List<ValidationError> errors = new ArrayList<>();
         Validator validator = schema.newValidator();
+        // Disable external entity access on each validator instance too
+        try {
+            // Block all external entity/schema access when validating untrusted user XML.
+            validator.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            validator.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+        } catch (SAXException ignored) {
+            // Property not supported by this parser — secure processing already set on factory
+        }
 
         validator.setErrorHandler(new org.xml.sax.ErrorHandler() {
             @Override

@@ -19,3 +19,8 @@ Thumbs.db
 
 # Misc
 *.log
+
+# Environment / secrets — never commit these
+.env
+.env.*
+!.env.example

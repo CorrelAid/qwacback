@@ -3,9 +3,10 @@ package exporter
 import (
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
+	"log"
 	"strings"
 
+	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase/core"
 )
 
@@ -64,7 +65,7 @@ type StdyInfo struct {
 }
 
 type Abstract struct {
-	Content string `xml:",innerxml"`
+	Content string `xml:",chardata"`
 }
 
 type Subject struct {
@@ -162,7 +163,9 @@ func buildVarFromRecord(v *core.Record) Var {
 		IsMissing bool   `json:"is_missing"`
 	}
 	if raw := v.GetString("categories"); raw != "" {
-		json.Unmarshal([]byte(raw), &cats)
+		if err := json.Unmarshal([]byte(raw), &cats); err != nil {
+			log.Printf("WARNING: failed to unmarshal categories for variable %s: %v", v.Id, err)
+		}
 	}
 	for _, cat := range cats {
 		catObj := Category{
@@ -224,7 +227,9 @@ func buildStdyDscrFromRecord(study *core.Record) StdyDscr {
 
 	var topics []string
 	if raw := study.GetString("topic_classifications"); raw != "" {
-		json.Unmarshal([]byte(raw), &topics)
+		if err := json.Unmarshal([]byte(raw), &topics); err != nil {
+			log.Printf("WARNING: failed to unmarshal topic_classifications for study %s: %v", study.Id, err)
+		}
 	}
 	if len(topics) > 0 {
 		sd.StdyInfo.Subject = &Subject{TopcClas: topics}
@@ -243,8 +248,9 @@ func ExportVariableToXML(v *core.Record) ([]byte, error) {
 func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
 	varRecords, err := app.FindRecordsByFilter(
 		"variables",
-		fmt.Sprintf("group = '%s'", g.Id),
+		"group = {:id}",
 		"order", 0, 0,
+		dbx.Params{"id": g.Id},
 	)
 	if err != nil {
 		return nil, err
@@ -276,8 +282,9 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 	// Fetch groups
 	groupRecords, err := app.FindRecordsByFilter(
 		"variable_groups",
-		fmt.Sprintf("study = '%s'", study.Id),
+		"study = {:id}",
 		"order", 0, 0,
+		dbx.Params{"id": study.Id},
 	)
 	if err != nil {
 		return nil, err
@@ -286,8 +293,9 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 	// Fetch variables
 	varRecords, err := app.FindRecordsByFilter(
 		"variables",
-		fmt.Sprintf("study = '%s'", study.Id),
+		"study = {:id}",
 		"order", 0, 0,
+		dbx.Params{"id": study.Id},
 	)
 	if err != nil {
 		return nil, err
