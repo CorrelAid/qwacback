@@ -8,8 +8,8 @@
     </citation>
   </stdyDscr>
   <dataDscr>
-    <!-- Missing labl element -->
-    <var ID="V1" name="q1" intrvl="discrete">
+    <!-- Missing name attribute on var -->
+    <var ID="V1" intrvl="discrete">
       <qstn responseDomainType="category">
         <qstnLit>Question one</qstnLit>
       </qstn>

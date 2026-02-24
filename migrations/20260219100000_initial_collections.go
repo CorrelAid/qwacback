@@ -44,6 +44,7 @@ func init() {
 			&core.TextField{Name: "label"},
 			&core.TextField{Name: "description"},
 			&core.TextField{Name: "type"},
+			&core.NumberField{Name: "order"},
 		)
 		if err := app.Save(groups); err != nil {
 			return err
@@ -72,7 +73,9 @@ func init() {
 			&core.TextField{Name: "ivu_instructions"},
 			&core.TextField{Name: "interval"},
 			&core.TextField{Name: "var_format_type"},
+			&core.TextField{Name: "question_type"},
 			&core.JSONField{Name: "categories", MaxSize: 0},
+			&core.NumberField{Name: "order"},
 		)
 		if err := app.Save(variables); err != nil {
 			return err

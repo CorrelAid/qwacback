@@ -9,7 +9,6 @@
   </stdyDscr>
   <dataDscr>
     <var ID="V1" name="q1" intrvl="discrete">
-      <labl>First question</labl>
       <qstn responseDomainType="category">
         <qstnLit>Question one</qstnLit>
       </qstn>
@@ -21,7 +20,6 @@
     </var>
     <!-- Duplicate ID: V1 -->
     <var ID="V1" name="q2" intrvl="discrete">
-      <labl>Second question</labl>
       <qstn responseDomainType="category">
         <qstnLit>Question two</qstnLit>
       </qstn>

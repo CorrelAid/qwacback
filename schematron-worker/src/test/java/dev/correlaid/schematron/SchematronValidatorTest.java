@@ -80,13 +80,35 @@ class SchematronValidatorTest {
     }
 
     @Test
-    void missingLabelDetected() throws Exception {
+    void missingNameDetected() throws Exception {
         byte[] xml = Files.readAllBytes(Paths.get("src/test/resources/invalid_missing_label.xml"));
         List<ValidationError> errors = schValidator.validate(xml);
-        assertFalse(errors.isEmpty(), "Expected errors for missing label");
+        assertFalse(errors.isEmpty(), "Expected errors for missing name attribute");
         assertTrue(
-            errors.stream().anyMatch(e -> e.message.contains("missing a label")),
-            "Expected 'missing a label' error, got: " + formatErrors(errors)
+            errors.stream().anyMatch(e -> e.message.contains("missing a name attribute")),
+            "Expected 'missing a name attribute' error, got: " + formatErrors(errors)
+        );
+    }
+
+    @Test
+    void lablOnVarDetected() throws Exception {
+        byte[] xml = Files.readAllBytes(Paths.get("src/test/resources/invalid_labl_on_var.xml"));
+        List<ValidationError> errors = schValidator.validate(xml);
+        assertFalse(errors.isEmpty(), "Expected errors for labl on var");
+        assertTrue(
+            errors.stream().anyMatch(e -> e.message.contains("uses labl")),
+            "Expected 'uses labl' error, got: " + formatErrors(errors)
+        );
+    }
+
+    @Test
+    void badVarGrpTypeDetected() throws Exception {
+        byte[] xml = Files.readAllBytes(Paths.get("src/test/resources/invalid_vargrp_bad_type.xml"));
+        List<ValidationError> errors = schValidator.validate(xml);
+        assertFalse(errors.isEmpty(), "Expected errors for bad varGrp type");
+        assertTrue(
+            errors.stream().anyMatch(e -> e.message.contains("Only \"grid\" or \"multipleResp\" are supported")),
+            "Expected varGrp type error, got: " + formatErrors(errors)
         );
     }
 

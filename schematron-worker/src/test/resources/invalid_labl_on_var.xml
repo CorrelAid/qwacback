@@ -8,11 +8,16 @@
     </citation>
   </stdyDscr>
   <dataDscr>
-    <!-- responseDomainType="category" but no catgry elements -->
-    <var ID="V1" name="q1" intrvl="discrete">
+    <!-- labl should not be used on var — use concept instead -->
+    <var ID="V1" name="bad_var" intrvl="discrete">
+      <labl>This should not be here</labl>
       <qstn responseDomainType="category">
         <qstnLit>Question one</qstnLit>
       </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
       <varFormat type="numeric" schema="other"/>
     </var>
   </dataDscr>

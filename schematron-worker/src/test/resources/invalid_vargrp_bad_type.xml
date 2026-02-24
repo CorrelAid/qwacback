@@ -8,9 +8,12 @@
     </citation>
   </stdyDscr>
   <dataDscr>
-    <!-- responseDomainType="category" but no catgry elements -->
-    <var ID="V1" name="q1" intrvl="discrete">
-      <qstn responseDomainType="category">
+    <!-- varGrp type="section" is not allowed -->
+    <varGrp ID="VG1" name="bad_group" type="section" var="V1">
+      <txt>Section groups are not supported</txt>
+    </varGrp>
+    <var ID="V1" name="some_var" intrvl="discrete">
+      <qstn responseDomainType="numeric">
         <qstnLit>Question one</qstnLit>
       </qstn>
       <varFormat type="numeric" schema="other"/>

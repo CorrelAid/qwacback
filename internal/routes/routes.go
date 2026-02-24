@@ -52,7 +52,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		}
 
 		// Insert data into collections
-		if err := importer.ImportCodebookData(app, mv); err != nil {
+		if err := importer.ImportCodebookData(app, mv, xmlBytes); err != nil {
 			return e.JSON(200, map[string]interface{}{
 				"valid":   true,
 				"message": "XML is valid, but failed to insert into database",
@@ -98,6 +98,57 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		e.Response.Header().Set("Content-Type", "application/xml")
 		e.Response.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"study-%s.xml\"", studyId))
 
+		_, err = e.Response.Write(xmlBytes)
+		return err
+	}).Bind(apis.RequireAuth())
+
+	// Variable XML fragment
+	se.Router.GET("/api/variables/{id}/xml", func(e *core.RequestEvent) error {
+		record, err := app.FindRecordById("variables", e.Request.PathValue("id"))
+		if err != nil {
+			return apis.NewNotFoundError("Variable not found", err)
+		}
+
+		xmlBytes, err := exporter.ExportVariableToXML(record)
+		if err != nil {
+			return apis.NewInternalServerError("Failed to generate XML", err)
+		}
+
+		e.Response.Header().Set("Content-Type", "application/xml")
+		_, err = e.Response.Write(xmlBytes)
+		return err
+	}).Bind(apis.RequireAuth())
+
+	// Variable group XML fragment
+	se.Router.GET("/api/variable-groups/{id}/xml", func(e *core.RequestEvent) error {
+		record, err := app.FindRecordById("variable_groups", e.Request.PathValue("id"))
+		if err != nil {
+			return apis.NewNotFoundError("Variable group not found", err)
+		}
+
+		xmlBytes, err := exporter.ExportVarGrpToXML(app, record)
+		if err != nil {
+			return apis.NewInternalServerError("Failed to generate XML", err)
+		}
+
+		e.Response.Header().Set("Content-Type", "application/xml")
+		_, err = e.Response.Write(xmlBytes)
+		return err
+	}).Bind(apis.RequireAuth())
+
+	// Study XML fragment (stdyDscr only)
+	se.Router.GET("/api/studies/{id}/xml", func(e *core.RequestEvent) error {
+		study, err := app.FindRecordById("studies", e.Request.PathValue("id"))
+		if err != nil {
+			return apis.NewNotFoundError("Study not found", err)
+		}
+
+		xmlBytes, err := exporter.ExportStdyDscrToXML(study)
+		if err != nil {
+			return apis.NewInternalServerError("Failed to generate XML", err)
+		}
+
+		e.Response.Header().Set("Content-Type", "application/xml")
 		_, err = e.Response.Write(xmlBytes)
 		return err
 	}).Bind(apis.RequireAuth())

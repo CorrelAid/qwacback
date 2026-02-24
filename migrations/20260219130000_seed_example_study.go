@@ -62,6 +62,6 @@ func init() {
 			return err
 		}
 
-		return importer.ImportCodebookData(app, mv)
+		return importer.ImportCodebookData(app, mv, xmlData)
 	}, nil)
 }

@@ -18,6 +18,17 @@
 
     <stdyInfo>
       <subject>
+        <keyword>social capital</keyword>
+        <keyword>quality of life</keyword>
+        <keyword>community safety</keyword>
+        <keyword>civic participation</keyword>
+        <keyword>interpersonal trust</keyword>
+        <keyword>institutional trust</keyword>
+        <keyword>social reciprocity</keyword>
+        <keyword>self-efficacy</keyword>
+        <keyword>bridging social capital</keyword>
+        <keyword>bonding social capital</keyword>
+        <keyword>neighbourhood improvement</keyword>
         <topcClas>Impact Assessment</topcClas>
         <topcClas>Template</topcClas>
       </subject>
@@ -58,28 +69,21 @@
 
   <dataDscr>
   <!-- Variable Group: Knowledge of Contacts (Grid) -->
-  <varGrp ID="VG1" type="grid" var="V4a V4b V4c V4d">
-    <labl>Knowledge of Contacts</labl>
+  <varGrp ID="VG1" name="contact_knowledge" type="grid" var="V4a V4b V4c V4d">
     <txt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</txt>
+    <concept>Civic network awareness</concept>
   </varGrp>
   
   <!-- Variable Group: Social Interactions (Grid) -->
-  <varGrp ID="VG2" type="grid" var="V5a V5b V5c V5d">
-    <labl>Social Interactions</labl>
+  <varGrp ID="VG2" name="social_interactions" type="grid" var="V5a V5b V5c V5d">
     <txt>As part of my participation in this project, I have had conversations with</txt>
-  </varGrp>
-  
-  <!-- Variable Group: Demographics (Section) -->
-  <varGrp ID="VG3" type="section" var="V10a V10b V10c V10d V10e V10f V10g">
-    <labl>Demographics</labl>
-    <txt>Questions about yourself…(for all Respondents)</txt>
+    <concept>Bridging social capital</concept>
   </varGrp>
 
   <!-- Variable: q1a - Frequency of Green Space use -->
-  <var ID="V1a" name="q1a" intrvl="discrete">
-    <labl>Frequency of Green Space use</labl>
+  <var ID="V1a" name="space_use_freq" intrvl="discrete">
     <qstn ID="Q1a" responseDomainType="category">
-      <qstnLit>How often do you use your local Green Space? (insert name of specific project/space)</qstnLit>
+      <qstnLit xmlns:xhtml="http://www.w3.org/1999/xhtml"><xhtml:p>How often do you use your local <xhtml:em>&lt;PROJECT/SPACE&gt;</xhtml:em>?</xhtml:p></qstnLit>
     </qstn>
     <catgry>
       <catValu>1</catValu>
@@ -97,14 +101,14 @@
       <catValu>4</catValu>
       <labl>Never</labl>
     </catgry>
+    <concept>Facility usage frequency</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q1b - Project area attractiveness -->
-  <var ID="V1b" name="q1b" intrvl="discrete">
-    <labl>Project area attractiveness</labl>
+  <var ID="V1b" name="area_attractiveness" intrvl="discrete">
     <qstn ID="Q1b" responseDomainType="category">
-      <qstnLit>I think that my (project related) is more attractive than it was six months ago (or replace for time period relevant to project)</qstnLit>
+      <qstnLit xmlns:xhtml="http://www.w3.org/1999/xhtml"><xhtml:p>I think that my <xhtml:em>&lt;PROJECT AREA&gt;</xhtml:em> is more attractive than it was <xhtml:em>&lt;TIME PERIOD&gt;</xhtml:em> ago</xhtml:p></qstnLit>
     </qstn>
     <catgry>
       <catValu>1</catValu>
@@ -126,14 +130,14 @@
       <catValu>5</catValu>
       <labl>Strongly Disagree</labl>
     </catgry>
+    <concept>Neighbourhood attractiveness</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q2a - Safety during day -->
-  <var ID="V2a" name="q2a" intrvl="discrete">
-    <labl>Safety during day</labl>
+  <var ID="V2a" name="safety_day" intrvl="discrete">
     <qstn ID="Q2a" responseDomainType="category">
-      <qstnLit>I feel safe out and about in (PROJECT AREA) during the day.</qstnLit>
+      <qstnLit xmlns:xhtml="http://www.w3.org/1999/xhtml"><xhtml:p>I feel safe out and about in <xhtml:em>&lt;PROJECT AREA&gt;</xhtml:em> during the day.</xhtml:p></qstnLit>
     </qstn>
     <catgry>
       <catValu>1</catValu>
@@ -155,14 +159,14 @@
       <catValu>5</catValu>
       <labl>Strongly Disagree</labl>
     </catgry>
+    <concept>Perceived community safety (day)</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q2b - Safety at night -->
-  <var ID="V2b" name="q2b" intrvl="discrete">
-    <labl>Safety at night</labl>
+  <var ID="V2b" name="safety_night" intrvl="discrete">
     <qstn ID="Q2b" responseDomainType="category">
-      <qstnLit>I feel safe out and about in (PROJECT AREA) at night.</qstnLit>
+      <qstnLit xmlns:xhtml="http://www.w3.org/1999/xhtml"><xhtml:p>I feel safe out and about in <xhtml:em>&lt;PROJECT AREA&gt;</xhtml:em> at night.</xhtml:p></qstnLit>
     </qstn>
     <catgry>
       <catValu>1</catValu>
@@ -184,14 +188,14 @@
       <catValu>5</catValu>
       <labl>Strongly Disagree</labl>
     </catgry>
+    <concept>Perceived community safety (night)</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q2c - Change in local crime -->
-  <var ID="V2c" name="q2c" intrvl="discrete">
-    <labl>Change in local crime</labl>
+  <var ID="V2c" name="crime_change" intrvl="discrete">
     <qstn ID="Q2c" responseDomainType="category">
-      <qstnLit>How would you say that the amount of local crime has changed over the past (PROJECT SPECIFIC)?</qstnLit>
+      <qstnLit>How would you say that the amount of local crime has changed over the past?</qstnLit>
     </qstn>
     <catgry>
       <catValu>1</catValu>
@@ -213,12 +217,12 @@
       <catValu>5</catValu>
       <labl>Decreased a lot</labl>
     </catgry>
+    <concept>Perceived crime trend</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q3a - Ability to change attitudes -->
-  <var ID="V3a" name="q3a" intrvl="discrete">
-    <labl>Ability to change attitudes</labl>
+  <var ID="V3a" name="efficacy_attitudes" intrvl="discrete">
     <qstn ID="Q3a" responseDomainType="category">
       <qstnLit>I feel I could help change attitudes around here.</qstnLit>
     </qstn>
@@ -242,12 +246,12 @@
       <catValu>5</catValu>
       <labl>Strongly Disagree</labl>
     </catgry>
+    <concept>Self-efficacy (attitudes)</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q3b - Ability to improve things -->
-  <var ID="V3b" name="q3b" intrvl="discrete">
-    <labl>Ability to improve things</labl>
+  <var ID="V3b" name="efficacy_action" intrvl="discrete">
     <qstn ID="Q3b" responseDomainType="category">
       <qstnLit>I feel I could help improve things around here.</qstnLit>
     </qstn>
@@ -271,12 +275,12 @@
       <catValu>5</catValu>
       <labl>Strongly Disagree</labl>
     </catgry>
+    <concept>Self-efficacy (action)</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q3c - Tools for decision making -->
-  <var ID="V3c" name="q3c" intrvl="discrete">
-    <labl>Tools for decision making</labl>
+  <var ID="V3c" name="decision_participation" intrvl="discrete">
     <qstn ID="Q3c" responseDomainType="category">
       <qstnLit>I feel this project has given me the tools I need to participate in making decisions about my community.</qstnLit>
     </qstn>
@@ -300,12 +304,12 @@
       <catValu>5</catValu>
       <labl>Strongly Disagree</labl>
     </catgry>
+    <concept>Participatory empowerment</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q4a - Contact: Local Community Groups (Grid) -->
-  <var ID="V4a" name="q4a" intrvl="discrete">
-    <labl>Contact: Local Community Groups</labl>
+  <var ID="V4a" name="contact_community_groups" intrvl="discrete">
     <qstn ID="Q4a" responseDomainType="category">
       <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
       <qstnLit>Local Community Groups</qstnLit>
@@ -322,12 +326,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Civic network: Community groups</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q4b - Contact: At the council (Grid) -->
-  <var ID="V4b" name="q4b" intrvl="discrete">
-    <labl>Contact: At the council</labl>
+  <var ID="V4b" name="contact_council" intrvl="discrete">
     <qstn ID="Q4b" responseDomainType="category">
       <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
       <qstnLit>At the council</qstnLit>
@@ -344,12 +348,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Civic network: Council</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q4c - Contact: Other agencies (Groundwork) (Grid) -->
-  <var ID="V4c" name="q4c" intrvl="discrete">
-    <labl>Contact: Other agencies (Groundwork)</labl>
+  <var ID="V4c" name="contact_agencies" intrvl="discrete">
     <qstn ID="Q4c" responseDomainType="category">
       <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
       <qstnLit>In other agencies like Groundwork</qstnLit>
@@ -366,12 +370,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Civic network: Agencies</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q4d - Contact: People in neighbourhood (Grid) -->
-  <var ID="V4d" name="q4d" intrvl="discrete">
-    <labl>Contact: People in neighbourhood</labl>
+  <var ID="V4d" name="contact_neighbours" intrvl="discrete">
     <qstn ID="Q4d" responseDomainType="category">
       <preQTxt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</preQTxt>
       <qstnLit>Among people in the neighbourhood</qstnLit>
@@ -388,12 +392,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Civic network: Neighbours</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q5a - Conversation: Different age (Grid) -->
-  <var ID="V5a" name="q5a" intrvl="discrete">
-    <labl>Conversation: Different age</labl>
+  <var ID="V5a" name="convo_diff_age" intrvl="discrete">
     <qstn ID="Q5a" responseDomainType="category">
       <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
       <qstnLit>A new person of different age from me</qstnLit>
@@ -410,12 +414,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Bridging: Intergenerational</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q5b - Conversation: Different ethnic background (Grid) -->
-  <var ID="V5b" name="q5b" intrvl="discrete">
-    <labl>Conversation: Different ethnic background</labl>
+  <var ID="V5b" name="convo_diff_ethnicity" intrvl="discrete">
     <qstn ID="Q5b" responseDomainType="category">
       <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
       <qstnLit>A new person of a different ethnic background</qstnLit>
@@ -432,12 +436,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Bridging: Interethnic</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q5c - Conversation: Local Council members (Grid) -->
-  <var ID="V5c" name="q5c" intrvl="discrete">
-    <labl>Conversation: Local Council members</labl>
+  <var ID="V5c" name="convo_council" intrvl="discrete">
     <qstn ID="Q5c" responseDomainType="category">
       <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
       <qstnLit>Members of the Local Council</qstnLit>
@@ -454,12 +458,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Bridging: Civic engagement</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q5d - Conversation: Other communities (Grid) -->
-  <var ID="V5d" name="q5d" intrvl="discrete">
-    <labl>Conversation: Other communities</labl>
+  <var ID="V5d" name="convo_other_communities" intrvl="discrete">
     <qstn ID="Q5d" responseDomainType="category">
       <preQTxt>As part of my participation in this project, I have had conversations with</preQTxt>
       <qstnLit>People from other communities</qstnLit>
@@ -476,12 +480,12 @@
       <catValu>3</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Bridging: Inter-community</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q6 - Friends in neighbourhood -->
-  <var ID="V6" name="q6" intrvl="discrete">
-    <labl>Friends in neighbourhood</labl>
+  <var ID="V6" name="friends_local" intrvl="discrete">
     <qstn ID="Q6" responseDomainType="category">
       <qstnLit>Would you say that most of your friends live in this neighbourhood?</qstnLit>
     </qstn>
@@ -497,12 +501,12 @@
       <catValu>3</catValu>
       <labl>Don't Know</labl>
     </catgry>
+    <concept>Bonding social capital</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q7 - Neighbours act in best interest -->
-  <var ID="V7" name="q7" intrvl="discrete">
-    <labl>Neighbours act in best interest</labl>
+  <var ID="V7" name="neighbour_trust" intrvl="discrete">
     <qstn ID="Q7" responseDomainType="category">
       <qstnLit>Do you think that your neighbours act in your best interests?</qstnLit>
     </qstn>
@@ -518,12 +522,12 @@
       <catValu>3</catValu>
       <labl>Don't Know</labl>
     </catgry>
+    <concept>Interpersonal trust</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q8 - Trust local council -->
-  <var ID="V8" name="q8" intrvl="discrete">
-    <labl>Trust local council</labl>
+  <var ID="V8" name="council_trust" intrvl="discrete">
     <qstn ID="Q8" responseDomainType="category">
       <qstnLit>Do you trust your local council to act in your best interest?</qstnLit>
     </qstn>
@@ -539,12 +543,12 @@
       <catValu>3</catValu>
       <labl>Don't Know</labl>
     </catgry>
+    <concept>Institutional trust</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q9 - Neighbours help each other -->
-  <var ID="V9" name="q9" intrvl="discrete">
-    <labl>Neighbours help each other</labl>
+  <var ID="V9" name="neighbour_help" intrvl="discrete">
     <qstn ID="Q9" responseDomainType="category">
       <qstnLit>Are your neighbours willing to help each other out?</qstnLit>
     </qstn>
@@ -560,14 +564,14 @@
       <catValu>3</catValu>
       <labl>Don't Know</labl>
     </catgry>
+    <concept>Social reciprocity</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
   <!-- Variable: q10a - Language preference (Demographics) -->
-  <var ID="V10a" name="q10a" intrvl="discrete">
-    <labl>Language preference</labl>
+  <var ID="V10a" name="language_pref" intrvl="discrete">
     <qstn ID="Q10a" responseDomainType="category">
-      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>I prefer to use a language other than English</qstnLit>
     </qstn>
     <catgry>
@@ -586,10 +590,9 @@
   </var>
 
   <!-- Variable: q10b - Employment Status (Demographics) -->
-  <var ID="V10b" name="q10b" intrvl="discrete">
-    <labl>Employment Status</labl>
+  <var ID="V10b" name="employment_status" intrvl="discrete">
     <qstn ID="Q10b" responseDomainType="category">
-      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>Employment Status</qstnLit>
     </qstn>
     <catgry>
@@ -620,10 +623,9 @@
   </var>
 
   <!-- Variable: q10c - Age (Demographics) -->
-  <var ID="V10c" name="q10c" intrvl="discrete">
-    <labl>Age</labl>
+  <var ID="V10c" name="age_group" intrvl="discrete">
     <qstn ID="Q10c" responseDomainType="category">
-      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>Age</qstnLit>
     </qstn>
     <catgry>
@@ -654,10 +656,9 @@
   </var>
 
   <!-- Variable: q10d - Gender (Demographics) -->
-  <var ID="V10d" name="q10d" intrvl="discrete">
-    <labl>Gender</labl>
+  <var ID="V10d" name="gender" intrvl="discrete">
     <qstn ID="Q10d" responseDomainType="category">
-      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>Gender</qstnLit>
     </qstn>
     <catgry>
@@ -672,10 +673,9 @@
   </var>
 
   <!-- Variable: q10e - Length of residence (Demographics) -->
-  <var ID="V10e" name="q10e" intrvl="discrete">
-    <labl>Length of residence</labl>
+  <var ID="V10e" name="residence_length" intrvl="discrete">
     <qstn ID="Q10e" responseDomainType="category">
-      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>I have lived in this neighbourhood for</qstnLit>
     </qstn>
     <catgry>
@@ -698,10 +698,9 @@
   </var>
 
   <!-- Variable: q10f - Home ownership (Demographics) -->
-  <var ID="V10f" name="q10f" intrvl="discrete">
-    <labl>Home ownership</labl>
+  <var ID="V10f" name="home_ownership" intrvl="discrete">
     <qstn ID="Q10f" responseDomainType="category">
-      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>I own a house in this community</qstnLit>
     </qstn>
     <catgry>
@@ -716,10 +715,9 @@
   </var>
 
   <!-- Variable: q10g - Respondent type (Demographics) -->
-  <var ID="V10g" name="q10g" intrvl="discrete">
-    <labl>Respondent type</labl>
+  <var ID="V10g" name="respondent_type" intrvl="discrete">
     <qstn ID="Q10g" responseDomainType="category">
-      <preQTxt>Questions about yourself…(for all Respondents)</preQTxt>
+      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>The person answering these questions is….</qstnLit>
     </qstn>
     <catgry>
@@ -731,6 +729,13 @@
       <labl>A member of the wider community</labl>
     </catgry>
     <varFormat type="numeric" schema="other"/>
+  </var>
+  <!-- Variable: q11 - Any Other Comments -->
+  <var ID="V11" name="other_comments" intrvl="contin">
+    <qstn ID="Q11" responseDomainType="text">
+      <qstnLit>Any Other Comments?</qstnLit>
+    </qstn>
+    <varFormat type="character" schema="other"/>
   </var>
   </dataDscr>
 

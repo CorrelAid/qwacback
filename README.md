@@ -101,7 +101,10 @@ All custom endpoints require an **Authenticated** session (Bearer token).
 
 - **POST `/api/validate`**: Validates a DDI XML file (XSD + Schematron) and imports it.
   - **Body**: `multipart/form-data` with a `file` field.
-- **GET `/api/studies/{id}/export`**: Exports a study and its variables as a validated DDI-XML file.
+- **GET `/api/studies/{id}/export`**: Exports a study and its variables as a validated DDI-XML file download.
+- **GET `/api/studies/{id}/xml`**: Returns the `<stdyDscr>` XML fragment for a study.
+- **GET `/api/variables/{id}/xml`**: Returns the `<var>` XML fragment for a single variable.
+- **GET `/api/variable-groups/{id}/xml`**: Returns the `<varGrp>` XML fragment for a variable group.
 
 ## Development & Testing
 

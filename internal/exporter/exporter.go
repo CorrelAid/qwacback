@@ -59,8 +59,12 @@ type Holdings struct {
 
 type StdyInfo struct {
 	Subject  *Subject `xml:"subject,omitempty"`
-	Abstract string   `xml:"abstract"`
+	Abstract Abstract `xml:"abstract"`
 	SumDscr  SumDscr  `xml:"sumDscr"`
+}
+
+type Abstract struct {
+	Content string `xml:",innerxml"`
 }
 
 type Subject struct {
@@ -104,9 +108,10 @@ type VarFormat struct {
 }
 
 type Qstn struct {
-	PreQTxt  string `xml:"preQTxt,omitempty"`
-	QstnLit  string `xml:"qstnLit,omitempty"`
-	IvuInstr string `xml:"ivuInstr,omitempty"`
+	ResponseDomainType string `xml:"responseDomainType,attr,omitempty"`
+	PreQTxt            string `xml:"preQTxt,omitempty"`
+	QstnLit            string `xml:"qstnLit,omitempty"`
+	IvuInstr           string `xml:"ivuInstr,omitempty"`
 }
 
 type Category struct {
@@ -115,13 +120,164 @@ type Category struct {
 	Labl    string `xml:"labl,omitempty"`
 }
 
+// questionTypeToResponseDomain maps an XLSForm question type back to DDI responseDomainType.
+func questionTypeToResponseDomain(questionType string) string {
+	switch questionType {
+	case "integer":
+		return "numeric"
+	case "text":
+		return "text"
+	case "select_one", "matrix":
+		return "category"
+	case "select_multiple":
+		return "multiple"
+	default:
+		return ""
+	}
+}
+
+// buildVarFromRecord converts a variable database record into a Var struct.
+func buildVarFromRecord(v *core.Record) Var {
+	varObj := Var{
+		ID:     v.GetString("ddi_id"),
+		Name:   v.GetString("name"),
+		Intrvl: v.GetString("interval"),
+		Labl:   v.GetString("label"),
+	}
+	if fmtType := v.GetString("var_format_type"); fmtType != "" {
+		varObj.VarFormat = &VarFormat{Type: fmtType, Schema: "other"}
+	}
+	if v.GetString("question") != "" || v.GetString("prequestion_text") != "" || v.GetString("ivu_instructions") != "" {
+		varObj.Qstn = &Qstn{
+			ResponseDomainType: questionTypeToResponseDomain(v.GetString("question_type")),
+			PreQTxt:            v.GetString("prequestion_text"),
+			QstnLit:            v.GetString("question"),
+			IvuInstr:           v.GetString("ivu_instructions"),
+		}
+	}
+
+	var cats []struct {
+		Value     string `json:"value"`
+		Label     string `json:"label"`
+		IsMissing bool   `json:"is_missing"`
+	}
+	if raw := v.GetString("categories"); raw != "" {
+		json.Unmarshal([]byte(raw), &cats)
+	}
+	for _, cat := range cats {
+		catObj := Category{
+			CatValu: cat.Value,
+			Labl:    cat.Label,
+		}
+		if cat.IsMissing {
+			catObj.Missing = "Y"
+		}
+		varObj.Catgry = append(varObj.Catgry, catObj)
+	}
+
+	return varObj
+}
+
+// buildStdyDscrFromRecord converts a study database record into a StdyDscr struct.
+func buildStdyDscrFromRecord(study *core.Record) StdyDscr {
+	sd := StdyDscr{
+		Citation: Citation{
+			TitlStmt: TitlStmt{
+				Titl: study.GetString("title"),
+				IDNo: study.GetString("id_no"),
+			},
+		},
+		StdyInfo: StdyInfo{
+			Abstract: Abstract{Content: study.GetString("abstract")},
+			SumDscr: SumDscr{
+				AnlyUnit: study.GetString("analysis_unit"),
+				Universe: study.GetString("universe"),
+				TimePrd:  study.GetString("time_period"),
+				Nation:   study.GetString("nation"),
+				DataKind: study.GetString("data_kind"),
+			},
+		},
+	}
+
+	if author := study.GetString("author"); author != "" {
+		sd.Citation.RspStmt = &RspStmt{
+			AuthEnty: AuthEnty{
+				Value:       author,
+				Affiliation: study.GetString("author_affiliation"),
+			},
+		}
+	}
+	if prod := study.GetString("producer"); prod != "" {
+		sd.Citation.ProdStmt = &ProdStmt{
+			Producer: Producer{
+				Value:       prod,
+				Affiliation: study.GetString("producer_affiliation"),
+			},
+		}
+	}
+	if uri := study.GetString("holdings_uri"); uri != "" {
+		sd.Citation.Holdings = &Holdings{
+			URI:   uri,
+			Value: study.GetString("holdings_description"),
+		}
+	}
+
+	var topics []string
+	if raw := study.GetString("topic_classifications"); raw != "" {
+		json.Unmarshal([]byte(raw), &topics)
+	}
+	if len(topics) > 0 {
+		sd.StdyInfo.Subject = &Subject{TopcClas: topics}
+	}
+
+	return sd
+}
+
+// ExportVariableToXML generates the DDI <var> XML fragment for a single variable record.
+func ExportVariableToXML(v *core.Record) ([]byte, error) {
+	varObj := buildVarFromRecord(v)
+	return xml.MarshalIndent(varObj, "", "  ")
+}
+
+// ExportVarGrpToXML generates the DDI <varGrp> XML fragment for a single variable group record.
+func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
+	varRecords, err := app.FindRecordsByFilter(
+		"variables",
+		fmt.Sprintf("group = '%s'", g.Id),
+		"order", 0, 0,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	var groupVars []string
+	for _, v := range varRecords {
+		groupVars = append(groupVars, v.GetString("ddi_id"))
+	}
+
+	grp := VarGrp{
+		ID:   g.GetString("ddi_id"),
+		Type: g.GetString("type"),
+		Var:  strings.Join(groupVars, " "),
+		Labl: g.GetString("label"),
+		Txt:  g.GetString("description"),
+	}
+	return xml.MarshalIndent(grp, "", "  ")
+}
+
+// ExportStdyDscrToXML generates the DDI <stdyDscr> XML fragment for a study record.
+func ExportStdyDscrToXML(study *core.Record) ([]byte, error) {
+	sd := buildStdyDscrFromRecord(study)
+	return xml.MarshalIndent(sd, "", "  ")
+}
+
 // ExportStudyToXML converts a study and its variables into a DDI-XML byte slice.
 func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 	// Fetch groups
 	groupRecords, err := app.FindRecordsByFilter(
 		"variable_groups",
 		fmt.Sprintf("study = '%s'", study.Id),
-		"", 0, 0,
+		"order", 0, 0,
 	)
 	if err != nil {
 		return nil, err
@@ -131,123 +287,25 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 	varRecords, err := app.FindRecordsByFilter(
 		"variables",
 		fmt.Sprintf("study = '%s'", study.Id),
-		"name", 0, 0,
+		"order", 0, 0,
 	)
 	if err != nil {
 		return nil, err
 	}
 
 	cb := CodeBook{
-		Xmlns: "ddi:codebook:2_5",
-		Xsi:   "http://www.w3.org/2001/XMLSchema-instance",
-		StdyDscr: StdyDscr{
-			Citation: Citation{
-				TitlStmt: TitlStmt{
-					Titl: study.GetString("title"),
-					IDNo: study.GetString("id_no"),
-				},
-			},
-			StdyInfo: StdyInfo{
-				Abstract: study.GetString("abstract"),
-				SumDscr: SumDscr{
-					AnlyUnit: study.GetString("analysis_unit"),
-					Universe: study.GetString("universe"),
-					TimePrd:  study.GetString("time_period"),
-					Nation:   study.GetString("nation"),
-					DataKind: study.GetString("data_kind"),
-				},
-			},
-		},
+		Xmlns:    "ddi:codebook:2_5",
+		Xsi:      "http://www.w3.org/2001/XMLSchema-instance",
+		StdyDscr: buildStdyDscrFromRecord(study),
 	}
 
-	// Citation: author
-	if author := study.GetString("author"); author != "" {
-		cb.StdyDscr.Citation.RspStmt = &RspStmt{
-			AuthEnty: AuthEnty{
-				Value:       author,
-				Affiliation: study.GetString("author_affiliation"),
-			},
-		}
-	}
-
-	// Citation: producer
-	if prod := study.GetString("producer"); prod != "" {
-		cb.StdyDscr.Citation.ProdStmt = &ProdStmt{
-			Producer: Producer{
-				Value:       prod,
-				Affiliation: study.GetString("producer_affiliation"),
-			},
-		}
-	}
-
-	// Citation: holdings
-	if uri := study.GetString("holdings_uri"); uri != "" {
-		cb.StdyDscr.Citation.Holdings = &Holdings{
-			URI:   uri,
-			Value: study.GetString("holdings_description"),
-		}
-	}
-
-	// Subject: topic classifications
-	var topics []string
-	if raw := study.GetString("topic_classifications"); raw != "" {
-		json.Unmarshal([]byte(raw), &topics)
-	}
-	if len(topics) > 0 {
-		cb.StdyDscr.StdyInfo.Subject = &Subject{TopcClas: topics}
-	}
-
-	// Prepare variable objects and their IDs
-	varIDMap := make(map[string]string) // PocketBase ID -> DDI ID
 	cb.DataDscr.Vars = make([]Var, 0, len(varRecords))
 	for _, v := range varRecords {
-		ddiId := v.GetString("ddi_id")
-		varIDMap[v.Id] = ddiId
-		
-		varObj := Var{
-			ID:     ddiId,
-			Name:   v.GetString("name"),
-			Intrvl: v.GetString("interval"),
-			Labl:   v.GetString("label"),
-		}
-		if fmtType := v.GetString("var_format_type"); fmtType != "" {
-			varObj.VarFormat = &VarFormat{Type: fmtType, Schema: "other"}
-		}
-		if v.GetString("question") != "" || v.GetString("prequestion_text") != "" || v.GetString("ivu_instructions") != "" {
-			varObj.Qstn = &Qstn{
-				PreQTxt:  v.GetString("prequestion_text"),
-				QstnLit:  v.GetString("question"),
-				IvuInstr: v.GetString("ivu_instructions"),
-			}
-		}
-
-		// Read categories from JSON field
-		var cats []struct {
-			Value     string `json:"value"`
-			Label     string `json:"label"`
-			IsMissing bool   `json:"is_missing"`
-		}
-		if raw := v.GetString("categories"); raw != "" {
-			json.Unmarshal([]byte(raw), &cats)
-		}
-		for _, cat := range cats {
-			catObj := Category{
-				CatValu: cat.Value,
-				Labl:    cat.Label,
-			}
-			if cat.IsMissing {
-				catObj.Missing = "Y"
-			}
-			varObj.Catgry = append(varObj.Catgry, catObj)
-		}
-
-		cb.DataDscr.Vars = append(cb.DataDscr.Vars, varObj)
+		cb.DataDscr.Vars = append(cb.DataDscr.Vars, buildVarFromRecord(v))
 	}
 
-	// Prepare Group objects
 	cb.DataDscr.VarGrp = make([]VarGrp, 0, len(groupRecords))
 	for _, g := range groupRecords {
-		// Find variables belonging to this group
 		var groupVars []string
 		for _, v := range varRecords {
 			if v.GetString("group") == g.Id {

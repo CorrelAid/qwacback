@@ -2,29 +2,58 @@ package importer
 
 import (
 	"log"
+	"regexp"
 	"strings"
 
 	"github.com/clbanning/mxj/v2"
 	"github.com/pocketbase/pocketbase/core"
 )
 
+var abstractRe = regexp.MustCompile(`(?s)<abstract[^>]*>(.*?)</abstract>`)
+
+// inferQuestionType maps DDI responseDomainType + group type to an XLSForm question type.
+func inferQuestionType(responseDomainType, groupType string) string {
+	switch responseDomainType {
+	case "numeric":
+		return "integer"
+	case "text":
+		return "text"
+	case "multiple":
+		return "select_multiple"
+	case "category":
+		if groupType == "grid" {
+			return "matrix"
+		}
+		return "select_one"
+	default:
+		return ""
+	}
+}
+
 // ImportCodebookData parses the XML and inserts studies, groups, variables and categories into PocketBase.
-func ImportCodebookData(app core.App, mv mxj.Map) error {
+func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	// Extract Study info
 	title, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.titlStmt.titl")
 	idNo, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.titlStmt.IDNo")
-	abstract, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.abstract")
 	timePeriod, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.timePrd")
 	nation, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.nation")
 	universe, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.universe")
-	author, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.rspStmt.AuthEnty")
-	authorAffil, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.rspStmt.AuthEnty.-affiliation")
-	producer, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.prodStmt.producer")
-	producerAffil, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.prodStmt.producer.-affiliation")
-	holdingsURI, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.holdings.-URI")
-	holdingsDesc, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.holdings")
 	analysisUnit, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.anlyUnit")
 	dataKind, _ := mv.ValueForPathString("codeBook.stdyDscr.stdyInfo.sumDscr.dataKind")
+
+	// Elements with attributes need #text to get just the text content
+	author, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.rspStmt.AuthEnty.#text")
+	authorAffil, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.rspStmt.AuthEnty.-affiliation")
+	producer, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.prodStmt.producer.#text")
+	producerAffil, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.prodStmt.producer.-affiliation")
+	holdingsURI, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.holdings.-URI")
+	holdingsDesc, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.holdings.#text")
+
+	// Extract abstract as raw inner XML to preserve XHTML content
+	abstract := ""
+	if matches := abstractRe.FindSubmatch(rawXML); len(matches) > 1 {
+		abstract = strings.TrimSpace(string(matches[1]))
+	}
 
 	// Extract topic classifications (can be multiple)
 	var topicClassifications []string
@@ -61,6 +90,25 @@ func ImportCodebookData(app core.App, mv mxj.Map) error {
 		return err
 	}
 
+	// Pre-scan variable groups to build a map of variable DDI ID -> group type
+	// This is needed to infer XLSForm question types (e.g. matrix vs select_one)
+	varGroupTypeMap := make(map[string]string) // variable DDI ID -> group type
+	grpsPre, _ := mv.ValuesForPath("codeBook.dataDscr.varGrp")
+	for _, g := range grpsPre {
+		gMap, ok := g.(map[string]interface{})
+		if !ok {
+			continue
+		}
+		gM := mxj.Map(gMap)
+		gType, _ := gM.ValueForPathString("-type")
+		varIdsAttr, _ := gM.ValueForPathString("-var")
+		if varIdsAttr != "" && gType != "" {
+			for _, id := range strings.Fields(varIdsAttr) {
+				varGroupTypeMap[id] = gType
+			}
+		}
+	}
+
 	// Map to keep track of variable records by their DDI ID for group assignment
 	varRecordsMap := make(map[string]*core.Record)
 
@@ -71,7 +119,7 @@ func ImportCodebookData(app core.App, mv mxj.Map) error {
 	} else {
 		varCollection, _ := app.FindCollectionByNameOrId("variables")
 
-		for _, v := range vars {
+		for i, v := range vars {
 			vMap, ok := v.(map[string]interface{})
 			if !ok {
 				continue
@@ -84,6 +132,7 @@ func ImportCodebookData(app core.App, mv mxj.Map) error {
 			vQuest, _ := vM.ValueForPathString("qstn.qstnLit")
 			vPreQ, _ := vM.ValueForPathString("qstn.preQTxt")
 			vIvInstr, _ := vM.ValueForPathString("qstn.ivuInstr")
+			vQstnType, _ := vM.ValueForPathString("qstn.-responseDomainType")
 			vIntrvl, _ := vM.ValueForPathString("-intrvl")
 			vFmtType, _ := vM.ValueForPathString("varFormat.-type")
 
@@ -117,7 +166,9 @@ func ImportCodebookData(app core.App, mv mxj.Map) error {
 			varRecord.Set("ivu_instructions", vIvInstr)
 			varRecord.Set("interval", vIntrvl)
 			varRecord.Set("var_format_type", vFmtType)
+			varRecord.Set("question_type", inferQuestionType(vQstnType, varGroupTypeMap[ddiId]))
 			varRecord.Set("categories", categories)
+			varRecord.Set("order", i)
 
 			if err := app.Save(varRecord); err != nil {
 				log.Printf("Failed to save variable %s: %v", vName, err)
@@ -134,6 +185,7 @@ func ImportCodebookData(app core.App, mv mxj.Map) error {
 	grps, err := mv.ValuesForPath("codeBook.dataDscr.varGrp")
 	if err == nil {
 		groupCollection, _ := app.FindCollectionByNameOrId("variable_groups")
+		grpOrder := 0
 		for _, g := range grps {
 			gMap, ok := g.(map[string]interface{})
 			if !ok {
@@ -146,12 +198,19 @@ func ImportCodebookData(app core.App, mv mxj.Map) error {
 			gType, _ := gM.ValueForPathString("-type")
 			varIdsAttr, _ := gM.ValueForPathString("-var") // Space separated IDs
 
+			// Skip section groups – they are structural containers, not semantic variable groups.
+			if gType == "section" {
+				continue
+			}
+
 			groupRecord := core.NewRecord(groupCollection)
 			groupRecord.Set("study", studyRecord.Id)
 			groupRecord.Set("ddi_id", gId)
 			groupRecord.Set("label", gLab)
 			groupRecord.Set("description", gTxt)
 			groupRecord.Set("type", gType)
+			groupRecord.Set("order", grpOrder)
+			grpOrder++
 
 			if err := app.Save(groupRecord); err != nil {
 				log.Printf("Failed to save group %s: %v", gId, err)
