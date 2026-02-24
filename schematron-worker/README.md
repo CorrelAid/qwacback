@@ -79,7 +79,7 @@ The `rule` field distinguishes between `"xsd"` and `"schematron"` errors. XSD er
 
 ## Dependencies
 
-- **Java 17+**
+- **Java 21+**
 - [Saxon HE 12.5](https://www.saxonica.com/) — XSLT 3.0 processor
 - [SchXslt2 1.8](https://codeberg.org/SchXslt/schxslt2) — ISO Schematron to XSLT transpiler
 - [jnats 2.20.5](https://github.com/nats-io/nats.java) — NATS client
@@ -89,18 +89,38 @@ The `rule` field distinguishes between `"xsd"` and `"schematron"` errors. XSD er
 
 Tests run against the real XSD schema and Schematron rules (no NATS needed).
 
-### With Docker (recommended)
+### With local Gradle + JDK 21
+
+You need JDK 21 and Gradle installed. The easiest way is via [sdkman](https://sdkman.io/):
+
+```bash
+sdk install java 21.0.6-tem
+sdk install gradle
+```
+
+Then from the **repository root** (the tests reference `../schematron/` and `../xml/` relative to the `schematron-worker/` directory):
+
+```bash
+JAVA_HOME=~/.sdkman/candidates/java/21.0.6-tem \
+  gradle -p schematron-worker test --no-daemon
+```
+
+Or if sdkman is already active in your shell:
+
+```bash
+gradle -p schematron-worker test --no-daemon
+```
+
+### With Docker
 
 ```bash
 # From the repository root
-docker run --rm -v "$(pwd)":/app -w /app/schematron-worker gradle:8.12-jdk17 gradle test --no-daemon
-```
-
-### With local Gradle + JDK 17
-
-```bash
-cd schematron-worker
-gradle test
+docker run --rm \
+  -v "$(pwd)/schematron-worker":/app/schematron-worker \
+  -v "$(pwd)/schematron":/app/schematron \
+  -v "$(pwd)/xml":/app/xml \
+  -w /app/schematron-worker \
+  gradle:8.12-jdk21 gradle test --no-daemon
 ```
 
 ## Building
