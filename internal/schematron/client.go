@@ -3,7 +3,9 @@ package schematron
 import (
 	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/google/uuid"
@@ -17,6 +19,9 @@ const (
 
 // Client defines the interface for Schematron validation.
 type Client interface {
+	// WaitForWorker blocks until a worker is subscribed to the validation
+	// subject or timeout elapses.
+	WaitForWorker(timeout time.Duration) error
 	Validate(xmlBytes []byte) (*ValidationResponse, error)
 	Close()
 }
@@ -42,6 +47,27 @@ func NewNatsClient(natsURL, token string) (*NatsClient, error) {
 		return nil, fmt.Errorf("failed to connect to NATS: %w", err)
 	}
 	return &NatsClient{conn: nc, timeout: DefaultTimeout}, nil
+}
+
+// WaitForWorker polls the validation subject until a worker subscribes or
+// timeout elapses. NATS returns ErrNoResponders immediately when no subscriber
+// exists, so we can retry cheaply without blocking for the full request timeout.
+func (c *NatsClient) WaitForWorker(timeout time.Duration) error {
+	deadline := time.Now().Add(timeout)
+	for {
+		// Use a short probe timeout — ErrNoResponders comes back instantly,
+		// ErrTimeout means a subscriber exists but is slow (worker is ready).
+		_, err := c.conn.Request(Subject, []byte("{}"), 2*time.Second)
+		if !errors.Is(err, nats.ErrNoResponders) {
+			return nil
+		}
+		remaining := time.Until(deadline)
+		if remaining <= 0 {
+			return fmt.Errorf("timed out waiting %v for schematron worker to become available", timeout)
+		}
+		log.Printf("Schematron worker not ready yet, retrying in 2s (%.0fs remaining)...", remaining.Seconds())
+		time.Sleep(min(2*time.Second, remaining))
+	}
 }
 
 func (c *NatsClient) Validate(xmlBytes []byte) (*ValidationResponse, error) {

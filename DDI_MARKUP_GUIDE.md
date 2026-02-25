@@ -14,11 +14,11 @@ These four identifiers are the most frequently confused. Each has a distinct rol
 |---|---|---|
 | **Audience** | Machines / analysts | Humans / researchers |
 | **Format** | `snake_case`, no spaces | Natural language prose |
-| **Purpose** | Dataset column name — used in code, exports, database keys | Names the latent construct or topic the question measures |
+| **Purpose** | Dataset column name — used in code, exports, database keys | Names what the variable or group measures |
 | **Length** | Short (1–3 words) | Phrase or sentence fragment |
 | **Example** | `institutional_trust` | `Trust in public institutions` |
 
-Think of `name` as what you'd call the column in a CSV file, and `concept` as the label you'd put in a codebook footnote explaining what the variable actually captures.
+Think of `name` as what you'd call the column in a CSV file, and `concept` as the codebook label that tells a researcher what the variable captures. `concept` is **mandatory** on every `var` and `varGrp`.
 
 #### `name` rules
 
@@ -28,16 +28,19 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 
 #### `concept` rules
 
-*   **Standalone variables**: Name the latent variable the question operationalises.
+`concept` is **required** on every `var` and `varGrp`. It names what the variable or group measures — this does not need to be a latent construct. For simple demographic or factual items, a plain descriptive phrase is correct.
+
+*   **Standalone variables**: Describe what the question measures, in plain language.
+    *   `<concept>Gender</concept>`
+    *   `<concept>Age group</concept>`
     *   `<concept>Perceived community safety (day)</concept>`
     *   `<concept>Self-efficacy (attitudes)</concept>`
 *   **Grid sub-items**: Use a `Construct: Facet` pattern.
     *   `<concept>Trust: Parliament</concept>`
     *   `<concept>Civic network: Council</concept>`
-*   **Variable groups**: Name the overarching latent construct.
+*   **Variable groups**: Name the overarching topic or construct.
     *   `<concept>Trust in institutions</concept>`
     *   `<concept>Device ownership</concept>`
-*   **Self-evident variables**: Omit `concept` for pure demographics or feedback fields (age, gender, open comments) where no latent construct is being operationalised.
 *   The `concept` element supports `vocab` and `vocabURI` attributes to link to controlled vocabularies.
 
 ### `labl`
@@ -250,7 +253,7 @@ Rules:
 | `ivuInstr` | `qstn` | Interviewer instructions (not shown to respondent) |
 | `catgry` | `var` | Response category; contains `catValu` and `labl` |
 | `labl` | `catgry` | Human-readable label for a category value |
-| `concept` | `var`, `varGrp` | Human-readable name of the latent construct measured |
+| `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (required) |
 | `txt` | `varGrp` | Shared introductory question text for grid/checkbox groups |
 | `varFormat` | `var` | Technical data format (must appear last inside `var`) |
 

@@ -47,12 +47,14 @@
         <catValu>3</catValu>
         <labl>divers</labl>
       </catgry>
+      <concept>Gender</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V2" name="geburtsdatum" intrvl="discrete">
       <qstn ID="Q2" responseDomainType="numeric">
         <qstnLit>Wann sind Sie geboren worden?</qstnLit>
       </qstn>
+      <concept>Birth year</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V3" name="deutsche_staatsangehoerigkeit" intrvl="discrete">
@@ -67,6 +69,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>German citizenship</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V4" name="erwerb_deutsche_staatsangehoerigkeit" intrvl="discrete">
@@ -89,12 +92,14 @@
         <catValu>4</catValu>
         <labl>als Aussiedler*in</labl>
       </catgry>
+      <concept>Mode of citizenship acquisition</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V5" name="jahr_erwerb_deutsche_staatsangehoerigkeit" intrvl="discrete">
       <qstn ID="Q5" responseDomainType="numeric">
         <qstnLit>In welchem Jahr haben Sie die deutsche Staatsangehörigkeit erhalten?</qstnLit>
       </qstn>
+      <concept>Year of citizenship acquisition</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V6" name="zweite_staatsangehoerigkeit" intrvl="discrete">
@@ -109,6 +114,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Dual nationality</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V7" name="eu_staatsangehoerigkeit" intrvl="discrete">
@@ -123,6 +129,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>EU citizenship</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V8" name="arbeitserlaubnis" intrvl="discrete">
@@ -137,6 +144,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Work permit</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V9" name="geboren_in_deutschland" intrvl="discrete">
@@ -151,12 +159,14 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Born in Germany</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V10" name="jahr_erster_umzug_nach_deutschland" intrvl="discrete">
       <qstn ID="Q10" responseDomainType="numeric">
         <qstnLit>Wann sind Sie zum ersten Mal nach Deutschland gezogen? Bitte geben Sie das Jahr an.</qstnLit>
       </qstn>
+      <concept>Year of first move to Germany</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V11" name="vater_geboren_in_deutschland" intrvl="discrete">
@@ -171,6 +181,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Father born in Germany</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V12" name="mutter_geboren_in_deutschland" intrvl="discrete">
@@ -185,6 +196,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Mother born in Germany</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V13" name="familienstand" intrvl="discrete">
@@ -211,6 +223,7 @@
         <catValu>5</catValu>
         <labl>verwitwet, Eingetragene*r Lebenspartner*in verstorben</labl>
       </catgry>
+      <concept>Marital status</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V14" name="partnerschaft_im_haushalt" intrvl="discrete">
@@ -225,6 +238,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Cohabiting partnership</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V15" name="hoechster_schulabschluss" intrvl="discrete">
@@ -267,6 +281,7 @@
         <catValu>9</catValu>
         <labl>einen anderen Schulabschluss</labl>
       </catgry>
+      <concept>Highest school qualification</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V16" name="angestrebter_schulabschluss" intrvl="discrete">
@@ -289,6 +304,7 @@
         <catValu>4</catValu>
         <labl>Abitur, Allgemeine oder Fachgebundene Hochschulreife</labl>
       </catgry>
+      <concept>Aspired school qualification</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V17" name="hoechster_beruflicher_abschluss" intrvl="discrete">
@@ -327,6 +343,7 @@
         <catValu>8</catValu>
         <labl>einen anderen beruflichen Abschluss</labl>
       </catgry>
+      <concept>Highest vocational qualification</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V18" name="haupttaetigkeit" intrvl="discrete">
@@ -385,6 +402,7 @@
         <catValu>13</catValu>
         <labl>Sonstiges</labl>
       </catgry>
+      <concept>Main activity</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V19" name="erwerbssituation" intrvl="discrete">
@@ -407,6 +425,7 @@
         <catValu>4</catValu>
         <labl>gehe keiner bezahlten Tätigkeit nach</labl>
       </catgry>
+      <concept>Employment situation</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V20" name="fruehere_erwerbstaetigkeit" intrvl="discrete">
@@ -421,6 +440,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Previous employment</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V21" name="anzahl_beschaeftigungsverhaeltnisse" intrvl="discrete">
@@ -443,6 +463,7 @@
         <catValu>4</catValu>
         <labl>nicht abhängig beschäftigt, ausschließlich selbstständig oder freiberuflich tätig</labl>
       </catgry>
+      <concept>Number of employment relationships</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V22" name="zusatzlich_selbstaendig" intrvl="discrete">
@@ -457,18 +478,21 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Additional self-employment</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V23" name="woechentliche_arbeitsstunden" intrvl="discrete">
       <qstn ID="Q23" responseDomainType="numeric">
         <qstnLit>Wie viele Stunden arbeiten Sie normalerweise insgesamt pro Woche?</qstnLit>
       </qstn>
+      <concept>Weekly working hours</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V24" name="berufliche_taetigkeit" intrvl="contin">
       <qstn ID="Q24" responseDomainType="text">
         <qstnLit>Welche berufliche Tätigkeit üben Sie aus? Wenn Sie nicht mehr Voll- oder Teilzeit erwerbstätig sind: Welche Tätigkeit haben Sie bei Ihrer früheren hauptberuflichen Erwerbstätigkeit zuletzt ausgeübt?</qstnLit>
       </qstn>
+      <concept>Occupational activity</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V25" name="berufliche_stellung" intrvl="discrete">
@@ -507,6 +531,7 @@
         <catValu>8</catValu>
         <labl>Mithelfende*r Familienangehörige*r</labl>
       </catgry>
+      <concept>Occupational status</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V26" name="landwirt_flaeche" intrvl="discrete">
@@ -525,6 +550,7 @@
         <catValu>3</catValu>
         <labl>Genossenschaftsbauer/-bäuerin, ehemals LPG</labl>
       </catgry>
+      <concept>Farm size (self-employed farmer)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V27" name="akademiker_mitarbeiter" intrvl="discrete">
@@ -543,6 +569,7 @@
         <catValu>3</catValu>
         <labl>5 und mehr Mitarbeiter*innen</labl>
       </catgry>
+      <concept>Number of employees (freelance professional)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V28" name="selbstaendig_mitarbeiter" intrvl="discrete">
@@ -565,6 +592,7 @@
         <catValu>4</catValu>
         <labl>PGH-Mitglied</labl>
       </catgry>
+      <concept>Number of employees (self-employed)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V29" name="beamter_dienst" intrvl="discrete">
@@ -587,6 +615,7 @@
         <catValu>4</catValu>
         <labl>im höheren Dienst oder in einer vergleichbaren Laufbahngruppe</labl>
       </catgry>
+      <concept>Civil service grade</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V30" name="angestellte_taetigkeit" intrvl="discrete">
@@ -609,6 +638,7 @@
         <catValu>4</catValu>
         <labl>mit umfassenden Führungsaufgaben und Entscheidungsbefugnissen (z.B. Direktor*in, Geschäftsführer*in, Mitglied des Vorstandes)</labl>
       </catgry>
+      <concept>Employee level</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V31" name="arbeiter_qualifikation" intrvl="discrete">
@@ -635,6 +665,7 @@
         <catValu>5</catValu>
         <labl>Meister*in, Polier*in, Brigadier*in</labl>
       </catgry>
+      <concept>Worker qualification level</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V32" name="handy_nutzung" intrvl="discrete">
@@ -649,6 +680,7 @@
         <catValu>2</catValu>
         <labl>nein</labl>
       </catgry>
+      <concept>Mobile phone use in household</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V33" name="anzahl_handynummern" intrvl="discrete">
@@ -663,6 +695,7 @@
         <catValu>2</catValu>
         <labl>mehr als eine</labl>
       </catgry>
+      <concept>Number of personal mobile numbers</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V34" name="festnetz_verfuegbar" intrvl="discrete">
@@ -681,6 +714,7 @@
         <catValu>3</catValu>
         <labl>weiß nicht</labl>
       </catgry>
+      <concept>Landline availability</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V35" name="anzahl_festnetznummern" intrvl="discrete">
@@ -695,6 +729,7 @@
         <catValu>2</catValu>
         <labl>mehr als eine</labl>
       </catgry>
+      <concept>Number of landline numbers</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V36" name="letzte_internetnutzung" intrvl="discrete">
@@ -733,6 +768,7 @@
         <catValu>8</catValu>
         <labl>nie</labl>
       </catgry>
+      <concept>Time since last internet use</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V37" name="internetnutzung_haeufigkeit" intrvl="discrete">
@@ -755,6 +791,7 @@
         <catValu>4</catValu>
         <labl>weniger als einmal in der Woche</labl>
       </catgry>
+      <concept>Internet use frequency</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V38" name="haushaltsgroesse" intrvl="discrete">
@@ -769,12 +806,14 @@
         <catValu>2</catValu>
         <labl>mehrere Personen</labl>
       </catgry>
+      <concept>Household size</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V39" name="haushaltsmitglieder" intrvl="discrete">
       <qstn ID="Q39" responseDomainType="numeric">
         <qstnLit>Wie viele Personen in Ihrem Haushalt sind …</qstnLit>
       </qstn>
+      <concept>Household composition</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V40" name="einkommensbezieher_im_haushalt" intrvl="discrete">
@@ -789,12 +828,14 @@
         <catValu>2</catValu>
         <labl>mehrere Personen</labl>
       </catgry>
+      <concept>Number of household income earners</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V41" name="haushaltsnettoeinkommen" intrvl="discrete">
       <qstn ID="Q41" responseDomainType="numeric">
         <qstnLit>Wie hoch ist das durchschnittliche monatliche Nettoeinkommen Ihres Haushalts insgesamt?</qstnLit>
       </qstn>
+      <concept>Household net income (exact)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V42" name="haushaltsnettoeinkommen_klasse" intrvl="discrete">
@@ -893,12 +934,14 @@
         <catValu>23</catValu>
         <labl>25.000 Euro oder mehr</labl>
       </catgry>
+      <concept>Household net income (banded)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V43" name="persoenliches_nettoeinkommen" intrvl="discrete">
       <qstn ID="Q43" responseDomainType="numeric">
         <qstnLit>Wie hoch ist Ihr durchschnittliches monatliches Nettoeinkommen insgesamt?</qstnLit>
       </qstn>
+      <concept>Personal net income (exact)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V44" name="persoenliches_nettoeinkommen_klasse" intrvl="discrete">
@@ -997,6 +1040,7 @@
         <catValu>23</catValu>
         <labl>25.000 Euro oder mehr</labl>
       </catgry>
+      <concept>Personal net income (banded)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
   </dataDscr>

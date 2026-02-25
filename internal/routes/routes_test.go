@@ -225,7 +225,7 @@ func TestXMLFragmentRoutes(t *testing.T) {
 				"Authorization": userToken,
 			},
 			ExpectedStatus:  200,
-			ExpectedContent: []string{`<varGrp`, `<labl>`, `type=`},
+			ExpectedContent: []string{`<varGrp`, `<concept>`, `type=`},
 			TestAppFactory:  setupTestApp,
 		},
 		{

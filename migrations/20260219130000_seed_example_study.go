@@ -5,6 +5,8 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"time"
+
 	"qwacback/internal/importer"
 	"qwacback/internal/schematron"
 
@@ -53,6 +55,12 @@ func init() {
 			}
 		}
 
+		if client != nil {
+			if err := client.WaitForWorker(60 * time.Second); err != nil {
+				return fmt.Errorf("schematron worker unavailable: %w", err)
+			}
+		}
+
 		for _, path := range seedFiles {
 			xmlData, err := os.ReadFile(path)
 			if err != nil {
@@ -63,12 +71,12 @@ func init() {
 			if client != nil {
 				resp, err := client.Validate(xmlData)
 				if err != nil {
-					log.Printf("Warning: Schematron validation unavailable for %s: %v", path, err)
-				} else if !resp.Valid {
-					return fmt.Errorf("seed data %s failed Schematron validation: %v", path, resp.Errors)
-				} else {
-					log.Printf("Seed data %s passed Schematron validation.", path)
+					return fmt.Errorf("seed data %s: Schematron validation unavailable: %w", path, err)
 				}
+				if !resp.Valid {
+					return fmt.Errorf("seed data %s failed Schematron validation: %v", path, resp.Errors)
+				}
+				log.Printf("Seed data %s passed Schematron validation.", path)
 			}
 
 			mv, err := mxj.NewMapXml(xmlData)

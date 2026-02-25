@@ -48,6 +48,45 @@ seed_data/      Prove It! Toolkit seed XML
 schematron-worker/  Java validation microservice (see its own README)
 ```
 
+## DDI Data Model & Workflow
+
+Studies are described in [DDI Codebook 2.5](https://ddialliance.org/Specification/DDI-Codebook/2.5/) XML. The application enforces a strict subset of that standard — see [DDI_MARKUP_GUIDE.md](DDI_MARKUP_GUIDE.md) for the full conventions. The key rules:
+
+**Question types → DDI encoding**
+
+| Format | `intrvl` | `responseDomainType` | Container |
+|--------|----------|----------------------|-----------|
+| `open_number` | `discrete` | `numeric` | `<var>` |
+| `open_text` | `contin` | `text` | `<var>` |
+| `single_choice` | `discrete` | `category` | `<var>` + `<catgry>` per option |
+| `checkboxes` | `discrete` | `multiple` | `<varGrp type="multipleResp">` + binary `<var>` per option |
+| `grid` | `discrete` | `category` | `<varGrp type="grid">` + `<var>` per item |
+
+**Mandatory fields** on every `<var>` and `<varGrp>`:
+- `name` attribute — `snake_case` machine identifier (column name)
+- `concept` element — human-readable description of what the variable measures
+- `varFormat` element — technical data type (`numeric` or `character`)
+- `qstn/qstnLit` — question text as shown to the respondent
+
+**Import → export pipeline**
+
+```
+DDI-XML file
+   │
+   ▼
+POST /api/validate   →  XSD + Schematron validation (NATS worker)
+                     →  Parse with mxj + token-based extractor
+                     →  Insert into PocketBase collections
+                              studies / variable_groups / variables
+   │
+   ▼
+GET /api/studies/{id}/export
+                     →  Build CodeBook struct from DB records
+                     →  xml.MarshalIndent → validate → serve
+```
+
+---
+
 ## Getting Started
 
 ### Docker Compose (recommended)
@@ -148,6 +187,66 @@ curl -X POST http://localhost:8090/api/validate \
   -H "Authorization: $TOKEN" \
   -F "file=@seed_data/prove_it.xml"
 ```
+
+## Database & Migrations
+
+### Schema changes
+
+PocketBase runs all migrations in `migrations/` in lexicographic order on startup. The rules:
+
+| Phase | What to do |
+|---|---|
+| Before first production deploy | Edit the initial migration files directly |
+| After first production deploy | Add a **new** migration file per change — never edit existing ones |
+
+New migration files get a timestamp prefix so they sort after existing ones:
+
+```bash
+# example: migrations/20260301000000_add_foo_field.go
+func init() {
+    m.Register(func(app core.App) error {
+        col, err := app.FindCollectionByNameOrId("studies")
+        if err != nil { return err }
+        col.Fields.Add(&core.TextField{Name: "foo"})
+        return app.Save(col)
+    }, nil) // second arg is optional down-migration
+}
+```
+
+### Testing migrations
+
+The Go test suite already validates migrations on every run — `tests.NewTestApp` applies all migrations against a fresh SQLite DB. The round-trip tests in `internal/exporter/exporter_test.go` also exercise the full import pipeline against that migrated schema.
+
+To test a migration against a **copy of production data**:
+
+```bash
+# 1. Copy the production DB out of the Docker volume
+docker run --rm \
+  -v qwacback_pb_dataz:/data \
+  -v $(pwd):/backup \
+  alpine cp /data/data.db /backup/prod_backup.db
+
+# 2. Run qwacback against the copy in a temp directory
+mkdir -p /tmp/test_pb_data
+cp prod_backup.db /tmp/test_pb_data/data.db
+go run main.go serve --dir=/tmp/test_pb_data
+# → migrations run on startup; check logs for errors
+```
+
+### Backups before breaking changes
+
+Always back up before deploying a migration that drops or renames columns:
+
+```bash
+docker run --rm \
+  -v qwacback_pb_dataz:/data \
+  -v $(pwd)/backups:/backups \
+  alpine cp /data/data.db /backups/data_$(date +%Y%m%d_%H%M%S).db
+```
+
+The SQLite file lives at `/app/pb_data/data.db` inside the container (volume `pb_dataz`).
+
+---
 
 ## Environment Variables
 

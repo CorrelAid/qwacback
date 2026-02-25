@@ -586,6 +586,7 @@
       <catValu>3</catValu>
       <labl>No response</labl>
     </catgry>
+    <concept>Language preference</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -619,6 +620,7 @@
       <catValu>6</catValu>
       <labl>Student</labl>
     </catgry>
+    <concept>Employment status</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -652,6 +654,7 @@
       <catValu>6</catValu>
       <labl>75+</labl>
     </catgry>
+    <concept>Age group</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -669,6 +672,7 @@
       <catValu>2</catValu>
       <labl>Female</labl>
     </catgry>
+    <concept>Gender</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -694,6 +698,7 @@
       <catValu>4</catValu>
       <labl>More than 5 years</labl>
     </catgry>
+    <concept>Length of neighbourhood residence</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -711,6 +716,7 @@
       <catValu>2</catValu>
       <labl>No</labl>
     </catgry>
+    <concept>Home ownership</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -728,6 +734,7 @@
       <catValu>2</catValu>
       <labl>A member of the wider community</labl>
     </catgry>
+    <concept>Respondent type</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
   <!-- Variable: q11 - Any Other Comments -->
@@ -735,6 +742,7 @@
     <qstn ID="Q11" responseDomainType="text">
       <qstnLit>Any Other Comments?</qstnLit>
     </qstn>
+    <concept>Open comments</concept>
     <varFormat type="character" schema="other"/>
   </var>
   </dataDscr>

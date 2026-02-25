@@ -69,14 +69,15 @@ type Abstract struct {
 }
 
 type Subject struct {
+	Keywords []string `xml:"keyword"`
 	TopcClas []string `xml:"topcClas"`
 }
 
 type SumDscr struct {
-	AnlyUnit string `xml:"anlyUnit,omitempty"`
-	Universe string `xml:"universe,omitempty"`
 	TimePrd  string `xml:"timePrd,omitempty"`
 	Nation   string `xml:"nation,omitempty"`
+	AnlyUnit string `xml:"anlyUnit,omitempty"`
+	Universe string `xml:"universe,omitempty"`
 	DataKind string `xml:"dataKind,omitempty"`
 }
 
@@ -86,20 +87,21 @@ type DataDscr struct {
 }
 
 type VarGrp struct {
-	ID   string `xml:"ID,attr"`
-	Type string `xml:"type,attr,omitempty"`
-	Var  string `xml:"var,attr"` // Space separated variable IDs
-	Labl string `xml:"labl,omitempty"`
-	Txt  string `xml:"txt,omitempty"`
+	ID      string `xml:"ID,attr"`
+	Name    string `xml:"name,attr,omitempty"`
+	Type    string `xml:"type,attr,omitempty"`
+	Var     string `xml:"var,attr"` // Space separated variable IDs
+	Txt     string `xml:"txt,omitempty"`
+	Concept string `xml:"concept,omitempty"`
 }
 
 type Var struct {
 	ID        string     `xml:"ID,attr"`
 	Name      string     `xml:"name,attr"`
 	Intrvl    string     `xml:"intrvl,attr,omitempty"`
-	Labl      string     `xml:"labl,omitempty"`
-	Qstn      *Qstn     `xml:"qstn,omitempty"`
+	Qstn      *Qstn      `xml:"qstn,omitempty"`
 	Catgry    []Category `xml:"catgry,omitempty"`
+	Concept   string     `xml:"concept,omitempty"`
 	VarFormat *VarFormat `xml:"varFormat,omitempty"`
 }
 
@@ -140,10 +142,10 @@ func questionTypeToResponseDomain(questionType string) string {
 // buildVarFromRecord converts a variable database record into a Var struct.
 func buildVarFromRecord(v *core.Record) Var {
 	varObj := Var{
-		ID:     v.GetString("ddi_id"),
-		Name:   v.GetString("name"),
-		Intrvl: v.GetString("interval"),
-		Labl:   v.GetString("label"),
+		ID:      v.GetString("ddi_id"),
+		Name:    v.GetString("name"),
+		Intrvl:  v.GetString("interval"),
+		Concept: v.GetString("concept"),
 	}
 	if fmtType := v.GetString("var_format_type"); fmtType != "" {
 		varObj.VarFormat = &VarFormat{Type: fmtType, Schema: "other"}
@@ -231,8 +233,14 @@ func buildStdyDscrFromRecord(study *core.Record) StdyDscr {
 			log.Printf("WARNING: failed to unmarshal topic_classifications for study %s: %v", study.Id, err)
 		}
 	}
-	if len(topics) > 0 {
-		sd.StdyInfo.Subject = &Subject{TopcClas: topics}
+	var keywords []string
+	if raw := study.GetString("keywords"); raw != "" {
+		if err := json.Unmarshal([]byte(raw), &keywords); err != nil {
+			log.Printf("WARNING: failed to unmarshal keywords for study %s: %v", study.Id, err)
+		}
+	}
+	if len(keywords) > 0 || len(topics) > 0 {
+		sd.StdyInfo.Subject = &Subject{Keywords: keywords, TopcClas: topics}
 	}
 
 	return sd
@@ -262,11 +270,12 @@ func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
 	}
 
 	grp := VarGrp{
-		ID:   g.GetString("ddi_id"),
-		Type: g.GetString("type"),
-		Var:  strings.Join(groupVars, " "),
-		Labl: g.GetString("label"),
-		Txt:  g.GetString("description"),
+		ID:      g.GetString("ddi_id"),
+		Name:    g.GetString("name"),
+		Type:    g.GetString("type"),
+		Var:     strings.Join(groupVars, " "),
+		Concept: g.GetString("concept"),
+		Txt:     g.GetString("description"),
 	}
 	return xml.MarshalIndent(grp, "", "  ")
 }
@@ -322,11 +331,12 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 		}
 
 		cb.DataDscr.VarGrp = append(cb.DataDscr.VarGrp, VarGrp{
-			ID:   g.GetString("ddi_id"),
-			Type: g.GetString("type"),
-			Var:  strings.Join(groupVars, " "),
-			Labl: g.GetString("label"),
-			Txt:  g.GetString("description"),
+			ID:      g.GetString("ddi_id"),
+			Name:    g.GetString("name"),
+			Type:    g.GetString("type"),
+			Var:     strings.Join(groupVars, " "),
+			Concept: g.GetString("concept"),
+			Txt:     g.GetString("description"),
 		})
 	}
 

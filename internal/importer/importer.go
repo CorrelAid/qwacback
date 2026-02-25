@@ -1,6 +1,8 @@
 package importer
 
 import (
+	"bytes"
+	"encoding/xml"
 	"log"
 	"regexp"
 	"strings"
@@ -11,16 +13,127 @@ import (
 
 var abstractRe = regexp.MustCompile(`(?s)<abstract[^>]*>(.*?)</abstract>`)
 
+// extractVarQstnLits walks the raw XML token stream and returns a map of
+// variable DDI ID → full qstnLit text content. It uses encoding/xml directly
+// instead of mxj because mxj cannot represent XML mixed content: text nodes
+// interleaved with child elements (e.g. "text <em>bold</em> more text") lose
+// the "tail" text that follows each closing tag.
+func extractVarQstnLits(rawXML []byte) map[string]string {
+	result := make(map[string]string)
+	decoder := xml.NewDecoder(bytes.NewReader(rawXML))
+	decoder.Strict = false
+
+	var currentVarID string
+	inVar, inQstn, inQstnLit := false, false, false
+	qstnLitDepth := 0
+	var sb strings.Builder
+
+	for {
+		token, err := decoder.Token()
+		if err != nil {
+			break
+		}
+		switch t := token.(type) {
+		case xml.StartElement:
+			switch t.Name.Local {
+			case "var":
+				inVar = true
+				for _, attr := range t.Attr {
+					if attr.Name.Local == "ID" {
+						currentVarID = attr.Value
+						break
+					}
+				}
+			case "qstn":
+				if inVar {
+					inQstn = true
+				}
+			case "qstnLit":
+				if inQstn {
+					inQstnLit = true
+					qstnLitDepth = 1
+					sb.Reset()
+				}
+			default:
+				if inQstnLit {
+					qstnLitDepth++
+				}
+			}
+		case xml.EndElement:
+			switch t.Name.Local {
+			case "var":
+				inVar, inQstn = false, false
+				currentVarID = ""
+			case "qstn":
+				inQstn = false
+			case "qstnLit":
+				if inQstnLit {
+					qstnLitDepth--
+					if qstnLitDepth == 0 {
+						if currentVarID != "" {
+							result[currentVarID] = strings.TrimSpace(sb.String())
+						}
+						inQstnLit = false
+					}
+				}
+			default:
+				if inQstnLit {
+					qstnLitDepth--
+				}
+			}
+		case xml.CharData:
+			if inQstnLit {
+				sb.Write(t)
+			}
+		}
+	}
+	return result
+}
+
+// extractText recursively extracts plain text from an mxj value, handling
+// nested XHTML elements (e.g. qstnLit with xmlns:xhtml markup). It collects
+// #text nodes and recurses into child elements, skipping namespace
+// declarations (keys prefixed with "-").
+func extractText(v interface{}) string {
+	switch val := v.(type) {
+	case string:
+		return val
+	case map[string]interface{}:
+		var sb strings.Builder
+		if text, ok := val["#text"].(string); ok {
+			sb.WriteString(text)
+		}
+		for k, child := range val {
+			if k == "#text" || strings.HasPrefix(k, "-") {
+				continue
+			}
+			sb.WriteString(extractText(child))
+		}
+		return sb.String()
+	case []interface{}:
+		var sb strings.Builder
+		for _, item := range val {
+			sb.WriteString(extractText(item))
+		}
+		return sb.String()
+	}
+	return ""
+}
+
 // textAt extracts the text content of an mxj path, handling elements that
-// have XML attributes. mxj represents <foo bar="x">text</foo> as a map
-// {"-bar":"x","#text":"text"}, so we try the #text sub-key first and fall
-// back to the plain path for elements without attributes.
+// have XML attributes or XHTML child content. mxj represents
+// <foo bar="x">text</foo> as {"-bar":"x","#text":"text"}, so we try the
+// #text sub-key first, then fall back to ValuesForPath which returns the
+// typed value (rather than a stringified map representation).
 func textAt(mv mxj.Map, path string) string {
 	if v, err := mv.ValueForPathString(path + ".#text"); err == nil && v != "" {
 		return v
 	}
-	v, _ := mv.ValueForPathString(path)
-	return v
+	vals, err := mv.ValuesForPath(path)
+	if err != nil || len(vals) == 0 {
+		return ""
+	}
+	return strings.TrimSpace(extractText(vals[0]))
 }
 
 // inferQuestionType maps DDI responseDomainType + group type to an XLSForm question type.
@@ -76,6 +189,15 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 		}
 	}
 
+	// Extract keywords (can be multiple)
+	var keywords []string
+	kws, _ := mv.ValuesForPath("codeBook.stdyDscr.stdyInfo.subject.keyword")
+	for _, k := range kws {
+		if s, ok := k.(string); ok {
+			keywords = append(keywords, s)
+		}
+	}
+
 	studyCollection, err := app.FindCollectionByNameOrId("studies")
 	if err != nil {
 		return err
@@ -97,10 +219,18 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	studyRecord.Set("analysis_unit", analysisUnit)
 	studyRecord.Set("data_kind", dataKind)
 	studyRecord.Set("topic_classifications", topicClassifications)
+	studyRecord.Set("keywords", keywords)
 
 	if err := app.Save(studyRecord); err != nil {
 		return err
 	}
+
+	// Pre-extract qstnLit texts via the XML token stream.
+	// mxj cannot represent mixed content (text interleaved with child elements),
+	// so tail text after closing tags (e.g. " is more attractive than it was <TIME PERIOD> ago"
+	// after the first <xhtml:em>) is silently dropped. The token-based extractor
+	// collects all CharData across the full element depth.
+	qstnLitTexts := extractVarQstnLits(rawXML)
 
 	// Pre-scan variable groups to build a map of variable DDI ID -> group type
 	// This is needed to infer XLSForm question types (e.g. matrix vs select_one)
@@ -140,8 +270,8 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			vM := mxj.Map(vMap)
 			ddiId, _ := vM.ValueForPathString("-ID")
 			vName, _ := vM.ValueForPathString("-name")
-			vLabel := textAt(vM, "labl")         // labl may have xml:lang attr
-			vQuest := textAt(vM, "qstn.qstnLit") // qstnLit may have xml:lang attr
+			vConcept := textAt(vM, "concept")
+			vQuest := qstnLitTexts[ddiId] // token-based extraction preserves mixed-content text
 			vPreQ := textAt(vM, "qstn.preQTxt")
 			vIvInstr := textAt(vM, "qstn.ivuInstr")
 			vQstnType, _ := vM.ValueForPathString("qstn.-responseDomainType")
@@ -172,7 +302,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			varRecord.Set("study", studyRecord.Id)
 			varRecord.Set("ddi_id", ddiId)
 			varRecord.Set("name", vName)
-			varRecord.Set("label", vLabel)
+			varRecord.Set("concept", vConcept)
 			varRecord.Set("question", vQuest)
 			varRecord.Set("prequestion_text", vPreQ)
 			varRecord.Set("ivu_instructions", vIvInstr)
@@ -205,7 +335,8 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			}
 			gM := mxj.Map(gMap)
 			gId, _ := gM.ValueForPathString("-ID")
-			gLab := textAt(gM, "labl")
+			gName, _ := gM.ValueForPathString("-name")
+			gConcept := textAt(gM, "concept")
 			gTxt := textAt(gM, "txt")
 			gType, _ := gM.ValueForPathString("-type")
 			varIdsAttr, _ := gM.ValueForPathString("-var") // Space separated IDs
@@ -218,7 +349,8 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			groupRecord := core.NewRecord(groupCollection)
 			groupRecord.Set("study", studyRecord.Id)
 			groupRecord.Set("ddi_id", gId)
-			groupRecord.Set("label", gLab)
+			groupRecord.Set("name", gName)
+			groupRecord.Set("concept", gConcept)
 			groupRecord.Set("description", gTxt)
 			groupRecord.Set("type", gType)
 			groupRecord.Set("order", grpOrder)

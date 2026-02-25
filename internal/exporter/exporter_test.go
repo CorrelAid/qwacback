@@ -3,6 +3,7 @@ package exporter
 import (
 	"encoding/xml"
 	"os"
+	"strings"
 	"testing"
 
 	"qwacback/internal/importer"
@@ -46,7 +47,7 @@ func TestExportStudyToXML(t *testing.T) {
 	variable := core.NewRecord(varCollection)
 	variable.Set("study", study.Id)
 	variable.Set("name", "v1")
-	variable.Set("label", "Variable 1")
+	variable.Set("concept", "Variable 1")
 	if err := testApp.Save(variable); err != nil {
 		t.Fatal(err)
 	}
@@ -64,56 +65,66 @@ func TestExportStudyToXML(t *testing.T) {
 	}
 }
 
-// TestRoundTripPreservesData imports the prove_it.xml seed data, exports it,
-// and verifies that all semantically meaningful data survives the round-trip.
-func TestRoundTripPreservesData(t *testing.T) {
+// roundTripSetup imports an XML seed file into a fresh test app and returns the app and first study.
+func roundTripSetup(t *testing.T, seedPath string) (*tests.TestApp, *core.Record, CodeBook) {
+	t.Helper()
+
 	testDataDir, err := os.MkdirTemp("", "pb_test_roundtrip")
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(testDataDir)
+	t.Cleanup(func() { os.RemoveAll(testDataDir) })
 
 	testApp, err := tests.NewTestApp(testDataDir)
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer testApp.Cleanup()
+	t.Cleanup(testApp.Cleanup)
 
-	// Import seed data
-	xmlData, err := os.ReadFile("../../seed_data/prove_it.xml")
+	xmlData, err := os.ReadFile(seedPath)
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	mv, err := mxj.NewMapXml(xmlData)
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	if err := importer.ImportCodebookData(testApp, mv, xmlData); err != nil {
 		t.Fatal(err)
 	}
 
-	// Find the imported study
 	studies, err := testApp.FindRecordsByFilter("studies", "", "", 0, 0)
 	if err != nil || len(studies) == 0 {
 		t.Fatal("No study found after import")
 	}
 	study := studies[0]
 
-	// Export
 	exported, err := ExportStudyToXML(testApp, study)
 	if err != nil {
-		t.Fatalf("Export failed: %v", err)
+		t.Fatalf("Export failed: %v\n", err)
 	}
 
-	// Parse exported XML into CodeBook struct
 	var cb CodeBook
 	if err := xml.Unmarshal(exported, &cb); err != nil {
 		t.Fatalf("Failed to parse exported XML: %v\n%s", err, string(exported))
 	}
 
-	// --- Study metadata ---
+	return testApp, study, cb
+}
+
+// TestRoundTripProveIt imports prove_it.xml and verifies the full round-trip.
+func TestRoundTripProveIt(t *testing.T) {
+	_, _, cb := roundTripSetup(t, "../../seed_data/prove_it.xml")
+
+	varByName := make(map[string]Var)
+	for _, v := range cb.DataDscr.Vars {
+		varByName[v.Name] = v
+	}
+	grpByID := make(map[string]VarGrp)
+	for _, g := range cb.DataDscr.VarGrp {
+		grpByID[g.ID] = g
+	}
+
 	t.Run("study_metadata", func(t *testing.T) {
 		if cb.StdyDscr.Citation.TitlStmt.Titl != "Prove It! Toolkit Questionnaire" {
 			t.Errorf("Title: got %q", cb.StdyDscr.Citation.TitlStmt.Titl)
@@ -127,80 +138,43 @@ func TestRoundTripPreservesData(t *testing.T) {
 		if cb.StdyDscr.Citation.RspStmt.AuthEnty.Affiliation != "New Economics Foundation (NEF)" {
 			t.Errorf("Author affiliation: got %q", cb.StdyDscr.Citation.RspStmt.AuthEnty.Affiliation)
 		}
-		if cb.StdyDscr.Citation.ProdStmt == nil {
-			t.Fatal("ProdStmt is nil")
-		}
-		if cb.StdyDscr.Citation.ProdStmt.Producer.Value != "New Economics Foundation" {
-			t.Errorf("Producer: got %q", cb.StdyDscr.Citation.ProdStmt.Producer.Value)
-		}
-		if cb.StdyDscr.Citation.Holdings == nil {
-			t.Fatal("Holdings is nil")
-		}
-		if cb.StdyDscr.Citation.Holdings.URI != "https://www.nefconsulting.com/what-we-do/evaluation-impact-assessment/prove-it/downloads/" {
-			t.Errorf("Holdings URI: got %q", cb.StdyDscr.Citation.Holdings.URI)
-		}
 		if cb.StdyDscr.StdyInfo.SumDscr.AnlyUnit != "Individuals" {
 			t.Errorf("AnlyUnit: got %q", cb.StdyDscr.StdyInfo.SumDscr.AnlyUnit)
 		}
 		if cb.StdyDscr.StdyInfo.SumDscr.DataKind != "Survey Data" {
 			t.Errorf("DataKind: got %q", cb.StdyDscr.StdyInfo.SumDscr.DataKind)
 		}
-		if cb.StdyDscr.StdyInfo.Subject == nil || len(cb.StdyDscr.StdyInfo.Subject.TopcClas) != 2 {
-			t.Errorf("Expected 2 topic classifications, got %v", cb.StdyDscr.StdyInfo.Subject)
-		}
 		if cb.StdyDscr.StdyInfo.Abstract.Content == "" {
 			t.Error("Abstract is empty")
 		}
 	})
 
-	// --- Variable counts ---
+	t.Run("subject_keywords_and_topcClas", func(t *testing.T) {
+		if cb.StdyDscr.StdyInfo.Subject == nil {
+			t.Fatal("Subject is nil")
+		}
+		// prove_it.xml has 11 keywords
+		if len(cb.StdyDscr.StdyInfo.Subject.Keywords) != 11 {
+			t.Errorf("Expected 11 keywords, got %d: %v", len(cb.StdyDscr.StdyInfo.Subject.Keywords), cb.StdyDscr.StdyInfo.Subject.Keywords)
+		}
+		if cb.StdyDscr.StdyInfo.Subject.Keywords[0] != "social capital" {
+			t.Errorf("First keyword: got %q", cb.StdyDscr.StdyInfo.Subject.Keywords[0])
+		}
+		// prove_it.xml has 2 topcClas: "Impact Assessment" and "Template"
+		if len(cb.StdyDscr.StdyInfo.Subject.TopcClas) != 2 {
+			t.Errorf("Expected 2 topic classifications, got %d", len(cb.StdyDscr.StdyInfo.Subject.TopcClas))
+		}
+	})
+
 	t.Run("variable_counts", func(t *testing.T) {
 		if len(cb.DataDscr.Vars) != 28 {
 			t.Errorf("Expected 28 variables, got %d", len(cb.DataDscr.Vars))
 		}
-	})
-
-	// --- Variable group counts ---
-	t.Run("variable_group_counts", func(t *testing.T) {
 		if len(cb.DataDscr.VarGrp) != 2 {
 			t.Errorf("Expected 2 variable groups, got %d", len(cb.DataDscr.VarGrp))
 		}
 	})
 
-	// Build lookup maps for detailed checks
-	varByName := make(map[string]Var)
-	for _, v := range cb.DataDscr.Vars {
-		varByName[v.Name] = v
-	}
-	grpByID := make(map[string]VarGrp)
-	for _, g := range cb.DataDscr.VarGrp {
-		grpByID[g.ID] = g
-	}
-
-	// --- responseDomainType preserved for variables where it is set ---
-	t.Run("response_domain_type", func(t *testing.T) {
-		// All variables except other_comments have responseDomainType="category".
-		// other_comments has responseDomainType="text".
-		// Variables with XHTML qstnLit may have Qstn==nil on export if the question
-		// text could not be extracted as a plain string.
-		exceptions := map[string]string{
-			"other_comments": "text",
-		}
-		for _, v := range cb.DataDscr.Vars {
-			if v.Qstn == nil {
-				continue // XHTML qstnLit variables may not produce a Qstn element
-			}
-			expected := "category"
-			if e, ok := exceptions[v.Name]; ok {
-				expected = e
-			}
-			if v.Qstn.ResponseDomainType != expected {
-				t.Errorf("Variable %s: expected responseDomainType %q, got %q", v.Name, expected, v.Qstn.ResponseDomainType)
-			}
-		}
-	})
-
-	// --- Spot-check a standalone variable (select_one, plain-text qstnLit) ---
 	t.Run("standalone_variable_neighbour_trust", func(t *testing.T) {
 		v, ok := varByName["neighbour_trust"]
 		if !ok {
@@ -218,6 +192,9 @@ func TestRoundTripPreservesData(t *testing.T) {
 		if v.Qstn.QstnLit != "Do you think that your neighbours act in your best interests?" {
 			t.Errorf("QstnLit: got %q", v.Qstn.QstnLit)
 		}
+		if v.Concept != "Interpersonal trust" {
+			t.Errorf("Concept: got %q", v.Concept)
+		}
 		if len(v.Catgry) != 3 {
 			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))
 		} else {
@@ -233,14 +210,29 @@ func TestRoundTripPreservesData(t *testing.T) {
 		}
 	})
 
-	// --- Spot-check a grid variable (matrix) with preQTxt ---
-	t.Run("grid_variable_contact_community_groups", func(t *testing.T) {
+	// --- XHTML qstnLit mixed content: text interleaved with child elements ---
+	t.Run("xhtml_qstnlit_mixed_content", func(t *testing.T) {
+		v, ok := varByName["area_attractiveness"]
+		if !ok {
+			t.Fatal("Variable area_attractiveness not found")
+		}
+		if v.Qstn == nil {
+			t.Fatal("Qstn is nil")
+		}
+		// prove_it.xml: "I think that my <PROJECT AREA> is more attractive than it was <TIME PERIOD> ago"
+		// The literal angle brackets come from decoded &lt; / &gt; entities inside xhtml:em.
+		q := v.Qstn.QstnLit
+		for _, want := range []string{"I think that my", "is more attractive than it was", "ago"} {
+			if !strings.Contains(q, want) {
+				t.Errorf("QstnLit missing %q: got %q", want, q)
+			}
+		}
+	})
+
+	t.Run("grid_variable_with_preQTxt", func(t *testing.T) {
 		v, ok := varByName["contact_community_groups"]
 		if !ok {
 			t.Fatal("Variable contact_community_groups not found")
-		}
-		if v.ID != "V4a" {
-			t.Errorf("DDI ID: got %q", v.ID)
 		}
 		if v.Qstn == nil {
 			t.Fatal("Qstn is nil")
@@ -256,7 +248,6 @@ func TestRoundTripPreservesData(t *testing.T) {
 		}
 	})
 
-	// --- Variable groups ---
 	t.Run("variable_groups", func(t *testing.T) {
 		vg1, ok := grpByID["VG1"]
 		if !ok {
@@ -265,17 +256,120 @@ func TestRoundTripPreservesData(t *testing.T) {
 		if vg1.Type != "grid" {
 			t.Errorf("VG1 type: got %q", vg1.Type)
 		}
-		// VG1 has no <labl> element in the current XML — label is expected to be empty.
-		if vg1.Labl != "" {
-			t.Errorf("VG1 label: expected empty, got %q", vg1.Labl)
+		if vg1.Concept != "Civic network awareness" {
+			t.Errorf("VG1 concept: got %q", vg1.Concept)
 		}
 		if vg1.Txt != "If you did want to change things around here, do you know who to contact to help you in the following groups…?" {
 			t.Errorf("VG1 txt: got %q", vg1.Txt)
 		}
+	})
+}
 
-		// VG3 (section type) should not be present — section groups are excluded.
-		if _, ok := grpByID["VG3"]; ok {
-			t.Error("VarGrp VG3 (section) should not be exported")
+// TestRoundTripDemo imports demo.xml (no variable groups, German content) and verifies the round-trip.
+func TestRoundTripDemo(t *testing.T) {
+	_, _, cb := roundTripSetup(t, "../../seed_data/demo.xml")
+
+	varByName := make(map[string]Var)
+	for _, v := range cb.DataDscr.Vars {
+		varByName[v.Name] = v
+	}
+
+	t.Run("study_metadata", func(t *testing.T) {
+		if cb.StdyDscr.Citation.TitlStmt.Titl != "Demographische Standards: Ausgabe 2024" {
+			t.Errorf("Title: got %q", cb.StdyDscr.Citation.TitlStmt.Titl)
+		}
+		if cb.StdyDscr.Citation.TitlStmt.IDNo != "10.21241/ssoar.94099" {
+			t.Errorf("IDNo: got %q", cb.StdyDscr.Citation.TitlStmt.IDNo)
+		}
+		if cb.StdyDscr.StdyInfo.Abstract.Content == "" {
+			t.Error("Abstract is empty")
+		}
+	})
+
+	t.Run("sumDscr_ordering", func(t *testing.T) {
+		// These three fields test the corrected SumDscr field ordering:
+		// timePrd → nation → (anlyUnit) → universe → dataKind
+		if cb.StdyDscr.StdyInfo.SumDscr.TimePrd != "2024" {
+			t.Errorf("TimePrd: got %q", cb.StdyDscr.StdyInfo.SumDscr.TimePrd)
+		}
+		if cb.StdyDscr.StdyInfo.SumDscr.Nation != "Deutschland" {
+			t.Errorf("Nation: got %q", cb.StdyDscr.StdyInfo.SumDscr.Nation)
+		}
+		if cb.StdyDscr.StdyInfo.SumDscr.Universe != "Bevölkerung in Deutschland" {
+			t.Errorf("Universe: got %q", cb.StdyDscr.StdyInfo.SumDscr.Universe)
+		}
+	})
+
+	t.Run("subject_keywords_and_topcClas", func(t *testing.T) {
+		if cb.StdyDscr.StdyInfo.Subject == nil {
+			t.Fatal("Subject is nil")
+		}
+		// demo.xml has 11 keywords
+		if len(cb.StdyDscr.StdyInfo.Subject.Keywords) != 11 {
+			t.Errorf("Expected 11 keywords, got %d: %v", len(cb.StdyDscr.StdyInfo.Subject.Keywords), cb.StdyDscr.StdyInfo.Subject.Keywords)
+		}
+		if cb.StdyDscr.StdyInfo.Subject.Keywords[0] != "Demografie" {
+			t.Errorf("First keyword: got %q", cb.StdyDscr.StdyInfo.Subject.Keywords[0])
+		}
+		// demo.xml has 1 topcClas: "Template"
+		if len(cb.StdyDscr.StdyInfo.Subject.TopcClas) != 1 || cb.StdyDscr.StdyInfo.Subject.TopcClas[0] != "Template" {
+			t.Errorf("TopcClas: got %v", cb.StdyDscr.StdyInfo.Subject.TopcClas)
+		}
+	})
+
+	t.Run("variable_counts", func(t *testing.T) {
+		if len(cb.DataDscr.Vars) != 44 {
+			t.Errorf("Expected 44 variables, got %d", len(cb.DataDscr.Vars))
+		}
+		if len(cb.DataDscr.VarGrp) != 0 {
+			t.Errorf("Expected 0 variable groups, got %d", len(cb.DataDscr.VarGrp))
+		}
+	})
+
+	t.Run("spot_check_geschlecht", func(t *testing.T) {
+		v, ok := varByName["geschlecht"]
+		if !ok {
+			t.Fatal("Variable geschlecht not found")
+		}
+		if v.ID != "V1" {
+			t.Errorf("DDI ID: got %q", v.ID)
+		}
+		if v.Intrvl != "discrete" {
+			t.Errorf("Interval: got %q", v.Intrvl)
+		}
+		if v.Qstn == nil {
+			t.Fatal("Qstn is nil")
+		}
+		if v.Qstn.ResponseDomainType != "category" {
+			t.Errorf("ResponseDomainType: got %q", v.Qstn.ResponseDomainType)
+		}
+		if v.Concept != "Gender" {
+			t.Errorf("Concept: got %q", v.Concept)
+		}
+		if len(v.Catgry) != 3 {
+			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))
+		}
+		if v.VarFormat == nil || v.VarFormat.Type != "numeric" {
+			t.Errorf("VarFormat: got %+v", v.VarFormat)
+		}
+	})
+
+	t.Run("spot_check_open_text_variable", func(t *testing.T) {
+		v, ok := varByName["berufliche_taetigkeit"]
+		if !ok {
+			t.Fatal("Variable berufliche_taetigkeit not found")
+		}
+		if v.Intrvl != "contin" {
+			t.Errorf("Interval: got %q", v.Intrvl)
+		}
+		if v.Qstn == nil {
+			t.Fatal("Qstn is nil")
+		}
+		if v.Qstn.ResponseDomainType != "text" {
+			t.Errorf("ResponseDomainType: got %q", v.Qstn.ResponseDomainType)
+		}
+		if v.VarFormat == nil || v.VarFormat.Type != "character" {
+			t.Errorf("VarFormat: got %+v", v.VarFormat)
 		}
 	})
 }

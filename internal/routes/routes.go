@@ -149,6 +149,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			if err != nil {
 				log.Printf("WARNING: XML validation unavailable on export: %v", err)
 			} else if !resp.Valid {
+				log.Printf("ERROR: exported XML failed validation for study %s: %v", studyId, resp.Errors)
 				return apis.NewInternalServerError("Generated XML failed validation", nil)
 			}
 		}

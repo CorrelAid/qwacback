@@ -25,6 +25,7 @@ func init() {
 			&core.TextField{Name: "analysis_unit"},
 			&core.TextField{Name: "data_kind"},
 			&core.JSONField{Name: "topic_classifications", MaxSize: 65536}, // 64 KB
+			&core.JSONField{Name: "keywords", MaxSize: 65536},              // 64 KB
 		)
 		if err := app.Save(studies); err != nil {
 			return err
@@ -41,7 +42,8 @@ func init() {
 				CascadeDelete: true,
 			},
 			&core.TextField{Name: "ddi_id"},
-			&core.TextField{Name: "label"},
+			&core.TextField{Name: "name"},
+			&core.TextField{Name: "concept", Required: true},
 			&core.TextField{Name: "description"},
 			&core.TextField{Name: "type"},
 			&core.NumberField{Name: "order"},
@@ -67,7 +69,7 @@ func init() {
 			},
 			&core.TextField{Name: "ddi_id"},
 			&core.TextField{Name: "name"},
-			&core.TextField{Name: "label"},
+			&core.TextField{Name: "concept", Required: true},
 			&core.TextField{Name: "question"},
 			&core.TextField{Name: "prequestion_text"},
 			&core.TextField{Name: "ivu_instructions"},
