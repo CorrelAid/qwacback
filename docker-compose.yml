@@ -41,4 +41,4 @@ services:
           cpus: '1.0'
 
 volumes:
-  pb_dataz:
+  pb_dat:
