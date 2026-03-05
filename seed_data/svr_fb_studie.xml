@@ -69,6 +69,90 @@
       <txt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</txt>
       <concept>Förderquellen 2019</concept>
     </varGrp>
+    <var ID="V205" name="eingetragener_verein" intrvl="discrete">
+      <qstn ID="Q205" responseDomainType="category">
+        <qstnLit>Ist Ihre Organisation ein eingetragener Verein (e. V.)?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>ja</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>nein</labl>
+      </catgry>
+      <concept>Rechtsform als eingetragener Verein</concept>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V206" name="organisationsform" intrvl="discrete">
+      <qstn ID="Q206" responseDomainType="category">
+        <qstnLit>Was sind Sie für eine Organisation?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Unternehmen</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Stiftung</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Körperschaft des öffentlichen Rechts (KdöR)</labl>
+      </catgry>
+      <concept>Organisationsform (Nicht-Vereine)</concept>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V207" name="stiftungsform" intrvl="discrete">
+      <qstn ID="Q207" responseDomainType="category">
+        <qstnLit>Was sind Sie für eine Stiftung?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>rechtsfähige Stiftung bürgerlichen Rechts</labl>
+      </catgry>
+      <concept>Stiftungsform</concept>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V208" name="mitglieder_ende_2019" intrvl="discrete">
+      <qstn ID="Q208" responseDomainType="category">
+        <qstnLit>Bitte schätzen Sie: Wie viele Mitglieder hatte Ihre Organisation Ende 2019?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>bis 20</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>21 bis 50</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>51 bis 100</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>101 bis 200</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>201 bis 500</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>mehr als 500</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>weiß nicht</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>keine Angabe</labl>
+      </catgry>
+      <concept>Mitgliederanzahl Ende 2019</concept>
+      <varFormat type="numeric" schema="other"/>
+    </var>
     <var ID="V1" name="mitgliedsorganisationen_anzahl" intrvl="discrete">
       <qstn ID="Q1" responseDomainType="category">
         <qstnLit>Anzahl der Mitgliedsorganisationen (kategorisiert)</qstnLit>
