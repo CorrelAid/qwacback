@@ -101,4 +101,54 @@
             </assert>
         </rule>
     </pattern>
+
+    <pattern id="other_variables">
+        <!--
+            Rules for "_other" (semi-open / halb-offen) variables.
+            Convention: a var whose @name ends in "_other" is a free-text
+            specification field linked to a base variable or group by naming
+            convention (e.g. geschlecht_other → geschlecht).
+        -->
+
+        <!-- Namespaced variant -->
+        <rule context="ddi:var[ends-with(@name, '_other')]">
+            <!-- _other vars must be text variables -->
+            <assert test="ddi:qstn/@responseDomainType = 'text'">
+                Variable <value-of select="@name"/> ends in "_other" but has responseDomainType="<value-of select="ddi:qstn/@responseDomainType"/>". Expected "text".
+            </assert>
+            <assert test="@intrvl = 'contin'">
+                Variable <value-of select="@name"/> ends in "_other" but has intrvl="<value-of select="@intrvl"/>". Expected "contin".
+            </assert>
+            <assert test="ddi:varFormat/@type = 'character'">
+                Variable <value-of select="@name"/> ends in "_other" but has varFormat type="<value-of select="ddi:varFormat/@type"/>". Expected "character".
+            </assert>
+            <!-- A matching base var or varGrp must exist -->
+            <assert test="//ddi:var[@name = substring-before(current()/@name, '_other')] or //ddi:varGrp[@name = substring-before(current()/@name, '_other')]">
+                Variable <value-of select="@name"/> ends in "_other" but no matching base variable or group named "<value-of select="substring-before(@name, '_other')"/>" was found.
+            </assert>
+            <!-- _other var must NOT be listed in a multipleResp group's var attribute -->
+            <assert test="not(//ddi:varGrp[@type='multipleResp' and contains(concat(' ', @var, ' '), concat(' ', current()/@ID, ' '))])">
+                Variable <value-of select="@name"/> (text _other) must not be a member of a multipleResp group. It should be a standalone variable outside the group.
+            </assert>
+        </rule>
+
+        <!-- Non-namespaced variant -->
+        <rule context="var[ends-with(@name, '_other')]">
+            <assert test="qstn/@responseDomainType = 'text'">
+                Variable <value-of select="@name"/> ends in "_other" but has responseDomainType="<value-of select="qstn/@responseDomainType"/>". Expected "text".
+            </assert>
+            <assert test="@intrvl = 'contin'">
+                Variable <value-of select="@name"/> ends in "_other" but has intrvl="<value-of select="@intrvl"/>". Expected "contin".
+            </assert>
+            <assert test="varFormat/@type = 'character'">
+                Variable <value-of select="@name"/> ends in "_other" but has varFormat type="<value-of select="varFormat/@type"/>". Expected "character".
+            </assert>
+            <assert test="//var[@name = substring-before(current()/@name, '_other')] or //varGrp[@name = substring-before(current()/@name, '_other')]">
+                Variable <value-of select="@name"/> ends in "_other" but no matching base variable or group named "<value-of select="substring-before(@name, '_other')"/>" was found.
+            </assert>
+            <assert test="not(//varGrp[@type='multipleResp' and contains(concat(' ', @var, ' '), concat(' ', current()/@ID, ' '))])">
+                Variable <value-of select="@name"/> (text _other) must not be a member of a multipleResp group. It should be a standalone variable outside the group.
+            </assert>
+        </rule>
+    </pattern>
 </schema>

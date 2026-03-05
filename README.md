@@ -37,9 +37,11 @@ If `NATS_PORT` is not set, qwacback degrades gracefully (no validation, import o
 
 ```
 internal/
-  importer/     XML parsing → PocketBase records
+  converter/    Bidirectional DDI ↔ XLSForm conversion
+  examples/     Static answer type examples (XLSForm + DDI)
   exporter/     PocketBase records → DDI-XML
-  routes/       Custom API routes (validate, export)
+  importer/     XML parsing → PocketBase records
+  routes/       Custom API routes (validate, export, convert, examples)
   schematron/   Go NATS client (interface, mock, types)
 migrations/     Schema setup, settings, user init, seed data
 xml/            DDI-Codebook 2.5 XSD schemas
@@ -52,14 +54,16 @@ schematron-worker/  Java validation microservice (see its own README)
 
 Studies are described in [DDI Codebook 2.5](https://ddialliance.org/Specification/DDI-Codebook/2.5/) XML. The application enforces a strict subset of that standard — see [DDI_MARKUP_GUIDE.md](DDI_MARKUP_GUIDE.md) for the full conventions. The key rules:
 
-**Question types → DDI encoding**
+**Answer types → DDI encoding**
 
 | Format | `intrvl` | `responseDomainType` | Container |
 |--------|----------|----------------------|-----------|
 | `open_number` | `discrete` | `numeric` | `<var>` |
 | `open_text` | `contin` | `text` | `<var>` |
 | `single_choice` | `discrete` | `category` | `<var>` + `<catgry>` per option |
+| `single_choice_other` | `discrete` / `contin` | `category` + `text` | `<var>` with "Sonstiges" + text `<var>` |
 | `checkboxes` | `discrete` | `multiple` | `<varGrp type="multipleResp">` + binary `<var>` per option |
+| `checkboxes_other` | `discrete` / `contin` | `multiple` + `text` | `<varGrp>` + binary `<var>`s + text `<var>` |
 | `grid` | `discrete` | `category` | `<varGrp type="grid">` + `<var>` per item |
 
 **Mandatory fields** on every `<var>` and `<varGrp>`:
@@ -136,14 +140,36 @@ The worker connects to the embedded NATS server in qwacback and handles all XSD 
 
 ### API Endpoints
 
-All custom endpoints require an **Authenticated** session (Bearer token).
+#### Validation & Import
 
 - **POST `/api/validate`**: Validates a DDI XML file (XSD + Schematron) and imports it.
   - **Body**: `multipart/form-data` with a `file` field.
+
+#### XML Export
+
 - **GET `/api/studies/{id}/export`**: Exports a study and its variables as a validated DDI-XML file download.
-- **GET `/api/studies/{id}/xml`**: Returns the `<stdyDscr>` XML fragment for a study.
 - **GET `/api/variables/{id}/xml`**: Returns the `<var>` XML fragment for a single variable.
 - **GET `/api/variable-groups/{id}/xml`**: Returns the `<varGrp>` XML fragment for a variable group.
+
+#### Format Conversion
+
+- **POST `/api/convert/ddi-to-xlsform`**: Converts a DDI XML fragment (`<var>` or `<varGrp>`) to XLSForm JSON format.
+  - **Body**: DDI XML fragment
+  - **Content-Type**: `application/xml` or `text/xml`
+  - **Response**: XLSForm JSON
+- **POST `/api/convert/xlsform-to-ddi`**: Converts an XLSForm JSON question or group to DDI XML format.
+  - **Body**: XLSForm JSON
+  - **Content-Type**: `application/json`
+  - **Response**: DDI XML fragment
+
+For detailed documentation on the conversion endpoints, see [CONVERSION_API.md](CONVERSION_API.md).
+
+#### Examples
+
+- **GET `/api/examples`**: Returns answer type examples as a JSON array. Each example includes XLSForm and DDI Codebook representations.
+- **GET `/api/examples/{type}`**: Returns a single example by type identifier.
+
+Available types: `single_choice`, `multiple_choice`, `single_choice_other`, `multiple_choice_other`, `grid`, `open_number`, `open_text`, `single_choice_no_opinion`
 
 ## Development & Testing
 
@@ -190,52 +216,30 @@ curl -X POST http://localhost:8090/api/validate \
 
 ## Database & Migrations
 
-### Schema changes
+PocketBase runs all migrations in `migrations/` in lexicographic order on startup.
 
-PocketBase runs all migrations in `migrations/` in lexicographic order on startup. The rules:
+- **Before first production deploy:** edit the initial migration files directly.
+- **After first production deploy:** add a new file per change (e.g. `migrations/20260301000000_add_foo_field.go`) — never edit existing ones.
 
-| Phase | What to do |
-|---|---|
-| Before first production deploy | Edit the initial migration files directly |
-| After first production deploy | Add a **new** migration file per change — never edit existing ones |
+The Go test suite validates migrations on every run via `tests.NewTestApp`.
 
-New migration files get a timestamp prefix so they sort after existing ones:
+### Testing against production data
 
-```bash
-# example: migrations/20260301000000_add_foo_field.go
-func init() {
-    m.Register(func(app core.App) error {
-        col, err := app.FindCollectionByNameOrId("studies")
-        if err != nil { return err }
-        col.Fields.Add(&core.TextField{Name: "foo"})
-        return app.Save(col)
-    }, nil) // second arg is optional down-migration
-}
-```
-
-### Testing migrations
-
-The Go test suite already validates migrations on every run — `tests.NewTestApp` applies all migrations against a fresh SQLite DB. The round-trip tests in `internal/exporter/exporter_test.go` also exercise the full import pipeline against that migrated schema.
-
-To test a migration against a **copy of production data**:
+To test a migration against real data before deploying:
 
 ```bash
-# 1. Copy the production DB out of the Docker volume
+# Export the production DB from the Docker volume
 docker run --rm \
   -v qwacback_pb_dataz:/data \
   -v $(pwd):/backup \
   alpine cp /data/data.db /backup/prod_backup.db
 
-# 2. Run qwacback against the copy in a temp directory
-mkdir -p /tmp/test_pb_data
-cp prod_backup.db /tmp/test_pb_data/data.db
+# Run migrations against the copy (errors appear in startup logs)
+mkdir -p /tmp/test_pb_data && cp prod_backup.db /tmp/test_pb_data/data.db
 go run main.go serve --dir=/tmp/test_pb_data
-# → migrations run on startup; check logs for errors
 ```
 
-### Backups before breaking changes
-
-Always back up before deploying a migration that drops or renames columns:
+Before deploying a migration that drops or renames columns, back up first:
 
 ```bash
 docker run --rm \

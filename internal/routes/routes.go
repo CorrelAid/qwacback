@@ -5,9 +5,14 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
+	"qwacback/internal/converter"
+	"qwacback/internal/examples"
 	"qwacback/internal/exporter"
 	"qwacback/internal/importer"
 	"qwacback/internal/schematron"
+	"regexp"
 	"strings"
 	"time"
 
@@ -19,6 +24,10 @@ import (
 const xmlCachePrefix = "xmlc:"
 const xmlCacheTTL = 5 * time.Minute
 const maxUploadSize = 50 * 1024 * 1024 // 50 MB
+const maxConvertSize = 1 * 1024 * 1024  // 1 MB — conversion endpoints handle small fragments
+
+// pocketbaseIDRegex matches PocketBase's 15-character alphanumeric record IDs.
+var pocketbaseIDRegex = regexp.MustCompile(`^[a-z0-9]{15}$`)
 
 type cachedResponse struct {
 	Data    []byte
@@ -54,7 +63,12 @@ func clearXMLCache(app core.App) {
 }
 
 // RegisterRoutes sets up the PocketBase API routes.
-func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Client) error {
+// rootDir is the project root directory (used to locate schema files).
+func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Client, rootDir ...string) error {
+	root := "."
+	if len(rootDir) > 0 && rootDir[0] != "" {
+		root = rootDir[0]
+	}
 	// Validation API - Protected by Auth
 	se.Router.POST("/api/validate", func(e *core.RequestEvent) error {
 		// Enforce upload size limit before reading into memory
@@ -62,13 +76,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		src, _, err := e.Request.FormFile("file")
 		if err != nil {
-			return apis.NewBadRequestError("Missing or oversized file", err)
+			return apis.NewBadRequestError("Missing or oversized file", nil)
 		}
 		defer src.Close()
 
 		xmlBytes, err := io.ReadAll(io.LimitReader(src, maxUploadSize))
 		if err != nil {
-			return apis.NewInternalServerError("Failed to read file", err)
+			return apis.NewInternalServerError("Failed to read file", nil)
 		}
 
 		// Validation service is required — reject if unavailable
@@ -79,7 +93,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		// XML validation via NATS worker (XSD + Schematron)
 		resp, err := schClient.Validate(xmlBytes)
 		if err != nil {
-			log.Printf("ERROR: XML validation request failed: %v", err)
+			log.Printf("ERROR: XML validation request failed")
 			return apis.NewInternalServerError("Validation service error", nil)
 		}
 		if !resp.Valid {
@@ -92,7 +106,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		// Use mxj to parse the XML
 		mv, err := mxj.NewMapXml(xmlBytes)
 		if err != nil {
-			log.Printf("ERROR: mxj failed to parse validated XML: %v", err)
+			log.Printf("ERROR: mxj failed to parse validated XML")
 			return e.JSON(200, map[string]interface{}{
 				"valid":   true,
 				"message": "XML is valid against schema, but could not be parsed for import",
@@ -101,7 +115,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		// Insert data into collections
 		if err := importer.ImportCodebookData(app, mv, xmlBytes); err != nil {
-			log.Printf("ERROR: failed to import XML data: %v", err)
+			log.Printf("ERROR: failed to import XML data")
 			return e.JSON(200, map[string]interface{}{
 				"valid":   true,
 				"message": "XML is valid, but failed to import into the database",
@@ -115,11 +129,14 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			"valid":   true,
 			"message": "XML is valid and imported successfully",
 		})
-	}).Bind(apis.RequireAuth())
+	})
 
 	// Export Study - Public (cached)
 	se.Router.GET("/api/studies/{id}/export", func(e *core.RequestEvent) error {
 		studyId := e.Request.PathValue("id")
+		if !pocketbaseIDRegex.MatchString(studyId) {
+			return apis.NewBadRequestError("Invalid ID format", nil)
+		}
 
 		setSecureXMLHeaders(e, fmt.Sprintf("attachment; filename=\"study-%s.xml\"", studyId))
 
@@ -131,13 +148,14 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		study, err := app.FindRecordById("studies", studyId)
 		if err != nil {
-			return apis.NewNotFoundError("Study not found", err)
+			return apis.NewNotFoundError("Study not found", nil)
 		}
 
 		// Generate XML
 		xmlBytes, err := exporter.ExportStudyToXML(app, study)
 		if err != nil {
-			return apis.NewInternalServerError("Failed to generate XML", err)
+			log.Printf("ERROR: failed to export study %s", studyId)
+			return apis.NewInternalServerError("Failed to generate XML", nil)
 		}
 
 		// Add XML declaration manually as mxj doesn't add it by default
@@ -147,9 +165,9 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		if schClient != nil {
 			resp, err := schClient.Validate(xmlBytes)
 			if err != nil {
-				log.Printf("WARNING: XML validation unavailable on export: %v", err)
+				log.Printf("WARNING: XML validation unavailable on export for study %s", studyId)
 			} else if !resp.Valid {
-				log.Printf("ERROR: exported XML failed validation for study %s: %v", studyId, resp.Errors)
+				log.Printf("ERROR: exported XML failed validation for study %s", studyId)
 				return apis.NewInternalServerError("Generated XML failed validation", nil)
 			}
 		}
@@ -163,6 +181,9 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	// Variable XML fragment - Public (cached)
 	se.Router.GET("/api/variables/{id}/xml", func(e *core.RequestEvent) error {
 		varId := e.Request.PathValue("id")
+		if !pocketbaseIDRegex.MatchString(varId) {
+			return apis.NewBadRequestError("Invalid ID format", nil)
+		}
 
 		setSecureXMLHeaders(e, "")
 
@@ -174,12 +195,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		record, err := app.FindRecordById("variables", varId)
 		if err != nil {
-			return apis.NewNotFoundError("Variable not found", err)
+			return apis.NewNotFoundError("Variable not found", nil)
 		}
 
 		xmlBytes, err := exporter.ExportVariableToXML(record)
 		if err != nil {
-			return apis.NewInternalServerError("Failed to generate XML", err)
+			log.Printf("ERROR: failed to export variable %s", varId)
+			return apis.NewInternalServerError("Failed to generate XML", nil)
 		}
 
 		setXMLCache(app, "var:"+varId, xmlBytes)
@@ -191,6 +213,9 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	// Variable group XML fragment - Public (cached)
 	se.Router.GET("/api/variable-groups/{id}/xml", func(e *core.RequestEvent) error {
 		grpId := e.Request.PathValue("id")
+		if !pocketbaseIDRegex.MatchString(grpId) {
+			return apis.NewBadRequestError("Invalid ID format", nil)
+		}
 
 		setSecureXMLHeaders(e, "")
 
@@ -202,12 +227,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		record, err := app.FindRecordById("variable_groups", grpId)
 		if err != nil {
-			return apis.NewNotFoundError("Variable group not found", err)
+			return apis.NewNotFoundError("Variable group not found", nil)
 		}
 
 		xmlBytes, err := exporter.ExportVarGrpToXML(app, record)
 		if err != nil {
-			return apis.NewInternalServerError("Failed to generate XML", err)
+			log.Printf("ERROR: failed to export variable group %s", grpId)
+			return apis.NewInternalServerError("Failed to generate XML", nil)
 		}
 
 		setXMLCache(app, "grp:"+grpId, xmlBytes)
@@ -216,31 +242,128 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		return err
 	})
 
-	// Study XML fragment - Public (cached)
-	se.Router.GET("/api/studies/{id}/xml", func(e *core.RequestEvent) error {
-		studyId := e.Request.PathValue("id")
+	// Examples - Public
+	se.Router.GET("/api/examples", func(e *core.RequestEvent) error {
+		return e.JSON(200, examples.GetAll())
+	})
 
+	se.Router.GET("/api/examples/{answer_type}", func(e *core.RequestEvent) error {
+		answerType := e.Request.PathValue("answer_type")
+		ex := examples.GetByType(answerType)
+		if ex == nil {
+			return apis.NewNotFoundError("Answer type not found", nil)
+		}
+		return e.JSON(200, ex)
+	})
+
+	// Documentation - Public
+	se.Router.GET("/api/docs/markup-guide", func(e *core.RequestEvent) error {
+		data, err := os.ReadFile(filepath.Join(root, "DDI_MARKUP_GUIDE.md"))
+		if err != nil {
+			return apis.NewInternalServerError("Failed to read markup guide", nil)
+		}
+		e.Response.Header().Set("Content-Type", "text/markdown; charset=utf-8")
+		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
+		_, err = e.Response.Write(data)
+		return err
+	})
+
+	// Schema files - Public
+	se.Router.GET("/api/schemas/schematron", func(e *core.RequestEvent) error {
+		data, err := os.ReadFile(filepath.Join(root, "schematron", "ddi_custom_rules.sch"))
+		if err != nil {
+			return apis.NewInternalServerError("Failed to read schematron file", nil)
+		}
+		e.Response.Header().Set("Content-Type", "application/xml; charset=utf-8")
+		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
+		_, err = e.Response.Write(data)
+		return err
+	})
+
+	xsdDir := filepath.Join(root, "xml")
+	se.Router.GET("/api/schemas/xsd", func(e *core.RequestEvent) error {
+		var files []string
+		err := filepath.Walk(xsdDir, func(p string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			if !info.IsDir() && strings.HasSuffix(p, ".xsd") {
+				rel, _ := filepath.Rel(xsdDir, p)
+				files = append(files, rel)
+			}
+			return nil
+		})
+		if err != nil {
+			return apis.NewInternalServerError("Failed to list XSD files", nil)
+		}
+		return e.JSON(200, files)
+	})
+
+	se.Router.GET("/api/schemas/xsd/{path...}", func(e *core.RequestEvent) error {
+		reqPath := e.Request.PathValue("path")
+		// Prevent directory traversal
+		cleaned := filepath.Clean(reqPath)
+		if strings.Contains(cleaned, "..") {
+			return apis.NewBadRequestError("Invalid path", nil)
+		}
+		if !strings.HasSuffix(cleaned, ".xsd") {
+			return apis.NewBadRequestError("Only .xsd files are served", nil)
+		}
+
+		fullPath := filepath.Join(xsdDir, cleaned)
+		// Belt-and-suspenders: verify resolved path is still under xsdDir
+		rel, err := filepath.Rel(xsdDir, fullPath)
+		if err != nil || strings.HasPrefix(rel, "..") {
+			return apis.NewBadRequestError("Invalid path", nil)
+		}
+		data, err := os.ReadFile(fullPath)
+		if err != nil {
+			return apis.NewNotFoundError("XSD file not found", nil)
+		}
+		e.Response.Header().Set("Content-Type", "application/xml; charset=utf-8")
+		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
+		_, err = e.Response.Write(data)
+		return err
+	})
+
+	// Convert DDI to XLSForm - Public
+	se.Router.POST("/api/convert/ddi-to-xlsform", func(e *core.RequestEvent) error {
+		// Read the DDI XML from request body (1 MB limit for conversion fragments)
+		ddiXML, err := io.ReadAll(io.LimitReader(e.Request.Body, maxConvertSize))
+		if err != nil {
+			return apis.NewBadRequestError("Failed to read request body", nil)
+		}
+
+		// Convert DDI to XLSForm
+		xlsformJSON, err := converter.DDIToXLSForm(ddiXML)
+		if err != nil {
+			return apis.NewBadRequestError("Failed to convert DDI to XLSForm", nil)
+		}
+
+		// Set JSON response headers
+		e.Response.Header().Set("Content-Type", "application/json; charset=utf-8")
+		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
+		_, err = e.Response.Write(xlsformJSON)
+		return err
+	})
+
+	// Convert XLSForm to DDI - Public
+	se.Router.POST("/api/convert/xlsform-to-ddi", func(e *core.RequestEvent) error {
+		// Read the XLSForm JSON from request body (1 MB limit for conversion fragments)
+		xlsformJSON, err := io.ReadAll(io.LimitReader(e.Request.Body, maxConvertSize))
+		if err != nil {
+			return apis.NewBadRequestError("Failed to read request body", nil)
+		}
+
+		// Convert XLSForm to DDI
+		ddiXML, err := converter.XLSFormToDDI(xlsformJSON)
+		if err != nil {
+			return apis.NewBadRequestError("Failed to convert XLSForm to DDI", nil)
+		}
+
+		// Set XML response headers
 		setSecureXMLHeaders(e, "")
-
-		if cached, ok := getXMLCache(app, "study:"+studyId); ok {
-			e.Response.Header().Set("X-Cache", "HIT")
-			_, err := e.Response.Write(cached)
-			return err
-		}
-
-		study, err := app.FindRecordById("studies", studyId)
-		if err != nil {
-			return apis.NewNotFoundError("Study not found", err)
-		}
-
-		xmlBytes, err := exporter.ExportStdyDscrToXML(study)
-		if err != nil {
-			return apis.NewInternalServerError("Failed to generate XML", err)
-		}
-
-		setXMLCache(app, "study:"+studyId, xmlBytes)
-		e.Response.Header().Set("X-Cache", "MISS")
-		_, err = e.Response.Write(xmlBytes)
+		_, err = e.Response.Write(ddiXML)
 		return err
 	})
 

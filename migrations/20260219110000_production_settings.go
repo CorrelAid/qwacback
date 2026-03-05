@@ -36,8 +36,12 @@ func init() {
 			{Label: "/api/", MaxRequests: 300, Duration: 10, Audience: core.RateLimitRuleAudienceAuth},
 			// Auth endpoints (prevent brute force)
 			{Label: "*:auth", MaxRequests: 5, Duration: 10},
-			// Import (expensive, auth-only)
-			{Label: "POST /api/validate", MaxRequests: 5, Duration: 60},
+			// Validate endpoint – stricter for guests, relaxed for authenticated
+			{Label: "POST /api/validate", MaxRequests: 5, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},
+			{Label: "POST /api/validate", MaxRequests: 20, Duration: 60, Audience: core.RateLimitRuleAudienceAuth},
+			// Conversion endpoints – CPU-intensive, stricter limits
+			{Label: "POST /api/convert/ddi-to-xlsform", MaxRequests: 10, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},
+			{Label: "POST /api/convert/xlsform-to-ddi", MaxRequests: 10, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},
 		}
 
 		if err := app.Save(settings); err != nil {

@@ -136,8 +136,8 @@ func textAt(mv mxj.Map, path string) string {
 	return strings.TrimSpace(extractText(vals[0]))
 }
 
-// inferQuestionType maps DDI responseDomainType + group type to an XLSForm question type.
-func inferQuestionType(responseDomainType, groupType string) string {
+// inferAnswerType maps DDI responseDomainType + group type to an XLSForm answer type.
+func inferAnswerType(responseDomainType, groupType string) string {
 	switch responseDomainType {
 	case "numeric":
 		return "integer"
@@ -308,7 +308,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			varRecord.Set("ivu_instructions", vIvInstr)
 			varRecord.Set("interval", vIntrvl)
 			varRecord.Set("var_format_type", vFmtType)
-			varRecord.Set("question_type", inferQuestionType(vQstnType, varGroupTypeMap[ddiId]))
+			varRecord.Set("answer_type", inferAnswerType(vQstnType, varGroupTypeMap[ddiId]))
 			varRecord.Set("categories", categories)
 			varRecord.Set("order", i)
 

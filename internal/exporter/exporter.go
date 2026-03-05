@@ -123,9 +123,9 @@ type Category struct {
 	Labl    string `xml:"labl,omitempty"`
 }
 
-// questionTypeToResponseDomain maps an XLSForm question type back to DDI responseDomainType.
-func questionTypeToResponseDomain(questionType string) string {
-	switch questionType {
+// answerTypeToResponseDomain maps an XLSForm answer type back to DDI responseDomainType.
+func answerTypeToResponseDomain(answerType string) string {
+	switch answerType {
 	case "integer":
 		return "numeric"
 	case "text":
@@ -152,7 +152,7 @@ func buildVarFromRecord(v *core.Record) Var {
 	}
 	if v.GetString("question") != "" || v.GetString("prequestion_text") != "" || v.GetString("ivu_instructions") != "" {
 		varObj.Qstn = &Qstn{
-			ResponseDomainType: questionTypeToResponseDomain(v.GetString("question_type")),
+			ResponseDomainType: answerTypeToResponseDomain(v.GetString("answer_type")),
 			PreQTxt:            v.GetString("prequestion_text"),
 			QstnLit:            v.GetString("question"),
 			IvuInstr:           v.GetString("ivu_instructions"),
@@ -278,12 +278,6 @@ func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
 		Txt:     g.GetString("description"),
 	}
 	return xml.MarshalIndent(grp, "", "  ")
-}
-
-// ExportStdyDscrToXML generates the DDI <stdyDscr> XML fragment for a study record.
-func ExportStdyDscrToXML(study *core.Record) ([]byte, error) {
-	sd := buildStdyDscrFromRecord(study)
-	return xml.MarshalIndent(sd, "", "  ")
 }
 
 // ExportStudyToXML converts a study and its variables into a DDI-XML byte slice.

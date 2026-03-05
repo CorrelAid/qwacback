@@ -75,7 +75,7 @@ func init() {
 			&core.TextField{Name: "ivu_instructions"},
 			&core.TextField{Name: "interval"},
 			&core.TextField{Name: "var_format_type"},
-			&core.TextField{Name: "question_type"},
+			&core.TextField{Name: "answer_type"},
 			&core.JSONField{Name: "categories", MaxSize: 524288}, // 512 KB
 			&core.NumberField{Name: "order"},
 		)

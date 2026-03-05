@@ -13,6 +13,168 @@ import (
 	"github.com/pocketbase/pocketbase/tests"
 )
 
+func TestExamplesRoutes(t *testing.T) {
+	testDataDir, err := os.MkdirTemp("", "pb_test_examples")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(testDataDir)
+
+	setupTestApp := func(t testing.TB) *tests.TestApp {
+		testApp, err := tests.NewTestApp(testDataDir)
+		if err != nil {
+			t.Fatal(err)
+		}
+		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
+			return RegisterRoutes(testApp, se, nil, "../..")
+		})
+		return testApp
+	}
+
+	scenarios := []tests.ApiScenario{
+		{
+			Name:            "list all examples",
+			Method:          http.MethodGet,
+			URL:             "/api/examples",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"answer_type"`, `"xlsform"`, `"ddi"`, `"single_choice"`, `"open_text"`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "get single example by type",
+			Method:          http.MethodGet,
+			URL:             "/api/examples/single_choice",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"answer_type":"single_choice"`, `"xlsform"`, `"ddi"`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:           "get nonexistent example type",
+			Method:         http.MethodGet,
+			URL:            "/api/examples/nonexistent",
+			ExpectedStatus: 404,
+			TestAppFactory: setupTestApp,
+		},
+	}
+
+	for _, scenario := range scenarios {
+		scenario.Test(t)
+	}
+}
+
+func TestSchemaRoutes(t *testing.T) {
+	testDataDir, err := os.MkdirTemp("", "pb_test_schemas")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(testDataDir)
+
+	setupTestApp := func(t testing.TB) *tests.TestApp {
+		testApp, err := tests.NewTestApp(testDataDir)
+		if err != nil {
+			t.Fatal(err)
+		}
+		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
+			return RegisterRoutes(testApp, se, nil, "../..")
+		})
+		return testApp
+	}
+
+	scenarios := []tests.ApiScenario{
+		{
+			Name:            "get schematron rules",
+			Method:          http.MethodGet,
+			URL:             "/api/schemas/schematron",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`<schema`, `<pattern`, `other_variables`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "list xsd files",
+			Method:          http.MethodGet,
+			URL:             "/api/schemas/xsd",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`codebook.xsd`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "get codebook xsd",
+			Method:          http.MethodGet,
+			URL:             "/api/schemas/xsd/codebook.xsd",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`<xs:schema`, `codeBook`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "get nested xhtml xsd",
+			Method:          http.MethodGet,
+			URL:             "/api/schemas/xsd/XHTML/xhtml-text-1.xsd",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`<xs:schema`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:           "xsd file not found",
+			Method:         http.MethodGet,
+			URL:            "/api/schemas/xsd/nonexistent.xsd",
+			ExpectedStatus: 404,
+			TestAppFactory: setupTestApp,
+		},
+		{
+			Name:           "reject non-xsd file",
+			Method:         http.MethodGet,
+			URL:            "/api/schemas/xsd/somefile.txt",
+			ExpectedStatus: 400,
+			TestAppFactory: setupTestApp,
+		},
+		{
+			Name:           "reject directory traversal",
+			Method:         http.MethodGet,
+			URL:            "/api/schemas/xsd/../../../etc/passwd",
+			ExpectedStatus: 400,
+			TestAppFactory: setupTestApp,
+		},
+	}
+
+	for _, scenario := range scenarios {
+		scenario.Test(t)
+	}
+}
+
+func TestDocsRoutes(t *testing.T) {
+	testDataDir, err := os.MkdirTemp("", "pb_test_docs")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(testDataDir)
+
+	setupTestApp := func(t testing.TB) *tests.TestApp {
+		testApp, err := tests.NewTestApp(testDataDir)
+		if err != nil {
+			t.Fatal(err)
+		}
+		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
+			return RegisterRoutes(testApp, se, nil, "../..")
+		})
+		return testApp
+	}
+
+	scenarios := []tests.ApiScenario{
+		{
+			Name:            "get markup guide",
+			Method:          http.MethodGet,
+			URL:             "/api/docs/markup-guide",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`DDI Markup Guide`, `answer_type`, `<var`},
+			TestAppFactory:  setupTestApp,
+		},
+	}
+
+	for _, scenario := range scenarios {
+		scenario.Test(t)
+	}
+}
+
 func TestStudiesAccess(t *testing.T) {
 	testDataDir, err := os.MkdirTemp("", "pb_test_data")
 	if err != nil {
@@ -61,7 +223,7 @@ func TestStudiesAccess(t *testing.T) {
 
 		// Register routes
 		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
-			return RegisterRoutes(testApp, se, nil)
+			return RegisterRoutes(testApp, se, nil, "../..")
 		})
 
 		return testApp
@@ -102,7 +264,7 @@ func TestXMLFragmentRoutes(t *testing.T) {
 	defer os.RemoveAll(testDataDir)
 
 	// Seed test data by importing prove_it.xml
-	var studyID, varID, groupID string
+	var varID, groupID string
 	{
 		app, err := tests.NewTestApp(testDataDir)
 		if err != nil {
@@ -122,12 +284,6 @@ func TestXMLFragmentRoutes(t *testing.T) {
 		}
 
 		// Get IDs for test URLs
-		studies, _ := app.FindRecordsByFilter("studies", "", "", 1, 0)
-		if len(studies) == 0 {
-			t.Fatal("No study found after import")
-		}
-		studyID = studies[0].Id
-
 		vars, _ := app.FindRecordsByFilter("variables", "", "", 1, 0)
 		if len(vars) == 0 {
 			t.Fatal("No variable found after import")
@@ -175,7 +331,7 @@ func TestXMLFragmentRoutes(t *testing.T) {
 			t.Fatal(err)
 		}
 		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
-			return RegisterRoutes(testApp, se, nil)
+			return RegisterRoutes(testApp, se, nil, "../..")
 		})
 		return testApp
 	}
@@ -232,33 +388,6 @@ func TestXMLFragmentRoutes(t *testing.T) {
 			Name:           "variable group xml not found",
 			Method:         http.MethodGet,
 			URL:            "/api/variable-groups/nonexistent00/xml",
-			ExpectedStatus: 404,
-			TestAppFactory: setupTestApp,
-		},
-		// --- Study XML ---
-		{
-			Name:            "study xml as guest",
-			Method:          http.MethodGet,
-			URL:             "/api/studies/" + studyID + "/xml",
-			ExpectedStatus:  200,
-			ExpectedContent: []string{`<stdyDscr>`, `<titl>Prove It!`},
-			TestAppFactory:  setupTestApp,
-		},
-		{
-			Name:   "study xml as authenticated user",
-			Method: http.MethodGet,
-			URL:    "/api/studies/" + studyID + "/xml",
-			Headers: map[string]string{
-				"Authorization": userToken,
-			},
-			ExpectedStatus:  200,
-			ExpectedContent: []string{`<stdyDscr>`, `<titl>Prove It!`, `<AuthEnty`, `New Economics Foundation`},
-			TestAppFactory:  setupTestApp,
-		},
-		{
-			Name:           "study xml not found",
-			Method:         http.MethodGet,
-			URL:            "/api/studies/nonexistent00/xml",
 			ExpectedStatus: 404,
 			TestAppFactory: setupTestApp,
 		},

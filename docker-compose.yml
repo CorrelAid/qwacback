@@ -21,6 +21,7 @@ services:
     build: .
     ports:
       - "${PB_PORT:-8090}:8080"
+      - "${NATS_PORT:-4222}:${NATS_PORT:-4222}"
     environment:
       - PB_ADMIN_EMAIL=${PB_ADMIN_EMAIL:-admin@example.com}
       - PB_ADMIN_PASSWORD=${PB_ADMIN_PASSWORD:-yourpassword123}
