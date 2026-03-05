@@ -21,6 +21,7 @@ type exampleDef struct {
 	XLSForm converter.XLSForm
 }
 
+
 var defs = []exampleDef{
 	{
 		Type:  "single_choice",
@@ -103,7 +104,7 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "open_number",
+		Type:  "integer",
 		Label: "Offene Zahl — Alter",
 		XLSForm: converter.XLSForm{
 			Survey: []converter.SurveyRow{
@@ -113,7 +114,7 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "open_text",
+		Type:  "text",
 		Label: "Offener Text — Anmerkungen",
 		XLSForm: converter.XLSForm{
 			Survey: []converter.SurveyRow{
@@ -123,16 +124,20 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "single_choice_no_opinion",
-		Label: "Single Choice mit Keine Angabe — Falschparken",
+		Type:  "single_choice_long_list",
+		Label: "Single Choice (Lange Liste) — Geburtsland",
 		XLSForm: converter.XLSForm{
 			Survey: []converter.SurveyRow{
-				{Type: "select_one falschparken", Name: "falschparken", Label: "Haben Sie in den letzten 12 Monaten bewusst falsch geparkt?"},
+				{Type: "select_one_from_file iso_3166_1.csv", Name: "geburtsland", Label: "In welchem Land wurden Sie geboren?"},
 			},
-			Choices: []converter.ChoiceRow{
-				{ListName: "falschparken", Name: "ja", Label: "Ja"},
-				{ListName: "falschparken", Name: "nein", Label: "Nein"},
-				{ListName: "falschparken", Name: "keine_angabe", Label: "Möchte ich nicht beantworten"},
+		},
+	},
+	{
+		Type:  "multiple_choice_long_list",
+		Label: "Multiple Choice (Lange Liste) — Besuchte Länder",
+		XLSForm: converter.XLSForm{
+			Survey: []converter.SurveyRow{
+				{Type: "select_multiple_from_file iso_3166_1.csv", Name: "besuchte_laender", Label: "Welche dieser Länder haben Sie bereits besucht? Mehrere Antworten möglich."},
 			},
 		},
 	},

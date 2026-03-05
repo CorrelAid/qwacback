@@ -55,23 +55,30 @@
         <!-- Category essentials -->
         <rule context="ddi:catgry">
             <assert test="ddi:catValu">A catgry element is missing catValu.</assert>
-            <assert test="ddi:labl">A catgry element (value: <value-of select="ddi:catValu"/>) is missing a labl.</assert>
+            <!-- labl is required for category (single-choice/grid) but not for multiple (checkboxes) -->
+            <assert test="ddi:labl or ancestor::ddi:var/ddi:qstn/@responseDomainType = 'multiple'">A catgry element (value: <value-of select="ddi:catValu"/>) is missing a labl (required for responseDomainType="category").</assert>
         </rule>
         <rule context="catgry">
             <assert test="catValu">A catgry element is missing catValu.</assert>
-            <assert test="labl">A catgry element (value: <value-of select="catValu"/>) is missing a labl.</assert>
+            <assert test="labl or ancestor::var/qstn/@responseDomainType = 'multiple'">A catgry element (value: <value-of select="catValu"/>) is missing a labl (required for responseDomainType="category").</assert>
         </rule>
     </pattern>
 
     <pattern id="logic">
+        <!--
+            Categorical variables must have catgry elements UNLESS concept/@vocab
+            is present, which signals that the categories are defined by an external
+            standard code list (e.g. ISO 3166-1 country codes) and need not be
+            repeated inline.
+        -->
         <rule context="ddi:var">
-            <assert test="not(ddi:qstn/@responseDomainType = 'category' or ddi:qstn/@responseDomainType = 'multiple') or ddi:catgry">
-                Variable <value-of select="@name"/> (ID: <value-of select="@ID"/>) has a categorical response domain but no catgry elements.
+            <assert test="not(ddi:qstn/@responseDomainType = 'category' or ddi:qstn/@responseDomainType = 'multiple') or ddi:catgry or ddi:concept/@vocab">
+                Variable <value-of select="@name"/> (ID: <value-of select="@ID"/>) has a categorical response domain but no catgry elements (add categories or reference an external vocabulary via concept/@vocab).
             </assert>
         </rule>
         <rule context="var">
-            <assert test="not(qstn/@responseDomainType = 'category' or qstn/@responseDomainType = 'multiple') or catgry">
-                Variable <value-of select="@name"/> (ID: <value-of select="@ID"/>) has a categorical response domain but no catgry elements.
+            <assert test="not(qstn/@responseDomainType = 'category' or qstn/@responseDomainType = 'multiple') or catgry or concept/@vocab">
+                Variable <value-of select="@name"/> (ID: <value-of select="@ID"/>) has a categorical response domain but no catgry elements (add categories or reference an external vocabulary via concept/@vocab).
             </assert>
         </rule>
 

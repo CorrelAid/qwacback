@@ -275,7 +275,9 @@ To create a complete DDI codebook with single questions, wrap them in the full s
 | `numeric` | `integer` | Numeric input |
 | `text` | `text` | Text input |
 | `category` | `select_one <name>` | Single choice (list_name = variable name) |
+| `category` + `vocab` | `select_one_from_file <vocab>.csv` | Long list single choice (external vocab) |
 | `multiple` | `select_multiple <name>` | Multiple choice (list_name = variable name) |
+| `multiple` + `vocab` | `select_multiple_from_file <vocab>.csv` | Long list multiple choice (external vocab) |
 
 ### XLSForm to DDI Mapping
 
@@ -285,8 +287,12 @@ To create a complete DDI codebook with single questions, wrap them in the full s
 | `text`, `note` | `<var>` | `text` | `contin` | `character` |
 | `select_one`, `matrix` | `<var>` + `<catgry>` | `category` | `discrete` | `numeric` |
 | `select_multiple` | `<varGrp type="multipleResp">` + binary `<var>` per choice | `multiple` | `discrete` | `numeric` |
+| `select_one_from_file` | `<var>` with `concept/@vocab` (no `catgry`) | `category` | `discrete` | `numeric` |
+| `select_multiple_from_file` | `<var>` with `concept/@vocab` (no `catgry`) | `multiple` | `discrete` | `numeric` |
 
-**Note on `select_multiple`:** Per DDI Codebook conventions, checkboxes are represented as a `<varGrp type="multipleResp">` with one binary `<var>` per choice option. Each binary variable has categories `0="Not mentioned"` and `1="Mentioned"`. The output is wrapped in a `<dataDscr>` element.
+**Note on `select_multiple`:** Per DDI Codebook conventions, checkboxes are represented as a `<varGrp type="multipleResp">` with one binary `<var>` per choice option. Each binary variable has categories with `catValu` 0 and 1 (no `labl` — the variable name and `qstnLit` already describe the checkbox option). The output is wrapped in a `<dataDscr>` element.
+
+**Note on `select_*_from_file`:** For long lists referencing external vocabularies (e.g. `select_one_from_file iso_3166_1.csv`), the DDI output uses `concept/@vocab` instead of inline `<catgry>` elements. The `vocab` is the standard code (e.g. `iso_3166_1`), and the XLSForm CSV filename is derived by appending `.csv`.
 
 ## Error Handling
 

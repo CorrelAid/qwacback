@@ -192,8 +192,8 @@ func TestRoundTripProveIt(t *testing.T) {
 		if v.Qstn.QstnLit != "Do you think that your neighbours act in your best interests?" {
 			t.Errorf("QstnLit: got %q", v.Qstn.QstnLit)
 		}
-		if v.Concept != "Interpersonal trust" {
-			t.Errorf("Concept: got %q", v.Concept)
+		if v.Concept.Value != "Interpersonal trust" {
+			t.Errorf("Concept: got %q", v.Concept.Value)
 		}
 		if len(v.Catgry) != 3 {
 			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))
@@ -256,13 +256,222 @@ func TestRoundTripProveIt(t *testing.T) {
 		if vg1.Type != "grid" {
 			t.Errorf("VG1 type: got %q", vg1.Type)
 		}
-		if vg1.Concept != "Civic network awareness" {
-			t.Errorf("VG1 concept: got %q", vg1.Concept)
+		if vg1.Concept.Value != "Civic network awareness" {
+			t.Errorf("VG1 concept: got %q", vg1.Concept.Value)
 		}
 		if vg1.Txt != "If you did want to change things around here, do you know who to contact to help you in the following groups…?" {
 			t.Errorf("VG1 txt: got %q", vg1.Txt)
 		}
 	})
+}
+
+// TestExportVarGrpCodebookToXML creates a group with member variables and verifies the codebook output.
+func TestExportVarGrpCodebookToXML(t *testing.T) {
+	testDataDir, err := os.MkdirTemp("", "pb_test_grp_codebook")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(testDataDir)
+
+	testApp, err := tests.NewTestApp(testDataDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer testApp.Cleanup()
+
+	// Create study
+	studyCol, _ := testApp.FindCollectionByNameOrId("studies")
+	study := core.NewRecord(studyCol)
+	study.Set("title", "Test Study")
+	study.Set("abstract", "Test")
+	if err := testApp.Save(study); err != nil {
+		t.Fatal(err)
+	}
+
+	// Create group
+	grpCol, _ := testApp.FindCollectionByNameOrId("variable_groups")
+	grp := core.NewRecord(grpCol)
+	grp.Set("study", study.Id)
+	grp.Set("ddi_id", "VG_test")
+	grp.Set("name", "test_group")
+	grp.Set("type", "grid")
+	grp.Set("concept", "Test Group")
+	grp.Set("description", "A test group description")
+	grp.Set("order", 1)
+	if err := testApp.Save(grp); err != nil {
+		t.Fatal(err)
+	}
+
+	// Create two member variables
+	varCol, _ := testApp.FindCollectionByNameOrId("variables")
+	for i, name := range []string{"v1", "v2"} {
+		v := core.NewRecord(varCol)
+		v.Set("study", study.Id)
+		v.Set("group", grp.Id)
+		v.Set("ddi_id", "V_"+name)
+		v.Set("name", name)
+		v.Set("concept", "Variable "+name)
+		v.Set("question", "Question for "+name)
+		v.Set("interval", "discrete")
+		v.Set("var_format_type", "numeric")
+		v.Set("answer_type", "single_choice")
+		v.Set("categories", `[{"value":"1","label":"Yes","is_missing":false},{"value":"2","label":"No","is_missing":false}]`)
+		v.Set("order", i+1)
+		if err := testApp.Save(v); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	// Export
+	xmlBytes, err := ExportVarGrpCodebookToXML(testApp, grp)
+	if err != nil {
+		t.Fatalf("ExportVarGrpCodebookToXML failed: %v", err)
+	}
+
+	// Parse as DataDscr
+	var dd DataDscr
+	if err := xml.Unmarshal(xmlBytes, &dd); err != nil {
+		t.Fatalf("Failed to parse output: %v\n%s", err, string(xmlBytes))
+	}
+
+	// Verify group
+	if len(dd.VarGrp) != 1 {
+		t.Fatalf("Expected 1 varGrp, got %d", len(dd.VarGrp))
+	}
+	if dd.VarGrp[0].ID != "VG_test" {
+		t.Errorf("VarGrp ID: got %q", dd.VarGrp[0].ID)
+	}
+	if dd.VarGrp[0].Name != "test_group" {
+		t.Errorf("VarGrp Name: got %q", dd.VarGrp[0].Name)
+	}
+	if dd.VarGrp[0].Type != "grid" {
+		t.Errorf("VarGrp Type: got %q", dd.VarGrp[0].Type)
+	}
+	if dd.VarGrp[0].Concept.Value != "Test Group" {
+		t.Errorf("VarGrp Concept: got %q", dd.VarGrp[0].Concept.Value)
+	}
+	if dd.VarGrp[0].Txt != "A test group description" {
+		t.Errorf("VarGrp Txt: got %q", dd.VarGrp[0].Txt)
+	}
+	if dd.VarGrp[0].Var != "V_v1 V_v2" {
+		t.Errorf("VarGrp var attr: got %q", dd.VarGrp[0].Var)
+	}
+
+	// Verify member variables
+	if len(dd.Vars) != 2 {
+		t.Fatalf("Expected 2 vars, got %d", len(dd.Vars))
+	}
+	for i, v := range dd.Vars {
+		expectedName := []string{"v1", "v2"}[i]
+		if v.Name != expectedName {
+			t.Errorf("Var %d: expected name %q, got %q", i, expectedName, v.Name)
+		}
+		if v.Qstn == nil {
+			t.Fatalf("Var %d: Qstn is nil", i)
+		}
+		if v.Qstn.ResponseDomainType != "category" {
+			t.Errorf("Var %d: expected responseDomainType category, got %q", i, v.Qstn.ResponseDomainType)
+		}
+		if len(v.Catgry) != 2 {
+			t.Errorf("Var %d: expected 2 categories, got %d", i, len(v.Catgry))
+		}
+	}
+}
+
+// TestRoundTripGroupCodebook_ProveIt imports prove_it.xml and verifies group codebook round-trip.
+func TestRoundTripGroupCodebook_ProveIt(t *testing.T) {
+	testApp, _, _ := roundTripSetup(t, "../../seed_data/prove_it.xml")
+
+	// Find all groups
+	groups, err := testApp.FindRecordsByFilter("variable_groups", "", "order", 0, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(groups) == 0 {
+		t.Fatal("No variable groups found after import")
+	}
+
+	for _, grp := range groups {
+		t.Run(grp.GetString("name"), func(t *testing.T) {
+			xmlBytes, err := ExportVarGrpCodebookToXML(testApp, grp)
+			if err != nil {
+				t.Fatalf("ExportVarGrpCodebookToXML failed: %v", err)
+			}
+
+			var dd DataDscr
+			if err := xml.Unmarshal(xmlBytes, &dd); err != nil {
+				t.Fatalf("Failed to parse output: %v\n%s", err, string(xmlBytes))
+			}
+
+			if len(dd.VarGrp) != 1 {
+				t.Fatalf("Expected 1 varGrp, got %d", len(dd.VarGrp))
+			}
+
+			// Verify var attr references match actual vars
+			varIDs := strings.Fields(dd.VarGrp[0].Var)
+			if len(varIDs) != len(dd.Vars) {
+				t.Errorf("var attr has %d IDs but %d vars present", len(varIDs), len(dd.Vars))
+			}
+			for i, v := range dd.Vars {
+				if v.ID != varIDs[i] {
+					t.Errorf("Var %d: ID %q not in var attr position %d (%q)", i, v.ID, i, varIDs[i])
+				}
+			}
+		})
+	}
+}
+
+// TestRoundTripGroupCodebook_SVR imports svr_fb_studie.xml (has multipleResp and grid groups)
+// and verifies all group codebook exports.
+func TestRoundTripGroupCodebook_SVR(t *testing.T) {
+	testApp, _, _ := roundTripSetup(t, "../../seed_data/svr_fb_studie.xml")
+
+	groups, err := testApp.FindRecordsByFilter("variable_groups", "", "order", 0, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(groups) == 0 {
+		t.Fatal("No variable groups found after import")
+	}
+
+	for _, grp := range groups {
+		t.Run(grp.GetString("name"), func(t *testing.T) {
+			xmlBytes, err := ExportVarGrpCodebookToXML(testApp, grp)
+			if err != nil {
+				t.Fatalf("ExportVarGrpCodebookToXML failed: %v", err)
+			}
+
+			var dd DataDscr
+			if err := xml.Unmarshal(xmlBytes, &dd); err != nil {
+				t.Fatalf("Failed to parse output: %v\n%s", err, string(xmlBytes))
+			}
+
+			if len(dd.VarGrp) != 1 {
+				t.Fatalf("Expected 1 varGrp, got %d", len(dd.VarGrp))
+			}
+			if dd.VarGrp[0].ID != grp.GetString("ddi_id") {
+				t.Errorf("VarGrp ID: expected %q, got %q", grp.GetString("ddi_id"), dd.VarGrp[0].ID)
+			}
+			if dd.VarGrp[0].Type != grp.GetString("type") {
+				t.Errorf("VarGrp Type: expected %q, got %q", grp.GetString("type"), dd.VarGrp[0].Type)
+			}
+
+			// Each referenced var ID should have a matching var element
+			varIDs := strings.Fields(dd.VarGrp[0].Var)
+			if len(varIDs) != len(dd.Vars) {
+				t.Errorf("var attr has %d IDs but %d vars present", len(varIDs), len(dd.Vars))
+			}
+			idSet := make(map[string]bool)
+			for _, v := range dd.Vars {
+				idSet[v.ID] = true
+			}
+			for _, id := range varIDs {
+				if !idSet[id] {
+					t.Errorf("var attr references %q but no matching var element found", id)
+				}
+			}
+		})
+	}
 }
 
 // TestRoundTripDemo imports demo.xml (no variable groups, German content) and verifies the round-trip.
@@ -343,8 +552,8 @@ func TestRoundTripDemo(t *testing.T) {
 		if v.Qstn.ResponseDomainType != "category" {
 			t.Errorf("ResponseDomainType: got %q", v.Qstn.ResponseDomainType)
 		}
-		if v.Concept != "Gender" {
-			t.Errorf("Concept: got %q", v.Concept)
+		if v.Concept.Value != "Gender" {
+			t.Errorf("Concept: got %q", v.Concept.Value)
 		}
 		if len(v.Catgry) != 3 {
 			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))

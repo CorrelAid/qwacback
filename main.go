@@ -72,6 +72,23 @@ func main() {
 	}
 
 	app.OnServe().BindFunc(func(se *core.ServeEvent) error {
+		// Log all incoming requests to stdout for diagnostics
+		se.Router.BindFunc(func(e *core.RequestEvent) error {
+			start := time.Now()
+			err := e.Next()
+			log.Printf("[HTTP] %s %s -> %d (%s) remote=%s",
+				e.Request.Method,
+				e.Request.URL.RequestURI(),
+				e.Status(),
+				time.Since(start).Round(time.Millisecond),
+				e.Request.RemoteAddr,
+			)
+			if err != nil {
+				log.Printf("[HTTP] error: %v", err)
+			}
+			return err
+		})
+
 		if err := routes.RegisterRoutes(app, se, schClient); err != nil {
 			return err
 		}

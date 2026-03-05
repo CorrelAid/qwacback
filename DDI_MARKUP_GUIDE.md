@@ -1,16 +1,25 @@
 # DDI 2.5 Markup Guide
 
-This guide defines the conventions used when mapping survey questionnaires to DDI 2.5 Codebook XML in this project. It covers naming, element semantics, structure rules, and all answer type mappings.
+This guide defines the conventions for mapping survey questionnaires to DDI 2.5 Codebook XML in this project.
+
+### Validation
+
+This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines structure and element ordering but is intentionally permissive — most elements are optional. The project-specific **Schematron rules** (`schematron/ddi_custom_rules.sch`) enforce stricter conventions on top: required elements (e.g. `concept` on every `var`/`varGrp`), forbidden elements (e.g. `labl` on `var`/`varGrp`), restricted `varGrp` types, category/label requirements, and consistency checks (e.g. `preQTxt` matching `varGrp/txt`). The rules in this guide reflect both layers combined.
+
+### Examples
+
+Each answer type has a complete example with both the **XLSForm input** and the **DDI Codebook output**, defined in `internal/examples/examples.go`. These are available at runtime via the API:
+
+*   `GET /api/examples` — list all examples (XLSForm + DDI pairs)
+*   `GET /api/examples/{answer_type}` — get a single example by type (e.g. `single_choice`, `multiple_choice`, `grid`)
 
 ---
 
-## 1. Key Concepts: `name`, `concept`, `labl`, and `ID`
-
-These four identifiers are the most frequently confused. Each has a distinct role:
+## 1. Identifiers: `name`, `concept`, `labl`, and `ID`
 
 ### `name` vs `concept`
 
-| | `name` (attribute on `var`/`varGrp`) | `concept` (child element of `var`/`varGrp`) |
+| | `name` (attribute) | `concept` (child element) |
 |---|---|---|
 | **Audience** | Machines / analysts | Humans / researchers |
 | **Format** | `snake_case`, no spaces | Natural language prose |
@@ -18,7 +27,7 @@ These four identifiers are the most frequently confused. Each has a distinct rol
 | **Length** | Short (1–3 words) | Phrase or sentence fragment |
 | **Example** | `institutional_trust` | `Trust in public institutions` |
 
-Think of `name` as what you'd call the column in a CSV file, and `concept` as the codebook label that tells a researcher what the variable captures. `concept` is **mandatory** on every `var` and `varGrp`.
+Think of `name` as what you'd call the column in a CSV file, and `concept` as the codebook label that tells a researcher what the variable captures.
 
 #### `name` rules
 
@@ -30,30 +39,26 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 
 `concept` is **required** on every `var` and `varGrp`. It names what the variable or group measures — this does not need to be a latent construct. For simple demographic or factual items, a plain descriptive phrase is correct.
 
-*   **Standalone variables**: Describe what the question measures, in plain language.
-    *   `<concept>Gender</concept>`
-    *   `<concept>Age group</concept>`
-    *   `<concept>Perceived community safety (day)</concept>`
-    *   `<concept>Self-efficacy (attitudes)</concept>`
-*   **Grid sub-items**: Use a `Construct: Facet` pattern.
-    *   `<concept>Trust: Parliament</concept>`
-    *   `<concept>Civic network: Council</concept>`
-*   **Variable groups**: Name the overarching topic or construct.
-    *   `<concept>Trust in institutions</concept>`
-    *   `<concept>Device ownership</concept>`
+*   **Standalone variables**: Describe what the question measures in plain language (e.g. `Gender`, `Age group`, `Perceived community safety (day)`).
+*   **Grid sub-items**: Use a `Construct: Facet` pattern (e.g. `Trust: Parliament`, `Civic network: Council`).
+*   **Variable groups**: Name the overarching topic or construct (e.g. `Trust in institutions`, `Device ownership`).
 *   The `concept` element supports `vocab` and `vocabURI` attributes to link to controlled vocabularies.
 
 ### `labl`
 
-`labl` is used **only on `catgry`** elements — it provides the human-readable label for a response value (e.g. "Strongly Agree", "Male", "Not mentioned"). It is **never** placed on `var` or `varGrp`; use `concept` there instead.
+`labl` is used **only on `catgry`** elements — it provides the human-readable label for a response value (e.g. "Strongly Agree", "Male"). It is **never** placed on `var` or `varGrp`; use `concept` there instead.
+
+`labl` is **required** for `responseDomainType="category"` (single choice, grid) but **omitted** for `responseDomainType="multiple"` (checkboxes). Checkbox variables are binary 0/1 — the variable name and `qstnLit` already describe what the checkbox means.
 
 ### `ID`
 
-The `ID` attribute (`xs:ID`) is a document-wide unique identifier used for cross-referencing (e.g. `varGrp var="V_item1 V_item2"`). It does **not** need to be human-readable — use `name` for that. Convention: `V_<name>` for variables, `VG_<name>` for groups (e.g. `V_alter`, `VG_geraetebesitz`).
+The `ID` attribute (`xs:ID`) is a document-wide unique identifier used for cross-referencing (e.g. `varGrp var="V_item1 V_item2"`). It does **not** need to be human-readable — use `name` for that. Convention: `V_<name>` for variables, `VG_<name>` for groups.
 
 ---
 
-## 2. Variable Group Types
+## 2. Structure Rules
+
+### Variable group types
 
 Only two `varGrp` types are used:
 
@@ -64,34 +69,23 @@ Only two `varGrp` types are used:
 
 Do **not** use `type="section"` — section groups are structural containers with no semantic meaning.
 
----
-
-## 3. Structure Rules
-
 ### Child element ordering within `<var>`
 
-The XSD enforces a strict sequence inside `<var>`:
+The XSD enforces a strict sequence inside `<var>`. Simplified to the elements this project uses:
 
 ```
-qstn → catgry* → concept? → varFormat
+qstn → catgry* → concept → varFormat
 ```
+
+The full XSD sequence includes many more optional elements (e.g. `location`, `labl`, `valrng`, `universe`, `notes`), but they are not used in this project.
 
 ### `<varGrp>` placement in `<dataDscr>`
 
 All `<varGrp>` elements must appear **before** all `<var>` elements in `<dataDscr>`. This is an XSD ordering requirement.
 
-```xml
-<dataDscr>
-  <varGrp ID="VG1" .../>  <!-- groups first -->
-  <varGrp ID="VG2" .../>
-  <var ID="V1" .../>      <!-- then variables -->
-  <var ID="V2" .../>
-</dataDscr>
-```
-
 ### Document / questionnaire ordering
 
-DDI 2.5 has no explicit ordering attribute. Order is determined by **document position** — elements are stored and restored in the sequence they appear in the XML file. Always place elements in questionnaire order within each group (varGrps first, then vars).
+DDI 2.5 has no explicit ordering attribute. Order is determined by **document position** — elements are stored and restored in the sequence they appear in the XML file. Always place elements in questionnaire order (varGrps first, then vars).
 
 On import, the application captures each element's position as a numeric `order` field in the database. On export, variables and groups are sorted by this field, preserving the document sequence through round trips.
 
@@ -99,300 +93,107 @@ On import, the application captures each element's position as a numeric `order`
 
 ---
 
-## 4. Answer Type Mappings
+## 3. Answer Type Mappings
 
-The pipeline uses the following answer formats. For each, the table below shows the DDI encoding and a full XML example. All XML examples below are generated by the converter — the same output is available via `GET /api/examples/{answer_type}`.
+### Base types (DB `answer_type`)
 
-| Format | `intrvl` | `responseDomainType` | `varFormat/@type` | Container |
+| `answer_type` | `intrvl` | `responseDomainType` | `varFormat/@type` | Container |
 |--------|----------|----------------------|-------------------|-----------|
-| `open_number` | `discrete` | `numeric` | `numeric` | `<var>` |
-| `open_text` | `contin` | `text` | `character` | `<var>` |
+| `integer` | `discrete` | `numeric` | `numeric` | `<var>` |
+| `text` | `contin` | `text` | `character` | `<var>` |
 | `single_choice` | `discrete` | `category` | `numeric` | `<var>` + `<catgry>` per option |
-| `single_choice_other` | `discrete` / `contin` | `category` + `text` | `numeric` + `character` | `<var>` with "Sonstiges" category + text `<var>` for specification |
-| `checkboxes` | `discrete` | `multiple` | `numeric` | `<varGrp type="multipleResp">` + binary `<var>` per option |
-| `checkboxes_other` | `discrete` / `contin` | `multiple` + `text` | `numeric` + `character` | `<varGrp type="multipleResp">` + binary `<var>` per option (incl. "Sonstiges") + text `<var>` for specification (outside group) |
+| `multiple_choice` | `discrete` | `multiple` | `numeric` | `<varGrp type="multipleResp">` + binary `<var>` per option |
 | `grid` | `discrete` | `category` | `numeric` | `<varGrp type="grid">` + `<var>` per item (categories repeated) |
 
-### open_number — Numeric free entry
+### Subcategory flags
+
+Two boolean fields on the `variables` collection modify the base type:
+
+| Flag | Applies to | Effect |
+|------|-----------|--------|
+| `has_other` | `single_choice`, `multiple_choice` | A companion `_other` text variable exists for free-text specification |
+| `has_long_list` | `single_choice`, `multiple_choice` | Categories come from an external code list via `concept/@vocab` instead of inline `<catgry>` |
+
+### Semi-open questions (`_other` convention)
+
+A semi-open (halb-offen) question provides a closed choice list plus an optional free-text field for respondents who select "Sonstiges". This produces **two variables** in DDI: the main categorical/checkbox variable, and a text variable named `<name>_other` for the free-text specification.
+
+DDI Codebook has no concept of skip/relevance logic — the conditional display is XLSForm form logic only. In DDI, the two variables are linked by naming convention.
+
+Rules for `_other` variables:
+*   Must have `responseDomainType="text"`, `intrvl="contin"`, `varFormat type="character"`.
+*   A matching base variable or group with the prefix name must exist.
+*   For `multiple_choice_other`: the `_other` text variable must **not** be listed in the `varGrp/@var` attribute. The "Sonstiges" binary variable (inside the group) is separate from the text specification variable (outside the group).
+
+### Grid and checkbox group consistency
+
+*   The `varGrp/txt` and each member variable's `qstn/preQTxt` must be identical.
+*   `multipleResp` members must have `responseDomainType="multiple"`.
+*   `grid` members must have `responseDomainType="category"`.
+*   Grid categories **must be repeated** on every member variable (DDI 2.5 has no shared category reference).
+*   Checkbox categories have **no `labl`** — the binary 0/1 values are self-explanatory.
+
+### External code lists (`_long` types)
+
+When a question draws from a large external code list (e.g. ISO 3166-1 country codes), inline `<catgry>` elements are replaced by a `concept/@vocab` reference that identifies the standard (e.g. `vocab="iso_3166_1"`).
+
+In XLSForm, this corresponds to `select_one_from_file` or `select_multiple_from_file`.
+
+#### single_choice_long
 
 ```xml
-<var ID="V_alter" name="alter" intrvl="discrete">
-  <qstn responseDomainType="numeric">
-    <qstnLit>Wie alt sind Sie?</qstnLit>
-  </qstn>
-  <concept>Wie alt sind Sie?</concept>
-  <varFormat type="numeric" schema="other"></varFormat>
-</var>
-```
-
-### open_text — Free-text entry
-
-```xml
-<var ID="V_anmerkungen" name="anmerkungen" intrvl="contin">
-  <qstn responseDomainType="text">
-    <qstnLit>Haben Sie weitere Anmerkungen?</qstnLit>
-  </qstn>
-  <concept>Haben Sie weitere Anmerkungen?</concept>
-  <varFormat type="character" schema="other"></varFormat>
-</var>
-```
-
-### single_choice — Pick exactly one option
-
-```xml
-<var ID="V_bildungsgrad" name="bildungsgrad" intrvl="discrete">
+<var ID="V_geburtsland" name="geburtsland" intrvl="discrete">
   <qstn responseDomainType="category">
-    <qstnLit>Was ist Ihr höchster Bildungsabschluss?</qstnLit>
+    <qstnLit>In welchem Land wurden Sie geboren?</qstnLit>
   </qstn>
-  <catgry>
-    <catValu>1</catValu>
-    <labl>Kein Abschluss</labl>
-  </catgry>
-  <catgry>
-    <catValu>2</catValu>
-    <labl>Haupt- oder Realschulabschluss</labl>
-  </catgry>
-  <catgry>
-    <catValu>3</catValu>
-    <labl>Fachhochschulreife / Abitur</labl>
-  </catgry>
-  <catgry>
-    <catValu>4</catValu>
-    <labl>Abgeschlossene Berufsausbildung</labl>
-  </catgry>
-  <catgry>
-    <catValu>5</catValu>
-    <labl>Hochschulabschluss</labl>
-  </catgry>
-  <concept>Was ist Ihr höchster Bildungsabschluss?</concept>
-  <varFormat type="numeric" schema="other"></varFormat>
+  <concept vocab="iso_3166_1">In welchem Land wurden Sie geboren?</concept>
+  <varFormat type="numeric" schema="other"/>
 </var>
 ```
 
-### single_choice with other — Semi-open single choice
+#### multiple_choice_long
 
-A semi-open (halb-offen) question provides a closed choice list plus an optional free-text field for respondents who select "Sonstiges". This produces **two variables** in DDI: a categorical `<var>` with all options including "Sonstiges", and a text `<var>` for the specification (named `<name>_other`).
-
-DDI Codebook has no concept of skip/relevance logic — the conditional display (`relevance`) is XLSForm form logic only. In DDI, the two variables are linked implicitly by naming convention.
+Same structure as `single_choice_long` but with `responseDomainType="multiple"`. This is a **standalone `<var>`**, not a `varGrp` with binary member variables — the external file replaces the need for inline expansion.
 
 ```xml
-<dataDscr>
-  <var ID="V_aufmerksam" name="aufmerksam" intrvl="discrete">
-    <qstn responseDomainType="category">
-      <qstnLit>Wie sind Sie auf unser Angebot aufmerksam geworden?</qstnLit>
-    </qstn>
-    <catgry>
-      <catValu>suchmaschine</catValu>
-      <labl>Suchmaschine</labl>
-    </catgry>
-    <catgry>
-      <catValu>empfehlung</catValu>
-      <labl>Persönliche Empfehlung</labl>
-    </catgry>
-    <catgry>
-      <catValu>soziale_medien</catValu>
-      <labl>Soziale Medien</labl>
-    </catgry>
-    <catgry>
-      <catValu>sonstiges</catValu>
-      <labl>Sonstiges</labl>
-    </catgry>
-    <concept>Wie sind Sie auf unser Angebot aufmerksam geworden?</concept>
-    <varFormat type="numeric" schema="other"></varFormat>
-  </var>
-  <var ID="V_aufmerksam_other" name="aufmerksam_other" intrvl="contin">
-    <qstn responseDomainType="text">
-      <qstnLit>Sonstiges (bitte angeben)</qstnLit>
-    </qstn>
-    <concept>Sonstiges (bitte angeben)</concept>
-    <varFormat type="character" schema="other"></varFormat>
-  </var>
-</dataDscr>
+<var ID="V_herkunftslaender" name="herkunftslaender" intrvl="discrete">
+  <qstn responseDomainType="multiple">
+    <qstnLit>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</qstnLit>
+  </qstn>
+  <concept vocab="iso_3166_1">Herkunftsländer der Nutzer*innen</concept>
+  <varFormat type="numeric" schema="other"/>
+</var>
 ```
 
-### checkboxes — Select all that apply
+> **Note**: The schematron rules exempt variables with `concept/@vocab` from the requirement to have inline `catgry` elements.
 
-Each option becomes a separate binary variable (0 = not mentioned, 1 = mentioned). The `varGrp/txt` and each member variable's `qstn/preQTxt` must be identical.
+---
 
-```xml
-<dataDscr>
-  <varGrp ID="VG_wochenende" name="wochenende" type="multipleResp"
-          var="V_wochenende_sa V_wochenende_so">
-    <txt>An welchen Tagen des Wochenendes sind Sie erreichbar?</txt>
-    <concept>An welchen Tagen des Wochenendes sind Sie erreichbar?</concept>
-  </varGrp>
-  <var ID="V_wochenende_sa" name="wochenende_sa" intrvl="discrete">
-    <qstn responseDomainType="multiple">
-      <preQTxt>An welchen Tagen des Wochenendes sind Sie erreichbar?</preQTxt>
-      <qstnLit>Samstag</qstnLit>
-    </qstn>
-    <catgry>
-      <catValu>0</catValu>
-      <labl>Not mentioned</labl>
-    </catgry>
-    <catgry>
-      <catValu>1</catValu>
-      <labl>Mentioned</labl>
-    </catgry>
-    <concept>An welchen Tagen des Wochenendes sind Sie erreichbar?: Samstag</concept>
-    <varFormat type="numeric" schema="other"></varFormat>
-  </var>
-  <var ID="V_wochenende_so" name="wochenende_so" intrvl="discrete">
-    <qstn responseDomainType="multiple">
-      <preQTxt>An welchen Tagen des Wochenendes sind Sie erreichbar?</preQTxt>
-      <qstnLit>Sonntag</qstnLit>
-    </qstn>
-    <catgry>
-      <catValu>0</catValu>
-      <labl>Not mentioned</labl>
-    </catgry>
-    <catgry>
-      <catValu>1</catValu>
-      <labl>Mentioned</labl>
-    </catgry>
-    <concept>An welchen Tagen des Wochenendes sind Sie erreichbar?: Sonntag</concept>
-    <varFormat type="numeric" schema="other"></varFormat>
-  </var>
-</dataDscr>
-```
+## 4. Study-Level Date Elements
 
-### checkboxes with other — Semi-open multiple choice
+Three date elements serve distinct purposes:
 
-Same structure as plain checkboxes, but the choice list includes a "Sonstiges" option (as a binary variable inside the group), plus an additional text `<var>` **outside** the group for the free-text specification. The `_other` variable must **not** be listed in the `varGrp/@var` attribute — it has `responseDomainType="text"`, which would violate the `multipleResp` member constraint.
+| Element | Location | Purpose |
+|---------|----------|---------|
+| `prodDate` | `citation/prodStmt` | When the **publication** was produced/released (not distributed or archived) |
+| `timePrd` | `stdyInfo/sumDscr` | The **time period the data refer to** — not the dates of coding or collection |
+| `collDate` | `stdyInfo/sumDscr` | When the **data were actually collected** (e.g. fieldwork dates) |
 
-DDI Codebook has no concept of skip/relevance logic — the conditional display (`relevance`) is XLSForm form logic only. In DDI, the text variable is linked to the group by naming convention (`<group_name>_other`).
+### Key distinctions
 
-```xml
-<dataDscr>
-  <varGrp ID="VG_geraetebesitz" name="geraetebesitz" type="multipleResp"
-          var="V_geraetebesitz_smartphone V_geraetebesitz_laptop V_geraetebesitz_tablet V_geraetebesitz_sonstiges">
-    <txt>Welche dieser Geräte besitzen Sie?</txt>
-    <concept>Welche dieser Geräte besitzen Sie?</concept>
-  </varGrp>
-  <var ID="V_geraetebesitz_smartphone" name="geraetebesitz_smartphone" intrvl="discrete">
-    <qstn responseDomainType="multiple">
-      <preQTxt>Welche dieser Geräte besitzen Sie?</preQTxt>
-      <qstnLit>Smartphone</qstnLit>
-    </qstn>
-    <catgry>
-      <catValu>0</catValu>
-      <labl>Not mentioned</labl>
-    </catgry>
-    <catgry>
-      <catValu>1</catValu>
-      <labl>Mentioned</labl>
-    </catgry>
-    <concept>Welche dieser Geräte besitzen Sie?: Smartphone</concept>
-    <varFormat type="numeric" schema="other"></varFormat>
-  </var>
-  <!-- ... binary vars for laptop, tablet ... -->
-  <var ID="V_geraetebesitz_sonstiges" name="geraetebesitz_sonstiges" intrvl="discrete">
-    <qstn responseDomainType="multiple">
-      <preQTxt>Welche dieser Geräte besitzen Sie?</preQTxt>
-      <qstnLit>Sonstiges</qstnLit>
-    </qstn>
-    <catgry>
-      <catValu>0</catValu>
-      <labl>Not mentioned</labl>
-    </catgry>
-    <catgry>
-      <catValu>1</catValu>
-      <labl>Mentioned</labl>
-    </catgry>
-    <concept>Welche dieser Geräte besitzen Sie?: Sonstiges</concept>
-    <varFormat type="numeric" schema="other"></varFormat>
-  </var>
-  <!-- _other text variable — NOT a member of the varGrp -->
-  <var ID="V_geraetebesitz_other" name="geraetebesitz_other" intrvl="contin">
-    <qstn responseDomainType="text">
-      <qstnLit>Sonstiges (bitte angeben)</qstnLit>
-    </qstn>
-    <concept>Sonstiges (bitte angeben)</concept>
-    <varFormat type="character" schema="other"></varFormat>
-  </var>
-</dataDscr>
-```
+- `timePrd` ≠ `collDate`: A survey collected in Jan–Mar 2020 (`collDate`) may ask about activities in 2019 (`timePrd`). For a project running Oct 2018–Dec 2020, `timePrd` covers that full span.
+- `prodDate` is about the publication artifact, not the data.
+- `collDate` belongs in `sumDscr`, **not** in `method/dataColl` (the XSD does not allow it there).
 
-### grid — Matrix / Likert scale
+### Event attribute
 
-A set of items sharing the same scale and introductory stem. Categories **must be repeated** on every member variable (DDI 2.5 has no shared category reference). The `varGrp/txt` and each member's `qstn/preQTxt` must be identical.
-
-```xml
-<dataDscr>
-  <varGrp ID="VG_institutionsvertrauen" name="institutionsvertrauen" type="grid"
-          var="V_vertrauen_parlament V_vertrauen_polizei">
-    <concept>Vertrauen in Institutionen</concept>
-  </varGrp>
-  <var ID="V_vertrauen_parlament" name="vertrauen_parlament" intrvl="discrete">
-    <qstn responseDomainType="category">
-      <qstnLit>Das Parlament</qstnLit>
-    </qstn>
-    <catgry>
-      <catValu>1</catValu>
-      <labl>Gar nicht</labl>
-    </catgry>
-    <catgry>
-      <catValu>2</catValu>
-      <labl>2</labl>
-    </catgry>
-    <catgry>
-      <catValu>3</catValu>
-      <labl>3</labl>
-    </catgry>
-    <catgry>
-      <catValu>4</catValu>
-      <labl>4</labl>
-    </catgry>
-    <catgry>
-      <catValu>5</catValu>
-      <labl>Vollständig</labl>
-    </catgry>
-    <concept>Das Parlament</concept>
-    <varFormat type="numeric" schema="other"></varFormat>
-  </var>
-  <var ID="V_vertrauen_polizei" name="vertrauen_polizei" intrvl="discrete">
-    <qstn responseDomainType="category">
-      <qstnLit>Die Polizei</qstnLit>
-    </qstn>
-    <catgry>
-      <catValu>1</catValu>
-      <labl>Gar nicht</labl>
-    </catgry>
-    <catgry>
-      <catValu>2</catValu>
-      <labl>2</labl>
-    </catgry>
-    <catgry>
-      <catValu>3</catValu>
-      <labl>3</labl>
-    </catgry>
-    <catgry>
-      <catValu>4</catValu>
-      <labl>4</labl>
-    </catgry>
-    <catgry>
-      <catValu>5</catValu>
-      <labl>Vollständig</labl>
-    </catgry>
-    <concept>Die Polizei</concept>
-    <varFormat type="numeric" schema="other"></varFormat>
-  </var>
-</dataDscr>
-```
+Both `timePrd` and `collDate` use the `event` attribute: `"start"`, `"end"`, or `"single"`. For date ranges, use two elements with `start` and `end`.
 
 ---
 
 ## 5. Template Placeholders
 
 For template surveys where question wording is adapted per deployment, encode placeholders directly in `qstnLit` using angle brackets. Since `qstnLit` extends `simpleTextType` (which allows `xhtml:BlkNoForm.mix`), use XHTML to render placeholders in italics — wrap in `<xhtml:p>` since only block-level XHTML elements are valid direct children.
-
-```xml
-<qstnLit xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <xhtml:p>I feel safe out and about in <xhtml:em>&lt;PROJECT AREA&gt;</xhtml:em> during the day.</xhtml:p>
-</qstnLit>
-```
-
-Rendered meaning: I feel safe out and about in *&lt;PROJECT AREA&gt;* during the day.
 
 Rules:
 *   Use `&lt;` and `&gt;` for literal angle brackets.
@@ -412,8 +213,8 @@ Rules:
 | `preQTxt` | `qstn` | Introductory context shown before the question (must match `varGrp/txt` for grid/checkbox items) |
 | `postQTxt` | `qstn` | Text shown after the question |
 | `ivuInstr` | `qstn` | Interviewer instructions (not shown to respondent) |
-| `catgry` | `var` | Response category; contains `catValu` and `labl` |
-| `labl` | `catgry` | Human-readable label for a category value |
+| `catgry` | `var` | Response category; contains `catValu` and optionally `labl` |
+| `labl` | `catgry` | Human-readable label for a category value (required for `category`, omitted for `multiple`) |
 | `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (required) |
 | `txt` | `varGrp` | Shared introductory question text for grid/checkbox groups |
 | `varFormat` | `var` | Technical data format (must appear last inside `var`) |

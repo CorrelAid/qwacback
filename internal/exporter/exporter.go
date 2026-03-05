@@ -82,26 +82,34 @@ type SumDscr struct {
 }
 
 type DataDscr struct {
-	VarGrp []VarGrp `xml:"varGrp"`
-	Vars   []Var    `xml:"var"`
+	XMLName xml.Name `xml:"dataDscr"`
+	VarGrp  []VarGrp `xml:"varGrp"`
+	Vars    []Var    `xml:"var"`
+}
+
+type Concept struct {
+	Vocab string `xml:"vocab,attr,omitempty"`
+	Value string `xml:",chardata"`
 }
 
 type VarGrp struct {
-	ID      string `xml:"ID,attr"`
-	Name    string `xml:"name,attr,omitempty"`
-	Type    string `xml:"type,attr,omitempty"`
-	Var     string `xml:"var,attr"` // Space separated variable IDs
-	Txt     string `xml:"txt,omitempty"`
-	Concept string `xml:"concept,omitempty"`
+	XMLName xml.Name `xml:"varGrp"`
+	ID      string   `xml:"ID,attr"`
+	Name    string   `xml:"name,attr,omitempty"`
+	Type    string   `xml:"type,attr,omitempty"`
+	Var     string   `xml:"var,attr"` // Space separated variable IDs
+	Txt     string   `xml:"txt,omitempty"`
+	Concept Concept  `xml:"concept"`
 }
 
 type Var struct {
+	XMLName   xml.Name   `xml:"var"`
 	ID        string     `xml:"ID,attr"`
 	Name      string     `xml:"name,attr"`
 	Intrvl    string     `xml:"intrvl,attr,omitempty"`
 	Qstn      *Qstn      `xml:"qstn,omitempty"`
 	Catgry    []Category `xml:"catgry,omitempty"`
-	Concept   string     `xml:"concept,omitempty"`
+	Concept   Concept    `xml:"concept"`
 	VarFormat *VarFormat `xml:"varFormat,omitempty"`
 }
 
@@ -123,16 +131,16 @@ type Category struct {
 	Labl    string `xml:"labl,omitempty"`
 }
 
-// answerTypeToResponseDomain maps an XLSForm answer type back to DDI responseDomainType.
+// answerTypeToResponseDomain maps an answer type back to DDI responseDomainType.
 func answerTypeToResponseDomain(answerType string) string {
 	switch answerType {
 	case "integer":
 		return "numeric"
 	case "text":
 		return "text"
-	case "select_one", "matrix":
+	case "single_choice", "grid":
 		return "category"
-	case "select_multiple":
+	case "multiple_choice":
 		return "multiple"
 	default:
 		return ""
@@ -145,7 +153,10 @@ func buildVarFromRecord(v *core.Record) Var {
 		ID:      v.GetString("ddi_id"),
 		Name:    v.GetString("name"),
 		Intrvl:  v.GetString("interval"),
-		Concept: v.GetString("concept"),
+		Concept: Concept{Value: v.GetString("concept")},
+	}
+	if std := v.GetString("long_list_standard"); std != "" {
+		varObj.Concept.Vocab = std
 	}
 	if fmtType := v.GetString("var_format_type"); fmtType != "" {
 		varObj.VarFormat = &VarFormat{Type: fmtType, Schema: "other"}
@@ -169,10 +180,13 @@ func buildVarFromRecord(v *core.Record) Var {
 			log.Printf("WARNING: failed to unmarshal categories for variable %s: %v", v.Id, err)
 		}
 	}
+	isMultiple := v.GetString("answer_type") == "multiple_choice"
 	for _, cat := range cats {
 		catObj := Category{
 			CatValu: cat.Value,
-			Labl:    cat.Label,
+		}
+		if !isMultiple {
+			catObj.Labl = cat.Label
 		}
 		if cat.IsMissing {
 			catObj.Missing = "Y"
@@ -252,6 +266,44 @@ func ExportVariableToXML(v *core.Record) ([]byte, error) {
 	return xml.MarshalIndent(varObj, "", "  ")
 }
 
+// ExportVariableWithGroupToXML generates a DDI fragment for a single variable.
+// If the variable belongs to a grid group, it returns a <dataDscr> containing the
+// <varGrp> and only this single <var> (no sibling variables).
+// If the variable has no group, it returns a plain <var> element.
+func ExportVariableWithGroupToXML(app core.App, v *core.Record) ([]byte, error) {
+	groupID := v.GetString("group")
+	if groupID == "" {
+		return ExportVariableToXML(v)
+	}
+
+	groupRecord, err := app.FindRecordById("variable_groups", groupID)
+	if err != nil {
+		// Group not found — fall back to plain var export
+		return ExportVariableToXML(v)
+	}
+
+	if groupRecord.GetString("type") != "grid" {
+		return ExportVariableToXML(v)
+	}
+
+	varObj := buildVarFromRecord(v)
+
+	grp := VarGrp{
+		ID:      groupRecord.GetString("ddi_id"),
+		Name:    groupRecord.GetString("name"),
+		Type:    groupRecord.GetString("type"),
+		Var:     v.GetString("ddi_id"),
+		Concept: Concept{Value: groupRecord.GetString("concept")},
+		Txt:     groupRecord.GetString("description"),
+	}
+
+	dd := DataDscr{
+		VarGrp: []VarGrp{grp},
+		Vars:   []Var{varObj},
+	}
+	return xml.MarshalIndent(dd, "", "  ")
+}
+
 // ExportVarGrpToXML generates the DDI <varGrp> XML fragment for a single variable group record.
 func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
 	varRecords, err := app.FindRecordsByFilter(
@@ -274,10 +326,46 @@ func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
 		Name:    g.GetString("name"),
 		Type:    g.GetString("type"),
 		Var:     strings.Join(groupVars, " "),
-		Concept: g.GetString("concept"),
+		Concept: Concept{Value: g.GetString("concept")},
 		Txt:     g.GetString("description"),
 	}
 	return xml.MarshalIndent(grp, "", "  ")
+}
+
+// ExportVarGrpCodebookToXML generates a DDI <dataDscr> fragment containing the
+// <varGrp> and all its member <var> elements.
+func ExportVarGrpCodebookToXML(app core.App, g *core.Record) ([]byte, error) {
+	varRecords, err := app.FindRecordsByFilter(
+		"variables",
+		"group = {:id}",
+		"order", 0, 0,
+		dbx.Params{"id": g.Id},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	var groupVars []string
+	var vars []Var
+	for _, v := range varRecords {
+		vars = append(vars, buildVarFromRecord(v))
+		groupVars = append(groupVars, v.GetString("ddi_id"))
+	}
+
+	grp := VarGrp{
+		ID:      g.GetString("ddi_id"),
+		Name:    g.GetString("name"),
+		Type:    g.GetString("type"),
+		Var:     strings.Join(groupVars, " "),
+		Concept: Concept{Value: g.GetString("concept")},
+		Txt:     g.GetString("description"),
+	}
+
+	dd := DataDscr{
+		VarGrp: []VarGrp{grp},
+		Vars:   vars,
+	}
+	return xml.MarshalIndent(dd, "", "  ")
 }
 
 // ExportStudyToXML converts a study and its variables into a DDI-XML byte slice.
@@ -329,7 +417,7 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 			Name:    g.GetString("name"),
 			Type:    g.GetString("type"),
 			Var:     strings.Join(groupVars, " "),
-			Concept: g.GetString("concept"),
+			Concept: Concept{Value: g.GetString("concept")},
 			Txt:     g.GetString("description"),
 		})
 	}

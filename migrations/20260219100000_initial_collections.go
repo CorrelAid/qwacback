@@ -76,6 +76,9 @@ func init() {
 			&core.TextField{Name: "interval"},
 			&core.TextField{Name: "var_format_type"},
 			&core.TextField{Name: "answer_type"},
+			&core.BoolField{Name: "has_other"},
+			&core.BoolField{Name: "has_long_list"},
+			&core.TextField{Name: "long_list_standard"},
 			&core.JSONField{Name: "categories", MaxSize: 524288}, // 512 KB
 			&core.NumberField{Name: "order"},
 		)

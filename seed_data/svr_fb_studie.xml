@@ -3,9 +3,21 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>Migrantenorganisationen als Partner von Politik und Zivilgesellschaft</titl>
-        <IDNo>SVR-FB_Studie-Migrantenorganisationen-in-Deutschland</IDNo>
+        <titl>Vielfältig engagiert - breit vernetzt - partiell eingebunden? Migrantenorganisationen als gestaltende Kraft in der Gesellschaft</titl>
+        <subTitl>Eine Studie des Forschungsbereichs beim Sachverständigenrat deutscher Stiftungen für Integration und Migration (SVR)</subTitl>
+        <IDNo agency="SVR-Forschungsbereich">SVR-FB_Studie-Migrantenorganisationen-in-Deutschland</IDNo>
       </titlStmt>
+
+      <prodStmt>
+        <producer>Forschungsbereich beim Sachverständigenrat Deutscher Stiftungen für Integration und Migration (SVR) GmbH</producer>
+        <prodDate date="2020-12-01">1. Dezember 2020</prodDate>
+        <prodPlac>Berlin</prodPlac>
+        <fundAg>Bundesministerium des Innern, für Bau und Heimat</fundAg>
+      </prodStmt>
+      <distStmt>
+        <distrbtr>Deutsche Nationalbibliothek Frankfurt am Main</distrbtr>
+      </distStmt>
+      <biblCit>Forschungsbereich beim Sachverständigenrat deutscher Stiftungen für Integration und Migration (SVR-Forschungsbereich) 2020: Vielfältig engagiert – breit vernetzt – partiell eingebunden? Migrantenorganisationen als gestaltende Kraft in der Gesellschaft, Berlin.</biblCit>
     </citation>
     <stdyInfo>
       <subject>
@@ -20,23 +32,26 @@
         <keyword>financial management</keyword>
         <keyword>cultural activities</keyword>
       </subject>
-      <abstract>Das von Oktober 2018 bis Dezember 2020 laufende Forschungsprojekt diente dazu, die vielfältige Landschaft der Migrantenorganisationen (MO) in Deutschland im Hinblick auf Aktivitätsfelder, Mitgliederstruktur und Funktionswahrnehmung möglichst genau zu erfassen. Die Studie untersucht die Größe und Ausdifferenzierung der Organisationslandschaft, das Selbstverständnis, die konkreten Arbeitsweisen und Herausforderungen von MO. Die Forschungsfragen wurden mithilfe verschiedener Informationsquellen und Methoden beantwortet. Den Schwerpunkt bilden empirische Untersuchungen in vier ausgewählten Bundesländern: Bayern, Berlin, Nordrhein-Westfalen und Sachsen. Hinweis: Die Konzeptzuordnungen (concept-Elemente) wurden nachträglich ergänzt und waren nicht Teil der Originalstudie.</abstract>
+      <abstract>Das von Oktober 2018 bis Dezember 2020 laufende Forschungsprojekt diente dazu, die vielfältige Landschaft der Migrantenorganisationen (MO) in Deutschland im Hinblick auf Aktivitätsfelder, Mitgliederstruktur und Funktionswahrnehmung möglichst genau zu erfassen. Die Studie untersucht die Größe und Ausdifferenzierung der Organisationslandschaft, das Selbstverständnis, die konkreten Arbeitsweisen und Herausforderungen von MO. Die Forschungsfragen wurden mithilfe verschiedener Informationsquellen und Methoden beantwortet. Den Schwerpunkt bilden empirische Untersuchungen in vier ausgewählten Bundesländern: Bayern, Berlin, Nordrhein-Westfalen und Sachsen. Hinweis: Der Fragebogen wurde von den Maintainer:innen dieser Plattform nachträglich mit kodiert.</abstract>
       <sumDscr>
-        <timePrd event="single">2018-10 bis 2020-12</timePrd>
+        <timePrd event="start" date="2018-10">Oktober 2018</timePrd>
+        <timePrd event="end" date="2020-12">Dezember 2020</timePrd>
+        <collDate event="start" date="2020-01">Januar 2020</collDate>
+        <collDate event="end" date="2020-03">März 2020</collDate>
         <nation>Deutschland</nation>
         <universe>Migrantenorganisationen in Deutschland</universe>
       </sumDscr>
     </stdyInfo>
+    <method>
+      <dataColl>
+        <timeMeth>Querschnitt</timeMeth>
+        <sampProc>Vollerhebung aller identifizierten Migrantenorganisationen in vier Modellregionen (Bayern, Berlin, Nordrhein-Westfalen, Sachsen). Von 6.851 identifizierten MO beteiligten sich 764 (ca. 11 %).</sampProc>
+        <collMode>Standardisierte Online-Befragung</collMode>
+      </dataColl>
+      <notes>Diese Daten stammen aus der standardisierten Online-Befragung (Kap. 4), einer von mehreren Teilstudien des Forschungsprojekts. Weitere Methoden umfassten: Vollerhebung der MO in vier Bundesländern (Kap. 2), statistisches Hochrechnungsmodell (Kap. 3), leitfadengestützte Interviews (Kap. 5) sowie eine Recherche und Befragung öffentlicher Förderinstitutionen (Kap. 6).</notes>
+    </method>
   </stdyDscr>
   <dataDscr>
-    <varGrp ID="VG1" name="frauenanteil_schaetzung" type="grid" var="V4 V5">
-      <txt>Schätzen Sie: Wie groß ist der Anteil von Frauen unter Ihren Mitgliedern? Und wie groß ist der Anteil von Menschen mit Migrationshintergrund unter Ihren Mitgliedern?</txt>
-      <concept>Geschätzter Anteil von Frauen und Migrant*innen unter Mitgliedern</concept>
-    </varGrp>
-    <varGrp ID="VG2" name="vorstandsmitglieder_frauen_migrationshintergrund" type="grid" var="V8 V9">
-      <txt>Wie viele Frauen sind im Vorstand? Und wie viele Vorstandsmitglieder haben einen Migrationshintergrund?</txt>
-      <concept>Frauen und Migrant*innen im Vorstand</concept>
-    </varGrp>
     <varGrp ID="VG3" name="selbstverstaendnis_migrantenorganisation" type="multipleResp" var="V11 V12 V13 V14 V15 V16">
       <txt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</txt>
       <concept>Selbstverständnis als Migrantenorganisation</concept>
@@ -49,10 +64,7 @@
       <txt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</txt>
       <concept>Nutzergruppen</concept>
     </varGrp>
-    <varGrp ID="VG6" name="herkunftslaender_nutzer" type="multipleResp" var="V66 V67 V68 V69 V70 V71 V72 V73 V74 V75 V76 V77 V78 V79 V80 V81 V82 V83 V84 V85 V86 V87 V88 V89 V90 V91 V92 V93 V94 V95 V96 V97 V98 V99 V100 V101 V102 V103 V104 V105 V106 V107 V108 V109 V110 V111 V112 V113 V114 V115 V116 V117 V118 V119 V120 V121 V122 V123 V124 V125 V126 V127 V128 V129 V130 V131 V132 V133 V134 V135 V136 V137 V138 V139 V140 V141 V142 V143 V144">
-      <txt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</txt>
-      <concept>Herkunftsländer der Nutzer*innen</concept>
-    </varGrp>
+    <!-- Replaced 79 binary country vars (V66–V144) with a single vocab reference -->
     <varGrp ID="VG7" name="religionszugehoerigkeit" type="multipleResp" var="V145 V146 V147 V148 V149 V150 V151 V152 V153 V154 V155 V156 V157">
       <txt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</txt>
       <concept>Religionszugehörigkeit</concept>
@@ -115,119 +127,23 @@
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V208" name="mitglieder_ende_2019" intrvl="discrete">
-      <qstn ID="Q208" responseDomainType="category">
+      <qstn ID="Q208" responseDomainType="numeric">
         <qstnLit>Bitte schätzen Sie: Wie viele Mitglieder hatte Ihre Organisation Ende 2019?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>bis 20</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>21 bis 50</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>51 bis 100</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>101 bis 200</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>201 bis 500</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>mehr als 500</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Mitgliederanzahl Ende 2019</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V1" name="mitgliedsorganisationen_anzahl" intrvl="discrete">
-      <qstn ID="Q1" responseDomainType="category">
-        <qstnLit>Anzahl der Mitgliedsorganisationen (kategorisiert)</qstnLit>
+      <qstn ID="Q1" responseDomainType="numeric">
+        <qstnLit>Anzahl der Mitgliedsorganisationen</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>5</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 10</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>bis 20</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>bis 50</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>mehr als 50</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Anzahl der Mitgliedsorganisationen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V2" name="mitglieder_erreichte_anzahl" intrvl="discrete">
-      <qstn ID="Q2" responseDomainType="category">
-        <qstnLit>Anzahl der Mitglieder, die Sie erreicht haben (kategorisiert)</qstnLit>
+      <qstn ID="Q2" responseDomainType="numeric">
+        <qstnLit>Anzahl der Mitglieder, die Sie erreicht haben</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>bis 50 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 100 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>1 bis 200 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>1 bis 500 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>1 bis 1000 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>01 bis 5000 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>mehr als 5000 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>9</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Anzahl erreichter Mitglieder</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
@@ -255,83 +171,17 @@
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V4" name="frauenanteil_schaetzung_anteil_weiblicher" intrvl="discrete">
-      <qstn ID="Q4" responseDomainType="category">
-        <preQTxt>Schätzen Sie: Wie groß ist der Anteil von Frauen unter Ihren Mitgliedern? Und wie groß ist der Anteil von Menschen mit Migrationshintergrund unter Ihren Mitgliedern?</preQTxt>
-        <qstnLit>Anteil weiblicher Mitglieder</qstnLit>
+      <qstn ID="Q4" responseDomainType="numeric">
+        <qstnLit>Schätzen Sie: Wie groß ist der Anteil von Frauen unter Ihren Mitgliedern?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>10%</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 25%</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>bis 50%</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>bis 75%</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>bis 99%</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>100%</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
-      <concept>Geschätzter Anteil von Frauen und Migrant*innen unter Mitgliedern: Anteil weiblicher Mitglieder</concept>
+      <concept>Anteil weiblicher Mitglieder</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V5" name="frauenanteil_schaetzung_anteil_mitglieder" intrvl="discrete">
-      <qstn ID="Q5" responseDomainType="category">
-        <preQTxt>Schätzen Sie: Wie groß ist der Anteil von Frauen unter Ihren Mitgliedern? Und wie groß ist der Anteil von Menschen mit Migrationshintergrund unter Ihren Mitgliedern?</preQTxt>
-        <qstnLit>Anteil Mitglieder mit Migrationshintergrund</qstnLit>
+      <qstn ID="Q5" responseDomainType="numeric">
+        <qstnLit>Schätzen Sie: Wie groß ist der Anteil von Menschen mit Migrationshintergrund unter Ihren Mitgliedern?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>10%</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 25%</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>bis 50%</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>bis 75%</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>bis 99%</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>100%</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
-      <concept>Geschätzter Anteil von Frauen und Migrant*innen unter Mitgliedern: Anteil Mitglieder mit Migrationshintergrund</concept>
+      <concept>Anteil Mitglieder mit Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V6" name="mitgliedsorganisationen_migrantenorganisationen" intrvl="discrete">
@@ -358,160 +208,30 @@
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V7" name="vorstandsmitglieder_anzahl" intrvl="discrete">
-      <qstn ID="Q7" responseDomainType="category">
-        <qstnLit>Wie viele Mitglieder hat der Vorstand Ihrer Organisation? (kategorisiert)</qstnLit>
+      <qstn ID="Q7" responseDomainType="numeric">
+        <qstnLit>Wie viele Mitglieder hat der Vorstand Ihrer Organisation?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>bis 3</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 5</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>bis 10</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>mehr als 10</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Vorstandsgröße</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V8" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="discrete">
-      <qstn ID="Q8" responseDomainType="category">
-        <preQTxt>Wie viele Frauen sind im Vorstand? Und wie viele Vorstandsmitglieder haben einen Migrationshintergrund?</preQTxt>
-        <qstnLit>Anzahl weiblicher Vorstandsmitglieder</qstnLit>
+      <qstn ID="Q8" responseDomainType="numeric">
+        <qstnLit>Wie viele Frauen sind im Vorstand Ihrer Organisation??</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>keine</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>1</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>2</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>3</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>4</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>5 und mehr</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
-      <concept>Frauen und Migrant*innen im Vorstand: Anzahl weiblicher Vorstandsmitglieder</concept>
+      <concept>Anzahl weiblicher Vorstandsmitglieder</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V9" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="discrete">
-      <qstn ID="Q9" responseDomainType="category">
-        <preQTxt>Wie viele Frauen sind im Vorstand? Und wie viele Vorstandsmitglieder haben einen Migrationshintergrund?</preQTxt>
-        <qstnLit>Anzahl Vorstandsmitglieder mit Migrationshintergrund</qstnLit>
+      <qstn ID="Q9" responseDomainType="numeric">
+        <qstnLit>Wie viele Vorstandsmitglieder haben einen Migrationshintergrund?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>keine</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>1</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>2</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>3</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>4</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>5 und mehr</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
-      <concept>Frauen und Migrant*innen im Vorstand: Anzahl Vorstandsmitglieder mit Migrationshintergrund</concept>
+      <concept>Anzahl Vorstandsmitglieder mit Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V10" name="gruendungsjahr" intrvl="discrete">
-      <qstn ID="Q10" responseDomainType="category">
-        <qstnLit>Wann hat sich Ihre Organisation gegründet? (kategorisiert)</qstnLit>
+      <qstn ID="Q10" responseDomainType="numeric">
+        <qstnLit>Wann hat sich Ihre Organisation gegründet?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>vor 1955</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>1956 bis 1970</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>1971 bis 1980</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>1981 bis 1990</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>1991 bis 2000</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>2001 bis 2010</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>2011 bis 2014</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>nach 2015</labl>
-      </catgry>
-      <catgry>
-        <catValu>9</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>10</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Gründungsjahr</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
@@ -522,11 +242,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Selbstverständnis als Migrantenorganisation: In unserer Organisation engagieren sich viele Menschen mit familiärer Zuwanderungsgeschichte (z. B. aus der dritten oder vierten Einwanderergeneration).</concept>
       <varFormat type="numeric" schema="other"/>
@@ -538,11 +256,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Selbstverständnis als Migrantenorganisation: Unsere Organisation ist den Wurzeln nach eine Migrantenorganisation. Denn sie wurde von Menschen mit Migrationshintergrund gegründet.</concept>
       <varFormat type="numeric" schema="other"/>
@@ -554,11 +270,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Selbstverständnis als Migrantenorganisation: Unsere Angebote richten sich hauptsächlich an Menschen mit Migrationshintergrund.</concept>
       <varFormat type="numeric" schema="other"/>
@@ -570,11 +284,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Selbstverständnis als Migrantenorganisation: anderes</concept>
       <varFormat type="numeric" schema="other"/>
@@ -586,11 +298,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Selbstverständnis als Migrantenorganisation: weiß nicht</concept>
       <varFormat type="numeric" schema="other"/>
@@ -602,11 +312,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Selbstverständnis als Migrantenorganisation: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>
@@ -788,7 +496,7 @@
     </var>
     <var ID="V22" name="einnahmen_2019" intrvl="discrete">
       <qstn ID="Q22" responseDomainType="category">
-        <qstnLit>Wie hoch waren die Einnahmen Ihrer Organisation im Jahr 2019 insgesamt?</qstnLit>
+        <qstnLit>Bitte schätzen Sie: Wie hoch waren die Einnahmen Ihrer Organisation im Jahr 2019 insgesamt?</qstnLit>
       </qstn>
       <catgry>
         <catValu>1</catValu>
@@ -853,45 +561,9 @@
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V24" name="aktivitaetsdauer" intrvl="discrete">
-      <qstn ID="Q24" responseDomainType="category">
-        <qstnLit>Mit wie vielen Jahren sind Sie in Ihrer Organisation aktiv? (kategorisiert)</qstnLit>
+      <qstn ID="Q24" responseDomainType="numeric">
+        <qstnLit>Mit wie vielen Jahren sind Sie in Ihrer Organisation aktiv?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>1 Jahr</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 5 Jahre</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>bis 10 Jahre</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>bis 15 Jahre</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>bis 20 Jahre</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>bis 30 Jahre</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>mehr als 30 Jahre</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>9</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Dauer der Aktivität in der Organisation</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
@@ -933,11 +605,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Austausch zwischen Menschen mit und ohne Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
@@ -949,11 +619,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Kinder- und Jugendarbeit</concept>
       <varFormat type="numeric" schema="other"/>
@@ -965,11 +633,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Bildung</concept>
       <varFormat type="numeric" schema="other"/>
@@ -981,11 +647,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: künstlerisch-kulturelle Aktivitäten (z. B. Musik, Theater)</concept>
       <varFormat type="numeric" schema="other"/>
@@ -997,11 +661,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Unterstützung von Geflüchteten/Flüchtlingen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1013,11 +675,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Beratung</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1029,11 +689,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Angebote für Frauen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1045,11 +703,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Elternarbeit/Familienarbeit</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1061,11 +717,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Pflege der Herkunftskultur(en)</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1077,11 +731,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Antidiskriminierungsarbeit</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1093,11 +745,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: politische Interessenvertretung</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1109,11 +759,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Religion</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1125,11 +773,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Sport</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1141,11 +787,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Pflege/Unterricht der Herkunftssprache</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1157,11 +801,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Entwicklungszusammenarbeit</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1173,11 +815,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Exkursionen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1189,11 +829,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Seniorenarbeit</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1205,11 +843,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Gesundheit</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1221,11 +857,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Wissenschaft und Forschung</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1237,11 +871,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Arbeitsvermittlung</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1253,11 +885,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Umwelt- und Naturschutz</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1269,11 +899,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: Vertretung beruflicher Interessen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1285,11 +913,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: anderes</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1301,11 +927,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Aktivitätsbereiche: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1317,11 +941,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Menschen mit Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1333,11 +955,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Kinder/Jugendliche</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1349,11 +969,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Frauen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1365,11 +983,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Geflüchtete/Flüchtlinge</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1381,11 +997,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Menschen ohne Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1397,11 +1011,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Menschen mit Migrationshintergrund aus einer bestimmten Herkunftsregion</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1413,11 +1025,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: sozial benachteiligte Menschen (z. B. durch geringes Einkommen)</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1429,11 +1039,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Studierende und/oder Akademiker</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1445,11 +1053,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Senioren</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1461,11 +1067,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: People of Color</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1477,11 +1081,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: Menschen einer bestimmten Religion</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1493,11 +1095,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: pflege- und/oder pflegebedürftige oder gesundheitlich eingeschränkte Menschen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1509,11 +1109,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: andere Personen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1525,11 +1123,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: LSBTI*-Community</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1541,11 +1137,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: weiß nicht</concept>
       <varFormat type="numeric" schema="other"/>
@@ -1557,1277 +1151,18 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Nutzergruppen: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V66" name="herkunftslaender_nutzer_türkei" intrvl="discrete">
-      <qstn ID="Q66" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Türkei</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Türkei</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V67" name="herkunftslaender_nutzer_syrien" intrvl="discrete">
-      <qstn ID="Q67" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Syrien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Syrien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V68" name="herkunftslaender_nutzer_irak" intrvl="discrete">
-      <qstn ID="Q68" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Irak</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Irak</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V69" name="herkunftslaender_nutzer_afghanistan" intrvl="discrete">
-      <qstn ID="Q69" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Afghanistan</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Afghanistan</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V70" name="herkunftslaender_nutzer_iran" intrvl="discrete">
-      <qstn ID="Q70" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Iran</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Iran</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V71" name="herkunftslaender_nutzer_russische_föderation" intrvl="discrete">
-      <qstn ID="Q71" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Russische Föderation</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Russische Föderation</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V72" name="herkunftslaender_nutzer_ukraine" intrvl="discrete">
-      <qstn ID="Q72" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Ukraine</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Ukraine</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V73" name="herkunftslaender_nutzer_bulgarien" intrvl="discrete">
-      <qstn ID="Q73" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Bulgarien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Bulgarien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V74" name="herkunftslaender_nutzer_rumänien" intrvl="discrete">
-      <qstn ID="Q74" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Rumänien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Rumänien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V75" name="herkunftslaender_nutzer_polen" intrvl="discrete">
-      <qstn ID="Q75" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Polen</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Polen</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V76" name="herkunftslaender_nutzer_albanien" intrvl="discrete">
-      <qstn ID="Q76" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Albanien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Albanien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V77" name="herkunftslaender_nutzer_nigeria" intrvl="discrete">
-      <qstn ID="Q77" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Nigeria</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Nigeria</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V78" name="herkunftslaender_nutzer_jemen" intrvl="discrete">
-      <qstn ID="Q78" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Jemen</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Jemen</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V79" name="herkunftslaender_nutzer_somalia" intrvl="discrete">
-      <qstn ID="Q79" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Somalia</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Somalia</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V80" name="herkunftslaender_nutzer_eritrea" intrvl="discrete">
-      <qstn ID="Q80" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Eritrea</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Eritrea</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V81" name="herkunftslaender_nutzer_griechenland" intrvl="discrete">
-      <qstn ID="Q81" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Griechenland</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Griechenland</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V82" name="herkunftslaender_nutzer_italien" intrvl="discrete">
-      <qstn ID="Q82" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Italien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Italien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V83" name="herkunftslaender_nutzer_ägypten" intrvl="discrete">
-      <qstn ID="Q83" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Ägypten</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Ägypten</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V84" name="herkunftslaender_nutzer_pakistan" intrvl="discrete">
-      <qstn ID="Q84" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Pakistan</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Pakistan</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V85" name="herkunftslaender_nutzer_malia" intrvl="discrete">
-      <qstn ID="Q85" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Malia</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Malia</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V86" name="herkunftslaender_nutzer_serbien" intrvl="discrete">
-      <qstn ID="Q86" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Serbien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Serbien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V87" name="herkunftslaender_nutzer_georgien" intrvl="discrete">
-      <qstn ID="Q87" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Georgien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Georgien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V88" name="herkunftslaender_nutzer_mazedonien" intrvl="discrete">
-      <qstn ID="Q88" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Mazedonien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Mazedonien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V89" name="herkunftslaender_nutzer_armenien" intrvl="discrete">
-      <qstn ID="Q89" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Armenien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Armenien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V90" name="herkunftslaender_nutzer_äthiopien" intrvl="discrete">
-      <qstn ID="Q90" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Äthiopien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Äthiopien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V91" name="herkunftslaender_nutzer_kroatien" intrvl="discrete">
-      <qstn ID="Q91" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Kroatien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Kroatien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V92" name="herkunftslaender_nutzer_china" intrvl="discrete">
-      <qstn ID="Q92" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>China</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: China</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V93" name="herkunftslaender_nutzer_indien" intrvl="discrete">
-      <qstn ID="Q93" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Indien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Indien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V94" name="herkunftslaender_nutzer_ghana" intrvl="discrete">
-      <qstn ID="Q94" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Ghana</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Ghana</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V95" name="herkunftslaender_nutzer_kamerun" intrvl="discrete">
-      <qstn ID="Q95" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Kamerun</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Kamerun</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V96" name="herkunftslaender_nutzer_jordanien" intrvl="discrete">
-      <qstn ID="Q96" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Jordanien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Jordanien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V97" name="herkunftslaender_nutzer_libanon" intrvl="discrete">
-      <qstn ID="Q97" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Libanon</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Libanon</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V98" name="herkunftslaender_nutzer_marokko" intrvl="discrete">
-      <qstn ID="Q98" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Marokko</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Marokko</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V99" name="herkunftslaender_nutzer_kasachstan" intrvl="discrete">
-      <qstn ID="Q99" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Kasachstan</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Kasachstan</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V100" name="herkunftslaender_nutzer_tunesien" intrvl="discrete">
-      <qstn ID="Q100" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Tunesien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Tunesien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V101" name="herkunftslaender_nutzer_bosnien_und" intrvl="discrete">
-      <qstn ID="Q101" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Bosnien und Herzegowina</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Bosnien und Herzegowina</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V102" name="herkunftslaender_nutzer_spanien" intrvl="discrete">
-      <qstn ID="Q102" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Spanien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Spanien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V103" name="herkunftslaender_nutzer_frankreich" intrvl="discrete">
-      <qstn ID="Q103" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Frankreich</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Frankreich</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V104" name="herkunftslaender_nutzer_österreich" intrvl="discrete">
-      <qstn ID="Q104" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Österreich</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Österreich</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V105" name="herkunftslaender_nutzer_schweiz" intrvl="discrete">
-      <qstn ID="Q105" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Schweiz</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Schweiz</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V106" name="herkunftslaender_nutzer_belgien" intrvl="discrete">
-      <qstn ID="Q106" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Belgien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Belgien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V107" name="herkunftslaender_nutzer_niederlande" intrvl="discrete">
-      <qstn ID="Q107" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Niederlande</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Niederlande</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V108" name="herkunftslaender_nutzer_dänemark" intrvl="discrete">
-      <qstn ID="Q108" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Dänemark</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Dänemark</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V109" name="herkunftslaender_nutzer_schweden" intrvl="discrete">
-      <qstn ID="Q109" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Schweden</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Schweden</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V110" name="herkunftslaender_nutzer_norwegen" intrvl="discrete">
-      <qstn ID="Q110" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Norwegen</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Norwegen</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V111" name="herkunftslaender_nutzer_finnland" intrvl="discrete">
-      <qstn ID="Q111" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Finnland</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Finnland</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V112" name="herkunftslaender_nutzer_großbritannien" intrvl="discrete">
-      <qstn ID="Q112" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Großbritannien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Großbritannien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V113" name="herkunftslaender_nutzer_irland" intrvl="discrete">
-      <qstn ID="Q113" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Irland</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Irland</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V114" name="herkunftslaender_nutzer_portugal" intrvl="discrete">
-      <qstn ID="Q114" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Portugal</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Portugal</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V115" name="herkunftslaender_nutzer_ungarn" intrvl="discrete">
-      <qstn ID="Q115" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Ungarn</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Ungarn</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V116" name="herkunftslaender_nutzer_tschechien" intrvl="discrete">
-      <qstn ID="Q116" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Tschechien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Tschechien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V117" name="herkunftslaender_nutzer_slowakei" intrvl="discrete">
-      <qstn ID="Q117" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Slowakei</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Slowakei</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V118" name="herkunftslaender_nutzer_litauen" intrvl="discrete">
-      <qstn ID="Q118" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Litauen</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Litauen</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V119" name="herkunftslaender_nutzer_lettland" intrvl="discrete">
-      <qstn ID="Q119" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Lettland</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Lettland</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V120" name="herkunftslaender_nutzer_estland" intrvl="discrete">
-      <qstn ID="Q120" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Estland</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Estland</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V121" name="herkunftslaender_nutzer_weißrussland" intrvl="discrete">
-      <qstn ID="Q121" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Weißrussland</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Weißrussland</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V122" name="herkunftslaender_nutzer_moldau" intrvl="discrete">
-      <qstn ID="Q122" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Moldau</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Moldau</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V123" name="herkunftslaender_nutzer_usa" intrvl="discrete">
-      <qstn ID="Q123" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>USA</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: USA</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V124" name="herkunftslaender_nutzer_kanada" intrvl="discrete">
-      <qstn ID="Q124" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Kanada</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Kanada</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V125" name="herkunftslaender_nutzer_australien" intrvl="discrete">
-      <qstn ID="Q125" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Australien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Australien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V126" name="herkunftslaender_nutzer_neuseeland" intrvl="discrete">
-      <qstn ID="Q126" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Neuseeland</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Neuseeland</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V127" name="herkunftslaender_nutzer_südafrika" intrvl="discrete">
-      <qstn ID="Q127" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Südafrika</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Südafrika</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V128" name="herkunftslaender_nutzer_brasilien" intrvl="discrete">
-      <qstn ID="Q128" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Brasilien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Brasilien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V129" name="herkunftslaender_nutzer_argentinien" intrvl="discrete">
-      <qstn ID="Q129" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Argentinien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Argentinien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V130" name="herkunftslaender_nutzer_mexiko" intrvl="discrete">
-      <qstn ID="Q130" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Mexiko</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Mexiko</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V131" name="herkunftslaender_nutzer_kolumbien" intrvl="discrete">
-      <qstn ID="Q131" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Kolumbien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Kolumbien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V132" name="herkunftslaender_nutzer_peru" intrvl="discrete">
-      <qstn ID="Q132" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Peru</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Peru</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V133" name="herkunftslaender_nutzer_chile" intrvl="discrete">
-      <qstn ID="Q133" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Chile</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Chile</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V134" name="herkunftslaender_nutzer_vietnam" intrvl="discrete">
-      <qstn ID="Q134" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Vietnam</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Vietnam</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V135" name="herkunftslaender_nutzer_thailand" intrvl="discrete">
-      <qstn ID="Q135" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Thailand</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Thailand</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V136" name="herkunftslaender_nutzer_indonesien" intrvl="discrete">
-      <qstn ID="Q136" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Indonesien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Indonesien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V137" name="herkunftslaender_nutzer_philippinen" intrvl="discrete">
-      <qstn ID="Q137" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Philippinen</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Philippinen</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V138" name="herkunftslaender_nutzer_japan" intrvl="discrete">
-      <qstn ID="Q138" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Japan</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Japan</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V139" name="herkunftslaender_nutzer_südkorea" intrvl="discrete">
-      <qstn ID="Q139" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Südkorea</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Südkorea</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V140" name="herkunftslaender_nutzer_israel" intrvl="discrete">
-      <qstn ID="Q140" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Israel</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Israel</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V141" name="herkunftslaender_nutzer_libanon" intrvl="discrete">
-      <qstn ID="Q141" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Libanon</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Libanon</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V142" name="herkunftslaender_nutzer_saudiarabien" intrvl="discrete">
-      <qstn ID="Q142" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Saudi-Arabien</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Saudi-Arabien</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V143" name="herkunftslaender_nutzer_vereinigte_arabische" intrvl="discrete">
-      <qstn ID="Q143" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>Vereinigte Arabische Emirate</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: Vereinigte Arabische Emirate</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V144" name="herkunftslaender_nutzer_anderes" intrvl="discrete">
-      <qstn ID="Q144" responseDomainType="multiple">
-        <preQTxt>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</preQTxt>
-        <qstnLit>anderes</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>0</catValu>
-        <labl>Not mentioned</labl>
-      </catgry>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Mentioned</labl>
-      </catgry>
-      <concept>Herkunftsländer der Nutzer*innen: anderes</concept>
+    <var ID="V66" name="herkunftslaender_nutzer" intrvl="discrete">
+      <qstn responseDomainType="multiple">
+        <qstnLit>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</qstnLit>
+      </qstn>
+      <concept vocab="iso_3166_1">Herkunftsländer der Nutzer*innen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V145" name="religionszugehoerigkeit_katholisch" intrvl="discrete">
@@ -2837,11 +1172,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: katholisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2853,11 +1186,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: evangelisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2869,11 +1200,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: evangelisch-freikirchlich</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2885,11 +1214,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: christlich-orthodox</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2901,11 +1228,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: jüdisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2917,11 +1242,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: schiitisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2933,11 +1256,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: sunnitisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2949,11 +1270,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: alevitisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2965,11 +1284,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: buddhistisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2981,11 +1298,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: hinduistisch</concept>
       <varFormat type="numeric" schema="other"/>
@@ -2997,11 +1312,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: anderes</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3013,11 +1326,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: weiß nicht</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3029,11 +1340,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Religionszugehörigkeit: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3097,61 +1406,10 @@
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V160" name="engagement_fluechtlinge_zeitraum" intrvl="discrete">
-      <qstn ID="Q160" responseDomainType="category">
-        <qstnLit>Seit wann engagiert sich Ihre Organisation für Geflüchtete? (kategorisiert)</qstnLit>
+      <qstn ID="Q160" responseDomainType="numeric">
+        <qstnLit>Seit wann engagiert sich Ihre Organisation für Geflüchtete?</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>bis zur Zeit 1990</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>1991 bis 2000</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>2001 bis 2010</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>2011 bis 2014</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>seit 2015</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
-      <concept>Beginn des Engagements für Geflüchtete (Zeitraum)</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-    <var ID="V161" name="engagement_fluechtlinge_dichotom" intrvl="discrete">
-      <qstn ID="Q161" responseDomainType="category">
-        <qstnLit>Seit wann engagiert sich Ihre Organisation für Geflüchtete? (dichotom)</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>seit der Gründung</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>erst später</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
-      <concept>Beginn des Engagements für Geflüchtete (seit Gründung)</concept>
+      <concept>Beginn des Engagements für Geflüchtete</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V162" name="angebote_fluechtlinge_begleitung_bei" intrvl="discrete">
@@ -3161,11 +1419,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Begleitung bei Behördengängen, zu Ärzten, etc.</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3177,11 +1433,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Raum für Kontakte mit Migranten/Menschen mit Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3193,11 +1447,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: allgemeine Unterstützung bei der Erstorientierung</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3209,11 +1461,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Bildungsangebote</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3225,11 +1475,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Dolmetschen/Übersetzungen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3241,11 +1489,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Deutschkurse</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3257,11 +1503,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Unterstützung beim Beantragen von Leistungen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3273,11 +1517,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Raum für Kontakte mit Deutschen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3289,11 +1531,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Arbeitsmarktintegration</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3305,11 +1545,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Seelsorge</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3321,11 +1559,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: Unterstützung bei der Wohnungssuche</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3337,11 +1573,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: anderes</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3353,11 +1587,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: weiß nicht</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3369,11 +1601,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Angebote für Geflüchtete: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3385,11 +1615,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: in Vollzeit (sozialversicherungspflichtig)</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3401,11 +1629,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: in Teilzeit (sozialversicherungspflichtig)</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3417,11 +1643,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: als Minijob</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3433,11 +1657,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: auf Honorarbasis</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3449,11 +1671,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: im Freiwilligendienst</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3465,11 +1685,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: als bezahltes Praktikum</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3481,11 +1699,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: nein, bei uns wird niemand bezahlt</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3497,11 +1713,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: weiß nicht</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3513,11 +1727,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Arten bezahlter Beschäftigung: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3554,80 +1766,16 @@
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V186" name="unbezahlt_engagierte_anzahl" intrvl="discrete">
-      <qstn ID="Q186" responseDomainType="category">
-        <qstnLit>Anzahl unbezahlt Engagierter (kategorisiert)</qstnLit>
+      <qstn ID="Q186" responseDomainType="numeric">
+        <qstnLit>Anzahl unbezahlt Engagierter</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>1 bis 10 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 20 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>bis 30 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>bis 50 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>mehr als 50 Personen</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Anzahl unbezahlt Engagierter</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V187" name="bezahlt_beschaeftigte_anzahl" intrvl="discrete">
-      <qstn ID="Q187" responseDomainType="category">
-        <qstnLit>Anzahl bezahlt Beschäftigter (kategorisiert)</qstnLit>
+      <qstn ID="Q187" responseDomainType="numeric">
+        <qstnLit>Anzahl bezahlt Beschäftigter</qstnLit>
       </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>kein bezahlt Beschäftigte/r</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>bis 3 bezahlt Beschäftigte</labl>
-      </catgry>
-      <catgry>
-        <catValu>3</catValu>
-        <labl>bis 5 bezahlt Beschäftigte</labl>
-      </catgry>
-      <catgry>
-        <catValu>4</catValu>
-        <labl>bis 10 bezahlt Beschäftigte</labl>
-      </catgry>
-      <catgry>
-        <catValu>5</catValu>
-        <labl>bis 20 bezahlt Beschäftigte</labl>
-      </catgry>
-      <catgry>
-        <catValu>6</catValu>
-        <labl>bis 30 bezahlt Beschäftigte</labl>
-      </catgry>
-      <catgry>
-        <catValu>7</catValu>
-        <labl>mehr als 30 bezahlt Beschäftigte</labl>
-      </catgry>
-      <catgry>
-        <catValu>8</catValu>
-        <labl>weiß nicht</labl>
-      </catgry>
-      <catgry>
-        <catValu>9</catValu>
-        <labl>keine Angabe</labl>
-      </catgry>
       <concept>Anzahl bezahlt Beschäftigter</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
@@ -3692,11 +1840,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Kommunen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3708,11 +1854,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Land</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3724,11 +1868,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Stiftungen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3740,11 +1882,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Bund</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3756,11 +1896,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: BMF</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3772,11 +1910,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Kirchen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3788,11 +1924,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: andere Organisationen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3804,11 +1938,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: EU-Förderung</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3820,11 +1952,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Unternehmen</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3836,11 +1966,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Kulturinstitute und Konsulate</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3852,11 +1980,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: Institutionen aus dem Herkunftsland/den Herkunftsländern</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3868,11 +1994,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: anderes</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3884,11 +2008,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: weiß nicht</concept>
       <varFormat type="numeric" schema="other"/>
@@ -3900,11 +2022,9 @@
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>Not mentioned</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
-        <labl>Mentioned</labl>
       </catgry>
       <concept>Förderquellen 2019: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>

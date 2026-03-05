@@ -37,7 +37,7 @@ func TestExamplesRoutes(t *testing.T) {
 			Method:          http.MethodGet,
 			URL:             "/api/examples",
 			ExpectedStatus:  200,
-			ExpectedContent: []string{`"answer_type"`, `"xlsform"`, `"ddi"`, `"single_choice"`, `"open_text"`},
+			ExpectedContent: []string{`"answer_type"`, `"xlsform"`, `"ddi"`, `"single_choice"`, `"text"`},
 			TestAppFactory:  setupTestApp,
 		},
 		{
@@ -388,6 +388,38 @@ func TestXMLFragmentRoutes(t *testing.T) {
 			Name:           "variable group xml not found",
 			Method:         http.MethodGet,
 			URL:            "/api/variable-groups/nonexistent00/xml",
+			ExpectedStatus: 404,
+			TestAppFactory: setupTestApp,
+		},
+		// --- Variable XLSForm ---
+		{
+			Name:            "variable xlsform",
+			Method:          http.MethodGet,
+			URL:             "/api/variables/" + varID + "/xlsform",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"survey"`, `"choices"`, `"type"`, `"name"`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:           "variable xlsform not found",
+			Method:         http.MethodGet,
+			URL:            "/api/variables/nonexistent00/xlsform",
+			ExpectedStatus: 404,
+			TestAppFactory: setupTestApp,
+		},
+		// --- Variable group XLSForm ---
+		{
+			Name:            "variable group xlsform",
+			Method:          http.MethodGet,
+			URL:             "/api/variable-groups/" + groupID + "/xlsform",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"survey"`, `"choices"`, `"type"`, `"name"`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:           "variable group xlsform not found",
+			Method:         http.MethodGet,
+			URL:            "/api/variable-groups/nonexistent00/xlsform",
 			ExpectedStatus: 404,
 			TestAppFactory: setupTestApp,
 		},

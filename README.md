@@ -56,15 +56,20 @@ Studies are described in [DDI Codebook 2.5](https://ddialliance.org/Specificatio
 
 **Answer types → DDI encoding**
 
-| Format | `intrvl` | `responseDomainType` | Container |
+| `answer_type` | `intrvl` | `responseDomainType` | Container |
 |--------|----------|----------------------|-----------|
-| `open_number` | `discrete` | `numeric` | `<var>` |
-| `open_text` | `contin` | `text` | `<var>` |
+| `integer` | `discrete` | `numeric` | `<var>` |
+| `text` | `contin` | `text` | `<var>` |
 | `single_choice` | `discrete` | `category` | `<var>` + `<catgry>` per option |
-| `single_choice_other` | `discrete` / `contin` | `category` + `text` | `<var>` with "Sonstiges" + text `<var>` |
-| `checkboxes` | `discrete` | `multiple` | `<varGrp type="multipleResp">` + binary `<var>` per option |
-| `checkboxes_other` | `discrete` / `contin` | `multiple` + `text` | `<varGrp>` + binary `<var>`s + text `<var>` |
+| `multiple_choice` | `discrete` | `multiple` | `<varGrp type="multipleResp">` + binary `<var>` per option |
 | `grid` | `discrete` | `category` | `<varGrp type="grid">` + `<var>` per item |
+
+**Subcategory flags** (booleans on `single_choice` and `multiple_choice`):
+
+| Flag | Effect |
+|------|--------|
+| `has_other` | A companion `_other` text variable exists for free-text specification |
+| `has_long_list` | Categories come from an external code list via `concept/@vocab` |
 
 **Mandatory fields** on every `<var>` and `<varGrp>`:
 - `name` attribute — `snake_case` machine identifier (column name)
@@ -169,7 +174,7 @@ For detailed documentation on the conversion endpoints, see [CONVERSION_API.md](
 - **GET `/api/examples`**: Returns answer type examples as a JSON array. Each example includes XLSForm and DDI Codebook representations.
 - **GET `/api/examples/{type}`**: Returns a single example by type identifier.
 
-Available types: `single_choice`, `multiple_choice`, `single_choice_other`, `multiple_choice_other`, `grid`, `open_number`, `open_text`, `single_choice_no_opinion`
+Available types: `single_choice`, `multiple_choice`, `single_choice_other`, `multiple_choice_other`, `grid`, `integer`, `text`, `single_choice_long_list`, `multiple_choice_long_list`
 
 ## Development & Testing
 

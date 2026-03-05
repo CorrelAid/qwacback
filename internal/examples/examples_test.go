@@ -17,9 +17,10 @@ func TestGetAll(t *testing.T) {
 		"single_choice_other",
 		"multiple_choice_other",
 		"grid",
-		"open_number",
-		"open_text",
-		"single_choice_no_opinion",
+		"integer",
+		"text",
+		"single_choice_long_list",
+		"multiple_choice_long_list",
 	}
 
 	if len(all) != len(expectedTypes) {

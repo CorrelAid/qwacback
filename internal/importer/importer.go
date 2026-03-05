@@ -2,6 +2,8 @@ package importer
 
 import (
 	"bytes"
+	"crypto/sha256"
+	"encoding/base32"
 	"encoding/xml"
 	"log"
 	"regexp"
@@ -10,6 +12,16 @@ import (
 	"github.com/clbanning/mxj/v2"
 	"github.com/pocketbase/pocketbase/core"
 )
+
+// deterministicID generates a stable 15-character PocketBase record ID
+// from a composite key (e.g. "studyIDNo/varName"). The same input always
+// produces the same ID.
+func deterministicID(parts ...string) string {
+	h := sha256.Sum256([]byte(strings.Join(parts, "/")))
+	// Base32 lowercase, no padding, take first 15 chars
+	encoded := base32.StdEncoding.WithPadding(base32.NoPadding).EncodeToString(h[:])
+	return strings.ToLower(encoded[:15])
+}
 
 var abstractRe = regexp.MustCompile(`(?s)<abstract[^>]*>(.*?)</abstract>`)
 
@@ -136,7 +148,7 @@ func textAt(mv mxj.Map, path string) string {
 	return strings.TrimSpace(extractText(vals[0]))
 }
 
-// inferAnswerType maps DDI responseDomainType + group type to an XLSForm answer type.
+// inferAnswerType maps DDI responseDomainType + group type to an answer type.
 func inferAnswerType(responseDomainType, groupType string) string {
 	switch responseDomainType {
 	case "numeric":
@@ -144,12 +156,12 @@ func inferAnswerType(responseDomainType, groupType string) string {
 	case "text":
 		return "text"
 	case "multiple":
-		return "select_multiple"
+		return "multiple_choice"
 	case "category":
 		if groupType == "grid" {
-			return "matrix"
+			return "grid"
 		}
-		return "select_one"
+		return "single_choice"
 	default:
 		return ""
 	}
@@ -204,6 +216,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	}
 
 	studyRecord := core.NewRecord(studyCollection)
+	studyRecord.Id = deterministicID(title)
 	studyRecord.Set("title", title)
 	studyRecord.Set("id_no", idNo)
 	studyRecord.Set("abstract", abstract)
@@ -298,7 +311,12 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 				})
 			}
 
+			// Detect long list (external code list via concept/@vocab)
+			vocab, _ := vM.ValueForPathString("concept.-vocab")
+			hasLongList := vocab != ""
+
 			varRecord := core.NewRecord(varCollection)
+			varRecord.Id = deterministicID(title, vName)
 			varRecord.Set("study", studyRecord.Id)
 			varRecord.Set("ddi_id", ddiId)
 			varRecord.Set("name", vName)
@@ -309,6 +327,8 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			varRecord.Set("interval", vIntrvl)
 			varRecord.Set("var_format_type", vFmtType)
 			varRecord.Set("answer_type", inferAnswerType(vQstnType, varGroupTypeMap[ddiId]))
+			varRecord.Set("has_long_list", hasLongList)
+			varRecord.Set("long_list_standard", vocab)
 			varRecord.Set("categories", categories)
 			varRecord.Set("order", i)
 
@@ -320,6 +340,23 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			if ddiId != "" {
 				varRecordsMap[ddiId] = varRecord
 			}
+		}
+	}
+
+	// Second pass: detect has_other by checking for _other companion variables.
+	// A variable/group named "foo" has_other=true if a variable named "foo_other" exists.
+	varNameSet := make(map[string]bool)
+	for _, vr := range varRecordsMap {
+		varNameSet[vr.GetString("name")] = true
+	}
+	for _, vr := range varRecordsMap {
+		name := vr.GetString("name")
+		if strings.HasSuffix(name, "_other") {
+			continue
+		}
+		if varNameSet[name+"_other"] {
+			vr.Set("has_other", true)
+			app.Save(vr)
 		}
 	}
 
@@ -347,6 +384,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			}
 
 			groupRecord := core.NewRecord(groupCollection)
+			groupRecord.Id = deterministicID(title, gName)
 			groupRecord.Set("study", studyRecord.Id)
 			groupRecord.Set("ddi_id", gId)
 			groupRecord.Set("name", gName)

@@ -49,6 +49,10 @@ The XLSForm format mirrors the actual spreadsheet structure with three sheets:
 │ select_one   │ category            │ discrete │ numeric              │
 │ matrix       │ category            │ discrete │ numeric              │
 │ select_multi │ multiple            │ discrete │ numeric              │
+│ select_one   │ category + vocab    │ discrete │ numeric              │
+│  _from_file  │   (no catgry)       │          │                      │
+│ select_multi │ multiple + vocab    │ discrete │ numeric              │
+│  _from_file  │   (no catgry)       │          │                      │
 └──────────────┴─────────────────────┴──────────┴──────────────────────┘
 
 Additional Field Mappings:
@@ -100,6 +104,14 @@ type SettingsRow struct {
 	Version   string `json:"version,omitempty"`
 }
 
+// DDIConcept represents a DDI <concept> element with optional vocabulary attributes.
+// When Vocab is set, the variable references an external code list
+// (e.g. ISO 3166-1) and inline catgry elements may be omitted.
+type DDIConcept struct {
+	Vocab string `xml:"vocab,attr,omitempty"`
+	Value string `xml:",chardata"`
+}
+
 // DDIVar represents a DDI <var> element
 type DDIVar struct {
 	XMLName   xml.Name      `xml:"var"`
@@ -108,19 +120,19 @@ type DDIVar struct {
 	Intrvl    string        `xml:"intrvl,attr,omitempty"`
 	Qstn      *DDIQstn      `xml:"qstn,omitempty"`
 	Catgry    []DDICategory `xml:"catgry,omitempty"`
-	Concept   string        `xml:"concept,omitempty"`
+	Concept   DDIConcept    `xml:"concept"`
 	VarFormat *DDIVarFormat `xml:"varFormat,omitempty"`
 }
 
 // DDIVarGrp represents a DDI <varGrp> element
 type DDIVarGrp struct {
-	XMLName xml.Name `xml:"varGrp"`
-	ID      string   `xml:"ID,attr"`
-	Name    string   `xml:"name,attr,omitempty"`
-	Type    string   `xml:"type,attr,omitempty"`
-	Var     string   `xml:"var,attr"` // Space separated variable IDs
-	Txt     string   `xml:"txt,omitempty"`
-	Concept string   `xml:"concept,omitempty"`
+	XMLName xml.Name   `xml:"varGrp"`
+	ID      string     `xml:"ID,attr"`
+	Name    string     `xml:"name,attr,omitempty"`
+	Type    string     `xml:"type,attr,omitempty"`
+	Var     string     `xml:"var,attr"` // Space separated variable IDs
+	Txt     string     `xml:"txt,omitempty"`
+	Concept DDIConcept `xml:"concept"`
 }
 
 // DDIQstn represents a DDI <qstn> element
@@ -142,6 +154,12 @@ type DDICategory struct {
 type DDIVarFormat struct {
 	Type   string `xml:"type,attr,omitempty"`
 	Schema string `xml:"schema,attr,omitempty"`
+}
+
+// DDICodeBook represents a full DDI <codeBook> element (used for parsing study-level exports).
+type DDICodeBook struct {
+	XMLName  xml.Name    `xml:"codeBook"`
+	DataDscr DDIDataDscr `xml:"dataDscr"`
 }
 
 // DDIDataDscr is a wrapper element that can hold multiple <varGrp> and <var> elements.
@@ -189,7 +207,14 @@ func DDIToXLSForm(ddiXML []byte) ([]byte, error) {
 		return json.MarshalIndent(form, "", "  ")
 	}
 
-	return nil, fmt.Errorf("input XML is neither a <var>, <varGrp>, nor <dataDscr> element")
+	// Try to parse as a full <codeBook> (extract its dataDscr)
+	var cb DDICodeBook
+	if err := xml.Unmarshal(ddiXML, &cb); err == nil && cb.XMLName.Local == "codeBook" {
+		convertDDIDataDscrToXLSForm(cb.DataDscr, &form)
+		return json.MarshalIndent(form, "", "  ")
+	}
+
+	return nil, fmt.Errorf("input XML is neither a <var>, <varGrp>, <dataDscr>, nor <codeBook> element")
 }
 
 // convertDDIDataDscrToXLSForm converts a <dataDscr> wrapper to XLSForm.
@@ -205,13 +230,18 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 	consumed := make(map[string]bool)
 
 	for _, grp := range dd.VarGrps {
-		if grp.Type == "multipleResp" {
+		switch grp.Type {
+		case "multipleResp":
 			convertMultipleRespToXLSForm(grp, varByID, form)
-			// Mark member vars as consumed
 			for _, id := range strings.Fields(grp.Var) {
 				consumed[id] = true
 			}
-		} else {
+		case "grid":
+			convertGridToXLSForm(grp, varByID, form)
+			for _, id := range strings.Fields(grp.Var) {
+				consumed[id] = true
+			}
+		default:
 			convertDDIVarGrpToXLSForm(grp, form)
 		}
 	}
@@ -242,7 +272,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form
 		Label: grp.Txt,
 	}
 	if row.Label == "" {
-		row.Label = grp.Concept
+		row.Label = grp.Concept.Value
 	}
 
 	form.Survey = append(form.Survey, row)
@@ -273,6 +303,67 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form
 	}
 }
 
+// convertGridToXLSForm converts a grid varGrp + its member vars into a
+// begin_group with table-list appearance containing select_one rows with shared choices.
+func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSForm) {
+	memberIDs := strings.Fields(grp.Var)
+	if len(memberIDs) == 0 {
+		convertDDIVarGrpToXLSForm(grp, form)
+		return
+	}
+
+	label := grp.Txt
+	if label == "" {
+		label = grp.Concept.Value
+	}
+
+	form.Survey = append(form.Survey, SurveyRow{
+		Type:       "begin_group",
+		Name:       grp.Name,
+		Label:      label,
+		Appearance: "table-list",
+	})
+
+	// All grid members share the same choice list; use the group name as list_name
+	listName := grp.Name
+	choicesAdded := false
+
+	for _, id := range memberIDs {
+		v, ok := varByID[id]
+		if !ok {
+			continue
+		}
+
+		row := SurveyRow{
+			Type: "select_one " + listName,
+			Name: v.Name,
+		}
+		if v.Qstn != nil {
+			row.Label = v.Qstn.QstnLit
+		}
+		form.Survey = append(form.Survey, row)
+
+		// Add choices from the first member var (all grid members share the same categories)
+		if !choicesAdded && len(v.Catgry) > 0 {
+			for _, cat := range v.Catgry {
+				if cat.Missing == "Y" {
+					continue
+				}
+				form.Choices = append(form.Choices, ChoiceRow{
+					ListName: listName,
+					Name:     cat.CatValu,
+					Label:    cat.Labl,
+				})
+			}
+			choicesAdded = true
+		}
+	}
+
+	form.Survey = append(form.Survey, SurveyRow{
+		Type: "end_group",
+	})
+}
+
 // convertDDIVarToXLSForm converts a single DDI variable to XLSForm survey/choice rows.
 //
 // Mapping logic:
@@ -287,7 +378,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form
 func convertDDIVarToXLSForm(v DDIVar, form *XLSForm) {
 	row := SurveyRow{
 		Name:  v.Name,
-		Label: v.Concept, // Fallback label
+		Label: v.Concept.Value, // Fallback label
 	}
 
 	if v.Qstn != nil {
@@ -303,9 +394,17 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm) {
 		case "text":
 			row.Type = "text"
 		case "category":
-			row.Type = "select_one " + v.Name
+			if v.Concept.Vocab != "" {
+				row.Type = "select_one_from_file " + v.Concept.Vocab + ".csv"
+			} else {
+				row.Type = "select_one " + v.Name
+			}
 		case "multiple":
-			row.Type = "select_multiple " + v.Name
+			if v.Concept.Vocab != "" {
+				row.Type = "select_multiple_from_file " + v.Concept.Vocab + ".csv"
+			} else {
+				row.Type = "select_multiple " + v.Name
+			}
 		default:
 			row.Type = "text"
 		}
@@ -344,7 +443,7 @@ func convertDDIVarGrpToXLSForm(vg DDIVarGrp, form *XLSForm) {
 	form.Survey = append(form.Survey, SurveyRow{
 		Type:  "begin_group",
 		Name:  vg.Name,
-		Label: vg.Concept,
+		Label: vg.Concept.Value,
 	})
 	form.Survey = append(form.Survey, SurveyRow{
 		Type: "end_group",
@@ -395,7 +494,7 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 			currentGroup = &DDIVarGrp{
 				ID:      "VG_" + strings.ReplaceAll(row.Name, " ", "_"),
 				Name:    row.Name,
-				Concept: row.Label,
+				Concept: DDIConcept{Value: row.Label},
 			}
 			// Infer DDI group type from appearance, name, or label.
 			// XLSForm "table-list" appearance on a group indicates a grid/matrix layout.
@@ -487,7 +586,7 @@ func parseXLSFormType(t string) (baseType, listName string) {
 
 // convertSelectMultipleToDDI converts a select_multiple survey row into a
 // DDI <varGrp type="multipleResp"> plus one binary <var> per choice option.
-// Each binary var has categories 0="Not mentioned" and 1="Mentioned".
+// Each binary var has categories 0 and 1 (no labels).
 func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[string][]ChoiceRow) (DDIVarGrp, []DDIVar) {
 	groupName := row.Name
 	groupID := "VG_" + strings.ReplaceAll(groupName, " ", "_")
@@ -511,10 +610,10 @@ func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[st
 				QstnLit:            c.Label,
 			},
 			Catgry: []DDICategory{
-				{CatValu: "0", Labl: "Not mentioned"},
-				{CatValu: "1", Labl: "Mentioned"},
+				{CatValu: "0"},
+				{CatValu: "1"},
 			},
-			Concept:   row.Label + ": " + c.Label,
+			Concept:   DDIConcept{Value: row.Label + ": " + c.Label},
 			VarFormat: &DDIVarFormat{Type: "numeric", Schema: "other"},
 		}
 
@@ -527,7 +626,7 @@ func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[st
 		Type:    "multipleResp",
 		Var:     strings.Join(varIDs, " "),
 		Txt:     row.Label,
-		Concept: row.Label,
+		Concept: DDIConcept{Value: row.Label},
 	}
 
 	return grp, binaryVars
@@ -538,7 +637,7 @@ func convertSurveyRowToDDIVar(row SurveyRow, baseType, listName string, choiceMa
 	v := DDIVar{
 		Name:    row.Name,
 		ID:      "V_" + strings.ReplaceAll(row.Name, " ", "_"),
-		Concept: row.Label,
+		Concept: DDIConcept{Value: row.Label},
 	}
 
 	var responseDomainType string
@@ -558,6 +657,17 @@ func convertSurveyRowToDDIVar(row SurveyRow, baseType, listName string, choiceMa
 		responseDomainType = "category"
 		interval = "discrete"
 		varFormatType = "numeric"
+	case "select_one_from_file":
+		responseDomainType = "category"
+		interval = "discrete"
+		varFormatType = "numeric"
+		// listName is the CSV filename; strip .csv to get the standard code
+		v.Concept.Vocab = strings.TrimSuffix(listName, ".csv")
+	case "select_multiple_from_file":
+		responseDomainType = "multiple"
+		interval = "discrete"
+		varFormatType = "numeric"
+		v.Concept.Vocab = strings.TrimSuffix(listName, ".csv")
 	default:
 		responseDomainType = "text"
 		interval = "contin"
