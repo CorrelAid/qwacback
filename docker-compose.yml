@@ -31,7 +31,7 @@ services:
       - NATS_PORT=${NATS_PORT:-4222}
       - NATS_TOKEN=${NATS_TOKEN:-changeme}
     volumes:
-      - pb_dataz:/app/pb_data
+      - pb_dat:/app/pb_data
     restart: always
     command: ["./qwacback", "serve", "--http=0.0.0.0:8080"]
     deploy:
