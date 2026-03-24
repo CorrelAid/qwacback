@@ -1,5 +1,7 @@
 # qwacback - Questions Worth Asking Continuously
 
+[![AI-Assisted](https://img.shields.io/badge/AI--assisted-Claude%20Code-blueviolet?logo=anthropic&logoColor=white)](./AI_DISCLOSURE.md)
+
 A robust question bank and metadata repository for civil society, built on **PocketBase** with a strict DDI-Codebook integration.
 
 ## Key Features
