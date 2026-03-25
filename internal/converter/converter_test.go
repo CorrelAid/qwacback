@@ -61,7 +61,7 @@ func TestDDIToXLSForm_SelectOne(t *testing.T) {
 }
 
 func TestDDIToXLSForm_Integer(t *testing.T) {
-	ddiXML := `<var ID="V2" name="age" intrvl="discrete">
+	ddiXML := `<var ID="V2" name="age" intrvl="contin">
 		<concept>Age of respondent</concept>
 		<qstn responseDomainType="numeric">
 			<qstnLit>What is your age?</qstnLit>
@@ -97,7 +97,7 @@ func TestDDIToXLSForm_Integer(t *testing.T) {
 }
 
 func TestDDIToXLSForm_Text(t *testing.T) {
-	ddiXML := `<var ID="V3" name="comments" intrvl="contin">
+	ddiXML := `<var ID="V3" name="comments" intrvl="discrete">
 		<concept>Additional comments</concept>
 		<qstn responseDomainType="text">
 			<qstnLit>Please provide any additional comments</qstnLit>
@@ -1083,7 +1083,7 @@ func TestDDIToXLSForm_CodeBook(t *testing.T) {
 			<citation><titlStmt><titl>Test Study</titl></titlStmt></citation>
 		</stdyDscr>
 		<dataDscr>
-			<var ID="V1" name="age" intrvl="discrete">
+			<var ID="V1" name="age" intrvl="contin">
 				<concept>Age</concept>
 				<qstn responseDomainType="numeric">
 					<qstnLit>How old are you?</qstnLit>
