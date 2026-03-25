@@ -60,8 +60,8 @@ Studies are described in [DDI Codebook 2.5](https://ddialliance.org/Specificatio
 
 | `answer_type` | `intrvl` | `responseDomainType` | Container |
 |--------|----------|----------------------|-----------|
-| `integer` | `discrete` | `numeric` | `<var>` |
-| `text` | `contin` | `text` | `<var>` |
+| `integer` | `contin` | `numeric` | `<var>` |
+| `text` | `discrete` | `text` | `<var>` |
 | `single_choice` | `discrete` | `category` | `<var>` + `<catgry>` per option |
 | `multiple_choice` | `discrete` | `multiple` | `<varGrp type="multipleResp">` + binary `<var>` per option |
 | `grid` | `discrete` | `category` | `<varGrp type="grid">` + `<var>` per item |

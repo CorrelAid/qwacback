@@ -99,8 +99,8 @@ On import, the application captures each element's position as a numeric `order`
 
 | `answer_type` | `intrvl` | `responseDomainType` | `varFormat/@type` | Container |
 |--------|----------|----------------------|-------------------|-----------|
-| `integer` | `discrete` | `numeric` | `numeric` | `<var>` |
-| `text` | `contin` | `text` | `character` | `<var>` |
+| `integer` | `contin` | `numeric` | `numeric` | `<var>` |
+| `text` | `discrete` | `text` | `character` | `<var>` |
 | `single_choice` | `discrete` | `category` | `numeric` | `<var>` + `<catgry>` per option |
 | `multiple_choice` | `discrete` | `multiple` | `numeric` | `<varGrp type="multipleResp">` + binary `<var>` per option |
 | `grid` | `discrete` | `category` | `numeric` | `<varGrp type="grid">` + `<var>` per item (categories repeated) |
@@ -121,7 +121,7 @@ A semi-open (halb-offen) question provides a closed choice list plus an optional
 DDI Codebook has no concept of skip/relevance logic — the conditional display is XLSForm form logic only. In DDI, the two variables are linked by naming convention.
 
 Rules for `_other` variables:
-*   Must have `responseDomainType="text"`, `intrvl="contin"`, `varFormat type="character"`.
+*   Must have `responseDomainType="text"`, `intrvl="discrete"`, `varFormat type="character"`.
 *   A matching base variable or group with the prefix name must exist.
 *   For `multiple_choice_other`: the `_other` text variable must **not** be listed in the `varGrp/@var` attribute. The "Sonstiges" binary variable (inside the group) is separate from the text specification variable (outside the group).
 
