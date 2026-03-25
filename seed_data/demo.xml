@@ -50,7 +50,7 @@
       <concept>Gender</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V2" name="geburtsdatum" intrvl="discrete">
+    <var ID="V2" name="geburtsdatum" intrvl="contin">
       <qstn ID="Q2" responseDomainType="numeric">
         <qstnLit>Wann sind Sie geboren worden?</qstnLit>
       </qstn>
@@ -95,7 +95,7 @@
       <concept>Mode of citizenship acquisition</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V5" name="jahr_erwerb_deutsche_staatsangehoerigkeit" intrvl="discrete">
+    <var ID="V5" name="jahr_erwerb_deutsche_staatsangehoerigkeit" intrvl="contin">
       <qstn ID="Q5" responseDomainType="numeric">
         <qstnLit>In welchem Jahr haben Sie die deutsche Staatsangehörigkeit erhalten?</qstnLit>
       </qstn>
@@ -162,7 +162,7 @@
       <concept>Born in Germany</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V10" name="jahr_erster_umzug_nach_deutschland" intrvl="discrete">
+    <var ID="V10" name="jahr_erster_umzug_nach_deutschland" intrvl="contin">
       <qstn ID="Q10" responseDomainType="numeric">
         <qstnLit>Wann sind Sie zum ersten Mal nach Deutschland gezogen? Bitte geben Sie das Jahr an.</qstnLit>
       </qstn>
@@ -481,14 +481,14 @@
       <concept>Additional self-employment</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V23" name="woechentliche_arbeitsstunden" intrvl="discrete">
+    <var ID="V23" name="woechentliche_arbeitsstunden" intrvl="contin">
       <qstn ID="Q23" responseDomainType="numeric">
         <qstnLit>Wie viele Stunden arbeiten Sie normalerweise insgesamt pro Woche?</qstnLit>
       </qstn>
       <concept>Weekly working hours</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V24" name="berufliche_taetigkeit" intrvl="contin">
+    <var ID="V24" name="berufliche_taetigkeit" intrvl="discrete">
       <qstn ID="Q24" responseDomainType="text">
         <qstnLit>Welche berufliche Tätigkeit üben Sie aus? Wenn Sie nicht mehr Voll- oder Teilzeit erwerbstätig sind: Welche Tätigkeit haben Sie bei Ihrer früheren hauptberuflichen Erwerbstätigkeit zuletzt ausgeübt?</qstnLit>
       </qstn>
@@ -809,7 +809,7 @@
       <concept>Household size</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V39" name="haushaltsmitglieder" intrvl="discrete">
+    <var ID="V39" name="haushaltsmitglieder" intrvl="contin">
       <qstn ID="Q39" responseDomainType="numeric">
         <qstnLit>Wie viele Personen in Ihrem Haushalt sind …</qstnLit>
       </qstn>
@@ -831,7 +831,7 @@
       <concept>Number of household income earners</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V41" name="haushaltsnettoeinkommen" intrvl="discrete">
+    <var ID="V41" name="haushaltsnettoeinkommen" intrvl="contin">
       <qstn ID="Q41" responseDomainType="numeric">
         <qstnLit>Wie hoch ist das durchschnittliche monatliche Nettoeinkommen Ihres Haushalts insgesamt?</qstnLit>
       </qstn>
@@ -937,7 +937,7 @@
       <concept>Household net income (banded)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V43" name="persoenliches_nettoeinkommen" intrvl="discrete">
+    <var ID="V43" name="persoenliches_nettoeinkommen" intrvl="contin">
       <qstn ID="Q43" responseDomainType="numeric">
         <qstnLit>Wie hoch ist Ihr durchschnittliches monatliches Nettoeinkommen insgesamt?</qstnLit>
       </qstn>

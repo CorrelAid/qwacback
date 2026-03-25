@@ -126,21 +126,21 @@
       <concept>Stiftungsform</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V208" name="mitglieder_ende_2019" intrvl="discrete">
+    <var ID="V208" name="mitglieder_ende_2019" intrvl="contin">
       <qstn ID="Q208" responseDomainType="numeric">
         <qstnLit>Bitte schätzen Sie: Wie viele Mitglieder hatte Ihre Organisation Ende 2019?</qstnLit>
       </qstn>
       <concept>Mitgliederanzahl Ende 2019</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V1" name="mitgliedsorganisationen_anzahl" intrvl="discrete">
+    <var ID="V1" name="mitgliedsorganisationen_anzahl" intrvl="contin">
       <qstn ID="Q1" responseDomainType="numeric">
         <qstnLit>Anzahl der Mitgliedsorganisationen</qstnLit>
       </qstn>
       <concept>Anzahl der Mitgliedsorganisationen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V2" name="mitglieder_erreichte_anzahl" intrvl="discrete">
+    <var ID="V2" name="mitglieder_erreichte_anzahl" intrvl="contin">
       <qstn ID="Q2" responseDomainType="numeric">
         <qstnLit>Anzahl der Mitglieder, die Sie erreicht haben</qstnLit>
       </qstn>
@@ -170,14 +170,14 @@
       <concept>Vorhandensein von Mitgliedsorganisationen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V4" name="frauenanteil_schaetzung_anteil_weiblicher" intrvl="discrete">
+    <var ID="V4" name="frauenanteil_schaetzung_anteil_weiblicher" intrvl="contin">
       <qstn ID="Q4" responseDomainType="numeric">
         <qstnLit>Schätzen Sie: Wie groß ist der Anteil von Frauen unter Ihren Mitgliedern?</qstnLit>
       </qstn>
       <concept>Anteil weiblicher Mitglieder</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V5" name="frauenanteil_schaetzung_anteil_mitglieder" intrvl="discrete">
+    <var ID="V5" name="frauenanteil_schaetzung_anteil_mitglieder" intrvl="contin">
       <qstn ID="Q5" responseDomainType="numeric">
         <qstnLit>Schätzen Sie: Wie groß ist der Anteil von Menschen mit Migrationshintergrund unter Ihren Mitgliedern?</qstnLit>
       </qstn>
@@ -207,28 +207,28 @@
       <concept>Mitgliedsorganisationen als Migrantenorganisationen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V7" name="vorstandsmitglieder_anzahl" intrvl="discrete">
+    <var ID="V7" name="vorstandsmitglieder_anzahl" intrvl="contin">
       <qstn ID="Q7" responseDomainType="numeric">
         <qstnLit>Wie viele Mitglieder hat der Vorstand Ihrer Organisation?</qstnLit>
       </qstn>
       <concept>Vorstandsgröße</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V8" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="discrete">
+    <var ID="V8" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="contin">
       <qstn ID="Q8" responseDomainType="numeric">
         <qstnLit>Wie viele Frauen sind im Vorstand Ihrer Organisation??</qstnLit>
       </qstn>
       <concept>Anzahl weiblicher Vorstandsmitglieder</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V9" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="discrete">
+    <var ID="V9" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="contin">
       <qstn ID="Q9" responseDomainType="numeric">
         <qstnLit>Wie viele Vorstandsmitglieder haben einen Migrationshintergrund?</qstnLit>
       </qstn>
       <concept>Anzahl Vorstandsmitglieder mit Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V10" name="gruendungsjahr" intrvl="discrete">
+    <var ID="V10" name="gruendungsjahr" intrvl="contin">
       <qstn ID="Q10" responseDomainType="numeric">
         <qstnLit>Wann hat sich Ihre Organisation gegründet?</qstnLit>
       </qstn>
@@ -560,7 +560,7 @@
       <concept>Bezahlung oder Ehrenamt</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V24" name="aktivitaetsdauer" intrvl="discrete">
+    <var ID="V24" name="aktivitaetsdauer" intrvl="contin">
       <qstn ID="Q24" responseDomainType="numeric">
         <qstnLit>Mit wie vielen Jahren sind Sie in Ihrer Organisation aktiv?</qstnLit>
       </qstn>
@@ -1405,7 +1405,7 @@
       <concept>Geografischer Aktivitätsbereich</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V160" name="engagement_fluechtlinge_zeitraum" intrvl="discrete">
+    <var ID="V160" name="engagement_fluechtlinge_zeitraum" intrvl="contin">
       <qstn ID="Q160" responseDomainType="numeric">
         <qstnLit>Seit wann engagiert sich Ihre Organisation für Geflüchtete?</qstnLit>
       </qstn>
@@ -1765,14 +1765,14 @@
       <concept>Art der bezahlten Beschäftigung</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V186" name="unbezahlt_engagierte_anzahl" intrvl="discrete">
+    <var ID="V186" name="unbezahlt_engagierte_anzahl" intrvl="contin">
       <qstn ID="Q186" responseDomainType="numeric">
         <qstnLit>Anzahl unbezahlt Engagierter</qstnLit>
       </qstn>
       <concept>Anzahl unbezahlt Engagierter</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V187" name="bezahlt_beschaeftigte_anzahl" intrvl="discrete">
+    <var ID="V187" name="bezahlt_beschaeftigte_anzahl" intrvl="contin">
       <qstn ID="Q187" responseDomainType="numeric">
         <qstnLit>Anzahl bezahlt Beschäftigter</qstnLit>
       </qstn>

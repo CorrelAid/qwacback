@@ -738,7 +738,7 @@
     <varFormat type="numeric" schema="other"/>
   </var>
   <!-- Variable: q11 - Any Other Comments -->
-  <var ID="V11" name="other_comments" intrvl="contin">
+  <var ID="V11" name="other_comments" intrvl="discrete">
     <qstn ID="Q11" responseDomainType="text">
       <qstnLit>Any Other Comments?</qstnLit>
     </qstn>
