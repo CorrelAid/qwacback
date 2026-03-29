@@ -182,7 +182,10 @@ For detailed documentation on the conversion endpoints, see [CONVERSION_API.md](
 - **GET `/api/search/questions?q=<term>`**: Search questions (assembled from variables and groups) by question text, concept, name, and answer type. Results ranked by relevance (question_text > concept > name > answer_type).
   - **Pagination**: `&page=1&perPage=20` (default 20, max 100).
 
-- **GET `/api/studies/{id}/questions`**: Returns all questions for a study. Each question is assembled from its underlying variables and groups — e.g. a multiple choice question with 5 options appears as 1 question (not 5 variables).
+- **GET `/api/questions`**: Lists all questions across all studies.
+- **GET `/api/studies/{id}/questions`**: Lists all questions for a single study.
+
+Questions are assembled from underlying variables and groups — e.g. a multiple choice question with 5 options appears as 1 question (not 5 variables).
 
 #### Examples
 

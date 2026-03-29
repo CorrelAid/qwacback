@@ -811,8 +811,26 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		})
 	})
 
-	// Questions view - Public
-	// Returns a question-level view of a study's variables and groups.
+	// List all questions across all studies - Public
+	se.Router.GET("/api/questions", func(e *core.RequestEvent) error {
+		studies, err := app.FindRecordsByFilter("studies", "", "", 0, 0)
+		if err != nil {
+			return apis.NewInternalServerError("Failed to fetch studies", nil)
+		}
+
+		var all []Question
+		for _, s := range studies {
+			qs, err := assembleQuestions(app, s.Id)
+			if err != nil {
+				continue
+			}
+			all = append(all, qs...)
+		}
+
+		return e.JSON(200, all)
+	})
+
+	// Questions for a single study - Public
 	se.Router.GET("/api/studies/{id}/questions", func(e *core.RequestEvent) error {
 		studyId := e.Request.PathValue("id")
 		if !pocketbaseIDRegex.MatchString(studyId) {
