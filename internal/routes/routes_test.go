@@ -1,6 +1,8 @@
 package routes
 
 import (
+	"encoding/json"
+	"io"
 	"net/http"
 	"os"
 	"testing"
@@ -430,34 +432,34 @@ func TestXMLFragmentRoutes(t *testing.T) {
 	}
 }
 
-func TestSearchQuestionsRoute(t *testing.T) {
+// seedSearchTestData imports prove_it.xml into a temporary PocketBase and returns the data dir.
+func seedSearchTestData(t *testing.T) string {
+	t.Helper()
 	testDataDir, err := os.MkdirTemp("", "pb_test_search")
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(testDataDir)
-
-	// Seed test data
-	{
-		app, err := tests.NewTestApp(testDataDir)
-		if err != nil {
-			t.Fatal(err)
-		}
-		xmlData, err := os.ReadFile("../../seed_data/prove_it.xml")
-		if err != nil {
-			t.Fatal(err)
-		}
-		mv, err := mxj.NewMapXml(xmlData)
-		if err != nil {
-			t.Fatal(err)
-		}
-		if err := importer.ImportCodebookData(app, mv, xmlData); err != nil {
-			t.Fatal(err)
-		}
-		app.Cleanup()
+	app, err := tests.NewTestApp(testDataDir)
+	if err != nil {
+		t.Fatal(err)
 	}
+	xmlData, err := os.ReadFile("../../seed_data/prove_it.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	mv, err := mxj.NewMapXml(xmlData)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := importer.ImportCodebookData(app, mv, xmlData); err != nil {
+		t.Fatal(err)
+	}
+	app.Cleanup()
+	return testDataDir
+}
 
-	setupTestApp := func(t testing.TB) *tests.TestApp {
+func searchTestApp(testDataDir string) func(t testing.TB) *tests.TestApp {
+	return func(t testing.TB) *tests.TestApp {
 		testApp, err := tests.NewTestApp(testDataDir)
 		if err != nil {
 			t.Fatal(err)
@@ -467,6 +469,72 @@ func TestSearchQuestionsRoute(t *testing.T) {
 		})
 		return testApp
 	}
+}
+
+func TestSearchStudiesRoute(t *testing.T) {
+	testDataDir := seedSearchTestData(t)
+	defer os.RemoveAll(testDataDir)
+	setupTestApp := searchTestApp(testDataDir)
+
+	scenarios := []tests.ApiScenario{
+		{
+			Name:           "missing q parameter",
+			Method:         http.MethodGet,
+			URL:            "/api/search/studies",
+			ExpectedStatus: 400,
+			TestAppFactory: setupTestApp,
+		},
+		{
+			Name:            "search by title",
+			Method:          http.MethodGet,
+			URL:             "/api/search/studies?q=Prove",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"items"`, `"totalItems"`, `"title"`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "search by keyword",
+			Method:          http.MethodGet,
+			URL:             "/api/search/studies?q=trust",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"items"`, `"totalItems"`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "search no results",
+			Method:          http.MethodGet,
+			URL:             "/api/search/studies?q=zzzznonexistentzzzz",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"items":[]`, `"totalItems":0`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "filter by topic",
+			Method:          http.MethodGet,
+			URL:             "/api/search/studies?q=Prove&topic=Template",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"totalItems":1`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "filter by topic no match",
+			Method:          http.MethodGet,
+			URL:             "/api/search/studies?q=Prove&topic=Nonexistent",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"items":[]`, `"totalItems":0`},
+			TestAppFactory:  setupTestApp,
+		},
+	}
+
+	for _, scenario := range scenarios {
+		scenario.Test(t)
+	}
+}
+
+func TestSearchQuestionsRoute(t *testing.T) {
+	testDataDir := seedSearchTestData(t)
+	defer os.RemoveAll(testDataDir)
+	setupTestApp := searchTestApp(testDataDir)
 
 	scenarios := []tests.ApiScenario{
 		{
@@ -486,7 +554,7 @@ func TestSearchQuestionsRoute(t *testing.T) {
 		{
 			Name:            "search returns results",
 			Method:          http.MethodGet,
-			URL:             "/api/search/questions?q=Vertrauen",
+			URL:             "/api/search/questions?q=trust",
 			ExpectedStatus:  200,
 			ExpectedContent: []string{`"items"`, `"totalItems"`, `"concept"`},
 			TestAppFactory:  setupTestApp,
@@ -502,7 +570,7 @@ func TestSearchQuestionsRoute(t *testing.T) {
 		{
 			Name:            "search with pagination",
 			Method:          http.MethodGet,
-			URL:             "/api/search/questions?q=Vertrauen&page=1&perPage=2",
+			URL:             "/api/search/questions?q=trust&page=1&perPage=2",
 			ExpectedStatus:  200,
 			ExpectedContent: []string{`"page":1`, `"perPage":2`},
 			TestAppFactory:  setupTestApp,
@@ -512,4 +580,65 @@ func TestSearchQuestionsRoute(t *testing.T) {
 	for _, scenario := range scenarios {
 		scenario.Test(t)
 	}
+}
+
+// TestSearchQuestionsOrdering verifies that results matching in higher-priority
+// fields rank above those matching in lower-priority fields.
+// In prove_it.xml:
+//   - council_trust: matches "trust" in question, concept, AND name (score 6+5+4=15)
+//   - neighbour_trust: matches "trust" in concept and name only (score 5+4=9)
+// So council_trust must appear before neighbour_trust.
+func TestSearchQuestionsOrdering(t *testing.T) {
+	testDataDir := seedSearchTestData(t)
+	defer os.RemoveAll(testDataDir)
+	setupTestApp := searchTestApp(testDataDir)
+
+	scenario := tests.ApiScenario{
+		Name:           "question+concept+name match ranks above concept+name match",
+		Method:         http.MethodGet,
+		URL:            "/api/search/questions?q=trust",
+		ExpectedStatus: 200,
+		TestAppFactory: setupTestApp,
+		AfterTestFunc: func(t testing.TB, app *tests.TestApp, res *http.Response) {
+			body, err := io.ReadAll(res.Body)
+			if err != nil {
+				t.Fatal("failed to read response body:", err)
+			}
+
+			var resp struct {
+				Items []struct {
+					Name string `json:"name"`
+				} `json:"items"`
+			}
+			if err := json.Unmarshal(body, &resp); err != nil {
+				t.Fatal("failed to decode response:", err)
+			}
+
+			if len(resp.Items) < 2 {
+				t.Fatalf("expected at least 2 results, got %d", len(resp.Items))
+			}
+
+			councilIdx := -1
+			neighbourIdx := -1
+			for i, item := range resp.Items {
+				if item.Name == "council_trust" {
+					councilIdx = i
+				}
+				if item.Name == "neighbour_trust" {
+					neighbourIdx = i
+				}
+			}
+
+			if councilIdx == -1 {
+				t.Fatal("council_trust not found in results")
+			}
+			if neighbourIdx == -1 {
+				t.Fatal("neighbour_trust not found in results")
+			}
+			if councilIdx >= neighbourIdx {
+				t.Errorf("council_trust (matches question+concept+name) should rank before neighbour_trust (concept+name only), got indices %d vs %d", councilIdx, neighbourIdx)
+			}
+		},
+	}
+	scenario.Test(t)
 }

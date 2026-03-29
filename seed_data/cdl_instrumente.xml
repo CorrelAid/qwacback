@@ -115,7 +115,7 @@
     </var>
 
     <!-- answer_type: text (_other free text for self-definition, NOT in varGrp/@var) -->
-    <var ID="V_geschlecht_other" name="geschlecht_other" intrvl="contin">
+    <var ID="V_geschlecht_other" name="geschlecht_other" intrvl="discrete">
       <qstn responseDomainType="text">
         <qstnLit>Geschlecht (eigene Angabe)</qstnLit>
       </qstn>

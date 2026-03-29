@@ -13,6 +13,7 @@ import (
 	"qwacback/internal/importer"
 	"qwacback/internal/schematron"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -62,6 +63,49 @@ func clearXMLCache(app core.App) {
 			app.Store().Remove(k)
 		}
 	}
+}
+
+func parsePagination(e *core.RequestEvent) (page, perPage int) {
+	page, _ = strconv.Atoi(e.Request.URL.Query().Get("page"))
+	if page < 1 {
+		page = 1
+	}
+	perPage, _ = strconv.Atoi(e.Request.URL.Query().Get("perPage"))
+	if perPage < 1 || perPage > 100 {
+		perPage = 20
+	}
+	return
+}
+
+// scoreRecord computes a relevance score for a record by checking which fields
+// contain the query string. Fields earlier in the list receive higher weight.
+func scoreRecord(r *core.Record, q string, fields []string) int {
+	q = strings.ToLower(q)
+	score := 0
+	for i, field := range fields {
+		if strings.Contains(strings.ToLower(r.GetString(field)), q) {
+			score += len(fields) - i
+		}
+	}
+	return score
+}
+
+// rankAndPaginate sorts records by relevance score (descending) and returns
+// the requested page along with total count.
+func rankAndPaginate(records []*core.Record, q string, fields []string, page, perPage int) ([]*core.Record, int) {
+	sort.SliceStable(records, func(i, j int) bool {
+		return scoreRecord(records[i], q, fields) > scoreRecord(records[j], q, fields)
+	})
+	total := len(records)
+	offset := (page - 1) * perPage
+	if offset >= total {
+		return nil, total
+	}
+	end := offset + perPage
+	if end > total {
+		end = total
+	}
+	return records[offset:end], total
 }
 
 // RegisterRoutes sets up the PocketBase API routes.
@@ -480,7 +524,67 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		return err
 	})
 
+	// Search studies - Public
+	// Relevance: title > keywords > abstract
+	// Optional filter: topic (matches topic_classifications)
+	se.Router.GET("/api/search/studies", func(e *core.RequestEvent) error {
+		q := strings.TrimSpace(e.Request.URL.Query().Get("q"))
+		if q == "" {
+			return apis.NewBadRequestError("Missing search query parameter 'q'", nil)
+		}
+		if len(q) > 200 {
+			return apis.NewBadRequestError("Query too long (max 200 characters)", nil)
+		}
+
+		page, perPage := parsePagination(e)
+
+		filter := "title ~ {:q} || abstract ~ {:q} || keywords ~ {:q}"
+		params := dbx.Params{"q": q}
+
+		topic := strings.TrimSpace(e.Request.URL.Query().Get("topic"))
+		if topic != "" {
+			filter = "(" + filter + ") && topic_classifications ~ {:topic}"
+			params["topic"] = topic
+		}
+
+		allRecords, err := app.FindRecordsByFilter("studies", filter, "", 0, 0, params)
+		if err != nil {
+			return apis.NewInternalServerError("Search failed", nil)
+		}
+
+		studyFields := []string{"title", "keywords", "abstract"}
+		records, totalItems := rankAndPaginate(allRecords, q, studyFields, page, perPage)
+
+		type studyResult struct {
+			ID       string `json:"id"`
+			Title    string `json:"title"`
+			Abstract string `json:"abstract"`
+			Author   string `json:"author"`
+			Nation   string `json:"nation"`
+		}
+
+		items := make([]studyResult, 0, len(records))
+		for _, r := range records {
+			items = append(items, studyResult{
+				ID:       r.Id,
+				Title:    r.GetString("title"),
+				Abstract: r.GetString("abstract"),
+				Author:   r.GetString("author"),
+				Nation:   r.GetString("nation"),
+			})
+		}
+
+		return e.JSON(200, map[string]interface{}{
+			"page":       page,
+			"perPage":    perPage,
+			"totalItems": totalItems,
+			"totalPages": (totalItems + perPage - 1) / perPage,
+			"items":      items,
+		})
+	})
+
 	// Search questions - Public
+	// Relevance: question > concept > name > prequestion_text > categories > answer_type
 	se.Router.GET("/api/search/questions", func(e *core.RequestEvent) error {
 		q := strings.TrimSpace(e.Request.URL.Query().Get("q"))
 		if q == "" {
@@ -490,36 +594,20 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewBadRequestError("Query too long (max 200 characters)", nil)
 		}
 
-		// Pagination
-		page, _ := strconv.Atoi(e.Request.URL.Query().Get("page"))
-		if page < 1 {
-			page = 1
-		}
-		perPage, _ := strconv.Atoi(e.Request.URL.Query().Get("perPage"))
-		if perPage < 1 || perPage > 100 {
-			perPage = 20
-		}
-		offset := (page - 1) * perPage
+		page, perPage := parsePagination(e)
 
-		// Search across question, concept, name, and prequestion_text
-		filter := "question ~ {:q} || concept ~ {:q} || name ~ {:q} || prequestion_text ~ {:q}"
+		filter := "question ~ {:q} || concept ~ {:q} || name ~ {:q} || prequestion_text ~ {:q} || categories ~ {:q} || answer_type ~ {:q}"
 		params := dbx.Params{"q": q}
 
-		records, err := app.FindRecordsByFilter("variables", filter, "order", perPage, offset, params)
+		allRecords, err := app.FindRecordsByFilter("variables", filter, "", 0, 0, params)
 		if err != nil {
 			return apis.NewInternalServerError("Search failed", nil)
 		}
 
-		// Count total matches for pagination metadata
-		allMatches, err := app.FindRecordsByFilter("variables", filter, "", 0, 0, params)
-		if err != nil {
-			return apis.NewInternalServerError("Search failed", nil)
-		}
-		totalItems := len(allMatches)
-		totalPages := (totalItems + perPage - 1) / perPage
+		questionFields := []string{"question", "concept", "name", "prequestion_text", "categories", "answer_type"}
+		records, totalItems := rankAndPaginate(allRecords, q, questionFields, page, perPage)
 
-		// Build response with study context
-		type searchResult struct {
+		type questionResult struct {
 			ID              string `json:"id"`
 			StudyID         string `json:"study_id"`
 			GroupID         string `json:"group_id,omitempty"`
@@ -530,9 +618,9 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			AnswerType      string `json:"answer_type"`
 		}
 
-		items := make([]searchResult, 0, len(records))
+		items := make([]questionResult, 0, len(records))
 		for _, r := range records {
-			items = append(items, searchResult{
+			items = append(items, questionResult{
 				ID:              r.Id,
 				StudyID:         r.GetString("study"),
 				GroupID:         r.GetString("group"),
@@ -548,7 +636,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			"page":       page,
 			"perPage":    perPage,
 			"totalItems": totalItems,
-			"totalPages": totalPages,
+			"totalPages": (totalItems + perPage - 1) / perPage,
 			"items":      items,
 		})
 	})
