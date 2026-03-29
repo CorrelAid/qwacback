@@ -179,8 +179,10 @@ For detailed documentation on the conversion endpoints, see [CONVERSION_API.md](
   - **Optional filter**: `&topic=<classification>` — restrict to studies matching a topic classification.
   - **Pagination**: `&page=1&perPage=20` (default 20, max 100).
 
-- **GET `/api/search/questions?q=<term>`**: Search variables by question text, concept, name, prequestion text, categories, and answer type. Results ranked by relevance (question > concept > name > prequestion_text > categories > answer_type).
+- **GET `/api/search/questions?q=<term>`**: Search questions (assembled from variables and groups) by question text, concept, name, and answer type. Results ranked by relevance (question_text > concept > name > answer_type).
   - **Pagination**: `&page=1&perPage=20` (default 20, max 100).
+
+- **GET `/api/studies/{id}/questions`**: Returns all questions for a study. Each question is assembled from its underlying variables and groups — e.g. a multiple choice question with 5 options appears as 1 question (not 5 variables).
 
 #### Examples
 
