@@ -76,12 +76,13 @@ The `ID` attribute (`xs:ID`) is a document-wide unique identifier used for cross
 
 ### Variable group types
 
-Only two `varGrp` types are used:
+Three `varGrp` types are used:
 
 | Type | Purpose |
 | :--- | :--- |
 | `grid` | Matrix / Likert grid — items sharing the same scale and introductory text |
 | `multipleResp` | Select-multiple (checkboxes) — each option becomes a binary 0/1 variable |
+| `other` | Parent wrapper for semi-open questions — groups a child `varGrp` and/or `_other` text variable together |
 
 Do **not** use `type="section"` — section groups are structural containers with no semantic meaning.
 
@@ -130,18 +131,51 @@ Two boolean fields on the `variables` collection modify the base type:
 | `has_other` | `single_choice`, `multiple_choice` | A companion `_other` text variable exists for free-text specification |
 | `has_long_list` | `single_choice`, `multiple_choice` | Categories come from an external code list via `concept/@vocab` instead of inline `<catgry>` |
 
-### Semi-open questions (`_other` convention)
+### Semi-open questions (`_other` convention and group hierarchy)
 
 A semi-open (halb-offen) question provides a closed choice list plus an optional free-text field for respondents who select an "other" option. This produces **two variables** in DDI: the main categorical/checkbox variable, and a text variable named `<name>_other` for the free-text specification.
 
-DDI Codebook has no concept of skip/relevance logic. The converter reconstructs XLSForm relevance from naming conventions during DDI→XLSForm conversion, ensuring lossless round-trips.
+The relationship between the base question and its `_other` text variable is made explicit using a **parent `varGrp` with `type="other"`** that references both.
+
+#### Single choice with other
+
+A parent `varGrp` wraps the base `<var>` and the `_other` text `<var>`:
+
+```xml
+<varGrp ID="VG_aufmerksam" name="aufmerksam" type="other"
+        var="V_aufmerksam V_aufmerksam_other">
+  <txt>Wie sind Sie auf unser Angebot aufmerksam geworden?</txt>
+  <concept>Aufmerksamkeitsquelle</concept>
+</varGrp>
+<var ID="V_aufmerksam" name="aufmerksam" intrvl="discrete">...</var>
+<var ID="V_aufmerksam_other" name="aufmerksam_other" intrvl="discrete">...</var>
+```
+
+#### Multiple choice with other
+
+A parent `varGrp` references a child `multipleResp` group (via `@varGrp`) and the `_other` text var (via `@var`):
+
+```xml
+<varGrp ID="VG_geraetebesitz" name="geraetebesitz" type="other"
+        varGrp="VG_geraetebesitz_choices" var="V_geraetebesitz_other">
+  <txt>Welche dieser Geräte besitzen Sie?</txt>
+  <concept>Gerätebesitz</concept>
+</varGrp>
+<varGrp ID="VG_geraetebesitz_choices" name="geraetebesitz_choices" type="multipleResp"
+        var="V_geraetebesitz_smartphone V_geraetebesitz_laptop V_geraetebesitz_tablet">
+  <txt>Welche dieser Geräte besitzen Sie?</txt>
+  <concept>Gerätebesitz</concept>
+</varGrp>
+```
 
 **Conventions for `_other` variables:**
 *   The "other" category must use `catValu="other"`. The label can be localized (e.g. "Sonstiges").
-*   The `_other` text variable must have `responseDomainType="text"`, `intrvl="contin"`, `varFormat type="character"`.
+*   The `_other` text variable must have `responseDomainType="text"`, `intrvl="discrete"`, `varFormat type="character"`.
 *   A matching base variable or group with the prefix name must exist.
-*   For `multiple_choice_other`: the `_other` text variable must **not** be listed in the `varGrp/@var` attribute. No binary var is created for the "other" choice — the `_other` text var represents it outside the group.
-*   **Round-trip**: DDI→XLSForm reconstructs relevance from naming convention: `${base} = 'other'` (single choice) or `selected(${base}, 'other')` (multiple choice). XLSForm→DDI drops relevance (reconstructable). For multiple choice, the converter synthesizes an `other` choice from the `_other` text var, and skips creating a binary var for it on the way back.
+*   For `multiple_choice_other`: the `_other` text variable must **not** be listed in the child `multipleResp` `varGrp/@var` attribute. No binary var is created for the "other" choice.
+*   The parent `varGrp` uses the base name (e.g. `geraetebesitz`), while the child `multipleResp` group appends `_choices` (e.g. `geraetebesitz_choices`).
+*   **Backward compatibility**: The DDI→XLSForm converter also supports the old flat format (no parent group) by falling back to naming convention detection.
+*   **Round-trip**: DDI→XLSForm reconstructs relevance as `${base} = 'other'` for both single and multiple choice. XLSForm→DDI drops relevance (reconstructable) and emits the group hierarchy.
 
 ### Grid and checkbox group consistency
 
@@ -245,6 +279,7 @@ Rules:
 | `ID` | `var`, `varGrp` | Document-wide unique identifier for cross-referencing (`xs:ID`) |
 | `name` | `var`, `varGrp` | Abstract snake_case column name / machine identifier |
 | `intrvl` | `var` | Measurement level: `discrete` or `contin` |
-| `type` | `varGrp` | Group semantics: `grid` or `multipleResp` |
+| `type` | `varGrp` | Group semantics: `grid`, `multipleResp`, or `other` |
 | `var` | `varGrp` | Space-separated list of member variable IDs |
+| `varGrp` | `varGrp` | Space-separated list of child varGrp IDs (for hierarchical grouping) |
 | `responseDomainType` | `qstn` | Response type: `numeric`, `text`, `category`, or `multiple` |

@@ -568,7 +568,7 @@ func TestRoundTripDemo(t *testing.T) {
 		if !ok {
 			t.Fatal("Variable berufliche_taetigkeit not found")
 		}
-		if v.Intrvl != "contin" {
+		if v.Intrvl != "discrete" {
 			t.Errorf("Interval: got %q", v.Intrvl)
 		}
 		if v.Qstn == nil {

@@ -93,13 +93,14 @@ type Concept struct {
 }
 
 type VarGrp struct {
-	XMLName xml.Name `xml:"varGrp"`
-	ID      string   `xml:"ID,attr"`
-	Name    string   `xml:"name,attr,omitempty"`
-	Type    string   `xml:"type,attr,omitempty"`
-	Var     string   `xml:"var,attr"` // Space separated variable IDs
-	Txt     string   `xml:"txt,omitempty"`
-	Concept Concept  `xml:"concept"`
+	XMLName   xml.Name `xml:"varGrp"`
+	ID        string   `xml:"ID,attr"`
+	Name      string   `xml:"name,attr,omitempty"`
+	Type      string   `xml:"type,attr,omitempty"`
+	Var       string   `xml:"var,attr,omitempty"`       // Space-separated variable IDs
+	VarGrpRef string   `xml:"varGrp,attr,omitempty"`    // Space-separated child varGrp IDs
+	Txt       string   `xml:"txt,omitempty"`
+	Concept   Concept  `xml:"concept"`
 }
 
 type Var struct {

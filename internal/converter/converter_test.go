@@ -755,10 +755,24 @@ func TestXLSFormToDDI_SelectOneWithOther(t *testing.T) {
 		t.Fatalf("XLSFormToDDI failed: %v", err)
 	}
 
-	// Should produce <dataDscr> with two vars: the select_one + the text other
+	// Should produce <dataDscr> with 1 parent varGrp (type="other") + two vars
 	var dd DDIDataDscr
 	if err := xml.Unmarshal(ddiXML, &dd); err != nil {
 		t.Fatalf("Failed to parse result as dataDscr: %v", err)
+	}
+
+	if len(dd.VarGrps) != 1 {
+		t.Fatalf("Expected 1 varGrp (parent other), got %d", len(dd.VarGrps))
+	}
+	parentGrp := dd.VarGrps[0]
+	if parentGrp.Type != "other" {
+		t.Errorf("Expected varGrp type other, got %s", parentGrp.Type)
+	}
+	if parentGrp.Name != "geschlecht" {
+		t.Errorf("Expected varGrp name geschlecht, got %s", parentGrp.Name)
+	}
+	if parentGrp.Var != "V_geschlecht V_geschlecht_other" {
+		t.Errorf("Expected parent var attr 'V_geschlecht V_geschlecht_other', got %s", parentGrp.Var)
 	}
 
 	if len(dd.Vars) != 2 {
@@ -843,22 +857,37 @@ func TestXLSFormToDDI_SelectMultipleWithOther(t *testing.T) {
 		t.Fatalf("Failed to parse result as dataDscr: %v", err)
 	}
 
-	// Should have 1 varGrp (multipleResp) + 3 binary vars + 1 text var = 4 vars
+	// Should have 2 varGrps (parent other + child multipleResp) + 3 binary vars + 1 text var = 4 vars
 	// The "other" choice is skipped as binary var (collision with _other text var)
-	if len(dd.VarGrps) != 1 {
-		t.Fatalf("Expected 1 varGrp, got %d", len(dd.VarGrps))
+	if len(dd.VarGrps) != 2 {
+		t.Fatalf("Expected 2 varGrps (parent + child), got %d", len(dd.VarGrps))
 	}
 	if len(dd.Vars) != 4 {
 		t.Fatalf("Expected 4 vars (3 binary + 1 text), got %d", len(dd.Vars))
 	}
 
-	// Check varGrp
-	grp := dd.VarGrps[0]
-	if grp.Type != "multipleResp" {
-		t.Errorf("Expected varGrp type multipleResp, got %s", grp.Type)
+	// Check parent varGrp
+	parentGrp := dd.VarGrps[0]
+	if parentGrp.Type != "other" {
+		t.Errorf("Expected parent varGrp type other, got %s", parentGrp.Type)
 	}
-	if grp.Name != "geraetebesitz" {
-		t.Errorf("Expected varGrp name geraetebesitz, got %s", grp.Name)
+	if parentGrp.Name != "geraetebesitz" {
+		t.Errorf("Expected parent varGrp name geraetebesitz, got %s", parentGrp.Name)
+	}
+	if parentGrp.VarGrpRef != "VG_geraetebesitz_choices" {
+		t.Errorf("Expected parent varGrp ref VG_geraetebesitz_choices, got %s", parentGrp.VarGrpRef)
+	}
+	if parentGrp.Var != "V_geraetebesitz_other" {
+		t.Errorf("Expected parent var attr V_geraetebesitz_other, got %s", parentGrp.Var)
+	}
+
+	// Check child varGrp
+	childGrp := dd.VarGrps[1]
+	if childGrp.Type != "multipleResp" {
+		t.Errorf("Expected child varGrp type multipleResp, got %s", childGrp.Type)
+	}
+	if childGrp.Name != "geraetebesitz_choices" {
+		t.Errorf("Expected child varGrp name geraetebesitz_choices, got %s", childGrp.Name)
 	}
 
 	// Check binary vars (first 3 — "other" choice skipped)
@@ -962,6 +991,14 @@ func TestRoundTrip_SelectOneWithOther(t *testing.T) {
 		t.Fatalf("Failed to parse round-tripped DDI: %v", err)
 	}
 
+	// Round-trip now produces a parent varGrp (type="other") wrapping the two vars
+	if len(dd.VarGrps) != 1 {
+		t.Fatalf("Expected 1 varGrp (parent other) after round-trip, got %d", len(dd.VarGrps))
+	}
+	if dd.VarGrps[0].Type != "other" {
+		t.Errorf("Expected varGrp type other, got %s", dd.VarGrps[0].Type)
+	}
+
 	if len(dd.Vars) != 2 {
 		t.Fatalf("Expected 2 vars after round-trip, got %d", len(dd.Vars))
 	}
@@ -993,8 +1030,8 @@ func TestRoundTrip_SelectOneWithOther(t *testing.T) {
 	if otherVar.Qstn.ResponseDomainType != "text" {
 		t.Errorf("Expected text, got %s", otherVar.Qstn.ResponseDomainType)
 	}
-	if otherVar.Intrvl != "contin" {
-		t.Errorf("Expected intrvl contin, got %s", otherVar.Intrvl)
+	if otherVar.Intrvl != "discrete" {
+		t.Errorf("Expected intrvl discrete, got %s", otherVar.Intrvl)
 	}
 }
 
@@ -1071,8 +1108,8 @@ func TestRoundTrip_SelectMultipleWithOther(t *testing.T) {
 	if otherRow.Name != "geraetebesitz_other" {
 		t.Errorf("Expected name geraetebesitz_other, got %s", otherRow.Name)
 	}
-	if otherRow.Relevance != "selected(${geraetebesitz}, 'other')" {
-		t.Errorf("Expected relevance 'selected(${geraetebesitz}, 'other')', got %q", otherRow.Relevance)
+	if otherRow.Relevance != "${geraetebesitz} = 'other'" {
+		t.Errorf("Expected relevance '${geraetebesitz} = 'other'', got %q", otherRow.Relevance)
 	}
 
 	// Choices should include 3 binary + 1 "other" = 4
@@ -1095,9 +1132,15 @@ func TestRoundTrip_SelectMultipleWithOther(t *testing.T) {
 		t.Fatalf("Failed to parse round-tripped DDI: %v", err)
 	}
 
-	// 1 multipleResp group + 3 binary vars + 1 text var = 4 vars
-	if len(dd.VarGrps) != 1 {
-		t.Fatalf("Expected 1 varGrp, got %d", len(dd.VarGrps))
+	// Round-trip produces 2 varGrps (parent other + child multipleResp) + 4 vars
+	if len(dd.VarGrps) != 2 {
+		t.Fatalf("Expected 2 varGrps (parent + child) after round-trip, got %d", len(dd.VarGrps))
+	}
+	if dd.VarGrps[0].Type != "other" {
+		t.Errorf("Expected parent varGrp type other, got %s", dd.VarGrps[0].Type)
+	}
+	if dd.VarGrps[1].Type != "multipleResp" {
+		t.Errorf("Expected child varGrp type multipleResp, got %s", dd.VarGrps[1].Type)
 	}
 	if len(dd.Vars) != 4 {
 		t.Fatalf("Expected 4 vars (3 binary + 1 text), got %d", len(dd.Vars))

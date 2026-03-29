@@ -16,7 +16,7 @@
         <keyword>Weiterempfehlung</keyword>
         <topcClas>Template</topcClas>
       </subject>
-      <abstract>Eine Sammlung vom Civic Data Lab empfohlene Erhebungsinstrumente.</abstract>
+      <abstract>Eine Sammlung Erhebungsinstrumenten die das Civic Data Lab empfiehlt.</abstract>
       <sumDscr>
         <nation>Deutschland</nation>
       </sumDscr>
@@ -26,7 +26,13 @@
     <!-- ===== Variable Groups (must come before vars) ===== -->
 
     <!-- answer_type: multiple_choice_other (Diethold 2023, Option B) -->
-    <varGrp ID="VG_geschlecht" name="geschlecht" type="multipleResp" var="V_geschlecht_weiblich V_geschlecht_maennlich V_geschlecht_nicht_binaer V_geschlecht_kein_geschlecht V_geschlecht_keine_angabe">
+    <!-- Parent group: wraps the multipleResp child group + _other text var -->
+    <varGrp ID="VG_geschlecht" name="geschlecht" type="other" varGrp="VG_geschlecht_choices" var="V_geschlecht_other">
+      <txt>Was ist Ihr Geschlecht?</txt>
+      <concept>Geschlecht (Selbstdefinition)</concept>
+    </varGrp>
+    <!-- Child group: the multipleResp binary options -->
+    <varGrp ID="VG_geschlecht_choices" name="geschlecht_choices" type="multipleResp" var="V_geschlecht_weiblich V_geschlecht_maennlich V_geschlecht_nicht_binaer V_geschlecht_kein_geschlecht V_geschlecht_keine_angabe">
       <txt>Was ist Ihr Geschlecht?</txt>
       <concept>Geschlecht (Selbstdefinition)</concept>
     </varGrp>

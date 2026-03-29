@@ -43,13 +43,13 @@
         <!-- Variable group essentials -->
         <rule context="ddi:varGrp">
             <assert test="@name">Variable Group <value-of select="@ID"/> is missing a name attribute.</assert>
-            <assert test="@type = 'grid' or @type = 'multipleResp'">Variable Group <value-of select="@ID"/> has type="<value-of select="@type"/>". Only "grid" or "multipleResp" are supported.</assert>
+            <assert test="@type = 'grid' or @type = 'multipleResp' or @type = 'other'">Variable Group <value-of select="@ID"/> has type="<value-of select="@type"/>". Only "grid", "multipleResp", or "other" are supported.</assert>
             <assert test="ddi:concept and normalize-space(ddi:concept) != ''">Variable Group <value-of select="@ID"/> is missing a concept element.</assert>
             <assert test="not(ddi:labl)">Variable Group <value-of select="@ID"/> uses labl — use concept instead. labl is only for catgry elements.</assert>
         </rule>
         <rule context="varGrp">
             <assert test="@name">Variable Group <value-of select="@ID"/> is missing a name attribute.</assert>
-            <assert test="@type = 'grid' or @type = 'multipleResp'">Variable Group <value-of select="@ID"/> has type="<value-of select="@type"/>". Only "grid" or "multipleResp" are supported.</assert>
+            <assert test="@type = 'grid' or @type = 'multipleResp' or @type = 'other'">Variable Group <value-of select="@ID"/> has type="<value-of select="@type"/>". Only "grid", "multipleResp", or "other" are supported.</assert>
             <assert test="concept and normalize-space(concept) != ''">Variable Group <value-of select="@ID"/> is missing a concept element.</assert>
             <assert test="not(labl)">Variable Group <value-of select="@ID"/> uses labl — use concept instead. labl is only for catgry elements.</assert>
         </rule>
@@ -107,6 +107,32 @@
             </assert>
             <assert test="not(@type='grid') or (every $id in tokenize(@var, '\s+') satisfies (//var[@ID=$id]/qstn/@responseDomainType = 'category'))">
                 Semantic Error: Variables in a grid group (<value-of select="@ID"/>) should have responseDomainType="category".
+            </assert>
+        </rule>
+        <!-- Parent "other" varGrp rules (semi-open question hierarchy) -->
+        <rule context="ddi:varGrp[@type='other']">
+            <!-- Must reference at least one var or child varGrp -->
+            <assert test="@var or @varGrp">
+                Parent varGrp <value-of select="@ID"/> (type="other") must reference variables (@var) or child groups (@varGrp).
+            </assert>
+            <!-- Each referenced child varGrp must exist -->
+            <assert test="not(@varGrp) or (every $id in tokenize(@varGrp, '\s+') satisfies //ddi:varGrp[@ID=$id])">
+                Parent varGrp <value-of select="@ID"/> references a child varGrp that does not exist.
+            </assert>
+            <!-- Each referenced var must exist -->
+            <assert test="not(@var) or (every $id in tokenize(@var, '\s+') satisfies //ddi:var[@ID=$id])">
+                Parent varGrp <value-of select="@ID"/> references a variable that does not exist.
+            </assert>
+        </rule>
+        <rule context="varGrp[@type='other']">
+            <assert test="@var or @varGrp">
+                Parent varGrp <value-of select="@ID"/> (type="other") must reference variables (@var) or child groups (@varGrp).
+            </assert>
+            <assert test="not(@varGrp) or (every $id in tokenize(@varGrp, '\s+') satisfies //varGrp[@ID=$id])">
+                Parent varGrp <value-of select="@ID"/> references a child varGrp that does not exist.
+            </assert>
+            <assert test="not(@var) or (every $id in tokenize(@var, '\s+') satisfies //var[@ID=$id])">
+                Parent varGrp <value-of select="@ID"/> references a variable that does not exist.
             </assert>
         </rule>
     </pattern>

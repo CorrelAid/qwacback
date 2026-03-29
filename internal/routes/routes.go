@@ -108,6 +108,128 @@ func rankAndPaginate(records []*core.Record, q string, fields []string, page, pe
 	return records[offset:end], total
 }
 
+// Question represents a researcher-level survey question assembled from
+// variables and variable groups. A question is "one thing asked of the
+// respondent" — it may map to a single variable, a variable group, or
+// a hierarchy of groups.
+type Question struct {
+	ID           string   `json:"id"`
+	StudyID      string   `json:"study_id"`
+	Name         string   `json:"name"`
+	Concept      string   `json:"concept"`
+	QuestionText string   `json:"question_text"`
+	AnswerType   string   `json:"answer_type"`
+	VariableIDs  []string `json:"variable_ids"`
+	GroupID      string   `json:"group_id,omitempty"`
+	Order        float64  `json:"order"`
+}
+
+// assembleQuestions builds a question-level view from variables and groups.
+// The importer flattens the DDI group hierarchy: child groups (e.g. _choices
+// under a type="other" parent) are not stored. All member vars are assigned
+// directly to the top-level group. So the rules here are simple:
+//   - Each group → 1 question (its member vars are absorbed).
+//   - Each standalone var (no group) → 1 question.
+func assembleQuestions(app core.App, studyID string) ([]Question, error) {
+	groups, err := app.FindRecordsByFilter("variable_groups", "study = {:sid}", "order", 0, 0, dbx.Params{"sid": studyID})
+	if err != nil {
+		return nil, err
+	}
+
+	allVars, err := app.FindRecordsByFilter("variables", "study = {:sid}", "order", 0, 0, dbx.Params{"sid": studyID})
+	if err != nil {
+		return nil, err
+	}
+
+	// Index vars by group
+	varsByGroup := make(map[string][]*core.Record)
+	groupedVarIDs := make(map[string]bool)
+	for _, v := range allVars {
+		gid := v.GetString("group")
+		if gid != "" {
+			varsByGroup[gid] = append(varsByGroup[gid], v)
+			groupedVarIDs[v.Id] = true
+		}
+	}
+
+	var questions []Question
+
+	// 1. Groups → questions
+	for _, g := range groups {
+		gType := g.GetString("type")
+		q := Question{
+			ID:           g.Id,
+			StudyID:      studyID,
+			Name:         g.GetString("name"),
+			Concept:      g.GetString("concept"),
+			QuestionText: g.GetString("description"),
+			GroupID:      g.Id,
+			Order:        g.GetFloat("order"),
+		}
+
+		for _, v := range varsByGroup[g.Id] {
+			q.VariableIDs = append(q.VariableIDs, v.Id)
+		}
+
+		// Determine answer_type from group type
+		switch gType {
+		case "other":
+			// Check if any member var has responseDomainType="multiple" (→ multiple_choice_other)
+			hasMultiple := false
+			for _, v := range varsByGroup[g.Id] {
+				if v.GetString("answer_type") == "multiple_choice" {
+					hasMultiple = true
+					break
+				}
+			}
+			if hasMultiple {
+				q.AnswerType = "multiple_choice_other"
+			} else {
+				q.AnswerType = "single_choice_other"
+			}
+		case "grid":
+			q.AnswerType = "grid"
+		case "multipleResp":
+			q.AnswerType = "multiple_choice"
+		}
+
+		// Use first member var's question text if group description is empty
+		if q.QuestionText == "" && len(varsByGroup[g.Id]) > 0 {
+			first := varsByGroup[g.Id][0]
+			q.QuestionText = first.GetString("prequestion_text")
+			if q.QuestionText == "" {
+				q.QuestionText = first.GetString("question")
+			}
+		}
+
+		questions = append(questions, q)
+	}
+
+	// 2. Standalone vars (no group) → questions
+	for _, v := range allVars {
+		if groupedVarIDs[v.Id] {
+			continue
+		}
+		questions = append(questions, Question{
+			ID:           v.Id,
+			StudyID:      studyID,
+			Name:         v.GetString("name"),
+			Concept:      v.GetString("concept"),
+			QuestionText: v.GetString("question"),
+			AnswerType:   v.GetString("answer_type"),
+			VariableIDs:  []string{v.Id},
+			Order:        v.GetFloat("order"),
+		})
+	}
+
+	// Sort by order
+	sort.SliceStable(questions, func(i, j int) bool {
+		return questions[i].Order < questions[j].Order
+	})
+
+	return questions, nil
+}
+
 // RegisterRoutes sets up the PocketBase API routes.
 // rootDir is the project root directory (used to locate schema files).
 func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Client, rootDir ...string) error {
@@ -584,7 +706,8 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	})
 
 	// Search questions - Public
-	// Relevance: question > concept > name > prequestion_text > categories > answer_type
+	// Assembles questions from all studies, then searches and ranks by relevance.
+	// Relevance: question_text > concept > name > answer_type
 	se.Router.GET("/api/search/questions", func(e *core.RequestEvent) error {
 		q := strings.TrimSpace(e.Request.URL.Query().Get("q"))
 		if q == "" {
@@ -596,49 +719,99 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		page, perPage := parsePagination(e)
 
-		filter := "question ~ {:q} || concept ~ {:q} || name ~ {:q} || prequestion_text ~ {:q} || categories ~ {:q} || answer_type ~ {:q}"
-		params := dbx.Params{"q": q}
-
-		allRecords, err := app.FindRecordsByFilter("variables", filter, "", 0, 0, params)
+		// Assemble questions from all studies
+		studies, err := app.FindRecordsByFilter("studies", "", "", 0, 0)
 		if err != nil {
 			return apis.NewInternalServerError("Search failed", nil)
 		}
 
-		questionFields := []string{"question", "concept", "name", "prequestion_text", "categories", "answer_type"}
-		records, totalItems := rankAndPaginate(allRecords, q, questionFields, page, perPage)
-
-		type questionResult struct {
-			ID              string `json:"id"`
-			StudyID         string `json:"study_id"`
-			GroupID         string `json:"group_id,omitempty"`
-			Name            string `json:"name"`
-			Concept         string `json:"concept"`
-			Question        string `json:"question"`
-			PrequestionText string `json:"prequestion_text,omitempty"`
-			AnswerType      string `json:"answer_type"`
+		var allQuestions []Question
+		for _, s := range studies {
+			qs, err := assembleQuestions(app, s.Id)
+			if err != nil {
+				continue
+			}
+			allQuestions = append(allQuestions, qs...)
 		}
 
-		items := make([]questionResult, 0, len(records))
-		for _, r := range records {
-			items = append(items, questionResult{
-				ID:              r.Id,
-				StudyID:         r.GetString("study"),
-				GroupID:         r.GetString("group"),
-				Name:            r.GetString("name"),
-				Concept:         r.GetString("concept"),
-				Question:        r.GetString("question"),
-				PrequestionText: r.GetString("prequestion_text"),
-				AnswerType:      r.GetString("answer_type"),
-			})
+		// Filter questions matching the query
+		qLower := strings.ToLower(q)
+		var matched []Question
+		for _, question := range allQuestions {
+			if strings.Contains(strings.ToLower(question.QuestionText), qLower) ||
+				strings.Contains(strings.ToLower(question.Concept), qLower) ||
+				strings.Contains(strings.ToLower(question.Name), qLower) ||
+				strings.Contains(strings.ToLower(question.AnswerType), qLower) {
+				matched = append(matched, question)
+			}
 		}
+
+		// Rank by relevance: question_text > concept > name > answer_type
+		fields := []string{"question_text", "concept", "name", "answer_type"}
+		sort.SliceStable(matched, func(i, j int) bool {
+			si, sj := 0, 0
+			for fi, field := range fields {
+				weight := len(fields) - fi
+				vi, vj := "", ""
+				switch field {
+				case "question_text":
+					vi, vj = matched[i].QuestionText, matched[j].QuestionText
+				case "concept":
+					vi, vj = matched[i].Concept, matched[j].Concept
+				case "name":
+					vi, vj = matched[i].Name, matched[j].Name
+				case "answer_type":
+					vi, vj = matched[i].AnswerType, matched[j].AnswerType
+				}
+				if strings.Contains(strings.ToLower(vi), qLower) {
+					si += weight
+				}
+				if strings.Contains(strings.ToLower(vj), qLower) {
+					sj += weight
+				}
+			}
+			return si > sj
+		})
+
+		// Paginate
+		totalItems := len(matched)
+		offset := (page - 1) * perPage
+		if offset > totalItems {
+			offset = totalItems
+		}
+		end := offset + perPage
+		if end > totalItems {
+			end = totalItems
+		}
+		pageItems := matched[offset:end]
 
 		return e.JSON(200, map[string]interface{}{
 			"page":       page,
 			"perPage":    perPage,
 			"totalItems": totalItems,
 			"totalPages": (totalItems + perPage - 1) / perPage,
-			"items":      items,
+			"items":      pageItems,
 		})
+	})
+
+	// Questions view - Public
+	// Returns a question-level view of a study's variables and groups.
+	se.Router.GET("/api/studies/{id}/questions", func(e *core.RequestEvent) error {
+		studyId := e.Request.PathValue("id")
+		if !pocketbaseIDRegex.MatchString(studyId) {
+			return apis.NewBadRequestError("Invalid ID format", nil)
+		}
+
+		if _, err := app.FindRecordById("studies", studyId); err != nil {
+			return apis.NewNotFoundError("Study not found", nil)
+		}
+
+		questions, err := assembleQuestions(app, studyId)
+		if err != nil {
+			return apis.NewInternalServerError("Failed to assemble questions", nil)
+		}
+
+		return e.JSON(200, questions)
 	})
 
 	// Convert DDI to XLSForm - Public

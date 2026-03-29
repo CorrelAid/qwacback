@@ -361,52 +361,103 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	}
 
 	// Extract Variable Groups
+	//
+	// type="other" parent groups reference child groups via @varGrp and vars via @var.
+	// We flatten the hierarchy: skip child groups and assign all their member vars
+	// to the parent group directly. This keeps the DB model flat (no parent_group relation).
 	grps, err := mv.ValuesForPath("codeBook.dataDscr.varGrp")
 	if err == nil {
 		groupCollection, _ := app.FindCollectionByNameOrId("variable_groups")
-		grpOrder := 0
+
+		// Pre-parse all groups to identify children of type="other" parents.
+		type grpInfo struct {
+			mxjMap      mxj.Map
+			ddiID       string
+			name        string
+			varIdsAttr  string
+			varGrpAttr  string
+			grpType     string
+			concept     string
+			txt         string
+		}
+		var parsed []grpInfo
+		childDDIIDs := make(map[string]bool) // DDI IDs of groups that are children of "other" parents
+
 		for _, g := range grps {
 			gMap, ok := g.(map[string]interface{})
 			if !ok {
 				continue
 			}
 			gM := mxj.Map(gMap)
-			gId, _ := gM.ValueForPathString("-ID")
-			gName, _ := gM.ValueForPathString("-name")
-			gConcept := textAt(gM, "concept")
-			gTxt := textAt(gM, "txt")
-			gType, _ := gM.ValueForPathString("-type")
-			varIdsAttr, _ := gM.ValueForPathString("-var") // Space separated IDs
+			gi := grpInfo{mxjMap: gM}
+			gi.ddiID, _ = gM.ValueForPathString("-ID")
+			gi.name, _ = gM.ValueForPathString("-name")
+			gi.grpType, _ = gM.ValueForPathString("-type")
+			gi.varIdsAttr, _ = gM.ValueForPathString("-var")
+			gi.varGrpAttr, _ = gM.ValueForPathString("-varGrp")
+			gi.concept = textAt(gM, "concept")
+			gi.txt = textAt(gM, "txt")
+			parsed = append(parsed, gi)
+		}
 
-			// Skip section groups – they are structural containers, not semantic variable groups.
-			if gType == "section" {
+		// Mark child groups referenced by type="other" parents
+		for _, gi := range parsed {
+			if gi.grpType == "other" && gi.varGrpAttr != "" {
+				for _, childID := range strings.Fields(gi.varGrpAttr) {
+					childDDIIDs[childID] = true
+				}
+			}
+		}
+
+		// Build a map of child group DDI ID → its @var attribute (member var IDs)
+		childVarIDs := make(map[string]string)
+		for _, gi := range parsed {
+			if childDDIIDs[gi.ddiID] {
+				childVarIDs[gi.ddiID] = gi.varIdsAttr
+			}
+		}
+
+		grpOrder := 0
+		for _, gi := range parsed {
+			// Skip section groups and child groups absorbed by "other" parents
+			if gi.grpType == "section" || childDDIIDs[gi.ddiID] {
 				continue
 			}
 
 			groupRecord := core.NewRecord(groupCollection)
-			groupRecord.Id = deterministicID(title, gName)
+			groupRecord.Id = deterministicID(title, gi.name)
 			groupRecord.Set("study", studyRecord.Id)
-			groupRecord.Set("ddi_id", gId)
-			groupRecord.Set("name", gName)
-			groupRecord.Set("concept", gConcept)
-			groupRecord.Set("description", gTxt)
-			groupRecord.Set("type", gType)
+			groupRecord.Set("ddi_id", gi.ddiID)
+			groupRecord.Set("name", gi.name)
+			groupRecord.Set("concept", gi.concept)
+			groupRecord.Set("description", gi.txt)
+			groupRecord.Set("type", gi.grpType)
 			groupRecord.Set("order", grpOrder)
 			grpOrder++
 
 			if err := app.Save(groupRecord); err != nil {
-				log.Printf("Failed to save group %s: %v", gId, err)
+				log.Printf("Failed to save group %s: %v", gi.ddiID, err)
 				continue
 			}
 
-			// Assign group to variables
-			if varIdsAttr != "" {
-				ids := strings.Fields(varIdsAttr)
-				for _, id := range ids {
-					if vr, exists := varRecordsMap[id]; exists {
-						vr.Set("group", groupRecord.Id)
-						app.Save(vr)
+			// Collect all member var IDs: direct @var plus vars from absorbed child groups
+			var allVarIDs []string
+			if gi.varIdsAttr != "" {
+				allVarIDs = append(allVarIDs, strings.Fields(gi.varIdsAttr)...)
+			}
+			if gi.grpType == "other" && gi.varGrpAttr != "" {
+				for _, childID := range strings.Fields(gi.varGrpAttr) {
+					if cvids, ok := childVarIDs[childID]; ok && cvids != "" {
+						allVarIDs = append(allVarIDs, strings.Fields(cvids)...)
 					}
+				}
+			}
+
+			// Assign group to variables
+			for _, id := range allVarIDs {
+				if vr, exists := varRecordsMap[id]; exists {
+					vr.Set("group", groupRecord.Id)
+					app.Save(vr)
 				}
 			}
 		}

@@ -11,6 +11,7 @@ import (
 	_ "qwacback/migrations"
 
 	"github.com/clbanning/mxj/v2"
+	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/tests"
 )
@@ -432,8 +433,9 @@ func TestXMLFragmentRoutes(t *testing.T) {
 	}
 }
 
-// seedSearchTestData imports prove_it.xml into a temporary PocketBase and returns the data dir.
-func seedSearchTestData(t *testing.T) string {
+// seedSearchTestData imports prove_it.xml into a temporary PocketBase and returns
+// the data dir and the study ID.
+func seedSearchTestData(t *testing.T) (string, string) {
 	t.Helper()
 	testDataDir, err := os.MkdirTemp("", "pb_test_search")
 	if err != nil {
@@ -454,8 +456,13 @@ func seedSearchTestData(t *testing.T) string {
 	if err := importer.ImportCodebookData(app, mv, xmlData); err != nil {
 		t.Fatal(err)
 	}
+	studies, _ := app.FindRecordsByFilter("studies", "", "", 1, 0)
+	if len(studies) == 0 {
+		t.Fatal("no studies after seeding")
+	}
+	studyID := studies[0].Id
 	app.Cleanup()
-	return testDataDir
+	return testDataDir, studyID
 }
 
 func searchTestApp(testDataDir string) func(t testing.TB) *tests.TestApp {
@@ -472,7 +479,7 @@ func searchTestApp(testDataDir string) func(t testing.TB) *tests.TestApp {
 }
 
 func TestSearchStudiesRoute(t *testing.T) {
-	testDataDir := seedSearchTestData(t)
+	testDataDir, _ := seedSearchTestData(t)
 	defer os.RemoveAll(testDataDir)
 	setupTestApp := searchTestApp(testDataDir)
 
@@ -532,7 +539,7 @@ func TestSearchStudiesRoute(t *testing.T) {
 }
 
 func TestSearchQuestionsRoute(t *testing.T) {
-	testDataDir := seedSearchTestData(t)
+	testDataDir, _ := seedSearchTestData(t)
 	defer os.RemoveAll(testDataDir)
 	setupTestApp := searchTestApp(testDataDir)
 
@@ -582,6 +589,85 @@ func TestSearchQuestionsRoute(t *testing.T) {
 	}
 }
 
+func TestQuestionsView(t *testing.T) {
+	testDataDir, studyID := seedSearchTestData(t)
+	defer os.RemoveAll(testDataDir)
+	setupTestApp := searchTestApp(testDataDir)
+
+	scenarios := []tests.ApiScenario{
+		{
+			Name:           "not found",
+			Method:         http.MethodGet,
+			URL:            "/api/studies/nonexistent00/questions",
+			ExpectedStatus: 404,
+			TestAppFactory: setupTestApp,
+		},
+		{
+			Name:            "returns questions",
+			Method:          http.MethodGet,
+			URL:             "/api/studies/" + studyID + "/questions",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"name"`, `"concept"`, `"answer_type"`, `"variable_ids"`},
+			TestAppFactory:  setupTestApp,
+		},
+	}
+
+	for _, scenario := range scenarios {
+		scenario.Test(t)
+	}
+
+	// Verify deduplication: prove_it.xml has 28 variables and 2 grid groups.
+	// Grid member vars should be merged into their group question.
+	t.Run("fewer questions than variables", func(t *testing.T) {
+		dir, err := os.MkdirTemp("", "pb_test_questions_dedup")
+		if err != nil {
+			t.Fatal(err)
+		}
+		defer os.RemoveAll(dir)
+
+		app, err := tests.NewTestApp(dir)
+		if err != nil {
+			t.Fatal(err)
+		}
+		defer app.Cleanup()
+
+		xmlData, err := os.ReadFile("../../seed_data/prove_it.xml")
+		if err != nil {
+			t.Fatal(err)
+		}
+		mv, err := mxj.NewMapXml(xmlData)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := importer.ImportCodebookData(app, mv, xmlData); err != nil {
+			t.Fatal(err)
+		}
+
+		studies, _ := app.FindRecordsByFilter("studies", "", "", 1, 0)
+		if len(studies) == 0 {
+			t.Fatal("no studies found")
+		}
+		sid := studies[0].Id
+
+		vars, _ := app.FindRecordsByFilter("variables", "study = {:sid}", "", 0, 0, dbx.Params{"sid": sid})
+		groups, _ := app.FindRecordsByFilter("variable_groups", "study = {:sid}", "", 0, 0, dbx.Params{"sid": sid})
+
+		questions, err := assembleQuestions(app, sid)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		t.Logf("assembled %d questions from %d variables + %d groups", len(questions), len(vars), len(groups))
+
+		if len(questions) == 0 {
+			t.Fatal("no questions assembled")
+		}
+		if len(groups) > 0 && len(questions) >= len(vars) {
+			t.Errorf("expected fewer questions than variables (groups should merge), got %d questions vs %d variables", len(questions), len(vars))
+		}
+	})
+}
+
 // TestSearchQuestionsOrdering verifies that results matching in higher-priority
 // fields rank above those matching in lower-priority fields.
 // In prove_it.xml:
@@ -589,7 +675,7 @@ func TestSearchQuestionsRoute(t *testing.T) {
 //   - neighbour_trust: matches "trust" in concept and name only (score 5+4=9)
 // So council_trust must appear before neighbour_trust.
 func TestSearchQuestionsOrdering(t *testing.T) {
-	testDataDir := seedSearchTestData(t)
+	testDataDir, _ := seedSearchTestData(t)
 	defer os.RemoveAll(testDataDir)
 	setupTestApp := searchTestApp(testDataDir)
 

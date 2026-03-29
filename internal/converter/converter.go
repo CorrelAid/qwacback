@@ -126,13 +126,14 @@ type DDIVar struct {
 
 // DDIVarGrp represents a DDI <varGrp> element
 type DDIVarGrp struct {
-	XMLName xml.Name   `xml:"varGrp"`
-	ID      string     `xml:"ID,attr"`
-	Name    string     `xml:"name,attr,omitempty"`
-	Type    string     `xml:"type,attr,omitempty"`
-	Var     string     `xml:"var,attr"` // Space separated variable IDs
-	Txt     string     `xml:"txt,omitempty"`
-	Concept DDIConcept `xml:"concept"`
+	XMLName   xml.Name   `xml:"varGrp"`
+	ID        string     `xml:"ID,attr"`
+	Name      string     `xml:"name,attr,omitempty"`
+	Type      string     `xml:"type,attr,omitempty"`
+	Var       string     `xml:"var,attr,omitempty"`       // Space-separated variable IDs
+	VarGrpRef string     `xml:"varGrp,attr,omitempty"`    // Space-separated child varGrp IDs
+	Txt       string     `xml:"txt,omitempty"`
+	Concept   DDIConcept `xml:"concept"`
 }
 
 // DDIQstn represents a DDI <qstn> element
@@ -219,6 +220,7 @@ func DDIToXLSForm(ddiXML []byte) ([]byte, error) {
 
 // convertDDIDataDscrToXLSForm converts a <dataDscr> wrapper to XLSForm.
 // It detects multipleResp groups and collapses them into select_multiple rows.
+// It also detects parent varGrps with type="other" that wrap child groups and _other vars.
 func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 	// Build maps for quick lookup
 	varByID := make(map[string]DDIVar, len(dd.Vars))
@@ -228,30 +230,74 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 		varByName[v.Name] = v
 	}
 
-	// Register multipleResp group names so _other vars can find their base
+	// Build a varGrp-by-ID map for hierarchy lookups
+	grpByID := make(map[string]DDIVarGrp, len(dd.VarGrps))
 	for _, grp := range dd.VarGrps {
-		if grp.Type == "multipleResp" {
+		grpByID[grp.ID] = grp
+	}
+
+	// Register multipleResp group names so _other vars can find their base.
+	// Check both direct multipleResp groups and child groups referenced by parent "other" groups.
+	for _, grp := range dd.VarGrps {
+		switch grp.Type {
+		case "multipleResp":
 			varByName[grp.Name] = DDIVar{
 				Name: grp.Name,
 				Qstn: &DDIQstn{ResponseDomainType: "multiple"},
 			}
+		case "other":
+			// Parent group — register its base name as multiple if it wraps a multipleResp child
+			for _, childID := range strings.Fields(grp.VarGrpRef) {
+				if child, ok := grpByID[childID]; ok && child.Type == "multipleResp" {
+					varByName[grp.Name] = DDIVar{
+						Name: grp.Name,
+						Qstn: &DDIQstn{ResponseDomainType: "multiple"},
+					}
+				}
+			}
 		}
 	}
 
-	// Track which vars are consumed by multipleResp groups
-	consumed := make(map[string]bool)
+	// Track which vars and groups are consumed
+	consumedVars := make(map[string]bool)
+	consumedGrps := make(map[string]bool)
 
 	for _, grp := range dd.VarGrps {
+		if consumedGrps[grp.ID] {
+			continue
+		}
 		switch grp.Type {
+		case "other":
+			// Parent group wrapping _other hierarchy
+			// Mark child varGrps as consumed and process them
+			for _, childID := range strings.Fields(grp.VarGrpRef) {
+				if child, ok := grpByID[childID]; ok {
+					consumedGrps[childID] = true
+					switch child.Type {
+					case "multipleResp":
+						convertMultipleRespToXLSForm(child, varByID, varByName, form, grp.Name)
+						for _, id := range strings.Fields(child.Var) {
+							consumedVars[id] = true
+						}
+					case "grid":
+						convertGridToXLSForm(child, varByID, form)
+						for _, id := range strings.Fields(child.Var) {
+							consumedVars[id] = true
+						}
+					}
+				}
+			}
+			// The _other var(s) referenced by parent are NOT consumed —
+			// they get converted normally so the _other text row is emitted.
 		case "multipleResp":
-			convertMultipleRespToXLSForm(grp, varByID, varByName, form)
+			convertMultipleRespToXLSForm(grp, varByID, varByName, form, "")
 			for _, id := range strings.Fields(grp.Var) {
-				consumed[id] = true
+				consumedVars[id] = true
 			}
 		case "grid":
 			convertGridToXLSForm(grp, varByID, form)
 			for _, id := range strings.Fields(grp.Var) {
-				consumed[id] = true
+				consumedVars[id] = true
 			}
 		default:
 			convertDDIVarGrpToXLSForm(grp, form)
@@ -260,7 +306,7 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 
 	// Convert remaining (non-consumed) vars
 	for _, v := range dd.Vars {
-		if !consumed[v.ID] {
+		if !consumedVars[v.ID] {
 			convertDDIVarToXLSForm(v, form, varByName)
 		}
 	}
@@ -268,7 +314,10 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 
 // convertMultipleRespToXLSForm collapses a multipleResp varGrp + its binary member
 // vars into a single select_multiple survey row with choices.
-func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varByName map[string]DDIVar, form *XLSForm) {
+// baseName overrides the group name for the survey row and choice stripping when
+// the group is a child of a parent type="other" varGrp (e.g. child name is
+// "geschlecht_choices" but baseName is "geschlecht").
+func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varByName map[string]DDIVar, form *XLSForm, baseName string) {
 	memberIDs := strings.Fields(grp.Var)
 	if len(memberIDs) == 0 {
 		// No member vars — fall back to group conversion
@@ -276,11 +325,14 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 		return
 	}
 
-	listName := grp.Name
+	if baseName == "" {
+		baseName = grp.Name
+	}
+	listName := baseName
 
 	row := SurveyRow{
 		Type:  "select_multiple " + listName,
-		Name:  grp.Name,
+		Name:  baseName,
 		Label: grp.Txt,
 	}
 	if row.Label == "" {
@@ -290,16 +342,16 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 	form.Survey = append(form.Survey, row)
 
 	// Each member var's qstnLit becomes a choice label.
-	// The choice name is derived from the var name by stripping the group prefix.
+	// The choice name is derived from the var name by stripping the base name prefix.
 	for _, id := range memberIDs {
 		v, ok := varByID[id]
 		if !ok {
 			continue
 		}
 		choiceName := v.Name
-		// Strip group name prefix (e.g. "geraetebesitz_smartphone" → "smartphone")
-		if strings.HasPrefix(choiceName, grp.Name+"_") {
-			choiceName = strings.TrimPrefix(choiceName, grp.Name+"_")
+		// Strip base name prefix (e.g. "geraetebesitz_smartphone" → "smartphone")
+		if strings.HasPrefix(choiceName, baseName+"_") {
+			choiceName = strings.TrimPrefix(choiceName, baseName+"_")
 		}
 
 		choiceLabel := ""
@@ -315,7 +367,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 	}
 
 	// If a _other text var exists for this group, add an "other" choice
-	if otherVar, ok := varByName[grp.Name+"_other"]; ok && otherVar.Qstn != nil && otherVar.Qstn.ResponseDomainType == "text" {
+	if otherVar, ok := varByName[baseName+"_other"]; ok && otherVar.Qstn != nil && otherVar.Qstn.ResponseDomainType == "text" {
 		form.Choices = append(form.Choices, ChoiceRow{
 			ListName: listName,
 			Name:     "other",
@@ -446,16 +498,12 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 	// Generate relevance for _other vars by convention:
 	// A var named "foo_other" references a base var or group named "foo".
 	// The base var must have a catgry with catValu="other".
-	// For single choice: ${base} = 'other'
-	// For multiple choice: selected(${base}, 'other')
 	if strings.HasSuffix(v.Name, "_other") && varByName != nil {
 		baseName := strings.TrimSuffix(v.Name, "_other")
 		if base, ok := varByName[baseName]; ok && base.Qstn != nil {
 			switch base.Qstn.ResponseDomainType {
-			case "category":
+			case "category", "multiple":
 				row.Relevance = "${" + baseName + "} = 'other'"
-			case "multiple":
-				row.Relevance = "selected(${" + baseName + "}, 'other')"
 			}
 		}
 	}
@@ -531,6 +579,12 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 		}
 	}
 
+	// Build a survey name→row lookup for _other detection
+	surveyByName := make(map[string]SurveyRow)
+	for _, row := range form.Survey {
+		surveyByName[row.Name] = row
+	}
+
 	// Process survey rows
 	var vars []DDIVar
 	var groups []DDIVarGrp
@@ -568,8 +622,8 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 			}
 
 		case "select_multiple":
-			grp, binaryVars := convertSelectMultipleToDDI(row, listName, choiceMap, otherTextNames)
-			groups = append(groups, grp)
+			resultGroups, binaryVars := convertSelectMultipleToDDI(row, listName, choiceMap, otherTextNames)
+			groups = append(groups, resultGroups...)
 			vars = append(vars, binaryVars...)
 
 		default:
@@ -579,6 +633,45 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 				groupVarIDs = append(groupVarIDs, v.ID)
 			}
 		}
+	}
+
+	// Post-processing: wrap single-choice + _other pairs in a parent varGrp
+	for i, v := range vars {
+		if strings.HasSuffix(v.Name, "_other") {
+			continue
+		}
+		// Check if this var has a corresponding _other text var
+		otherName := v.Name + "_other"
+		if !otherTextNames[otherName] {
+			continue
+		}
+		// Only wrap category (select_one) vars — select_multiple is handled above
+		if v.Qstn == nil || v.Qstn.ResponseDomainType != "category" {
+			continue
+		}
+		// Find the _other var
+		otherIdx := -1
+		for j, ov := range vars {
+			if ov.Name == otherName {
+				otherIdx = j
+				break
+			}
+		}
+		if otherIdx < 0 {
+			continue
+		}
+		_ = i // both vars stay in vars slice; we just add a parent group
+		parentGrp := DDIVarGrp{
+			ID:      "VG_" + strings.ReplaceAll(v.Name, " ", "_"),
+			Name:    v.Name,
+			Type:    "other",
+			Var:     v.ID + " " + vars[otherIdx].ID,
+			Concept: v.Concept,
+		}
+		if v.Qstn != nil {
+			parentGrp.Txt = v.Qstn.QstnLit
+		}
+		groups = append(groups, parentGrp)
 	}
 
 	// If there's a single var and no groups, return just the var
@@ -635,12 +728,13 @@ func parseXLSFormType(t string) (baseType, listName string) {
 	return
 }
 
-// convertSelectMultipleToDDI converts a select_multiple survey row into a
-// DDI <varGrp type="multipleResp"> plus one binary <var> per choice option.
-// Each binary var has categories 0 and 1 (no labels).
-func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[string][]ChoiceRow, otherTextNames map[string]bool) (DDIVarGrp, []DDIVar) {
+// convertSelectMultipleToDDI converts a select_multiple survey row into DDI varGrps
+// plus one binary <var> per choice option. When a corresponding _other text row exists,
+// it produces a parent varGrp (type="other") wrapping a child multipleResp varGrp.
+// Otherwise it produces a single multipleResp varGrp.
+func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[string][]ChoiceRow, otherTextNames map[string]bool) ([]DDIVarGrp, []DDIVar) {
 	groupName := row.Name
-	groupID := "VG_" + strings.ReplaceAll(groupName, " ", "_")
+	hasOther := otherTextNames[groupName+"_other"]
 
 	choices := choiceMap[listName]
 	var varIDs []string
@@ -675,16 +769,38 @@ func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[st
 		binaryVars = append(binaryVars, v)
 	}
 
+	if hasOther {
+		// Two-level hierarchy: parent (type="other") + child (type="multipleResp")
+		childID := "VG_" + strings.ReplaceAll(groupName, " ", "_") + "_choices"
+		childGrp := DDIVarGrp{
+			ID:      childID,
+			Name:    groupName + "_choices",
+			Type:    "multipleResp",
+			Var:     strings.Join(varIDs, " "),
+			Txt:     row.Label,
+			Concept: DDIConcept{Value: row.Label},
+		}
+		parentGrp := DDIVarGrp{
+			ID:        "VG_" + strings.ReplaceAll(groupName, " ", "_"),
+			Name:      groupName,
+			Type:      "other",
+			Var:       "V_" + groupName + "_other",
+			VarGrpRef: childID,
+			Txt:       row.Label,
+			Concept:   DDIConcept{Value: row.Label},
+		}
+		return []DDIVarGrp{parentGrp, childGrp}, binaryVars
+	}
+
 	grp := DDIVarGrp{
-		ID:      groupID,
+		ID:      "VG_" + strings.ReplaceAll(groupName, " ", "_"),
 		Name:    groupName,
 		Type:    "multipleResp",
 		Var:     strings.Join(varIDs, " "),
 		Txt:     row.Label,
 		Concept: DDIConcept{Value: row.Label},
 	}
-
-	return grp, binaryVars
+	return []DDIVarGrp{grp}, binaryVars
 }
 
 // convertSurveyRowToDDIVar converts a single survey row to a DDI <var> element.

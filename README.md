@@ -2,7 +2,7 @@
 
 [![AI-Assisted](https://img.shields.io/badge/AI--assisted-Claude%20Code-blueviolet?logo=anthropic&logoColor=white)](./AI_DISCLOSURE.md)
 
-A robust question bank and metadata repository for civil society, built on **PocketBase** with a strict DDI-Codebook integration.
+A question bank and metadata repository for civil society, built on **PocketBase** with a strict DDI-Codebook integration.
 
 ## Key Features
 
@@ -170,6 +170,15 @@ The worker connects to the embedded NATS server in qwacback and handles all XSD 
   - **Response**: DDI XML fragment
 
 For detailed documentation on the conversion endpoints, see [CONVERSION_API.md](CONVERSION_API.md).
+
+#### Search
+
+- **GET `/api/search/studies?q=<term>`**: Search studies by title, keywords, and abstract. Results ranked by relevance (title > keywords > abstract).
+  - **Optional filter**: `&topic=<classification>` — restrict to studies matching a topic classification.
+  - **Pagination**: `&page=1&perPage=20` (default 20, max 100).
+
+- **GET `/api/search/questions?q=<term>`**: Search variables by question text, concept, name, prequestion text, categories, and answer type. Results ranked by relevance (question > concept > name > prequestion_text > categories > answer_type).
+  - **Pagination**: `&page=1&perPage=20` (default 20, max 100).
 
 #### Examples
 

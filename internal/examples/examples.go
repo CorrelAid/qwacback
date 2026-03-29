@@ -74,7 +74,7 @@ var defs = []exampleDef{
 		XLSForm: converter.XLSForm{
 			Survey: []converter.SurveyRow{
 				{Type: "select_multiple geraete", Name: "geraetebesitz", Label: "Welche dieser Geräte besitzen Sie?"},
-				{Type: "text", Name: "geraetebesitz_other", Label: "Sonstiges (bitte angeben)", Relevance: "selected(${geraetebesitz}, 'other')"},
+				{Type: "text", Name: "geraetebesitz_other", Label: "Sonstiges (bitte angeben)", Relevance: "${geraetebesitz} = 'other'"},
 			},
 			Choices: []converter.ChoiceRow{
 				{ListName: "geraete", Name: "smartphone", Label: "Smartphone"},
