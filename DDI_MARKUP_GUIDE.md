@@ -50,6 +50,22 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 
 `labl` is **required** for `responseDomainType="category"` (single choice, grid) but **omitted** for `responseDomainType="multiple"` (checkboxes). Checkbox variables are binary 0/1 — the variable name and `qstnLit` already describe what the checkbox means.
 
+### `notes`
+
+`notes` is an optional free-text annotation on a `<var>`. Use it for methodology notes, source attribution, or other metadata that does not fit into the structured fields. Only **one** `notes` element per variable is allowed (enforced by Schematron). It must appear **after** `varFormat` (last child of `<var>`).
+
+Example:
+```xml
+<var ID="V_geschlecht" name="geschlecht" intrvl="discrete">
+  <qstn responseDomainType="category">
+    <qstnLit>Was ist Ihr Geschlecht?</qstnLit>
+  </qstn>
+  <concept>Geschlecht</concept>
+  <varFormat type="numeric" schema="other"/>
+  <notes>Instrument nach Diethold (2023), Option B.</notes>
+</var>
+```
+
 ### `ID`
 
 The `ID` attribute (`xs:ID`) is a document-wide unique identifier used for cross-referencing (e.g. `varGrp var="V_item1 V_item2"`). It does **not** need to be human-readable — use `name` for that. Convention: `V_<name>` for variables, `VG_<name>` for groups.
@@ -74,10 +90,10 @@ Do **not** use `type="section"` — section groups are structural containers wit
 The XSD enforces a strict sequence inside `<var>`. Simplified to the elements this project uses:
 
 ```
-qstn → catgry* → concept → varFormat
+qstn → catgry* → concept → varFormat → notes?
 ```
 
-The full XSD sequence includes many more optional elements (e.g. `location`, `labl`, `valrng`, `universe`, `notes`), but they are not used in this project.
+`notes` is optional and must appear **after** `varFormat` (last child of `<var>`). Only one `notes` element per variable is allowed (enforced by Schematron).
 
 ### `<varGrp>` placement in `<dataDscr>`
 
@@ -219,7 +235,8 @@ Rules:
 | `labl` | `catgry` | Human-readable label for a category value (required for `category`, omitted for `multiple`) |
 | `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (required) |
 | `txt` | `varGrp` | Shared introductory question text for grid/checkbox groups |
-| `varFormat` | `var` | Technical data format (must appear last inside `var`) |
+| `varFormat` | `var` | Technical data format (must appear second-to-last inside `var`) |
+| `notes` | `var` | Optional free-text annotation (max one per variable, must be last child) |
 
 ### Attributes
 

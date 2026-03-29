@@ -27,6 +27,7 @@
             <assert test="ddi:varFormat">Variable <value-of select="@name"/> is missing technical format (varFormat).</assert>
             <assert test="ddi:concept and normalize-space(ddi:concept) != ''">Variable <value-of select="@name"/> is missing a concept element.</assert>
             <assert test="not(ddi:labl)">Variable <value-of select="@name"/> uses labl — use concept instead. labl is only for catgry elements.</assert>
+            <assert test="count(ddi:notes) &lt;= 1">Variable <value-of select="@name"/> has multiple notes elements. Only one notes element per variable is allowed.</assert>
         </rule>
         <rule context="var">
             <assert test="@name">Variable <value-of select="@ID"/> is missing a name attribute.</assert>
@@ -36,6 +37,7 @@
             <assert test="varFormat">Variable <value-of select="@name"/> is missing technical format (varFormat).</assert>
             <assert test="concept and normalize-space(concept) != ''">Variable <value-of select="@name"/> is missing a concept element.</assert>
             <assert test="not(labl)">Variable <value-of select="@name"/> uses labl — use concept instead. labl is only for catgry elements.</assert>
+            <assert test="count(notes) &lt;= 1">Variable <value-of select="@name"/> has multiple notes elements. Only one notes element per variable is allowed.</assert>
         </rule>
 
         <!-- Variable group essentials -->

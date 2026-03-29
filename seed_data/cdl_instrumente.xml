@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5">
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>Ausgewählte CDL Instrumente</titl>
+      </titlStmt>
+    </citation>
+    <stdyInfo>
+      <subject>
+        <keyword>Geschlecht</keyword>
+        <keyword>Gender</keyword>
+        <keyword>Inklusion</keyword>
+        <keyword>Net Promoter Score</keyword>
+        <keyword>NPS</keyword>
+        <keyword>Weiterempfehlung</keyword>
+        <topcClas>Template</topcClas>
+      </subject>
+      <abstract>Eine Sammlung vom Civic Data Lab empfohlene Erhebungsinstrumente.</abstract>
+      <sumDscr>
+        <nation>Deutschland</nation>
+      </sumDscr>
+    </stdyInfo>
+  </stdyDscr>
+  <dataDscr>
+    <!-- ===== Variable Groups (must come before vars) ===== -->
+
+    <!-- answer_type: multiple_choice_other (Diethold 2023, Option B) -->
+    <varGrp ID="VG_geschlecht" name="geschlecht" type="multipleResp" var="V_geschlecht_weiblich V_geschlecht_maennlich V_geschlecht_nicht_binaer V_geschlecht_kein_geschlecht V_geschlecht_keine_angabe">
+      <txt>Was ist Ihr Geschlecht?</txt>
+      <concept>Geschlecht (Selbstdefinition)</concept>
+    </varGrp>
+
+    <!-- ===== Variables ===== -->
+
+    <!-- answer_type: multiple_choice (binary member vars of geschlecht group) -->
+    <var ID="V_geschlecht_weiblich" name="geschlecht_weiblich" intrvl="discrete">
+      <qstn responseDomainType="multiple">
+        <preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+        <qstnLit>weiblich</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <concept>Geschlecht: weiblich</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes>Diethold, J. (2023): Diskriminierung bei der Erhebung von Daten zu Geschlecht. Policy Paper, Heinrich-Böll-Stiftung / Gunda-Werner-Institut. Option B: Auswahl aus vorgegebenen Kategorien.</notes>
+    </var>
+
+    <var ID="V_geschlecht_maennlich" name="geschlecht_maennlich" intrvl="discrete">
+      <qstn responseDomainType="multiple">
+        <preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+        <qstnLit>männlich</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <concept>Geschlecht: männlich</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes>Diethold, J. (2023): Diskriminierung bei der Erhebung von Daten zu Geschlecht. Policy Paper, Heinrich-Böll-Stiftung / Gunda-Werner-Institut. Option B: Auswahl aus vorgegebenen Kategorien.</notes>
+    </var>
+
+    <var ID="V_geschlecht_nicht_binaer" name="geschlecht_nicht_binaer" intrvl="discrete">
+      <qstn responseDomainType="multiple">
+        <preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+        <qstnLit>nicht-binär</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <concept>Geschlecht: nicht-binär</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes>Diethold, J. (2023): Diskriminierung bei der Erhebung von Daten zu Geschlecht. Policy Paper, Heinrich-Böll-Stiftung / Gunda-Werner-Institut. Option B: Auswahl aus vorgegebenen Kategorien.</notes>
+    </var>
+
+    <var ID="V_geschlecht_kein_geschlecht" name="geschlecht_kein_geschlecht" intrvl="discrete">
+      <qstn responseDomainType="multiple">
+        <preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+        <qstnLit>kein Geschlecht</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <concept>Geschlecht: kein Geschlecht</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes>Diethold, J. (2023): Diskriminierung bei der Erhebung von Daten zu Geschlecht. Policy Paper, Heinrich-Böll-Stiftung / Gunda-Werner-Institut. Option B: Auswahl aus vorgegebenen Kategorien.</notes>
+    </var>
+
+    <var ID="V_geschlecht_keine_angabe" name="geschlecht_keine_angabe" intrvl="discrete">
+      <qstn responseDomainType="multiple">
+        <preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+        <qstnLit>keine Angabe</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <concept>Geschlecht: keine Angabe</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes>Diethold, J. (2023): Diskriminierung bei der Erhebung von Daten zu Geschlecht. Policy Paper, Heinrich-Böll-Stiftung / Gunda-Werner-Institut. Option B: Auswahl aus vorgegebenen Kategorien.</notes>
+    </var>
+
+    <!-- answer_type: text (_other free text for self-definition, NOT in varGrp/@var) -->
+    <var ID="V_geschlecht_other" name="geschlecht_other" intrvl="contin">
+      <qstn responseDomainType="text">
+        <qstnLit>Geschlecht (eigene Angabe)</qstnLit>
+      </qstn>
+      <concept>Geschlecht (Freitextangabe)</concept>
+      <varFormat type="character" schema="other"/>
+      <notes>Diethold, J. (2023): Diskriminierung bei der Erhebung von Daten zu Geschlecht. Policy Paper, Heinrich-Böll-Stiftung / Gunda-Werner-Institut. Option B: Freies Eingabefeld für Selbstdefinition.</notes>
+    </var>
+
+    <!-- answer_type: single_choice (NPS 0-10 scale) -->
+    <var ID="V_nps" name="nps" intrvl="discrete">
+      <qstn responseDomainType="category">
+        <qstnLit>Wie wahrscheinlich ist es, dass Sie dieses Angebot einer Freundin oder einem Kollegen weiterempfehlen würden?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>0 - Sehr unwahrscheinlich</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>6</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>7</labl>
+      </catgry>
+      <catgry>
+        <catValu>8</catValu>
+        <labl>8</labl>
+      </catgry>
+      <catgry>
+        <catValu>9</catValu>
+        <labl>9</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>10 - Äußerst wahrscheinlich</labl>
+      </catgry>
+      <concept>Net Promoter Score (Weiterempfehlung)</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes>Net Promoter Score (NPS) nach Reichheld, F. (2003): The One Number You Need to Grow. Harvard Business Review.</notes>
+    </var>
+  </dataDscr>
+</codeBook>

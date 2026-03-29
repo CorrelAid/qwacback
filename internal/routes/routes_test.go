@@ -429,3 +429,87 @@ func TestXMLFragmentRoutes(t *testing.T) {
 		scenario.Test(t)
 	}
 }
+
+func TestSearchQuestionsRoute(t *testing.T) {
+	testDataDir, err := os.MkdirTemp("", "pb_test_search")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(testDataDir)
+
+	// Seed test data
+	{
+		app, err := tests.NewTestApp(testDataDir)
+		if err != nil {
+			t.Fatal(err)
+		}
+		xmlData, err := os.ReadFile("../../seed_data/prove_it.xml")
+		if err != nil {
+			t.Fatal(err)
+		}
+		mv, err := mxj.NewMapXml(xmlData)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := importer.ImportCodebookData(app, mv, xmlData); err != nil {
+			t.Fatal(err)
+		}
+		app.Cleanup()
+	}
+
+	setupTestApp := func(t testing.TB) *tests.TestApp {
+		testApp, err := tests.NewTestApp(testDataDir)
+		if err != nil {
+			t.Fatal(err)
+		}
+		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
+			return RegisterRoutes(testApp, se, nil, "../..")
+		})
+		return testApp
+	}
+
+	scenarios := []tests.ApiScenario{
+		{
+			Name:           "missing q parameter",
+			Method:         http.MethodGet,
+			URL:            "/api/search/questions",
+			ExpectedStatus: 400,
+			TestAppFactory: setupTestApp,
+		},
+		{
+			Name:           "empty q parameter",
+			Method:         http.MethodGet,
+			URL:            "/api/search/questions?q=",
+			ExpectedStatus: 400,
+			TestAppFactory: setupTestApp,
+		},
+		{
+			Name:            "search returns results",
+			Method:          http.MethodGet,
+			URL:             "/api/search/questions?q=Vertrauen",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"items"`, `"totalItems"`, `"concept"`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "search no results",
+			Method:          http.MethodGet,
+			URL:             "/api/search/questions?q=zzzznonexistentzzzz",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"items":[]`, `"totalItems":0`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:            "search with pagination",
+			Method:          http.MethodGet,
+			URL:             "/api/search/questions?q=Vertrauen&page=1&perPage=2",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"page":1`, `"perPage":2`},
+			TestAppFactory:  setupTestApp,
+		},
+	}
+
+	for _, scenario := range scenarios {
+		scenario.Test(t)
+	}
+}

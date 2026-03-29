@@ -13,10 +13,12 @@ import (
 	"qwacback/internal/importer"
 	"qwacback/internal/schematron"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/clbanning/mxj/v2"
+	"github.com/pocketbase/dbx"
 	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 )
@@ -476,6 +478,79 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
 		_, err = e.Response.Write(data)
 		return err
+	})
+
+	// Search questions - Public
+	se.Router.GET("/api/search/questions", func(e *core.RequestEvent) error {
+		q := strings.TrimSpace(e.Request.URL.Query().Get("q"))
+		if q == "" {
+			return apis.NewBadRequestError("Missing search query parameter 'q'", nil)
+		}
+		if len(q) > 200 {
+			return apis.NewBadRequestError("Query too long (max 200 characters)", nil)
+		}
+
+		// Pagination
+		page, _ := strconv.Atoi(e.Request.URL.Query().Get("page"))
+		if page < 1 {
+			page = 1
+		}
+		perPage, _ := strconv.Atoi(e.Request.URL.Query().Get("perPage"))
+		if perPage < 1 || perPage > 100 {
+			perPage = 20
+		}
+		offset := (page - 1) * perPage
+
+		// Search across question, concept, name, and prequestion_text
+		filter := "question ~ {:q} || concept ~ {:q} || name ~ {:q} || prequestion_text ~ {:q}"
+		params := dbx.Params{"q": q}
+
+		records, err := app.FindRecordsByFilter("variables", filter, "order", perPage, offset, params)
+		if err != nil {
+			return apis.NewInternalServerError("Search failed", nil)
+		}
+
+		// Count total matches for pagination metadata
+		allMatches, err := app.FindRecordsByFilter("variables", filter, "", 0, 0, params)
+		if err != nil {
+			return apis.NewInternalServerError("Search failed", nil)
+		}
+		totalItems := len(allMatches)
+		totalPages := (totalItems + perPage - 1) / perPage
+
+		// Build response with study context
+		type searchResult struct {
+			ID              string `json:"id"`
+			StudyID         string `json:"study_id"`
+			GroupID         string `json:"group_id,omitempty"`
+			Name            string `json:"name"`
+			Concept         string `json:"concept"`
+			Question        string `json:"question"`
+			PrequestionText string `json:"prequestion_text,omitempty"`
+			AnswerType      string `json:"answer_type"`
+		}
+
+		items := make([]searchResult, 0, len(records))
+		for _, r := range records {
+			items = append(items, searchResult{
+				ID:              r.Id,
+				StudyID:         r.GetString("study"),
+				GroupID:         r.GetString("group"),
+				Name:            r.GetString("name"),
+				Concept:         r.GetString("concept"),
+				Question:        r.GetString("question"),
+				PrequestionText: r.GetString("prequestion_text"),
+				AnswerType:      r.GetString("answer_type"),
+			})
+		}
+
+		return e.JSON(200, map[string]interface{}{
+			"page":       page,
+			"perPage":    perPage,
+			"totalItems": totalItems,
+			"totalPages": totalPages,
+			"items":      items,
+		})
 	})
 
 	// Convert DDI to XLSForm - Public
