@@ -214,14 +214,14 @@
       <concept>Vorstandsgröße</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V8" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="contin">
+    <var ID="V8" name="vorstandsmitglieder_frauen" intrvl="contin">
       <qstn ID="Q8" responseDomainType="numeric">
         <qstnLit>Wie viele Frauen sind im Vorstand Ihrer Organisation??</qstnLit>
       </qstn>
       <concept>Anzahl weiblicher Vorstandsmitglieder</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V9" name="vorstandsmitglieder_frauen_migrationshintergrund_a" intrvl="contin">
+    <var ID="V9" name="vorstandsmitglieder_migrationshintergrund" intrvl="contin">
       <qstn ID="Q9" responseDomainType="numeric">
         <qstnLit>Wie viele Vorstandsmitglieder haben einen Migrationshintergrund?</qstnLit>
       </qstn>
@@ -934,7 +934,7 @@
       <concept>Aktivitätsbereiche: keine Angabe</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V50" name="nutzergruppen_menschen_mit" intrvl="discrete">
+    <var ID="V50" name="nutzergruppen_menschen_mit_migrationshintergrund" intrvl="discrete">
       <qstn ID="Q50" responseDomainType="multiple">
         <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
         <qstnLit>Menschen mit Migrationshintergrund</qstnLit>
@@ -1004,7 +1004,7 @@
       <concept>Nutzergruppen: Menschen ohne Migrationshintergrund</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V55" name="nutzergruppen_menschen_mit" intrvl="discrete">
+    <var ID="V55" name="nutzergruppen_menschen_mit_migrationshintergrund_herkunftsregion" intrvl="discrete">
       <qstn ID="Q55" responseDomainType="multiple">
         <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
         <qstnLit>Menschen mit Migrationshintergrund aus einer bestimmten Herkunftsregion</qstnLit>
@@ -1426,7 +1426,7 @@
       <concept>Angebote für Geflüchtete: Begleitung bei Behördengängen, zu Ärzten, etc.</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V163" name="angebote_fluechtlinge_raum_für" intrvl="discrete">
+    <var ID="V163" name="angebote_fluechtlinge_raum_fuer_migranten" intrvl="discrete">
       <qstn ID="Q163" responseDomainType="multiple">
         <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
         <qstnLit>Raum für Kontakte mit Migranten/Menschen mit Migrationshintergrund</qstnLit>
@@ -1510,7 +1510,7 @@
       <concept>Angebote für Geflüchtete: Unterstützung beim Beantragen von Leistungen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
-    <var ID="V169" name="angebote_fluechtlinge_raum_für" intrvl="discrete">
+    <var ID="V169" name="angebote_fluechtlinge_raum_fuer_deutsche" intrvl="discrete">
       <qstn ID="Q169" responseDomainType="multiple">
         <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
         <qstnLit>Raum für Kontakte mit Deutschen</qstnLit>

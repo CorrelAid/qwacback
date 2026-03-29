@@ -4,6 +4,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
+RUN go test ./... -timeout 120s
 RUN go build -o qwacback main.go
 
 # Run stage
