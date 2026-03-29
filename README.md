@@ -154,11 +154,10 @@ The worker connects to the embedded NATS server in qwacback and handles all XSD 
 - **POST `/api/import`**: Validates a DDI XML file and imports it into the database.
   - **Body**: `multipart/form-data` with a `file` field.
 
-#### XML Export
+#### Export
 
 - **GET `/api/studies/{id}/export`**: Exports a study and its variables as a validated DDI-XML file download.
-- **GET `/api/variables/{id}/xml`**: Returns the `<var>` XML fragment for a single variable.
-- **GET `/api/variable-groups/{id}/xml`**: Returns the `<varGrp>` XML fragment for a variable group.
+- **GET `/api/studies/{id}/xlsform`**: Exports a study as XLSForm JSON.
 
 #### Format Conversion
 
