@@ -123,8 +123,8 @@
             <assert test="ddi:qstn/@responseDomainType = 'text'">
                 Variable <value-of select="@name"/> ends in "_other" but has responseDomainType="<value-of select="ddi:qstn/@responseDomainType"/>". Expected "text".
             </assert>
-            <assert test="@intrvl = 'contin'">
-                Variable <value-of select="@name"/> ends in "_other" but has intrvl="<value-of select="@intrvl"/>". Expected "contin".
+            <assert test="@intrvl = 'discrete'">
+                Variable <value-of select="@name"/> ends in "_other" but has intrvl="<value-of select="@intrvl"/>". Expected "discrete".
             </assert>
             <assert test="ddi:varFormat/@type = 'character'">
                 Variable <value-of select="@name"/> ends in "_other" but has varFormat type="<value-of select="ddi:varFormat/@type"/>". Expected "character".
@@ -144,8 +144,8 @@
             <assert test="qstn/@responseDomainType = 'text'">
                 Variable <value-of select="@name"/> ends in "_other" but has responseDomainType="<value-of select="qstn/@responseDomainType"/>". Expected "text".
             </assert>
-            <assert test="@intrvl = 'contin'">
-                Variable <value-of select="@name"/> ends in "_other" but has intrvl="<value-of select="@intrvl"/>". Expected "contin".
+            <assert test="@intrvl = 'discrete'">
+                Variable <value-of select="@name"/> ends in "_other" but has intrvl="<value-of select="@intrvl"/>". Expected "discrete".
             </assert>
             <assert test="varFormat/@type = 'character'">
                 Variable <value-of select="@name"/> ends in "_other" but has varFormat type="<value-of select="varFormat/@type"/>". Expected "character".

@@ -41,11 +41,11 @@ The XLSForm format mirrors the actual spreadsheet structure with three sheets:
 │ XLSForm      │ DDI                 │ DDI      │ DDI                  │
 │ type         │ responseDomainType  │ intrvl   │ varFormat.type       │
 ├──────────────┼─────────────────────┼──────────┼──────────────────────┤
-│ integer      │ numeric             │ discrete │ numeric              │
-│ decimal      │ numeric             │ discrete │ numeric              │
-│ range        │ numeric             │ discrete │ numeric              │
-│ text         │ text                │ contin   │ character            │
-│ note         │ text                │ contin   │ character            │
+│ integer      │ numeric             │ contin   │ numeric              │
+│ decimal      │ numeric             │ contin   │ numeric              │
+│ range        │ numeric             │ contin   │ numeric              │
+│ text         │ text                │ discrete │ character            │
+│ note         │ text                │ discrete │ character            │
 │ select_one   │ category            │ discrete │ numeric              │
 │ matrix       │ category            │ discrete │ numeric              │
 │ select_multi │ multiple            │ discrete │ numeric              │
@@ -647,11 +647,11 @@ func convertSurveyRowToDDIVar(row SurveyRow, baseType, listName string, choiceMa
 	switch baseType {
 	case "integer", "decimal", "range":
 		responseDomainType = "numeric"
-		interval = "discrete"
+		interval = "contin"
 		varFormatType = "numeric"
 	case "text", "note":
 		responseDomainType = "text"
-		interval = "contin"
+		interval = "discrete"
 		varFormatType = "character"
 	case "select_one", "matrix":
 		responseDomainType = "category"
@@ -670,7 +670,7 @@ func convertSurveyRowToDDIVar(row SurveyRow, baseType, listName string, choiceMa
 		v.Concept.Vocab = strings.TrimSuffix(listName, ".csv")
 	default:
 		responseDomainType = "text"
-		interval = "contin"
+		interval = "discrete"
 		varFormatType = "character"
 	}
 

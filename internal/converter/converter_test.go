@@ -61,7 +61,7 @@ func TestDDIToXLSForm_SelectOne(t *testing.T) {
 }
 
 func TestDDIToXLSForm_Integer(t *testing.T) {
-	ddiXML := `<var ID="V2" name="age" intrvl="discrete">
+	ddiXML := `<var ID="V2" name="age" intrvl="contin">
 		<concept>Age of respondent</concept>
 		<qstn responseDomainType="numeric">
 			<qstnLit>What is your age?</qstnLit>
@@ -97,7 +97,7 @@ func TestDDIToXLSForm_Integer(t *testing.T) {
 }
 
 func TestDDIToXLSForm_Text(t *testing.T) {
-	ddiXML := `<var ID="V3" name="comments" intrvl="contin">
+	ddiXML := `<var ID="V3" name="comments" intrvl="discrete">
 		<concept>Additional comments</concept>
 		<qstn responseDomainType="text">
 			<qstnLit>Please provide any additional comments</qstnLit>
@@ -330,8 +330,8 @@ func TestXLSFormToDDI_Integer(t *testing.T) {
 	if v.Qstn.ResponseDomainType != "numeric" {
 		t.Errorf("Expected responseDomainType numeric, got %s", v.Qstn.ResponseDomainType)
 	}
-	if v.Intrvl != "discrete" {
-		t.Errorf("Expected intrvl discrete, got %s", v.Intrvl)
+	if v.Intrvl != "contin" {
+		t.Errorf("Expected intrvl contin, got %s", v.Intrvl)
 	}
 	if v.VarFormat == nil || v.VarFormat.Type != "numeric" {
 		t.Errorf("VarFormat incorrect: %+v", v.VarFormat)
@@ -366,8 +366,8 @@ func TestXLSFormToDDI_Text(t *testing.T) {
 	if v.Qstn.PreQTxt != "Be specific" {
 		t.Errorf("Expected PreQTxt 'Be specific', got %s", v.Qstn.PreQTxt)
 	}
-	if v.Intrvl != "contin" {
-		t.Errorf("Expected intrvl contin, got %s", v.Intrvl)
+	if v.Intrvl != "discrete" {
+		t.Errorf("Expected intrvl discrete, got %s", v.Intrvl)
 	}
 	if v.VarFormat == nil || v.VarFormat.Type != "character" {
 		t.Errorf("VarFormat incorrect: %+v", v.VarFormat)
@@ -808,8 +808,8 @@ func TestXLSFormToDDI_SelectOneWithOther(t *testing.T) {
 	if otherVar.Qstn.QstnLit != "Sonstiges (bitte angeben)" {
 		t.Errorf("Expected QstnLit 'Sonstiges (bitte angeben)', got %s", otherVar.Qstn.QstnLit)
 	}
-	if otherVar.Intrvl != "contin" {
-		t.Errorf("Expected intrvl contin, got %s", otherVar.Intrvl)
+	if otherVar.Intrvl != "discrete" {
+		t.Errorf("Expected intrvl discrete, got %s", otherVar.Intrvl)
 	}
 	if otherVar.VarFormat == nil || otherVar.VarFormat.Type != "character" {
 		t.Errorf("Expected VarFormat character, got %+v", otherVar.VarFormat)
@@ -894,8 +894,8 @@ func TestXLSFormToDDI_SelectMultipleWithOther(t *testing.T) {
 	if otherVar.Qstn.QstnLit != "Sonstiges (bitte angeben)" {
 		t.Errorf("Expected QstnLit 'Sonstiges (bitte angeben)', got %s", otherVar.Qstn.QstnLit)
 	}
-	if otherVar.Intrvl != "contin" {
-		t.Errorf("Expected intrvl contin, got %s", otherVar.Intrvl)
+	if otherVar.Intrvl != "discrete" {
+		t.Errorf("Expected intrvl discrete, got %s", otherVar.Intrvl)
 	}
 	if otherVar.VarFormat == nil || otherVar.VarFormat.Type != "character" {
 		t.Errorf("Expected VarFormat character, got %+v", otherVar.VarFormat)
@@ -1083,7 +1083,7 @@ func TestDDIToXLSForm_CodeBook(t *testing.T) {
 			<citation><titlStmt><titl>Test Study</titl></titlStmt></citation>
 		</stdyDscr>
 		<dataDscr>
-			<var ID="V1" name="age" intrvl="discrete">
+			<var ID="V1" name="age" intrvl="contin">
 				<concept>Age</concept>
 				<qstn responseDomainType="numeric">
 					<qstnLit>How old are you?</qstnLit>

@@ -283,8 +283,8 @@ To create a complete DDI codebook with single questions, wrap them in the full s
 
 | XLSForm type | DDI output | DDI responseDomainType | intrvl | varFormat.type |
 |--------------|-----------|------------------------|--------|----------------|
-| `integer`, `decimal`, `range` | `<var>` | `numeric` | `discrete` | `numeric` |
-| `text`, `note` | `<var>` | `text` | `contin` | `character` |
+| `integer`, `decimal`, `range` | `<var>` | `numeric` | `contin` | `numeric` |
+| `text`, `note` | `<var>` | `text` | `discrete` | `character` |
 | `select_one`, `matrix` | `<var>` + `<catgry>` | `category` | `discrete` | `numeric` |
 | `select_multiple` | `<varGrp type="multipleResp">` + binary `<var>` per choice | `multiple` | `discrete` | `numeric` |
 | `select_one_from_file` | `<var>` with `concept/@vocab` (no `catgry`) | `category` | `discrete` | `numeric` |
