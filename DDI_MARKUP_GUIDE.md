@@ -116,14 +116,16 @@ Two boolean fields on the `variables` collection modify the base type:
 
 ### Semi-open questions (`_other` convention)
 
-A semi-open (halb-offen) question provides a closed choice list plus an optional free-text field for respondents who select "Sonstiges". This produces **two variables** in DDI: the main categorical/checkbox variable, and a text variable named `<name>_other` for the free-text specification.
+A semi-open (halb-offen) question provides a closed choice list plus an optional free-text field for respondents who select an "other" option. This produces **two variables** in DDI: the main categorical/checkbox variable, and a text variable named `<name>_other` for the free-text specification.
 
-DDI Codebook has no concept of skip/relevance logic — the conditional display is XLSForm form logic only. In DDI, the two variables are linked by naming convention.
+DDI Codebook has no concept of skip/relevance logic. The converter reconstructs XLSForm relevance from naming conventions during DDI→XLSForm conversion, ensuring lossless round-trips.
 
-Rules for `_other` variables:
-*   Must have `responseDomainType="text"`, `intrvl="discrete"`, `varFormat type="character"`.
+**Conventions for `_other` variables:**
+*   The "other" category must use `catValu="other"`. The label can be localized (e.g. "Sonstiges").
+*   The `_other` text variable must have `responseDomainType="text"`, `intrvl="contin"`, `varFormat type="character"`.
 *   A matching base variable or group with the prefix name must exist.
-*   For `multiple_choice_other`: the `_other` text variable must **not** be listed in the `varGrp/@var` attribute. The "Sonstiges" binary variable (inside the group) is separate from the text specification variable (outside the group).
+*   For `multiple_choice_other`: the `_other` text variable must **not** be listed in the `varGrp/@var` attribute. No binary var is created for the "other" choice — the `_other` text var represents it outside the group.
+*   **Round-trip**: DDI→XLSForm reconstructs relevance from naming convention: `${base} = 'other'` (single choice) or `selected(${base}, 'other')` (multiple choice). XLSForm→DDI drops relevance (reconstructable). For multiple choice, the converter synthesizes an `other` choice from the `_other` text var, and skips creating a binary var for it on the way back.
 
 ### Grid and checkbox group consistency
 

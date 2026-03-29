@@ -133,6 +133,10 @@
             <assert test="//ddi:var[@name = substring-before(current()/@name, '_other')] or //ddi:varGrp[@name = substring-before(current()/@name, '_other')]">
                 Variable <value-of select="@name"/> ends in "_other" but no matching base variable or group named "<value-of select="substring-before(@name, '_other')"/>" was found.
             </assert>
+            <!-- When base is a single-choice var, it must have catValu="other" (convention for round-trip) -->
+            <assert test="not(//ddi:var[@name = substring-before(current()/@name, '_other')]) or //ddi:var[@name = substring-before(current()/@name, '_other')]/ddi:catgry[ddi:catValu = 'other'] or //ddi:varGrp[@name = substring-before(current()/@name, '_other')]">
+                Variable <value-of select="@name"/>: the base variable "<value-of select="substring-before(@name, '_other')"/>" must have a catgry with catValu="other" (convention for round-trip conversion).
+            </assert>
             <!-- _other var must NOT be listed in a multipleResp group's var attribute -->
             <assert test="not(//ddi:varGrp[@type='multipleResp' and contains(concat(' ', @var, ' '), concat(' ', current()/@ID, ' '))])">
                 Variable <value-of select="@name"/> (text _other) must not be a member of a multipleResp group. It should be a standalone variable outside the group.
@@ -152,6 +156,10 @@
             </assert>
             <assert test="//var[@name = substring-before(current()/@name, '_other')] or //varGrp[@name = substring-before(current()/@name, '_other')]">
                 Variable <value-of select="@name"/> ends in "_other" but no matching base variable or group named "<value-of select="substring-before(@name, '_other')"/>" was found.
+            </assert>
+            <!-- When base is a single-choice var, it must have catValu="other" (convention for round-trip) -->
+            <assert test="not(//var[@name = substring-before(current()/@name, '_other')]) or //var[@name = substring-before(current()/@name, '_other')]/catgry[catValu = 'other'] or //varGrp[@name = substring-before(current()/@name, '_other')]">
+                Variable <value-of select="@name"/>: the base variable "<value-of select="substring-before(@name, '_other')"/>" must have a catgry with catValu="other" (convention for round-trip conversion).
             </assert>
             <assert test="not(//varGrp[@type='multipleResp' and contains(concat(' ', @var, ' '), concat(' ', current()/@ID, ' '))])">
                 Variable <value-of select="@name"/> (text _other) must not be a member of a multipleResp group. It should be a standalone variable outside the group.

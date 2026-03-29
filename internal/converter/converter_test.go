@@ -739,13 +739,13 @@ func TestXLSFormToDDI_SelectOneWithOther(t *testing.T) {
 	xlsformJSON := `{
 		"survey": [
 			{"type": "select_one geschlecht", "name": "geschlecht", "label": "Welches Geschlecht haben Sie?"},
-			{"type": "text", "name": "geschlecht_other", "label": "Sonstiges (bitte angeben)", "relevance": "${geschlecht} = 'sonstiges'"}
+			{"type": "text", "name": "geschlecht_other", "label": "Sonstiges (bitte angeben)", "relevance": "${geschlecht} = 'other'"}
 		],
 		"choices": [
 			{"list_name": "geschlecht", "name": "maennlich", "label": "Männlich"},
 			{"list_name": "geschlecht", "name": "weiblich", "label": "Weiblich"},
 			{"list_name": "geschlecht", "name": "divers", "label": "Divers"},
-			{"list_name": "geschlecht", "name": "sonstiges", "label": "Sonstiges"}
+			{"list_name": "geschlecht", "name": "other", "label": "Sonstiges"}
 		],
 		"settings": {}
 	}`
@@ -786,7 +786,7 @@ func TestXLSFormToDDI_SelectOneWithOther(t *testing.T) {
 		{"maennlich", "Männlich"},
 		{"weiblich", "Weiblich"},
 		{"divers", "Divers"},
-		{"sonstiges", "Sonstiges"},
+		{"other", "Sonstiges"},
 	}
 	for i, exp := range expectedChoices {
 		if selectVar.Catgry[i].CatValu != exp.value || selectVar.Catgry[i].Labl != exp.label {
@@ -822,13 +822,13 @@ func TestXLSFormToDDI_SelectMultipleWithOther(t *testing.T) {
 	xlsformJSON := `{
 		"survey": [
 			{"type": "select_multiple geraete", "name": "geraetebesitz", "label": "Welche dieser Geräte besitzen Sie?"},
-			{"type": "text", "name": "geraetebesitz_other", "label": "Sonstiges (bitte angeben)", "relevance": "selected(${geraetebesitz}, 'sonstiges')"}
+			{"type": "text", "name": "geraetebesitz_other", "label": "Sonstiges (bitte angeben)", "relevance": "selected(${geraetebesitz}, 'other')"}
 		],
 		"choices": [
 			{"list_name": "geraete", "name": "smartphone", "label": "Smartphone"},
 			{"list_name": "geraete", "name": "laptop", "label": "Laptop"},
 			{"list_name": "geraete", "name": "tablet", "label": "Tablet"},
-			{"list_name": "geraete", "name": "sonstiges", "label": "Sonstiges"}
+			{"list_name": "geraete", "name": "other", "label": "Sonstiges"}
 		],
 		"settings": {}
 	}`
@@ -843,12 +843,13 @@ func TestXLSFormToDDI_SelectMultipleWithOther(t *testing.T) {
 		t.Fatalf("Failed to parse result as dataDscr: %v", err)
 	}
 
-	// Should have 1 varGrp (multipleResp) + 4 binary vars + 1 text var = 5 vars
+	// Should have 1 varGrp (multipleResp) + 3 binary vars + 1 text var = 4 vars
+	// The "other" choice is skipped as binary var (collision with _other text var)
 	if len(dd.VarGrps) != 1 {
 		t.Fatalf("Expected 1 varGrp, got %d", len(dd.VarGrps))
 	}
-	if len(dd.Vars) != 5 {
-		t.Fatalf("Expected 5 vars (4 binary + 1 text), got %d", len(dd.Vars))
+	if len(dd.Vars) != 4 {
+		t.Fatalf("Expected 4 vars (3 binary + 1 text), got %d", len(dd.Vars))
 	}
 
 	// Check varGrp
@@ -860,12 +861,11 @@ func TestXLSFormToDDI_SelectMultipleWithOther(t *testing.T) {
 		t.Errorf("Expected varGrp name geraetebesitz, got %s", grp.Name)
 	}
 
-	// Check binary vars (first 4)
+	// Check binary vars (first 3 — "other" choice skipped)
 	expectedBinary := []struct{ name, qstnLit string }{
 		{"geraetebesitz_smartphone", "Smartphone"},
 		{"geraetebesitz_laptop", "Laptop"},
 		{"geraetebesitz_tablet", "Tablet"},
-		{"geraetebesitz_sonstiges", "Sonstiges"},
 	}
 	for i, exp := range expectedBinary {
 		v := dd.Vars[i]
@@ -884,7 +884,7 @@ func TestXLSFormToDDI_SelectMultipleWithOther(t *testing.T) {
 	}
 
 	// Check text other var (last one)
-	otherVar := dd.Vars[4]
+	otherVar := dd.Vars[3]
 	if otherVar.Name != "geraetebesitz_other" {
 		t.Errorf("Expected name geraetebesitz_other, got %s", otherVar.Name)
 	}
@@ -902,6 +902,215 @@ func TestXLSFormToDDI_SelectMultipleWithOther(t *testing.T) {
 	}
 
 	t.Logf("DDI output:\n%s", string(ddiXML))
+}
+
+func TestRoundTrip_SelectOneWithOther(t *testing.T) {
+	// DDI with a single-choice var (catValu="other") + _other text var
+	originalDDI := `<dataDscr>
+		<var ID="V_geschlecht" name="geschlecht" intrvl="discrete">
+			<qstn responseDomainType="category">
+				<qstnLit>Welches Geschlecht haben Sie?</qstnLit>
+			</qstn>
+			<catgry><catValu>maennlich</catValu><labl>Männlich</labl></catgry>
+			<catgry><catValu>weiblich</catValu><labl>Weiblich</labl></catgry>
+			<catgry><catValu>divers</catValu><labl>Divers</labl></catgry>
+			<catgry><catValu>other</catValu><labl>Sonstiges</labl></catgry>
+			<concept>Geschlecht</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geschlecht_other" name="geschlecht_other" intrvl="contin">
+			<qstn responseDomainType="text">
+				<qstnLit>Sonstiges (bitte angeben)</qstnLit>
+			</qstn>
+			<concept>Geschlecht (Sonstiges)</concept>
+			<varFormat type="character" schema="other"/>
+		</var>
+	</dataDscr>`
+
+	// DDI → XLSForm
+	xlsformJSON, err := DDIToXLSForm([]byte(originalDDI))
+	if err != nil {
+		t.Fatalf("DDIToXLSForm failed: %v", err)
+	}
+
+	var form XLSForm
+	if err := json.Unmarshal(xlsformJSON, &form); err != nil {
+		t.Fatalf("Failed to parse XLSForm: %v", err)
+	}
+
+	if len(form.Survey) != 2 {
+		t.Fatalf("Expected 2 survey rows, got %d", len(form.Survey))
+	}
+
+	// Check the _other row has reconstructed relevance
+	otherRow := form.Survey[1]
+	if otherRow.Name != "geschlecht_other" {
+		t.Errorf("Expected name geschlecht_other, got %s", otherRow.Name)
+	}
+	if otherRow.Relevance != "${geschlecht} = 'other'" {
+		t.Errorf("Expected relevance '${geschlecht} = 'other'', got %q", otherRow.Relevance)
+	}
+
+	// XLSForm → DDI (round-trip)
+	newDDI, err := XLSFormToDDI(xlsformJSON)
+	if err != nil {
+		t.Fatalf("XLSFormToDDI failed: %v", err)
+	}
+
+	var dd DDIDataDscr
+	if err := xml.Unmarshal(newDDI, &dd); err != nil {
+		t.Fatalf("Failed to parse round-tripped DDI: %v", err)
+	}
+
+	if len(dd.Vars) != 2 {
+		t.Fatalf("Expected 2 vars after round-trip, got %d", len(dd.Vars))
+	}
+
+	// Base var preserved
+	baseVar := dd.Vars[0]
+	if baseVar.Name != "geschlecht" {
+		t.Errorf("Expected name geschlecht, got %s", baseVar.Name)
+	}
+	if baseVar.Qstn.ResponseDomainType != "category" {
+		t.Errorf("Expected category, got %s", baseVar.Qstn.ResponseDomainType)
+	}
+	// Must have "other" category
+	hasOtherCat := false
+	for _, c := range baseVar.Catgry {
+		if c.CatValu == "other" {
+			hasOtherCat = true
+		}
+	}
+	if !hasOtherCat {
+		t.Error("Base var missing catValu='other' after round-trip")
+	}
+
+	// _other text var preserved
+	otherVar := dd.Vars[1]
+	if otherVar.Name != "geschlecht_other" {
+		t.Errorf("Expected name geschlecht_other, got %s", otherVar.Name)
+	}
+	if otherVar.Qstn.ResponseDomainType != "text" {
+		t.Errorf("Expected text, got %s", otherVar.Qstn.ResponseDomainType)
+	}
+	if otherVar.Intrvl != "contin" {
+		t.Errorf("Expected intrvl contin, got %s", otherVar.Intrvl)
+	}
+}
+
+func TestRoundTrip_SelectMultipleWithOther(t *testing.T) {
+	// DDI with multipleResp group + _other text var
+	originalDDI := `<dataDscr>
+		<varGrp ID="VG_geraetebesitz" name="geraetebesitz" type="multipleResp" var="V_geraetebesitz_smartphone V_geraetebesitz_laptop V_geraetebesitz_tablet">
+			<txt>Welche dieser Geräte besitzen Sie?</txt>
+			<concept>Gerätebesitz</concept>
+		</varGrp>
+		<var ID="V_geraetebesitz_smartphone" name="geraetebesitz_smartphone" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Welche dieser Geräte besitzen Sie?</preQTxt>
+				<qstnLit>Smartphone</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Gerätebesitz: Smartphone</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geraetebesitz_laptop" name="geraetebesitz_laptop" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Welche dieser Geräte besitzen Sie?</preQTxt>
+				<qstnLit>Laptop</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Gerätebesitz: Laptop</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geraetebesitz_tablet" name="geraetebesitz_tablet" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Welche dieser Geräte besitzen Sie?</preQTxt>
+				<qstnLit>Tablet</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Gerätebesitz: Tablet</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geraetebesitz_other" name="geraetebesitz_other" intrvl="contin">
+			<qstn responseDomainType="text">
+				<qstnLit>Sonstiges (bitte angeben)</qstnLit>
+			</qstn>
+			<concept>Gerätebesitz (Sonstiges)</concept>
+			<varFormat type="character" schema="other"/>
+		</var>
+	</dataDscr>`
+
+	// DDI → XLSForm
+	xlsformJSON, err := DDIToXLSForm([]byte(originalDDI))
+	if err != nil {
+		t.Fatalf("DDIToXLSForm failed: %v", err)
+	}
+
+	var form XLSForm
+	if err := json.Unmarshal(xlsformJSON, &form); err != nil {
+		t.Fatalf("Failed to parse XLSForm: %v", err)
+	}
+
+	// Should have: select_multiple row + _other text row
+	if len(form.Survey) != 2 {
+		t.Fatalf("Expected 2 survey rows, got %d", len(form.Survey))
+	}
+
+	// Check select_multiple row
+	selectRow := form.Survey[0]
+	if selectRow.Type != "select_multiple geraetebesitz" {
+		t.Errorf("Expected type 'select_multiple geraetebesitz', got %s", selectRow.Type)
+	}
+
+	// Check _other text row has reconstructed relevance
+	otherRow := form.Survey[1]
+	if otherRow.Name != "geraetebesitz_other" {
+		t.Errorf("Expected name geraetebesitz_other, got %s", otherRow.Name)
+	}
+	if otherRow.Relevance != "selected(${geraetebesitz}, 'other')" {
+		t.Errorf("Expected relevance 'selected(${geraetebesitz}, 'other')', got %q", otherRow.Relevance)
+	}
+
+	// Choices should include 3 binary + 1 "other" = 4
+	if len(form.Choices) != 4 {
+		t.Fatalf("Expected 4 choices, got %d", len(form.Choices))
+	}
+	lastChoice := form.Choices[3]
+	if lastChoice.Name != "other" {
+		t.Errorf("Expected last choice name 'other', got %s", lastChoice.Name)
+	}
+
+	// XLSForm → DDI (round-trip)
+	newDDI, err := XLSFormToDDI(xlsformJSON)
+	if err != nil {
+		t.Fatalf("XLSFormToDDI failed: %v", err)
+	}
+
+	var dd DDIDataDscr
+	if err := xml.Unmarshal(newDDI, &dd); err != nil {
+		t.Fatalf("Failed to parse round-tripped DDI: %v", err)
+	}
+
+	// 1 multipleResp group + 3 binary vars + 1 text var = 4 vars
+	if len(dd.VarGrps) != 1 {
+		t.Fatalf("Expected 1 varGrp, got %d", len(dd.VarGrps))
+	}
+	if len(dd.Vars) != 4 {
+		t.Fatalf("Expected 4 vars (3 binary + 1 text), got %d", len(dd.Vars))
+	}
+
+	// _other text var preserved
+	textVar := dd.Vars[3]
+	if textVar.Name != "geraetebesitz_other" {
+		t.Errorf("Expected name geraetebesitz_other, got %s", textVar.Name)
+	}
+	if textVar.Qstn.ResponseDomainType != "text" {
+		t.Errorf("Expected text, got %s", textVar.Qstn.ResponseDomainType)
+	}
 }
 
 func TestRoundTrip_GridGroup(t *testing.T) {
@@ -1139,6 +1348,9 @@ func TestDDIToXLSForm_SelectOneFromFile(t *testing.T) {
 	if form.Survey[0].Type != "select_one_from_file iso_3166_1.csv" {
 		t.Errorf("Expected type 'select_one_from_file iso_3166_1.csv', got %s", form.Survey[0].Type)
 	}
+	if form.Survey[0].Appearance != "minimal" {
+		t.Errorf("Expected appearance 'minimal', got %q", form.Survey[0].Appearance)
+	}
 	if form.Survey[0].Name != "geburtsland" {
 		t.Errorf("Expected name geburtsland, got %s", form.Survey[0].Name)
 	}
@@ -1171,6 +1383,9 @@ func TestDDIToXLSForm_SelectMultipleFromFile(t *testing.T) {
 	}
 	if form.Survey[0].Type != "select_multiple_from_file iso_3166_1.csv" {
 		t.Errorf("Expected type 'select_multiple_from_file iso_3166_1.csv', got %s", form.Survey[0].Type)
+	}
+	if form.Survey[0].Appearance != "minimal" {
+		t.Errorf("Expected appearance 'minimal', got %q", form.Survey[0].Appearance)
 	}
 	if len(form.Choices) != 0 {
 		t.Errorf("Expected 0 choices (external file), got %d", len(form.Choices))

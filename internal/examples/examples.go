@@ -58,13 +58,13 @@ var defs = []exampleDef{
 		XLSForm: converter.XLSForm{
 			Survey: []converter.SurveyRow{
 				{Type: "select_one quelle", Name: "aufmerksam", Label: "Wie sind Sie auf unser Angebot aufmerksam geworden?"},
-				{Type: "text", Name: "aufmerksam_other", Label: "Sonstiges (bitte angeben)", Relevance: "${aufmerksam} = 'sonstiges'"},
+				{Type: "text", Name: "aufmerksam_other", Label: "Sonstiges (bitte angeben)", Relevance: "${aufmerksam} = 'other'"},
 			},
 			Choices: []converter.ChoiceRow{
 				{ListName: "quelle", Name: "suchmaschine", Label: "Suchmaschine"},
 				{ListName: "quelle", Name: "empfehlung", Label: "Persönliche Empfehlung"},
 				{ListName: "quelle", Name: "soziale_medien", Label: "Soziale Medien"},
-				{ListName: "quelle", Name: "sonstiges", Label: "Sonstiges"},
+				{ListName: "quelle", Name: "other", Label: "Sonstiges"},
 			},
 		},
 	},
@@ -74,13 +74,13 @@ var defs = []exampleDef{
 		XLSForm: converter.XLSForm{
 			Survey: []converter.SurveyRow{
 				{Type: "select_multiple geraete", Name: "geraetebesitz", Label: "Welche dieser Geräte besitzen Sie?"},
-				{Type: "text", Name: "geraetebesitz_other", Label: "Sonstiges (bitte angeben)", Relevance: "selected(${geraetebesitz}, 'sonstiges')"},
+				{Type: "text", Name: "geraetebesitz_other", Label: "Sonstiges (bitte angeben)", Relevance: "selected(${geraetebesitz}, 'other')"},
 			},
 			Choices: []converter.ChoiceRow{
 				{ListName: "geraete", Name: "smartphone", Label: "Smartphone"},
 				{ListName: "geraete", Name: "laptop", Label: "Laptop"},
 				{ListName: "geraete", Name: "tablet", Label: "Tablet"},
-				{ListName: "geraete", Name: "sonstiges", Label: "Sonstiges"},
+				{ListName: "geraete", Name: "other", Label: "Sonstiges"},
 			},
 		},
 	},

@@ -189,7 +189,7 @@ func DDIToXLSForm(ddiXML []byte) ([]byte, error) {
 	// Try to parse as a single variable (<var>)
 	var v DDIVar
 	if err := xml.Unmarshal(ddiXML, &v); err == nil && v.XMLName.Local == "var" {
-		convertDDIVarToXLSForm(v, &form)
+		convertDDIVarToXLSForm(v, &form, nil)
 		return json.MarshalIndent(form, "", "  ")
 	}
 
@@ -220,10 +220,22 @@ func DDIToXLSForm(ddiXML []byte) ([]byte, error) {
 // convertDDIDataDscrToXLSForm converts a <dataDscr> wrapper to XLSForm.
 // It detects multipleResp groups and collapses them into select_multiple rows.
 func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
-	// Build a map of var ID → DDIVar for quick lookup
+	// Build maps for quick lookup
 	varByID := make(map[string]DDIVar, len(dd.Vars))
+	varByName := make(map[string]DDIVar, len(dd.Vars))
 	for _, v := range dd.Vars {
 		varByID[v.ID] = v
+		varByName[v.Name] = v
+	}
+
+	// Register multipleResp group names so _other vars can find their base
+	for _, grp := range dd.VarGrps {
+		if grp.Type == "multipleResp" {
+			varByName[grp.Name] = DDIVar{
+				Name: grp.Name,
+				Qstn: &DDIQstn{ResponseDomainType: "multiple"},
+			}
+		}
 	}
 
 	// Track which vars are consumed by multipleResp groups
@@ -232,7 +244,7 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 	for _, grp := range dd.VarGrps {
 		switch grp.Type {
 		case "multipleResp":
-			convertMultipleRespToXLSForm(grp, varByID, form)
+			convertMultipleRespToXLSForm(grp, varByID, varByName, form)
 			for _, id := range strings.Fields(grp.Var) {
 				consumed[id] = true
 			}
@@ -249,14 +261,14 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 	// Convert remaining (non-consumed) vars
 	for _, v := range dd.Vars {
 		if !consumed[v.ID] {
-			convertDDIVarToXLSForm(v, form)
+			convertDDIVarToXLSForm(v, form, varByName)
 		}
 	}
 }
 
 // convertMultipleRespToXLSForm collapses a multipleResp varGrp + its binary member
 // vars into a single select_multiple survey row with choices.
-func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSForm) {
+func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varByName map[string]DDIVar, form *XLSForm) {
 	memberIDs := strings.Fields(grp.Var)
 	if len(memberIDs) == 0 {
 		// No member vars — fall back to group conversion
@@ -299,6 +311,15 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form
 			ListName: listName,
 			Name:     choiceName,
 			Label:    choiceLabel,
+		})
+	}
+
+	// If a _other text var exists for this group, add an "other" choice
+	if otherVar, ok := varByName[grp.Name+"_other"]; ok && otherVar.Qstn != nil && otherVar.Qstn.ResponseDomainType == "text" {
+		form.Choices = append(form.Choices, ChoiceRow{
+			ListName: listName,
+			Name:     "other",
+			Label:    otherVar.Qstn.QstnLit,
 		})
 	}
 }
@@ -375,7 +396,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 //     "numeric" → "integer", "text" → "text",
 //     "category" → "select_one <name>", "multiple" → "select_multiple <name>"
 //   - DDI <catgry> elements → choice rows with list_name = variable name
-func convertDDIVarToXLSForm(v DDIVar, form *XLSForm) {
+func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar) {
 	row := SurveyRow{
 		Name:  v.Name,
 		Label: v.Concept.Value, // Fallback label
@@ -396,12 +417,14 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm) {
 		case "category":
 			if v.Concept.Vocab != "" {
 				row.Type = "select_one_from_file " + v.Concept.Vocab + ".csv"
+				row.Appearance = "minimal"
 			} else {
 				row.Type = "select_one " + v.Name
 			}
 		case "multiple":
 			if v.Concept.Vocab != "" {
 				row.Type = "select_multiple_from_file " + v.Concept.Vocab + ".csv"
+				row.Appearance = "minimal"
 			} else {
 				row.Type = "select_multiple " + v.Name
 			}
@@ -417,6 +440,23 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm) {
 		// Map interviewer instructions to parameters
 		if v.Qstn.IvuInstr != "" {
 			row.Parameters = "guidance_hint=" + v.Qstn.IvuInstr
+		}
+	}
+
+	// Generate relevance for _other vars by convention:
+	// A var named "foo_other" references a base var or group named "foo".
+	// The base var must have a catgry with catValu="other".
+	// For single choice: ${base} = 'other'
+	// For multiple choice: selected(${base}, 'other')
+	if strings.HasSuffix(v.Name, "_other") && varByName != nil {
+		baseName := strings.TrimSuffix(v.Name, "_other")
+		if base, ok := varByName[baseName]; ok && base.Qstn != nil {
+			switch base.Qstn.ResponseDomainType {
+			case "category":
+				row.Relevance = "${" + baseName + "} = 'other'"
+			case "multiple":
+				row.Relevance = "selected(${" + baseName + "}, 'other')"
+			}
 		}
 	}
 
@@ -480,6 +520,17 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 		choiceMap[c.ListName] = append(choiceMap[c.ListName], c)
 	}
 
+	// Build a set of _other text row names for collision avoidance
+	otherTextNames := make(map[string]bool)
+	for _, row := range form.Survey {
+		if strings.HasSuffix(row.Name, "_other") {
+			bt, _ := parseXLSFormType(row.Type)
+			if bt == "text" || bt == "note" {
+				otherTextNames[row.Name] = true
+			}
+		}
+	}
+
 	// Process survey rows
 	var vars []DDIVar
 	var groups []DDIVarGrp
@@ -517,7 +568,7 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 			}
 
 		case "select_multiple":
-			grp, binaryVars := convertSelectMultipleToDDI(row, listName, choiceMap)
+			grp, binaryVars := convertSelectMultipleToDDI(row, listName, choiceMap, otherTextNames)
 			groups = append(groups, grp)
 			vars = append(vars, binaryVars...)
 
@@ -587,7 +638,7 @@ func parseXLSFormType(t string) (baseType, listName string) {
 // convertSelectMultipleToDDI converts a select_multiple survey row into a
 // DDI <varGrp type="multipleResp"> plus one binary <var> per choice option.
 // Each binary var has categories 0 and 1 (no labels).
-func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[string][]ChoiceRow) (DDIVarGrp, []DDIVar) {
+func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[string][]ChoiceRow, otherTextNames map[string]bool) (DDIVarGrp, []DDIVar) {
 	groupName := row.Name
 	groupID := "VG_" + strings.ReplaceAll(groupName, " ", "_")
 
@@ -597,6 +648,10 @@ func convertSelectMultipleToDDI(row SurveyRow, listName string, choiceMap map[st
 
 	for _, c := range choices {
 		varName := groupName + "_" + c.Name
+		// Skip creating a binary var if it would collide with a _other text var
+		if otherTextNames[varName] {
+			continue
+		}
 		varID := "V_" + varName
 		varIDs = append(varIDs, varID)
 
@@ -746,7 +801,7 @@ func ParseDDICodebookFragment(ddiXML []byte) ([]byte, error) {
 			if err := xml.Unmarshal(vXML, &ddiVar); err != nil {
 				continue
 			}
-			convertDDIVarToXLSForm(ddiVar, &form)
+			convertDDIVarToXLSForm(ddiVar, &form, nil)
 		}
 	}
 

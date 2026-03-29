@@ -30,8 +30,6 @@ services:
       - GOMEMLIMIT=${GOMEMLIMIT:-512MiB}
       - NATS_PORT=${NATS_PORT:-4222}
       - NATS_TOKEN=${NATS_TOKEN:-changeme}
-    volumes:
-      - pb_datazz:/app/pb_data
     restart: always
     command: ["./qwacback", "serve", "--http=0.0.0.0:8080"]
     deploy:
@@ -39,6 +37,3 @@ services:
         limits:
           memory: 768M
           cpus: '1.0'
-
-volumes:
-  pb_datazz:
