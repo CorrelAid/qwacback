@@ -237,41 +237,60 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	if len(rootDir) > 0 && rootDir[0] != "" {
 		root = rootDir[0]
 	}
-	// Validation API - Protected by Auth
-	se.Router.POST("/api/validate", func(e *core.RequestEvent) error {
-		// Enforce upload size limit before reading into memory
+	// readAndValidateXML reads the uploaded file and validates it via the Schematron worker.
+	// Returns the raw XML bytes and any API error to send to the client.
+	readAndValidateXML := func(e *core.RequestEvent) ([]byte, error) {
 		e.Request.Body = http.MaxBytesReader(e.Response, e.Request.Body, maxUploadSize)
 
 		src, _, err := e.Request.FormFile("file")
 		if err != nil {
-			return apis.NewBadRequestError("Missing or oversized file", nil)
+			return nil, apis.NewBadRequestError("Missing or oversized file", nil)
 		}
 		defer src.Close()
 
 		xmlBytes, err := io.ReadAll(io.LimitReader(src, maxUploadSize))
 		if err != nil {
-			return apis.NewInternalServerError("Failed to read file", nil)
+			return nil, apis.NewInternalServerError("Failed to read file", nil)
 		}
 
-		// Validation service is required — reject if unavailable
 		if schClient == nil {
-			return apis.NewInternalServerError("Validation service is unavailable", nil)
+			return nil, apis.NewInternalServerError("Validation service is unavailable", nil)
 		}
 
-		// XML validation via NATS worker (XSD + Schematron)
 		resp, err := schClient.Validate(xmlBytes)
 		if err != nil {
 			log.Printf("ERROR: XML validation request failed")
-			return apis.NewInternalServerError("Validation service error", nil)
+			return nil, apis.NewInternalServerError("Validation service error", nil)
 		}
 		if !resp.Valid {
-			return e.JSON(400, map[string]interface{}{
+			return nil, e.JSON(400, map[string]interface{}{
 				"valid":  false,
 				"errors": resp.Errors,
 			})
 		}
 
-		// Use mxj to parse the XML
+		return xmlBytes, nil
+	}
+
+	// Validate only — does NOT import
+	se.Router.POST("/api/validate", func(e *core.RequestEvent) error {
+		_, err := readAndValidateXML(e)
+		if err != nil {
+			return err
+		}
+		return e.JSON(200, map[string]interface{}{
+			"valid":   true,
+			"message": "XML is valid",
+		})
+	})
+
+	// Validate and import
+	se.Router.POST("/api/import", func(e *core.RequestEvent) error {
+		xmlBytes, err := readAndValidateXML(e)
+		if err != nil {
+			return err
+		}
+
 		mv, err := mxj.NewMapXml(xmlBytes)
 		if err != nil {
 			log.Printf("ERROR: mxj failed to parse validated XML")
@@ -281,7 +300,6 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			})
 		}
 
-		// Insert data into collections
 		if err := importer.ImportCodebookData(app, mv, xmlBytes); err != nil {
 			log.Printf("ERROR: failed to import XML data")
 			return e.JSON(200, map[string]interface{}{
@@ -290,7 +308,6 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			})
 		}
 
-		// Clear XML cache after import (data changed)
 		clearXMLCache(app)
 
 		return e.JSON(200, map[string]interface{}{

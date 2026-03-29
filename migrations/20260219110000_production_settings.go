@@ -37,8 +37,11 @@ func init() {
 			// Auth endpoints (prevent brute force)
 			{Label: "*:auth", MaxRequests: 5, Duration: 10},
 			// Validate endpoint – stricter for guests, relaxed for authenticated
-			{Label: "POST /api/validate", MaxRequests: 5, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},
-			{Label: "POST /api/validate", MaxRequests: 20, Duration: 60, Audience: core.RateLimitRuleAudienceAuth},
+			{Label: "POST /api/validate", MaxRequests: 10, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},
+			{Label: "POST /api/validate", MaxRequests: 30, Duration: 60, Audience: core.RateLimitRuleAudienceAuth},
+			// Import endpoint – validate + import, stricter limits
+			{Label: "POST /api/import", MaxRequests: 5, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},
+			{Label: "POST /api/import", MaxRequests: 20, Duration: 60, Audience: core.RateLimitRuleAudienceAuth},
 			// Conversion endpoints – CPU-intensive, stricter limits
 			{Label: "POST /api/convert/ddi-to-xlsform", MaxRequests: 10, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},
 			{Label: "POST /api/convert/xlsform-to-ddi", MaxRequests: 10, Duration: 60, Audience: core.RateLimitRuleAudienceGuest},

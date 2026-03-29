@@ -149,7 +149,9 @@ The worker connects to the embedded NATS server in qwacback and handles all XSD 
 
 #### Validation & Import
 
-- **POST `/api/validate`**: Validates a DDI XML file (XSD + Schematron) and imports it.
+- **POST `/api/validate`**: Validates a DDI XML file (XSD + Schematron) without importing.
+  - **Body**: `multipart/form-data` with a `file` field.
+- **POST `/api/import`**: Validates a DDI XML file and imports it into the database.
   - **Body**: `multipart/form-data` with a `file` field.
 
 #### XML Export
@@ -224,8 +226,13 @@ TOKEN=$(curl -s -X POST http://localhost:8090/api/collections/users/auth-with-pa
   -H 'Content-Type: application/json' \
   -d '{"identity":"user@example.com","password":"userpassword123"}' | jq -r '.token')
 
-# Validate and import an XML file
+# Validate only
 curl -X POST http://localhost:8090/api/validate \
+  -H "Authorization: $TOKEN" \
+  -F "file=@seed_data/prove_it.xml"
+
+# Validate and import
+curl -X POST http://localhost:8090/api/import \
   -H "Authorization: $TOKEN" \
   -F "file=@seed_data/prove_it.xml"
 ```
