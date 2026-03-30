@@ -189,6 +189,36 @@ curl -X POST http://localhost:8090/api/import \
 | `GOMEMLIMIT` | Soft memory limit for Go GC | `512MiB` |
 | `NATS_PORT` | Port for embedded NATS server | (optional — no validation without it) |
 
+## MCP Server
+
+qwacback exposes a [Model Context Protocol](https://modelcontextprotocol.io/) server at `/mcp` using Streamable HTTP transport. This lets AI assistants (e.g. Claude) search and browse the question bank directly.
+
+### Available tools
+
+| Tool | Description |
+|---|---|
+| `search_questions` | Search questions by text, concept, name, or answer type |
+| `search_studies` | Search studies by title, keywords, or abstract (optional `topic` filter) |
+| `get_question` | Get a single question by ID |
+| `list_questions` | List all questions, optionally filtered by study |
+
+All tools are read-only.
+
+### Client configuration
+
+Add to your MCP client config (e.g. Claude Desktop, Claude Code):
+
+```json
+{
+  "mcpServers": {
+    "qwacback": {
+      "type": "streamable-http",
+      "url": "http://localhost:8090/mcp"
+    }
+  }
+}
+```
+
 ## Resources
 
 - [DDI Codebook 2.5 Specification](https://ddialliance.org/Specification/DDI-Codebook/2.5/)

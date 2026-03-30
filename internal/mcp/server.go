@@ -34,8 +34,8 @@ func getString(args map[string]any, key string) string {
 	return s
 }
 
-// NewServer creates an MCP server with tools for searching the question bank.
-func NewServer(app core.App) *mcpserver.StreamableHTTPServer {
+// NewMCPServer creates the MCP server with tools registered.
+func NewMCPServer(app core.App) *mcpserver.MCPServer {
 	s := mcpserver.NewMCPServer(
 		"qwacback",
 		"0.1.0",
@@ -79,7 +79,12 @@ func NewServer(app core.App) *mcpserver.StreamableHTTPServer {
 		listQuestionsHandler(app),
 	)
 
-	return mcpserver.NewStreamableHTTPServer(s,
+	return s
+}
+
+// NewHTTPServer creates a Streamable HTTP server wrapping the MCP server.
+func NewHTTPServer(app core.App) *mcpserver.StreamableHTTPServer {
+	return mcpserver.NewStreamableHTTPServer(NewMCPServer(app),
 		mcpserver.WithEndpointPath("/mcp"),
 	)
 }

@@ -98,7 +98,7 @@ func main() {
 		}
 
 		// Mount MCP server (Streamable HTTP) at /mcp
-		mcpHTTP := qwacmcp.NewServer(app)
+		mcpHTTP := qwacmcp.NewHTTPServer(app)
 		mcpHandler := apis.WrapStdHandler(http.Handler(mcpHTTP))
 		se.Router.GET("/mcp", mcpHandler)
 		se.Router.POST("/mcp", mcpHandler)
