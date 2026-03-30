@@ -237,6 +237,33 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	if len(rootDir) > 0 && rootDir[0] != "" {
 		root = rootDir[0]
 	}
+	// Root - API discovery
+	se.Router.GET("/api", func(e *core.RequestEvent) error {
+		studies, _ := app.CountRecords("studies")
+		vars, _ := app.CountRecords("variables")
+		groups, _ := app.CountRecords("variable_groups")
+
+		return e.JSON(200, map[string]interface{}{
+			"name":    "qwacback",
+			"version": "0.1.0",
+			"description": "Question bank for civil society surveys",
+			"counts": map[string]int64{
+				"studies":   studies,
+				"variables": vars,
+				"groups":    groups,
+			},
+			"endpoints": map[string]string{
+				"questions":        "/api/questions",
+				"search_questions": "/api/search/questions?q=",
+				"search_studies":   "/api/search/studies?q=",
+				"validate":         "/api/validate",
+				"import":           "/api/import",
+				"examples":         "/api/examples",
+				"markup_guide":     "/api/docs/markup-guide",
+			},
+		})
+	})
+
 	// readAndValidateXML reads the uploaded file and validates it via the Schematron worker.
 	// Returns the raw XML bytes and any API error to send to the client.
 	readAndValidateXML := func(e *core.RequestEvent) ([]byte, error) {
