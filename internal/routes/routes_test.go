@@ -478,7 +478,7 @@ func TestQuestionsView(t *testing.T) {
 		vars, _ := app.FindRecordsByFilter("variables", "study = {:sid}", "", 0, 0, dbx.Params{"sid": sid})
 		groups, _ := app.FindRecordsByFilter("variable_groups", "study = {:sid}", "", 0, 0, dbx.Params{"sid": sid})
 
-		questions, err := assembleQuestions(app, sid)
+		questions, err := AssembleQuestions(app, sid)
 		if err != nil {
 			t.Fatal(err)
 		}

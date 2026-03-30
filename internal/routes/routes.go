@@ -124,6 +124,49 @@ type Question struct {
 	Order        float64  `json:"order"`
 }
 
+// FilterAndRankQuestions filters questions matching the query string and ranks
+// them by relevance: question_text > concept > name > answer_type.
+func FilterAndRankQuestions(questions []Question, q string) []Question {
+	qLower := strings.ToLower(q)
+	var matched []Question
+	for _, question := range questions {
+		if strings.Contains(strings.ToLower(question.QuestionText), qLower) ||
+			strings.Contains(strings.ToLower(question.Concept), qLower) ||
+			strings.Contains(strings.ToLower(question.Name), qLower) ||
+			strings.Contains(strings.ToLower(question.AnswerType), qLower) {
+			matched = append(matched, question)
+		}
+	}
+
+	fields := []string{"question_text", "concept", "name", "answer_type"}
+	sort.SliceStable(matched, func(i, j int) bool {
+		si, sj := 0, 0
+		for fi, field := range fields {
+			weight := len(fields) - fi
+			vi, vj := "", ""
+			switch field {
+			case "question_text":
+				vi, vj = matched[i].QuestionText, matched[j].QuestionText
+			case "concept":
+				vi, vj = matched[i].Concept, matched[j].Concept
+			case "name":
+				vi, vj = matched[i].Name, matched[j].Name
+			case "answer_type":
+				vi, vj = matched[i].AnswerType, matched[j].AnswerType
+			}
+			if strings.Contains(strings.ToLower(vi), qLower) {
+				si += weight
+			}
+			if strings.Contains(strings.ToLower(vj), qLower) {
+				sj += weight
+			}
+		}
+		return si > sj
+	})
+
+	return matched
+}
+
 // effectiveAnswerType returns the full answer type for a variable, incorporating
 // the has_other and has_long_list boolean flags.
 func effectiveAnswerType(v *core.Record) string {
@@ -143,7 +186,7 @@ func effectiveAnswerType(v *core.Record) string {
 // directly to the top-level group. So the rules here are simple:
 //   - Each group → 1 question (its member vars are absorbed).
 //   - Each standalone var (no group) → 1 question.
-func assembleQuestions(app core.App, studyID string) ([]Question, error) {
+func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 	groups, err := app.FindRecordsByFilter("variable_groups", "study = {:sid}", "order", 0, 0, dbx.Params{"sid": studyID})
 	if err != nil {
 		return nil, err
@@ -708,51 +751,14 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		var allQuestions []Question
 		for _, s := range studies {
-			qs, err := assembleQuestions(app, s.Id)
+			qs, err := AssembleQuestions(app, s.Id)
 			if err != nil {
 				continue
 			}
 			allQuestions = append(allQuestions, qs...)
 		}
 
-		// Filter questions matching the query
-		qLower := strings.ToLower(q)
-		var matched []Question
-		for _, question := range allQuestions {
-			if strings.Contains(strings.ToLower(question.QuestionText), qLower) ||
-				strings.Contains(strings.ToLower(question.Concept), qLower) ||
-				strings.Contains(strings.ToLower(question.Name), qLower) ||
-				strings.Contains(strings.ToLower(question.AnswerType), qLower) {
-				matched = append(matched, question)
-			}
-		}
-
-		// Rank by relevance: question_text > concept > name > answer_type
-		fields := []string{"question_text", "concept", "name", "answer_type"}
-		sort.SliceStable(matched, func(i, j int) bool {
-			si, sj := 0, 0
-			for fi, field := range fields {
-				weight := len(fields) - fi
-				vi, vj := "", ""
-				switch field {
-				case "question_text":
-					vi, vj = matched[i].QuestionText, matched[j].QuestionText
-				case "concept":
-					vi, vj = matched[i].Concept, matched[j].Concept
-				case "name":
-					vi, vj = matched[i].Name, matched[j].Name
-				case "answer_type":
-					vi, vj = matched[i].AnswerType, matched[j].AnswerType
-				}
-				if strings.Contains(strings.ToLower(vi), qLower) {
-					si += weight
-				}
-				if strings.Contains(strings.ToLower(vj), qLower) {
-					sj += weight
-				}
-			}
-			return si > sj
-		})
+		matched := FilterAndRankQuestions(allQuestions, q)
 
 		// Paginate
 		totalItems := len(matched)
@@ -784,7 +790,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		var all []Question
 		for _, s := range studies {
-			qs, err := assembleQuestions(app, s.Id)
+			qs, err := AssembleQuestions(app, s.Id)
 			if err != nil {
 				continue
 			}
@@ -812,7 +818,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewNotFoundError("Question not found", nil)
 		}
 
-		questions, err := assembleQuestions(app, studyID)
+		questions, err := AssembleQuestions(app, studyID)
 		if err != nil {
 			return apis.NewInternalServerError("Failed to assemble questions", nil)
 		}
@@ -837,7 +843,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewNotFoundError("Study not found", nil)
 		}
 
-		questions, err := assembleQuestions(app, studyId)
+		questions, err := AssembleQuestions(app, studyId)
 		if err != nil {
 			return apis.NewInternalServerError("Failed to assemble questions", nil)
 		}

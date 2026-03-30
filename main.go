@@ -8,12 +8,16 @@ import (
 	"strings"
 	"time"
 
+	"net/http"
+
 	"github.com/nats-io/nats-server/v2/server"
 	"github.com/pocketbase/pocketbase"
+	"github.com/pocketbase/pocketbase/apis"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 
 	_ "qwacback/migrations"
+	qwacmcp "qwacback/internal/mcp"
 	"qwacback/internal/routes"
 	"qwacback/internal/schematron"
 )
@@ -92,6 +96,14 @@ func main() {
 		if err := routes.RegisterRoutes(app, se, schClient); err != nil {
 			return err
 		}
+
+		// Mount MCP server (Streamable HTTP) at /mcp
+		mcpHTTP := qwacmcp.NewServer(app)
+		mcpHandler := apis.WrapStdHandler(http.Handler(mcpHTTP))
+		se.Router.GET("/mcp", mcpHandler)
+		se.Router.POST("/mcp", mcpHandler)
+		se.Router.DELETE("/mcp", mcpHandler)
+
 		return se.Next()
 	})
 
