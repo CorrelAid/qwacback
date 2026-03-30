@@ -124,6 +124,19 @@ type Question struct {
 	Order        float64  `json:"order"`
 }
 
+// effectiveAnswerType returns the full answer type for a variable, incorporating
+// the has_other and has_long_list boolean flags.
+func effectiveAnswerType(v *core.Record) string {
+	base := v.GetString("answer_type")
+	if v.GetBool("has_other") {
+		return base + "_other"
+	}
+	if v.GetBool("has_long_list") {
+		return base + "_long_list"
+	}
+	return base
+}
+
 // assembleQuestions builds a question-level view from variables and groups.
 // The importer flattens the DDI group hierarchy: child groups (e.g. _choices
 // under a type="other" parent) are not stored. All member vars are assigned
@@ -190,7 +203,19 @@ func assembleQuestions(app core.App, studyID string) ([]Question, error) {
 		case "grid":
 			q.AnswerType = "grid"
 		case "multipleResp":
-			q.AnswerType = "multiple_choice"
+			// Check if any member has has_long_list
+			hasLongList := false
+			for _, v := range varsByGroup[g.Id] {
+				if v.GetBool("has_long_list") {
+					hasLongList = true
+					break
+				}
+			}
+			if hasLongList {
+				q.AnswerType = "multiple_choice_long_list"
+			} else {
+				q.AnswerType = "multiple_choice"
+			}
 		}
 
 		// Use first member var's question text if group description is empty
@@ -216,7 +241,7 @@ func assembleQuestions(app core.App, studyID string) ([]Question, error) {
 			Name:         v.GetString("name"),
 			Concept:      v.GetString("concept"),
 			QuestionText: v.GetString("question"),
-			AnswerType:   v.GetString("answer_type"),
+			AnswerType:   effectiveAnswerType(v),
 			VariableIDs:  []string{v.Id},
 			Order:        v.GetFloat("order"),
 		})
