@@ -96,13 +96,15 @@ func init() {
 			c.ViewRule = &publicRule
 			app.Save(c)
 		}
-		// Variables and variable groups: auth-only via PocketBase CRUD
-		// (public access is through the custom /api/questions endpoints instead)
+		// Variables and variable groups:
+		// - ViewRule public: individual record lookups work for unauthenticated users
+		//   (data is already exposed per-record via /api/questions/{id})
+		// - ListRule auth-only: prevents unauthenticated bulk enumeration of all records
 		for _, name := range []string{"variable_groups", "variables"} {
 			c, _ := app.FindCollectionByNameOrId(name)
 			if c != nil {
 				c.ListRule = &authRule
-				c.ViewRule = &authRule
+				c.ViewRule = &publicRule
 				app.Save(c)
 			}
 		}
