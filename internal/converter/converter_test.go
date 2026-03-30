@@ -1539,6 +1539,207 @@ func TestRoundTrip_SelectOneFromFile(t *testing.T) {
 	}
 }
 
+// TestDDIToXLSForm_FlattenedMultipleChoiceOther tests conversion of a
+// type="other" group where all member vars (binary + _other text) are direct
+// children — no child multipleResp varGrp reference. This is the format
+// produced by the exporter after the importer flattens the group hierarchy.
+func TestDDIToXLSForm_FlattenedMultipleChoiceOther(t *testing.T) {
+	ddi := `<dataDscr>
+		<varGrp ID="VG_geschlecht" name="geschlecht" type="other"
+			var="V_geschlecht_weiblich V_geschlecht_maennlich V_geschlecht_nicht_binaer V_geschlecht_other">
+			<txt>Was ist Ihr Geschlecht?</txt>
+			<concept>Geschlecht (Selbstdefinition)</concept>
+		</varGrp>
+		<var ID="V_geschlecht_weiblich" name="geschlecht_weiblich" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+				<qstnLit>weiblich</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Geschlecht: weiblich</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geschlecht_maennlich" name="geschlecht_maennlich" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+				<qstnLit>männlich</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Geschlecht: männlich</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geschlecht_nicht_binaer" name="geschlecht_nicht_binaer" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+				<qstnLit>nicht-binär</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Geschlecht: nicht-binär</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geschlecht_other" name="geschlecht_other" intrvl="discrete">
+			<qstn responseDomainType="text">
+				<qstnLit>Geschlecht (eigene Angabe)</qstnLit>
+			</qstn>
+			<concept>Geschlecht (Freitextangabe)</concept>
+			<varFormat type="character" schema="other"/>
+		</var>
+	</dataDscr>`
+
+	result, err := DDIToXLSForm([]byte(ddi))
+	if err != nil {
+		t.Fatalf("DDIToXLSForm failed: %v", err)
+	}
+
+	var form XLSForm
+	if err := json.Unmarshal(result, &form); err != nil {
+		t.Fatalf("Failed to parse XLSForm: %v", err)
+	}
+
+	// Should produce: 1 select_multiple + 1 _other text = 2 survey rows
+	if len(form.Survey) != 2 {
+		t.Fatalf("Expected 2 survey rows, got %d: %+v", len(form.Survey), form.Survey)
+	}
+
+	selectRow := form.Survey[0]
+	if selectRow.Type != "select_multiple geschlecht" {
+		t.Errorf("Expected type 'select_multiple geschlecht', got %s", selectRow.Type)
+	}
+	if selectRow.Name != "geschlecht" {
+		t.Errorf("Expected name 'geschlecht', got %s", selectRow.Name)
+	}
+	if selectRow.Label != "Was ist Ihr Geschlecht?" {
+		t.Errorf("Expected label 'Was ist Ihr Geschlecht?', got %s", selectRow.Label)
+	}
+
+	otherRow := form.Survey[1]
+	if otherRow.Name != "geschlecht_other" {
+		t.Errorf("Expected name 'geschlecht_other', got %s", otherRow.Name)
+	}
+	if !strings.Contains(otherRow.Relevance, "geschlecht") {
+		t.Errorf("Expected relevance referencing geschlecht, got %q", otherRow.Relevance)
+	}
+
+	// Choices: 3 binary options + 1 "other" = 4, all sharing list_name "geschlecht"
+	if len(form.Choices) != 4 {
+		t.Fatalf("Expected 4 choices, got %d: %+v", len(form.Choices), form.Choices)
+	}
+	for _, c := range form.Choices {
+		if c.ListName != "geschlecht" {
+			t.Errorf("Expected all choices to have list_name 'geschlecht', got %s for %s", c.ListName, c.Name)
+		}
+	}
+	if form.Choices[3].Name != "other" {
+		t.Errorf("Expected last choice name 'other', got %s", form.Choices[3].Name)
+	}
+}
+
+// TestRoundTrip_FlattenedMultipleChoiceOther tests the full round-trip:
+// flattened DDI → XLSForm → DDI (which produces the proper 2-level hierarchy).
+func TestRoundTrip_FlattenedMultipleChoiceOther(t *testing.T) {
+	// Flattened input: type="other" with binary vars + _other as direct members
+	flatDDI := `<dataDscr>
+		<varGrp ID="VG_geschlecht" name="geschlecht" type="other"
+			var="V_geschlecht_weiblich V_geschlecht_maennlich V_geschlecht_other">
+			<txt>Was ist Ihr Geschlecht?</txt>
+			<concept>Geschlecht (Selbstdefinition)</concept>
+		</varGrp>
+		<var ID="V_geschlecht_weiblich" name="geschlecht_weiblich" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+				<qstnLit>weiblich</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Geschlecht: weiblich</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geschlecht_maennlich" name="geschlecht_maennlich" intrvl="discrete">
+			<qstn responseDomainType="multiple">
+				<preQTxt>Was ist Ihr Geschlecht?</preQTxt>
+				<qstnLit>männlich</qstnLit>
+			</qstn>
+			<catgry><catValu>0</catValu></catgry>
+			<catgry><catValu>1</catValu></catgry>
+			<concept>Geschlecht: männlich</concept>
+			<varFormat type="numeric" schema="other"/>
+		</var>
+		<var ID="V_geschlecht_other" name="geschlecht_other" intrvl="discrete">
+			<qstn responseDomainType="text">
+				<qstnLit>Geschlecht (eigene Angabe)</qstnLit>
+			</qstn>
+			<concept>Geschlecht (Freitextangabe)</concept>
+			<varFormat type="character" schema="other"/>
+		</var>
+	</dataDscr>`
+
+	// Flattened DDI → XLSForm
+	xlsformJSON, err := DDIToXLSForm([]byte(flatDDI))
+	if err != nil {
+		t.Fatalf("DDIToXLSForm failed: %v", err)
+	}
+
+	var form XLSForm
+	if err := json.Unmarshal(xlsformJSON, &form); err != nil {
+		t.Fatalf("Failed to parse XLSForm: %v", err)
+	}
+
+	if len(form.Survey) != 2 {
+		t.Fatalf("Expected 2 survey rows (select_multiple + _other text), got %d", len(form.Survey))
+	}
+	if form.Survey[0].Type != "select_multiple geschlecht" {
+		t.Errorf("Expected select_multiple geschlecht, got %s", form.Survey[0].Type)
+	}
+
+	// XLSForm → DDI (produces proper 2-level hierarchy)
+	newDDI, err := XLSFormToDDI(xlsformJSON)
+	if err != nil {
+		t.Fatalf("XLSFormToDDI failed: %v", err)
+	}
+
+	var dd DDIDataDscr
+	if err := xml.Unmarshal(newDDI, &dd); err != nil {
+		t.Fatalf("Failed to parse round-tripped DDI: %v", err)
+	}
+
+	// XLSFormToDDI produces 2 varGrps: parent (other) + child (multipleResp)
+	if len(dd.VarGrps) != 2 {
+		t.Fatalf("Expected 2 varGrps after round-trip, got %d", len(dd.VarGrps))
+	}
+	if dd.VarGrps[0].Type != "other" {
+		t.Errorf("Expected parent type 'other', got %s", dd.VarGrps[0].Type)
+	}
+	if dd.VarGrps[1].Type != "multipleResp" {
+		t.Errorf("Expected child type 'multipleResp', got %s", dd.VarGrps[1].Type)
+	}
+
+	// 2 binary vars + 1 _other text = 3 vars
+	if len(dd.Vars) != 3 {
+		t.Fatalf("Expected 3 vars, got %d", len(dd.Vars))
+	}
+
+	// Second round-trip: the proper hierarchy DDI → XLSForm should produce same result
+	xlsform2, err := DDIToXLSForm(newDDI)
+	if err != nil {
+		t.Fatalf("Second DDIToXLSForm failed: %v", err)
+	}
+
+	var form2 XLSForm
+	if err := json.Unmarshal(xlsform2, &form2); err != nil {
+		t.Fatalf("Failed to parse second XLSForm: %v", err)
+	}
+
+	if len(form2.Survey) != len(form.Survey) {
+		t.Errorf("Round-trip instability: first pass %d survey rows, second pass %d", len(form.Survey), len(form2.Survey))
+	}
+	if len(form2.Choices) != len(form.Choices) {
+		t.Errorf("Round-trip instability: first pass %d choices, second pass %d", len(form.Choices), len(form2.Choices))
+	}
+}
+
 func TestInvalidInput(t *testing.T) {
 	// Test invalid DDI XML
 	_, err := DDIToXLSForm([]byte("<invalid>xml</invalid>"))
