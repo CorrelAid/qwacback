@@ -120,7 +120,8 @@ func searchQuestionsHandler(app core.App) mcpserver.ToolHandlerFunc {
 			matched = []routes.Question{}
 		}
 
-		return mcp.NewToolResultJSON(matched)
+		b, _ := json.Marshal(matched)
+		return mcp.NewToolResultText(string(b)), nil
 	}
 }
 
@@ -165,7 +166,8 @@ func searchStudiesHandler(app core.App) mcpserver.ToolHandlerFunc {
 			})
 		}
 
-		return mcp.NewToolResultJSON(results)
+		b, _ := json.Marshal(results)
+		return mcp.NewToolResultText(string(b)), nil
 	}
 }
 
@@ -193,7 +195,8 @@ func getQuestionHandler(app core.App) mcpserver.ToolHandlerFunc {
 
 		for _, q := range questions {
 			if q.ID == id {
-				return mcp.NewToolResultJSON(q)
+				b, _ := json.Marshal(q)
+				return mcp.NewToolResultText(string(b)), nil
 			}
 		}
 
