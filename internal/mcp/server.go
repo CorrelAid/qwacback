@@ -44,8 +44,8 @@ func NewMCPServer(app core.App) *mcpserver.MCPServer {
 
 	s.AddTool(
 		mcp.NewTool("search_questions",
-			mcp.WithDescription("Search the question bank by question text, concept, name, or answer type. Returns assembled questions (not raw variables)."),
-			mcp.WithString("query", mcp.Required(), mcp.Description("Search term")),
+			mcp.WithDescription("Search the question bank by question text, concept, name, or answer type. Returns assembled questions (not raw variables). Uses substring matching — search one term at a time for best results. For broad topics, run multiple searches with different terms. Examples: query='trust' finds questions about trust; query='Mitglied' finds membership-related questions."),
+			mcp.WithString("query", mcp.Required(), mcp.Description("Single search term (substring match, case-insensitive). Use one keyword, not a phrase. Example: 'Vertrauen' not 'soziales Vertrauen Gesellschaft'.")),
 			mcp.WithToolAnnotation(readOnlyAnnotation),
 		),
 		searchQuestionsHandler(app),
@@ -53,8 +53,8 @@ func NewMCPServer(app core.App) *mcpserver.MCPServer {
 
 	s.AddTool(
 		mcp.NewTool("search_studies",
-			mcp.WithDescription("Search studies by title, keywords, or abstract. Optionally filter by topic classification."),
-			mcp.WithString("query", mcp.Required(), mcp.Description("Search term")),
+			mcp.WithDescription("Search studies by title, keywords, or abstract. Optionally filter by topic classification. Uses substring matching — search one term at a time for best results. For broad topics, run multiple searches with different terms. Examples: query='health' finds health-related studies; query='2020' finds studies from 2020."),
+			mcp.WithString("query", mcp.Required(), mcp.Description("Single search term (substring match, case-insensitive). Use one keyword, not a phrase. Example: 'Engagement' not 'bürgerschaftliches Engagement Motivation'.")),
 			mcp.WithString("topic", mcp.Description("Optional topic classification filter")),
 			mcp.WithToolAnnotation(readOnlyAnnotation),
 		),
