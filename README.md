@@ -49,6 +49,8 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 
 - **GET `/api/questions`** — List all questions across all studies.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.
+- **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question.
+- **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/search/questions?q=<term>`** — Search questions by question text, concept, name, and answer type. Ranked by relevance. Supports `&page=` and `&perPage=` (default 20, max 100).
 
 ### Studies

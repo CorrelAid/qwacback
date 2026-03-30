@@ -390,6 +390,94 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		return err
 	})
 
+	// Question XML - Public (cached)
+	// A question is either a variable group or a standalone variable.
+	se.Router.GET("/api/questions/{id}/xml", func(e *core.RequestEvent) error {
+		qId := e.Request.PathValue("id")
+		if !pocketbaseIDRegex.MatchString(qId) {
+			return apis.NewBadRequestError("Invalid ID format", nil)
+		}
+
+		setSecureXMLHeaders(e, "")
+
+		if cached, ok := getXMLCache(app, "question:xml:"+qId); ok {
+			e.Response.Header().Set("X-Cache", "HIT")
+			_, err := e.Response.Write(cached)
+			return err
+		}
+
+		var xmlBytes []byte
+
+		// Try as variable group first, then as standalone variable
+		if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
+			xmlBytes, err = exporter.ExportVarGrpCodebookToXML(app, grp)
+			if err != nil {
+				log.Printf("ERROR: failed to export question (group) %s", qId)
+				return apis.NewInternalServerError("Failed to generate XML", nil)
+			}
+		} else if v, err := app.FindRecordById("variables", qId); err == nil {
+			xmlBytes, err = exporter.ExportVariableWithGroupToXML(app, v)
+			if err != nil {
+				log.Printf("ERROR: failed to export question (variable) %s", qId)
+				return apis.NewInternalServerError("Failed to generate XML", nil)
+			}
+		} else {
+			return apis.NewNotFoundError("Question not found", nil)
+		}
+
+		setXMLCache(app, "question:xml:"+qId, xmlBytes)
+		e.Response.Header().Set("X-Cache", "MISS")
+		_, err := e.Response.Write(xmlBytes)
+		return err
+	})
+
+	// Question XLSForm - Public (cached)
+	se.Router.GET("/api/questions/{id}/xlsform", func(e *core.RequestEvent) error {
+		qId := e.Request.PathValue("id")
+		if !pocketbaseIDRegex.MatchString(qId) {
+			return apis.NewBadRequestError("Invalid ID format", nil)
+		}
+
+		if cached, ok := getXMLCache(app, "question:xlsform:"+qId); ok {
+			e.Response.Header().Set("X-Cache", "HIT")
+			e.Response.Header().Set("Content-Type", "application/json; charset=utf-8")
+			e.Response.Header().Set("X-Content-Type-Options", "nosniff")
+			_, err := e.Response.Write(cached)
+			return err
+		}
+
+		var xmlBytes []byte
+
+		if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
+			xmlBytes, err = exporter.ExportVarGrpCodebookToXML(app, grp)
+			if err != nil {
+				log.Printf("ERROR: failed to export question (group) %s for XLSForm", qId)
+				return apis.NewInternalServerError("Failed to generate XML", nil)
+			}
+		} else if v, err := app.FindRecordById("variables", qId); err == nil {
+			xmlBytes, err = exporter.ExportVariableWithGroupToXML(app, v)
+			if err != nil {
+				log.Printf("ERROR: failed to export question (variable) %s for XLSForm", qId)
+				return apis.NewInternalServerError("Failed to generate XML", nil)
+			}
+		} else {
+			return apis.NewNotFoundError("Question not found", nil)
+		}
+
+		xlsformJSON, err := converter.DDIToXLSForm(xmlBytes)
+		if err != nil {
+			log.Printf("ERROR: failed to convert question %s to XLSForm", qId)
+			return apis.NewInternalServerError("Failed to convert to XLSForm", nil)
+		}
+
+		setXMLCache(app, "question:xlsform:"+qId, xlsformJSON)
+		e.Response.Header().Set("X-Cache", "MISS")
+		e.Response.Header().Set("Content-Type", "application/json; charset=utf-8")
+		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
+		_, writeErr := e.Response.Write(xlsformJSON)
+		return writeErr
+	})
+
 	// Study XLSForm - Public (cached)
 	se.Router.GET("/api/studies/{id}/xlsform", func(e *core.RequestEvent) error {
 		studyId := e.Request.PathValue("id")
