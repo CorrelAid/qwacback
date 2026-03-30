@@ -86,6 +86,7 @@ func NewMCPServer(app core.App) *mcpserver.MCPServer {
 func NewHTTPServer(app core.App) *mcpserver.StreamableHTTPServer {
 	return mcpserver.NewStreamableHTTPServer(NewMCPServer(app),
 		mcpserver.WithEndpointPath("/mcp"),
+		mcpserver.WithStateLess(true),
 	)
 }
 
