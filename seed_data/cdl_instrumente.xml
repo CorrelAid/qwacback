@@ -133,11 +133,11 @@
     <!-- answer_type: single_choice (NPS 0-10 scale) -->
     <var ID="V_nps" name="nps" intrvl="discrete">
       <qstn responseDomainType="category">
-        <qstnLit>Wie wahrscheinlich ist es, dass Sie dieses Angebot einer Freundin oder einem Kollegen weiterempfehlen würden?</qstnLit>
+        <qstnLit>Wie wahrscheinlich ist es, dass Sie <xhtml:em>&lt;ETWAS&gt;</xhtml:em> einer Freund*in oder Kolleg*in weiterempfehlen werden?</qstnLit>
       </qstn>
       <catgry>
         <catValu>0</catValu>
-        <labl>0 - Sehr unwahrscheinlich</labl>
+        <labl>0 - Unwahrscheinlich</labl>
       </catgry>
       <catgry>
         <catValu>1</catValu>
