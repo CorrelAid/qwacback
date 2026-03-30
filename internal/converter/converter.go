@@ -85,7 +85,7 @@ type SurveyRow struct {
 	Label      string `json:"label,omitempty"`
 	Hint       string `json:"hint,omitempty"`
 	Required   string `json:"required,omitempty"`
-	Relevance  string `json:"relevance,omitempty"`
+	Relevance  string `json:"relevant,omitempty"`
 	Appearance string `json:"appearance,omitempty"`
 	Parameters string `json:"parameters,omitempty"`
 }
