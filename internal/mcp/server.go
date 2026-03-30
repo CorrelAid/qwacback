@@ -214,7 +214,8 @@ func listQuestionsHandler(app core.App) mcpserver.ToolHandlerFunc {
 			if err != nil {
 				return mcp.NewToolResultError("failed to assemble questions"), nil
 			}
-			return mcp.NewToolResultJSON(questions)
+			b, _ := json.Marshal(questions)
+			return mcp.NewToolResultText(string(b)), nil
 		}
 
 		studies, err := app.FindRecordsByFilter("studies", "", "", 0, 0)
