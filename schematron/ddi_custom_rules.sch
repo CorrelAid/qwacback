@@ -169,6 +169,10 @@
             <assert test="not(//ddi:varGrp[@type='multipleResp' and contains(concat(' ', @var, ' '), concat(' ', current()/@ID, ' '))])">
                 Variable <value-of select="@name"/> (text _other) must not be a member of a multipleResp group. It should be a standalone variable outside the group.
             </assert>
+            <!-- _other and long list (concept/@vocab) are mutually exclusive -->
+            <assert test="not(//ddi:var[@name = substring-before(current()/@name, '_other')]/ddi:concept/@vocab)">
+                Variable <value-of select="@name"/>: the base variable "<value-of select="substring-before(@name, '_other')"/>" uses concept/@vocab (long list). Long list and _other cannot be combined.
+            </assert>
         </rule>
 
         <!-- Non-namespaced variant -->
@@ -191,6 +195,10 @@
             </assert>
             <assert test="not(//varGrp[@type='multipleResp' and contains(concat(' ', @var, ' '), concat(' ', current()/@ID, ' '))])">
                 Variable <value-of select="@name"/> (text _other) must not be a member of a multipleResp group. It should be a standalone variable outside the group.
+            </assert>
+            <!-- _other and long list (concept/@vocab) are mutually exclusive -->
+            <assert test="not(//var[@name = substring-before(current()/@name, '_other')]/concept/@vocab)">
+                Variable <value-of select="@name"/>: the base variable "<value-of select="substring-before(@name, '_other')"/>" uses concept/@vocab (long list). Long list and _other cannot be combined.
             </assert>
         </rule>
     </pattern>
