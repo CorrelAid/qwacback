@@ -115,6 +115,9 @@ func searchQuestionsHandler(app core.App) mcpserver.ToolHandlerFunc {
 		if len(matched) > 20 {
 			matched = matched[:20]
 		}
+		if matched == nil {
+			matched = []routes.Question{}
+		}
 
 		return mcp.NewToolResultJSON(matched)
 	}
