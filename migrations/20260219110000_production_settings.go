@@ -51,7 +51,25 @@ func init() {
 			return err
 		}
 
-		// // 4. Enable MFA and OTP for Superusers collection
+		// 5. Collection access rules:
+		// - variables/variable_groups: ViewRule public (per-record lookups work for anonymous
+		//   users on question detail pages), ListRule auth-only (prevents bulk enumeration)
+		// - studies: fully public
+		publicRule := ""
+		authRule := "@request.auth.id != ''"
+		for _, name := range []string{"variable_groups", "variables"} {
+			c, err := app.FindCollectionByNameOrId(name)
+			if err != nil {
+				return err
+			}
+			c.ListRule = &authRule
+			c.ViewRule = &publicRule
+			if err := app.Save(c); err != nil {
+				return err
+			}
+		}
+
+		// // 6. Enable MFA and OTP for Superusers collection
 		// superusers, err := app.FindCollectionByNameOrId(core.CollectionNameSuperusers)
 		// if err != nil {
 		// 	return err
