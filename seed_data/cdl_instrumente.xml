@@ -133,7 +133,7 @@
     <!-- answer_type: single_choice (NPS 0-10 scale) -->
     <var ID="V_nps" name="nps" intrvl="discrete">
       <qstn responseDomainType="category">
-        <qstnLit>Wie wahrscheinlich ist es, dass Sie <xhtml:em>&lt;ETWAS&gt;</xhtml:em> einer Freund*in oder Kolleg*in weiterempfehlen werden?</qstnLit>
+        <qstnLit xmlns:xhtml="http://www.w3.org/1999/xhtml">Wie wahrscheinlich ist es, dass Sie <xhtml:em>&lt;ETWAS&gt;</xhtml:em> einer Freund*in oder Kolleg*in weiterempfehlen werden?</qstnLit>
       </qstn>
       <catgry>
         <catValu>0</catValu>
