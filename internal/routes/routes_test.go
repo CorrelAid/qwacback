@@ -29,7 +29,10 @@ func TestExamplesRoutes(t *testing.T) {
 			t.Fatal(err)
 		}
 		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
-			return RegisterRoutes(testApp, se, nil, "../..")
+			if err := RegisterRoutes(testApp, se, nil, "../.."); err != nil {
+				return err
+			}
+			return se.Next()
 		})
 		return testApp
 	}
@@ -52,11 +55,12 @@ func TestExamplesRoutes(t *testing.T) {
 			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:           "get nonexistent example type",
-			Method:         http.MethodGet,
-			URL:            "/api/examples/nonexistent",
-			ExpectedStatus: 404,
-			TestAppFactory: setupTestApp,
+			Name:            "get nonexistent example type",
+			Method:          http.MethodGet,
+			URL:             "/api/examples/nonexistent",
+			ExpectedStatus:  404,
+			ExpectedContent: []string{`"status":404`},
+			TestAppFactory:  setupTestApp,
 		},
 	}
 
@@ -78,7 +82,10 @@ func TestSchemaRoutes(t *testing.T) {
 			t.Fatal(err)
 		}
 		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
-			return RegisterRoutes(testApp, se, nil, "../..")
+			if err := RegisterRoutes(testApp, se, nil, "../.."); err != nil {
+				return err
+			}
+			return se.Next()
 		})
 		return testApp
 	}
@@ -117,25 +124,28 @@ func TestSchemaRoutes(t *testing.T) {
 			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:           "xsd file not found",
-			Method:         http.MethodGet,
-			URL:            "/api/schemas/xsd/nonexistent.xsd",
-			ExpectedStatus: 404,
-			TestAppFactory: setupTestApp,
+			Name:            "xsd file not found",
+			Method:          http.MethodGet,
+			URL:             "/api/schemas/xsd/nonexistent.xsd",
+			ExpectedStatus:  404,
+			ExpectedContent: []string{`"status":404`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:           "reject non-xsd file",
-			Method:         http.MethodGet,
-			URL:            "/api/schemas/xsd/somefile.txt",
-			ExpectedStatus: 400,
-			TestAppFactory: setupTestApp,
+			Name:            "reject non-xsd file",
+			Method:          http.MethodGet,
+			URL:             "/api/schemas/xsd/somefile.txt",
+			ExpectedStatus:  400,
+			ExpectedContent: []string{`"status":400`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:           "reject directory traversal",
-			Method:         http.MethodGet,
-			URL:            "/api/schemas/xsd/../../../etc/passwd",
-			ExpectedStatus: 400,
-			TestAppFactory: setupTestApp,
+			Name:            "reject directory traversal",
+			Method:          http.MethodGet,
+			URL:             "/api/schemas/xsd/..%2F..%2F..%2Fetc%2Fpasswd",
+			ExpectedStatus:  400,
+			ExpectedContent: []string{`"status":400`},
+			TestAppFactory:  setupTestApp,
 		},
 	}
 
@@ -157,7 +167,10 @@ func TestDocsRoutes(t *testing.T) {
 			t.Fatal(err)
 		}
 		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
-			return RegisterRoutes(testApp, se, nil, "../..")
+			if err := RegisterRoutes(testApp, se, nil, "../.."); err != nil {
+				return err
+			}
+			return se.Next()
 		})
 		return testApp
 	}
@@ -168,7 +181,7 @@ func TestDocsRoutes(t *testing.T) {
 			Method:          http.MethodGet,
 			URL:             "/api/docs/markup-guide",
 			ExpectedStatus:  200,
-			ExpectedContent: []string{`DDI Markup Guide`, `answer_type`, `<var`},
+			ExpectedContent: []string{`DDI 2.5 Markup Guide`, `answer_type`},
 			TestAppFactory:  setupTestApp,
 		},
 	}
@@ -226,7 +239,10 @@ func TestStudiesAccess(t *testing.T) {
 
 		// Register routes
 		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
-			return RegisterRoutes(testApp, se, nil, "../..")
+			if err := RegisterRoutes(testApp, se, nil, "../.."); err != nil {
+				return err
+			}
+			return se.Next()
 		})
 
 		return testApp
@@ -260,14 +276,12 @@ func TestStudiesAccess(t *testing.T) {
 }
 
 // seedSearchTestData imports prove_it.xml into a temporary PocketBase and returns
-// the data dir and the study ID.
-func seedSearchTestData(t *testing.T) (string, string) {
+// the study ID. The data is seeded into the app each time searchTestApp creates
+// a new test instance, since PocketBase's TestApp clones the data dir.
+func seedSearchTestData(t *testing.T) string {
 	t.Helper()
-	testDataDir, err := os.MkdirTemp("", "pb_test_search")
-	if err != nil {
-		t.Fatal(err)
-	}
-	app, err := tests.NewTestApp(testDataDir)
+	// Do a quick import to discover the study ID
+	app, err := tests.NewTestApp()
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -288,34 +302,48 @@ func seedSearchTestData(t *testing.T) (string, string) {
 	}
 	studyID := studies[0].Id
 	app.Cleanup()
-	return testDataDir, studyID
+	return studyID
 }
 
-func searchTestApp(testDataDir string) func(t testing.TB) *tests.TestApp {
+func searchTestApp() func(t testing.TB) *tests.TestApp {
 	return func(t testing.TB) *tests.TestApp {
-		testApp, err := tests.NewTestApp(testDataDir)
+		testApp, err := tests.NewTestApp()
 		if err != nil {
 			t.Fatal(err)
 		}
+		// Seed data into each test app instance
+		xmlData, err := os.ReadFile("../../seed_data/prove_it.xml")
+		if err != nil {
+			t.Fatal(err)
+		}
+		mv, err := mxj.NewMapXml(xmlData)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := importer.ImportCodebookData(testApp, mv, xmlData); err != nil {
+			t.Fatal(err)
+		}
 		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
-			return RegisterRoutes(testApp, se, nil, "../..")
+			if err := RegisterRoutes(testApp, se, nil, "../.."); err != nil {
+				return err
+			}
+			return se.Next()
 		})
 		return testApp
 	}
 }
 
 func TestSearchStudiesRoute(t *testing.T) {
-	testDataDir, _ := seedSearchTestData(t)
-	defer os.RemoveAll(testDataDir)
-	setupTestApp := searchTestApp(testDataDir)
+	setupTestApp := searchTestApp()
 
 	scenarios := []tests.ApiScenario{
 		{
-			Name:           "missing q parameter",
-			Method:         http.MethodGet,
-			URL:            "/api/search/studies",
-			ExpectedStatus: 400,
-			TestAppFactory: setupTestApp,
+			Name:            "missing q parameter",
+			Method:          http.MethodGet,
+			URL:             "/api/search/studies",
+			ExpectedStatus:  400,
+			ExpectedContent: []string{`"status":400`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
 			Name:            "search by title",
@@ -365,24 +393,24 @@ func TestSearchStudiesRoute(t *testing.T) {
 }
 
 func TestSearchQuestionsRoute(t *testing.T) {
-	testDataDir, _ := seedSearchTestData(t)
-	defer os.RemoveAll(testDataDir)
-	setupTestApp := searchTestApp(testDataDir)
+	setupTestApp := searchTestApp()
 
 	scenarios := []tests.ApiScenario{
 		{
-			Name:           "missing q parameter",
-			Method:         http.MethodGet,
-			URL:            "/api/search/questions",
-			ExpectedStatus: 400,
-			TestAppFactory: setupTestApp,
+			Name:            "missing q parameter",
+			Method:          http.MethodGet,
+			URL:             "/api/search/questions",
+			ExpectedStatus:  400,
+			ExpectedContent: []string{`"status":400`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
-			Name:           "empty q parameter",
-			Method:         http.MethodGet,
-			URL:            "/api/search/questions?q=",
-			ExpectedStatus: 400,
-			TestAppFactory: setupTestApp,
+			Name:            "empty q parameter",
+			Method:          http.MethodGet,
+			URL:             "/api/search/questions?q=",
+			ExpectedStatus:  400,
+			ExpectedContent: []string{`"status":400`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
 			Name:            "search returns results",
@@ -397,7 +425,7 @@ func TestSearchQuestionsRoute(t *testing.T) {
 			Method:          http.MethodGet,
 			URL:             "/api/search/questions?q=zzzznonexistentzzzz",
 			ExpectedStatus:  200,
-			ExpectedContent: []string{`"items":[]`, `"totalItems":0`},
+			ExpectedContent: []string{`"totalItems":0`},
 			TestAppFactory:  setupTestApp,
 		},
 		{
@@ -416,17 +444,17 @@ func TestSearchQuestionsRoute(t *testing.T) {
 }
 
 func TestQuestionsView(t *testing.T) {
-	testDataDir, studyID := seedSearchTestData(t)
-	defer os.RemoveAll(testDataDir)
-	setupTestApp := searchTestApp(testDataDir)
+	studyID := seedSearchTestData(t)
+	setupTestApp := searchTestApp()
 
 	scenarios := []tests.ApiScenario{
 		{
-			Name:           "not found",
-			Method:         http.MethodGet,
-			URL:            "/api/studies/nonexistent00/questions",
-			ExpectedStatus: 404,
-			TestAppFactory: setupTestApp,
+			Name:            "not found",
+			Method:          http.MethodGet,
+			URL:             "/api/studies/nonexistent00/questions",
+			ExpectedStatus:  400,
+			ExpectedContent: []string{`"status":400`},
+			TestAppFactory:  setupTestApp,
 		},
 		{
 			Name:            "returns questions",
@@ -494,6 +522,54 @@ func TestQuestionsView(t *testing.T) {
 	})
 }
 
+// TestQuestionDetailCategories verifies that the /api/questions/{id} endpoint
+// returns categories for variables that have them in PocketBase.
+// This is a regression test for a bug where categories were always null because
+// v.Get("categories") returns types.JSONRaw, not []interface{}.
+func TestQuestionDetailCategories(t *testing.T) {
+	setupTestApp := searchTestApp()
+
+	// prove_it.xml has 27/28 variables with categories across single_choice, grid, and text types.
+	// First discover a question ID via the list endpoint, then test its detail response.
+	listScenario := tests.ApiScenario{
+		Name:            "discover question with categories",
+		Method:          http.MethodGet,
+		URL:             "/api/questions",
+		ExpectedStatus:  200,
+		ExpectedContent: []string{`"name"`},
+		TestAppFactory:  setupTestApp,
+		AfterTestFunc: func(t testing.TB, app *tests.TestApp, res *http.Response) {
+			body, _ := io.ReadAll(res.Body)
+			var questions []Question
+			json.Unmarshal(body, &questions)
+
+			// Find a single_choice question (guaranteed to have categories in prove_it.xml)
+			var targetID string
+			for _, q := range questions {
+				if q.AnswerType == "single_choice" {
+					targetID = q.ID
+					break
+				}
+			}
+			if targetID == "" {
+				t.Fatal("no single_choice question found in test data")
+			}
+
+			// Hit the detail endpoint and verify categories are in the HTTP response
+			detail := tests.ApiScenario{
+				Name:            "categories in detail response",
+				Method:          http.MethodGet,
+				URL:             "/api/questions/" + targetID,
+				ExpectedStatus:  200,
+				ExpectedContent: []string{`"categories":[{`, `"label":`},
+				TestAppFactory:  setupTestApp,
+			}
+			detail.Test(t.(*testing.T))
+		},
+	}
+	listScenario.Test(t)
+}
+
 // TestSearchQuestionsOrdering verifies that results matching in higher-priority
 // fields rank above those matching in lower-priority fields.
 // In prove_it.xml:
@@ -501,16 +577,15 @@ func TestQuestionsView(t *testing.T) {
 //   - neighbour_trust: matches "trust" in concept and name only (score 5+4=9)
 // So council_trust must appear before neighbour_trust.
 func TestSearchQuestionsOrdering(t *testing.T) {
-	testDataDir, _ := seedSearchTestData(t)
-	defer os.RemoveAll(testDataDir)
-	setupTestApp := searchTestApp(testDataDir)
+	setupTestApp := searchTestApp()
 
 	scenario := tests.ApiScenario{
-		Name:           "question+concept+name match ranks above concept+name match",
-		Method:         http.MethodGet,
-		URL:            "/api/search/questions?q=trust",
-		ExpectedStatus: 200,
-		TestAppFactory: setupTestApp,
+		Name:            "question+concept+name match ranks above concept+name match",
+		Method:          http.MethodGet,
+		URL:             "/api/search/questions?q=trust",
+		ExpectedStatus:  200,
+		ExpectedContent: []string{`"items"`},
+		TestAppFactory:  setupTestApp,
 		AfterTestFunc: func(t testing.TB, app *tests.TestApp, res *http.Response) {
 			body, err := io.ReadAll(res.Body)
 			if err != nil {

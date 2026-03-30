@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -904,16 +905,9 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 				continue
 			}
 			var cats []categoryItem
-			rawCats, _ := v.Get("categories").([]interface{})
-			for _, raw := range rawCats {
-				m, ok := raw.(map[string]interface{})
-				if !ok {
-					continue
-				}
-				label, _ := m["label"].(string)
-				value, _ := m["value"].(string)
-				missing, _ := m["is_missing"].(bool)
-				cats = append(cats, categoryItem{Label: label, Value: value, IsMissing: missing})
+			if raw := v.Get("categories"); raw != nil {
+				b, _ := json.Marshal(raw)
+				json.Unmarshal(b, &cats)
 			}
 			variables = append(variables, variableDetail{
 				ID:               v.Id,
