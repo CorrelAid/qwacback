@@ -2,38 +2,120 @@
 
 [![AI-Assisted](https://img.shields.io/badge/AI--assisted-Claude%20Code-blueviolet?logo=anthropic&logoColor=white)](./AI_DISCLOSURE.md)
 
-A question bank and metadata repository for civil society, built on **PocketBase** with a strict DDI-Codebook integration.
+A question bank for civil society surveys. Import DDI-Codebook XML, browse and search questions, export as DDI or XLSForm.
 
-## Key Features
+## How It Works
 
-- **Strict DDI Validation:** XSD schema validation + custom Schematron business rules, all handled by a Java worker (Saxon HE + SchXslt2) over NATS.
-- **Automated Ingestion:** Effortlessly import DDI-XML files into `studies` and `variables` collections.
-- **DDI Export:** Export your studies back to validated DDI-XML format.
-- **Production-Ready:**
-  - **Rate Limiting:** Built-in protection for API abuse.
-  - **Memory Management:** Configured with `GOMEMLIMIT` for constrained environments.
-  - **Settings Encryption:** Support for encrypting sensitive app settings.
-- **Auto-Seeding:** Automatically creates admin and regular user accounts and seeds the Prove It! study on first run.
+The core concept is a **question** — one thing you ask a respondent. Under the hood, questions are stored as [DDI Codebook 2.5](https://ddialliance.org/Specification/DDI-Codebook/2.5/) variables and variable groups (see [DDI_MARKUP_GUIDE.md](DDI_MARKUP_GUIDE.md)), but the API presents them as questions:
 
-## Architecture
+| Question type | DDI storage | Example |
+|---|---|---|
+| Simple (integer, text, single choice) | 1 `<var>` | "How old are you?" |
+| Multiple choice | `<varGrp type="multipleResp">` + binary `<var>` per option | "Which devices do you own?" |
+| Grid / Likert | `<varGrp type="grid">` + `<var>` per item | "Rate your trust in: Parliament, Police, ..." |
+| Semi-open (with "other") | `<varGrp type="other">` + member vars + `_other` text var | "What is your gender?" (with free text option) |
+
+Questions belong to **studies** — a study is a survey or questionnaire with metadata (title, abstract, keywords, time period, etc.).
+
+### Data flow
 
 ```
-                    +-----------+
-POST /api/validate  |           |  Embedded NATS server
-  ───────────────►  | qwacback  |  ───► validation worker (Java)
-                    |  (Go)     |  Import to DB
-                    +-----------+
-                         │
-                    +-----------+
-                    | validation|  1. XSD validation (javax.xml)
-                    |  worker   |  2. Schematron (SchXslt2 + Saxon HE)
-                    |  (Java)   |
-                    +-----------+
+DDI-XML file
+  │
+  ├─► POST /api/validate     →  XSD + Schematron validation only
+  │
+  └─► POST /api/import       →  Validate, parse, store in DB
+                                    studies / variable_groups / variables
+  │
+  ▼
+GET /api/questions            →  Browse all questions (assembled from vars + groups)
+GET /api/search/questions     →  Search by question text, concept, name
+GET /api/studies/{id}/export  →  Re-export as validated DDI-XML
+GET /api/studies/{id}/xlsform →  Convert to XLSForm JSON
 ```
 
-Two Docker services: `qwacback` (Go/PocketBase with embedded NATS) and `schematron-worker` (Java).
+### Architecture
 
-If `NATS_PORT` is not set, qwacback degrades gracefully (no validation, import only).
+Two Docker services:
+
+- **qwacback** (Go/PocketBase) — API, database, embedded NATS server
+- **schematron-worker** (Java/Saxon HE) — XSD + Schematron validation over NATS
+
+If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
+
+## API
+
+### Questions
+
+- **GET `/api/questions`** — List all questions across all studies.
+- **GET `/api/studies/{id}/questions`** — List all questions for a single study.
+- **GET `/api/search/questions?q=<term>`** — Search questions by question text, concept, name, and answer type. Ranked by relevance. Supports `&page=` and `&perPage=` (default 20, max 100).
+
+### Studies
+
+- **GET `/api/search/studies?q=<term>`** — Search studies by title, keywords, and abstract. Optional `&topic=<classification>` filter. Supports pagination.
+
+### Import & Validation
+
+- **POST `/api/validate`** — Validate a DDI XML file (XSD + Schematron) without importing. Body: `multipart/form-data` with `file` field.
+- **POST `/api/import`** — Validate and import a DDI XML file. Same body format.
+
+### Export & Conversion
+
+- **GET `/api/studies/{id}/export`** — Export study as validated DDI-XML download.
+- **GET `/api/studies/{id}/xlsform`** — Export study as XLSForm JSON.
+- **POST `/api/convert/ddi-to-xlsform`** — Convert a DDI XML fragment to XLSForm JSON.
+- **POST `/api/convert/xlsform-to-ddi`** — Convert XLSForm JSON to DDI XML.
+
+For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
+
+### Reference
+
+- **GET `/api/examples`** — Answer type examples (XLSForm + DDI pairs).
+- **GET `/api/examples/{type}`** — Single example by type (`single_choice`, `multiple_choice`, `grid`, `integer`, `text`, etc.).
+- **GET `/api/docs/markup-guide`** — DDI encoding conventions.
+- **GET `/api/schemas/schematron`** — Schematron validation rules.
+- **GET `/api/schemas/xsd`** — List available XSD files.
+
+### PocketBase built-in API
+
+The raw `studies`, `variable_groups`, and `variables` collections are publicly readable via PocketBase's standard REST API (`GET /api/collections/{name}/records`). Write access is admin-only.
+
+---
+
+## Getting Started
+
+### Docker Compose (recommended)
+
+```bash
+docker compose up -d --build
+```
+
+Access the PocketBase Dashboard at `http://localhost:8090/_/`.
+
+Default credentials (see `docker-compose.yml`):
+- **Admin:** `admin@example.com` / `yourpassword123`
+- **User:** `user@example.com` / `userpassword123`
+
+### Local Development
+
+**Without validation** (PocketBase only — imports work, validation skipped):
+
+```bash
+go run main.go serve
+```
+
+**With validation** (requires JDK 17+):
+
+```bash
+# Start qwacback with embedded NATS
+NATS_PORT=4222 go run main.go serve &
+
+# Build and start the validation worker
+cd schematron-worker
+gradle shadowJar
+NATS_URL=nats://localhost:4222 java -jar build/libs/schematron-worker-1.0.0-all.jar
+```
 
 ## Project Structure
 
@@ -43,189 +125,40 @@ internal/
   examples/     Static answer type examples (XLSForm + DDI)
   exporter/     PocketBase records → DDI-XML
   importer/     XML parsing → PocketBase records
-  routes/       Custom API routes (validate, export, convert, examples)
-  schematron/   Go NATS client (interface, mock, types)
+  routes/       API endpoints, question assembly, search
+  schematron/   Go NATS client for validation worker
 migrations/     Schema setup, settings, user init, seed data
 xml/            DDI-Codebook 2.5 XSD schemas
-schematron/     Schematron rules (.sch)
-seed_data/      Prove It! Toolkit seed XML
-schematron-worker/  Java validation microservice (see its own README)
+schematron/     Custom Schematron rules (.sch)
+seed_data/      Seed studies (DDI-XML files imported on first run)
+schematron-worker/  Java validation microservice
 ```
-
-## DDI Data Model & Workflow
-
-Studies are described in [DDI Codebook 2.5](https://ddialliance.org/Specification/DDI-Codebook/2.5/) XML. The application enforces a strict subset of that standard — see [DDI_MARKUP_GUIDE.md](DDI_MARKUP_GUIDE.md) for the full conventions. The key rules:
-
-**Answer types → DDI encoding**
-
-| `answer_type` | `intrvl` | `responseDomainType` | Container |
-|--------|----------|----------------------|-----------|
-| `integer` | `contin` | `numeric` | `<var>` |
-| `text` | `discrete` | `text` | `<var>` |
-| `single_choice` | `discrete` | `category` | `<var>` + `<catgry>` per option |
-| `multiple_choice` | `discrete` | `multiple` | `<varGrp type="multipleResp">` + binary `<var>` per option |
-| `grid` | `discrete` | `category` | `<varGrp type="grid">` + `<var>` per item |
-
-**Subcategory flags** (booleans on `single_choice` and `multiple_choice`):
-
-| Flag | Effect |
-|------|--------|
-| `has_other` | A companion `_other` text variable exists for free-text specification |
-| `has_long_list` | Categories come from an external code list via `concept/@vocab` |
-
-**Mandatory fields** on every `<var>` and `<varGrp>`:
-- `name` attribute — `snake_case` machine identifier (column name)
-- `concept` element — human-readable description of what the variable measures
-- `varFormat` element — technical data type (`numeric` or `character`)
-- `qstn/qstnLit` — question text as shown to the respondent
-
-**Import → export pipeline**
-
-```
-DDI-XML file
-   │
-   ▼
-POST /api/validate   →  XSD + Schematron validation (NATS worker)
-                     →  Parse with mxj + token-based extractor
-                     →  Insert into PocketBase collections
-                              studies / variable_groups / variables
-   │
-   ▼
-GET /api/studies/{id}/export
-                     →  Build CodeBook struct from DB records
-                     →  xml.MarshalIndent → validate → serve
-```
-
----
-
-## Getting Started
-
-### Docker Compose (recommended)
-
-Spins up both services (qwacback + validation worker) with a single command:
-
-```bash
-docker compose up -d --build
-```
-
-Access the PocketBase Dashboard at `http://localhost:8090/_/`.
-
-#### Default Credentials (configured in `docker-compose.yml`):
-- **Admin:** `admin@example.com` / `yourpassword123`
-- **User:** `user@example.com` / `userpassword123`
-
-### Local Development
-
-#### Prerequisites
-
-- **Go 1.25+**
-- **JDK 17+** and **Gradle** (only if you want XML validation locally)
-
-#### Without Validation (PocketBase only)
-
-Run the Go server directly — imports work but XSD/Schematron validation is skipped:
-
-```bash
-go run main.go serve
-```
-
-#### With Validation
-
-Start the embedded NATS server and the Java worker:
-
-```bash
-# 1. Start qwacback with embedded NATS
-NATS_PORT=4222 go run main.go serve &
-
-# 2. Build and start the validation worker
-cd schematron-worker
-gradle shadowJar
-NATS_URL=nats://localhost:4222 java -jar build/libs/schematron-worker-1.0.0-all.jar
-```
-
-The worker connects to the embedded NATS server in qwacback and handles all XSD + Schematron validation.
-
-### API Endpoints
-
-#### Validation & Import
-
-- **POST `/api/validate`**: Validates a DDI XML file (XSD + Schematron) without importing.
-  - **Body**: `multipart/form-data` with a `file` field.
-- **POST `/api/import`**: Validates a DDI XML file and imports it into the database.
-  - **Body**: `multipart/form-data` with a `file` field.
-
-#### Export
-
-- **GET `/api/studies/{id}/export`**: Exports a study and its variables as a validated DDI-XML file download.
-- **GET `/api/studies/{id}/xlsform`**: Exports a study as XLSForm JSON.
-
-#### Format Conversion
-
-- **POST `/api/convert/ddi-to-xlsform`**: Converts a DDI XML fragment (`<var>` or `<varGrp>`) to XLSForm JSON format.
-  - **Body**: DDI XML fragment
-  - **Content-Type**: `application/xml` or `text/xml`
-  - **Response**: XLSForm JSON
-- **POST `/api/convert/xlsform-to-ddi`**: Converts an XLSForm JSON question or group to DDI XML format.
-  - **Body**: XLSForm JSON
-  - **Content-Type**: `application/json`
-  - **Response**: DDI XML fragment
-
-For detailed documentation on the conversion endpoints, see [CONVERSION_API.md](CONVERSION_API.md).
-
-#### Search
-
-- **GET `/api/search/studies?q=<term>`**: Search studies by title, keywords, and abstract. Results ranked by relevance (title > keywords > abstract).
-  - **Optional filter**: `&topic=<classification>` — restrict to studies matching a topic classification.
-  - **Pagination**: `&page=1&perPage=20` (default 20, max 100).
-
-- **GET `/api/search/questions?q=<term>`**: Search questions (assembled from variables and groups) by question text, concept, name, and answer type. Results ranked by relevance (question_text > concept > name > answer_type).
-  - **Pagination**: `&page=1&perPage=20` (default 20, max 100).
-
-- **GET `/api/questions`**: Lists all questions across all studies.
-- **GET `/api/studies/{id}/questions`**: Lists all questions for a single study.
-
-Questions are assembled from underlying variables and groups — e.g. a multiple choice question with 5 options appears as 1 question (not 5 variables).
-
-#### Examples
-
-- **GET `/api/examples`**: Returns answer type examples as a JSON array. Each example includes XLSForm and DDI Codebook representations.
-- **GET `/api/examples/{type}`**: Returns a single example by type identifier.
-
-Available types: `single_choice`, `multiple_choice`, `single_choice_other`, `multiple_choice_other`, `grid`, `integer`, `text`, `single_choice_long_list`, `multiple_choice_long_list`
 
 ## Development & Testing
 
 ### Go Tests
 
-Go tests use a mock validation client — no NATS, Java worker, or system dependencies needed.
+Tests run during Docker build (`go test` in Dockerfile) and locally. No NATS or Java needed.
 
 ```bash
-go test -v ./internal/...
+go test ./internal/...
 ```
 
-### Java Tests (Validation Worker)
-
-Tests run XSD and Schematron validation directly against the real schema files. No NATS needed.
+### Java Tests
 
 ```bash
-# With Docker (recommended - no local JDK required)
+# With Docker (no local JDK required)
 docker run --rm -v "$(pwd)":/app -w /app/schematron-worker gradle:8.12-jdk17 gradle test --no-daemon
 
 # With local Gradle + JDK 17
-cd schematron-worker
-gradle test
+cd schematron-worker && gradle test
 ```
 
-See [schematron-worker/README.md](schematron-worker/README.md) for more details.
-
-### Full Integration Test
-
-Spin up both services and test the complete validation pipeline:
+### Integration Test
 
 ```bash
 docker compose up -d --build
 
-# Get a user token
 TOKEN=$(curl -s -X POST http://localhost:8090/api/collections/users/auth-with-password \
   -H 'Content-Type: application/json' \
   -d '{"identity":"user@example.com","password":"userpassword123"}' | jq -r '.token')
@@ -241,60 +174,20 @@ curl -X POST http://localhost:8090/api/import \
   -F "file=@seed_data/prove_it.xml"
 ```
 
-## Database & Migrations
-
-PocketBase runs all migrations in `migrations/` in lexicographic order on startup.
-
-- **Before first production deploy:** edit the initial migration files directly.
-- **After first production deploy:** add a new file per change (e.g. `migrations/20260301000000_add_foo_field.go`) — never edit existing ones.
-
-The Go test suite validates migrations on every run via `tests.NewTestApp`.
-
-### Testing against production data
-
-To test a migration against real data before deploying:
-
-```bash
-# Export the production DB from the Docker volume
-docker run --rm \
-  -v qwacback_pb_dataz:/data \
-  -v $(pwd):/backup \
-  alpine cp /data/data.db /backup/prod_backup.db
-
-# Run migrations against the copy (errors appear in startup logs)
-mkdir -p /tmp/test_pb_data && cp prod_backup.db /tmp/test_pb_data/data.db
-go run main.go serve --dir=/tmp/test_pb_data
-```
-
-Before deploying a migration that drops or renames columns, back up first:
-
-```bash
-docker run --rm \
-  -v qwacback_pb_dataz:/data \
-  -v $(pwd)/backups:/backups \
-  alpine cp /data/data.db /backups/data_$(date +%Y%m%d_%H%M%S).db
-```
-
-The SQLite file lives at `/app/pb_data/data.db` inside the container (volume `pb_dataz`).
-
----
-
 ## Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `PB_ADMIN_EMAIL` | Initial Superuser Email | `admin@example.com` |
-| `PB_ADMIN_PASSWORD` | Initial Superuser Password | `yourpassword123` |
-| `PB_USER_EMAIL` | Initial Regular User Email | `user@example.com` |
-| `PB_USER_PASSWORD` | Initial Regular User Password | `userpassword123` |
+| `PB_ADMIN_EMAIL` | Initial superuser email | `admin@example.com` |
+| `PB_ADMIN_PASSWORD` | Initial superuser password | `yourpassword123` |
+| `PB_USER_EMAIL` | Initial regular user email | `user@example.com` |
+| `PB_USER_PASSWORD` | Initial regular user password | `userpassword123` |
 | `PB_ENCRYPTION_KEY` | 32-char key for settings encryption | (optional) |
-| `GOMEMLIMIT` | Soft memory limit for the Go GC | `512MiB` |
-| `TRUST_PROXY` | Set to `true` if behind a reverse proxy | `false` |
-| `NATS_PORT` | Port for the embedded NATS server | (optional) |
+| `GOMEMLIMIT` | Soft memory limit for Go GC | `512MiB` |
+| `NATS_PORT` | Port for embedded NATS server | (optional — no validation without it) |
 
 ## Resources
 
-- **DDI Alliance:** [DDI Codebook 2.5 Specification](https://ddialliance.org/Specification/DDI-Codebook/2.5/)
-- **PocketBase:** [Documentation](https://pocketbase.io/docs/)
-- **SchXslt2:** [Codeberg](https://codeberg.org/SchXslt/schxslt2)
-- **NATS:** [Documentation](https://docs.nats.io/)
+- [DDI Codebook 2.5 Specification](https://ddialliance.org/Specification/DDI-Codebook/2.5/)
+- [DDI Markup Guide](DDI_MARKUP_GUIDE.md) — project-specific encoding conventions
+- [PocketBase Documentation](https://pocketbase.io/docs/)
