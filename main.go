@@ -44,13 +44,12 @@ func main() {
 			log.Fatalf("Invalid NATS_PORT: %v", err)
 		}
 
-		opts := &server.Options{
-			Port: port,
+		if natsToken == "" {
+			log.Fatal("NATS_TOKEN must be set when NATS_PORT is configured")
 		}
-		if natsToken != "" {
-			opts.Authorization = natsToken
-		} else {
-			log.Println("WARNING: NATS_TOKEN not set; NATS server is unauthenticated")
+		opts := &server.Options{
+			Port:          port,
+			Authorization: natsToken,
 		}
 
 		ns, err := server.NewServer(opts)
@@ -98,11 +97,12 @@ func main() {
 		}
 
 		// Mount MCP server (Streamable HTTP) at /mcp
+		// GET is public (read-only tool discovery); POST/DELETE require superuser auth
 		mcpHTTP := qwacmcp.NewHTTPServer(app)
 		mcpHandler := apis.WrapStdHandler(http.Handler(mcpHTTP))
 		se.Router.GET("/mcp", mcpHandler)
-		se.Router.POST("/mcp", mcpHandler)
-		se.Router.DELETE("/mcp", mcpHandler)
+		se.Router.POST("/mcp", mcpHandler).Bind(apis.RequireSuperuserAuth())
+		se.Router.DELETE("/mcp", mcpHandler).Bind(apis.RequireSuperuserAuth())
 
 		return se.Next()
 	})

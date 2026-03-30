@@ -379,7 +379,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		})
 	})
 
-	// Validate and import
+	// Validate and import — requires superuser auth
 	se.Router.POST("/api/import", func(e *core.RequestEvent) error {
 		xmlBytes, err := readAndValidateXML(e)
 		if err != nil {
@@ -409,7 +409,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			"valid":   true,
 			"message": "XML is valid and imported successfully",
 		})
-	})
+	}).Bind(apis.RequireSuperuserAuth())
 
 	// Export Study - Public (cached)
 	se.Router.GET("/api/studies/{id}/export", func(e *core.RequestEvent) error {

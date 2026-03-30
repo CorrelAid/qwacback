@@ -33,7 +33,7 @@ var abstractRe = regexp.MustCompile(`(?s)<abstract[^>]*>(.*?)</abstract>`)
 func extractVarQstnLits(rawXML []byte) map[string]string {
 	result := make(map[string]string)
 	decoder := xml.NewDecoder(bytes.NewReader(rawXML))
-	decoder.Strict = false
+	decoder.Strict = true
 
 	var currentVarID string
 	inVar, inQstn, inQstnLit := false, false, false

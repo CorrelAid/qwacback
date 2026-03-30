@@ -86,13 +86,23 @@ func init() {
 			return err
 		}
 
-		// 4. Set public read rules on all collections (write stays admin-only)
+		// 4. Set read rules on collections (write stays admin-only)
 		publicRule := ""
-		for _, name := range []string{"studies", "variable_groups", "variables"} {
+		authRule := "@request.auth.id != ''"
+
+		// Studies: public read (browsed by unauthenticated visitors)
+		if c, _ := app.FindCollectionByNameOrId("studies"); c != nil {
+			c.ListRule = &publicRule
+			c.ViewRule = &publicRule
+			app.Save(c)
+		}
+		// Variables and variable groups: auth-only via PocketBase CRUD
+		// (public access is through the custom /api/questions endpoints instead)
+		for _, name := range []string{"variable_groups", "variables"} {
 			c, _ := app.FindCollectionByNameOrId(name)
 			if c != nil {
-				c.ListRule = &publicRule
-				c.ViewRule = &publicRule
+				c.ListRule = &authRule
+				c.ViewRule = &authRule
 				app.Save(c)
 			}
 		}
