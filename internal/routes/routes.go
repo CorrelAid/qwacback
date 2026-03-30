@@ -794,6 +794,38 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		return e.JSON(200, all)
 	})
 
+	// Single question detail - Public
+	se.Router.GET("/api/questions/{id}", func(e *core.RequestEvent) error {
+		qId := e.Request.PathValue("id")
+		if !pocketbaseIDRegex.MatchString(qId) {
+			return apis.NewBadRequestError("Invalid ID format", nil)
+		}
+
+		// A question ID is either a variable group ID or a standalone variable ID.
+		// Find which study it belongs to, assemble that study's questions, return the match.
+		var studyID string
+		if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
+			studyID = grp.GetString("study")
+		} else if v, err := app.FindRecordById("variables", qId); err == nil {
+			studyID = v.GetString("study")
+		} else {
+			return apis.NewNotFoundError("Question not found", nil)
+		}
+
+		questions, err := assembleQuestions(app, studyID)
+		if err != nil {
+			return apis.NewInternalServerError("Failed to assemble questions", nil)
+		}
+
+		for _, q := range questions {
+			if q.ID == qId {
+				return e.JSON(200, q)
+			}
+		}
+
+		return apis.NewNotFoundError("Question not found", nil)
+	})
+
 	// Questions for a single study - Public
 	se.Router.GET("/api/studies/{id}/questions", func(e *core.RequestEvent) error {
 		studyId := e.Request.PathValue("id")
