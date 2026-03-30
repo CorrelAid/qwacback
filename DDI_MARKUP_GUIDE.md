@@ -4,7 +4,7 @@ This guide defines the conventions for mapping survey questionnaires to DDI 2.5 
 
 ### Validation
 
-This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines structure and element ordering but is intentionally permissive — most elements are optional. The project-specific **Schematron rules** (`schematron/ddi_custom_rules.sch`) enforce stricter conventions on top: required elements (e.g. `concept` on every `var`/`varGrp`), forbidden elements (e.g. `labl` on `var`/`varGrp`), restricted `varGrp` types, category/label requirements, and consistency checks (e.g. `preQTxt` matching `varGrp/txt`). The rules in this guide reflect both layers combined.
+This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines structure and element ordering but is permissive — most elements are optional. The project-specific **Schematron rules** (`schematron/ddi_custom_rules.sch`) enforce stricter conventions on top: required elements (e.g. `concept` on every `var`/`varGrp`), forbidden elements (e.g. `labl` on `var`/`varGrp`), restricted `varGrp` types, category/label requirements, and consistency checks (e.g. `preQTxt` matching `varGrp/txt`). The rules in this guide reflect both layers combined.
 
 ### Examples
 
