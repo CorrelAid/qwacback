@@ -48,7 +48,7 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 ### Questions
 
 - **GET `/api/questions`** — List all questions across all studies.
-- **GET `/api/questions/{id}`** — Get a single question.
+- **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, interviewer instructions, etc.). No additional API calls needed for a detail view.
 - **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question.
 - **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.
@@ -61,7 +61,7 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 ### Import & Validation
 
 - **POST `/api/validate`** — Validate a DDI XML file (XSD + Schematron) without importing. Body: `multipart/form-data` with `file` field.
-- **POST `/api/import`** — Validate and import a DDI XML file. Same body format.
+- **POST `/api/import`** — Validate and import a DDI XML file. Same body format. **Requires superuser auth.**
 
 ### Export & Conversion
 
@@ -82,7 +82,9 @@ For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
 
 ### PocketBase built-in API
 
-The raw `studies`, `variable_groups`, and `variables` collections are publicly readable via PocketBase's standard REST API (`GET /api/collections/{name}/records`). Write access is admin-only.
+The `studies` collection is publicly readable via PocketBase's standard REST API (`GET /api/collections/studies/records`). Individual `variables` and `variable_groups` records are also publicly readable by ID (`GET /api/collections/{name}/records/{id}`), but bulk listing those collections requires authentication. Write access to all collections is admin-only.
+
+Prefer the custom `/api/questions/*` endpoints over direct collection access — they return assembled, frontend-ready data.
 
 ---
 
@@ -111,13 +113,13 @@ go run main.go serve
 **With validation** (requires JDK 17+):
 
 ```bash
-# Start qwacback with embedded NATS
-NATS_PORT=4222 go run main.go serve &
+# Start qwacback with embedded NATS (NATS_TOKEN is required when NATS_PORT is set)
+NATS_PORT=4222 NATS_TOKEN=localdev go run main.go serve &
 
 # Build and start the validation worker
 cd schematron-worker
 gradle shadowJar
-NATS_URL=nats://localhost:4222 java -jar build/libs/schematron-worker-1.0.0-all.jar
+NATS_URL=nats://localhost:4222 NATS_TOKEN=localdev java -jar build/libs/schematron-worker-1.0.0-all.jar
 ```
 
 ## Project Structure
@@ -162,18 +164,17 @@ cd schematron-worker && gradle test
 ```bash
 docker compose up -d --build
 
-TOKEN=$(curl -s -X POST http://localhost:8090/api/collections/users/auth-with-password \
-  -H 'Content-Type: application/json' \
-  -d '{"identity":"user@example.com","password":"userpassword123"}' | jq -r '.token')
-
-# Validate only
+# Validate only — no auth required
 curl -X POST http://localhost:8090/api/validate \
-  -H "Authorization: $TOKEN" \
   -F "file=@seed_data/prove_it.xml"
 
-# Validate and import
+# Import — requires superuser auth
+TOKEN=$(curl -s -X POST http://localhost:8090/api/collections/superusers/auth-with-password \
+  -H 'Content-Type: application/json' \
+  -d '{"identity":"admin@example.com","password":"yourpassword123"}' | jq -r '.token')
+
 curl -X POST http://localhost:8090/api/import \
-  -H "Authorization: $TOKEN" \
+  -H "Authorization: Bearer $TOKEN" \
   -F "file=@seed_data/prove_it.xml"
 ```
 
@@ -188,6 +189,7 @@ curl -X POST http://localhost:8090/api/import \
 | `PB_ENCRYPTION_KEY` | 32-char key for settings encryption | (optional) |
 | `GOMEMLIMIT` | Soft memory limit for Go GC | `512MiB` |
 | `NATS_PORT` | Port for embedded NATS server | (optional — no validation without it) |
+| `NATS_TOKEN` | Auth token for embedded NATS server | (required when `NATS_PORT` is set) |
 
 ## MCP Server
 
@@ -204,6 +206,10 @@ qwacback exposes a [Model Context Protocol](https://modelcontextprotocol.io/) se
 
 All tools are read-only.
 
+### Authentication
+
+`GET /mcp` (tool discovery) is public. `POST /mcp` and `DELETE /mcp` (tool calls and session teardown) require a superuser token in the `Authorization: Bearer <token>` header.
+
 ### Client configuration
 
 Add to your MCP client config (e.g. Claude Desktop, Claude Code):
@@ -213,10 +219,21 @@ Add to your MCP client config (e.g. Claude Desktop, Claude Code):
   "mcpServers": {
     "qwacback": {
       "type": "streamable-http",
-      "url": "http://localhost:8090/mcp"
+      "url": "http://localhost:8090/mcp",
+      "headers": {
+        "Authorization": "Bearer <superuser-token>"
+      }
     }
   }
 }
+```
+
+Obtain a token via:
+
+```bash
+curl -s -X POST http://localhost:8090/api/collections/superusers/auth-with-password \
+  -H 'Content-Type: application/json' \
+  -d '{"identity":"admin@example.com","password":"yourpassword123"}' | jq -r '.token'
 ```
 
 ## Resources
