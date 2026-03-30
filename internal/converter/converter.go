@@ -247,12 +247,26 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 			}
 		case "other":
 			// Parent group — register its base name as multiple if it wraps a multipleResp child
+			// or if it contains binary member vars directly (flattened)
+			hasMultiple := false
 			for _, childID := range strings.Fields(grp.VarGrpRef) {
 				if child, ok := grpByID[childID]; ok && child.Type == "multipleResp" {
-					varByName[grp.Name] = DDIVar{
-						Name: grp.Name,
-						Qstn: &DDIQstn{ResponseDomainType: "multiple"},
+					hasMultiple = true
+				}
+			}
+			if !hasMultiple {
+				// Check for flattened case: binary member vars directly in this group
+				for _, id := range strings.Fields(grp.Var) {
+					if v, ok := varByID[id]; ok && v.Qstn != nil && v.Qstn.ResponseDomainType == "multiple" {
+						hasMultiple = true
+						break
 					}
+				}
+			}
+			if hasMultiple {
+				varByName[grp.Name] = DDIVar{
+					Name: grp.Name,
+					Qstn: &DDIQstn{ResponseDomainType: "multiple"},
 				}
 			}
 		}
@@ -268,26 +282,52 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 		}
 		switch grp.Type {
 		case "other":
-			// Parent group wrapping _other hierarchy
-			// Mark child varGrps as consumed and process them
-			for _, childID := range strings.Fields(grp.VarGrpRef) {
-				if child, ok := grpByID[childID]; ok {
-					consumedGrps[childID] = true
-					switch child.Type {
-					case "multipleResp":
-						convertMultipleRespToXLSForm(child, varByID, varByName, form, grp.Name)
-						for _, id := range strings.Fields(child.Var) {
-							consumedVars[id] = true
-						}
-					case "grid":
-						convertGridToXLSForm(child, varByID, form)
-						for _, id := range strings.Fields(child.Var) {
-							consumedVars[id] = true
+			// Parent group wrapping _other hierarchy.
+			// Two cases: (a) has child varGrp references, (b) flattened (all vars are direct members).
+			if grp.VarGrpRef != "" {
+				// (a) Standard hierarchy: mark child varGrps as consumed and process them
+				for _, childID := range strings.Fields(grp.VarGrpRef) {
+					if child, ok := grpByID[childID]; ok {
+						consumedGrps[childID] = true
+						switch child.Type {
+						case "multipleResp":
+							convertMultipleRespToXLSForm(child, varByID, varByName, form, grp.Name)
+							for _, id := range strings.Fields(child.Var) {
+								consumedVars[id] = true
+							}
+						case "grid":
+							convertGridToXLSForm(child, varByID, form)
+							for _, id := range strings.Fields(child.Var) {
+								consumedVars[id] = true
+							}
 						}
 					}
 				}
+			} else {
+				// (b) Flattened: binary member vars are directly in this group.
+				// Synthesize a virtual multipleResp group from the non-_other member vars.
+				var binaryIDs []string
+				for _, id := range strings.Fields(grp.Var) {
+					if v, ok := varByID[id]; ok && v.Qstn != nil && v.Qstn.ResponseDomainType == "multiple" {
+						binaryIDs = append(binaryIDs, id)
+					}
+				}
+				if len(binaryIDs) > 0 {
+					syntheticGrp := DDIVarGrp{
+						ID:      grp.ID + "_synth",
+						Name:    grp.Name,
+						Type:    "multipleResp",
+						Var:     strings.Join(binaryIDs, " "),
+						Txt:     grp.Txt,
+						Concept: grp.Concept,
+					}
+					convertMultipleRespToXLSForm(syntheticGrp, varByID, varByName, form, grp.Name)
+					for _, id := range binaryIDs {
+						consumedVars[id] = true
+					}
+				}
 			}
-			// The _other var(s) referenced by parent are NOT consumed —
+			// The _other var(s) are NOT consumed —
 			// they get converted normally so the _other text row is emitted.
 		case "multipleResp":
 			convertMultipleRespToXLSForm(grp, varByID, varByName, form, "")
