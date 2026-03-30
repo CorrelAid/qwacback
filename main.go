@@ -101,7 +101,7 @@ func main() {
 		mcpHTTP := qwacmcp.NewHTTPServer(app)
 		mcpHandler := apis.WrapStdHandler(http.Handler(mcpHTTP))
 		se.Router.GET("/mcp", mcpHandler)
-		se.Router.POST("/mcp", mcpHandler).Bind(apis.RequireSuperuserAuth())
+		se.Router.POST("/mcp", mcpHandler)
 		se.Router.DELETE("/mcp", mcpHandler).Bind(apis.RequireSuperuserAuth())
 
 		return se.Next()
