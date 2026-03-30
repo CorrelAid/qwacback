@@ -801,18 +801,24 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	})
 
 	// Single question detail - Public
+	// Returns the assembled question plus embedded study, group, and variable data
+	// so the frontend needs no additional PocketBase collection calls.
 	se.Router.GET("/api/questions/{id}", func(e *core.RequestEvent) error {
 		qId := e.Request.PathValue("id")
 		if !pocketbaseIDRegex.MatchString(qId) {
 			return apis.NewBadRequestError("Invalid ID format", nil)
 		}
 
-		// A question ID is either a variable group ID or a standalone variable ID.
-		// Find which study it belongs to, assemble that study's questions, return the match.
+		// Determine whether the ID is a group or a standalone variable, and grab the study ID.
 		var studyID string
+		var grpRecord *core.Record
+		var varRecord *core.Record
+
 		if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
+			grpRecord = grp
 			studyID = grp.GetString("study")
 		} else if v, err := app.FindRecordById("variables", qId); err == nil {
+			varRecord = v
 			studyID = v.GetString("study")
 		} else {
 			return apis.NewNotFoundError("Question not found", nil)
@@ -823,13 +829,118 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewInternalServerError("Failed to assemble questions", nil)
 		}
 
-		for _, q := range questions {
-			if q.ID == qId {
-				return e.JSON(200, q)
+		var q Question
+		found := false
+		for _, candidate := range questions {
+			if candidate.ID == qId {
+				q = candidate
+				found = true
+				break
+			}
+		}
+		if !found {
+			return apis.NewNotFoundError("Question not found", nil)
+		}
+
+		// Embed study info
+		type studyInfo struct {
+			ID    string `json:"id"`
+			Title string `json:"title"`
+		}
+		var study studyInfo
+		if s, err := app.FindRecordById("studies", studyID); err == nil {
+			study = studyInfo{ID: s.Id, Title: s.GetString("title")}
+		}
+
+		// Embed group info (nil for standalone variables)
+		type groupInfo struct {
+			ID          string `json:"id"`
+			Type        string `json:"type"`
+			Concept     string `json:"concept"`
+			Description string `json:"description"`
+		}
+		var group *groupInfo
+		if grpRecord != nil {
+			group = &groupInfo{
+				ID:          grpRecord.Id,
+				Type:        grpRecord.GetString("type"),
+				Concept:     grpRecord.GetString("concept"),
+				Description: grpRecord.GetString("description"),
 			}
 		}
 
-		return apis.NewNotFoundError("Question not found", nil)
+		// Embed full variable data for each variable_id in the question
+		type categoryItem struct {
+			Label     string `json:"label"`
+			Value     string `json:"value"`
+			IsMissing bool   `json:"is_missing"`
+		}
+		type variableDetail struct {
+			ID               string         `json:"id"`
+			Name             string         `json:"name"`
+			Concept          string         `json:"concept"`
+			Question         string         `json:"question"`
+			PrequestionText  string         `json:"prequestion_text"`
+			IvuInstructions  string         `json:"ivu_instructions"`
+			AnswerType       string         `json:"answer_type"`
+			HasOther         bool           `json:"has_other"`
+			HasLongList      bool           `json:"has_long_list"`
+			LongListStandard string         `json:"long_list_standard"`
+			Categories       []categoryItem `json:"categories"`
+		}
+
+		var varIDs []string
+		if varRecord != nil {
+			// Standalone variable: the question ID is the variable ID
+			varIDs = []string{varRecord.Id}
+		} else {
+			varIDs = q.VariableIDs
+		}
+
+		variables := make([]variableDetail, 0, len(varIDs))
+		for _, vid := range varIDs {
+			v, err := app.FindRecordById("variables", vid)
+			if err != nil {
+				continue
+			}
+			var cats []categoryItem
+			rawCats, _ := v.Get("categories").([]interface{})
+			for _, raw := range rawCats {
+				m, ok := raw.(map[string]interface{})
+				if !ok {
+					continue
+				}
+				label, _ := m["label"].(string)
+				value, _ := m["value"].(string)
+				missing, _ := m["is_missing"].(bool)
+				cats = append(cats, categoryItem{Label: label, Value: value, IsMissing: missing})
+			}
+			variables = append(variables, variableDetail{
+				ID:               v.Id,
+				Name:             v.GetString("name"),
+				Concept:          v.GetString("concept"),
+				Question:         v.GetString("question"),
+				PrequestionText:  v.GetString("prequestion_text"),
+				IvuInstructions:  v.GetString("ivu_instructions"),
+				AnswerType:       effectiveAnswerType(v),
+				HasOther:         v.GetBool("has_other"),
+				HasLongList:      v.GetBool("has_long_list"),
+				LongListStandard: v.GetString("long_list_standard"),
+				Categories:       cats,
+			})
+		}
+
+		return e.JSON(200, map[string]interface{}{
+			"id":           q.ID,
+			"name":         q.Name,
+			"concept":      q.Concept,
+			"question_text": q.QuestionText,
+			"answer_type":  q.AnswerType,
+			"order":        q.Order,
+			"study":        study,
+			"group":        group,
+			"variables":    variables,
+		})
 	})
 
 	// Questions for a single study - Public
