@@ -53,32 +53,32 @@
   </stdyDscr>
   <dataDscr>
     <varGrp ID="VG3" name="selbstverstaendnis_migrantenorganisation" type="multipleResp" var="V11 V12 V13 V14 V15 V16">
-      <txt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</txt>
+      <txt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</txt>
       <concept>Selbstverständnis als Migrantenorganisation</concept>
     </varGrp>
     <varGrp ID="VG4" name="aktivitaetsbereiche" type="multipleResp" var="V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40 V41 V42 V43 V44 V45 V46 V47 V48 V49">
-      <txt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</txt>
+      <txt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</txt>
       <concept>Aktivitätsbereiche</concept>
     </varGrp>
     <varGrp ID="VG5" name="nutzergruppen" type="multipleResp" var="V50 V51 V52 V53 V54 V55 V56 V57 V58 V59 V60 V61 V62 V63 V64 V65">
-      <txt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</txt>
+      <txt>Wer nutzt die Angebote Ihrer Organisation oft?</txt>
       <concept>Nutzergruppen</concept>
     </varGrp>
     <!-- Replaced 79 binary country vars (V66–V144) with a single vocab reference -->
     <varGrp ID="VG7" name="religionszugehoerigkeit" type="multipleResp" var="V145 V146 V147 V148 V149 V150 V151 V152 V153 V154 V155 V156 V157">
-      <txt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</txt>
+      <txt>Um welche Religion(en) geht es?</txt>
       <concept>Religionszugehörigkeit</concept>
     </varGrp>
     <varGrp ID="VG8" name="angebote_fluechtlinge" type="multipleResp" var="V162 V163 V164 V165 V166 V167 V168 V169 V170 V171 V172 V173 V174 V175">
-      <txt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</txt>
+      <txt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</txt>
       <concept>Angebote für Geflüchtete</concept>
     </varGrp>
     <varGrp ID="VG9" name="bezahlte_beschaeftigung" type="multipleResp" var="V176 V177 V178 V179 V180 V181 V182 V183 V184">
-      <txt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</txt>
+      <txt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</txt>
       <concept>Arten bezahlter Beschäftigung</concept>
     </varGrp>
     <varGrp ID="VG10" name="foerderer_2019" type="multipleResp" var="V190 V191 V192 V193 V194 V195 V196 V197 V198 V199 V200 V201 V202 V203">
-      <txt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</txt>
+      <txt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</txt>
       <concept>Förderquellen 2019</concept>
     </varGrp>
     <var ID="V205" name="eingetragener_verein" intrvl="discrete">
@@ -237,7 +237,7 @@
     </var>
     <var ID="V11" name="selbstverstaendnis_migrantenorganisation_unserer_o" intrvl="discrete">
       <qstn ID="Q11" responseDomainType="multiple">
-        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</preQTxt>
         <qstnLit>In unserer Organisation engagieren sich viele Menschen mit familiärer Zuwanderungsgeschichte (z. B. aus der dritten oder vierten Einwanderergeneration).</qstnLit>
       </qstn>
       <catgry>
@@ -251,7 +251,7 @@
     </var>
     <var ID="V12" name="selbstverstaendnis_migrantenorganisation_unsere_or" intrvl="discrete">
       <qstn ID="Q12" responseDomainType="multiple">
-        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</preQTxt>
         <qstnLit>Unsere Organisation ist den Wurzeln nach eine Migrantenorganisation. Denn sie wurde von Menschen mit Migrationshintergrund gegründet.</qstnLit>
       </qstn>
       <catgry>
@@ -265,7 +265,7 @@
     </var>
     <var ID="V13" name="selbstverstaendnis_migrantenorganisation_unsere_an" intrvl="discrete">
       <qstn ID="Q13" responseDomainType="multiple">
-        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</preQTxt>
         <qstnLit>Unsere Angebote richten sich hauptsächlich an Menschen mit Migrationshintergrund.</qstnLit>
       </qstn>
       <catgry>
@@ -279,7 +279,7 @@
     </var>
     <var ID="V14" name="selbstverstaendnis_migrantenorganisation_anderes" intrvl="discrete">
       <qstn ID="Q14" responseDomainType="multiple">
-        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</preQTxt>
         <qstnLit>anderes</qstnLit>
       </qstn>
       <catgry>
@@ -293,7 +293,7 @@
     </var>
     <var ID="V15" name="selbstverstaendnis_migrantenorganisation_weiß_nich" intrvl="discrete">
       <qstn ID="Q15" responseDomainType="multiple">
-        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</preQTxt>
         <qstnLit>weiß nicht</qstnLit>
       </qstn>
       <catgry>
@@ -307,7 +307,7 @@
     </var>
     <var ID="V16" name="selbstverstaendnis_migrantenorganisation_keine_ang" intrvl="discrete">
       <qstn ID="Q16" responseDomainType="multiple">
-        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</preQTxt>
         <qstnLit>keine Angabe</qstnLit>
       </qstn>
       <catgry>
@@ -600,7 +600,7 @@
     </var>
     <var ID="V26" name="aktivitaetsbereiche_austausch_zwischen" intrvl="discrete">
       <qstn ID="Q26" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Austausch zwischen Menschen mit und ohne Migrationshintergrund</qstnLit>
       </qstn>
       <catgry>
@@ -614,7 +614,7 @@
     </var>
     <var ID="V27" name="aktivitaetsbereiche_kinder_und" intrvl="discrete">
       <qstn ID="Q27" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Kinder- und Jugendarbeit</qstnLit>
       </qstn>
       <catgry>
@@ -628,7 +628,7 @@
     </var>
     <var ID="V28" name="aktivitaetsbereiche_bildung" intrvl="discrete">
       <qstn ID="Q28" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Bildung</qstnLit>
       </qstn>
       <catgry>
@@ -642,7 +642,7 @@
     </var>
     <var ID="V29" name="aktivitaetsbereiche_künstlerischkulturelle_aktivit" intrvl="discrete">
       <qstn ID="Q29" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>künstlerisch-kulturelle Aktivitäten (z. B. Musik, Theater)</qstnLit>
       </qstn>
       <catgry>
@@ -656,7 +656,7 @@
     </var>
     <var ID="V30" name="aktivitaetsbereiche_unterstützung_von" intrvl="discrete">
       <qstn ID="Q30" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Unterstützung von Geflüchteten/Flüchtlingen</qstnLit>
       </qstn>
       <catgry>
@@ -670,7 +670,7 @@
     </var>
     <var ID="V31" name="aktivitaetsbereiche_beratung" intrvl="discrete">
       <qstn ID="Q31" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Beratung</qstnLit>
       </qstn>
       <catgry>
@@ -684,7 +684,7 @@
     </var>
     <var ID="V32" name="aktivitaetsbereiche_angebote_für" intrvl="discrete">
       <qstn ID="Q32" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Angebote für Frauen</qstnLit>
       </qstn>
       <catgry>
@@ -698,7 +698,7 @@
     </var>
     <var ID="V33" name="aktivitaetsbereiche_elternarbeitfamilienarbeit" intrvl="discrete">
       <qstn ID="Q33" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Elternarbeit/Familienarbeit</qstnLit>
       </qstn>
       <catgry>
@@ -712,7 +712,7 @@
     </var>
     <var ID="V34" name="aktivitaetsbereiche_pflege_der" intrvl="discrete">
       <qstn ID="Q34" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Pflege der Herkunftskultur(en)</qstnLit>
       </qstn>
       <catgry>
@@ -726,7 +726,7 @@
     </var>
     <var ID="V35" name="aktivitaetsbereiche_antidiskriminierungsarbeit" intrvl="discrete">
       <qstn ID="Q35" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Antidiskriminierungsarbeit</qstnLit>
       </qstn>
       <catgry>
@@ -740,7 +740,7 @@
     </var>
     <var ID="V36" name="aktivitaetsbereiche_politische_interessenvertretun" intrvl="discrete">
       <qstn ID="Q36" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>politische Interessenvertretung</qstnLit>
       </qstn>
       <catgry>
@@ -754,7 +754,7 @@
     </var>
     <var ID="V37" name="aktivitaetsbereiche_religion" intrvl="discrete">
       <qstn ID="Q37" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Religion</qstnLit>
       </qstn>
       <catgry>
@@ -768,7 +768,7 @@
     </var>
     <var ID="V38" name="aktivitaetsbereiche_sport" intrvl="discrete">
       <qstn ID="Q38" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Sport</qstnLit>
       </qstn>
       <catgry>
@@ -782,7 +782,7 @@
     </var>
     <var ID="V39" name="aktivitaetsbereiche_pflegeunterricht_der" intrvl="discrete">
       <qstn ID="Q39" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Pflege/Unterricht der Herkunftssprache</qstnLit>
       </qstn>
       <catgry>
@@ -796,7 +796,7 @@
     </var>
     <var ID="V40" name="aktivitaetsbereiche_entwicklungszusammenarbeit" intrvl="discrete">
       <qstn ID="Q40" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Entwicklungszusammenarbeit</qstnLit>
       </qstn>
       <catgry>
@@ -810,7 +810,7 @@
     </var>
     <var ID="V41" name="aktivitaetsbereiche_exkursionen" intrvl="discrete">
       <qstn ID="Q41" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Exkursionen</qstnLit>
       </qstn>
       <catgry>
@@ -824,7 +824,7 @@
     </var>
     <var ID="V42" name="aktivitaetsbereiche_seniorenarbeit" intrvl="discrete">
       <qstn ID="Q42" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Seniorenarbeit</qstnLit>
       </qstn>
       <catgry>
@@ -838,7 +838,7 @@
     </var>
     <var ID="V43" name="aktivitaetsbereiche_gesundheit" intrvl="discrete">
       <qstn ID="Q43" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Gesundheit</qstnLit>
       </qstn>
       <catgry>
@@ -852,7 +852,7 @@
     </var>
     <var ID="V44" name="aktivitaetsbereiche_wissenschaft_und" intrvl="discrete">
       <qstn ID="Q44" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Wissenschaft und Forschung</qstnLit>
       </qstn>
       <catgry>
@@ -866,7 +866,7 @@
     </var>
     <var ID="V45" name="aktivitaetsbereiche_arbeitsvermittlung" intrvl="discrete">
       <qstn ID="Q45" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Arbeitsvermittlung</qstnLit>
       </qstn>
       <catgry>
@@ -880,7 +880,7 @@
     </var>
     <var ID="V46" name="aktivitaetsbereiche_umwelt_und" intrvl="discrete">
       <qstn ID="Q46" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Umwelt- und Naturschutz</qstnLit>
       </qstn>
       <catgry>
@@ -894,7 +894,7 @@
     </var>
     <var ID="V47" name="aktivitaetsbereiche_vertretung_beruflicher" intrvl="discrete">
       <qstn ID="Q47" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>Vertretung beruflicher Interessen</qstnLit>
       </qstn>
       <catgry>
@@ -908,7 +908,7 @@
     </var>
     <var ID="V48" name="aktivitaetsbereiche_anderes" intrvl="discrete">
       <qstn ID="Q48" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>anderes</qstnLit>
       </qstn>
       <catgry>
@@ -922,7 +922,7 @@
     </var>
     <var ID="V49" name="aktivitaetsbereiche_keine_angabe" intrvl="discrete">
       <qstn ID="Q49" responseDomainType="multiple">
-        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht? Maximal 5 Antworten möglich.</preQTxt>
+        <preQTxt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</preQTxt>
         <qstnLit>keine Angabe</qstnLit>
       </qstn>
       <catgry>
@@ -936,7 +936,7 @@
     </var>
     <var ID="V50" name="nutzergruppen_menschen_mit_migrationshintergrund" intrvl="discrete">
       <qstn ID="Q50" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Menschen mit Migrationshintergrund</qstnLit>
       </qstn>
       <catgry>
@@ -950,7 +950,7 @@
     </var>
     <var ID="V51" name="nutzergruppen_kinderjugendliche" intrvl="discrete">
       <qstn ID="Q51" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Kinder/Jugendliche</qstnLit>
       </qstn>
       <catgry>
@@ -964,7 +964,7 @@
     </var>
     <var ID="V52" name="nutzergruppen_frauen" intrvl="discrete">
       <qstn ID="Q52" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Frauen</qstnLit>
       </qstn>
       <catgry>
@@ -978,7 +978,7 @@
     </var>
     <var ID="V53" name="nutzergruppen_geflüchteteflüchtlinge" intrvl="discrete">
       <qstn ID="Q53" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Geflüchtete/Flüchtlinge</qstnLit>
       </qstn>
       <catgry>
@@ -992,7 +992,7 @@
     </var>
     <var ID="V54" name="nutzergruppen_menschen_ohne" intrvl="discrete">
       <qstn ID="Q54" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Menschen ohne Migrationshintergrund</qstnLit>
       </qstn>
       <catgry>
@@ -1006,7 +1006,7 @@
     </var>
     <var ID="V55" name="nutzergruppen_menschen_mit_migrationshintergrund_herkunftsregion" intrvl="discrete">
       <qstn ID="Q55" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Menschen mit Migrationshintergrund aus einer bestimmten Herkunftsregion</qstnLit>
       </qstn>
       <catgry>
@@ -1020,7 +1020,7 @@
     </var>
     <var ID="V56" name="nutzergruppen_sozial_benachteiligte" intrvl="discrete">
       <qstn ID="Q56" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>sozial benachteiligte Menschen (z. B. durch geringes Einkommen)</qstnLit>
       </qstn>
       <catgry>
@@ -1034,7 +1034,7 @@
     </var>
     <var ID="V57" name="nutzergruppen_studierende_undoder" intrvl="discrete">
       <qstn ID="Q57" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Studierende und/oder Akademiker</qstnLit>
       </qstn>
       <catgry>
@@ -1048,7 +1048,7 @@
     </var>
     <var ID="V58" name="nutzergruppen_senioren" intrvl="discrete">
       <qstn ID="Q58" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Senioren</qstnLit>
       </qstn>
       <catgry>
@@ -1062,7 +1062,7 @@
     </var>
     <var ID="V59" name="nutzergruppen_people_color" intrvl="discrete">
       <qstn ID="Q59" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>People of Color</qstnLit>
       </qstn>
       <catgry>
@@ -1076,7 +1076,7 @@
     </var>
     <var ID="V60" name="nutzergruppen_menschen_einer" intrvl="discrete">
       <qstn ID="Q60" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>Menschen einer bestimmten Religion</qstnLit>
       </qstn>
       <catgry>
@@ -1090,7 +1090,7 @@
     </var>
     <var ID="V61" name="nutzergruppen_pflege_undoder" intrvl="discrete">
       <qstn ID="Q61" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>pflege- und/oder pflegebedürftige oder gesundheitlich eingeschränkte Menschen</qstnLit>
       </qstn>
       <catgry>
@@ -1104,7 +1104,7 @@
     </var>
     <var ID="V62" name="nutzergruppen_andere_personen" intrvl="discrete">
       <qstn ID="Q62" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>andere Personen</qstnLit>
       </qstn>
       <catgry>
@@ -1118,7 +1118,7 @@
     </var>
     <var ID="V63" name="nutzergruppen_lsbticommunity" intrvl="discrete">
       <qstn ID="Q63" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>LSBTI*-Community</qstnLit>
       </qstn>
       <catgry>
@@ -1132,7 +1132,7 @@
     </var>
     <var ID="V64" name="nutzergruppen_weiß_nicht" intrvl="discrete">
       <qstn ID="Q64" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>weiß nicht</qstnLit>
       </qstn>
       <catgry>
@@ -1146,7 +1146,7 @@
     </var>
     <var ID="V65" name="nutzergruppen_keine_angabe" intrvl="discrete">
       <qstn ID="Q65" responseDomainType="multiple">
-        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer nutzt die Angebote Ihrer Organisation oft?</preQTxt>
         <qstnLit>keine Angabe</qstnLit>
       </qstn>
       <catgry>
@@ -1160,14 +1160,14 @@
     </var>
     <var ID="V66" name="herkunftslaender_nutzer" intrvl="discrete">
       <qstn responseDomainType="multiple">
-        <qstnLit>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</qstnLit>
+        <qstnLit>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen?</qstnLit>
       </qstn>
       <concept vocab="iso_3166_1">Herkunftsländer der Nutzer*innen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V145" name="religionszugehoerigkeit_katholisch" intrvl="discrete">
       <qstn ID="Q145" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>katholisch</qstnLit>
       </qstn>
       <catgry>
@@ -1181,7 +1181,7 @@
     </var>
     <var ID="V146" name="religionszugehoerigkeit_evangelisch" intrvl="discrete">
       <qstn ID="Q146" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>evangelisch</qstnLit>
       </qstn>
       <catgry>
@@ -1195,7 +1195,7 @@
     </var>
     <var ID="V147" name="religionszugehoerigkeit_evangelischfreikirchlich" intrvl="discrete">
       <qstn ID="Q147" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>evangelisch-freikirchlich</qstnLit>
       </qstn>
       <catgry>
@@ -1209,7 +1209,7 @@
     </var>
     <var ID="V148" name="religionszugehoerigkeit_christlichorthodox" intrvl="discrete">
       <qstn ID="Q148" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>christlich-orthodox</qstnLit>
       </qstn>
       <catgry>
@@ -1223,7 +1223,7 @@
     </var>
     <var ID="V149" name="religionszugehoerigkeit_jüdisch" intrvl="discrete">
       <qstn ID="Q149" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>jüdisch</qstnLit>
       </qstn>
       <catgry>
@@ -1237,7 +1237,7 @@
     </var>
     <var ID="V150" name="religionszugehoerigkeit_schiitisch" intrvl="discrete">
       <qstn ID="Q150" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>schiitisch</qstnLit>
       </qstn>
       <catgry>
@@ -1251,7 +1251,7 @@
     </var>
     <var ID="V151" name="religionszugehoerigkeit_sunnitisch" intrvl="discrete">
       <qstn ID="Q151" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>sunnitisch</qstnLit>
       </qstn>
       <catgry>
@@ -1265,7 +1265,7 @@
     </var>
     <var ID="V152" name="religionszugehoerigkeit_alevitisch" intrvl="discrete">
       <qstn ID="Q152" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>alevitisch</qstnLit>
       </qstn>
       <catgry>
@@ -1279,7 +1279,7 @@
     </var>
     <var ID="V153" name="religionszugehoerigkeit_buddhistisch" intrvl="discrete">
       <qstn ID="Q153" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>buddhistisch</qstnLit>
       </qstn>
       <catgry>
@@ -1293,7 +1293,7 @@
     </var>
     <var ID="V154" name="religionszugehoerigkeit_hinduistisch" intrvl="discrete">
       <qstn ID="Q154" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>hinduistisch</qstnLit>
       </qstn>
       <catgry>
@@ -1307,7 +1307,7 @@
     </var>
     <var ID="V155" name="religionszugehoerigkeit_anderes" intrvl="discrete">
       <qstn ID="Q155" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>anderes</qstnLit>
       </qstn>
       <catgry>
@@ -1321,7 +1321,7 @@
     </var>
     <var ID="V156" name="religionszugehoerigkeit_weiß_nicht" intrvl="discrete">
       <qstn ID="Q156" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>weiß nicht</qstnLit>
       </qstn>
       <catgry>
@@ -1335,7 +1335,7 @@
     </var>
     <var ID="V157" name="religionszugehoerigkeit_keine_angabe" intrvl="discrete">
       <qstn ID="Q157" responseDomainType="multiple">
-        <preQTxt>Um welche Religion(en) geht es? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Um welche Religion(en) geht es?</preQTxt>
         <qstnLit>keine Angabe</qstnLit>
       </qstn>
       <catgry>
@@ -1414,7 +1414,7 @@
     </var>
     <var ID="V162" name="angebote_fluechtlinge_begleitung_bei" intrvl="discrete">
       <qstn ID="Q162" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Begleitung bei Behördengängen, zu Ärzten, etc.</qstnLit>
       </qstn>
       <catgry>
@@ -1428,7 +1428,7 @@
     </var>
     <var ID="V163" name="angebote_fluechtlinge_raum_fuer_migranten" intrvl="discrete">
       <qstn ID="Q163" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Raum für Kontakte mit Migranten/Menschen mit Migrationshintergrund</qstnLit>
       </qstn>
       <catgry>
@@ -1442,7 +1442,7 @@
     </var>
     <var ID="V164" name="angebote_fluechtlinge_allgemeine_unterstützung" intrvl="discrete">
       <qstn ID="Q164" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>allgemeine Unterstützung bei der Erstorientierung</qstnLit>
       </qstn>
       <catgry>
@@ -1456,7 +1456,7 @@
     </var>
     <var ID="V165" name="angebote_fluechtlinge_bildungsangebote" intrvl="discrete">
       <qstn ID="Q165" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Bildungsangebote</qstnLit>
       </qstn>
       <catgry>
@@ -1470,7 +1470,7 @@
     </var>
     <var ID="V166" name="angebote_fluechtlinge_dolmetschenübersetzungen" intrvl="discrete">
       <qstn ID="Q166" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Dolmetschen/Übersetzungen</qstnLit>
       </qstn>
       <catgry>
@@ -1484,7 +1484,7 @@
     </var>
     <var ID="V167" name="angebote_fluechtlinge_deutschkurse" intrvl="discrete">
       <qstn ID="Q167" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Deutschkurse</qstnLit>
       </qstn>
       <catgry>
@@ -1498,7 +1498,7 @@
     </var>
     <var ID="V168" name="angebote_fluechtlinge_unterstützung_beim" intrvl="discrete">
       <qstn ID="Q168" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Unterstützung beim Beantragen von Leistungen</qstnLit>
       </qstn>
       <catgry>
@@ -1512,7 +1512,7 @@
     </var>
     <var ID="V169" name="angebote_fluechtlinge_raum_fuer_deutsche" intrvl="discrete">
       <qstn ID="Q169" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Raum für Kontakte mit Deutschen</qstnLit>
       </qstn>
       <catgry>
@@ -1526,7 +1526,7 @@
     </var>
     <var ID="V170" name="angebote_fluechtlinge_arbeitsmarktintegration" intrvl="discrete">
       <qstn ID="Q170" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Arbeitsmarktintegration</qstnLit>
       </qstn>
       <catgry>
@@ -1540,7 +1540,7 @@
     </var>
     <var ID="V171" name="angebote_fluechtlinge_seelsorge" intrvl="discrete">
       <qstn ID="Q171" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Seelsorge</qstnLit>
       </qstn>
       <catgry>
@@ -1554,7 +1554,7 @@
     </var>
     <var ID="V172" name="angebote_fluechtlinge_unterstützung_bei" intrvl="discrete">
       <qstn ID="Q172" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>Unterstützung bei der Wohnungssuche</qstnLit>
       </qstn>
       <catgry>
@@ -1568,7 +1568,7 @@
     </var>
     <var ID="V173" name="angebote_fluechtlinge_anderes" intrvl="discrete">
       <qstn ID="Q173" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>anderes</qstnLit>
       </qstn>
       <catgry>
@@ -1582,7 +1582,7 @@
     </var>
     <var ID="V174" name="angebote_fluechtlinge_weiß_nicht" intrvl="discrete">
       <qstn ID="Q174" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>weiß nicht</qstnLit>
       </qstn>
       <catgry>
@@ -1596,7 +1596,7 @@
     </var>
     <var ID="V175" name="angebote_fluechtlinge_keine_angabe" intrvl="discrete">
       <qstn ID="Q175" responseDomainType="multiple">
-        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an? Maximal 3 Antworten möglich.</preQTxt>
+        <preQTxt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</preQTxt>
         <qstnLit>keine Angabe</qstnLit>
       </qstn>
       <catgry>
@@ -1610,7 +1610,7 @@
     </var>
     <var ID="V176" name="bezahlte_beschaeftigung_vollzeit_sozialversicherun" intrvl="discrete">
       <qstn ID="Q176" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>in Vollzeit (sozialversicherungspflichtig)</qstnLit>
       </qstn>
       <catgry>
@@ -1624,7 +1624,7 @@
     </var>
     <var ID="V177" name="bezahlte_beschaeftigung_teilzeit_sozialversicherun" intrvl="discrete">
       <qstn ID="Q177" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>in Teilzeit (sozialversicherungspflichtig)</qstnLit>
       </qstn>
       <catgry>
@@ -1638,7 +1638,7 @@
     </var>
     <var ID="V178" name="bezahlte_beschaeftigung_als_minijob" intrvl="discrete">
       <qstn ID="Q178" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>als Minijob</qstnLit>
       </qstn>
       <catgry>
@@ -1652,7 +1652,7 @@
     </var>
     <var ID="V179" name="bezahlte_beschaeftigung_auf_honorarbasis" intrvl="discrete">
       <qstn ID="Q179" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>auf Honorarbasis</qstnLit>
       </qstn>
       <catgry>
@@ -1666,7 +1666,7 @@
     </var>
     <var ID="V180" name="bezahlte_beschaeftigung_im_freiwilligendienst" intrvl="discrete">
       <qstn ID="Q180" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>im Freiwilligendienst</qstnLit>
       </qstn>
       <catgry>
@@ -1680,7 +1680,7 @@
     </var>
     <var ID="V181" name="bezahlte_beschaeftigung_als_bezahltes" intrvl="discrete">
       <qstn ID="Q181" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>als bezahltes Praktikum</qstnLit>
       </qstn>
       <catgry>
@@ -1694,7 +1694,7 @@
     </var>
     <var ID="V182" name="bezahlte_beschaeftigung_nein_bei" intrvl="discrete">
       <qstn ID="Q182" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>nein, bei uns wird niemand bezahlt</qstnLit>
       </qstn>
       <catgry>
@@ -1708,7 +1708,7 @@
     </var>
     <var ID="V183" name="bezahlte_beschaeftigung_weiß_nicht" intrvl="discrete">
       <qstn ID="Q183" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>weiß nicht</qstnLit>
       </qstn>
       <catgry>
@@ -1722,7 +1722,7 @@
     </var>
     <var ID="V184" name="bezahlte_beschaeftigung_keine_angabe" intrvl="discrete">
       <qstn ID="Q184" responseDomainType="multiple">
-        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</preQTxt>
         <qstnLit>keine Angabe</qstnLit>
       </qstn>
       <catgry>
@@ -1835,7 +1835,7 @@
     </var>
     <var ID="V190" name="foerderer_2019_kommunen" intrvl="discrete">
       <qstn ID="Q190" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Kommunen</qstnLit>
       </qstn>
       <catgry>
@@ -1849,7 +1849,7 @@
     </var>
     <var ID="V191" name="foerderer_2019_land" intrvl="discrete">
       <qstn ID="Q191" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Land</qstnLit>
       </qstn>
       <catgry>
@@ -1863,7 +1863,7 @@
     </var>
     <var ID="V192" name="foerderer_2019_stiftungen" intrvl="discrete">
       <qstn ID="Q192" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Stiftungen</qstnLit>
       </qstn>
       <catgry>
@@ -1877,7 +1877,7 @@
     </var>
     <var ID="V193" name="foerderer_2019_bund" intrvl="discrete">
       <qstn ID="Q193" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Bund</qstnLit>
       </qstn>
       <catgry>
@@ -1891,7 +1891,7 @@
     </var>
     <var ID="V194" name="foerderer_2019_bmf" intrvl="discrete">
       <qstn ID="Q194" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>BMF</qstnLit>
       </qstn>
       <catgry>
@@ -1905,7 +1905,7 @@
     </var>
     <var ID="V195" name="foerderer_2019_kirchen" intrvl="discrete">
       <qstn ID="Q195" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Kirchen</qstnLit>
       </qstn>
       <catgry>
@@ -1919,7 +1919,7 @@
     </var>
     <var ID="V196" name="foerderer_2019_andere_organisationen" intrvl="discrete">
       <qstn ID="Q196" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>andere Organisationen</qstnLit>
       </qstn>
       <catgry>
@@ -1933,7 +1933,7 @@
     </var>
     <var ID="V197" name="foerderer_2019_euförderung" intrvl="discrete">
       <qstn ID="Q197" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>EU-Förderung</qstnLit>
       </qstn>
       <catgry>
@@ -1947,7 +1947,7 @@
     </var>
     <var ID="V198" name="foerderer_2019_unternehmen" intrvl="discrete">
       <qstn ID="Q198" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Unternehmen</qstnLit>
       </qstn>
       <catgry>
@@ -1961,7 +1961,7 @@
     </var>
     <var ID="V199" name="foerderer_2019_kulturinstitute_und" intrvl="discrete">
       <qstn ID="Q199" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Kulturinstitute und Konsulate</qstnLit>
       </qstn>
       <catgry>
@@ -1975,7 +1975,7 @@
     </var>
     <var ID="V200" name="foerderer_2019_institutionen_aus" intrvl="discrete">
       <qstn ID="Q200" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>Institutionen aus dem Herkunftsland/den Herkunftsländern</qstnLit>
       </qstn>
       <catgry>
@@ -1989,7 +1989,7 @@
     </var>
     <var ID="V201" name="foerderer_2019_anderes" intrvl="discrete">
       <qstn ID="Q201" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>anderes</qstnLit>
       </qstn>
       <catgry>
@@ -2003,7 +2003,7 @@
     </var>
     <var ID="V202" name="foerderer_2019_weiß_nicht" intrvl="discrete">
       <qstn ID="Q202" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>weiß nicht</qstnLit>
       </qstn>
       <catgry>
@@ -2017,7 +2017,7 @@
     </var>
     <var ID="V203" name="foerderer_2019_keine_angabe" intrvl="discrete">
       <qstn ID="Q203" responseDomainType="multiple">
-        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert? Mehrere Antworten möglich.</preQTxt>
+        <preQTxt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</preQTxt>
         <qstnLit>keine Angabe</qstnLit>
       </qstn>
       <catgry>

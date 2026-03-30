@@ -527,8 +527,8 @@ func TestRoundTripDemo(t *testing.T) {
 	})
 
 	t.Run("variable_counts", func(t *testing.T) {
-		if len(cb.DataDscr.Vars) != 44 {
-			t.Errorf("Expected 44 variables, got %d", len(cb.DataDscr.Vars))
+		if len(cb.DataDscr.Vars) != 45 {
+			t.Errorf("Expected 45 variables, got %d", len(cb.DataDscr.Vars))
 		}
 		if len(cb.DataDscr.VarGrp) != 0 {
 			t.Errorf("Expected 0 variable groups, got %d", len(cb.DataDscr.VarGrp))

@@ -399,11 +399,18 @@
         <labl>Hausfrau/Hausmann</labl>
       </catgry>
       <catgry>
-        <catValu>13</catValu>
+        <catValu>other</catValu>
         <labl>Sonstiges</labl>
       </catgry>
       <concept>Main activity</concept>
       <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V18_other" name="haupttaetigkeit_other" intrvl="discrete">
+      <qstn responseDomainType="text">
+        <qstnLit>Sonstiges (bitte angeben)</qstnLit>
+      </qstn>
+      <concept>Main activity (other)</concept>
+      <varFormat type="character" schema="other"/>
     </var>
     <var ID="V19" name="erwerbssituation" intrvl="discrete">
       <qstn ID="Q19" responseDomainType="category">
