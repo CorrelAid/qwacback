@@ -622,10 +622,16 @@ func TestXLSFormToDDI_SelectMultipleGeraete(t *testing.T) {
 	}
 }
 
-func TestXLSFormToDDI_Group(t *testing.T) {
+func TestXLSFormToDDI_SectionDropsWrapper(t *testing.T) {
+	// Sections (begin_group without table-list / grid / matrix markers) have
+	// no valid DDI representation — qwacback's Schematron restricts varGrp/@type
+	// to grid/multipleResp/other. The converter drops the wrapper and emits
+	// the members as top-level vars.
 	xlsformJSON := `{
 		"survey": [
-			{"type": "begin_group", "name": "satisfaction_group", "label": "Satisfaction questions"},
+			{"type": "begin_group", "name": "demographics", "label": "Demographics"},
+			{"type": "integer", "name": "age", "label": "What is your age?"},
+			{"type": "text", "name": "name", "label": "What is your name?"},
 			{"type": "end_group", "name": ""}
 		],
 		"choices": [],
@@ -637,19 +643,73 @@ func TestXLSFormToDDI_Group(t *testing.T) {
 		t.Fatalf("XLSFormToDDI failed: %v", err)
 	}
 
-	var vg DDIVarGrp
-	if err := xml.Unmarshal(ddiXML, &vg); err != nil {
-		t.Fatalf("Failed to parse result: %v", err)
+	var dd DDIDataDscr
+	if err := xml.Unmarshal(ddiXML, &dd); err != nil {
+		t.Fatalf("Failed to parse result: %v\n%s", err, string(ddiXML))
 	}
 
-	if vg.Name != "satisfaction_group" {
-		t.Errorf("Expected name satisfaction_group, got %s", vg.Name)
+	if len(dd.VarGrps) != 0 {
+		t.Errorf("Expected no varGrps for a section, got %d", len(dd.VarGrps))
 	}
-	if vg.Concept.Value != "Satisfaction questions" {
-		t.Errorf("Expected concept 'Satisfaction questions', got %s", vg.Concept.Value)
+	if len(dd.Vars) != 2 {
+		t.Fatalf("Expected 2 top-level vars, got %d", len(dd.Vars))
 	}
-	if !strings.HasPrefix(vg.ID, "VG_") {
-		t.Errorf("Expected ID to start with VG_, got %s", vg.ID)
+	if dd.Vars[0].Name != "age" || dd.Vars[1].Name != "name" {
+		t.Errorf("Unexpected var names: %q, %q", dd.Vars[0].Name, dd.Vars[1].Name)
+	}
+}
+
+func TestXLSFormToDDI_GridGroupEmitsTxtAndPreQTxt(t *testing.T) {
+	// Per qwacback convention (see exporter grid fixture), grids must have
+	// <txt> on the group and <preQTxt> on each member repeating the lead-in.
+	xlsformJSON := `{
+		"survey": [
+			{"type": "begin_group", "name": "trust_grid", "label": "How much do you trust the following?", "appearance": "table-list"},
+			{"type": "select_one scale", "name": "trust_police", "label": "Police"},
+			{"type": "select_one scale", "name": "trust_courts", "label": "Courts"},
+			{"type": "end_group", "name": ""}
+		],
+		"choices": [
+			{"list_name": "scale", "name": "1", "label": "Not at all"},
+			{"list_name": "scale", "name": "2", "label": "Somewhat"}
+		],
+		"settings": {}
+	}`
+
+	ddiXML, err := XLSFormToDDI([]byte(xlsformJSON))
+	if err != nil {
+		t.Fatalf("XLSFormToDDI failed: %v", err)
+	}
+
+	var dd DDIDataDscr
+	if err := xml.Unmarshal(ddiXML, &dd); err != nil {
+		t.Fatalf("Failed to parse result: %v\n%s", err, string(ddiXML))
+	}
+
+	if len(dd.VarGrps) != 1 {
+		t.Fatalf("Expected 1 grid varGrp, got %d", len(dd.VarGrps))
+	}
+	grp := dd.VarGrps[0]
+	if grp.Type != "grid" {
+		t.Errorf("Expected type grid, got %q", grp.Type)
+	}
+	if grp.Txt != "How much do you trust the following?" {
+		t.Errorf("Expected grid txt from begin_group label, got %q", grp.Txt)
+	}
+	if grp.Concept.Value == "" {
+		t.Error("Grid varGrp missing concept — Schematron requires it")
+	}
+	if len(dd.Vars) != 2 {
+		t.Fatalf("Expected 2 member vars, got %d", len(dd.Vars))
+	}
+	for _, v := range dd.Vars {
+		if v.Qstn == nil || v.Qstn.PreQTxt != "How much do you trust the following?" {
+			preQ := ""
+			if v.Qstn != nil {
+				preQ = v.Qstn.PreQTxt
+			}
+			t.Errorf("Var %s: expected preQTxt to repeat grid lead-in, got %q", v.Name, preQ)
+		}
 	}
 }
 

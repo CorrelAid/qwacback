@@ -151,6 +151,10 @@ Groups use `begin_group`/`end_group` rows:
 }
 ```
 
+**Section drop rule:** qwacback's Schematron restricts `varGrp/@type` to `grid`, `multipleResp`, or `other`. Generic sections have no valid representation, so the XLSForm → DDI converter drops plain `begin_group` wrappers and flattens members to top-level `<var>` elements. A group is kept (as `<varGrp type="grid">`) only when it signals a grid layout: `appearance: "table-list"`, `"matrix"` in the label, or `"grid"` in the name.
+
+**Grid emission:** For grid groups, the `begin_group` label is emitted as `<txt>` on the `<varGrp>` and repeated as `<preQTxt>` on every member variable (matching the DDI convention that the lead-in question appears once at the group level and is echoed per row).
+
 ### Choices Sheet
 
 Each row in the choices sheet is an object with these columns:

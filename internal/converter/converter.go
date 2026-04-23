@@ -636,20 +636,26 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 
 		switch baseType {
 		case "begin_group", "begin_repeat":
-			currentGroup = &DDIVarGrp{
-				ID:      "VG_" + strings.ReplaceAll(row.Name, " ", "_"),
-				Name:    row.Name,
-				Concept: DDIConcept{Value: row.Label},
-			}
-			// Infer DDI group type from appearance, name, or label.
-			// XLSForm "table-list" appearance on a group indicates a grid/matrix layout.
+			// qwacback's Schematron restricts varGrp/@type to grid/multipleResp/other,
+			// so generic XLSForm sections have no valid DDI representation. Only wrap
+			// in a varGrp when the group is an explicit grid; otherwise drop the
+			// wrapper and let members flatten to top-level vars.
 			appearanceLower := strings.ToLower(row.Appearance)
 			nameLower := strings.ToLower(row.Name)
 			labelLower := strings.ToLower(row.Label)
-			if appearanceLower == "table-list" || strings.Contains(labelLower, "matrix") || strings.Contains(nameLower, "grid") {
-				currentGroup.Type = "grid"
+			isGrid := appearanceLower == "table-list" ||
+				strings.Contains(labelLower, "matrix") ||
+				strings.Contains(nameLower, "grid")
+			if isGrid {
+				currentGroup = &DDIVarGrp{
+					ID:      "VG_" + strings.ReplaceAll(row.Name, " ", "_"),
+					Name:    row.Name,
+					Type:    "grid",
+					Txt:     row.Label,
+					Concept: DDIConcept{Value: row.Label},
+				}
 			} else {
-				currentGroup.Type = "multipleResp"
+				currentGroup = nil
 			}
 			groupVarIDs = nil
 
@@ -668,10 +674,15 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 
 		default:
 			v := convertSurveyRowToDDIVar(row, baseType, listName, choiceMap)
-			vars = append(vars, v)
-			if currentGroup != nil {
+			if currentGroup != nil && currentGroup.Type == "grid" {
+				// Grid members repeat the lead-in question as <preQTxt> per qwacback
+				// convention (see exporter grid_variable_with_preQTxt fixture).
+				if v.Qstn != nil && v.Qstn.PreQTxt == "" {
+					v.Qstn.PreQTxt = currentGroup.Txt
+				}
 				groupVarIDs = append(groupVarIDs, v.ID)
 			}
+			vars = append(vars, v)
 		}
 	}
 

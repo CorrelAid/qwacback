@@ -178,12 +178,16 @@ func TestIntegration_XLSFormToDDI_ValidatesSelectMultiple(t *testing.T) {
 	}
 }
 
-func TestIntegration_XLSFormToDDI_ValidatesGroup(t *testing.T) {
+func TestIntegration_XLSFormToDDI_ValidatesSection(t *testing.T) {
 	client := getSchematronClient(t)
 
+	// A non-grid begin_group ("section") has no valid DDI representation —
+	// qwacback's Schematron restricts varGrp/@type to grid/multipleResp/other.
+	// The converter drops the wrapper; members flatten to top-level vars.
 	xlsformJSON := `{
 		"survey": [
-			{"type": "begin_group", "name": "satisfaction_group", "label": "Satisfaction questions"},
+			{"type": "begin_group", "name": "demographics", "label": "Demographics"},
+			{"type": "integer", "name": "age", "label": "What is your age?"},
 			{"type": "end_group", "name": ""}
 		],
 		"choices": [],
@@ -195,34 +199,13 @@ func TestIntegration_XLSFormToDDI_ValidatesGroup(t *testing.T) {
 		t.Fatalf("XLSFormToDDI failed: %v", err)
 	}
 
-	// The converter produces var="" which is invalid per XSD (IDREFS must be non-empty).
-	// In practice, the var attribute is populated when building a complete codebook.
-	// For this test, patch in a dummy variable reference and include the dummy var.
-	fragment := strings.Replace(string(stripXMLDeclaration(ddiXML)), `var=""`, `var="V_dummy"`, 1)
-	dummyVar := `<var ID="V_dummy" name="dummy" intrvl="discrete">
-      <qstn responseDomainType="multiple"><qstnLit>Dummy</qstnLit></qstn>
-      <catgry><catValu>1</catValu><labl>Yes</labl></catgry>
-      <concept>Dummy</concept>
-      <varFormat type="numeric" schema="other"/>
-    </var>`
-
-	codebook := []byte(fmt.Sprintf(`<?xml version="1.0" encoding="UTF-8"?>
-<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <stdyDscr>
-    <citation><titlStmt><titl>Fragment Validation</titl></titlStmt></citation>
-  </stdyDscr>
-  <dataDscr>
-    %s
-    %s
-  </dataDscr>
-</codeBook>`, fragment, dummyVar))
-
+	codebook := wrapFragmentInCodebook(ddiXML)
 	resp, err := client.Validate(codebook)
 	if err != nil {
 		t.Fatalf("Validation request failed: %v", err)
 	}
 	if !resp.Valid {
-		t.Errorf("Expected valid DDI, got errors: %+v", resp.Errors)
+		t.Errorf("Expected valid DDI for dropped-section output, got errors: %+v\nXML:\n%s", resp.Errors, string(codebook))
 	}
 }
 
