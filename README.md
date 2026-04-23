@@ -98,6 +98,15 @@ docker compose up -d --build
 
 Access the PocketBase Dashboard at `http://localhost:8090/_/`.
 
+### Published images
+
+Tagged releases (`v*`) are built by [.github/workflows/release.yml](.github/workflows/release.yml) and published to GitHub Container Registry:
+
+- `ghcr.io/correlaid/qwacback` — the Go/PocketBase API
+- `ghcr.io/correlaid/qwacback-schematron-worker` — the Java validation worker
+
+Each image is tagged with the semver version (`1.2.3`, `1.2`, `1`) and `latest` is updated on pushes to the default branch.
+
 Default credentials (see `docker-compose.yml`):
 - **Admin:** `admin@example.com` / `yourpassword123`
 - **User:** `user@example.com` / `userpassword123`
@@ -190,6 +199,7 @@ curl -X POST http://localhost:8090/api/import \
 | `GOMEMLIMIT` | Soft memory limit for Go GC | `512MiB` |
 | `NATS_PORT` | Port for embedded NATS server | (optional — no validation without it) |
 | `NATS_TOKEN` | Auth token for embedded NATS server | (required when `NATS_PORT` is set) |
+| `QWACBACK_SKIP_SEED` | Set to `1` to skip seeding `seed_data/*.xml` on first run | (unset) |
 
 ## MCP Server
 

@@ -17,6 +17,11 @@ import (
 
 func init() {
 	m.Register(func(app core.App) error {
+		if os.Getenv("QWACBACK_SKIP_SEED") == "1" {
+			log.Println("Skipping seeding: QWACBACK_SKIP_SEED=1.")
+			return nil
+		}
+
 		// Only seed if studies collection is empty
 		collection, err := app.FindCollectionByNameOrId("studies")
 		if err != nil {
