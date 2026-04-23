@@ -100,12 +100,26 @@ Access the PocketBase Dashboard at `http://localhost:8090/_/`.
 
 ### Published images
 
-Tagged releases (`v*`) are built by [.github/workflows/release.yml](.github/workflows/release.yml) and published to GitHub Container Registry:
+[.github/workflows/release.yml](.github/workflows/release.yml) builds both images and publishes them to GitHub Container Registry:
 
 - `ghcr.io/correlaid/qwacback` — the Go/PocketBase API
 - `ghcr.io/correlaid/qwacback-schematron-worker` — the Java validation worker
 
-Each image is tagged with the semver version (`1.2.3`, `1.2`, `1`) and `latest` is updated on pushes to the default branch.
+**Every push to `main`** updates the `latest` tag (and a `main` tag). **Pushing a `v*` git tag** additionally publishes semver-pinned tags:
+
+| Git action | Image tags produced |
+|---|---|
+| Push to `main` | `latest`, `main` |
+| Push tag `v1.2.3` | `1.2.3`, `1.2`, `1` |
+
+To cut a versioned release:
+
+```bash
+git tag v1.2.3
+git push origin v1.2.3
+```
+
+The tag must start with `v` and point to a commit that includes `.github/workflows/release.yml`. Pin to `1.2.3` in production; use `latest` only for dev/staging.
 
 Default credentials (see `docker-compose.yml`):
 - **Admin:** `admin@example.com` / `yourpassword123`
