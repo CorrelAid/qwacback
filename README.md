@@ -99,11 +99,12 @@ Access the PocketBase Dashboard at `http://localhost:8090/_/`.
 
 ### Published images
 
-[.github/workflows/release.yml](.github/workflows/release.yml) builds qwacback and publishes it to GitHub Container Registry:
+[.github/workflows/release.yml](.github/workflows/release.yml) builds qwacback and its sidecar and publishes them to GitHub Container Registry:
 
 - `ghcr.io/correlaid/qwacback` — the Go/PocketBase API
+- `ghcr.io/correlaid/qwacback-ddi-emitter` — the XLSForm → DDI sidecar. qwacback needs it for `/api/convert/xlsform-to-ddi` and `/api/examples`; point `DDI_EMITTER_URL` at it. Deploy it with the same tag as qwacback.
 
-The validation worker (`ghcr.io/correlaid/schematron-worker`) is published by [CorrelAid/formtransform](https://github.com/CorrelAid/formtransform) and pulled into this stack via `docker-compose.yml`. The same is true for the `@correlaid/formtransform` library used by `ddi-emitter`. Both are version-pinned together via `.registry-version`.
+The validation worker (`ghcr.io/correlaid/schematron-worker`) is published by [CorrelAid/formtransform](https://github.com/CorrelAid/formtransform) and pulled into this stack via `docker-compose.yml`. The same is true for the `@correlaid/formtransform` library used by `ddi-emitter`. Both are version-pinned together via `.registry-version`; `scripts/check-registry-version.sh` (run by the release workflow) fails if they disagree.
 
 **Every push to `main`** updates the `latest` tag (and a `main` tag). **Pushing a `v*` git tag** additionally publishes semver-pinned tags:
 

@@ -334,7 +334,7 @@ Error responses include a descriptive message:
 
 The XLSForm → DDI converter is `@correlaid/formtransform`. The release tag is pinned in `.registry-version` at the repo root and consumed by:
 
-- `ddi-emitter/package.json` (downloads the prebuilt tarball — no build step, no `git` in the image)
-- `docker-compose.yml` pulls `ghcr.io/correlaid/schematron-worker:${REGISTRY_VERSION}`
+- `ddi-emitter/package.json` and `ddi-emitter/package-lock.json` (download the prebuilt tarball — no build step, no `git` in the image)
+- `docker-compose.yml` pulls `ghcr.io/correlaid/schematron-worker:<tag>`
 
-Bump `.registry-version` and update all three consumers together. Never pin to a branch or `latest`.
+Bump `.registry-version` and update every consumer in the same PR (`cd ddi-emitter && npm install <new tarball URL>` refreshes both npm files). `scripts/check-registry-version.sh` checks that they agree and runs in the release workflow. Never pin to a branch or `latest`.
