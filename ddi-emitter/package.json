@@ -1,0 +1,14 @@
+{
+  "name": "ddi-emitter",
+  "version": "0.1.7",
+  "private": true,
+  "description": "Node sidecar that turns XLSForm JSON into DDI Codebook XML via @correlaid/formtransform",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@correlaid/formtransform": "https://github.com/CorrelAid/formtransform/releases/download/v0.1.7/correlaid-formtransform-0.1.7.tgz"
+  }
+}

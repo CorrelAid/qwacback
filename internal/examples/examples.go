@@ -3,6 +3,7 @@ package examples
 import (
 	"encoding/json"
 	"fmt"
+	"sync"
 	"qwacback/internal/converter"
 )
 
@@ -143,39 +144,74 @@ var defs = []exampleDef{
 	},
 }
 
-// cachedExamples holds pre-built examples (generated once).
-var cachedExamples []Example
-
-func init() {
-	cachedExamples = make([]Example, 0, len(defs))
+// populate generates DDI for every example via the ddi-emitter sidecar. It
+// runs lazily on first GetAll/GetByType so that `go test ./...` and `go run`
+// don't panic at import time when the sidecar isn't up yet (the unit tests
+// for other packages don't need examples to be populated).
+func populate() ([]Example, error) {
+	out := make([]Example, 0, len(defs))
 	for _, d := range defs {
 		xlsJSON, err := json.Marshal(d.XLSForm)
 		if err != nil {
-			panic(fmt.Sprintf("examples: failed to marshal XLSForm for %s: %v", d.Type, err))
+			return nil, fmt.Errorf("examples: failed to marshal XLSForm for %s: %w", d.Type, err)
 		}
 		ddiXML, err := converter.XLSFormToDDI(xlsJSON)
 		if err != nil {
-			panic(fmt.Sprintf("examples: failed to generate DDI for %s: %v", d.Type, err))
+			return nil, fmt.Errorf("examples: failed to generate DDI for %s: %w", d.Type, err)
 		}
-		cachedExamples = append(cachedExamples, Example{
+		out = append(out, Example{
 			Type:    d.Type,
 			Label:   d.Label,
 			XLSForm: d.XLSForm,
 			DDI:     string(ddiXML),
 		})
 	}
+	return out, nil
+}
+
+var (
+	cacheMu      sync.RWMutex
+	cached       []Example
+	loaded       bool
+)
+
+// load returns the examples cache, populating it on first use. A failed
+// populate is not cached, so the next request retries — /api/examples
+// recovers once the sidecar is reachable.
+func load() []Example {
+	cacheMu.RLock()
+	if loaded {
+		defer cacheMu.RUnlock()
+		return cached
+	}
+	cacheMu.RUnlock()
+
+	cacheMu.Lock()
+	defer cacheMu.Unlock()
+	if loaded {
+		return cached
+	}
+	out, err := populate()
+	if err != nil {
+		// Leave loaded=false so the next call retries. Returning an empty
+		// slice keeps /api/examples alive (200 with []) instead of 500.
+		return out
+	}
+	cached = out
+	loaded = true
+	return cached
 }
 
 // GetAll returns all examples.
 func GetAll() []Example {
-	return cachedExamples
+	return load()
 }
 
 // GetByType returns a single example by type identifier, or nil if not found.
 func GetByType(t string) *Example {
-	for i := range cachedExamples {
-		if cachedExamples[i].Type == t {
-			return &cachedExamples[i]
+	for _, e := range load() {
+		if e.Type == t {
+			return &e
 		}
 	}
 	return nil

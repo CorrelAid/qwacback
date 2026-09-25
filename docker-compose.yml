@@ -17,6 +17,19 @@ services:
           memory: 512M
           cpus: '0.5'
 
+  ddi-emitter:
+    build:
+      context: ./ddi-emitter
+    image: qwacback/ddi-emitter:${REGISTRY_VERSION:-local}
+    environment:
+      - DDI_EMITTER_PORT=8091
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.25'
+
   qwacback:
     build: .
     ports:
@@ -30,8 +43,11 @@ services:
       - GOMEMLIMIT=${GOMEMLIMIT:-512MiB}
       - NATS_PORT=${NATS_PORT:-4222}
       - NATS_TOKEN=${NATS_TOKEN:-changeme}
+      - DDI_EMITTER_URL=http://ddi-emitter:8091
     restart: always
     command: ["./qwacback", "serve", "--http=0.0.0.0:8080"]
+    depends_on:
+      - ddi-emitter
     deploy:
       resources:
         limits:

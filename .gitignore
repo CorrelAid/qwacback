@@ -6,6 +6,9 @@ schematron-worker/build/
 schematron-worker/.gradle/
 schematron-worker/bin/
 
+# Node (ddi-emitter sidecar)
+ddi-emitter/node_modules/
+
 # IDE
 .idea/
 *.iml
