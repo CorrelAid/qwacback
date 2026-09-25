@@ -1,0 +1,85 @@
+name: Test
+
+# Runs the tests that skip without services (sidecar, NATS, validation worker)
+# against real ones, plus the formtransform equivalence test. `go test` in the
+# Dockerfile runs without them, so this is where they actually run.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    env:
+      NATS_TOKEN: ci
+      NATS_URL: nats://127.0.0.1:4222
+      DDI_EMITTER_URL: http://127.0.0.1:8091
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Start NATS and the validation worker
+        run: |
+          docker network create ci
+          docker run -d --name nats --network ci -p 4222:4222 nats:2 --auth "$NATS_TOKEN"
+          docker run -d --name schematron-worker --network ci \
+            -e NATS_URL=nats://nats:4222 -e NATS_TOKEN="$NATS_TOKEN" \
+            "ghcr.io/correlaid/schematron-worker:$(cat .registry-version)"
+          for _ in $(seq 60); do
+            docker logs schematron-worker 2>&1 | grep -q "Subscribed to" && exit 0
+            sleep 1
+          done
+          docker logs schematron-worker
+          exit 1
+
+      - name: Start ddi-emitter
+        working-directory: ddi-emitter
+        run: |
+          npm ci --omit=dev --no-audit --no-fund
+          nohup node server.mjs > ../ddi-emitter.log 2>&1 &
+          for _ in $(seq 30); do
+            curl -sf "$DDI_EMITTER_URL/healthz" && exit 0
+            sleep 1
+          done
+          cat ../ddi-emitter.log
+          exit 1
+
+      - name: Go tests (no skips allowed)
+        run: |
+          go test ./... -count=1 -v 2>&1 | tee go-test.log
+          if grep -- '--- SKIP' go-test.log; then
+            echo "::error::tests skipped although all services are up"
+            exit 1
+          fi
+
+      - name: Equivalence test (formtransform vs /api/convert/xlsform-to-ddi)
+        env:
+          PB_ADMIN_EMAIL: admin@example.com
+          PB_ADMIN_PASSWORD: ci-password-123
+          QWACBACK_SKIP_SEED: '1'
+          NATS_PORT: '14222'
+        run: |
+          go build -o qwacback .
+          nohup ./qwacback serve --http=127.0.0.1:8090 --dir ./pb_ci > qwacback.log 2>&1 &
+          for _ in $(seq 30); do
+            curl -sf http://127.0.0.1:8090/api/health > /dev/null && break
+            sleep 1
+          done
+          QWACBACK_PASSWORD="$PB_ADMIN_PASSWORD" node scripts/equivalence-test.mjs
+
+      - name: Service logs
+        if: failure()
+        run: |
+          docker logs schematron-worker || true
+          cat ddi-emitter.log qwacback.log || true

@@ -2,14 +2,16 @@
 // Formtransform equivalence test against qwacback (formtransform#14, qwacback#3).
 //
 // Compares formtransform's buildDdiXml output with qwacback's
-// POST /api/convert/xlsform-to-ddi output. For each supported answer type, the
-// same XLSForm goes through both, and the DDI shapes must match.
+// POST /api/convert/xlsform-to-ddi output. For each case, the same XLSForm goes
+// through both, and every <var>/<varGrp> must match after normalization
+// (whitespace, self-closing tags, entity spelling, the `files` IDREF and the
+// namespace declaration) — not only the var/group shape. qwacback passes the
+// sidecar's elements through, so any difference is a qwacback bug (#14).
 
-// Path to a built formtransform dist/. Either clone formtransform and run
-// `npm ci && npm run build`, or install the release tarball into a temp
-// directory and point this at its dist/index.js.
+// Path to a built formtransform dist/. Defaults to the version ddi-emitter
+// pins (run `npm ci` in ddi-emitter/ first), so both sides run the same code.
 const FORMTRANSFORM_DIST = process.env.FORMTRANSFORM_DIST
-  || '/tmp/opencode/formtransform/package/dist/index.js';
+  || new URL('../ddi-emitter/node_modules/@correlaid/formtransform/dist/index.js', import.meta.url).pathname;
 
 const { buildDdiXml } = await import(FORMTRANSFORM_DIST);
 
@@ -106,11 +108,33 @@ const EQUIVALENT_TYPES = [
   },
   {
     id: 'note',
-    survey: [{ type: 'note', name: 'thanks', label: 'Thank you', required: 'false', appearance: null }],
+    // A note emits no <var>; formtransform folds its text into the next
+    // question's <preQTxt>. (A form of only notes is a 400 in qwacback.)
+    survey: [
+      { type: 'note', name: 'intro', label: 'Please answer honestly', required: 'false', appearance: null },
+      { type: 'integer', name: 'alter', label: 'Alter', required: 'false', appearance: null },
+    ],
     choices: {},
-    // After the swap, both sides run through formtransform, so a note row
-    // emits no <var> on either side (it folds into <notes>). The Go converter
-    // that used to emit a <var> is gone — see qwacback#3.
+  },
+  {
+    id: 'hint_and_guidance',
+    // formtransform v0.1.7 drops both (qwacback#12); this checks qwacback
+    // passes through whatever formtransform makes of them.
+    survey: [{ type: 'integer', name: 'alter', label: 'Alter', hint: 'In Jahren', parameters: 'guidance_hint=Nachfragen', required: 'false', appearance: null }],
+    choices: {},
+  },
+  {
+    id: 'relevant_and_required',
+    survey: [
+      { type: 'select_one yn', name: 'hund', label: 'Hund?', required: 'yes', appearance: null },
+      { type: 'text', name: 'hundname', label: 'Name des Hundes', relevant: "${hund} = 'ja'", required: 'false', appearance: null },
+    ],
+    choices: { yn: [{ name: 'ja', label: 'Ja' }, { name: 'nein', label: 'Nein' }] },
+  },
+  {
+    id: 'special_characters',
+    survey: [{ type: 'text', name: 'zitat', label: 'Was heißt „<b>“ & \'x\' "y"?', required: 'false', appearance: null }],
+    choices: {},
   },
   {
     id: 'single_choice_long_list',
@@ -143,6 +167,29 @@ function findDataDscr(xmlStr) {
   const grpMatch = xmlStr.match(/<varGrp[\s>][\s\S]*?<\/varGrp>/);
   if (grpMatch) return grpMatch[0];
   return null;
+}
+
+// Every <var>/<varGrp> in the fragment, normalized so that serializer
+// differences between formtransform (JS) and qwacback (Go encoding/xml) vanish
+// but content differences don't.
+function normalizedElements(xmlStr) {
+  const inner = findDataDscr(xmlStr) ?? '';
+  const out = [];
+  for (const m of inner.matchAll(/<(var|varGrp)[\s>][\s\S]*?<\/\1>/g)) {
+    out.push(
+      m[0]
+        .replace(/\s+files="[^"]*"/g, '')
+        .replace(/\s+xmlns(:\w+)?="[^"]*"/g, '')
+        .replace(/<([\w:]+)((?:\s+[\w:]+="[^"]*")*)\s*\/>/g, '<$1$2></$1>')
+        .replace(/>\s+</g, '><')
+        .replace(/&#34;|&quot;/g, '"')
+        .replace(/&#39;|&apos;/g, "'")
+        .replace(/&#xA;/g, '\n')
+        .replace(/&#x9;/g, '\t')
+        .trim(),
+    );
+  }
+  return out;
 }
 
 function shapeVars(xmlStr) {
@@ -232,7 +279,7 @@ const failures = [];
 
 // Authenticated as superuser, qwacback allows 30 conversions/minute; 3s
 // spacing keeps the run under 1min total.
-const QWACBACK_DELAY_MS = 3000;
+const QWACBACK_DELAY_MS = Number(process.env.QWACBACK_DELAY_MS ?? 3000);
 
 for (const test of EQUIVALENT_TYPES) {
   const payload = payloadFor(test);
@@ -245,11 +292,12 @@ for (const test of EQUIVALENT_TYPES) {
     const ftGroups = shapeGroups(ftDdi);
     const qbGroups = shapeGroups(qbDdi);
 
-    const sameVars = JSON.stringify(ftVars) === JSON.stringify(qbVars);
-    const sameGroups = JSON.stringify(ftGroups) === JSON.stringify(qbGroups);
+    const ftElems = normalizedElements(ftDdi);
+    const qbElems = normalizedElements(qbDdi);
+    const same = ftElems.length > 0 && JSON.stringify(ftElems) === JSON.stringify(qbElems);
 
-    if (sameVars && sameGroups) {
-      console.log(`✓ ${test.id}: ${qbVars.length} vars, ${qbGroups.length} groups (match)`);
+    if (same) {
+      console.log(`✓ ${test.id}: ${qbVars.length} vars, ${qbGroups.length} groups (identical content)`);
       passed++;
     } else {
       console.log(`✗ ${test.id}: MISMATCH`);
@@ -257,6 +305,14 @@ for (const test of EQUIVALENT_TYPES) {
       console.log(`  qwacback vars:      ${JSON.stringify(qbVars)}`);
       console.log(`  formtransform grps: ${JSON.stringify(ftGroups)}`);
       console.log(`  qwacback grps:      ${JSON.stringify(qbGroups)}`);
+      for (let i = 0; i < Math.max(ftElems.length, qbElems.length); i++) {
+        if (ftElems[i] !== qbElems[i]) {
+          console.log(`  first differing element #${i}:`);
+          console.log(`    formtransform: ${ftElems[i]}`);
+          console.log(`    qwacback:      ${qbElems[i]}`);
+          break;
+        }
+      }
       failed++;
       failures.push(test.id);
     }
