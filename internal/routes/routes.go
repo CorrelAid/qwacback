@@ -590,12 +590,19 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 	// Examples - Public
 	se.Router.GET("/api/examples", func(e *core.RequestEvent) error {
-		return e.JSON(200, examples.GetAll())
+		all, err := examples.GetAll()
+		if err != nil {
+			return apis.NewApiError(http.StatusServiceUnavailable, "Examples are temporarily unavailable", nil)
+		}
+		return e.JSON(200, all)
 	})
 
 	se.Router.GET("/api/examples/{answer_type}", func(e *core.RequestEvent) error {
 		answerType := e.Request.PathValue("answer_type")
-		ex := examples.GetByType(answerType)
+		ex, err := examples.GetByType(answerType)
+		if err != nil {
+			return apis.NewApiError(http.StatusServiceUnavailable, "Examples are temporarily unavailable", nil)
+		}
 		if ex == nil {
 			return apis.NewNotFoundError("Answer type not found", nil)
 		}
