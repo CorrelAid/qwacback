@@ -7,6 +7,8 @@ The XLSForm JSON mirrors the actual XLSForm spreadsheet structure with three she
 - **choices**: answer options for select questions (columns: list_name, name, label)
 - **settings**: form metadata (columns: form_title, form_id, version)
 
+**Implementation.** XLSForm → DDI is delegated to the `ddi-emitter` Node sidecar (see `ddi-emitter/`), which wraps `@correlaid/formtransform` (see `.registry-version` for the pinned release). The sidecar is reached over HTTP from `internal/converter/ddi_client.go`. DDI → XLSForm stays in Go (`internal/converter/converter.go`) since formtransform does not expose that direction.
+
 ## Endpoints
 
 ### 1. Convert DDI to XLSForm
@@ -84,6 +86,8 @@ curl -X POST http://localhost:8090/api/convert/ddi-to-xlsform \
 **Response:**
 - Content-Type: `application/xml`
 - Body: DDI XML — a single `<var>` for simple questions, or a `<dataDscr>` wrapper containing `<varGrp type="multipleResp">` + binary `<var>` elements for `select_multiple` questions
+
+**Response shape note.** The endpoint returns a bare DDI fragment (single `<var>` / `<varGrp>`, or a `<dataDscr>` wrapper), not the full `<codeBook>` document that `@correlaid/formtransform` produces internally. `internal/converter/ddi_client.go` strips the `<stdyDscr>` / `<fileDscr>` framing so the public response shape is unchanged from the pre-sidecar Go converter.
 
 **Example:**
 
@@ -325,3 +329,12 @@ Error responses include a descriptive message:
 - XLSForm `hint` field maps to DDI `preQTxt` (pre-question text)
 - Missing value categories (DDI `missing="Y"`) are excluded from XLSForm choices
 - These endpoints are stateless and do not persist data to the database
+
+## Library version pin
+
+The XLSForm → DDI converter is `@correlaid/formtransform`. The release tag is pinned in `.registry-version` at the repo root and consumed by:
+
+- `ddi-emitter/package.json` (downloads the prebuilt tarball — no build step, no `git` in the image)
+- (see issue #4) the schematron-worker image tag in `docker-compose.yml`
+
+Bump `.registry-version` and update both consumers together. Never pin to a branch or `latest`.

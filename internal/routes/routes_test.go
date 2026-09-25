@@ -5,7 +5,9 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"testing"
+	"time"
 
 	"qwacback/internal/importer"
 	_ "qwacback/migrations"
@@ -17,6 +19,13 @@ import (
 )
 
 func TestExamplesRoutes(t *testing.T) {
+	if os.Getenv("DDI_EMITTER_URL") == "" {
+		os.Setenv("DDI_EMITTER_URL", "http://127.0.0.1:8091")
+	}
+	if !ddiEmitterReachable(t) {
+		t.Skip("ddi-emitter sidecar not reachable; examples routes not testable")
+	}
+
 	testDataDir, err := os.MkdirTemp("", "pb_test_examples")
 	if err != nil {
 		t.Fatal(err)
@@ -67,6 +76,25 @@ func TestExamplesRoutes(t *testing.T) {
 	for _, scenario := range scenarios {
 		scenario.Test(t)
 	}
+}
+
+// ddiEmitterReachable probes the sidecar's /healthz endpoint. Tests that need
+// populated example DDI skip when the sidecar isn't up — this lets
+// `go test ./...` pass on machines without docker-compose, while still
+// exercising the routes when the sidecar is running.
+func ddiEmitterReachable(t *testing.T) bool {
+	t.Helper()
+	url := os.Getenv("DDI_EMITTER_URL")
+	if url == "" {
+		url = "http://127.0.0.1:8091"
+	}
+	client := &http.Client{Timeout: 500 * time.Millisecond}
+	resp, err := client.Get(strings.TrimRight(url, "/") + "/healthz")
+	if err != nil {
+		return false
+	}
+	resp.Body.Close()
+	return resp.StatusCode == http.StatusOK
 }
 
 func TestSchemaRoutes(t *testing.T) {
