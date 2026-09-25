@@ -11,6 +11,7 @@ on:
 env:
   REGISTRY: ghcr.io
   QWACBACK_IMAGE: ${{ github.repository }}
+  DDI_EMITTER_IMAGE: ${{ github.repository }}-ddi-emitter
 
 jobs:
   release:
@@ -21,6 +22,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Check formtransform pin
+        run: scripts/check-registry-version.sh
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -54,3 +58,27 @@ jobs:
           labels: ${{ steps.meta-qwacback.outputs.labels }}
           cache-from: type=gha,scope=qwacback
           cache-to: type=gha,mode=max,scope=qwacback
+
+      # qwacback needs this sidecar for XLSForm → DDI; publish it alongside so
+      # a deployment from published images has both.
+      - name: Extract metadata for ddi-emitter
+        id: meta-ddi-emitter
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.DDI_EMITTER_IMAGE }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=ref,event=branch
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push ddi-emitter
+        uses: docker/build-push-action@v6
+        with:
+          context: ./ddi-emitter
+          push: true
+          tags: ${{ steps.meta-ddi-emitter.outputs.tags }}
+          labels: ${{ steps.meta-ddi-emitter.outputs.labels }}
+          cache-from: type=gha,scope=ddi-emitter
+          cache-to: type=gha,mode=max,scope=ddi-emitter
