@@ -2,7 +2,7 @@
 // @correlaid/formtransform. Started by qwacback (Dockerfile) and reached over
 // HTTP from internal/converter/ddi_client.go.
 import { createServer } from 'node:http';
-import { buildDdiXml } from '@correlaid/formtransform';
+import { XLSValidator, buildDdiXml } from '@correlaid/formtransform';
 
 const PORT = Number(process.env.DDI_EMITTER_PORT ?? 8091);
 
@@ -80,6 +80,19 @@ const server = createServer(async (req, res) => {
   }
 
   try {
+    // buildDdiXml converts whatever it gets; the allowlist of what it can
+    // convert losslessly lives in validateSubset. Without this, unregistered
+    // types (rank, geopoint, ...) and selects without choices come out as
+    // plausible but wrong DDI. 'ddi' skips LimeSurvey-only naming limits.
+    const errors = XLSValidator.validateSubset(survey, choices, { target: 'ddi' })
+      .filter((v) => v.severity === 'error')
+      .map((v) => v.message);
+    if (errors.length > 0) {
+      send(res, 400, JSON.stringify({ error: errors.join('; '), errors }), {
+        'content-type': 'application/json',
+      });
+      return;
+    }
     const xml = buildDdiXml(survey, choices, { settings: pickSettings(payload) });
     send(res, 200, xml);
   } catch (e) {

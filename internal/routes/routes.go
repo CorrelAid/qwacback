@@ -2,6 +2,7 @@ package routes
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -929,8 +930,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		// Convert XLSForm to DDI
 		ddiXML, err := converter.XLSFormToDDI(xlsformJSON)
+		if errors.Is(err, converter.ErrConverterUnavailable) {
+			log.Printf("ERROR: XLSForm to DDI conversion unavailable: %v", err)
+			return apis.NewApiError(http.StatusServiceUnavailable, "XLSForm to DDI conversion is temporarily unavailable", nil)
+		}
 		if err != nil {
-			return apis.NewBadRequestError("Failed to convert XLSForm to DDI", nil)
+			// Input errors name the question and the problem; pass them on.
+			return apis.NewBadRequestError("Failed to convert XLSForm to DDI: "+err.Error(), nil)
 		}
 
 		// Set XML response headers
