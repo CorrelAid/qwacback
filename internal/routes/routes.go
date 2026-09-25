@@ -613,64 +613,6 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		return err
 	})
 
-	// Schema files - Public
-	se.Router.GET("/api/schemas/schematron", func(e *core.RequestEvent) error {
-		data, err := os.ReadFile(filepath.Join(root, "schematron", "ddi_custom_rules.sch"))
-		if err != nil {
-			return apis.NewInternalServerError("Failed to read schematron file", nil)
-		}
-		e.Response.Header().Set("Content-Type", "application/xml; charset=utf-8")
-		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
-		_, err = e.Response.Write(data)
-		return err
-	})
-
-	xsdDir := filepath.Join(root, "xml")
-	se.Router.GET("/api/schemas/xsd", func(e *core.RequestEvent) error {
-		var files []string
-		err := filepath.Walk(xsdDir, func(p string, info os.FileInfo, err error) error {
-			if err != nil {
-				return err
-			}
-			if !info.IsDir() && strings.HasSuffix(p, ".xsd") {
-				rel, _ := filepath.Rel(xsdDir, p)
-				files = append(files, rel)
-			}
-			return nil
-		})
-		if err != nil {
-			return apis.NewInternalServerError("Failed to list XSD files", nil)
-		}
-		return e.JSON(200, files)
-	})
-
-	se.Router.GET("/api/schemas/xsd/{path...}", func(e *core.RequestEvent) error {
-		reqPath := e.Request.PathValue("path")
-		// Prevent directory traversal
-		cleaned := filepath.Clean(reqPath)
-		if strings.Contains(cleaned, "..") {
-			return apis.NewBadRequestError("Invalid path", nil)
-		}
-		if !strings.HasSuffix(cleaned, ".xsd") {
-			return apis.NewBadRequestError("Only .xsd files are served", nil)
-		}
-
-		fullPath := filepath.Join(xsdDir, cleaned)
-		// Belt-and-suspenders: verify resolved path is still under xsdDir
-		rel, err := filepath.Rel(xsdDir, fullPath)
-		if err != nil || strings.HasPrefix(rel, "..") {
-			return apis.NewBadRequestError("Invalid path", nil)
-		}
-		data, err := os.ReadFile(fullPath)
-		if err != nil {
-			return apis.NewNotFoundError("XSD file not found", nil)
-		}
-		e.Response.Header().Set("Content-Type", "application/xml; charset=utf-8")
-		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
-		_, err = e.Response.Write(data)
-		return err
-	})
-
 	// Search studies - Public
 	// Relevance: title > keywords > abstract
 	// Optional filter: topic (matches topic_classifications)

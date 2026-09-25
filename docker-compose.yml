@@ -1,13 +1,9 @@
 services:
   schematron-worker:
-    build:
-      context: .
-      dockerfile: schematron-worker/Dockerfile
+    image: ghcr.io/correlaid/schematron-worker:${REGISTRY_VERSION:-local}
     environment:
       - NATS_URL=nats://qwacback:${NATS_PORT:-4222}
       - NATS_TOKEN=${NATS_TOKEN:-changeme}
-      - SCHEMATRON_PATH=${SCHEMATRON_PATH:-/app/schematron/ddi_custom_rules.sch}
-      - XSD_PATH=${XSD_PATH:-/app/xml/codebook.xsd}
     depends_on:
       - qwacback
     restart: always

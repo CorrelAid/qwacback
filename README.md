@@ -36,9 +36,10 @@ GET /api/studies/{id}/xlsform →  Convert to XLSForm JSON
 
 ### Architecture
 
-Two Docker services:
+Three Docker services:
 
 - **qwacback** (Go/PocketBase) — API, database, embedded NATS server
+- **ddi-emitter** (Node) — XLSForm → DDI proxy over `@correlaid/formtransform`
 - **schematron-worker** (Java/Saxon HE) — XSD + Schematron validation over NATS
 
 If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
@@ -77,8 +78,6 @@ For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
 - **GET `/api/examples`** — Answer type examples (XLSForm + DDI pairs).
 - **GET `/api/examples/{type}`** — Single example by type (`single_choice`, `multiple_choice`, `grid`, `integer`, `text`, etc.).
 - **GET `/api/docs/markup-guide`** — DDI encoding conventions.
-- **GET `/api/schemas/schematron`** — Schematron validation rules.
-- **GET `/api/schemas/xsd`** — List available XSD files.
 
 ### PocketBase built-in API
 
@@ -100,10 +99,11 @@ Access the PocketBase Dashboard at `http://localhost:8090/_/`.
 
 ### Published images
 
-[.github/workflows/release.yml](.github/workflows/release.yml) builds both images and publishes them to GitHub Container Registry:
+[.github/workflows/release.yml](.github/workflows/release.yml) builds qwacback and publishes it to GitHub Container Registry:
 
 - `ghcr.io/correlaid/qwacback` — the Go/PocketBase API
-- `ghcr.io/correlaid/qwacback-schematron-worker` — the Java validation worker
+
+The validation worker (`ghcr.io/correlaid/schematron-worker`) is published by [CorrelAid/formtransform](https://github.com/CorrelAid/formtransform) and pulled into this stack via `docker-compose.yml`. The same is true for the `@correlaid/formtransform` library used by `ddi-emitter`. Both are version-pinned together via `.registry-version`.
 
 **Every push to `main`** updates the `latest` tag (and a `main` tag). **Pushing a `v*` git tag** additionally publishes semver-pinned tags:
 
@@ -133,33 +133,35 @@ Default credentials (see `docker-compose.yml`):
 go run main.go serve
 ```
 
-**With validation** (requires JDK 17+):
+**With validation** (Docker required, since the worker is now a published image):
 
 ```bash
 # Start qwacback with embedded NATS (NATS_TOKEN is required when NATS_PORT is set)
 NATS_PORT=4222 NATS_TOKEN=localdev go run main.go serve &
 
-# Build and start the validation worker
-cd schematron-worker
-gradle shadowJar
-NATS_URL=nats://localhost:4222 NATS_TOKEN=localdev java -jar build/libs/schematron-worker-1.0.0-all.jar
+# Pull and start the published validation worker
+docker run -d --rm --name schematron-worker \
+  --network host \
+  -e NATS_URL=nats://localhost:4222 \
+  -e NATS_TOKEN=localdev \
+  ghcr.io/correlaid/schematron-worker:$(cat .registry-version)
 ```
 
 ## Project Structure
 
 ```
 internal/
-  converter/    Bidirectional DDI ↔ XLSForm conversion
+  converter/    Bidirectional DDI ↔ XLSForm conversion (DDI→XLSForm in Go;
+                XLSForm→DDI delegates to ddi-emitter)
   examples/     Static answer type examples (XLSForm + DDI)
   exporter/     PocketBase records → DDI-XML
   importer/     XML parsing → PocketBase records
   routes/       API endpoints, question assembly, search
   schematron/   Go NATS client for validation worker
 migrations/     Schema setup, settings, user init, seed data
-xml/            DDI-Codebook 2.5 XSD schemas
-schematron/     Custom Schematron rules (.sch)
+ddi-emitter/    Node sidecar: XLSForm → DDI via @correlaid/formtransform
 seed_data/      Seed studies (DDI-XML files imported on first run)
-schematron-worker/  Java validation microservice
+.registry-version   Pinned formtransform release tag (drives ddi-emitter and the worker image)
 ```
 
 ## Development & Testing
@@ -170,16 +172,6 @@ Tests run during Docker build (`go test` in Dockerfile) and locally. No NATS or 
 
 ```bash
 go test ./internal/...
-```
-
-### Java Tests
-
-```bash
-# With Docker (no local JDK required)
-docker run --rm -v "$(pwd)":/app -w /app/schematron-worker gradle:8.12-jdk17 gradle test --no-daemon
-
-# With local Gradle + JDK 17
-cd schematron-worker && gradle test
 ```
 
 ### Integration Test
