@@ -2,8 +2,12 @@ package examples
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
+	"log"
 	"sync"
+	"time"
+
 	"qwacback/internal/converter"
 )
 
@@ -144,10 +148,19 @@ var defs = []exampleDef{
 	},
 }
 
+// retryAfter is how long a failed populate is remembered before the next
+// request tries again. Without it every request, while the sidecar is down,
+// would queue for the lock and repeat all conversions.
+const retryAfter = 30 * time.Second
+
 // populate generates DDI for every example via the ddi-emitter sidecar. It
 // runs lazily on first GetAll/GetByType so that `go test ./...` and `go run`
 // don't panic at import time when the sidecar isn't up yet (the unit tests
 // for other packages don't need examples to be populated).
+//
+// An example the converter rejects is logged and left out; retrying won't
+// change the answer. If the sidecar is unavailable, populate stops at the first
+// failure and returns an error wrapping converter.ErrConverterUnavailable.
 func populate() ([]Example, error) {
 	out := make([]Example, 0, len(defs))
 	for _, d := range defs {
@@ -156,8 +169,12 @@ func populate() ([]Example, error) {
 			return nil, fmt.Errorf("examples: failed to marshal XLSForm for %s: %w", d.Type, err)
 		}
 		ddiXML, err := converter.XLSFormToDDI(xlsJSON)
+		if errors.Is(err, converter.ErrConverterUnavailable) {
+			return nil, fmt.Errorf("examples: %w", err)
+		}
 		if err != nil {
-			return nil, fmt.Errorf("examples: failed to generate DDI for %s: %w", d.Type, err)
+			log.Printf("ERROR: example %s left out, DDI conversion rejected it: %v", d.Type, err)
+			continue
 		}
 		out = append(out, Example{
 			Type:    d.Type,
@@ -170,49 +187,61 @@ func populate() ([]Example, error) {
 }
 
 var (
-	cacheMu      sync.RWMutex
-	cached       []Example
-	loaded       bool
+	cacheMu sync.Mutex
+	cached  []Example
+	loaded  bool
+	lastErr error
+	lastTry time.Time
 )
 
-// load returns the examples cache, populating it on first use. A failed
-// populate is not cached, so the next request retries — /api/examples
-// recovers once the sidecar is reachable.
-func load() []Example {
-	cacheMu.RLock()
-	if loaded {
-		defer cacheMu.RUnlock()
-		return cached
-	}
-	cacheMu.RUnlock()
-
+// load returns the examples, populating them on first use. The mutex also
+// makes concurrent first requests share one populate. A failure is kept for
+// retryAfter, then the next call tries again, so /api/examples recovers once
+// the sidecar is reachable.
+func load() ([]Example, error) {
 	cacheMu.Lock()
 	defer cacheMu.Unlock()
 	if loaded {
-		return cached
+		return cached, nil
+	}
+	if lastErr != nil && time.Since(lastTry) < retryAfter {
+		return nil, lastErr
 	}
 	out, err := populate()
+	lastTry = time.Now()
 	if err != nil {
-		// Leave loaded=false so the next call retries. Returning an empty
-		// slice keeps /api/examples alive (200 with []) instead of 500.
-		return out
+		log.Printf("ERROR: %v (retrying in %s)", err, retryAfter)
+		lastErr = err
+		return nil, err
 	}
-	cached = out
-	loaded = true
-	return cached
+	cached, loaded, lastErr = out, true, nil
+	return cached, nil
 }
 
-// GetAll returns all examples.
-func GetAll() []Example {
+// reset forgets the cache; for tests.
+func reset() {
+	cacheMu.Lock()
+	defer cacheMu.Unlock()
+	cached, loaded, lastErr, lastTry = nil, false, nil, time.Time{}
+}
+
+// GetAll returns all examples. The error wraps
+// converter.ErrConverterUnavailable while the sidecar can't be reached.
+func GetAll() ([]Example, error) {
 	return load()
 }
 
 // GetByType returns a single example by type identifier, or nil if not found.
-func GetByType(t string) *Example {
-	for _, e := range load() {
+// The error is set only when the examples couldn't be loaded.
+func GetByType(t string) (*Example, error) {
+	all, err := load()
+	if err != nil {
+		return nil, err
+	}
+	for _, e := range all {
 		if e.Type == t {
-			return &e
+			return &e, nil
 		}
 	}
-	return nil
+	return nil, nil
 }

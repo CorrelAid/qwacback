@@ -87,7 +87,7 @@ curl -X POST http://localhost:8090/api/convert/ddi-to-xlsform \
 - Content-Type: `application/xml`
 - Body: DDI XML — a single `<var>` for simple questions, or a `<dataDscr>` wrapper containing `<varGrp type="multipleResp">` + binary `<var>` elements for `select_multiple` questions
 
-**Response shape note.** The endpoint returns a bare DDI fragment (single `<var>` / `<varGrp>`, or a `<dataDscr>` wrapper), not the full `<codeBook>` document that `@correlaid/formtransform` produces internally. `internal/converter/ddi_client.go` strips the `<stdyDscr>` / `<fileDscr>` framing so the public response shape is unchanged from the pre-sidecar Go converter.
+**Response shape note.** The endpoint returns a bare DDI fragment (single `<var>` / `<varGrp>`, or a `<dataDscr>` wrapper), not the full `<codeBook>` document that `@correlaid/formtransform` produces internally. `internal/converter/ddi_client.go` strips the `<stdyDscr>` / `<fileDscr>` framing so the public response shape is unchanged from the pre-sidecar Go converter. The elements inside `<dataDscr>` are passed through as formtransform emits them, in its order; only the DDI namespace declaration and the `files` attributes (which point at the dropped `<fileDscr>`) are removed.
 
 **Example:**
 
@@ -307,8 +307,9 @@ To create a complete DDI codebook with single questions, wrap them in the full s
 Both endpoints return appropriate HTTP status codes:
 
 - **200 OK**: Successful conversion
-- **400 Bad Request**: Invalid input format or conversion error
+- **400 Bad Request**: Invalid input format or conversion error. For XLSForm → DDI the message carries formtransform's reason, which names the question: types outside the supported subset (`rank`, `geopoint`, …), selects whose list has no choices, or a form without any answerable question (notes produce no DDI variables).
 - **413 Payload Too Large**: Request body exceeds 50MB limit
+- **503 Service Unavailable**: XLSForm → DDI only — the `ddi-emitter` sidecar is unreachable or failed. Retry later; the input is not at fault.
 
 Error responses include a descriptive message:
 
@@ -326,7 +327,7 @@ Error responses include a descriptive message:
 
 - The conversion preserves the core question structure but may not retain all DDI metadata
 - Generated DDI IDs follow the pattern `V_<name>` for variables and `VG_<name>` for groups
-- XLSForm `hint` field maps to DDI `preQTxt` (pre-question text)
+- XLSForm → DDI currently drops `hint` and `guidance_hint` (formtransform doesn't convert them yet, see #12); DDI → XLSForm still maps `preQTxt` to `hint` and `ivuInstr` to `guidance_hint`
 - Missing value categories (DDI `missing="Y"`) are excluded from XLSForm choices
 - These endpoints are stateless and do not persist data to the database
 

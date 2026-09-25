@@ -2,6 +2,7 @@ package routes
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -589,12 +590,19 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 	// Examples - Public
 	se.Router.GET("/api/examples", func(e *core.RequestEvent) error {
-		return e.JSON(200, examples.GetAll())
+		all, err := examples.GetAll()
+		if err != nil {
+			return apis.NewApiError(http.StatusServiceUnavailable, "Examples are temporarily unavailable", nil)
+		}
+		return e.JSON(200, all)
 	})
 
 	se.Router.GET("/api/examples/{answer_type}", func(e *core.RequestEvent) error {
 		answerType := e.Request.PathValue("answer_type")
-		ex := examples.GetByType(answerType)
+		ex, err := examples.GetByType(answerType)
+		if err != nil {
+			return apis.NewApiError(http.StatusServiceUnavailable, "Examples are temporarily unavailable", nil)
+		}
 		if ex == nil {
 			return apis.NewNotFoundError("Answer type not found", nil)
 		}
@@ -929,8 +937,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		// Convert XLSForm to DDI
 		ddiXML, err := converter.XLSFormToDDI(xlsformJSON)
+		if errors.Is(err, converter.ErrConverterUnavailable) {
+			log.Printf("ERROR: XLSForm to DDI conversion unavailable: %v", err)
+			return apis.NewApiError(http.StatusServiceUnavailable, "XLSForm to DDI conversion is temporarily unavailable", nil)
+		}
 		if err != nil {
-			return apis.NewBadRequestError("Failed to convert XLSForm to DDI", nil)
+			// Input errors name the question and the problem; pass them on.
+			return apis.NewBadRequestError("Failed to convert XLSForm to DDI: "+err.Error(), nil)
 		}
 
 		// Set XML response headers
