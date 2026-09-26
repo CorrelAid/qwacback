@@ -481,3 +481,38 @@ func TestInvalidInput(t *testing.T) {
 		t.Error("Expected error for empty survey sheet")
 	}
 }
+
+// #22: <ivuInstr> goes to the guidance_hint column. In `parameters` it would
+// be "guidance_hint=Bei Unsicherheit nachfragen", which pyxform rejects
+// because parameters are space-separated key=value pairs.
+func TestDDIToXLSForm_IvuInstrToGuidanceHintColumn(t *testing.T) {
+	ddi := `<var ID="V_alter" name="alter">
+  <qstn responseDomainType="numeric">
+    <preQTxt>In Jahren</preQTxt>
+    <qstnLit>Wie alt sind Sie?</qstnLit>
+    <ivuInstr>Bei Unsicherheit nachfragen</ivuInstr>
+  </qstn>
+  <concept>Alter</concept>
+</var>`
+	out, err := DDIToXLSForm([]byte(ddi))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var form XLSForm
+	if err := json.Unmarshal(out, &form); err != nil {
+		t.Fatal(err)
+	}
+	if len(form.Survey) != 1 {
+		t.Fatalf("expected 1 survey row, got %d", len(form.Survey))
+	}
+	row := form.Survey[0]
+	if row.GuidanceHint != "Bei Unsicherheit nachfragen" {
+		t.Errorf("guidance_hint: got %q", row.GuidanceHint)
+	}
+	if row.Parameters != "" {
+		t.Errorf("parameters must stay empty, got %q", row.Parameters)
+	}
+	if !strings.Contains(string(out), `"guidance_hint"`) {
+		t.Errorf("JSON is missing the guidance_hint column: %s", out)
+	}
+}

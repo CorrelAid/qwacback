@@ -3,7 +3,7 @@
 This document describes the public API endpoints for converting between DDI Codebook XML format and XLSForm JSON format.
 
 The XLSForm JSON mirrors the actual XLSForm spreadsheet structure with three sheets:
-- **survey**: questions and groups (columns: type, name, label, hint, required, appearance, parameters)
+- **survey**: questions and groups (columns: type, name, label, hint, required, appearance, parameters, guidance_hint)
 - **choices**: answer options for select questions (columns: list_name, name, label)
 - **settings**: form metadata (columns: form_title, form_id, version)
 
@@ -142,7 +142,8 @@ Each row in the survey sheet is an object with these columns:
 | `hint` | No | Additional hint text (maps to DDI `preQTxt`) |
 | `required` | No | `"yes"` if the question is mandatory |
 | `appearance` | No | Display preference |
-| `parameters` | No | Key-value pairs, e.g. `"guidance_hint=Show card"` |
+| `parameters` | No | Space-separated `key=value` pairs, e.g. `"start=1 end=10 step=1"` |
+| `guidance_hint` | No | Interviewer instructions (maps to DDI `ivuInstr`). The DDI → XLSForm export writes this column; `guidance_hint=` inside `parameters` is still read on input, but can't hold spaces in valid XLSForm |
 
 Groups use `begin_group`/`end_group` rows:
 ```json
@@ -327,7 +328,7 @@ Error responses include a descriptive message:
 
 - The conversion preserves the core question structure but may not retain all DDI metadata
 - Generated DDI IDs follow the pattern `V_<name>` for variables and `VG_<name>` for groups
-- XLSForm `hint` ↔ DDI `preQTxt` and `guidance_hint` (in `parameters`) ↔ DDI `ivuInstr`, in both directions
+- XLSForm `hint` ↔ DDI `preQTxt` and XLSForm `guidance_hint` ↔ DDI `ivuInstr`, in both directions
 - Missing value categories (DDI `missing="Y"`) are excluded from XLSForm choices
 - These endpoints are stateless and do not persist data to the database
 
