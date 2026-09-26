@@ -53,7 +53,10 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 - **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question.
 - **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.
-- **GET `/api/search/questions?q=<term>`** — Search questions by question text, concept, name, and answer type. Ranked by relevance. Supports `&page=` and `&perPage=` (default 20, max 100).
+- **GET `/api/search/questions?q=<terms>`** — Search questions by question text, concept, name, and answer type. Supports `&page=` and `&perPage=` (default 20, max 100).
+  - `q` may hold several terms, separated by spaces or commas; a question matches if **any** term matches, and questions matching more terms rank first (then question text > concept > name > answer type).
+  - Matching ignores case and umlaut spelling (`Qualitaet` = `Qualität`), finds word forms via German and English stemming (`Zufriedenheit` finds "zufrieden", `Weiterempfehlung` finds "weiterempfehlen"), and finds terms of 5+ letters inside compounds (`Vertrauen` finds "Institutionenvertrauen").
+  - `&study_id=<id>` (repeatable) limits the search to those studies; `&exclude_study=<id>` (repeatable) leaves studies out, e.g. the demographic standards. The MCP tool `search_questions` takes the same filters.
 
 ### Studies
 

@@ -34,6 +34,31 @@ func getString(args map[string]any, key string) string {
 	return s
 }
 
+// getStringList reads a JSON array of strings from args[key]. MCP tool
+// arguments with `array` schema arrive as []interface{} of strings (a lone
+// string is accepted too, since models sometimes send one); this helper
+// coerces them and drops non-string entries so the caller can pass
+// the result straight to filter helpers.
+func getStringList(args map[string]any, key string) []string {
+	if args == nil {
+		return nil
+	}
+	if s, ok := args[key].(string); ok && s != "" {
+		return []string{s}
+	}
+	raw, ok := args[key].([]interface{})
+	if !ok {
+		return nil
+	}
+	out := make([]string, 0, len(raw))
+	for _, v := range raw {
+		if s, ok := v.(string); ok && s != "" {
+			out = append(out, s)
+		}
+	}
+	return out
+}
+
 // NewMCPServer creates the MCP server with tools registered.
 func NewMCPServer(app core.App) *mcpserver.MCPServer {
 	s := mcpserver.NewMCPServer(
@@ -44,8 +69,10 @@ func NewMCPServer(app core.App) *mcpserver.MCPServer {
 
 	s.AddTool(
 		mcp.NewTool("search_questions",
-			mcp.WithDescription("Search the question bank by question text, concept, name, or answer type. Returns assembled questions (not raw variables). Uses substring matching — search one term at a time for best results. For broad topics, run multiple searches with different terms. Examples: query='trust' finds questions about trust; query='Mitglied' finds membership-related questions."),
-			mcp.WithString("query", mcp.Required(), mcp.Description("Single search term (substring match, case-insensitive). Use one keyword, not a phrase. Example: 'Vertrauen' not 'soziales Vertrauen Gesellschaft'.")),
+			mcp.WithDescription("Search the question bank by question text, concept, name, or answer type. Returns assembled questions (not raw variables). Multi-term queries are split on whitespace and commas; a question matches if any term matches, and is ranked by the number of terms matched then by field weight. Both German and English stemming is applied, and German umlauts are folded (Qualität matches Qualitaet). Example: query='Wirkung Bildungsprogramm Zufriedenheit' returns the union of the three single-term hits."),
+			mcp.WithString("query", mcp.Required(), mcp.Description("Search terms, whitespace or comma separated. Single keywords work too. Example: 'trust' or 'Wirkung Bildungsprogramm Zufriedenheit'.")),
+			mcp.WithArray("study_id", mcp.Description("Optional list of study IDs to include. Repeatable. If omitted, all studies are searched.")),
+			mcp.WithArray("exclude_study", mcp.Description("Optional list of study IDs to exclude (e.g. demographic standards). Repeatable.")),
 			mcp.WithToolAnnotation(readOnlyAnnotation),
 		),
 		searchQuestionsHandler(app),
@@ -98,21 +125,10 @@ func searchQuestionsHandler(app core.App) mcpserver.ToolHandlerFunc {
 			return mcp.NewToolResultError("missing required parameter: query"), nil
 		}
 
-		studies, err := app.FindRecordsByFilter("studies", "", "", 0, 0)
+		matched, err := routes.SearchQuestions(app, q, getStringList(args, "study_id"), getStringList(args, "exclude_study"))
 		if err != nil {
 			return mcp.NewToolResultError("failed to fetch studies"), nil
 		}
-
-		var all []routes.Question
-		for _, s := range studies {
-			qs, err := routes.AssembleQuestions(app, s.Id)
-			if err != nil {
-				continue
-			}
-			all = append(all, qs...)
-		}
-
-		matched := routes.FilterAndRankQuestions(all, q)
 		if len(matched) > 20 {
 			matched = matched[:20]
 		}
