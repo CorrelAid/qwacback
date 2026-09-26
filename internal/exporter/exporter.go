@@ -89,18 +89,41 @@ type DataDscr struct {
 
 type Concept struct {
 	Vocab string `xml:"vocab,attr,omitempty"`
+	Lang  string `xml:"http://www.w3.org/XML/1998/namespace lang,attr,omitempty"`
 	Value string `xml:",chardata"`
 }
 
+// recordConcepts returns the <concept> elements of a variable or group record:
+// the concept itself (with vocab, for long lists), then one per stored tag
+// with its xml:lang (#19).
+func recordConcepts(r *core.Record, vocab string) []Concept {
+	out := []Concept{{Vocab: vocab, Value: r.GetString("concept")}}
+	var tags []struct {
+		Lang string `json:"lang"`
+		Text string `json:"text"`
+	}
+	if raw := r.GetString("tags"); raw != "" && raw != "null" {
+		if err := json.Unmarshal([]byte(raw), &tags); err != nil {
+			log.Printf("WARNING: failed to unmarshal tags for %s: %v", r.Id, err)
+		}
+	}
+	for _, t := range tags {
+		if t.Text != "" {
+			out = append(out, Concept{Lang: t.Lang, Value: t.Text})
+		}
+	}
+	return out
+}
+
 type VarGrp struct {
-	XMLName   xml.Name `xml:"varGrp"`
-	ID        string   `xml:"ID,attr"`
-	Name      string   `xml:"name,attr,omitempty"`
-	Type      string   `xml:"type,attr,omitempty"`
-	Var       string   `xml:"var,attr,omitempty"`       // Space-separated variable IDs
-	VarGrpRef string   `xml:"varGrp,attr,omitempty"`    // Space-separated child varGrp IDs
-	Txt       string   `xml:"txt,omitempty"`
-	Concept   Concept  `xml:"concept"`
+	XMLName   xml.Name  `xml:"varGrp"`
+	ID        string    `xml:"ID,attr"`
+	Name      string    `xml:"name,attr,omitempty"`
+	Type      string    `xml:"type,attr,omitempty"`
+	Var       string    `xml:"var,attr,omitempty"`    // Space-separated variable IDs
+	VarGrpRef string    `xml:"varGrp,attr,omitempty"` // Space-separated child varGrp IDs
+	Txt       string    `xml:"txt,omitempty"`
+	Concepts  []Concept `xml:"concept"`
 }
 
 type Var struct {
@@ -110,7 +133,7 @@ type Var struct {
 	Intrvl    string     `xml:"intrvl,attr,omitempty"`
 	Qstn      *Qstn      `xml:"qstn,omitempty"`
 	Catgry    []Category `xml:"catgry,omitempty"`
-	Concept   Concept    `xml:"concept"`
+	Concepts  []Concept  `xml:"concept"`
 	VarFormat *VarFormat `xml:"varFormat,omitempty"`
 }
 
@@ -151,13 +174,10 @@ func answerTypeToResponseDomain(answerType string) string {
 // buildVarFromRecord converts a variable database record into a Var struct.
 func buildVarFromRecord(v *core.Record) Var {
 	varObj := Var{
-		ID:      v.GetString("ddi_id"),
-		Name:    v.GetString("name"),
-		Intrvl:  v.GetString("interval"),
-		Concept: Concept{Value: v.GetString("concept")},
-	}
-	if std := v.GetString("long_list_standard"); std != "" {
-		varObj.Concept.Vocab = std
+		ID:       v.GetString("ddi_id"),
+		Name:     v.GetString("name"),
+		Intrvl:   v.GetString("interval"),
+		Concepts: recordConcepts(v, v.GetString("long_list_standard")),
 	}
 	if fmtType := v.GetString("var_format_type"); fmtType != "" {
 		varObj.VarFormat = &VarFormat{Type: fmtType, Schema: "other"}
@@ -290,12 +310,12 @@ func ExportVariableWithGroupToXML(app core.App, v *core.Record) ([]byte, error) 
 	varObj := buildVarFromRecord(v)
 
 	grp := VarGrp{
-		ID:      groupRecord.GetString("ddi_id"),
-		Name:    groupRecord.GetString("name"),
-		Type:    groupRecord.GetString("type"),
-		Var:     v.GetString("ddi_id"),
-		Concept: Concept{Value: groupRecord.GetString("concept")},
-		Txt:     groupRecord.GetString("description"),
+		ID:       groupRecord.GetString("ddi_id"),
+		Name:     groupRecord.GetString("name"),
+		Type:     groupRecord.GetString("type"),
+		Var:      v.GetString("ddi_id"),
+		Concepts: recordConcepts(groupRecord, ""),
+		Txt:      groupRecord.GetString("description"),
 	}
 
 	dd := DataDscr{
@@ -323,12 +343,12 @@ func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
 	}
 
 	grp := VarGrp{
-		ID:      g.GetString("ddi_id"),
-		Name:    g.GetString("name"),
-		Type:    g.GetString("type"),
-		Var:     strings.Join(groupVars, " "),
-		Concept: Concept{Value: g.GetString("concept")},
-		Txt:     g.GetString("description"),
+		ID:       g.GetString("ddi_id"),
+		Name:     g.GetString("name"),
+		Type:     g.GetString("type"),
+		Var:      strings.Join(groupVars, " "),
+		Concepts: recordConcepts(g, ""),
+		Txt:      g.GetString("description"),
 	}
 	return xml.MarshalIndent(grp, "", "  ")
 }
@@ -354,12 +374,12 @@ func ExportVarGrpCodebookToXML(app core.App, g *core.Record) ([]byte, error) {
 	}
 
 	grp := VarGrp{
-		ID:      g.GetString("ddi_id"),
-		Name:    g.GetString("name"),
-		Type:    g.GetString("type"),
-		Var:     strings.Join(groupVars, " "),
-		Concept: Concept{Value: g.GetString("concept")},
-		Txt:     g.GetString("description"),
+		ID:       g.GetString("ddi_id"),
+		Name:     g.GetString("name"),
+		Type:     g.GetString("type"),
+		Var:      strings.Join(groupVars, " "),
+		Concepts: recordConcepts(g, ""),
+		Txt:      g.GetString("description"),
 	}
 
 	dd := DataDscr{
@@ -414,12 +434,12 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 		}
 
 		cb.DataDscr.VarGrp = append(cb.DataDscr.VarGrp, VarGrp{
-			ID:      g.GetString("ddi_id"),
-			Name:    g.GetString("name"),
-			Type:    g.GetString("type"),
-			Var:     strings.Join(groupVars, " "),
-			Concept: Concept{Value: g.GetString("concept")},
-			Txt:     g.GetString("description"),
+			ID:       g.GetString("ddi_id"),
+			Name:     g.GetString("name"),
+			Type:     g.GetString("type"),
+			Var:      strings.Join(groupVars, " "),
+			Concepts: recordConcepts(g, ""),
+			Txt:      g.GetString("description"),
 		})
 	}
 

@@ -148,6 +148,45 @@ func textAt(mv mxj.Map, path string) string {
 	return strings.TrimSpace(extractText(vals[0]))
 }
 
+// ConceptTag is a <concept> after the first one on a var or varGrp: an extra
+// search term, optionally in another language (#19). Stored as the `tags`
+// JSON field.
+type ConceptTag struct {
+	Lang string `json:"lang,omitempty"`
+	Text string `json:"text"`
+}
+
+// conceptsAt splits the <concept> children of m. The first is the concept
+// (with its vocab attribute, which marks an external code list); any further
+// ones are tags. textAt can't be used here: with several concepts it returns
+// the last one.
+func conceptsAt(m mxj.Map) (concept, vocab string, tags []ConceptTag) {
+	var items []interface{}
+	switch v := m["concept"].(type) {
+	case nil:
+		return "", "", nil
+	case []interface{}:
+		items = v
+	default:
+		items = []interface{}{v}
+	}
+	for i, item := range items {
+		text := strings.TrimSpace(extractText(item))
+		attrs, _ := item.(map[string]interface{})
+		if i == 0 {
+			concept = text
+			vocab, _ = attrs["-vocab"].(string)
+			continue
+		}
+		if text == "" {
+			continue
+		}
+		lang, _ := attrs["-lang"].(string)
+		tags = append(tags, ConceptTag{Lang: lang, Text: text})
+	}
+	return concept, vocab, tags
+}
+
 // inferAnswerType maps DDI responseDomainType + group type to an answer type.
 func inferAnswerType(responseDomainType, groupType string) string {
 	switch responseDomainType {
@@ -205,7 +244,9 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	var keywords []string
 	kws, _ := mv.ValuesForPath("codeBook.stdyDscr.stdyInfo.subject.keyword")
 	for _, k := range kws {
-		if s, ok := k.(string); ok {
+		// A keyword with attributes (xml:lang, vocab) arrives as a map; it was
+		// dropped before.
+		if s := strings.TrimSpace(extractText(k)); s != "" {
 			keywords = append(keywords, s)
 		}
 	}
@@ -283,7 +324,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			vM := mxj.Map(vMap)
 			ddiId, _ := vM.ValueForPathString("-ID")
 			vName, _ := vM.ValueForPathString("-name")
-			vConcept := textAt(vM, "concept")
+			vConcept, vocab, vTags := conceptsAt(vM)
 			vQuest := qstnLitTexts[ddiId] // token-based extraction preserves mixed-content text
 			vPreQ := textAt(vM, "qstn.preQTxt")
 			vIvInstr := textAt(vM, "qstn.ivuInstr")
@@ -312,7 +353,6 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			}
 
 			// Detect long list (external code list via concept/@vocab)
-			vocab, _ := vM.ValueForPathString("concept.-vocab")
 			hasLongList := vocab != ""
 
 			varRecord := core.NewRecord(varCollection)
@@ -321,6 +361,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			varRecord.Set("ddi_id", ddiId)
 			varRecord.Set("name", vName)
 			varRecord.Set("concept", vConcept)
+			varRecord.Set("tags", vTags)
 			varRecord.Set("question", vQuest)
 			varRecord.Set("prequestion_text", vPreQ)
 			varRecord.Set("ivu_instructions", vIvInstr)
@@ -378,6 +419,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			varGrpAttr  string
 			grpType     string
 			concept     string
+			tags        []ConceptTag
 			txt         string
 		}
 		var parsed []grpInfo
@@ -395,7 +437,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			gi.grpType, _ = gM.ValueForPathString("-type")
 			gi.varIdsAttr, _ = gM.ValueForPathString("-var")
 			gi.varGrpAttr, _ = gM.ValueForPathString("-varGrp")
-			gi.concept = textAt(gM, "concept")
+			gi.concept, _, gi.tags = conceptsAt(gM)
 			gi.txt = textAt(gM, "txt")
 			parsed = append(parsed, gi)
 		}
@@ -430,6 +472,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			groupRecord.Set("ddi_id", gi.ddiID)
 			groupRecord.Set("name", gi.name)
 			groupRecord.Set("concept", gi.concept)
+			groupRecord.Set("tags", gi.tags)
 			groupRecord.Set("description", gi.txt)
 			groupRecord.Set("type", gi.grpType)
 			groupRecord.Set("order", grpOrder)

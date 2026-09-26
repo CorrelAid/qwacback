@@ -120,9 +120,13 @@ type DDIVar struct {
 	Intrvl    string        `xml:"intrvl,attr,omitempty"`
 	Qstn      *DDIQstn      `xml:"qstn,omitempty"`
 	Catgry    []DDICategory `xml:"catgry,omitempty"`
-	Concept   DDIConcept    `xml:"concept"`
+	Concepts  []DDIConcept  `xml:"concept"`
 	VarFormat *DDIVarFormat `xml:"varFormat,omitempty"`
 }
+
+// Concept returns the first <concept>: the variable's concept. Further ones
+// are search tags (#19); decoding into a single field would keep the last.
+func (v DDIVar) Concept() DDIConcept { return firstConcept(v.Concepts) }
 
 // DDIVarGrp represents a DDI <varGrp> element
 type DDIVarGrp struct {
@@ -133,7 +137,17 @@ type DDIVarGrp struct {
 	Var       string     `xml:"var,attr,omitempty"`       // Space-separated variable IDs
 	VarGrpRef string     `xml:"varGrp,attr,omitempty"`    // Space-separated child varGrp IDs
 	Txt       string     `xml:"txt,omitempty"`
-	Concept   DDIConcept `xml:"concept"`
+	Concepts  []DDIConcept `xml:"concept"`
+}
+
+// Concept returns the group's first <concept>; see DDIVar.Concept.
+func (g DDIVarGrp) Concept() DDIConcept { return firstConcept(g.Concepts) }
+
+func firstConcept(cs []DDIConcept) DDIConcept {
+	if len(cs) == 0 {
+		return DDIConcept{}
+	}
+	return cs[0]
 }
 
 // DDIQstn represents a DDI <qstn> element
@@ -319,7 +333,7 @@ func convertDDIDataDscrToXLSForm(dd DDIDataDscr, form *XLSForm) {
 						Type:    "multipleResp",
 						Var:     strings.Join(binaryIDs, " "),
 						Txt:     grp.Txt,
-						Concept: grp.Concept,
+						Concepts: grp.Concepts,
 					}
 					convertMultipleRespToXLSForm(syntheticGrp, varByID, varByName, form, grp.Name)
 					for _, id := range binaryIDs {
@@ -376,7 +390,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 		Label: grp.Txt,
 	}
 	if row.Label == "" {
-		row.Label = grp.Concept.Value
+		row.Label = grp.Concept().Value
 	}
 
 	form.Survey = append(form.Survey, row)
@@ -427,7 +441,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 
 	label := grp.Txt
 	if label == "" {
-		label = grp.Concept.Value
+		label = grp.Concept().Value
 	}
 
 	form.Survey = append(form.Survey, SurveyRow{
@@ -491,7 +505,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar) {
 	row := SurveyRow{
 		Name:  v.Name,
-		Label: v.Concept.Value, // Fallback label
+		Label: v.Concept().Value, // Fallback label
 	}
 
 	if v.Qstn != nil {
@@ -507,15 +521,15 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 		case "text":
 			row.Type = "text"
 		case "category":
-			if v.Concept.Vocab != "" {
-				row.Type = "select_one_from_file " + v.Concept.Vocab + ".csv"
+			if v.Concept().Vocab != "" {
+				row.Type = "select_one_from_file " + v.Concept().Vocab + ".csv"
 				row.Appearance = "minimal"
 			} else {
 				row.Type = "select_one " + v.Name
 			}
 		case "multiple":
-			if v.Concept.Vocab != "" {
-				row.Type = "select_multiple_from_file " + v.Concept.Vocab + ".csv"
+			if v.Concept().Vocab != "" {
+				row.Type = "select_multiple_from_file " + v.Concept().Vocab + ".csv"
 				row.Appearance = "minimal"
 			} else {
 				row.Type = "select_multiple " + v.Name
@@ -571,7 +585,7 @@ func convertDDIVarGrpToXLSForm(vg DDIVarGrp, form *XLSForm) {
 	form.Survey = append(form.Survey, SurveyRow{
 		Type:  "begin_group",
 		Name:  vg.Name,
-		Label: vg.Concept.Value,
+		Label: vg.Concept().Value,
 	})
 	form.Survey = append(form.Survey, SurveyRow{
 		Type: "end_group",
