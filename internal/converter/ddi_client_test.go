@@ -2,6 +2,7 @@ package converter
 
 import (
 	"errors"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -147,4 +148,26 @@ func TestXLSFormToDDI_Unavailable(t *testing.T) {
 			t.Errorf("expected ErrConverterUnavailable, got %v", err)
 		}
 	})
+}
+
+// #22: a guidance_hint column in the request reaches the sidecar. Before,
+// SurveyRow had no such field and json.Unmarshal dropped it.
+func TestXLSFormToDDI_ForwardsGuidanceHintColumn(t *testing.T) {
+	var got string
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		b, _ := io.ReadAll(r.Body)
+		got = string(b)
+		_, _ = w.Write([]byte(codeBook(`<var ID="V_a" name="a"><concept>A</concept></var>`)))
+	}))
+	t.Cleanup(srv.Close)
+	prev := DDIEmitterURL
+	DDIEmitterURL = srv.URL
+	t.Cleanup(func() { DDIEmitterURL = prev })
+
+	if _, err := XLSFormToDDI([]byte(`{"survey":[{"type":"integer","name":"a","label":"A","guidance_hint":"Bei Unsicherheit nachfragen"}]}`)); err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(got, `"guidance_hint":"Bei Unsicherheit nachfragen"`) {
+		t.Errorf("guidance_hint not forwarded: %s", got)
+	}
 }

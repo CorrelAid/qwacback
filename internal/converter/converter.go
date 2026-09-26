@@ -18,7 +18,7 @@ while XLSForm uses the "type" field. This package handles bidirectional
 conversion between these formats.
 
 The XLSForm format mirrors the actual spreadsheet structure with three sheets:
-- survey: questions and groups (columns: type, name, label, hint, required, appearance, parameters)
+- survey: questions and groups (columns: type, name, label, hint, required, appearance, parameters, guidance_hint)
 - choices: answer options for select questions (columns: list_name, name, label)
 - settings: form metadata (columns: form_title, form_id, version)
 
@@ -58,7 +58,7 @@ The XLSForm format mirrors the actual spreadsheet structure with three sheets:
 Additional Field Mappings:
 - XLSForm "label" ↔ DDI "qstnLit" (main question text)
 - XLSForm "hint" ↔ DDI "preQTxt" (pre-question text/hint)
-- XLSForm "parameters" (guidance_hint=...) ↔ DDI "ivuInstr" (interviewer instructions)
+- XLSForm "guidance_hint" ↔ DDI "ivuInstr" (interviewer instructions)
 - XLSForm "choices" sheet ↔ DDI "catgry" elements (answer options)
 - XLSForm "name" ↔ DDI "name" attribute (variable identifier)
 
@@ -88,6 +88,10 @@ type SurveyRow struct {
 	Relevance  string `json:"relevant,omitempty"`
 	Appearance string `json:"appearance,omitempty"`
 	Parameters string `json:"parameters,omitempty"`
+	// GuidanceHint is the XLSForm `guidance_hint` column (DDI <ivuInstr>).
+	// Not `parameters`: that column holds space-separated key=value pairs, so
+	// an instruction with spaces there is invalid XLSForm (#22).
+	GuidanceHint string `json:"guidance_hint,omitempty"`
 }
 
 // ChoiceRow represents one row in the "choices" sheet.
@@ -497,7 +501,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 //   - DDI @name → survey row "name" column
 //   - DDI <qstnLit> → survey row "label" column (falls back to <concept>)
 //   - DDI <preQTxt> → survey row "hint" column
-//   - DDI <ivuInstr> → survey row "parameters" column as "guidance_hint=..."
+//   - DDI <ivuInstr> → survey row "guidance_hint" column
 //   - DDI responseDomainType → survey row "type" column:
 //     "numeric" → "integer", "text" → "text",
 //     "category" → "select_one <name>", "multiple" → "select_multiple <name>"
@@ -545,7 +549,7 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 
 		// Map interviewer instructions to parameters
 		if v.Qstn.IvuInstr != "" {
-			row.Parameters = "guidance_hint=" + v.Qstn.IvuInstr
+			row.GuidanceHint = v.Qstn.IvuInstr
 		}
 	}
 
