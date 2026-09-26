@@ -55,31 +55,48 @@
     <varGrp ID="VG3" name="selbstverstaendnis_migrantenorganisation" type="multipleResp" var="V11 V12 V13 V14 V15 V16">
       <txt>Was ist für Ihr Selbstverständnis als Migrantenorganisation entscheidend?</txt>
       <concept>Selbstverständnis als Migrantenorganisation</concept>
+      <concept xml:lang="en">migrant organisation</concept>
+      <concept xml:lang="en">self-image</concept>
+      <concept xml:lang="en">identity</concept>
     </varGrp>
     <varGrp ID="VG4" name="aktivitaetsbereiche" type="multipleResp" var="V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40 V41 V42 V43 V44 V45 V46 V47 V48 V49">
       <txt>In welchen Bereichen hat Ihre Organisation im Jahr 2019 am häufigsten Angebote gemacht?</txt>
       <concept>Aktivitätsbereiche</concept>
+      <concept xml:lang="en">fields of activity</concept>
+      <concept xml:lang="en">activities</concept>
     </varGrp>
     <varGrp ID="VG5" name="nutzergruppen" type="multipleResp" var="V50 V51 V52 V53 V54 V55 V56 V57 V58 V59 V60 V61 V62 V63 V64 V65">
       <txt>Wer nutzt die Angebote Ihrer Organisation oft?</txt>
       <concept>Nutzergruppen</concept>
+      <concept xml:lang="en">user groups</concept>
+      <concept xml:lang="en">target groups</concept>
     </varGrp>
     <!-- Replaced 79 binary country vars (V66–V144) with a single vocab reference -->
     <varGrp ID="VG7" name="religionszugehoerigkeit" type="multipleResp" var="V145 V146 V147 V148 V149 V150 V151 V152 V153 V154 V155 V156 V157">
       <txt>Um welche Religion(en) geht es?</txt>
       <concept>Religionszugehörigkeit</concept>
+      <concept xml:lang="en">religion</concept>
+      <concept xml:lang="en">religious affiliation</concept>
     </varGrp>
     <varGrp ID="VG8" name="angebote_fluechtlinge" type="multipleResp" var="V162 V163 V164 V165 V166 V167 V168 V169 V170 V171 V172 V173 V174 V175">
       <txt>Was bietet Ihre Organisation am häufigsten für Geflüchtete an?</txt>
       <concept>Angebote für Geflüchtete</concept>
+      <concept xml:lang="en">refugees</concept>
+      <concept xml:lang="en">refugee support</concept>
+      <concept xml:lang="en">services</concept>
     </varGrp>
     <varGrp ID="VG9" name="bezahlte_beschaeftigung" type="multipleResp" var="V176 V177 V178 V179 V180 V181 V182 V183 V184">
       <txt>Gibt es Menschen, die für die Arbeit in Ihrer Organisation bezahlt werden?</txt>
       <concept>Arten bezahlter Beschäftigung</concept>
+      <concept xml:lang="en">paid staff</concept>
+      <concept xml:lang="en">employment</concept>
     </varGrp>
     <varGrp ID="VG10" name="foerderer_2019" type="multipleResp" var="V190 V191 V192 V193 V194 V195 V196 V197 V198 V199 V200 V201 V202 V203">
       <txt>Wer hat Ihre Organisation im Jahr 2019 gefördert?</txt>
       <concept>Förderquellen 2019</concept>
+      <concept xml:lang="en">funding</concept>
+      <concept xml:lang="en">funders</concept>
+      <concept xml:lang="en">grants</concept>
     </varGrp>
     <var ID="V205" name="eingetragener_verein" intrvl="discrete">
       <qstn ID="Q205" responseDomainType="category">
@@ -94,6 +111,8 @@
         <labl>nein</labl>
       </catgry>
       <concept>Rechtsform als eingetragener Verein</concept>
+      <concept xml:lang="en">registered association</concept>
+      <concept xml:lang="en">legal form</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V206" name="organisationsform" intrvl="discrete">
@@ -113,6 +132,8 @@
         <labl>Körperschaft des öffentlichen Rechts (KdöR)</labl>
       </catgry>
       <concept>Organisationsform (Nicht-Vereine)</concept>
+      <concept xml:lang="en">organisation type</concept>
+      <concept xml:lang="en">legal form</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V207" name="stiftungsform" intrvl="discrete">
@@ -124,6 +145,7 @@
         <labl>rechtsfähige Stiftung bürgerlichen Rechts</labl>
       </catgry>
       <concept>Stiftungsform</concept>
+      <concept xml:lang="en">foundation type</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V208" name="mitglieder_ende_2019" intrvl="contin">
@@ -131,6 +153,8 @@
         <qstnLit>Bitte schätzen Sie: Wie viele Mitglieder hatte Ihre Organisation Ende 2019?</qstnLit>
       </qstn>
       <concept>Mitgliederanzahl Ende 2019</concept>
+      <concept xml:lang="en">members</concept>
+      <concept xml:lang="en">membership size</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V1" name="mitgliedsorganisationen_anzahl" intrvl="contin">
@@ -138,6 +162,8 @@
         <qstnLit>Anzahl der Mitgliedsorganisationen</qstnLit>
       </qstn>
       <concept>Anzahl der Mitgliedsorganisationen</concept>
+      <concept xml:lang="en">member organisations</concept>
+      <concept xml:lang="en">umbrella organisation</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V2" name="mitglieder_erreichte_anzahl" intrvl="contin">
@@ -145,6 +171,8 @@
         <qstnLit>Anzahl der Mitglieder, die Sie erreicht haben</qstnLit>
       </qstn>
       <concept>Anzahl erreichter Mitglieder</concept>
+      <concept xml:lang="en">members reached</concept>
+      <concept xml:lang="en">outreach</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V3" name="mitgliedsorganisationen_vorhanden" intrvl="discrete">
@@ -168,6 +196,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Vorhandensein von Mitgliedsorganisationen</concept>
+      <concept xml:lang="en">member organisations</concept>
+      <concept xml:lang="en">umbrella organisation</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V4" name="frauenanteil_schaetzung_anteil_weiblicher" intrvl="contin">
@@ -175,6 +205,9 @@
         <qstnLit>Schätzen Sie: Wie groß ist der Anteil von Frauen unter Ihren Mitgliedern?</qstnLit>
       </qstn>
       <concept>Anteil weiblicher Mitglieder</concept>
+      <concept xml:lang="en">women</concept>
+      <concept xml:lang="en">female members</concept>
+      <concept xml:lang="en">gender</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V5" name="frauenanteil_schaetzung_anteil_mitglieder" intrvl="contin">
@@ -182,6 +215,9 @@
         <qstnLit>Schätzen Sie: Wie groß ist der Anteil von Menschen mit Migrationshintergrund unter Ihren Mitgliedern?</qstnLit>
       </qstn>
       <concept>Anteil Mitglieder mit Migrationshintergrund</concept>
+      <concept xml:lang="en">migration background</concept>
+      <concept xml:lang="en">members</concept>
+      <concept xml:lang="en">diversity</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V6" name="mitgliedsorganisationen_migrantenorganisationen" intrvl="discrete">
@@ -205,6 +241,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Mitgliedsorganisationen als Migrantenorganisationen</concept>
+      <concept xml:lang="en">member organisations</concept>
+      <concept xml:lang="en">migrant organisation</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V7" name="vorstandsmitglieder_anzahl" intrvl="contin">
@@ -212,6 +250,8 @@
         <qstnLit>Wie viele Mitglieder hat der Vorstand Ihrer Organisation?</qstnLit>
       </qstn>
       <concept>Vorstandsgröße</concept>
+      <concept xml:lang="en">board</concept>
+      <concept xml:lang="en">board size</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V8" name="vorstandsmitglieder_frauen" intrvl="contin">
@@ -219,6 +259,9 @@
         <qstnLit>Wie viele Frauen sind im Vorstand Ihrer Organisation??</qstnLit>
       </qstn>
       <concept>Anzahl weiblicher Vorstandsmitglieder</concept>
+      <concept xml:lang="en">board</concept>
+      <concept xml:lang="en">women</concept>
+      <concept xml:lang="en">gender</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V9" name="vorstandsmitglieder_migrationshintergrund" intrvl="contin">
@@ -226,6 +269,9 @@
         <qstnLit>Wie viele Vorstandsmitglieder haben einen Migrationshintergrund?</qstnLit>
       </qstn>
       <concept>Anzahl Vorstandsmitglieder mit Migrationshintergrund</concept>
+      <concept xml:lang="en">board</concept>
+      <concept xml:lang="en">migration background</concept>
+      <concept xml:lang="en">diversity</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V10" name="gruendungsjahr" intrvl="contin">
@@ -233,6 +279,8 @@
         <qstnLit>Wann hat sich Ihre Organisation gegründet?</qstnLit>
       </qstn>
       <concept>Gründungsjahr</concept>
+      <concept xml:lang="en">founding year</concept>
+      <concept xml:lang="en">founded</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V11" name="selbstverstaendnis_migrantenorganisation_unserer_o" intrvl="discrete">
@@ -340,6 +388,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Vorhandensein einer Geschäftsführung</concept>
+      <concept xml:lang="en">management</concept>
+      <concept xml:lang="en">director</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V18" name="geschaeftsfuehrer_geschlecht" intrvl="discrete">
@@ -359,6 +409,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Geschlecht der Geschäftsführung</concept>
+      <concept xml:lang="en">management</concept>
+      <concept xml:lang="en">gender</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V19" name="geschaeftsfuehrer_migrationshintergrund" intrvl="discrete">
@@ -378,6 +430,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Migrationshintergrund der Geschäftsführung</concept>
+      <concept xml:lang="en">management</concept>
+      <concept xml:lang="en">migration background</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V20" name="hauptsitz_bundesland" intrvl="discrete">
@@ -453,6 +507,9 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Bundesland des Hauptsitzes</concept>
+      <concept xml:lang="en">federal state</concept>
+      <concept xml:lang="en">headquarters</concept>
+      <concept xml:lang="en">location</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V21" name="ortsgroesse_hauptsitz" intrvl="discrete">
@@ -492,6 +549,9 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Ortsgröße des Hauptsitzes</concept>
+      <concept xml:lang="en">municipality size</concept>
+      <concept xml:lang="en">population</concept>
+      <concept xml:lang="en">location</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V22" name="einnahmen_2019" intrvl="discrete">
@@ -535,6 +595,9 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Einnahmen 2019</concept>
+      <concept xml:lang="en">revenue</concept>
+      <concept xml:lang="en">income</concept>
+      <concept xml:lang="en">finances</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V23" name="bezahlung_engagement" intrvl="discrete">
@@ -558,6 +621,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Bezahlung oder Ehrenamt</concept>
+      <concept xml:lang="en">volunteering</concept>
+      <concept xml:lang="en">paid work</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V24" name="aktivitaetsdauer" intrvl="contin">
@@ -565,6 +630,8 @@
         <qstnLit>Mit wie vielen Jahren sind Sie in Ihrer Organisation aktiv?</qstnLit>
       </qstn>
       <concept>Dauer der Aktivität in der Organisation</concept>
+      <concept xml:lang="en">duration of involvement</concept>
+      <concept xml:lang="en">tenure</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V25" name="sprachliche_schwierigkeiten" intrvl="discrete">
@@ -596,6 +663,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Sprachliche Schwierigkeiten beim Ausfüllen</concept>
+      <concept xml:lang="en">language barriers</concept>
+      <concept xml:lang="en">language</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V26" name="aktivitaetsbereiche_austausch_zwischen" intrvl="discrete">
@@ -1163,6 +1232,8 @@
         <qstnLit>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen?</qstnLit>
       </qstn>
       <concept vocab="iso_3166_1">Herkunftsländer der Nutzer*innen</concept>
+      <concept xml:lang="en">countries of origin</concept>
+      <concept xml:lang="en">users</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V145" name="religionszugehoerigkeit_katholisch" intrvl="discrete">
@@ -1364,6 +1435,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Angebote für Nichtmitglieder</concept>
+      <concept xml:lang="en">services</concept>
+      <concept xml:lang="en">non-members</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V159" name="aktivitaetsbereich_geografisch" intrvl="discrete">
@@ -1403,6 +1476,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Geografischer Aktivitätsbereich</concept>
+      <concept xml:lang="en">geographic scope</concept>
+      <concept xml:lang="en">region</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V160" name="engagement_fluechtlinge_zeitraum" intrvl="contin">
@@ -1410,6 +1485,9 @@
         <qstnLit>Seit wann engagiert sich Ihre Organisation für Geflüchtete?</qstnLit>
       </qstn>
       <concept>Beginn des Engagements für Geflüchtete</concept>
+      <concept xml:lang="en">refugees</concept>
+      <concept xml:lang="en">refugee support</concept>
+      <concept xml:lang="en">engagement</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V162" name="angebote_fluechtlinge_begleitung_bei" intrvl="discrete">
@@ -1763,6 +1841,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Art der bezahlten Beschäftigung</concept>
+      <concept xml:lang="en">paid staff</concept>
+      <concept xml:lang="en">employment type</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V186" name="unbezahlt_engagierte_anzahl" intrvl="contin">
@@ -1770,6 +1850,8 @@
         <qstnLit>Anzahl unbezahlt Engagierter</qstnLit>
       </qstn>
       <concept>Anzahl unbezahlt Engagierter</concept>
+      <concept xml:lang="en">volunteers</concept>
+      <concept xml:lang="en">volunteering</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V187" name="bezahlt_beschaeftigte_anzahl" intrvl="contin">
@@ -1777,6 +1859,8 @@
         <qstnLit>Anzahl bezahlt Beschäftigter</qstnLit>
       </qstn>
       <concept>Anzahl bezahlt Beschäftigter</concept>
+      <concept xml:lang="en">paid staff</concept>
+      <concept xml:lang="en">employees</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V188" name="mitgliedschaftsbeitraege" intrvl="discrete">
@@ -1800,6 +1884,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Mitgliedsbeiträge</concept>
+      <concept xml:lang="en">membership fees</concept>
+      <concept xml:lang="en">members</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V189" name="foerderung_spenden_2019" intrvl="discrete">
@@ -1831,6 +1917,9 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Erhalt von Förderung und Spenden 2019</concept>
+      <concept xml:lang="en">funding</concept>
+      <concept xml:lang="en">donations</concept>
+      <concept xml:lang="en">grants</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V190" name="foerderer_2019_kommunen" intrvl="discrete">
@@ -2050,6 +2139,8 @@
         <labl>keine Angabe</labl>
       </catgry>
       <concept>Förderanträge in den letzten 5 Jahren</concept>
+      <concept xml:lang="en">funding applications</concept>
+      <concept xml:lang="en">grants</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
   </dataDscr>

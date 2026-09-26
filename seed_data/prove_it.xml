@@ -72,12 +72,18 @@
   <varGrp ID="VG1" name="contact_knowledge" type="grid" var="V4a V4b V4c V4d">
     <txt>If you did want to change things around here, do you know who to contact to help you in the following groups…?</txt>
     <concept>Civic network awareness</concept>
+    <concept xml:lang="de">Ansprechpartner</concept>
+    <concept xml:lang="de">Kontakt</concept>
+    <concept xml:lang="de">Netzwerk</concept>
   </varGrp>
   
   <!-- Variable Group: Social Interactions (Grid) -->
   <varGrp ID="VG2" name="social_interactions" type="grid" var="V5a V5b V5c V5d">
     <txt>As part of my participation in this project, I have had conversations with</txt>
     <concept>Bridging social capital</concept>
+    <concept xml:lang="de">Sozialkapital</concept>
+    <concept xml:lang="de">Kontakte</concept>
+    <concept xml:lang="de">Begegnung</concept>
   </varGrp>
 
   <!-- Variable: q1a - Frequency of Green Space use -->
@@ -102,6 +108,9 @@
       <labl>Never</labl>
     </catgry>
     <concept>Facility usage frequency</concept>
+    <concept xml:lang="de">Nutzung</concept>
+    <concept xml:lang="de">Häufigkeit</concept>
+    <concept xml:lang="de">Einrichtung</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -131,6 +140,9 @@
       <labl>Strongly Disagree</labl>
     </catgry>
     <concept>Neighbourhood attractiveness</concept>
+    <concept xml:lang="de">Attraktivität</concept>
+    <concept xml:lang="de">Nachbarschaft</concept>
+    <concept xml:lang="de">Wohnumfeld</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -160,6 +172,8 @@
       <labl>Strongly Disagree</labl>
     </catgry>
     <concept>Perceived community safety (day)</concept>
+    <concept xml:lang="de">Sicherheit</concept>
+    <concept xml:lang="de">Sicherheitsgefühl</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -189,6 +203,9 @@
       <labl>Strongly Disagree</labl>
     </catgry>
     <concept>Perceived community safety (night)</concept>
+    <concept xml:lang="de">Sicherheit</concept>
+    <concept xml:lang="de">Sicherheitsgefühl</concept>
+    <concept xml:lang="de">nachts</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -218,6 +235,8 @@
       <labl>Decreased a lot</labl>
     </catgry>
     <concept>Perceived crime trend</concept>
+    <concept xml:lang="de">Kriminalität</concept>
+    <concept xml:lang="de">Sicherheit</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -247,6 +266,8 @@
       <labl>Strongly Disagree</labl>
     </catgry>
     <concept>Self-efficacy (attitudes)</concept>
+    <concept xml:lang="de">Selbstwirksamkeit</concept>
+    <concept xml:lang="de">Einstellungen</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -276,6 +297,8 @@
       <labl>Strongly Disagree</labl>
     </catgry>
     <concept>Self-efficacy (action)</concept>
+    <concept xml:lang="de">Selbstwirksamkeit</concept>
+    <concept xml:lang="de">Engagement</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -305,6 +328,9 @@
       <labl>Strongly Disagree</labl>
     </catgry>
     <concept>Participatory empowerment</concept>
+    <concept xml:lang="de">Beteiligung</concept>
+    <concept xml:lang="de">Teilhabe</concept>
+    <concept xml:lang="de">Mitbestimmung</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -502,6 +528,9 @@
       <labl>Don't Know</labl>
     </catgry>
     <concept>Bonding social capital</concept>
+    <concept xml:lang="de">Freunde</concept>
+    <concept xml:lang="de">Nachbarschaft</concept>
+    <concept xml:lang="de">Sozialkapital</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -523,6 +552,9 @@
       <labl>Don't Know</labl>
     </catgry>
     <concept>Interpersonal trust</concept>
+    <concept xml:lang="de">Vertrauen</concept>
+    <concept xml:lang="de">Nachbarn</concept>
+    <concept xml:lang="de">Nachbarschaft</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -544,6 +576,9 @@
       <labl>Don't Know</labl>
     </catgry>
     <concept>Institutional trust</concept>
+    <concept xml:lang="de">Vertrauen</concept>
+    <concept xml:lang="de">Institutionenvertrauen</concept>
+    <concept xml:lang="de">Kommune</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -565,6 +600,9 @@
       <labl>Don't Know</labl>
     </catgry>
     <concept>Social reciprocity</concept>
+    <concept xml:lang="de">Nachbarschaftshilfe</concept>
+    <concept xml:lang="de">Hilfsbereitschaft</concept>
+    <concept xml:lang="de">Gegenseitigkeit</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -587,6 +625,8 @@
       <labl>No response</labl>
     </catgry>
     <concept>Language preference</concept>
+    <concept xml:lang="de">Sprache</concept>
+    <concept xml:lang="de">Sprachpräferenz</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -621,6 +661,8 @@
       <labl>Student</labl>
     </catgry>
     <concept>Employment status</concept>
+    <concept xml:lang="de">Erwerbsstatus</concept>
+    <concept xml:lang="de">Beschäftigung</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -655,6 +697,8 @@
       <labl>75+</labl>
     </catgry>
     <concept>Age group</concept>
+    <concept xml:lang="de">Alter</concept>
+    <concept xml:lang="de">Altersgruppe</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -673,6 +717,7 @@
       <labl>Female</labl>
     </catgry>
     <concept>Gender</concept>
+    <concept xml:lang="de">Geschlecht</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -699,6 +744,8 @@
       <labl>More than 5 years</labl>
     </catgry>
     <concept>Length of neighbourhood residence</concept>
+    <concept xml:lang="de">Wohndauer</concept>
+    <concept xml:lang="de">Nachbarschaft</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -717,6 +764,8 @@
       <labl>No</labl>
     </catgry>
     <concept>Home ownership</concept>
+    <concept xml:lang="de">Wohneigentum</concept>
+    <concept xml:lang="de">Eigentum</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
 
@@ -735,6 +784,7 @@
       <labl>A member of the wider community</labl>
     </catgry>
     <concept>Respondent type</concept>
+    <concept xml:lang="de">Befragtentyp</concept>
     <varFormat type="numeric" schema="other"/>
   </var>
   <!-- Variable: q11 - Any Other Comments -->
@@ -743,6 +793,8 @@
       <qstnLit>Any Other Comments?</qstnLit>
     </qstn>
     <concept>Open comments</concept>
+    <concept xml:lang="de">Anmerkungen</concept>
+    <concept xml:lang="de">Kommentare</concept>
     <varFormat type="character" schema="other"/>
   </var>
   </dataDscr>

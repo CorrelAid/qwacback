@@ -2,6 +2,7 @@ package routes
 
 import (
 	"os"
+	"regexp"
 	"strings"
 	"testing"
 
@@ -26,13 +27,15 @@ func TestConceptTagsRoundTrip(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	xmlData := strings.Replace(string(raw),
+	// The seed file carries tags of its own; start from an untagged copy.
+	untagged := regexp.MustCompile(`\n\s*<concept xml:lang="[^"]*">[^<]*</concept>`).ReplaceAllString(string(raw), "")
+	xmlData := strings.Replace(untagged,
 		"<concept>Interpersonal trust</concept>",
 		"<concept>Interpersonal trust</concept>\n    <concept xml:lang=\"de\">Vertrauen</concept>\n    <concept xml:lang=\"de\">Nachbarschaft</concept>", 1)
 	xmlData = strings.Replace(xmlData,
 		"<keyword>social capital</keyword>",
 		"<keyword>social capital</keyword>\n        <keyword xml:lang=\"de\">Sozialkapital</keyword>", 1)
-	if xmlData == string(raw) {
+	if xmlData == untagged {
 		t.Fatal("fixture edit did not apply")
 	}
 
