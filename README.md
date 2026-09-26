@@ -65,7 +65,7 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 ### Import & Validation
 
 - **POST `/api/validate`** — Validate a DDI XML file (XSD + Schematron) without importing. Body: `multipart/form-data` with `file` field.
-- **POST `/api/import`** — Validate and import a DDI XML file. Same body format. **Requires superuser auth.**
+- **POST `/api/import`** — Validate and import a DDI XML file. Same body format. **Requires superuser auth.** Imports aren't persisted across deploys; see [Data lives in `seed_data/`](#data-lives-in-seed_data).
 
 ### Export & Conversion
 
@@ -99,6 +99,16 @@ docker compose up -d --build
 ```
 
 Access the PocketBase Dashboard at `http://localhost:8090/_/`.
+
+### Data lives in `seed_data/`
+
+The database is **not persisted**: there is no volume for `/app/pb_data`, locally or in production (Coolify). Every container start, and so every deploy, begins with an empty PocketBase. The migrations create the superuser from `PB_ADMIN_EMAIL`/`PB_ADMIN_PASSWORD` and import every `seed_data/*.xml`.
+
+So **`seed_data/` is the source of truth** for the question bank:
+
+- To add or change a study, a question or its search tags, edit the DDI file in `seed_data/` and merge. The next deploy re-seeds from it.
+- Studies imported through `/api/import` and edits in the PocketBase dashboard last only until the next deploy.
+- Record IDs are derived from the study title and the variable/group name, so they stay the same across deploys as long as those don't change.
 
 ### Published images
 
@@ -164,7 +174,7 @@ internal/
   schematron/   Go NATS client for validation worker
 migrations/     Schema setup, settings, user init, seed data
 ddi-emitter/    Node sidecar: XLSForm → DDI via @correlaid/formtransform
-seed_data/      Seed studies (DDI-XML files imported on first run)
+seed_data/      The question bank: DDI-XML files imported on every start (the database is not persisted)
 .registry-version   Pinned formtransform release tag (drives ddi-emitter and the worker image)
 ```
 
@@ -209,7 +219,7 @@ curl -X POST http://localhost:8090/api/import \
 | `GOMEMLIMIT` | Soft memory limit for Go GC | `512MiB` |
 | `NATS_PORT` | Port for embedded NATS server | (optional — no validation without it) |
 | `NATS_TOKEN` | Auth token for embedded NATS server | (required when `NATS_PORT` is set) |
-| `QWACBACK_SKIP_SEED` | Set to `1` to skip seeding `seed_data/*.xml` on first run | (unset) |
+| `QWACBACK_SKIP_SEED` | Set to `1` to skip seeding `seed_data/*.xml` (the database then starts empty) | (unset) |
 
 ## MCP Server
 
