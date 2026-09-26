@@ -150,12 +150,32 @@ func stemsMatch(queryVariants, fieldVariants []string) bool {
 	return false
 }
 
+// stopwords are function words skipped in field text. Stems of content
+// words can collide with them: the German stemmer reduces "Sicherheit" to
+// `sich`, which then matched every question containing "sich". Only words
+// of minStemLen or more letters need listing; shorter ones never match.
+var stopwords = func() map[string]bool {
+	m := map[string]bool{}
+	for _, w := range strings.Fields(`
+		der die das den dem des ein eine einen einem einer eines und oder aber
+		sich sie ihr ihre ihren ihrem ihrer ihres ich wir uns euch wie was wer
+		wann ist sind war waren hat haben wird werden wurde wurden mit fuer von
+		auf aus bei nach seit ueber unter als auch nicht noch nur dass wenn sehr
+		mehr man kann koennen einem diese dieser dieses
+		the and for with from are was were been has have had does did you your
+		our they their she its this that these those what which who when where
+		how not yes than very more any`) {
+		m[w] = true
+	}
+	return m
+}()
+
 // fieldVariants tokenises, normalises and stems a field once, so the result
-// can be matched against every query term.
+// can be matched against every query term. Stopwords are skipped.
 func fieldVariants(fieldText string) [][]string {
 	var out [][]string
 	for _, ft := range tokenize(fieldText) {
-		if n := normalize(ft); n != "" {
+		if n := normalize(ft); n != "" && !stopwords[n] {
 			out = append(out, stemVariants(n))
 		}
 	}
@@ -203,7 +223,13 @@ func FilterAndRankQuestions(questions []Question, q string) []Question {
 	// Pre-compute stem variants for each query token (one per token).
 	queryVariants := make([][]string, len(tokens))
 	for i, tok := range tokens {
-		queryVariants[i] = stemVariants(normalize(tok))
+		n := normalize(tok)
+		queryVariants[i] = stemVariants(n)
+		// A German word also searches for its English glossary translations
+		// and vice versa (#19); a hit on either counts for this term.
+		for _, t := range translations(n) {
+			queryVariants[i] = append(queryVariants[i], stemVariants(normalize(t))...)
+		}
 	}
 
 	type scored struct {
