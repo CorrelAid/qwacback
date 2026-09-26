@@ -432,3 +432,35 @@ func TestIntegration_RoundTrip_ValidatesOutput(t *testing.T) {
 		t.Errorf("Expected valid DDI after round-trip, got errors: %+v", resp.Errors)
 	}
 }
+
+// hint and guidance_hint come back as <preQTxt> and <ivuInstr> since
+// formtransform v0.2.0 (#12); the result must still validate.
+func TestIntegration_XLSFormToDDI_ValidatesHintAndGuidance(t *testing.T) {
+	client := getSchematronClient(t)
+
+	xlsformJSON := `{
+		"survey": [
+			{"type": "integer", "name": "alter", "label": "Wie alt sind Sie?", "hint": "In Jahren", "parameters": "guidance_hint=Bei Unsicherheit nachfragen"}
+		],
+		"choices": [],
+		"settings": {}
+	}`
+
+	ddiXML, err := XLSFormToDDI([]byte(xlsformJSON))
+	if err != nil {
+		t.Fatalf("XLSFormToDDI failed: %v", err)
+	}
+	for _, want := range []string{"<preQTxt>In Jahren</preQTxt>", "<ivuInstr>Bei Unsicherheit nachfragen</ivuInstr>"} {
+		if !strings.Contains(string(ddiXML), want) {
+			t.Errorf("missing %s in:\n%s", want, ddiXML)
+		}
+	}
+
+	resp, err := client.Validate(wrapFragmentInCodebook(ddiXML))
+	if err != nil {
+		t.Fatalf("Validation request failed: %v", err)
+	}
+	if !resp.Valid {
+		t.Errorf("Expected valid DDI, got errors: %+v", resp.Errors)
+	}
+}

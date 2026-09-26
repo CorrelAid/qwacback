@@ -327,7 +327,7 @@ Error responses include a descriptive message:
 
 - The conversion preserves the core question structure but may not retain all DDI metadata
 - Generated DDI IDs follow the pattern `V_<name>` for variables and `VG_<name>` for groups
-- XLSForm → DDI currently drops `hint` and `guidance_hint` (formtransform doesn't convert them yet, see #12); DDI → XLSForm still maps `preQTxt` to `hint` and `ivuInstr` to `guidance_hint`
+- XLSForm `hint` ↔ DDI `preQTxt` and `guidance_hint` (in `parameters`) ↔ DDI `ivuInstr`, in both directions
 - Missing value categories (DDI `missing="Y"`) are excluded from XLSForm choices
 - These endpoints are stateless and do not persist data to the database
 
