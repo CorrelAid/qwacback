@@ -192,8 +192,8 @@ func TestRoundTripProveIt(t *testing.T) {
 		if v.Qstn.QstnLit != "Do you think that your neighbours act in your best interests?" {
 			t.Errorf("QstnLit: got %q", v.Qstn.QstnLit)
 		}
-		if v.Concept.Value != "Interpersonal trust" {
-			t.Errorf("Concept: got %q", v.Concept.Value)
+		if v.Concepts[0].Value != "Interpersonal trust" {
+			t.Errorf("Concept: got %q", v.Concepts[0].Value)
 		}
 		if len(v.Catgry) != 3 {
 			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))
@@ -256,8 +256,8 @@ func TestRoundTripProveIt(t *testing.T) {
 		if vg1.Type != "grid" {
 			t.Errorf("VG1 type: got %q", vg1.Type)
 		}
-		if vg1.Concept.Value != "Civic network awareness" {
-			t.Errorf("VG1 concept: got %q", vg1.Concept.Value)
+		if vg1.Concepts[0].Value != "Civic network awareness" {
+			t.Errorf("VG1 concept: got %q", vg1.Concepts[0].Value)
 		}
 		if vg1.Txt != "If you did want to change things around here, do you know who to contact to help you in the following groups…?" {
 			t.Errorf("VG1 txt: got %q", vg1.Txt)
@@ -347,8 +347,8 @@ func TestExportVarGrpCodebookToXML(t *testing.T) {
 	if dd.VarGrp[0].Type != "grid" {
 		t.Errorf("VarGrp Type: got %q", dd.VarGrp[0].Type)
 	}
-	if dd.VarGrp[0].Concept.Value != "Test Group" {
-		t.Errorf("VarGrp Concept: got %q", dd.VarGrp[0].Concept.Value)
+	if dd.VarGrp[0].Concepts[0].Value != "Test Group" {
+		t.Errorf("VarGrp Concept: got %q", dd.VarGrp[0].Concepts[0].Value)
 	}
 	if dd.VarGrp[0].Txt != "A test group description" {
 		t.Errorf("VarGrp Txt: got %q", dd.VarGrp[0].Txt)
@@ -552,8 +552,8 @@ func TestRoundTripDemo(t *testing.T) {
 		if v.Qstn.ResponseDomainType != "category" {
 			t.Errorf("ResponseDomainType: got %q", v.Qstn.ResponseDomainType)
 		}
-		if v.Concept.Value != "Gender" {
-			t.Errorf("Concept: got %q", v.Concept.Value)
+		if v.Concepts[0].Value != "Gender" {
+			t.Errorf("Concept: got %q", v.Concepts[0].Value)
 		}
 		if len(v.Catgry) != 3 {
 			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))

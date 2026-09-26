@@ -20,9 +20,10 @@ var stemEnvPool = sync.Pool{
 }
 
 // fieldWeight is the relevance weight for each field, indexed by
-// [question_text, concept, name, answer_type]. Higher weight = ranked up
-// when two questions tie on the number of matched terms.
-var fieldWeight = [4]int{4, 3, 2, 1}
+// [question_text, concept, tags, name, answer_type]. Higher weight = ranked
+// up when two questions tie on the number of matched terms. Tags weigh like
+// the concept: they are further concepts (#19).
+var fieldWeight = [5]int{4, 3, 3, 2, 1}
 
 // tokenize splits the input on whitespace and commas, then drops empty
 // fragments. Stays case-insensitive — normalisation runs separately.
@@ -192,9 +193,13 @@ func fieldHit(field [][]string, queryVariants []string) bool {
 	return false
 }
 
-// fieldTexts returns the four searchable text fields in fieldWeight order.
-func (q Question) fieldTexts() [4]string {
-	return [4]string{q.QuestionText, q.Concept, q.Name, q.AnswerType}
+// fieldTexts returns the searchable text fields in fieldWeight order.
+func (q Question) fieldTexts() [5]string {
+	tags := make([]string, len(q.Tags))
+	for i, t := range q.Tags {
+		tags[i] = t.Text
+	}
+	return [5]string{q.QuestionText, q.Concept, strings.Join(tags, ", "), q.Name, q.AnswerType}
 }
 
 // FilterAndRankQuestions filters questions by the query and ranks them
@@ -205,7 +210,7 @@ func (q Question) fieldTexts() [4]string {
 //     descending). This is what makes `Wirkung Bildungsprogramm
 //     Zufriedenheit` return the union of the three single-term hits
 //     instead of an empty list.
-//  2. Sum of field weights (question_text > concept > name > answer_type)
+//  2. Sum of field weights (question_text > concept = tags > name > answer_type)
 //     across all (term, field) hits, breaking ties.
 //
 // Query terms are split on whitespace and commas. Both sides are
@@ -223,13 +228,7 @@ func FilterAndRankQuestions(questions []Question, q string) []Question {
 	// Pre-compute stem variants for each query token (one per token).
 	queryVariants := make([][]string, len(tokens))
 	for i, tok := range tokens {
-		n := normalize(tok)
-		queryVariants[i] = stemVariants(n)
-		// A German word also searches for its English glossary translations
-		// and vice versa (#19); a hit on either counts for this term.
-		for _, t := range translations(n) {
-			queryVariants[i] = append(queryVariants[i], stemVariants(normalize(t))...)
-		}
+		queryVariants[i] = stemVariants(normalize(tok))
 	}
 
 	type scored struct {
@@ -243,7 +242,7 @@ func FilterAndRankQuestions(questions []Question, q string) []Question {
 		termsHit := 0
 		weighted := 0
 		texts := question.fieldTexts()
-		var fields [4][][]string
+		var fields [5][][]string
 		for fi, ft := range texts {
 			fields[fi] = fieldVariants(ft)
 		}

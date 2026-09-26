@@ -124,6 +124,43 @@ type Question struct {
 	VariableIDs  []string `json:"variable_ids"`
 	GroupID      string   `json:"group_id,omitempty"`
 	Order        float64  `json:"order"`
+	// Tags are extra search terms from the DDI: the <concept> elements after
+	// the first, usually the concept in the other language (#19).
+	Tags []QuestionTag `json:"tags,omitempty"`
+}
+
+// QuestionTag is one search tag, with its xml:lang if the DDI gave one.
+type QuestionTag struct {
+	Lang string `json:"lang,omitempty"`
+	Text string `json:"text"`
+}
+
+// recordTags reads the `tags` JSON field of a variable or group record.
+func recordTags(r *core.Record) []QuestionTag {
+	var tags []QuestionTag
+	if raw := r.GetString("tags"); raw != "" && raw != "null" {
+		if err := json.Unmarshal([]byte(raw), &tags); err != nil {
+			log.Printf("WARNING: failed to unmarshal tags for %s: %v", r.Id, err)
+		}
+	}
+	return tags
+}
+
+// appendTags adds tags not yet in dst.
+func appendTags(dst []QuestionTag, add ...QuestionTag) []QuestionTag {
+	for _, t := range add {
+		dup := false
+		for _, d := range dst {
+			if d == t {
+				dup = true
+				break
+			}
+		}
+		if !dup {
+			dst = append(dst, t)
+		}
+	}
+	return dst
 }
 
 // effectiveAnswerType returns the full answer type for a variable, incorporating
@@ -182,8 +219,10 @@ func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 			Order:        g.GetFloat("order"),
 		}
 
+		q.Tags = recordTags(g)
 		for _, v := range varsByGroup[g.Id] {
 			q.VariableIDs = append(q.VariableIDs, v.Id)
+			q.Tags = appendTags(q.Tags, recordTags(v)...)
 		}
 
 		// Determine answer_type from group type
@@ -246,6 +285,7 @@ func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 			AnswerType:   effectiveAnswerType(v),
 			VariableIDs:  []string{v.Id},
 			Order:        v.GetFloat("order"),
+			Tags:         recordTags(v),
 		})
 	}
 
