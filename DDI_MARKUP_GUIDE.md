@@ -43,6 +43,15 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 *   **Grid sub-items**: Use a `Construct: Facet` pattern (e.g. `Trust: Parliament`, `Civic network: Council`).
 *   **Variable groups**: Name the overarching topic or construct (e.g. `Trust in institutions`, `Device ownership`).
 *   The `concept` element supports `vocab` and `vocabURI` attributes to link to controlled vocabularies.
+*   **Search tags:** further `concept` elements after the first one are search tags, typically the concept in the other language. They make an item findable in German and English without changing its wording. The first `concept` stays the concept. Tags never carry `vocab`, which marks a long list.
+
+    ```xml
+    <concept>Interpersonal trust</concept>
+    <concept xml:lang="de">Vertrauen</concept>
+    <concept xml:lang="de">Nachbarschaft</concept>
+    ```
+
+    DDI 2.5 allows any number of `concept` elements. The CDL Schematron rules accept several from formtransform v0.4.0 on (they require at least one non-empty one).
 
 ### `labl`
 
@@ -118,9 +127,9 @@ On import, the application captures each element's position as a numeric `order`
 |--------|----------|----------------------|-------------------|-----------|
 | `integer` | `contin` | `numeric` | `numeric` | `<var>` |
 | `text` | `discrete` | `text` | `character` | `<var>` |
-| `single_choice` | `discrete` | `category` | `numeric` | `<var>` + `<catgry>` per option |
-| `multiple_choice` | `discrete` | `multiple` | `numeric` | `<varGrp type="multipleResp">` + binary `<var>` per option |
-| `grid` | `discrete` | `category` | `numeric` | `<varGrp type="grid">` + `<var>` per item (categories repeated) |
+| `single_choice` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<var>` + `<catgry>` per option |
+| `multiple_choice` | `discrete` | `multiple` | `numeric` (0/1 binaries) | `<varGrp type="multipleResp">` + binary `<var>` per option |
+| `grid` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<varGrp type="grid">` + `<var>` per item (categories repeated) |
 
 ### Subcategory flags
 
@@ -199,7 +208,7 @@ In XLSForm, this corresponds to `select_one_from_file` or `select_multiple_from_
     <qstnLit>In welchem Land wurden Sie geboren?</qstnLit>
   </qstn>
   <concept vocab="iso_3166_1">In welchem Land wurden Sie geboren?</concept>
-  <varFormat type="numeric" schema="other"/>
+  <varFormat type="character" schema="other"/>
 </var>
 ```
 
@@ -213,11 +222,13 @@ Same structure as `single_choice_long` but with `responseDomainType="multiple"`.
     <qstnLit>Aus welchen Ländern stammen die Menschen, die Ihre Angebote nutzen? Mehrere Antworten möglich.</qstnLit>
   </qstn>
   <concept vocab="iso_3166_1">Herkunftsländer der Nutzer*innen</concept>
-  <varFormat type="numeric" schema="other"/>
+  <varFormat type="character" schema="other"/>
 </var>
 ```
 
 > **Note**: The schematron rules exempt variables with `concept/@vocab` from the requirement to have inline `catgry` elements.
+
+> **`varFormat` of categorical variables** (formtransform v0.4.0): `numeric` only when every code is a number, otherwise `character`. That covers codes like `other` or `such`, and long lists whose vocabulary codes are letters (ISO 3166 `DE`). `select_multiple_from_file` stores space-joined codes in one variable and is always `character`. qwacback stores and exports `varFormat` as imported, so older studies keep theirs.
 
 ---
 
@@ -267,7 +278,7 @@ Rules:
 | `ivuInstr` | `qstn` | Interviewer instructions (not shown to respondent) |
 | `catgry` | `var` | Response category; contains `catValu` and optionally `labl` |
 | `labl` | `catgry` | Human-readable label for a category value (required for `category`, omitted for `multiple`) |
-| `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (required) |
+| `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (required). Further `concept` elements are search tags |
 | `txt` | `varGrp` | Shared introductory question text for grid/checkbox groups |
 | `varFormat` | `var` | Technical data format (must appear second-to-last inside `var`) |
 | `notes` | `var` | Optional free-text annotation (max one per variable, must be last child) |
