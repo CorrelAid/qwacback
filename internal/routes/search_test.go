@@ -123,8 +123,10 @@ func TestFilterAndRankQuestions_EnglishSubstringMatchesTrust(t *testing.T) {
 	// Order is set by tie-break: both match in concept with weight 3; the
 	// `council_trust` question also matches `trust` as a name token, so it
 	// wins on field-weight sum (3 + 2 = 5 vs 3).
+	// Since #19 the German "Vertrauen in Institutionen" (vt1) matches too,
+	// via the glossary; it hits question_text (4) + concept (3) = 7.
 	got := ids(FilterAndRankQuestions(allSearchFixtures(), "trust"))
-	want := []string{"m54bffznrpq5qyb", "4epbcqti75mvbfz"}
+	want := []string{"m54bffznrpq5qyb", "vt1", "4epbcqti75mvbfz"}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("expected %v, got %v", want, got)
 	}
@@ -187,4 +189,45 @@ func TestFilterAndRankQuestions_StemHandlesWeiterempfehlen(t *testing.T) {
 	if !reflect.DeepEqual(ids(got), []string{"verb"}) {
 		t.Errorf("expected [verb], got %v", ids(got))
 	}
+}
+
+// #19: a German keyword finds English items and vice versa, via the glossary.
+func TestFilterAndRankQuestions_TranslatesBetweenGermanAndEnglish(t *testing.T) {
+	got := idsSet(FilterAndRankQuestions(allSearchFixtures(), "Vertrauen"))
+	for _, id := range []string{"4epbcqti75mvbfz", "m54bffznrpq5qyb", "vt1"} {
+		if !got[id] {
+			t.Errorf("Vertrauen: missing %s, got %v", id, got)
+		}
+	}
+
+	qs := []Question{
+		{ID: "de", Name: "geschlecht", Concept: "Geschlecht", QuestionText: "Was ist Ihr Geschlecht?", AnswerType: "single_choice"},
+		{ID: "en", Name: "gender", Concept: "Gender", QuestionText: "Gender", AnswerType: "single_choice"},
+		{ID: "other", Name: "age", Concept: "Age group", QuestionText: "Age", AnswerType: "single_choice"},
+	}
+	for _, q := range []string{"Geschlecht", "gender"} {
+		if got := idsSet(FilterAndRankQuestions(qs, q)); !got["de"] || !got["en"] || got["other"] {
+			t.Errorf("%s: expected de and en only, got %v", q, got)
+		}
+	}
+}
+
+// Stems can collide with function words: "Sicherheit" stems to `sich`, which
+// used to match every question containing "sich".
+func TestFilterAndRankQuestions_StopwordsDontMatchStems(t *testing.T) {
+	qs := []Question{
+		{ID: "sich", Name: "gruendung", Concept: "Gründungsjahr", QuestionText: "Wann hat sich Ihre Organisation gegründet?", AnswerType: "integer"},
+		{ID: "safe", Name: "safety_day", Concept: "Perceived community safety", QuestionText: "I feel safe during the day.", AnswerType: "single_choice"},
+	}
+	if got := ids(FilterAndRankQuestions(qs, "Sicherheit")); !reflect.DeepEqual(got, []string{"safe"}) {
+		t.Errorf("expected [safe], got %v", got)
+	}
+}
+
+func idsSet(qs []Question) map[string]bool {
+	out := map[string]bool{}
+	for _, q := range qs {
+		out[q.ID] = true
+	}
+	return out
 }
