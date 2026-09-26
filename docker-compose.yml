@@ -1,6 +1,6 @@
 services:
   schematron-worker:
-    image: ghcr.io/correlaid/schematron-worker:v0.1.7  # must equal .registry-version (scripts/check-registry-version.sh)
+    image: ghcr.io/correlaid/schematron-worker:v0.3.0  # must equal .registry-version (scripts/check-registry-version.sh)
     environment:
       - NATS_URL=nats://qwacback:${NATS_PORT:-4222}
       - NATS_TOKEN=${NATS_TOKEN:-changeme}

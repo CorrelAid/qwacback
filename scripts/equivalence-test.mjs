@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Formtransform equivalence test against qwacback (formtransform#14, qwacback#3).
 //
-// Compares formtransform's buildDdiXml output with qwacback's
+// Compares formtransform's xlsformToDdi output with qwacback's
 // POST /api/convert/xlsform-to-ddi output. For each case, the same XLSForm goes
 // through both, and every <var>/<varGrp> must match after normalization
 // (whitespace, self-closing tags, entity spelling, the `files` IDREF and the
@@ -13,7 +13,7 @@
 const FORMTRANSFORM_DIST = process.env.FORMTRANSFORM_DIST
   || new URL('../ddi-emitter/node_modules/@correlaid/formtransform/dist/index.js', import.meta.url).pathname;
 
-const { buildDdiXml } = await import(FORMTRANSFORM_DIST);
+const { xlsformToDdi } = await import(FORMTRANSFORM_DIST);
 
 const QWACBACK_URL = process.env.QWACBACK_URL || 'http://127.0.0.1:8090';
 const QWACBACK_EMAIL = process.env.QWACBACK_EMAIL || 'admin@example.com';
@@ -118,8 +118,8 @@ const EQUIVALENT_TYPES = [
   },
   {
     id: 'hint_and_guidance',
-    // formtransform v0.1.7 drops both (qwacback#12); this checks qwacback
-    // passes through whatever formtransform makes of them.
+    // hint → <preQTxt>, guidance_hint → <ivuInstr> since formtransform v0.2.0
+    // (qwacback#12); both must reach the client unchanged.
     survey: [{ type: 'integer', name: 'alter', label: 'Alter', hint: 'In Jahren', parameters: 'guidance_hint=Nachfragen', required: 'false', appearance: null }],
     choices: {},
   },
@@ -219,7 +219,7 @@ function shapeGroups(xmlStr) {
 }
 
 function payloadFor(test) {
-  // buildDdiXml wants survey/choices rows in flat form; qwacback wants the
+  // xlsformToDdi wants survey/choices rows in flat form; qwacback wants the
   // same shape (it forwards JSON to the ddi-emitter).
   const choices = [];
   for (const [listName, list] of Object.entries(test.choices)) {
@@ -269,7 +269,7 @@ async function callQwacback(payload) {
 }
 
 async function callFormtransform(payload) {
-  return buildDdiXml(payload.survey, payload.choices);
+  return xlsformToDdi({ surveyData: payload.survey, choicesData: payload.choices }, { onWarning: () => {} });
 }
 
 let passed = 0;

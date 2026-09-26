@@ -2,7 +2,7 @@
 // @correlaid/formtransform. Started by qwacback (Dockerfile) and reached over
 // HTTP from internal/converter/ddi_client.go.
 import { createServer } from 'node:http';
-import { XLSValidator, buildDdiXml } from '@correlaid/formtransform';
+import { ConversionError, xlsformToDdi } from '@correlaid/formtransform';
 
 const PORT = Number(process.env.DDI_EMITTER_PORT ?? 8091);
 
@@ -80,24 +80,32 @@ const server = createServer(async (req, res) => {
   }
 
   try {
-    // buildDdiXml converts whatever it gets; the allowlist of what it can
-    // convert losslessly lives in validateSubset. Without this, unregistered
-    // types (rank, geopoint, ...) and selects without choices come out as
-    // plausible but wrong DDI. 'ddi' skips LimeSurvey-only naming limits.
-    const errors = XLSValidator.validateSubset(survey, choices, { target: 'ddi' })
-      .filter((v) => v.severity === 'error')
-      .map((v) => v.message);
-    if (errors.length > 0) {
-      send(res, 400, JSON.stringify({ error: errors.join('; '), errors }), {
+    // xlsformToDdi runs formtransform's subset check (target 'ddi') first and
+    // throws ConversionError('xlsform-outside-subset') listing every finding:
+    // unregistered types (rank, geopoint, ...), selects without choices,
+    // dangling ${references}.
+    const xml = xlsformToDdi(
+      { surveyData: survey, choicesData: choices },
+      {
+        settings: pickSettings(payload),
+        onWarning: (d) => console.warn(`ddi-emitter: ${d.code}: ${d.message}`),
+      },
+    );
+    send(res, 200, xml);
+  } catch (e) {
+    if (e instanceof ConversionError) {
+      // The input is at fault: 400 with every finding; each names the question.
+      const findings = e.details.length > 0 ? e.details : [e];
+      const errors = findings.filter((d) => d.severity === 'error').map((d) => d.message);
+      send(res, 400, JSON.stringify({ error: errors.join('; ') || e.message, errors }), {
         'content-type': 'application/json',
       });
       return;
     }
-    const xml = buildDdiXml(survey, choices, { settings: pickSettings(payload) });
-    send(res, 200, xml);
-  } catch (e) {
-    const message = e?.message ? String(e.message) : String(e);
-    send(res, 400, JSON.stringify({ error: message }), {
+    // Anything else is a bug in the sidecar or the library, not in the input;
+    // qwacback answers 503 for it.
+    console.error('ddi-emitter: conversion failed', e);
+    send(res, 500, JSON.stringify({ error: 'internal error' }), {
       'content-type': 'application/json',
     });
   }

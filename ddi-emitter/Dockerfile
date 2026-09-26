@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy only the manifest first so dependency installation is cached across
 # source-only changes.
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .npmrc ./
 RUN npm ci --omit=dev --no-audit --no-fund
 
 COPY server.mjs ./
