@@ -30,6 +30,8 @@
     <varGrp ID="VG_geschlecht" name="geschlecht" type="other" varGrp="VG_geschlecht_choices" var="V_geschlecht_other">
       <txt>Was ist Ihr Geschlecht?</txt>
       <concept>Geschlecht (Selbstdefinition)</concept>
+      <concept xml:lang="en">gender</concept>
+      <concept xml:lang="en">sex</concept>
     </varGrp>
     <!-- Child group: the multipleResp binary options -->
     <varGrp ID="VG_geschlecht_choices" name="geschlecht_choices" type="multipleResp" var="V_geschlecht_weiblich V_geschlecht_maennlich V_geschlecht_nicht_binaer V_geschlecht_kein_geschlecht V_geschlecht_keine_angabe">
@@ -180,6 +182,8 @@
         <labl>10 - Äußerst wahrscheinlich</labl>
       </catgry>
       <concept>Net Promoter Score (Weiterempfehlung)</concept>
+      <concept xml:lang="en">recommendation</concept>
+      <concept xml:lang="en">satisfaction</concept>
       <varFormat type="numeric" schema="other"/>
       <notes>Net Promoter Score (NPS) nach Reichheld, F. (2003): The One Number You Need to Grow. Harvard Business Review.</notes>
     </var>

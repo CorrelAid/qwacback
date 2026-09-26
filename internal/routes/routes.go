@@ -872,6 +872,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			"study":        study,
 			"group":        group,
 			"variables":    variables,
+			"tags":         q.Tags,
 		})
 	})
 
