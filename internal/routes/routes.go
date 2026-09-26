@@ -126,49 +126,6 @@ type Question struct {
 	Order        float64  `json:"order"`
 }
 
-// FilterAndRankQuestions filters questions matching the query string and ranks
-// them by relevance: question_text > concept > name > answer_type.
-func FilterAndRankQuestions(questions []Question, q string) []Question {
-	qLower := strings.ToLower(q)
-	var matched []Question
-	for _, question := range questions {
-		if strings.Contains(strings.ToLower(question.QuestionText), qLower) ||
-			strings.Contains(strings.ToLower(question.Concept), qLower) ||
-			strings.Contains(strings.ToLower(question.Name), qLower) ||
-			strings.Contains(strings.ToLower(question.AnswerType), qLower) {
-			matched = append(matched, question)
-		}
-	}
-
-	fields := []string{"question_text", "concept", "name", "answer_type"}
-	sort.SliceStable(matched, func(i, j int) bool {
-		si, sj := 0, 0
-		for fi, field := range fields {
-			weight := len(fields) - fi
-			vi, vj := "", ""
-			switch field {
-			case "question_text":
-				vi, vj = matched[i].QuestionText, matched[j].QuestionText
-			case "concept":
-				vi, vj = matched[i].Concept, matched[j].Concept
-			case "name":
-				vi, vj = matched[i].Name, matched[j].Name
-			case "answer_type":
-				vi, vj = matched[i].AnswerType, matched[j].AnswerType
-			}
-			if strings.Contains(strings.ToLower(vi), qLower) {
-				si += weight
-			}
-			if strings.Contains(strings.ToLower(vj), qLower) {
-				sj += weight
-			}
-		}
-		return si > sj
-	})
-
-	return matched
-}
-
 // effectiveAnswerType returns the full answer type for a variable, incorporating
 // the has_other and has_long_list boolean flags.
 func effectiveAnswerType(v *core.Record) string {
@@ -681,8 +638,10 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	})
 
 	// Search questions - Public
-	// Assembles questions from all studies, then searches and ranks by relevance.
-	// Relevance: question_text > concept > name > answer_type
+	// Assembles questions from all (or filtered) studies, then searches and
+	// ranks by relevance. Multi-term queries (whitespace/comma separated)
+	// match ANY term (union); ranking is by #terms-matched then by field
+	// weight. See internal/routes/search.go for the matching rules.
 	se.Router.GET("/api/search/questions", func(e *core.RequestEvent) error {
 		q := strings.TrimSpace(e.Request.URL.Query().Get("q"))
 		if q == "" {
@@ -694,22 +653,11 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		page, perPage := parsePagination(e)
 
-		// Assemble questions from all studies
-		studies, err := app.FindRecordsByFilter("studies", "", "", 0, 0)
+		query := e.Request.URL.Query()
+		matched, err := SearchQuestions(app, q, query["study_id"], query["exclude_study"])
 		if err != nil {
 			return apis.NewInternalServerError("Search failed", nil)
 		}
-
-		var allQuestions []Question
-		for _, s := range studies {
-			qs, err := AssembleQuestions(app, s.Id)
-			if err != nil {
-				continue
-			}
-			allQuestions = append(allQuestions, qs...)
-		}
-
-		matched := FilterAndRankQuestions(allQuestions, q)
 
 		// Paginate
 		totalItems := len(matched)

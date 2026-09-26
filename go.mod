@@ -3,6 +3,7 @@ module qwacback
 go 1.25.7
 
 require (
+	github.com/blevesearch/snowballstem v0.9.0
 	github.com/clbanning/mxj/v2 v2.7.0
 	github.com/google/uuid v1.6.0
 	github.com/mark3labs/mcp-go v0.46.0

@@ -372,6 +372,32 @@ func TestSearchQuestionsRoute(t *testing.T) {
 			TestAppFactory:  setupTestApp,
 		},
 		{
+			Name:               "several terms: a phrase still finds hits",
+			Method:             http.MethodGet,
+			URL:                "/api/search/questions?q=zzzznonexistentzzzz%20trust",
+			ExpectedStatus:     200,
+			ExpectedContent:    []string{`"items"`, `"concept"`},
+			NotExpectedContent: []string{`"totalItems":0`},
+			TestAppFactory:     setupTestApp,
+		},
+		{
+			Name:            "unknown study_id values leave nothing to search",
+			Method:          http.MethodGet,
+			URL:             "/api/search/questions?q=trust&study_id=nosuchstudy1&study_id=nosuchstudy2",
+			ExpectedStatus:  200,
+			ExpectedContent: []string{`"totalItems":0`},
+			TestAppFactory:  setupTestApp,
+		},
+		{
+			Name:               "unknown exclude_study changes nothing",
+			Method:             http.MethodGet,
+			URL:                "/api/search/questions?q=trust&exclude_study=nosuchstudy",
+			ExpectedStatus:     200,
+			ExpectedContent:    []string{`"concept"`},
+			NotExpectedContent: []string{`"totalItems":0`},
+			TestAppFactory:     setupTestApp,
+		},
+		{
 			Name:            "search with pagination",
 			Method:          http.MethodGet,
 			URL:             "/api/search/questions?q=trust&page=1&perPage=2",
@@ -518,6 +544,7 @@ func TestQuestionDetailCategories(t *testing.T) {
 // In prove_it.xml:
 //   - council_trust: matches "trust" in question, concept, AND name (score 6+5+4=15)
 //   - neighbour_trust: matches "trust" in concept and name only (score 5+4=9)
+//
 // So council_trust must appear before neighbour_trust.
 func TestSearchQuestionsOrdering(t *testing.T) {
 	setupTestApp := searchTestApp()
