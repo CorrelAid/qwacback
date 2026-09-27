@@ -317,8 +317,9 @@ func inferAnswerType(responseDomainType, groupType string) string {
 	}
 }
 
-// ImportCodebookData parses the XML and inserts studies, groups, variables and categories into PocketBase.
-func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
+// ImportCodebook parses the XML and inserts studies, groups, variables and
+// categories into PocketBase. It returns the ID of the new study.
+func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	// Base language of a multilingual codebook (formtransform#135): the
 	// untagged texts are in it; other languages come as xml:lang siblings.
 	baseLang, _ := mv.ValueForPathString("codeBook.-lang")
@@ -368,7 +369,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 
 	studyCollection, err := app.FindCollectionByNameOrId("studies")
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	studyRecord := core.NewRecord(studyCollection)
@@ -392,7 +393,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	studyRecord.Set("language", baseLang)
 
 	if err := app.Save(studyRecord); err != nil {
-		return err
+		return "", err
 	}
 
 	// Pre-extract qstnLit texts via the XML token stream.
@@ -642,5 +643,11 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 		}
 	}
 
-	return nil
+	return studyRecord.Id, nil
+}
+
+// ImportCodebookData is ImportCodebook for callers that don't need the study ID.
+func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
+	_, err := ImportCodebook(app, mv, rawXML)
+	return err
 }

@@ -67,7 +67,7 @@ Questions of a multilingual study also carry `language` (the base language of `q
 ### Import & Validation
 
 - **POST `/api/validate`** — Validate a DDI XML file (XSD + Schematron) without importing. Body: `multipart/form-data` with `file` field.
-- **POST `/api/import`** — Validate and import a DDI XML file. Same body format. **Requires superuser auth.** Imports aren't persisted across deploys; see [Data lives in `seed_data/`](#data-lives-in-seed_data).
+- **POST `/api/import`** — Validate and import a DDI XML file. Same body format. **Requires superuser auth.** Responds `{"valid": true, "imported": true, "study_id": "…", "message": …}` on success; `imported: false` when the file is valid but couldn't be stored. Imports aren't persisted across deploys; see [Data lives in `seed_data/`](#data-lives-in-seed_data).
 
 ### Export & Conversion
 
