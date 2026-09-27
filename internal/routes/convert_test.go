@@ -78,3 +78,40 @@ func TestConvertXLSFormToDDIRoute(t *testing.T) {
 		}).Test(t)
 	})
 }
+
+// #40: the catalogue keyed by answer type, or by registry slug.
+func TestQuestionTypesRoute(t *testing.T) {
+	if !ddiEmitterReachable(t) {
+		t.Skip("ddi-emitter not reachable")
+	}
+	setupTestApp := func(t testing.TB) *tests.TestApp {
+		testApp, err := tests.NewTestApp(t.(*testing.T).TempDir())
+		if err != nil {
+			t.Fatal(err)
+		}
+		testApp.OnServe().BindFunc(func(se *core.ServeEvent) error {
+			if err := RegisterRoutes(testApp, se, nil, "../.."); err != nil {
+				return err
+			}
+			return se.Next()
+		})
+		return testApp
+	}
+	(&tests.ApiScenario{
+		Method:         http.MethodGet,
+		URL:            "/api/question-types",
+		ExpectedStatus: 200,
+		ExpectedContent: []string{
+			`"single_choice_other":{`, `"registryType":"select_one_other"`,
+			`"withOther":true`, `"en":"Integer"`, `"aliases":["int"]`,
+		},
+		TestAppFactory: setupTestApp,
+	}).Test(t)
+	(&tests.ApiScenario{
+		Method:          http.MethodGet,
+		URL:             "/api/question-types?registry=1",
+		ExpectedStatus:  200,
+		ExpectedContent: []string{`"select_one_other":{`, `"id":"variant:select_one_other"`, `"deviceid":{`},
+		TestAppFactory:  setupTestApp,
+	}).Test(t)
+}

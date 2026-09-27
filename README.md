@@ -82,6 +82,7 @@ For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
 
 - **GET `/api/examples`** — Answer type examples (XLSForm + DDI pairs).
 - **GET `/api/examples/{type}`** — Single example by type (`single_choice`, `multiple_choice`, `grid`, `integer`, `text`, etc.).
+- **GET `/api/question-types`** — The registry's question-type catalogue of the pinned formtransform, keyed by qwacback's answer types: `registryType`, `label` per language, `kind`, `base`, `aliases` and `presentation` (`choice`: `one`/`multiple`, `withOther`, `longList`, `grid`). `?registry=1` returns every registry type keyed by registry slug instead. Clients get the catalogue here instead of importing `@correlaid/formtransform`.
 - **GET `/api/docs/markup-guide`** — DDI encoding conventions.
 
 ### PocketBase built-in API
@@ -117,7 +118,7 @@ So **`seed_data/` is the source of truth** for the question bank:
 [.github/workflows/release.yml](.github/workflows/release.yml) builds qwacback and its sidecar and publishes them to GitHub Container Registry:
 
 - `ghcr.io/correlaid/qwacback` — the Go/PocketBase API
-- `ghcr.io/correlaid/qwacback-ddi-emitter` — the DDI ↔ XLSForm sidecar. qwacback needs it for `/api/convert/*`, every `/xlsform` endpoint and `/api/examples`; point `DDI_EMITTER_URL` at it. Deploy it with the same tag as qwacback.
+- `ghcr.io/correlaid/qwacback-ddi-emitter` — the DDI ↔ XLSForm sidecar. qwacback needs it for `/api/convert/*`, every `/xlsform` endpoint, `/api/examples` and `/api/question-types`; point `DDI_EMITTER_URL` at it. Deploy it with the same tag as qwacback.
 
 The validation worker (`ghcr.io/correlaid/schematron-worker`) is published by [CorrelAid/formtransform](https://github.com/CorrelAid/formtransform) and pulled into this stack via `docker-compose.yml`. The same is true for the `@correlaid/formtransform` library used by `ddi-emitter`. Both are version-pinned together via `.registry-version`; `scripts/check-registry-version.sh` (run by the release workflow) fails if they disagree.
 
