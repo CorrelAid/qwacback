@@ -92,6 +92,14 @@ type SurveyRow struct {
 	// Not `parameters`: that column holds space-separated key=value pairs, so
 	// an instruction with spaces there is invalid XLSForm (#22).
 	GuidanceHint string `json:"guidance_hint,omitempty"`
+	// Extra holds further columns, written as top-level keys: the other
+	// languages of a multilingual form, e.g. "label::en" (#35).
+	Extra map[string]string `json:"-"`
+}
+
+func (r SurveyRow) MarshalJSON() ([]byte, error) {
+	type plain SurveyRow
+	return marshalWithExtra(plain(r), r.Extra)
 }
 
 // ChoiceRow represents one row in the "choices" sheet.
@@ -99,6 +107,40 @@ type ChoiceRow struct {
 	ListName string `json:"list_name"`
 	Name     string `json:"name"`
 	Label    string `json:"label"`
+	// Extra: see SurveyRow.Extra.
+	Extra map[string]string `json:"-"`
+}
+
+func (r ChoiceRow) MarshalJSON() ([]byte, error) {
+	type plain ChoiceRow
+	return marshalWithExtra(plain(r), r.Extra)
+}
+
+// marshalWithExtra marshals v (a struct without MarshalJSON) and adds the
+// extra keys next to its fields.
+func marshalWithExtra(v interface{}, extra map[string]string) ([]byte, error) {
+	b, err := json.Marshal(v)
+	if err != nil || len(extra) == 0 {
+		return b, err
+	}
+	var m map[string]interface{}
+	if err := json.Unmarshal(b, &m); err != nil {
+		return nil, err
+	}
+	for k, val := range extra {
+		m[k] = val
+	}
+	return json.Marshal(m)
+}
+
+// addLangColumns adds "<column>::<lang>" for every other language of t.
+func addLangColumns(extra *map[string]string, column string, t LangText) {
+	for lang, text := range t.Others() {
+		if *extra == nil {
+			*extra = map[string]string{}
+		}
+		(*extra)[column+"::"+lang] = text
+	}
 }
 
 // SettingsRow represents the "settings" sheet (typically a single row).
@@ -106,6 +148,9 @@ type SettingsRow struct {
 	FormTitle string `json:"form_title,omitempty"`
 	FormID    string `json:"form_id,omitempty"`
 	Version   string `json:"version,omitempty"`
+	// DefaultLanguage names the language of the plain label/hint columns
+	// when a multilingual form also has label::<lang> columns (#35).
+	DefaultLanguage string `json:"default_language,omitempty"`
 }
 
 // DDIConcept represents a DDI <concept> element with optional vocabulary attributes.
@@ -119,6 +164,7 @@ type DDIConcept struct {
 // DDIVar represents a DDI <var> element
 type DDIVar struct {
 	XMLName   xml.Name      `xml:"var"`
+	Lang      string        `xml:"http://www.w3.org/XML/1998/namespace lang,attr"`
 	ID        string        `xml:"ID,attr"`
 	Name      string        `xml:"name,attr"`
 	Intrvl    string        `xml:"intrvl,attr,omitempty"`
@@ -135,6 +181,7 @@ func (v DDIVar) Concept() DDIConcept { return firstConcept(v.Concepts) }
 // DDIVarGrp represents a DDI <varGrp> element
 type DDIVarGrp struct {
 	XMLName   xml.Name   `xml:"varGrp"`
+	Lang      string     `xml:"http://www.w3.org/XML/1998/namespace lang,attr"`
 	ID        string     `xml:"ID,attr"`
 	Name      string     `xml:"name,attr,omitempty"`
 	Type      string     `xml:"type,attr,omitempty"`
@@ -162,8 +209,25 @@ func firstConcept(cs []DDIConcept) DDIConcept {
 // could name the base language, so an untagged element counts as the base.
 type LangText struct {
 	Value  string
+	lang   string
 	tagged bool
 	set    bool
+	// others holds the elements not chosen as Value that carry an
+	// xml:lang: the other languages, lang → text (#35).
+	others map[string]string
+}
+
+// Others returns the other-language texts, lang → text.
+func (t LangText) Others() map[string]string { return t.others }
+
+func (t *LangText) addOther(lang, text string) {
+	if lang == "" || text == "" {
+		return
+	}
+	if t.others == nil {
+		t.others = map[string]string{}
+	}
+	t.others[lang] = text
 }
 
 func (t *LangText) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -173,14 +237,22 @@ func (t *LangText) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	if err := d.DecodeElement(&v, &start); err != nil {
 		return err
 	}
-	tagged := false
+	lang := ""
 	for _, a := range start.Attr {
 		if a.Name.Local == "lang" && a.Name.Space == xmlNamespace {
-			tagged = true
+			lang = a.Value
 		}
 	}
-	if !t.set || (t.tagged && !tagged) {
-		t.Value, t.tagged, t.set = v.Text, tagged, true
+	tagged := lang != ""
+	switch {
+	case !t.set:
+		t.Value, t.lang, t.tagged, t.set = v.Text, lang, tagged, true
+	case t.tagged && !tagged:
+		// An untagged (base) element replaces a tagged one chosen before.
+		t.addOther(t.lang, t.Value)
+		t.Value, t.lang, t.tagged = v.Text, lang, tagged
+	default:
+		t.addOther(lang, v.Text)
 	}
 	return nil
 }
@@ -211,6 +283,7 @@ type DDIVarFormat struct {
 // DDICodeBook represents a full DDI <codeBook> element (used for parsing study-level exports).
 type DDICodeBook struct {
 	XMLName  xml.Name    `xml:"codeBook"`
+	Lang     string      `xml:"http://www.w3.org/XML/1998/namespace lang,attr"`
 	DataDscr DDIDataDscr `xml:"dataDscr"`
 }
 
@@ -218,6 +291,7 @@ type DDICodeBook struct {
 // Used when the output contains both a varGrp and its member variables (e.g. select_multiple).
 type DDIDataDscr struct {
 	XMLName xml.Name    `xml:"dataDscr"`
+	Lang    string      `xml:"http://www.w3.org/XML/1998/namespace lang,attr"`
 	VarGrps []DDIVarGrp `xml:"varGrp"`
 	Vars    []DDIVar    `xml:"var"`
 }
@@ -242,31 +316,55 @@ func DDIToXLSForm(ddiXML []byte) ([]byte, error) {
 	var v DDIVar
 	if err := xml.Unmarshal(ddiXML, &v); err == nil && v.XMLName.Local == "var" {
 		convertDDIVarToXLSForm(v, &form, nil)
-		return json.MarshalIndent(form, "", "  ")
+		return marshalForm(form, v.Lang)
 	}
 
 	// Try to parse as a variable group (<varGrp>)
 	var vg DDIVarGrp
 	if err := xml.Unmarshal(ddiXML, &vg); err == nil && vg.XMLName.Local == "varGrp" {
 		convertDDIVarGrpToXLSForm(vg, &form)
-		return json.MarshalIndent(form, "", "  ")
+		return marshalForm(form, vg.Lang)
 	}
 
 	// Try to parse as a <dataDscr> wrapper (contains varGrp + var elements)
 	var dd DDIDataDscr
 	if err := xml.Unmarshal(ddiXML, &dd); err == nil && dd.XMLName.Local == "dataDscr" {
 		convertDDIDataDscrToXLSForm(dd, &form)
-		return json.MarshalIndent(form, "", "  ")
+		return marshalForm(form, dd.Lang)
 	}
 
 	// Try to parse as a full <codeBook> (extract its dataDscr)
 	var cb DDICodeBook
 	if err := xml.Unmarshal(ddiXML, &cb); err == nil && cb.XMLName.Local == "codeBook" {
 		convertDDIDataDscrToXLSForm(cb.DataDscr, &form)
-		return json.MarshalIndent(form, "", "  ")
+		return marshalForm(form, cb.Lang)
 	}
 
 	return nil, fmt.Errorf("input XML is neither a <var>, <varGrp>, <dataDscr>, nor <codeBook> element")
+}
+
+// marshalForm writes the XLSForm JSON. When any row carries other-language
+// columns (label::<lang>, …), baseLang (the root's xml:lang) becomes
+// settings.default_language, naming the language of the plain columns.
+func marshalForm(form XLSForm, baseLang string) ([]byte, error) {
+	if baseLang != "" && form.Settings.DefaultLanguage == "" && formHasLanguages(form) {
+		form.Settings.DefaultLanguage = baseLang
+	}
+	return json.MarshalIndent(form, "", "  ")
+}
+
+func formHasLanguages(form XLSForm) bool {
+	for _, r := range form.Survey {
+		if len(r.Extra) > 0 {
+			return true
+		}
+	}
+	for _, c := range form.Choices {
+		if len(c.Extra) > 0 {
+			return true
+		}
+	}
+	return false
 }
 
 // convertDDIDataDscrToXLSForm converts a <dataDscr> wrapper to XLSForm.
@@ -426,6 +524,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 		Name:  baseName,
 		Label: grp.Txt.Value,
 	}
+	addLangColumns(&row.Extra, "label", grp.Txt)
 	if row.Label == "" {
 		row.Label = grp.Concept().Value
 	}
@@ -445,25 +544,19 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 			choiceName = strings.TrimPrefix(choiceName, baseName+"_")
 		}
 
-		choiceLabel := ""
+		choice := ChoiceRow{ListName: listName, Name: choiceName}
 		if v.Qstn != nil {
-			choiceLabel = v.Qstn.QstnLit.Value
+			choice.Label = v.Qstn.QstnLit.Value
+			addLangColumns(&choice.Extra, "label", v.Qstn.QstnLit)
 		}
-
-		form.Choices = append(form.Choices, ChoiceRow{
-			ListName: listName,
-			Name:     choiceName,
-			Label:    choiceLabel,
-		})
+		form.Choices = append(form.Choices, choice)
 	}
 
 	// If a _other text var exists for this group, add an "other" choice
 	if otherVar, ok := varByName[baseName+"_other"]; ok && otherVar.Qstn != nil && otherVar.Qstn.ResponseDomainType == "text" {
-		form.Choices = append(form.Choices, ChoiceRow{
-			ListName: listName,
-			Name:     "other",
-			Label:    otherVar.Qstn.QstnLit.Value,
-		})
+		choice := ChoiceRow{ListName: listName, Name: "other", Label: otherVar.Qstn.QstnLit.Value}
+		addLangColumns(&choice.Extra, "label", otherVar.Qstn.QstnLit)
+		form.Choices = append(form.Choices, choice)
 	}
 }
 
@@ -481,12 +574,14 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 		label = grp.Concept().Value
 	}
 
-	form.Survey = append(form.Survey, SurveyRow{
+	begin := SurveyRow{
 		Type:       "begin_group",
 		Name:       grp.Name,
 		Label:      label,
 		Appearance: "table-list",
-	})
+	}
+	addLangColumns(&begin.Extra, "label", grp.Txt)
+	form.Survey = append(form.Survey, begin)
 
 	// All grid members share the same choice list; use the group name as list_name
 	listName := grp.Name
@@ -504,6 +599,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 		}
 		if v.Qstn != nil {
 			row.Label = v.Qstn.QstnLit.Value
+			addLangColumns(&row.Extra, "label", v.Qstn.QstnLit)
 		}
 		form.Survey = append(form.Survey, row)
 
@@ -513,11 +609,9 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 				if cat.Missing == "Y" {
 					continue
 				}
-				form.Choices = append(form.Choices, ChoiceRow{
-					ListName: listName,
-					Name:     cat.CatValu,
-					Label:    cat.Labl.Value,
-				})
+				choice := ChoiceRow{ListName: listName, Name: cat.CatValu, Label: cat.Labl.Value}
+				addLangColumns(&choice.Extra, "label", cat.Labl)
+				form.Choices = append(form.Choices, choice)
 			}
 			choicesAdded = true
 		}
@@ -550,6 +644,9 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 		if v.Qstn.QstnLit.Value != "" {
 			row.Label = v.Qstn.QstnLit.Value
 		}
+		addLangColumns(&row.Extra, "label", v.Qstn.QstnLit)
+		addLangColumns(&row.Extra, "hint", v.Qstn.PreQTxt)
+		addLangColumns(&row.Extra, "guidance_hint", v.Qstn.IvuInstr)
 
 		// Map DDI responseDomainType to XLSForm type
 		switch v.Qstn.ResponseDomainType {
@@ -608,11 +705,9 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 			if cat.Missing == "Y" {
 				continue
 			}
-			form.Choices = append(form.Choices, ChoiceRow{
-				ListName: v.Name,
-				Name:     cat.CatValu,
-				Label:    cat.Labl.Value,
-			})
+			choice := ChoiceRow{ListName: v.Name, Name: cat.CatValu, Label: cat.Labl.Value}
+			addLangColumns(&choice.Extra, "label", cat.Labl)
+			form.Choices = append(form.Choices, choice)
 		}
 	}
 }

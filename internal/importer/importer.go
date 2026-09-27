@@ -44,8 +44,11 @@ func xmlLang(attrs []xml.Attr) string {
 // A qstnLit may repeat once per language (formtransform#135). The base
 // language wins: the first qstnLit without xml:lang or with the
 // codeBook's xml:lang, else the first one (#30).
-func extractVarQstnLits(rawXML []byte) map[string]string {
+//
+// The second map holds the other languages: var ID → xml:lang → text (#35).
+func extractVarQstnLits(rawXML []byte) (map[string]string, map[string]map[string]string) {
 	result := make(map[string]string)
+	others := make(map[string]map[string]string)
 	isBase := make(map[string]bool) // var ID → result holds a base-language text
 	var baseLang, curLang string
 	decoder := xml.NewDecoder(bytes.NewReader(rawXML))
@@ -103,9 +106,15 @@ func extractVarQstnLits(rawXML []byte) map[string]string {
 					if qstnLitDepth == 0 {
 						base := curLang == "" || curLang == baseLang
 						_, have := result[currentVarID]
+						text := strings.TrimSpace(sb.String())
 						if currentVarID != "" && !isBase[currentVarID] && (base || !have) {
-							result[currentVarID] = strings.TrimSpace(sb.String())
+							result[currentVarID] = text
 							isBase[currentVarID] = base
+						} else if currentVarID != "" && !base && text != "" {
+							if others[currentVarID] == nil {
+								others[currentVarID] = map[string]string{}
+							}
+							others[currentVarID][curLang] = text
 						}
 						inQstnLit = false
 					}
@@ -121,7 +130,7 @@ func extractVarQstnLits(rawXML []byte) map[string]string {
 			}
 		}
 	}
-	return result
+	return result, others
 }
 
 // extractText recursively extracts plain text from an mxj value, handling
@@ -193,6 +202,63 @@ func textAtLang(mv mxj.Map, path, baseLang string) string {
 	return strings.TrimSpace(extractText(pick))
 }
 
+// translationsAt returns the other-language versions of a repeatable
+// element (formtransform#135): xml:lang → text for every element tagged
+// with a language other than the base (#35).
+func translationsAt(mv mxj.Map, path, baseLang string) map[string]string {
+	vals, err := mv.ValuesForPath(path)
+	if err != nil {
+		return nil
+	}
+	out := map[string]string{}
+	for _, v := range vals {
+		m, ok := v.(map[string]interface{})
+		if !ok {
+			continue
+		}
+		lang, _ := m["-lang"].(string)
+		if lang == "" || lang == baseLang {
+			continue
+		}
+		if text := strings.TrimSpace(extractText(v)); text != "" {
+			out[lang] = text
+		}
+	}
+	return out
+}
+
+// translations collects the other-language texts of one record, as stored
+// in its `translations` field: lang → field → text (or, for categories,
+// value → label).
+type translations map[string]map[string]interface{}
+
+func (t translations) add(lang, field string, text string) {
+	if t[lang] == nil {
+		t[lang] = map[string]interface{}{}
+	}
+	t[lang][field] = text
+}
+
+func (t translations) addCategory(lang, value, label string) {
+	if t[lang] == nil {
+		t[lang] = map[string]interface{}{}
+	}
+	cats, _ := t[lang]["categories"].(map[string]string)
+	if cats == nil {
+		cats = map[string]string{}
+		t[lang]["categories"] = cats
+	}
+	cats[value] = label
+}
+
+// value is what the record field is set to: nil when there are none.
+func (t translations) value() interface{} {
+	if len(t) == 0 {
+		return nil
+	}
+	return t
+}
+
 // ConceptTag is a <concept> after the first one on a var or varGrp: an extra
 // search term, optionally in another language (#19). Stored as the `tags`
 // JSON field.
@@ -253,6 +319,10 @@ func inferAnswerType(responseDomainType, groupType string) string {
 
 // ImportCodebookData parses the XML and inserts studies, groups, variables and categories into PocketBase.
 func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
+	// Base language of a multilingual codebook (formtransform#135): the
+	// untagged texts are in it; other languages come as xml:lang siblings.
+	baseLang, _ := mv.ValueForPathString("codeBook.-lang")
+
 	// Extract Study info — use textAt() for fields that may carry XML attributes
 	title := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.titl")
 	idNo := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.IDNo")
@@ -319,6 +389,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	studyRecord.Set("data_kind", dataKind)
 	studyRecord.Set("topic_classifications", topicClassifications)
 	studyRecord.Set("keywords", keywords)
+	studyRecord.Set("language", baseLang)
 
 	if err := app.Save(studyRecord); err != nil {
 		return err
@@ -329,8 +400,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	// so tail text after closing tags (e.g. " is more attractive than it was <TIME PERIOD> ago"
 	// after the first <xhtml:em>) is silently dropped. The token-based extractor
 	// collects all CharData across the full element depth.
-	qstnLitTexts := extractVarQstnLits(rawXML)
-	baseLang, _ := mv.ValueForPathString("codeBook.-lang")
+	qstnLitTexts, qstnLitOthers := extractVarQstnLits(rawXML)
 
 	// Pre-scan variable groups to build a map of variable DDI ID -> group type
 	// This is needed to infer XLSForm question types (e.g. matrix vs select_one)
@@ -374,6 +444,16 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			vQuest := qstnLitTexts[ddiId] // token-based extraction preserves mixed-content text
 			vPreQ := textAtLang(vM, "qstn.preQTxt", baseLang)
 			vIvInstr := textAtLang(vM, "qstn.ivuInstr", baseLang)
+			vTr := translations{}
+			for lang, text := range qstnLitOthers[ddiId] {
+				vTr.add(lang, "question", text)
+			}
+			for lang, text := range translationsAt(vM, "qstn.preQTxt", baseLang) {
+				vTr.add(lang, "prequestion_text", text)
+			}
+			for lang, text := range translationsAt(vM, "qstn.ivuInstr", baseLang) {
+				vTr.add(lang, "ivu_instructions", text)
+			}
 			vQstnType, _ := vM.ValueForPathString("qstn.-responseDomainType")
 			vIntrvl, _ := vM.ValueForPathString("-intrvl")
 			vFmtType, _ := vM.ValueForPathString("varFormat.-type")
@@ -390,6 +470,9 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 				val := textAt(cM, "catValu")
 				lab := textAtLang(cM, "labl", baseLang)
 				missing, _ := cM.ValueForPathString("-missing")
+				for lang, text := range translationsAt(cM, "labl", baseLang) {
+					vTr.addCategory(lang, strings.TrimSpace(val), text)
+				}
 
 				categories = append(categories, map[string]interface{}{
 					"value":      strings.TrimSpace(val),
@@ -408,6 +491,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			varRecord.Set("name", vName)
 			varRecord.Set("concept", vConcept)
 			varRecord.Set("tags", vTags)
+			varRecord.Set("translations", vTr.value())
 			varRecord.Set("question", vQuest)
 			varRecord.Set("prequestion_text", vPreQ)
 			varRecord.Set("ivu_instructions", vIvInstr)
@@ -467,6 +551,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			concept     string
 			tags        []ConceptTag
 			txt         string
+			translations translations
 		}
 		var parsed []grpInfo
 		childDDIIDs := make(map[string]bool) // DDI IDs of groups that are children of "other" parents
@@ -485,6 +570,10 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			gi.varGrpAttr, _ = gM.ValueForPathString("-varGrp")
 			gi.concept, _, gi.tags = conceptsAt(gM)
 			gi.txt = textAtLang(gM, "txt", baseLang)
+			gi.translations = translations{}
+			for lang, text := range translationsAt(gM, "txt", baseLang) {
+				gi.translations.add(lang, "description", text)
+			}
 			parsed = append(parsed, gi)
 		}
 
@@ -519,6 +608,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			groupRecord.Set("name", gi.name)
 			groupRecord.Set("concept", gi.concept)
 			groupRecord.Set("tags", gi.tags)
+			groupRecord.Set("translations", gi.translations.value())
 			groupRecord.Set("description", gi.txt)
 			groupRecord.Set("type", gi.grpType)
 			groupRecord.Set("order", grpOrder)

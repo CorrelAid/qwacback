@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"log"
+	"sort"
 	"strings"
 
 	"github.com/pocketbase/dbx"
@@ -14,6 +15,7 @@ type CodeBook struct {
 	XMLName  xml.Name `xml:"codeBook"`
 	Xmlns    string   `xml:"xmlns,attr"`
 	Xsi      string   `xml:"xmlns:xsi,attr"`
+	Lang     string   `xml:"http://www.w3.org/XML/1998/namespace lang,attr,omitempty"`
 	StdyDscr StdyDscr `xml:"stdyDscr"`
 	DataDscr DataDscr `xml:"dataDscr"`
 }
@@ -122,7 +124,7 @@ type VarGrp struct {
 	Type      string    `xml:"type,attr,omitempty"`
 	Var       string    `xml:"var,attr,omitempty"`    // Space-separated variable IDs
 	VarGrpRef string    `xml:"varGrp,attr,omitempty"` // Space-separated child varGrp IDs
-	Txt       string    `xml:"txt,omitempty"`
+	Txt       []Text    `xml:"txt,omitempty"`
 	Concepts  []Concept `xml:"concept"`
 }
 
@@ -144,15 +146,68 @@ type VarFormat struct {
 
 type Qstn struct {
 	ResponseDomainType string `xml:"responseDomainType,attr,omitempty"`
-	PreQTxt            string `xml:"preQTxt,omitempty"`
-	QstnLit            string `xml:"qstnLit,omitempty"`
-	IvuInstr           string `xml:"ivuInstr,omitempty"`
+	PreQTxt            []Text `xml:"preQTxt,omitempty"`
+	QstnLit            []Text `xml:"qstnLit,omitempty"`
+	IvuInstr           []Text `xml:"ivuInstr,omitempty"`
 }
 
 type Category struct {
 	Missing string `xml:"missing,attr,omitempty"`
 	CatValu string `xml:"catValu"`
-	Labl    string `xml:"labl,omitempty"`
+	Labl    []Text `xml:"labl,omitempty"`
+}
+
+// Text is one language version of a text element: the base language
+// without xml:lang, the others with it (formtransform#135, #35).
+type Text struct {
+	Lang  string `xml:"http://www.w3.org/XML/1998/namespace lang,attr,omitempty"`
+	Value string `xml:",chardata"`
+}
+
+// groupTexts is a group's <txt>: its description, then its translations.
+func groupTexts(g *core.Record) []Text {
+	tr := loadTranslations(g)
+	return tr.texts(g.GetString("description"), func(l string) string { return tr[l].Description })
+}
+
+// recordTranslations is the `translations` field of a variable or group
+// record: lang → texts in that language.
+type recordTranslations map[string]struct {
+	Question        string            `json:"question"`
+	PrequestionText string            `json:"prequestion_text"`
+	IvuInstructions string            `json:"ivu_instructions"`
+	Description     string            `json:"description"`
+	Categories      map[string]string `json:"categories"`
+}
+
+func loadTranslations(r *core.Record) recordTranslations {
+	var tr recordTranslations
+	if raw := r.GetString("translations"); raw != "" && raw != "null" {
+		if err := json.Unmarshal([]byte(raw), &tr); err != nil {
+			log.Printf("WARNING: failed to unmarshal translations for %s: %v", r.Id, err)
+		}
+	}
+	return tr
+}
+
+// texts returns the base text followed by one tagged element per other
+// language that has one, in language order. Empty when base is empty.
+func (tr recordTranslations) texts(base string, pick func(lang string) string) []Text {
+	if base == "" {
+		return nil
+	}
+	out := []Text{{Value: base}}
+	langs := make([]string, 0, len(tr))
+	for lang := range tr {
+		langs = append(langs, lang)
+	}
+	sort.Strings(langs)
+	for _, lang := range langs {
+		if t := pick(lang); t != "" {
+			out = append(out, Text{Lang: lang, Value: t})
+		}
+	}
+	return out
 }
 
 // answerTypeToResponseDomain maps an answer type back to DDI responseDomainType.
@@ -182,12 +237,13 @@ func buildVarFromRecord(v *core.Record) Var {
 	if fmtType := v.GetString("var_format_type"); fmtType != "" {
 		varObj.VarFormat = &VarFormat{Type: fmtType, Schema: "other"}
 	}
+	tr := loadTranslations(v)
 	if v.GetString("question") != "" || v.GetString("prequestion_text") != "" || v.GetString("ivu_instructions") != "" {
 		varObj.Qstn = &Qstn{
 			ResponseDomainType: answerTypeToResponseDomain(v.GetString("answer_type")),
-			PreQTxt:            v.GetString("prequestion_text"),
-			QstnLit:            v.GetString("question"),
-			IvuInstr:           v.GetString("ivu_instructions"),
+			PreQTxt:            tr.texts(v.GetString("prequestion_text"), func(l string) string { return tr[l].PrequestionText }),
+			QstnLit:            tr.texts(v.GetString("question"), func(l string) string { return tr[l].Question }),
+			IvuInstr:           tr.texts(v.GetString("ivu_instructions"), func(l string) string { return tr[l].IvuInstructions }),
 		}
 	}
 
@@ -207,7 +263,8 @@ func buildVarFromRecord(v *core.Record) Var {
 			CatValu: cat.Value,
 		}
 		if !isMultiple {
-			catObj.Labl = cat.Label
+			value := cat.Value
+			catObj.Labl = tr.texts(cat.Label, func(l string) string { return tr[l].Categories[value] })
 		}
 		if cat.IsMissing {
 			catObj.Missing = "Y"
@@ -315,7 +372,7 @@ func ExportVariableWithGroupToXML(app core.App, v *core.Record) ([]byte, error) 
 		Type:     groupRecord.GetString("type"),
 		Var:      v.GetString("ddi_id"),
 		Concepts: recordConcepts(groupRecord, ""),
-		Txt:      groupRecord.GetString("description"),
+		Txt:      groupTexts(groupRecord),
 	}
 
 	dd := DataDscr{
@@ -348,7 +405,7 @@ func ExportVarGrpToXML(app core.App, g *core.Record) ([]byte, error) {
 		Type:     g.GetString("type"),
 		Var:      strings.Join(groupVars, " "),
 		Concepts: recordConcepts(g, ""),
-		Txt:      g.GetString("description"),
+		Txt:      groupTexts(g),
 	}
 	return xml.MarshalIndent(grp, "", "  ")
 }
@@ -379,7 +436,7 @@ func ExportVarGrpCodebookToXML(app core.App, g *core.Record) ([]byte, error) {
 		Type:     g.GetString("type"),
 		Var:      strings.Join(groupVars, " "),
 		Concepts: recordConcepts(g, ""),
-		Txt:      g.GetString("description"),
+		Txt:      groupTexts(g),
 	}
 
 	dd := DataDscr{
@@ -416,6 +473,7 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 	cb := CodeBook{
 		Xmlns:    "ddi:codebook:2_5",
 		Xsi:      "http://www.w3.org/2001/XMLSchema-instance",
+		Lang:     study.GetString("language"),
 		StdyDscr: buildStdyDscrFromRecord(study),
 	}
 
@@ -439,7 +497,7 @@ func ExportStudyToXML(app core.App, study *core.Record) ([]byte, error) {
 			Type:     g.GetString("type"),
 			Var:      strings.Join(groupVars, " "),
 			Concepts: recordConcepts(g, ""),
-			Txt:      g.GetString("description"),
+			Txt:      groupTexts(g),
 		})
 	}
 
