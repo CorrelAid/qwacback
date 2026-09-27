@@ -124,8 +124,12 @@ On import, the application captures each element's position as a numeric `order`
 
 | `answer_type` | `intrvl` | `responseDomainType` | `varFormat/@type` | Container |
 |--------|----------|----------------------|-------------------|-----------|
-| `integer` | `contin` | `numeric` | `numeric` | `<var>` |
+| `integer` | `contin` | `numeric` | `numeric` | `<var dcml="0">` |
+| `decimal` | `contin` | `numeric` | `numeric` | `<var>` without `dcml` |
+| `range` | `contin` | `numeric` | `numeric` | `<var>` with `valrng/range` and no `cdl:constraint` note |
 | `text` | `discrete` | `text` | `character` | `<var>` |
+| `date` | `discrete` | `text` | `character`, `category="date"` | `<var>` |
+| `time` | `discrete` | `text` | `character`, `category="time"` | `<var>` |
 | `single_choice` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<var>` + `<catgry>` per option |
 | `multiple_choice` | `discrete` | `multiple` | `numeric` (0/1 binaries) | `<varGrp type="multipleResp">` + binary `<var>` per option |
 | `grid` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<varGrp type="grid">` + `<var>` per item (categories repeated) |

@@ -127,7 +127,7 @@ formtransform's convention (v0.7.0), the part qwacback reads into its records:
 | a note before the question; a grid's or select_multiple's shared text | `qstn/preQTxt` | `prequestion_text` |
 | relevant | `<notes type="cdl:relevant" subject="xlsform-xpath">`, and as prose in `<universe clusion="I">` | `universe` (the prose) |
 | group | `<varGrp type="section">`, nested via `@varGrp`; grids `type="grid"` | grid and multipleResp groups become `variable_groups`; sections stay in the codebook only |
-| integer / date / time | `var/@dcml="0"` / `varFormat/@category` | `answer_type` |
+| integer / decimal / range / date / time | `var/@dcml="0"` / numeric without it / `valrng/range` without `cdl:constraint` / `varFormat/@category` | `answer_type` (`integer`, `decimal`, `range`, `date`, `time`) |
 
 **Changed in formtransform v0.7.0 (#39):** the hint moved from `preQTxt` to `postQTxt`. `preQTxt` now holds only a lead-in note, or a grid's or select_multiple's shared text.
 
