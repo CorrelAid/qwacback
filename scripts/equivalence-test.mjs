@@ -1,19 +1,25 @@
 #!/usr/bin/env node
 // Formtransform equivalence test against qwacback (formtransform#14, qwacback#3).
 //
-// Compares formtransform's xlsformToDdi output with qwacback's
+// Part 1 compares formtransform's xlsformToDdi output with qwacback's
 // POST /api/convert/xlsform-to-ddi output. For each case, the same XLSForm goes
 // through both, and every <var>/<varGrp> must match after normalization
 // (whitespace, self-closing tags, entity spelling, the `files` IDREF and the
 // namespace declaration) — not only the var/group shape. qwacback passes the
 // sidecar's elements through, so any difference is a qwacback bug (#14).
+//
+// Part 2 (#37) imports codebooks (the seed files and one formtransform wrote)
+// and checks that qwacback gives them back: /api/studies/{id}/export is the
+// file byte for byte, and /api/studies/{id}/xlsform and
+// /api/convert/ddi-to-xlsform equal formtransform's ddiToXlsform of the file.
 
 // Path to a built formtransform dist/. Defaults to the version ddi-emitter
 // pins (run `npm ci` in ddi-emitter/ first), so both sides run the same code.
 const FORMTRANSFORM_DIST = process.env.FORMTRANSFORM_DIST
   || new URL('../ddi-emitter/node_modules/@correlaid/formtransform/dist/index.js', import.meta.url).pathname;
 
-const { xlsformToDdi } = await import(FORMTRANSFORM_DIST);
+const { xlsformToDdi, ddiToXlsform } = await import(FORMTRANSFORM_DIST);
+const { readFileSync, readdirSync } = await import('node:fs');
 
 const QWACBACK_URL = process.env.QWACBACK_URL || 'http://127.0.0.1:8090';
 const QWACBACK_EMAIL = process.env.QWACBACK_EMAIL || 'admin@example.com';
@@ -118,7 +124,7 @@ const EQUIVALENT_TYPES = [
   },
   {
     id: 'hint_and_guidance',
-    // hint → <preQTxt>, guidance_hint → <ivuInstr> since formtransform v0.2.0
+    // hint → <postQTxt> (v0.7.0), guidance_hint → <ivuInstr> (v0.2.0)
     // (qwacback#12); both must reach the client unchanged.
     survey: [{ type: 'integer', name: 'alter', label: 'Alter', hint: 'In Jahren', parameters: 'guidance_hint=Nachfragen', required: 'false', appearance: null }],
     choices: {},
@@ -344,8 +350,82 @@ for (const test of EQUIVALENT_TYPES) {
   await new Promise((r) => setTimeout(r, QWACBACK_DELAY_MS));
 }
 
+// ---- Part 2: codebooks back out (#37) ----
+
+// A formtransform codebook with what the records don't model: a section,
+// skip logic, a constraint, a hint, question order.
+const FT_CODEBOOK = xlsformToDdi({
+  surveyData: [
+    { type: 'begin_group', name: 'teil1', label: 'Teil 1' },
+    { type: 'integer', name: 'alter', label: 'Wie alt sind Sie?', hint: 'In Jahren', constraint: '. < 120', required: 'yes' },
+    { type: 'select_one ja_nein', name: 'rente', label: 'Sind Sie in Rente?', relevant: '${alter} > 60' },
+    { type: 'end_group' },
+  ],
+  choicesData: [
+    { list_name: 'ja_nein', name: '1', label: 'Ja' },
+    { list_name: 'ja_nein', name: '2', label: 'Nein' },
+  ],
+}, { settings: { form_title: 'Equivalence round trip', form_id: 'equivalence_rt' }, onWarning: () => {} });
+
+const seedDir = new URL('../seed_data/', import.meta.url);
+const CODEBOOKS = [
+  ...readdirSync(seedDir).filter((f) => f.endsWith('.xml')).sort()
+    .map((f) => ({ id: `seed ${f}`, xml: readFileSync(new URL(f, seedDir), 'utf8') })),
+  { id: 'formtransform codebook', xml: FT_CODEBOOK },
+];
+
+// The sheets only: warnings are compared by code, not message wording.
+function sheets(form) {
+  return JSON.stringify({ survey: form.survey, choices: form.choices, settings: form.settings });
+}
+
+async function qwacbackJSON(path, init = {}) {
+  const resp = await fetch(`${QWACBACK_URL}${path}`, init);
+  if (!resp.ok) throw new Error(`${path}: HTTP ${resp.status}: ${await resp.text()}`);
+  return resp.json();
+}
+
+for (const cb of CODEBOOKS) {
+  try {
+    const token = await ensureLoggedIn();
+    const body = new FormData();
+    body.append('file', new Blob([cb.xml], { type: 'application/xml' }), 'codebook.xml');
+    const imported = await qwacbackJSON('/api/import', { method: 'POST', headers: { authorization: token }, body });
+    if (!imported.imported) throw new Error(`import: ${JSON.stringify(imported)}`);
+    const id = imported.study_id;
+
+    const want = ddiToXlsform(cb.xml, { onWarning: () => {} });
+    const problems = [];
+
+    const exported = await (await fetch(`${QWACBACK_URL}/api/studies/${id}/export`)).text();
+    if (exported !== cb.xml) problems.push('export differs from the imported file');
+
+    const studyForm = await qwacbackJSON(`/api/studies/${id}/xlsform`);
+    if (sheets(studyForm) !== sheets(want)) problems.push('/api/studies/{id}/xlsform differs from ddiToXlsform');
+
+    const converted = await qwacbackJSON('/api/convert/ddi-to-xlsform', {
+      method: 'POST', headers: { 'content-type': 'application/xml', authorization: token }, body: cb.xml,
+    });
+    if (sheets(converted) !== sheets(want)) problems.push('/api/convert/ddi-to-xlsform differs from ddiToXlsform');
+
+    if (problems.length === 0) {
+      console.log(`✓ ${cb.id}: export identical, ${want.survey.length} survey rows identical`);
+      passed++;
+    } else {
+      console.log(`✗ ${cb.id}: ${problems.join('; ')}`);
+      failed++;
+      failures.push(cb.id);
+    }
+  } catch (e) {
+    console.log(`✗ ${cb.id}: ERROR: ${e.message}`);
+    failed++;
+    failures.push(cb.id);
+  }
+  await new Promise((r) => setTimeout(r, QWACBACK_DELAY_MS));
+}
+
 console.log('');
-console.log(`Total: ${EQUIVALENT_TYPES.length}, passed: ${passed}, xfailed: ${xfailed}, failed: ${failed}`);
+console.log(`Total: ${EQUIVALENT_TYPES.length + CODEBOOKS.length}, passed: ${passed}, xfailed: ${xfailed}, failed: ${failed}`);
 if (failed > 0) {
   console.log(`Failures: ${failures.join(', ')}`);
   process.exit(1);

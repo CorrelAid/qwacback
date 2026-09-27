@@ -61,7 +61,9 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 
 ### `notes`
 
-`notes` is an optional free-text annotation on a `<var>`. Use it for methodology notes, source attribution, or other metadata that does not fit into the structured fields. Only **one** `notes` element per variable is allowed (enforced by Schematron). It must appear **after** `varFormat` (last child of `<var>`).
+An untyped `notes` is a free-text annotation on a `<var>`: methodology notes, source attribution, or other metadata that does not fit into the structured fields. `notes` come **after** `varFormat` (last children of `<var>`).
+
+A typed `<notes type="cdl:…">` carries a form field DDI has no element for, e.g. skip logic as `<notes type="cdl:relevant" subject="xlsform-xpath">${alter} &gt; 60</notes>` (formtransform's `convention:ddiFields`). Schematron checks the `cdl:` vocabulary and allows at most one note per type, subject and language. Consumers showing notes to people should skip `notes[starts-with(@type,'cdl:')]`.
 
 Example:
 ```xml
@@ -85,25 +87,24 @@ The `ID` attribute (`xs:ID`) is a document-wide unique identifier used for cross
 
 ### Variable group types
 
-Three `varGrp` types are used:
+Four `varGrp` types are used:
 
 | Type | Purpose |
 | :--- | :--- |
 | `grid` | Matrix / Likert grid — items sharing the same scale and introductory text |
 | `multipleResp` | Select-multiple (checkboxes) — each option becomes a binary 0/1 variable |
 | `other` | Parent wrapper for semi-open questions — groups a child `varGrp` and/or `_other` text variable together |
-
-Do **not** use `type="section"` — section groups are structural containers with no semantic meaning.
+| `section` | A plain questionnaire group (XLSForm `begin_group`): its label in `txt`, nested via `@varGrp`. qwacback keeps sections in the stored codebook only; they don't become questions |
 
 ### Child element ordering within `<var>`
 
 The XSD enforces a strict sequence inside `<var>`. Simplified to the elements this project uses:
 
 ```
-qstn → catgry* → concept → varFormat → notes?
+qstn → valrng? → universe? → catgry* → concept+ → varFormat → notes*
 ```
 
-`notes` is optional and must appear **after** `varFormat` (last child of `<var>`). Only one `notes` element per variable is allowed (enforced by Schematron).
+`notes` are optional and must appear **after** `varFormat` (last children of `<var>`).
 
 ### `<varGrp>` placement in `<dataDscr>`
 
@@ -111,11 +112,9 @@ All `<varGrp>` elements must appear **before** all `<var>` elements in `<dataDsc
 
 ### Document / questionnaire ordering
 
-DDI 2.5 has no explicit ordering attribute. Order is determined by **document position** — elements are stored and restored in the sequence they appear in the XML file. Always place elements in questionnaire order (varGrps first, then vars).
+Place `<var>`s in questionnaire order (varGrps first, then vars). formtransform writes them in survey order and numbers them with `qstn/@seqNo`; `ddiToXlsform` reads that order back.
 
-On import, the application captures each element's position as a numeric `order` field in the database. On export, variables and groups are sorted by this field, preserving the document sequence through round trips.
-
-> **Note**: The `qstn/@seqNo` attribute in the XSD is intended for question-flow numbering within instruments, not variable ordering. Do not rely on it.
+On import, the application captures each element's position as a numeric `order` field, used to list questions. Exports return the codebook as imported, so its order is kept as is.
 
 ---
 
@@ -184,7 +183,7 @@ A parent `varGrp` references a child `multipleResp` group (via `@varGrp`) and th
 *   For `multiple_choice_other`: the `_other` text variable must **not** be listed in the child `multipleResp` `varGrp/@var` attribute. No binary var is created for the "other" choice.
 *   The parent `varGrp` uses the base name (e.g. `geraetebesitz`), while the child `multipleResp` group appends `_choices` (e.g. `geraetebesitz_choices`).
 *   **Backward compatibility**: The DDI→XLSForm converter also supports the old flat format (no parent group) by falling back to naming convention detection.
-*   **Round-trip**: DDI→XLSForm reconstructs relevance as `${base} = 'other'` for both single and multiple choice. XLSForm→DDI drops relevance (reconstructable) and emits the group hierarchy.
+*   **Skip logic**: DDI→XLSForm gives the `_other` field a `relevant` only when the DDI has one: `<notes type="cdl:relevant" subject="xlsform-xpath">${base} = 'other'</notes>` (single choice) or `selected(${base}, 'other')` (multiple choice), ideally with `<universe clusion="I">` prose. formtransform writes both from the XLSForm's `relevant`.
 
 ### Grid and checkbox group consistency
 
@@ -274,14 +273,15 @@ Rules:
 | :--- | :--- | :--- |
 | `qstnLit` | `qstn` | Literal question text as presented to the respondent |
 | `preQTxt` | `qstn` | Introductory context shown before the question (must match `varGrp/txt` for grid/checkbox items) |
-| `postQTxt` | `qstn` | Text shown after the question |
+| `postQTxt` | `qstn` | The XLSForm hint (formtransform v0.7.0; `preQTxt` before) |
 | `ivuInstr` | `qstn` | Interviewer instructions (not shown to respondent) |
 | `catgry` | `var` | Response category; contains `catValu` and optionally `labl` |
 | `labl` | `catgry` | Human-readable label for a category value (required for `category`, omitted for `multiple`) |
 | `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (required). Further `concept` elements are search tags |
 | `txt` | `varGrp` | Shared introductory question text for grid/checkbox groups |
 | `varFormat` | `var` | Technical data format (must appear second-to-last inside `var`) |
-| `notes` | `var` | Optional free-text annotation (max one per variable, must be last child) |
+| `universe` | `var` | Who is asked the question: skip logic as prose (`clusion="I"`) |
+| `notes` | `var`, `varGrp`, `stdyDscr` | Untyped: free-text annotation. Typed `cdl:…`: a form field DDI has no element for. Last children |
 
 ### Attributes
 
@@ -290,7 +290,7 @@ Rules:
 | `ID` | `var`, `varGrp` | Document-wide unique identifier for cross-referencing (`xs:ID`) |
 | `name` | `var`, `varGrp` | Abstract snake_case column name / machine identifier |
 | `intrvl` | `var` | Measurement level: `discrete` or `contin` |
-| `type` | `varGrp` | Group semantics: `grid`, `multipleResp`, or `other` |
+| `type` | `varGrp` | Group semantics: `grid`, `multipleResp`, `other`, or `section` |
 | `var` | `varGrp` | Space-separated list of member variable IDs |
 | `varGrp` | `varGrp` | Space-separated list of child varGrp IDs (for hierarchical grouping) |
 | `responseDomainType` | `qstn` | Response type: `numeric`, `text`, `category`, or `multiple` |

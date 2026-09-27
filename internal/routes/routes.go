@@ -474,15 +474,12 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewNotFoundError("Study not found", nil)
 		}
 
-		// Generate XML
-		xmlBytes, err := exporter.ExportStudyToXML(app, study)
+		// The codebook as imported
+		xmlBytes, err := exporter.StudyXML(study)
 		if err != nil {
-			log.Printf("ERROR: failed to export study %s", studyId)
+			log.Printf("ERROR: failed to export study %s: %v", studyId, err)
 			return apis.NewInternalServerError("Failed to generate XML", nil)
 		}
-
-		// Add XML declaration manually as mxj doesn't add it by default
-		xmlBytes = append([]byte("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"), xmlBytes...)
 
 		// Validate via NATS worker (XSD + Schematron)
 		if schClient != nil {
@@ -521,13 +518,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		// Try as variable group first, then as standalone variable
 		if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
-			xmlBytes, err = exporter.ExportVarGrpCodebookToXML(app, grp)
+			xmlBytes, err = exporter.GroupXML(app, grp)
 			if err != nil {
 				log.Printf("ERROR: failed to export question (group) %s", qId)
 				return apis.NewInternalServerError("Failed to generate XML", nil)
 			}
 		} else if v, err := app.FindRecordById("variables", qId); err == nil {
-			xmlBytes, err = exporter.ExportVariableWithGroupToXML(app, v)
+			xmlBytes, err = exporter.VariableXML(app, v)
 			if err != nil {
 				log.Printf("ERROR: failed to export question (variable) %s", qId)
 				return apis.NewInternalServerError("Failed to generate XML", nil)
@@ -560,13 +557,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		var xmlBytes []byte
 
 		if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
-			xmlBytes, err = exporter.ExportVarGrpCodebookToXML(app, grp)
+			xmlBytes, err = exporter.GroupXML(app, grp)
 			if err != nil {
 				log.Printf("ERROR: failed to export question (group) %s for XLSForm", qId)
 				return apis.NewInternalServerError("Failed to generate XML", nil)
 			}
 		} else if v, err := app.FindRecordById("variables", qId); err == nil {
-			xmlBytes, err = exporter.ExportVariableWithGroupToXML(app, v)
+			xmlBytes, err = exporter.VariableXML(app, v)
 			if err != nil {
 				log.Printf("ERROR: failed to export question (variable) %s for XLSForm", qId)
 				return apis.NewInternalServerError("Failed to generate XML", nil)
@@ -577,8 +574,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		xlsformJSON, err := converter.DDIToXLSForm(xmlBytes)
 		if err != nil {
-			log.Printf("ERROR: failed to convert question %s to XLSForm", qId)
-			return apis.NewInternalServerError("Failed to convert to XLSForm", nil)
+			return xlsformError(err, "question "+qId)
 		}
 
 		setXMLCache(app, "question:xlsform:"+qId, xlsformJSON)
@@ -609,16 +605,15 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewNotFoundError("Study not found", nil)
 		}
 
-		xmlBytes, err := exporter.ExportStudyToXML(app, study)
+		xmlBytes, err := exporter.StudyXML(study)
 		if err != nil {
-			log.Printf("ERROR: failed to export study %s for XLSForm conversion", studyId)
+			log.Printf("ERROR: failed to export study %s for XLSForm conversion: %v", studyId, err)
 			return apis.NewInternalServerError("Failed to generate XML", nil)
 		}
 
 		xlsformJSON, err := converter.DDIToXLSForm(xmlBytes)
 		if err != nil {
-			log.Printf("ERROR: failed to convert study %s to XLSForm", studyId)
-			return apis.NewInternalServerError("Failed to convert to XLSForm", nil)
+			return xlsformError(err, "study "+studyId)
 		}
 
 		setXMLCache(app, "xlsform:study:"+studyId, xlsformJSON)
@@ -867,6 +862,8 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			Question         string         `json:"question"`
 			PrequestionText  string         `json:"prequestion_text"`
 			IvuInstructions  string         `json:"ivu_instructions"`
+			Hint             string         `json:"hint"`
+			Universe         string         `json:"universe"`
 			AnswerType       string         `json:"answer_type"`
 			HasOther         bool           `json:"has_other"`
 			HasLongList      bool           `json:"has_long_list"`
@@ -901,6 +898,8 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 				Question:         v.GetString("question"),
 				PrequestionText:  v.GetString("prequestion_text"),
 				IvuInstructions:  v.GetString("ivu_instructions"),
+				Hint:             v.GetString("hint"),
+				Universe:         v.GetString("universe"),
 				AnswerType:       effectiveAnswerType(v),
 				HasOther:         v.GetBool("has_other"),
 				HasLongList:      v.GetBool("has_long_list"),
@@ -953,10 +952,15 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewBadRequestError("Failed to read request body", nil)
 		}
 
-		// Convert DDI to XLSForm
+		// Convert DDI to XLSForm (formtransform's ddiToXlsform, via the sidecar)
 		xlsformJSON, err := converter.DDIToXLSForm(ddiXML)
+		if errors.Is(err, converter.ErrConverterUnavailable) {
+			log.Printf("ERROR: DDI to XLSForm conversion unavailable: %v", err)
+			return apis.NewApiError(http.StatusServiceUnavailable, "DDI to XLSForm conversion is temporarily unavailable", nil)
+		}
 		if err != nil {
-			return apis.NewBadRequestError("Failed to convert DDI to XLSForm", nil)
+			// Not well-formed, or neither a codeBook nor a var: say which.
+			return apis.NewBadRequestError("Failed to convert DDI to XLSForm: "+err.Error(), nil)
 		}
 
 		// Set JSON response headers
@@ -992,6 +996,17 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	})
 
 	return nil
+}
+
+// xlsformError answers a failed conversion of stored DDI to XLSForm: 503
+// while the sidecar is unavailable, else 500 (the DDI came from the
+// database, so the input isn't the client's).
+func xlsformError(err error, what string) error {
+	log.Printf("ERROR: failed to convert %s to XLSForm: %v", what, err)
+	if errors.Is(err, converter.ErrConverterUnavailable) {
+		return apis.NewApiError(http.StatusServiceUnavailable, "XLSForm conversion is temporarily unavailable", nil)
+	}
+	return apis.NewInternalServerError("Failed to convert to XLSForm", nil)
 }
 
 // setSecureXMLHeaders sets Content-Type and security headers on all XML responses.

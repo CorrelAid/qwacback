@@ -1,13 +1,15 @@
 # DDI ↔ XLSForm Conversion API
 
-This document describes the public API endpoints for converting between DDI Codebook XML format and XLSForm JSON format.
+This document describes the endpoints that convert between DDI Codebook 2.5 XML and XLSForm JSON.
 
-The XLSForm JSON mirrors the actual XLSForm spreadsheet structure with three sheets:
-- **survey**: questions and groups (columns: type, name, label, hint, required, appearance, parameters, guidance_hint)
-- **choices**: answer options for select questions (columns: list_name, name, label)
-- **settings**: form metadata (columns: form_title, form_id, version)
+The XLSForm JSON mirrors the XLSForm spreadsheet: a **survey**, a **choices** and a **settings** sheet, each a list of rows keyed by column name (`type`, `name`, `label`, `hint`, `relevant`, `label::English (en)`, …).
 
-**Implementation.** XLSForm → DDI is delegated to the `ddi-emitter` Node sidecar (see `ddi-emitter/`), which wraps `@correlaid/formtransform` (see `.registry-version` for the pinned release). The sidecar is reached over HTTP from `internal/converter/ddi_client.go`. DDI → XLSForm stays in Go (`internal/converter/converter.go`) since formtransform does not expose that direction.
+**Implementation.** Both directions are `@correlaid/formtransform` (release pinned in `.registry-version`), run by the `ddi-emitter` Node sidecar (`ddi-emitter/`) and reached over HTTP from `internal/converter/ddi_client.go`:
+
+- XLSForm → DDI: `xlsformToDdi`
+- DDI → XLSForm: `ddiToXlsform` (since formtransform v0.7.0; qwacback's own Go converter is gone, #37)
+
+A codebook formtransform writes carries the whole form: standard DDI wherever DDI has an element, typed `<notes type="cdl:…">` for the rest (skip logic, constraints, appearance, list names, settings, …). `ddiToXlsform` turns such a codebook back into the same form. See formtransform's [`ddi2xlsform` README](https://github.com/CorrelAid/formtransform/blob/main/src/pipelines/ddi2xlsform/README.md) for the full mapping.
 
 ## Endpoints
 
@@ -19,11 +21,27 @@ The XLSForm JSON mirrors the actual XLSForm spreadsheet structure with three she
 
 **Request:**
 - Content-Type: `application/xml` or `text/xml`
-- Body: DDI XML fragment — a `<var>`, `<varGrp>`, or `<dataDscr>` wrapper (for `select_multiple` / `multipleResp` groups containing both `<varGrp>` and `<var>` elements)
+- Body: a whole `<codeBook>`, a `<dataDscr>`, or bare `<var>` / `<varGrp>` elements
 
 **Response:**
 - Content-Type: `application/json`
-- Body: XLSForm JSON with survey, choices, and settings sheets
+- Body: the three sheets, plus `warnings`:
+
+```json
+{
+  "survey": [{"type": "select_one gender", "name": "gender", "label": "What is your gender?"}],
+  "choices": [
+    {"list_name": "gender", "name": "1", "label": "Male"},
+    {"list_name": "gender", "name": "2", "label": "Female"}
+  ],
+  "settings": [],
+  "warnings": [
+    {"code": "ddi-field-missing", "message": "Not a CDL codebook: no skip logic (cdl:relevant); the form gets none (formtransform#155)"}
+  ]
+}
+```
+
+`settings` is a list of rows, like the other sheets (empty, or one row). DDI is never refused if it can be read: DDI that formtransform didn't write converts as far as its standard elements go, with one `ddi-field-missing` warning for each field only a CDL codebook carries. Without `qstn/@seqNo` or any `cdl:` note, identical category sets come back as one list.
 
 **Example:**
 
@@ -31,46 +49,14 @@ The XLSForm JSON mirrors the actual XLSForm spreadsheet structure with three she
 curl -X POST http://localhost:8090/api/convert/ddi-to-xlsform \
   -H "Content-Type: application/xml" \
   --data '<var ID="V1" name="gender" intrvl="discrete">
-    <concept>Gender</concept>
     <qstn responseDomainType="category">
       <qstnLit>What is your gender?</qstnLit>
     </qstn>
-    <catgry>
-      <catValu>1</catValu>
-      <labl>Male</labl>
-    </catgry>
-    <catgry>
-      <catValu>2</catValu>
-      <labl>Female</labl>
-    </catgry>
+    <catgry><catValu>1</catValu><labl>Male</labl></catgry>
+    <catgry><catValu>2</catValu><labl>Female</labl></catgry>
+    <concept>Gender</concept>
     <varFormat type="numeric" schema="other"/>
   </var>'
-```
-
-**Response:**
-```json
-{
-  "survey": [
-    {
-      "type": "select_one gender",
-      "name": "gender",
-      "label": "What is your gender?"
-    }
-  ],
-  "choices": [
-    {
-      "list_name": "gender",
-      "name": "1",
-      "label": "Male"
-    },
-    {
-      "list_name": "gender",
-      "name": "2",
-      "label": "Female"
-    }
-  ],
-  "settings": {}
-}
 ```
 
 ### 2. Convert XLSForm to DDI
@@ -81,13 +67,13 @@ curl -X POST http://localhost:8090/api/convert/ddi-to-xlsform \
 
 **Request:**
 - Content-Type: `application/json`
-- Body: XLSForm JSON with survey, choices, and settings sheets
+- Body: `{"survey": [...], "choices": [...], "settings": {...}}`. `settings` may be an object or a one-row list. The sheets are forwarded to formtransform unchanged, so every column it reads reaches it.
 
 **Response:**
 - Content-Type: `application/xml`
-- Body: DDI XML — a single `<var>` for simple questions, or a `<dataDscr>` wrapper containing `<varGrp type="multipleResp">` + binary `<var>` elements for `select_multiple` questions
+- Body: the children of formtransform's `<dataDscr>`: a single `<var>` or `<varGrp>` bare, anything else wrapped in `<dataDscr>`
 
-**Response shape note.** The endpoint returns a bare DDI fragment (single `<var>` / `<varGrp>`, or a `<dataDscr>` wrapper), not the full `<codeBook>` document that `@correlaid/formtransform` produces internally. `internal/converter/ddi_client.go` strips the `<stdyDscr>` / `<fileDscr>` framing so the public response shape is unchanged from the pre-sidecar Go converter. The elements inside `<dataDscr>` are passed through as formtransform emits them, in its order; only the DDI namespace declaration and the `files` attributes (which point at the dropped `<fileDscr>`) are removed.
+**Response shape note.** The endpoint returns a DDI fragment, not the full `<codeBook>` formtransform writes. The elements inside `<dataDscr>` are passed through as formtransform emits them, in its order; only the DDI namespace declaration and the `files` attributes (which point at the dropped `<fileDscr>`) are removed. What formtransform puts on `<stdyDscr>` (settings, languages, note rows without a question) is not part of the fragment.
 
 **Example:**
 
@@ -96,12 +82,9 @@ curl -X POST http://localhost:8090/api/convert/xlsform-to-ddi \
   -H "Content-Type: application/json" \
   --data '{
     "survey": [
-      {"type": "select_one gender", "name": "gender", "label": "What is your gender?"}
+      {"type": "integer", "name": "age", "label": "How old are you?", "hint": "In years", "constraint": ". < 120"}
     ],
-    "choices": [
-      {"list_name": "gender", "name": "1", "label": "Male"},
-      {"list_name": "gender", "name": "2", "label": "Female"}
-    ],
+    "choices": [],
     "settings": {}
   }'
 ```
@@ -109,24 +92,46 @@ curl -X POST http://localhost:8090/api/convert/xlsform-to-ddi \
 **Response:**
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<var ID="V_gender" name="gender" intrvl="discrete">
-  <concept>What is your gender?</concept>
-  <qstn responseDomainType="category">
-    <qstnLit>What is your gender?</qstnLit>
+<var ID="V_age" name="age" intrvl="contin" dcml="0">
+  <qstn responseDomainType="numeric" seqNo="1">
+    <qstnLit>How old are you?</qstnLit>
+    <postQTxt>In years</postQTxt>
   </qstn>
-  <catgry>
-    <catValu>1</catValu>
-    <labl>Male</labl>
-  </catgry>
-  <catgry>
-    <catValu>2</catValu>
-    <labl>Female</labl>
-  </catgry>
+  <valrng>
+    <range maxExclusive="120"></range>
+  </valrng>
+  <concept>How old are you?</concept>
   <varFormat type="numeric" schema="other"></varFormat>
+  <notes type="cdl:constraint" subject="xlsform-xpath">. &lt; 120</notes>
 </var>
 ```
 
-### Multilingual forms
+### 3. Stored studies and questions
+
+- `GET /api/studies/{id}/export`: the study's codebook, exactly as imported.
+- `GET /api/studies/{id}/xlsform`: `ddiToXlsform` of that codebook.
+- `GET /api/questions/{id}/xml`: the question's elements, cut from the stored codebook unchanged. A group question is a `<dataDscr>` with its `<varGrp>`, the groups nested in it (`@varGrp`) and every `<var>` they refer to. A standalone question is its bare `<var>`. A grid row is a `<dataDscr>` with the grid's `<varGrp>`, narrowed to that one row, and its `<var>`. The codebook's `xml:lang` goes on the root.
+- `GET /api/questions/{id}/xlsform`: `ddiToXlsform` of that fragment. A question keeps its skip logic, which may refer to questions outside the fragment.
+
+Exports read the stored codebook, not the database fields, so everything the codebook carries comes back out (#37).
+
+## How form fields map to DDI
+
+formtransform's convention (v0.7.0), the part qwacback reads into its records:
+
+| XLSForm | DDI | qwacback field (variables) |
+|---|---|---|
+| label | `qstn/qstnLit` | `question` |
+| hint | `qstn/postQTxt` | `hint` |
+| guidance_hint | `qstn/ivuInstr` | `ivu_instructions` |
+| a note before the question; a grid's or select_multiple's shared text | `qstn/preQTxt` | `prequestion_text` |
+| relevant | `<notes type="cdl:relevant" subject="xlsform-xpath">`, and as prose in `<universe clusion="I">` | `universe` (the prose) |
+| group | `<varGrp type="section">`, nested via `@varGrp`; grids `type="grid"` | grid and multipleResp groups become `variable_groups`; sections stay in the codebook only |
+| integer / date / time | `var/@dcml="0"` / `varFormat/@category` | `answer_type` |
+
+**Changed in formtransform v0.7.0 (#39):** the hint moved from `preQTxt` to `postQTxt`. `preQTxt` now holds only a lead-in note, or a grid's or select_multiple's shared text.
+
+## Multilingual forms
 
 XLSForm → DDI takes multilingual forms as XLSForm writes them. Use `label::<Language> (<code>)` / `hint::<Language> (<code>)` columns on survey and choice rows, and name the base language in `settings.default_language`:
 
@@ -137,230 +142,39 @@ XLSForm → DDI takes multilingual forms as XLSForm writes them. Use `label::<La
 }
 ```
 
-The sheets are forwarded to formtransform unchanged, so any column it reads reaches it. The response has each text element in the base language, untagged and first, followed by one `xml:lang` sibling per other language (formtransform#135). The base language is set as `xml:lang` on the fragment's root element (`<var>`, `<varGrp>` or `<dataDscr>`), since the `<codeBook>` that formtransform declares it on isn't part of the response:
+The response has each text element in the base language, untagged and first, followed by one `xml:lang` sibling per other language (formtransform#135). The base language is set as `xml:lang` on the fragment's root element (`<var>`, `<varGrp>` or `<dataDscr>`), since the `<codeBook>` that formtransform declares it on isn't part of the response:
 
 ```xml
-<var xml:lang="de" ID="V_alter" name="alter" intrvl="contin">
-  <qstn responseDomainType="numeric">
+<var xml:lang="de" ID="V_alter" name="alter" intrvl="contin" dcml="0">
+  <qstn responseDomainType="numeric" seqNo="1">
     <qstnLit>Alter?</qstnLit>
     <qstnLit xml:lang="en">Age?</qstnLit>
   </qstn>
   …
 ```
 
-On import, qwacback stores the base-language text (the untagged element, or the one matching `codeBook/@xml:lang`) in the usual fields. It stores the other languages in `translations` on variables and variable groups, and the base language as `language` on the study. The study export writes them back as `xml:lang` siblings, with `xml:lang` on `<codeBook>`, so a multilingual study round-trips.
-
-DDI → XLSForm keeps the base language in the plain `label`/`hint`/`guidance_hint` columns. It adds one `label::<lang>`/`hint::<lang>`/`guidance_hint::<lang>` column per other language (on choices too), and `settings.default_language` names the base language when the input's root carries `xml:lang`. That layout converts back to the same multilingual DDI.
-
-## XLSForm JSON Structure
-
-The JSON format mirrors the three sheets of an XLSForm spreadsheet:
-
-### Survey Sheet
-
-Each row in the survey sheet is an object with these columns:
-
-| Column | Required | Description |
-|--------|----------|-------------|
-| `type` | Yes | Answer type. For select questions, includes list_name: `select_one <list_name>` |
-| `name` | Yes | Variable identifier (snake_case recommended) |
-| `label` | No | Question text shown to respondents |
-| `hint` | No | Additional hint text (maps to DDI `preQTxt`) |
-| `required` | No | `"yes"` if the question is mandatory |
-| `appearance` | No | Display preference |
-| `parameters` | No | Space-separated `key=value` pairs, e.g. `"start=1 end=10 step=1"` |
-| `guidance_hint` | No | Interviewer instructions (maps to DDI `ivuInstr`). The DDI → XLSForm export writes this column; `guidance_hint=` inside `parameters` is still read on input, but can't hold spaces in valid XLSForm |
-
-Groups use `begin_group`/`end_group` rows:
-```json
-{
-  "survey": [
-    {"type": "begin_group", "name": "demographics", "label": "Demographics"},
-    {"type": "integer", "name": "age", "label": "What is your age?"},
-    {"type": "end_group", "name": ""}
-  ]
-}
-```
-
-**Section drop rule:** qwacback's Schematron restricts `varGrp/@type` to `grid`, `multipleResp`, or `other`. Generic sections have no valid representation, so the XLSForm → DDI converter drops plain `begin_group` wrappers and flattens members to top-level `<var>` elements. A group is kept (as `<varGrp type="grid">`) only when it signals a grid layout: `appearance: "table-list"`, `"matrix"` in the label, or `"grid"` in the name.
-
-**Grid emission:** For grid groups, the `begin_group` label is emitted as `<txt>` on the `<varGrp>` and repeated as `<preQTxt>` on every member variable (matching the DDI convention that the lead-in question appears once at the group level and is echoed per row).
-
-### Choices Sheet
-
-Each row in the choices sheet is an object with these columns:
-
-| Column | Required | Description |
-|--------|----------|-------------|
-| `list_name` | Yes | References the list in the survey type column |
-| `name` | Yes | Choice value (e.g. "1", "2") |
-| `label` | Yes | Choice display text |
-
-### Settings Sheet
-
-Single object with optional form metadata:
-
-| Column | Required | Description |
-|--------|----------|-------------|
-| `form_title` | No | Form title |
-| `form_id` | No | Form identifier |
-| `version` | No | Form version |
-
-## Wrapping Single Questions in DDI Codebook
-
-### Single Variable (Standalone Question)
-
-A single question in DDI is represented by a `<var>` element. Here's the structure:
-
-```xml
-<var ID="V1" name="variable_name" intrvl="discrete">
-  <concept>Variable concept/label</concept>
-  <qstn responseDomainType="category">
-    <preQTxt>Optional introductory text</preQTxt>
-    <qstnLit>The actual question text</qstnLit>
-    <ivuInstr>Optional interviewer instructions</ivuInstr>
-  </qstn>
-  <catgry>
-    <catValu>1</catValu>
-    <labl>Option 1</labl>
-  </catgry>
-  <catgry>
-    <catValu>2</catValu>
-    <labl>Option 2</labl>
-  </catgry>
-  <varFormat type="numeric" schema="other"/>
-</var>
-```
-
-### Variable Group (Matrix/Grid Questions)
-
-When questions are part of a group (like a matrix or multiple response set), use a `<varGrp>` element:
-
-```xml
-<varGrp ID="VG1" name="satisfaction_group" type="grid" var="V1 V2 V3">
-  <concept>Group concept/label</concept>
-  <txt>Optional introductory text for the group</txt>
-</varGrp>
-```
-
-The `var` attribute contains space-separated IDs of the variables that belong to this group.
-
-### Complete DDI Codebook Structure
-
-To create a complete DDI codebook with single questions, wrap them in the full structure:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <stdyDscr>
-    <citation>
-      <titlStmt>
-        <titl>Study Title</titl>
-        <IDNo>study-id-123</IDNo>
-      </titlStmt>
-    </citation>
-    <stdyInfo>
-      <abstract>Study abstract</abstract>
-      <sumDscr>
-        <timePrd>2024</timePrd>
-        <nation>Country</nation>
-        <anlyUnit>Analysis unit</anlyUnit>
-        <universe>Study universe</universe>
-        <dataKind>Survey Data</dataKind>
-      </sumDscr>
-    </stdyInfo>
-  </stdyDscr>
-  <dataDscr>
-    <!-- Variable groups go here (if any) -->
-    <varGrp ID="VG1" name="group1" type="grid" var="V1 V2">
-      <concept>Group concept</concept>
-      <txt>Group description</txt>
-    </varGrp>
-
-    <!-- Individual variables go here -->
-    <var ID="V1" name="question1" intrvl="discrete">
-      <concept>Question 1</concept>
-      <qstn responseDomainType="category">
-        <qstnLit>What is your answer?</qstnLit>
-      </qstn>
-      <catgry>
-        <catValu>1</catValu>
-        <labl>Yes</labl>
-      </catgry>
-      <catgry>
-        <catValu>2</catValu>
-        <labl>No</labl>
-      </catgry>
-      <varFormat type="numeric" schema="other"/>
-    </var>
-
-    <var ID="V2" name="question2" intrvl="discrete">
-      <!-- ... -->
-    </var>
-  </dataDscr>
-</codeBook>
-```
-
-## Supported Answer Types
-
-### DDI to XLSForm Mapping
-
-| DDI responseDomainType | XLSForm type | Notes |
-|------------------------|--------------|-------|
-| `numeric` | `integer` | Numeric input |
-| `text` | `text` | Text input |
-| `category` | `select_one <name>` | Single choice (list_name = variable name) |
-| `category` + `vocab` | `select_one_from_file <vocab>.csv` | Long list single choice (external vocab) |
-| `multiple` | `select_multiple <name>` | Multiple choice (list_name = variable name) |
-| `multiple` + `vocab` | `select_multiple_from_file <vocab>.csv` | Long list multiple choice (external vocab) |
-
-### XLSForm to DDI Mapping
-
-| XLSForm type | DDI output | DDI responseDomainType | intrvl | varFormat.type |
-|--------------|-----------|------------------------|--------|----------------|
-| `integer`, `decimal`, `range` | `<var>` | `numeric` | `contin` | `numeric` |
-| `text`, `note` | `<var>` | `text` | `discrete` | `character` |
-| `select_one`, `matrix` | `<var>` + `<catgry>` | `category` | `discrete` | `numeric` |
-| `select_multiple` | `<varGrp type="multipleResp">` + binary `<var>` per choice | `multiple` | `discrete` | `numeric` |
-| `select_one_from_file` | `<var>` with `concept/@vocab` (no `catgry`) | `category` | `discrete` | `numeric` |
-| `select_multiple_from_file` | `<var>` with `concept/@vocab` (no `catgry`) | `multiple` | `discrete` | `numeric` |
-
-**Note on `select_multiple`:** Per DDI Codebook conventions, checkboxes are represented as a `<varGrp type="multipleResp">` with one binary `<var>` per choice option. Each binary variable has categories with `catValu` 0 and 1 (no `labl` — the variable name and `qstnLit` already describe the checkbox option). The output is wrapped in a `<dataDscr>` element.
-
-**Note on `select_*_from_file`:** For long lists referencing external vocabularies (e.g. `select_one_from_file iso_3166_1.csv`), the DDI output uses `concept/@vocab` instead of inline `<catgry>` elements. The `vocab` is the standard code (e.g. `iso_3166_1`), and the XLSForm CSV filename is derived by appending `.csv`.
+On import, qwacback stores the base-language text (the untagged element, or the one matching `codeBook/@xml:lang`) in the usual fields. It stores the other languages in `translations` on variables and variable groups, and the base language as `language` on the study. DDI → XLSForm writes one `label::<lang>` column per language, as formtransform does.
 
 ## Error Handling
 
-Both endpoints return appropriate HTTP status codes:
-
-- **200 OK**: Successful conversion
-- **400 Bad Request**: Invalid input format or conversion error. For XLSForm → DDI the message carries formtransform's reason, which names the question: types outside the supported subset (`rank`, `geopoint`, …), selects whose list has no choices, or a form without any answerable question (notes produce no DDI variables).
-- **413 Payload Too Large**: Request body exceeds 50MB limit
-- **503 Service Unavailable**: XLSForm → DDI only — the `ddi-emitter` sidecar is unreachable or failed. Retry later; the input is not at fault.
-
-Error responses include a descriptive message:
+- **200 OK**: Successful conversion.
+- **400 Bad Request**: the input is at fault, and the message says why.
+  - XLSForm → DDI: formtransform's reason, which names the question: types outside the supported subset (`rank`, `geopoint`, …), selects whose list has no choices, or a form without any answerable question (notes produce no DDI variables).
+  - DDI → XLSForm: XML that isn't well-formed, or holds neither a `<codeBook>` nor a `<var>`.
+- **413 Payload Too Large**: the request body exceeds the limit.
+- **503 Service Unavailable**: the `ddi-emitter` sidecar is unreachable or failed. Retry later; the input is not at fault.
 
 ```json
 {
-  "code": 400,
-  "message": "Failed to convert DDI to XLSForm",
-  "data": {
-    "error": "input XML is neither a <var> nor a <varGrp> element"
-  }
+  "status": 400,
+  "message": "Failed to convert DDI to XLSForm: The input holds no <codeBook> and no <var>.",
+  "data": {}
 }
 ```
 
-## Notes
-
-- The conversion preserves the core question structure but may not retain all DDI metadata
-- Generated DDI IDs follow the pattern `V_<name>` for variables and `VG_<name>` for groups
-- XLSForm `hint` ↔ DDI `preQTxt` and XLSForm `guidance_hint` ↔ DDI `ivuInstr`, in both directions
-- Missing value categories (DDI `missing="Y"`) are excluded from XLSForm choices
-- These endpoints are stateless and do not persist data to the database
-
 ## Library version pin
 
-The XLSForm → DDI converter is `@correlaid/formtransform`. The release tag is pinned in `.registry-version` at the repo root and consumed by:
+The converter is `@correlaid/formtransform`. The release tag is pinned in `.registry-version` at the repo root and consumed by:
 
 - `ddi-emitter/package.json` and `ddi-emitter/package-lock.json` (download the prebuilt tarball — no build step, no `git` in the image)
 - `docker-compose.yml` pulls `ghcr.io/correlaid/schematron-worker:<tag>`

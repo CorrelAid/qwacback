@@ -13,29 +13,49 @@ import (
 
 // Example represents a complete answer type example with both XLSForm and DDI representations.
 type Example struct {
-	Type    string          `json:"answer_type"`
-	Label   string          `json:"label"`
-	XLSForm converter.XLSForm `json:"xlsform"`
-	DDI     string          `json:"ddi"`
+	Type    string  `json:"answer_type"`
+	Label   string  `json:"label"`
+	XLSForm XLSForm `json:"xlsform"`
+	DDI     string  `json:"ddi"`
+}
+
+// XLSForm is an example form's survey and choices sheets, with the columns
+// the examples use.
+type XLSForm struct {
+	Survey  []SurveyRow `json:"survey"`
+	Choices []ChoiceRow `json:"choices"`
+}
+
+type SurveyRow struct {
+	Type       string `json:"type"`
+	Name       string `json:"name,omitempty"`
+	Label      string `json:"label,omitempty"`
+	Relevance  string `json:"relevant,omitempty"`
+	Appearance string `json:"appearance,omitempty"`
+}
+
+type ChoiceRow struct {
+	ListName string `json:"list_name"`
+	Name     string `json:"name"`
+	Label    string `json:"label"`
 }
 
 // exampleDef holds the static definition before DDI generation.
 type exampleDef struct {
 	Type    string
 	Label   string
-	XLSForm converter.XLSForm
+	XLSForm XLSForm
 }
-
 
 var defs = []exampleDef{
 	{
 		Type:  "single_choice",
 		Label: "Single Choice — Bildungsgrad",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "select_one bildungsgrad", Name: "bildungsgrad", Label: "Was ist Ihr höchster Bildungsabschluss?"},
 			},
-			Choices: []converter.ChoiceRow{
+			Choices: []ChoiceRow{
 				{ListName: "bildungsgrad", Name: "1", Label: "Kein Abschluss"},
 				{ListName: "bildungsgrad", Name: "2", Label: "Haupt- oder Realschulabschluss"},
 				{ListName: "bildungsgrad", Name: "3", Label: "Fachhochschulreife / Abitur"},
@@ -47,11 +67,11 @@ var defs = []exampleDef{
 	{
 		Type:  "multiple_choice",
 		Label: "Multiple Choice — Wochenendtage",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "select_multiple wochenendtage", Name: "wochenende", Label: "An welchen Tagen des Wochenendes sind Sie erreichbar?"},
 			},
-			Choices: []converter.ChoiceRow{
+			Choices: []ChoiceRow{
 				{ListName: "wochenendtage", Name: "sa", Label: "Samstag"},
 				{ListName: "wochenendtage", Name: "so", Label: "Sonntag"},
 			},
@@ -60,12 +80,12 @@ var defs = []exampleDef{
 	{
 		Type:  "single_choice_other",
 		Label: "Single Choice mit Sonstiges — Aufmerksamkeitsquelle",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "select_one quelle", Name: "aufmerksam", Label: "Wie sind Sie auf unser Angebot aufmerksam geworden?"},
 				{Type: "text", Name: "aufmerksam_other", Label: "Sonstiges (bitte angeben)", Relevance: "${aufmerksam} = 'other'"},
 			},
-			Choices: []converter.ChoiceRow{
+			Choices: []ChoiceRow{
 				{ListName: "quelle", Name: "suchmaschine", Label: "Suchmaschine"},
 				{ListName: "quelle", Name: "empfehlung", Label: "Persönliche Empfehlung"},
 				{ListName: "quelle", Name: "soziale_medien", Label: "Soziale Medien"},
@@ -76,12 +96,12 @@ var defs = []exampleDef{
 	{
 		Type:  "multiple_choice_other",
 		Label: "Multiple Choice mit Sonstiges — Gerätebesitz",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "select_multiple geraete", Name: "geraetebesitz", Label: "Welche dieser Geräte besitzen Sie?"},
-				{Type: "text", Name: "geraetebesitz_other", Label: "Sonstiges (bitte angeben)", Relevance: "${geraetebesitz} = 'other'"},
+				{Type: "text", Name: "geraetebesitz_other", Label: "Sonstiges (bitte angeben)", Relevance: "selected(${geraetebesitz}, 'other')"},
 			},
-			Choices: []converter.ChoiceRow{
+			Choices: []ChoiceRow{
 				{ListName: "geraete", Name: "smartphone", Label: "Smartphone"},
 				{ListName: "geraete", Name: "laptop", Label: "Laptop"},
 				{ListName: "geraete", Name: "tablet", Label: "Tablet"},
@@ -92,14 +112,14 @@ var defs = []exampleDef{
 	{
 		Type:  "grid",
 		Label: "Matrix / Likert-Skala — Institutionsvertrauen",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "begin_group", Name: "institutionsvertrauen", Label: "Vertrauen in Institutionen", Appearance: "table-list"},
 				{Type: "select_one skala5", Name: "vertrauen_parlament", Label: "Das Parlament"},
 				{Type: "select_one skala5", Name: "vertrauen_polizei", Label: "Die Polizei"},
 				{Type: "end_group"},
 			},
-			Choices: []converter.ChoiceRow{
+			Choices: []ChoiceRow{
 				{ListName: "skala5", Name: "1", Label: "Gar nicht"},
 				{ListName: "skala5", Name: "2", Label: "2"},
 				{ListName: "skala5", Name: "3", Label: "3"},
@@ -111,28 +131,28 @@ var defs = []exampleDef{
 	{
 		Type:  "integer",
 		Label: "Offene Zahl — Alter",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "integer", Name: "alter", Label: "Wie alt sind Sie?"},
 			},
-			Choices: []converter.ChoiceRow{},
+			Choices: []ChoiceRow{},
 		},
 	},
 	{
 		Type:  "text",
 		Label: "Offener Text — Anmerkungen",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "text", Name: "anmerkungen", Label: "Haben Sie weitere Anmerkungen?"},
 			},
-			Choices: []converter.ChoiceRow{},
+			Choices: []ChoiceRow{},
 		},
 	},
 	{
 		Type:  "single_choice_long_list",
 		Label: "Single Choice (Lange Liste) — Geburtsland",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "select_one_from_file iso_3166_1.csv", Name: "geburtsland", Label: "In welchem Land wurden Sie geboren?"},
 			},
 		},
@@ -140,8 +160,8 @@ var defs = []exampleDef{
 	{
 		Type:  "multiple_choice_long_list",
 		Label: "Multiple Choice (Lange Liste) — Besuchte Länder",
-		XLSForm: converter.XLSForm{
-			Survey: []converter.SurveyRow{
+		XLSForm: XLSForm{
+			Survey: []SurveyRow{
 				{Type: "select_multiple_from_file iso_3166_1.csv", Name: "besuchte_laender", Label: "Welche dieser Länder haben Sie bereits besucht? Mehrere Antworten möglich."},
 			},
 		},

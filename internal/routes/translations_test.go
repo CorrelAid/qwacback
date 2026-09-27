@@ -89,7 +89,7 @@ func TestTranslationsRoundTrip(t *testing.T) {
 	}
 
 	// Exported
-	out, err := exporter.ExportStudyToXML(app, study)
+	out, err := exporter.StudyXML(study)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -63,7 +63,7 @@ jobs:
             exit 1
           fi
 
-      - name: Equivalence test (formtransform vs /api/convert/xlsform-to-ddi)
+      - name: Equivalence test (formtransform vs qwacback, both directions)
         env:
           PB_ADMIN_EMAIL: admin@example.com
           PB_ADMIN_PASSWORD: ci-password-123
@@ -76,10 +76,19 @@ jobs:
             curl -sf http://127.0.0.1:8090/api/health > /dev/null && break
             sleep 1
           done
+          # /api/import validates via qwacback's embedded NATS: attach a worker.
+          docker run -d --name schematron-worker-qb --network host \
+            -e NATS_URL="nats://127.0.0.1:$NATS_PORT" -e NATS_TOKEN="$NATS_TOKEN" \
+            "ghcr.io/correlaid/schematron-worker:$(cat .registry-version)"
+          for _ in $(seq 60); do
+            docker logs schematron-worker-qb 2>&1 | grep -q "Subscribed to" && break
+            sleep 1
+          done
           QWACBACK_PASSWORD="$PB_ADMIN_PASSWORD" node scripts/equivalence-test.mjs
 
       - name: Service logs
         if: failure()
         run: |
           docker logs schematron-worker || true
+          docker logs schematron-worker-qb || true
           cat ddi-emitter.log qwacback.log || true

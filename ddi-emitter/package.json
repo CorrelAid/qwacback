@@ -9,6 +9,6 @@
     "start": "node server.mjs"
   },
   "dependencies": {
-    "@correlaid/formtransform": "https://github.com/CorrelAid/formtransform/releases/download/v0.6.0/correlaid-formtransform-0.6.0.tgz"
+    "@correlaid/formtransform": "https://github.com/CorrelAid/formtransform/releases/download/v0.7.0/correlaid-formtransform-0.7.0.tgz"
   }
 }

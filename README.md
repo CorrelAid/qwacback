@@ -30,7 +30,7 @@ DDI-XML file
   ▼
 GET /api/questions            →  Browse all questions (assembled from vars + groups)
 GET /api/search/questions     →  Search by question text, concept, name
-GET /api/studies/{id}/export  →  Re-export as validated DDI-XML
+GET /api/studies/{id}/export  →  The codebook as imported
 GET /api/studies/{id}/xlsform →  Convert to XLSForm JSON
 ```
 
@@ -49,8 +49,8 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 ### Questions
 
 - **GET `/api/questions`** — List all questions across all studies.
-- **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, interviewer instructions, etc.). No additional API calls needed for a detail view.
-- **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question.
+- **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, hint, interviewer instructions, skip logic as prose in `universe`, etc.). No additional API calls needed for a detail view.
+- **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question, cut unchanged from the stored codebook.
 - **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.
 - **GET `/api/search/questions?q=<terms>`** — Search questions by question text, concept, name, and answer type. Supports `&page=` and `&perPage=` (default 20, max 100).
@@ -117,7 +117,7 @@ So **`seed_data/` is the source of truth** for the question bank:
 [.github/workflows/release.yml](.github/workflows/release.yml) builds qwacback and its sidecar and publishes them to GitHub Container Registry:
 
 - `ghcr.io/correlaid/qwacback` — the Go/PocketBase API
-- `ghcr.io/correlaid/qwacback-ddi-emitter` — the XLSForm → DDI sidecar. qwacback needs it for `/api/convert/xlsform-to-ddi` and `/api/examples`; point `DDI_EMITTER_URL` at it. Deploy it with the same tag as qwacback.
+- `ghcr.io/correlaid/qwacback-ddi-emitter` — the DDI ↔ XLSForm sidecar. qwacback needs it for `/api/convert/*`, every `/xlsform` endpoint and `/api/examples`; point `DDI_EMITTER_URL` at it. Deploy it with the same tag as qwacback.
 
 The validation worker (`ghcr.io/correlaid/schematron-worker`) is published by [CorrelAid/formtransform](https://github.com/CorrelAid/formtransform) and pulled into this stack via `docker-compose.yml`. The same is true for the `@correlaid/formtransform` library used by `ddi-emitter`. Both are version-pinned together via `.registry-version`; `scripts/check-registry-version.sh` (run by the release workflow) fails if they disagree.
 
@@ -167,15 +167,15 @@ docker run -d --rm --name schematron-worker \
 
 ```
 internal/
-  converter/    Bidirectional DDI ↔ XLSForm conversion (DDI→XLSForm in Go;
-                XLSForm→DDI delegates to ddi-emitter)
+  converter/    DDI ↔ XLSForm conversion, both ways via ddi-emitter
   examples/     Static answer type examples (XLSForm + DDI)
-  exporter/     PocketBase records → DDI-XML
+  ddixml/       Copies DDI elements as XML tokens
+  exporter/     Study and question DDI, from the codebook as imported
   importer/     XML parsing → PocketBase records
   routes/       API endpoints, question assembly, search
   schematron/   Go NATS client for validation worker
 migrations/     Schema setup, settings, user init, seed data
-ddi-emitter/    Node sidecar: XLSForm → DDI via @correlaid/formtransform
+ddi-emitter/    Node sidecar: DDI ↔ XLSForm via @correlaid/formtransform
 seed_data/      The question bank: DDI-XML files imported on every start (the database is not persisted)
 .registry-version   Pinned formtransform release tag (drives ddi-emitter and the worker image)
 ```

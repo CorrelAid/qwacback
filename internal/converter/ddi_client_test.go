@@ -237,3 +237,52 @@ func TestXLSFormToDDI_KeepsBaseLanguageOnRoot(t *testing.T) {
 		}
 	})
 }
+
+// #37: the DDI goes to the sidecar's /ddi-to-xlsform as sent, and its JSON,
+// warnings included, comes back unchanged.
+func TestDDIToXLSForm_PassesThrough(t *testing.T) {
+	const ddi = `<var ID="V1" name="x"><qstn responseDomainType="text"><qstnLit>Hi</qstnLit></qstn></var>`
+	const form = `{"survey":[{"type":"text","name":"x","label":"Hi"}],"choices":[],"settings":[],"warnings":[{"code":"ddi-field-missing","message":"m"}]}`
+	var gotPath, gotBody string
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		b, _ := io.ReadAll(r.Body)
+		gotPath, gotBody = r.URL.Path, string(b)
+		_, _ = w.Write([]byte(form))
+	}))
+	t.Cleanup(srv.Close)
+	prev := DDIEmitterURL
+	DDIEmitterURL = srv.URL
+	t.Cleanup(func() { DDIEmitterURL = prev })
+
+	out, err := DDIToXLSForm([]byte(ddi))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if gotPath != "/ddi-to-xlsform" || gotBody != ddi {
+		t.Errorf("sidecar got %s %q", gotPath, gotBody)
+	}
+	if string(out) != form {
+		t.Errorf("got %s", out)
+	}
+}
+
+func TestDDIToXLSForm_Errors(t *testing.T) {
+	t.Run("invalid DDI is an input error", func(t *testing.T) {
+		fakeEmitter(t, http.StatusBadRequest, `{"error":"The input holds no <codeBook> and no <var>."}`)
+		_, err := DDIToXLSForm([]byte("nope"))
+		if err == nil || errors.Is(err, ErrConverterUnavailable) || !strings.Contains(err.Error(), "no <codeBook>") {
+			t.Errorf("got %v", err)
+		}
+	})
+	t.Run("sidecar failure is unavailability", func(t *testing.T) {
+		fakeEmitter(t, http.StatusInternalServerError, `{"error":"internal error"}`)
+		if _, err := DDIToXLSForm([]byte("<var/>")); !errors.Is(err, ErrConverterUnavailable) {
+			t.Errorf("got %v", err)
+		}
+	})
+	t.Run("empty body", func(t *testing.T) {
+		if _, err := DDIToXLSForm([]byte("  ")); err == nil || errors.Is(err, ErrConverterUnavailable) {
+			t.Errorf("got %v", err)
+		}
+	})
+}

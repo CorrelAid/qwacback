@@ -65,7 +65,7 @@ func TestConceptTagsRoundTrip(t *testing.T) {
 		t.Errorf("keyword with xml:lang dropped: %s", study.GetString("keywords"))
 	}
 
-	out, err := exporter.ExportStudyToXML(app, study)
+	out, err := exporter.StudyXML(study)
 	if err != nil {
 		t.Fatal(err)
 	}
