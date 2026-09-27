@@ -422,28 +422,35 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return err
 		}
 
+		// `imported` says whether the study was stored; `study_id` is the new
+		// study, so a client can link to it.
 		mv, err := mxj.NewMapXml(xmlBytes)
 		if err != nil {
 			log.Printf("ERROR: mxj failed to parse validated XML")
 			return e.JSON(200, map[string]interface{}{
-				"valid":   true,
-				"message": "XML is valid against schema, but could not be parsed for import",
+				"valid":    true,
+				"imported": false,
+				"message":  "XML is valid against schema, but could not be parsed for import",
 			})
 		}
 
-		if err := importer.ImportCodebookData(app, mv, xmlBytes); err != nil {
+		studyID, err := importer.ImportCodebook(app, mv, xmlBytes)
+		if err != nil {
 			log.Printf("ERROR: failed to import XML data")
 			return e.JSON(200, map[string]interface{}{
-				"valid":   true,
-				"message": "XML is valid, but failed to import into the database",
+				"valid":    true,
+				"imported": false,
+				"message":  "XML is valid, but failed to import into the database",
 			})
 		}
 
 		clearXMLCache(app)
 
 		return e.JSON(200, map[string]interface{}{
-			"valid":   true,
-			"message": "XML is valid and imported successfully",
+			"valid":    true,
+			"imported": true,
+			"study_id": studyID,
+			"message":  "XML is valid and imported successfully",
 		})
 	}).Bind(apis.RequireSuperuserAuth())
 
