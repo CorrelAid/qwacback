@@ -58,6 +58,8 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
   - Matching ignores case and umlaut spelling (`Qualitaet` = `Qualität`), finds word forms via German and English stemming (`Zufriedenheit` finds "zufrieden", `Weiterempfehlung` finds "weiterempfehlen"), finds terms of 5+ letters inside compounds (`Vertrauen` finds "Institutionenvertrauen"). Tags are searched too: `<concept>` elements after the first one on a `<var>`/`<varGrp>`, e.g. `<concept xml:lang="de">Vertrauen</concept>` on an English item, make it findable in the other language without changing its wording.
   - `&study_id=<id>` (repeatable) limits the search to those studies; `&exclude_study=<id>` (repeatable) leaves studies out, e.g. the demographic standards. The MCP tool `search_questions` takes the same filters.
 
+Questions of a multilingual study also carry `language` (the base language of `question_text`) and `translations` (the question text in the other languages, `{"en": "…"}`). `/api/questions/{id}` also returns the full `translations` of each variable and of the group. The search matches translated question text like the question text.
+
 ### Studies
 
 - **GET `/api/search/studies?q=<term>`** — Search studies by title, keywords, and abstract. Optional `&topic=<classification>` filter. Supports pagination.

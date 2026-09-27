@@ -127,6 +127,33 @@ type Question struct {
 	// Tags are extra search terms from the DDI: the <concept> elements after
 	// the first, usually the concept in the other language (#19).
 	Tags []QuestionTag `json:"tags,omitempty"`
+	// Language is the study's base language (codeBook/@xml:lang), the
+	// language of QuestionText; Translations holds the question text in the
+	// study's other languages, lang → text (#35).
+	Language     string            `json:"language,omitempty"`
+	Translations map[string]string `json:"translations,omitempty"`
+}
+
+// textTranslations reads one field ("question", "description", …) of a
+// record's `translations`: lang → text.
+func textTranslations(r *core.Record, field string) map[string]string {
+	var tr map[string]map[string]interface{}
+	if raw := r.GetString("translations"); raw != "" && raw != "null" {
+		if err := json.Unmarshal([]byte(raw), &tr); err != nil {
+			log.Printf("WARNING: failed to unmarshal translations for %s: %v", r.Id, err)
+			return nil
+		}
+	}
+	var out map[string]string
+	for lang, fields := range tr {
+		if t, _ := fields[field].(string); t != "" {
+			if out == nil {
+				out = map[string]string{}
+			}
+			out[lang] = t
+		}
+	}
+	return out
 }
 
 // QuestionTag is one search tag, with its xml:lang if the DDI gave one.
@@ -205,6 +232,10 @@ func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 	}
 
 	var questions []Question
+	language := ""
+	if st, err := app.FindRecordById("studies", studyID); err == nil {
+		language = st.GetString("language")
+	}
 
 	// 1. Groups → questions
 	for _, g := range groups {
@@ -260,13 +291,17 @@ func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 		}
 
 		// Use first member var's question text if group description is empty
+		q.Translations = textTranslations(g, "description")
 		if q.QuestionText == "" && len(varsByGroup[g.Id]) > 0 {
 			first := varsByGroup[g.Id][0]
 			q.QuestionText = first.GetString("prequestion_text")
+			q.Translations = textTranslations(first, "prequestion_text")
 			if q.QuestionText == "" {
 				q.QuestionText = first.GetString("question")
+				q.Translations = textTranslations(first, "question")
 			}
 		}
+		q.Language = language
 
 		questions = append(questions, q)
 	}
@@ -286,6 +321,8 @@ func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 			VariableIDs:  []string{v.Id},
 			Order:        v.GetFloat("order"),
 			Tags:         recordTags(v),
+			Language:     language,
+			Translations: textTranslations(v, "question"),
 		})
 	}
 
@@ -797,14 +834,16 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			Type        string `json:"type"`
 			Concept     string `json:"concept"`
 			Description string `json:"description"`
+			Translations any   `json:"translations,omitempty"`
 		}
 		var group *groupInfo
 		if grpRecord != nil {
 			group = &groupInfo{
-				ID:          grpRecord.Id,
-				Type:        grpRecord.GetString("type"),
-				Concept:     grpRecord.GetString("concept"),
-				Description: grpRecord.GetString("description"),
+				ID:           grpRecord.Id,
+				Type:         grpRecord.GetString("type"),
+				Concept:      grpRecord.GetString("concept"),
+				Description:  grpRecord.GetString("description"),
+				Translations: grpRecord.Get("translations"),
 			}
 		}
 
@@ -826,6 +865,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			HasLongList      bool           `json:"has_long_list"`
 			LongListStandard string         `json:"long_list_standard"`
 			Categories       []categoryItem `json:"categories"`
+			Translations     any            `json:"translations,omitempty"`
 		}
 
 		var varIDs []string
@@ -859,6 +899,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 				HasLongList:      v.GetBool("has_long_list"),
 				LongListStandard: v.GetString("long_list_standard"),
 				Categories:       cats,
+				Translations:     v.Get("translations"),
 			})
 		}
 
@@ -873,6 +914,8 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			"group":        group,
 			"variables":    variables,
 			"tags":         q.Tags,
+			"language":     q.Language,
+			"translations": q.Translations,
 		})
 	})
 

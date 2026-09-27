@@ -20,10 +20,11 @@ var stemEnvPool = sync.Pool{
 }
 
 // fieldWeight is the relevance weight for each field, indexed by
-// [question_text, concept, tags, name, answer_type]. Higher weight = ranked
-// up when two questions tie on the number of matched terms. Tags weigh like
-// the concept: they are further concepts (#19).
-var fieldWeight = [5]int{4, 3, 3, 2, 1}
+// [question_text, concept, tags, name, answer_type, translations]. Higher
+// weight = ranked up when two questions tie on the number of matched terms.
+// Tags weigh like the concept: they are further concepts (#19). The question
+// text's translations weigh like the question text (#35).
+var fieldWeight = [6]int{4, 3, 3, 2, 1, 4}
 
 // tokenize splits the input on whitespace and commas, then drops empty
 // fragments. Stays case-insensitive — normalisation runs separately.
@@ -194,12 +195,16 @@ func fieldHit(field [][]string, queryVariants []string) bool {
 }
 
 // fieldTexts returns the searchable text fields in fieldWeight order.
-func (q Question) fieldTexts() [5]string {
+func (q Question) fieldTexts() [6]string {
 	tags := make([]string, len(q.Tags))
 	for i, t := range q.Tags {
 		tags[i] = t.Text
 	}
-	return [5]string{q.QuestionText, q.Concept, strings.Join(tags, ", "), q.Name, q.AnswerType}
+	translated := make([]string, 0, len(q.Translations))
+	for _, t := range q.Translations {
+		translated = append(translated, t)
+	}
+	return [6]string{q.QuestionText, q.Concept, strings.Join(tags, ", "), q.Name, q.AnswerType, strings.Join(translated, " ")}
 }
 
 // FilterAndRankQuestions filters questions by the query and ranks them
@@ -242,7 +247,7 @@ func FilterAndRankQuestions(questions []Question, q string) []Question {
 		termsHit := 0
 		weighted := 0
 		texts := question.fieldTexts()
-		var fields [5][][]string
+		var fields [6][][]string
 		for fi, ft := range texts {
 			fields[fi] = fieldVariants(ft)
 		}

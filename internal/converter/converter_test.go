@@ -548,3 +548,49 @@ func TestDDIToXLSForm_MultilingualTakesUntagged(t *testing.T) {
 		t.Errorf("choices: got %+v", form.Choices)
 	}
 }
+
+// #35: the other languages become label::<lang>/hint::<lang>/
+// guidance_hint::<lang> columns; the plain columns keep the base language,
+// which the root's xml:lang names as settings.default_language.
+func TestDDIToXLSForm_LanguageColumns(t *testing.T) {
+	ddi := `<var xml:lang="de" ID="V_hund" name="hund">
+  <qstn responseDomainType="category">
+    <preQTxt>Auch Mitbewohner</preQTxt>
+    <preQTxt xml:lang="en">Flatmates count</preQTxt>
+    <qstnLit>Haben Sie einen Hund?</qstnLit>
+    <qstnLit xml:lang="en">Do you have a dog?</qstnLit>
+    <ivuInstr>Nachfragen</ivuInstr>
+    <ivuInstr xml:lang="en">Probe</ivuInstr>
+  </qstn>
+  <catgry><catValu>1</catValu><labl>Ja</labl><labl xml:lang="en">Yes</labl></catgry>
+  <concept>Hund</concept>
+</var>`
+	out, err := DDIToXLSForm([]byte(ddi))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var raw struct {
+		Survey   []map[string]string `json:"survey"`
+		Choices  []map[string]string `json:"choices"`
+		Settings map[string]string   `json:"settings"`
+	}
+	if err := json.Unmarshal(out, &raw); err != nil {
+		t.Fatal(err)
+	}
+	row := raw.Survey[0]
+	for k, want := range map[string]string{
+		"label": "Haben Sie einen Hund?", "label::en": "Do you have a dog?",
+		"hint": "Auch Mitbewohner", "hint::en": "Flatmates count",
+		"guidance_hint": "Nachfragen", "guidance_hint::en": "Probe",
+	} {
+		if row[k] != want {
+			t.Errorf("survey %s: got %q, want %q", k, row[k], want)
+		}
+	}
+	if raw.Choices[0]["label"] != "Ja" || raw.Choices[0]["label::en"] != "Yes" {
+		t.Errorf("choices: got %v", raw.Choices[0])
+	}
+	if raw.Settings["default_language"] != "de" {
+		t.Errorf("settings: got %v", raw.Settings)
+	}
+}

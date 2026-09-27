@@ -189,8 +189,8 @@ func TestRoundTripProveIt(t *testing.T) {
 		if v.Qstn == nil {
 			t.Fatal("Qstn is nil")
 		}
-		if v.Qstn.QstnLit != "Do you think that your neighbours act in your best interests?" {
-			t.Errorf("QstnLit: got %q", v.Qstn.QstnLit)
+		if first(v.Qstn.QstnLit) != "Do you think that your neighbours act in your best interests?" {
+			t.Errorf("QstnLit: got %q", first(v.Qstn.QstnLit))
 		}
 		if v.Concepts[0].Value != "Interpersonal trust" {
 			t.Errorf("Concept: got %q", v.Concepts[0].Value)
@@ -198,10 +198,10 @@ func TestRoundTripProveIt(t *testing.T) {
 		if len(v.Catgry) != 3 {
 			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))
 		} else {
-			if v.Catgry[0].CatValu != "1" || v.Catgry[0].Labl != "Yes" {
+			if v.Catgry[0].CatValu != "1" || first(v.Catgry[0].Labl) != "Yes" {
 				t.Errorf("First category: got %+v", v.Catgry[0])
 			}
-			if v.Catgry[2].CatValu != "3" || v.Catgry[2].Labl != "Don't Know" {
+			if v.Catgry[2].CatValu != "3" || first(v.Catgry[2].Labl) != "Don't Know" {
 				t.Errorf("Last category: got %+v", v.Catgry[2])
 			}
 		}
@@ -221,7 +221,7 @@ func TestRoundTripProveIt(t *testing.T) {
 		}
 		// prove_it.xml: "I think that my <PROJECT AREA> is more attractive than it was <TIME PERIOD> ago"
 		// The literal angle brackets come from decoded &lt; / &gt; entities inside xhtml:em.
-		q := v.Qstn.QstnLit
+		q := first(v.Qstn.QstnLit)
 		for _, want := range []string{"I think that my", "is more attractive than it was", "ago"} {
 			if !strings.Contains(q, want) {
 				t.Errorf("QstnLit missing %q: got %q", want, q)
@@ -237,11 +237,11 @@ func TestRoundTripProveIt(t *testing.T) {
 		if v.Qstn == nil {
 			t.Fatal("Qstn is nil")
 		}
-		if v.Qstn.PreQTxt != "If you did want to change things around here, do you know who to contact to help you in the following groups…?" {
-			t.Errorf("PreQTxt: got %q", v.Qstn.PreQTxt)
+		if first(v.Qstn.PreQTxt) != "If you did want to change things around here, do you know who to contact to help you in the following groups…?" {
+			t.Errorf("PreQTxt: got %q", first(v.Qstn.PreQTxt))
 		}
-		if v.Qstn.QstnLit != "Local Community Groups" {
-			t.Errorf("QstnLit: got %q", v.Qstn.QstnLit)
+		if first(v.Qstn.QstnLit) != "Local Community Groups" {
+			t.Errorf("QstnLit: got %q", first(v.Qstn.QstnLit))
 		}
 		if len(v.Catgry) != 3 {
 			t.Errorf("Expected 3 categories, got %d", len(v.Catgry))
@@ -259,8 +259,8 @@ func TestRoundTripProveIt(t *testing.T) {
 		if vg1.Concepts[0].Value != "Civic network awareness" {
 			t.Errorf("VG1 concept: got %q", vg1.Concepts[0].Value)
 		}
-		if vg1.Txt != "If you did want to change things around here, do you know who to contact to help you in the following groups…?" {
-			t.Errorf("VG1 txt: got %q", vg1.Txt)
+		if first(vg1.Txt) != "If you did want to change things around here, do you know who to contact to help you in the following groups…?" {
+			t.Errorf("VG1 txt: got %q", first(vg1.Txt))
 		}
 	})
 }
@@ -350,8 +350,8 @@ func TestExportVarGrpCodebookToXML(t *testing.T) {
 	if dd.VarGrp[0].Concepts[0].Value != "Test Group" {
 		t.Errorf("VarGrp Concept: got %q", dd.VarGrp[0].Concepts[0].Value)
 	}
-	if dd.VarGrp[0].Txt != "A test group description" {
-		t.Errorf("VarGrp Txt: got %q", dd.VarGrp[0].Txt)
+	if first(dd.VarGrp[0].Txt) != "A test group description" {
+		t.Errorf("VarGrp Txt: got %q", first(dd.VarGrp[0].Txt))
 	}
 	if dd.VarGrp[0].Var != "V_v1 V_v2" {
 		t.Errorf("VarGrp var attr: got %q", dd.VarGrp[0].Var)
@@ -581,4 +581,12 @@ func TestRoundTripDemo(t *testing.T) {
 			t.Errorf("VarFormat: got %+v", v.VarFormat)
 		}
 	})
+}
+
+// first returns the base-language text of a text element list.
+func first(ts []Text) string {
+	if len(ts) == 0 {
+		return ""
+	}
+	return ts[0].Value
 }

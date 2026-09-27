@@ -148,7 +148,9 @@ The sheets are forwarded to formtransform unchanged, so any column it reads reac
   …
 ```
 
-On import, and in DDI → XLSForm, qwacback keeps the base language: the untagged element or the one matching `codeBook/@xml:lang`. The other languages are not stored yet.
+On import, qwacback stores the base-language text (the untagged element, or the one matching `codeBook/@xml:lang`) in the usual fields. It stores the other languages in `translations` on variables and variable groups, and the base language as `language` on the study. The study export writes them back as `xml:lang` siblings, with `xml:lang` on `<codeBook>`, so a multilingual study round-trips.
+
+DDI → XLSForm keeps the base language in the plain `label`/`hint`/`guidance_hint` columns. It adds one `label::<lang>`/`hint::<lang>`/`guidance_hint::<lang>` column per other language (on choices too), and `settings.default_language` names the base language when the input's root carries `xml:lang`. That layout converts back to the same multilingual DDI.
 
 ## XLSForm JSON Structure
 
