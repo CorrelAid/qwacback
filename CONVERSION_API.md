@@ -111,7 +111,7 @@ curl -X POST http://localhost:8090/api/convert/xlsform-to-ddi \
 - `GET /api/studies/{id}/export`: the study's codebook, exactly as imported.
 - `GET /api/studies/{id}/xlsform`: `ddiToXlsform` of that codebook.
 - `GET /api/questions/{id}/xml`: the question's elements, cut from the stored codebook unchanged. A group question is a `<dataDscr>` with its `<varGrp>`, the groups nested in it (`@varGrp`) and every `<var>` they refer to. A standalone question is its bare `<var>`. A grid row is a `<dataDscr>` with the grid's `<varGrp>`, narrowed to that one row, and its `<var>`. The codebook's `xml:lang` goes on the root.
-- `GET /api/questions/{id}/xlsform`: `ddiToXlsform` of that fragment. A question keeps its skip logic, which may refer to questions outside the fragment.
+- `GET /api/questions/{id}/xlsform`: `ddiToXlsform` of that fragment, valid on its own. A logic cell (`relevant`, `constraint`, `required`, `calculation`, `choice_filter`, `default`, …) that refers to a question outside the fragment is dropped, with a `reference-outside` warning naming it (#46). A `constraint_message` goes with its constraint. The condition stays in the question's DDI (`cdl:relevant`, `<universe>`). Labels and hints that pipe `${name}` are kept.
 
 Exports read the stored codebook, not the database fields, so everything the codebook carries comes back out (#37).
 
