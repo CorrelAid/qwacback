@@ -137,6 +137,22 @@ const EQUIVALENT_TYPES = [
     choices: {},
   },
   {
+    id: 'multilingual',
+    // formtransform#135: base language untagged and first, then one
+    // xml:lang sibling per other language; qwacback forwards label::<lang>
+    // columns and default_language unchanged.
+    survey: [
+      { type: 'select_one yn', name: 'hund', 'label::Deutsch (de)': 'Haben Sie einen Hund?', 'label::English (en)': 'Do you have a dog?', 'hint::Deutsch (de)': 'Auch Mitbewohner', 'hint::English (en)': 'Flatmates count', required: 'false', appearance: null },
+    ],
+    choices: {
+      yn: [
+        { name: 'ja', 'label::Deutsch (de)': 'Ja', 'label::English (en)': 'Yes' },
+        { name: 'nein', 'label::Deutsch (de)': 'Nein', 'label::English (en)': 'No' },
+      ],
+    },
+    settings: { default_language: 'Deutsch (de)' },
+  },
+  {
     id: 'single_choice_long_list',
     survey: [{ type: 'select_one_from_file iso_3166_1.csv', name: 'country', label: 'Country', required: 'false', appearance: null }],
     choices: {},
@@ -178,6 +194,9 @@ function normalizedElements(xmlStr) {
   for (const m of inner.matchAll(/<(var|varGrp)[\s>][\s\S]*?<\/\1>/g)) {
     out.push(
       m[0]
+        // qwacback puts codeBook/@xml:lang on the fragment root; formtransform
+        // keeps it on the <codeBook>. Compare the elements without it.
+        .replace(/^(<(?:var|varGrp)\b[^>]*?)\s+xml:lang="[^"]*"/, '$1')
         .replace(/\s+files="[^"]*"/g, '')
         .replace(/\s+xmlns(:\w+)?="[^"]*"/g, '')
         .replace(/<([\w:]+)((?:\s+[\w:]+="[^"]*")*)\s*\/>/g, '<$1$2></$1>')
@@ -227,7 +246,7 @@ function payloadFor(test) {
       choices.push({ list_name: listName, ...c });
     }
   }
-  return { survey: test.survey, choices, settings: {} };
+  return { survey: test.survey, choices, settings: test.settings ?? {} };
 }
 
 async function login() {
@@ -269,7 +288,7 @@ async function callQwacback(payload) {
 }
 
 async function callFormtransform(payload) {
-  return xlsformToDdi({ surveyData: payload.survey, choicesData: payload.choices }, { onWarning: () => {} });
+  return xlsformToDdi({ surveyData: payload.survey, choicesData: payload.choices }, { settings: payload.settings, onWarning: () => {} });
 }
 
 let passed = 0;

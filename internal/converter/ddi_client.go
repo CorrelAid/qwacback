@@ -38,11 +38,14 @@ var ErrConverterUnavailable = errors.New("XLSForm to DDI converter unavailable")
 const ddiNamespace = "ddi:codebook:2_5"
 
 // XLSFormToDDIRequest is the JSON payload POSTed to the ddi-emitter sidecar.
-// Mirrors the shape formtransform's buildDdiXml expects internally.
+// The sheets are forwarded as sent, not decoded into SurveyRow/ChoiceRow:
+// those have fixed columns and would drop label::<lang> and hint::<lang>
+// (multilingual forms), default_language and anything else formtransform
+// reads (#33).
 type XLSFormToDDIRequest struct {
-	Survey   []SurveyRow `json:"survey"`
-	Choices  []ChoiceRow `json:"choices"`
-	Settings SettingsRow `json:"settings"`
+	Survey   []json.RawMessage `json:"survey"`
+	Choices  []json.RawMessage `json:"choices"`
+	Settings json.RawMessage   `json:"settings,omitempty"`
 }
 
 // DDIEmitterError is returned by the sidecar when it rejects input. The 400
@@ -66,19 +69,18 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 		return nil, fmt.Errorf("empty request body")
 	}
 
-	var form XLSForm
+	var form XLSFormToDDIRequest
 	if err := json.Unmarshal(xlsformJSON, &form); err != nil {
 		return nil, fmt.Errorf("failed to parse XLSForm JSON: %w", err)
 	}
 	if len(form.Survey) == 0 {
 		return nil, fmt.Errorf("survey sheet is empty")
 	}
+	if form.Choices == nil {
+		form.Choices = []json.RawMessage{}
+	}
 
-	payload, err := json.Marshal(XLSFormToDDIRequest{
-		Survey:   form.Survey,
-		Choices:  form.Choices,
-		Settings: form.Settings,
-	})
+	payload, err := json.Marshal(form)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal XLSForm payload: %w", err)
 	}
@@ -88,7 +90,7 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 		return nil, err
 	}
 
-	children, err := extractDataDscr(codebook)
+	children, lang, err := extractDataDscr(codebook)
 	if err != nil {
 		return nil, fmt.Errorf("%w: %v", ErrConverterUnavailable, err)
 	}
@@ -97,7 +99,7 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 		return nil, fmt.Errorf("the form has no questions that store an answer (notes produce no DDI variables)")
 	}
 
-	return shapeDDIFragment(children)
+	return shapeDDIFragment(children, lang)
 }
 
 func callDDIEmitter(payload []byte) ([]byte, error) {
@@ -153,10 +155,15 @@ type fragmentChild struct {
 //   - `files` attributes are dropped: they point at the <fileDscr> in the
 //     <codeBook>, which isn't part of the fragment,
 //   - whitespace between elements is dropped and re-indented.
-func extractDataDscr(codebook []byte) ([]fragmentChild, error) {
+//
+// It also returns codeBook/@xml:lang, the language of the untagged texts in
+// a multilingual form (formtransform#135), which shapeDDIFragment puts on
+// the fragment's root so it isn't lost with the <codeBook>.
+func extractDataDscr(codebook []byte) ([]fragmentChild, string, error) {
 	dec := xml.NewDecoder(bytes.NewReader(codebook))
 	var children []fragmentChild
 	var path []string // local names of open elements
+	var lang string   // codeBook/@xml:lang: the base language
 	found := false
 	for {
 		tok, err := dec.Token()
@@ -164,13 +171,20 @@ func extractDataDscr(codebook []byte) ([]fragmentChild, error) {
 			break
 		}
 		if err != nil {
-			return nil, fmt.Errorf("ddi-emitter returned malformed XML: %w", err)
+			return nil, "", fmt.Errorf("ddi-emitter returned malformed XML: %w", err)
 		}
 		// Position of this token relative to <codeBook><dataDscr>.
 		inDataDscr := len(path) >= 2 && path[0] == "codeBook" && path[1] == "dataDscr"
 
 		switch t := tok.(type) {
 		case xml.StartElement:
+			if len(path) == 0 && t.Name.Local == "codeBook" {
+				for _, a := range t.Attr {
+					if a.Name.Space == xmlNamespace && a.Name.Local == "lang" {
+						lang = a.Value
+					}
+				}
+			}
 			if len(path) == 1 && path[0] == "codeBook" && t.Name.Local == "dataDscr" {
 				found = true
 			}
@@ -197,9 +211,9 @@ func extractDataDscr(codebook []byte) ([]fragmentChild, error) {
 		}
 	}
 	if !found {
-		return nil, fmt.Errorf("ddi-emitter returned no <codeBook><dataDscr>")
+		return nil, "", fmt.Errorf("ddi-emitter returned no <codeBook><dataDscr>")
 	}
-	return children, nil
+	return children, lang, nil
 }
 
 func cleanName(n xml.Name) xml.Name {
@@ -226,14 +240,24 @@ func cleanStart(t xml.StartElement) xml.StartElement {
 // shapeDDIFragment mirrors the unwrapping rules the deleted XLSFormToDDI used:
 //   - a single <var> or <varGrp> → bare element
 //   - everything else            → wrapped in <dataDscr>, original order kept
-func shapeDDIFragment(children []fragmentChild) ([]byte, error) {
+func shapeDDIFragment(children []fragmentChild, lang string) ([]byte, error) {
 	var buf bytes.Buffer
 	buf.WriteString(xml.Header)
 	enc := xml.NewEncoder(&buf)
 	enc.Indent("", "  ")
 
+	langAttr := xml.Attr{Name: xml.Name{Space: xmlNamespace, Local: "lang"}, Value: lang}
 	bare := len(children) == 1 && (children[0].name == "var" || children[0].name == "varGrp")
 	wrapper := xml.StartElement{Name: xml.Name{Local: "dataDscr"}}
+	if lang != "" {
+		if bare {
+			root := children[0].tokens[0].(xml.StartElement)
+			root.Attr = append([]xml.Attr{langAttr}, root.Attr...)
+			children[0].tokens[0] = root
+		} else {
+			wrapper.Attr = []xml.Attr{langAttr}
+		}
+	}
 	if !bare {
 		if err := enc.EncodeToken(wrapper); err != nil {
 			return nil, err

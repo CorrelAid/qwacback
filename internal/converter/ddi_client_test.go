@@ -171,3 +171,69 @@ func TestXLSFormToDDI_ForwardsGuidanceHintColumn(t *testing.T) {
 		t.Errorf("guidance_hint not forwarded: %s", got)
 	}
 }
+
+// #33: the sheets reach the sidecar as sent, so label::<lang> columns and
+// default_language survive. SurveyRow/SettingsRow have fixed fields and
+// dropped them.
+func TestXLSFormToDDI_ForwardsLanguageColumns(t *testing.T) {
+	var got string
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		b, _ := io.ReadAll(r.Body)
+		got = string(b)
+		_, _ = w.Write([]byte(codeBook(`<var ID="V_a" name="a"><concept>A</concept></var>`)))
+	}))
+	t.Cleanup(srv.Close)
+	prev := DDIEmitterURL
+	DDIEmitterURL = srv.URL
+	t.Cleanup(func() { DDIEmitterURL = prev })
+
+	in := `{"survey":[{"type":"integer","name":"a","label::Deutsch (de)":"Alter?","label::English (en)":"Age?"}],"settings":{"default_language":"Deutsch (de)"}}`
+	if _, err := XLSFormToDDI([]byte(in)); err != nil {
+		t.Fatal(err)
+	}
+	for _, want := range []string{`"label::Deutsch (de)":"Alter?"`, `"label::English (en)":"Age?"`, `"default_language":"Deutsch (de)"`} {
+		if !strings.Contains(got, want) {
+			t.Errorf("not forwarded: %s in %s", want, got)
+		}
+	}
+}
+
+// #33: codeBook/@xml:lang names the language of the untagged texts; the
+// fragment keeps it on its root, since the <codeBook> is stripped.
+func TestXLSFormToDDI_KeepsBaseLanguageOnRoot(t *testing.T) {
+	multi := func(dataDscr string) string {
+		return strings.Replace(codeBook(dataDscr), `version="2.5">`, `version="2.5" xml:lang="de">`, 1)
+	}
+	t.Run("bare var", func(t *testing.T) {
+		fakeEmitter(t, http.StatusOK, multi(`<var ID="V_a" name="a"><qstn><qstnLit>Alter?</qstnLit><qstnLit xml:lang="en">Age?</qstnLit></qstn><concept>A</concept></var>`))
+		out, err := XLSFormToDDI([]byte(minimalForm))
+		if err != nil {
+			t.Fatal(err)
+		}
+		for _, want := range []string{`<var xml:lang="de" ID="V_a" name="a">`, `<qstnLit>Alter?</qstnLit>`, `<qstnLit xml:lang="en">Age?</qstnLit>`} {
+			if !strings.Contains(string(out), want) {
+				t.Errorf("missing %s in:\n%s", want, out)
+			}
+		}
+	})
+	t.Run("dataDscr wrapper", func(t *testing.T) {
+		fakeEmitter(t, http.StatusOK, multi(`<var ID="V_a" name="a"><concept>A</concept></var><var ID="V_b" name="b"><concept>B</concept></var>`))
+		out, err := XLSFormToDDI([]byte(minimalForm))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if !strings.Contains(string(out), `<dataDscr xml:lang="de">`) {
+			t.Errorf("wrapper lacks xml:lang:\n%s", out)
+		}
+	})
+	t.Run("monolingual unchanged", func(t *testing.T) {
+		fakeEmitter(t, http.StatusOK, codeBook(`<var ID="V_a" name="a"><concept>A</concept></var>`))
+		out, err := XLSFormToDDI([]byte(minimalForm))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if strings.Contains(string(out), "xml:lang") {
+			t.Errorf("unexpected xml:lang:\n%s", out)
+		}
+	})
+}
