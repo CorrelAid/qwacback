@@ -34,13 +34,14 @@ function readJson(req) {
   });
 }
 
+// The settings sheet as sent: an object, or a one-row array as XLSForm has
+// it. Passed through whole, so default_language (the base language of a
+// multilingual form, codeBook/@xml:lang) reaches formtransform along with
+// form_id, form_title and version.
 function pickSettings(input) {
-  const s = input?.settings ?? {};
-  return {
-    id_string: s.form_id ?? s.id_string,
-    form_title: s.form_title,
-    version: s.version,
-  };
+  const s = input?.settings;
+  if (Array.isArray(s)) return s[0] ?? {};
+  return s && typeof s === 'object' ? s : {};
 }
 
 function send(res, status, body, extraHeaders = {}) {

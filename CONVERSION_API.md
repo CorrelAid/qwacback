@@ -126,6 +126,30 @@ curl -X POST http://localhost:8090/api/convert/xlsform-to-ddi \
 </var>
 ```
 
+### Multilingual forms
+
+XLSForm → DDI takes multilingual forms as XLSForm writes them. Use `label::<Language> (<code>)` / `hint::<Language> (<code>)` columns on survey and choice rows, and name the base language in `settings.default_language`:
+
+```json
+{
+  "survey": [{"type": "integer", "name": "alter", "label::Deutsch (de)": "Alter?", "label::English (en)": "Age?"}],
+  "settings": {"default_language": "Deutsch (de)"}
+}
+```
+
+The sheets are forwarded to formtransform unchanged, so any column it reads reaches it. The response has each text element in the base language, untagged and first, followed by one `xml:lang` sibling per other language (formtransform#135). The base language is set as `xml:lang` on the fragment's root element (`<var>`, `<varGrp>` or `<dataDscr>`), since the `<codeBook>` that formtransform declares it on isn't part of the response:
+
+```xml
+<var xml:lang="de" ID="V_alter" name="alter" intrvl="contin">
+  <qstn responseDomainType="numeric">
+    <qstnLit>Alter?</qstnLit>
+    <qstnLit xml:lang="en">Age?</qstnLit>
+  </qstn>
+  …
+```
+
+On import, and in DDI → XLSForm, qwacback keeps the base language: the untagged element or the one matching `codeBook/@xml:lang`. The other languages are not stored yet.
+
 ## XLSForm JSON Structure
 
 The JSON format mirrors the three sheets of an XLSForm spreadsheet:
