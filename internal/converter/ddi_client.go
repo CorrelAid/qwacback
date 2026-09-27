@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"encoding/xml"
 	"errors"
 	"fmt"
 	"io"
@@ -12,6 +11,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"qwacback/internal/ddixml"
 )
 
 // DDIEmitterURL is the base URL of the ddi-emitter sidecar. Overridden by the
@@ -29,16 +30,12 @@ const ddiEmitterHTTPTimeout = 30 * time.Second
 // ErrConverterUnavailable means the ddi-emitter sidecar couldn't be reached
 // or answered with something other than a result or an input rejection. It is
 // a server-side problem: callers should answer 503, not blame the input. Every
-// other error from XLSFormToDDI describes a problem with the input and is safe
-// to show to the API client.
-var ErrConverterUnavailable = errors.New("XLSForm to DDI converter unavailable")
-
-// ddiNamespace is the default namespace of formtransform's <codeBook>. It is
-// dropped from the returned fragment, which is not a standalone document.
-const ddiNamespace = "ddi:codebook:2_5"
+// other error from XLSFormToDDI or DDIToXLSForm describes a problem with the
+// input and is safe to show to the API client.
+var ErrConverterUnavailable = errors.New("DDI/XLSForm converter unavailable")
 
 // XLSFormToDDIRequest is the JSON payload POSTed to the ddi-emitter sidecar.
-// The sheets are forwarded as sent, not decoded into SurveyRow/ChoiceRow:
+// The sheets are forwarded as sent, not decoded into fixed-column structs:
 // those have fixed columns and would drop label::<lang> and hint::<lang>
 // (multilingual forms), default_language and anything else formtransform
 // reads (#33).
@@ -59,11 +56,9 @@ type DDIEmitterError struct {
 // the ddi-emitter sidecar (which wraps @correlaid/formtransform).
 //
 // The sidecar returns a full <codeBook> document; this function cuts out the
-// children of its <dataDscr> unchanged (see extractDataDscr) and applies the
-// same single-element unwrapping the Go converter used to: a single <var> or
-// <varGrp> is returned as a bare fragment, anything else is wrapped in
-// <dataDscr>. The <codeBook> framing is never returned, so the public API of
-// /api/convert/xlsform-to-ddi is unchanged.
+// children of its <dataDscr> unchanged (see ddixml.DataDscr): a single <var>
+// or <varGrp> is returned as a bare fragment, anything else is wrapped in
+// <dataDscr> (ddixml.Fragment).
 func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 	if len(bytes.TrimSpace(xlsformJSON)) == 0 {
 		return nil, fmt.Errorf("empty request body")
@@ -85,34 +80,54 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 		return nil, fmt.Errorf("failed to marshal XLSForm payload: %w", err)
 	}
 
-	codebook, err := callDDIEmitter(payload)
+	codebook, err := callDDIEmitter("/xlsform-to-ddi", "application/json", payload)
 	if err != nil {
 		return nil, err
 	}
 
-	children, lang, err := extractDataDscr(codebook)
+	// Copied, not parsed into Go structs: whatever formtransform emits
+	// reaches the client, including elements qwacback doesn't model. The
+	// codeBook's xml:lang (the base language of a multilingual form) moves
+	// to the fragment's root.
+	lang, children, err := ddixml.DataDscr(codebook)
 	if err != nil {
-		return nil, fmt.Errorf("%w: %v", ErrConverterUnavailable, err)
+		return nil, fmt.Errorf("%w: ddi-emitter returned %v", ErrConverterUnavailable, err)
 	}
 	if len(children) == 0 {
 		// Notes store no response, so formtransform emits no <var> for them.
 		return nil, fmt.Errorf("the form has no questions that store an answer (notes produce no DDI variables)")
 	}
 
-	return shapeDDIFragment(children, lang)
+	return ddixml.Fragment(children, lang)
 }
 
-func callDDIEmitter(payload []byte) ([]byte, error) {
+// DDIToXLSForm converts DDI XML (a whole codebook, a <dataDscr>, or bare
+// <var>/<varGrp> elements) to XLSForm JSON with formtransform's ddiToXlsform,
+// via the ddi-emitter sidecar (#37):
+//
+//	{"survey": [...], "choices": [...], "settings": [...], "warnings": [{"code", "message"}]}
+//
+// The sheets are formtransform's, passed through unchanged. A codebook
+// formtransform wrote gives back its form; other DDI converts as far as its
+// standard elements go, with a warning for each field it can't supply.
+func DDIToXLSForm(ddiXML []byte) ([]byte, error) {
+	if len(bytes.TrimSpace(ddiXML)) == 0 {
+		return nil, fmt.Errorf("empty request body")
+	}
+	return callDDIEmitter("/ddi-to-xlsform", "application/xml", ddiXML)
+}
+
+func callDDIEmitter(path, contentType string, payload []byte) ([]byte, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), ddiEmitterHTTPTimeout)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost,
-		strings.TrimRight(DDIEmitterURL, "/")+"/xlsform-to-ddi",
+		strings.TrimRight(DDIEmitterURL, "/")+path,
 		bytes.NewReader(payload))
 	if err != nil {
 		return nil, fmt.Errorf("%w: build request: %v", ErrConverterUnavailable, err)
 	}
-	req.Header.Set("content-type", "application/json")
+	req.Header.Set("content-type", contentType)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -138,145 +153,4 @@ func callDDIEmitter(payload []byte) ([]byte, error) {
 	default:
 		return nil, fmt.Errorf("%w: HTTP %d: %s", ErrConverterUnavailable, resp.StatusCode, strings.TrimSpace(string(body)))
 	}
-}
-
-// fragmentChild is one element directly under <dataDscr>, as its token stream.
-type fragmentChild struct {
-	name   string
-	tokens []xml.Token
-}
-
-// extractDataDscr returns the children of the <dataDscr> in formtransform's
-// <codeBook> as token streams. They are copied, not parsed into Go structs, so
-// whatever formtransform emits reaches the client, including elements qwacback
-// doesn't model. Only three things change:
-//   - the DDI default namespace is dropped (the fragment has no <codeBook> to
-//     declare it; the deleted Go converter didn't emit one either),
-//   - `files` attributes are dropped: they point at the <fileDscr> in the
-//     <codeBook>, which isn't part of the fragment,
-//   - whitespace between elements is dropped and re-indented.
-//
-// It also returns codeBook/@xml:lang, the language of the untagged texts in
-// a multilingual form (formtransform#135), which shapeDDIFragment puts on
-// the fragment's root so it isn't lost with the <codeBook>.
-func extractDataDscr(codebook []byte) ([]fragmentChild, string, error) {
-	dec := xml.NewDecoder(bytes.NewReader(codebook))
-	var children []fragmentChild
-	var path []string // local names of open elements
-	var lang string   // codeBook/@xml:lang: the base language
-	found := false
-	for {
-		tok, err := dec.Token()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return nil, "", fmt.Errorf("ddi-emitter returned malformed XML: %w", err)
-		}
-		// Position of this token relative to <codeBook><dataDscr>.
-		inDataDscr := len(path) >= 2 && path[0] == "codeBook" && path[1] == "dataDscr"
-
-		switch t := tok.(type) {
-		case xml.StartElement:
-			if len(path) == 0 && t.Name.Local == "codeBook" {
-				for _, a := range t.Attr {
-					if a.Name.Space == xmlNamespace && a.Name.Local == "lang" {
-						lang = a.Value
-					}
-				}
-			}
-			if len(path) == 1 && path[0] == "codeBook" && t.Name.Local == "dataDscr" {
-				found = true
-			}
-			if inDataDscr {
-				if len(path) == 2 {
-					children = append(children, fragmentChild{name: t.Name.Local})
-				}
-				last := &children[len(children)-1]
-				last.tokens = append(last.tokens, cleanStart(t))
-			}
-			path = append(path, t.Name.Local)
-		case xml.EndElement:
-			path = path[:len(path)-1]
-			// Still inside <dataDscr> after closing: t closed one of its descendants.
-			if len(path) >= 2 && path[0] == "codeBook" && path[1] == "dataDscr" {
-				last := &children[len(children)-1]
-				last.tokens = append(last.tokens, xml.EndElement{Name: cleanName(t.Name)})
-			}
-		case xml.CharData:
-			if inDataDscr && len(path) > 2 && len(bytes.TrimSpace(t)) > 0 {
-				last := &children[len(children)-1]
-				last.tokens = append(last.tokens, t.Copy())
-			}
-		}
-	}
-	if !found {
-		return nil, "", fmt.Errorf("ddi-emitter returned no <codeBook><dataDscr>")
-	}
-	return children, lang, nil
-}
-
-func cleanName(n xml.Name) xml.Name {
-	if n.Space == ddiNamespace {
-		n.Space = ""
-	}
-	return n
-}
-
-func cleanStart(t xml.StartElement) xml.StartElement {
-	out := xml.StartElement{Name: cleanName(t.Name)}
-	for _, a := range t.Attr {
-		if a.Name.Space == "xmlns" || (a.Name.Space == "" && a.Name.Local == "xmlns") {
-			continue
-		}
-		if a.Name.Space == "" && a.Name.Local == "files" {
-			continue
-		}
-		out.Attr = append(out.Attr, a)
-	}
-	return out
-}
-
-// shapeDDIFragment mirrors the unwrapping rules the deleted XLSFormToDDI used:
-//   - a single <var> or <varGrp> → bare element
-//   - everything else            → wrapped in <dataDscr>, original order kept
-func shapeDDIFragment(children []fragmentChild, lang string) ([]byte, error) {
-	var buf bytes.Buffer
-	buf.WriteString(xml.Header)
-	enc := xml.NewEncoder(&buf)
-	enc.Indent("", "  ")
-
-	langAttr := xml.Attr{Name: xml.Name{Space: xmlNamespace, Local: "lang"}, Value: lang}
-	bare := len(children) == 1 && (children[0].name == "var" || children[0].name == "varGrp")
-	wrapper := xml.StartElement{Name: xml.Name{Local: "dataDscr"}}
-	if lang != "" {
-		if bare {
-			root := children[0].tokens[0].(xml.StartElement)
-			root.Attr = append([]xml.Attr{langAttr}, root.Attr...)
-			children[0].tokens[0] = root
-		} else {
-			wrapper.Attr = []xml.Attr{langAttr}
-		}
-	}
-	if !bare {
-		if err := enc.EncodeToken(wrapper); err != nil {
-			return nil, err
-		}
-	}
-	for _, c := range children {
-		for _, tok := range c.tokens {
-			if err := enc.EncodeToken(tok); err != nil {
-				return nil, err
-			}
-		}
-	}
-	if !bare {
-		if err := enc.EncodeToken(wrapper.End()); err != nil {
-			return nil, err
-		}
-	}
-	if err := enc.Flush(); err != nil {
-		return nil, err
-	}
-	return buf.Bytes(), nil
 }

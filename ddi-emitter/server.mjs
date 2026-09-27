@@ -1,8 +1,8 @@
-// Node sidecar that turns XLSForm JSON into DDI Codebook XML via
-// @correlaid/formtransform. Started by qwacback (Dockerfile) and reached over
-// HTTP from internal/converter/ddi_client.go.
+// Node sidecar that converts between XLSForm JSON and DDI Codebook XML via
+// @correlaid/formtransform, both ways. Started by qwacback (Dockerfile) and
+// reached over HTTP from internal/converter/ddi_client.go.
 import { createServer } from 'node:http';
-import { ConversionError, xlsformToDdi } from '@correlaid/formtransform';
+import { ConversionError, ddiToXlsform, xlsformToDdi } from '@correlaid/formtransform';
 
 const PORT = Number(process.env.DDI_EMITTER_PORT ?? 8091);
 
@@ -12,7 +12,7 @@ const HEADERS = {
   'x-frame-options': 'DENY',
 };
 
-function readJson(req) {
+function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = '';
     req.setEncoding('utf8');
@@ -23,15 +23,18 @@ function readJson(req) {
         req.destroy();
       }
     });
-    req.on('end', () => {
-      try {
-        resolve(body ? JSON.parse(body) : {});
-      } catch (e) {
-        reject(new Error(`invalid JSON: ${e.message}`));
-      }
-    });
+    req.on('end', () => resolve(body));
     req.on('error', reject);
   });
+}
+
+async function readJson(req) {
+  const body = await readBody(req);
+  try {
+    return body ? JSON.parse(body) : {};
+  } catch (e) {
+    throw new Error(`invalid JSON: ${e.message}`);
+  }
 }
 
 // The settings sheet as sent: an object, or a one-row array as XLSForm has
@@ -53,6 +56,10 @@ const server = createServer(async (req, res) => {
   if (req.method === 'GET' && req.url === '/healthz') {
     res.writeHead(200, { 'content-type': 'text/plain' });
     res.end('ok');
+    return;
+  }
+  if (req.method === 'POST' && req.url === '/ddi-to-xlsform') {
+    await ddiToXlsformRoute(req, res);
     return;
   }
   if (req.method !== 'POST' || req.url !== '/xlsform-to-ddi') {
@@ -111,6 +118,35 @@ const server = createServer(async (req, res) => {
     });
   }
 });
+
+// DDI (a codebook, a <dataDscr>, or bare <var>/<varGrp> elements) →
+// { survey, choices, settings, warnings }. ddiToXlsform never refuses DDI it
+// can parse; each field it can't supply is a warning, returned with the form.
+async function ddiToXlsformRoute(req, res) {
+  const json = { 'content-type': 'application/json' };
+  let xml;
+  try {
+    xml = await readBody(req);
+  } catch (e) {
+    send(res, 400, JSON.stringify({ error: e.message }), json);
+    return;
+  }
+  const warnings = [];
+  try {
+    const form = ddiToXlsform(xml, {
+      onWarning: (d) => warnings.push({ code: d.code, message: d.message }),
+    });
+    send(res, 200, JSON.stringify({ ...form, warnings }), json);
+  } catch (e) {
+    if (e instanceof ConversionError) {
+      // ddi-invalid: not well-formed, or neither a codeBook nor a var.
+      send(res, 400, JSON.stringify({ error: e.message }), json);
+      return;
+    }
+    console.error('ddi-emitter: ddi-to-xlsform failed', e);
+    send(res, 500, JSON.stringify({ error: 'internal error' }), json);
+  }
+}
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`ddi-emitter listening on http://0.0.0.0:${PORT}`);

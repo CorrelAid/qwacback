@@ -86,6 +86,12 @@
     <concept xml:lang="de">Begegnung</concept>
   </varGrp>
 
+  <!-- Section: the questions about the respondent, under one lead-in -->
+  <varGrp ID="VG3" name="about_you" type="section" var="V10a V10b V10c V10d V10e V10f V10g">
+    <txt>Questions about yourself…</txt>
+    <concept>Demographics</concept>
+  </varGrp>
+
   <!-- Variable: q1a - Frequency of Green Space use -->
   <var ID="V1a" name="space_use_freq" intrvl="discrete">
     <qstn ID="Q1a" responseDomainType="category">
@@ -609,7 +615,6 @@
   <!-- Variable: q10a - Language preference (Demographics) -->
   <var ID="V10a" name="language_pref" intrvl="discrete">
     <qstn ID="Q10a" responseDomainType="category">
-      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>I prefer to use a language other than English</qstnLit>
     </qstn>
     <catgry>
@@ -633,7 +638,6 @@
   <!-- Variable: q10b - Employment Status (Demographics) -->
   <var ID="V10b" name="employment_status" intrvl="discrete">
     <qstn ID="Q10b" responseDomainType="category">
-      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>Employment Status</qstnLit>
     </qstn>
     <catgry>
@@ -669,7 +673,6 @@
   <!-- Variable: q10c - Age (Demographics) -->
   <var ID="V10c" name="age_group" intrvl="discrete">
     <qstn ID="Q10c" responseDomainType="category">
-      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>Age</qstnLit>
     </qstn>
     <catgry>
@@ -705,7 +708,6 @@
   <!-- Variable: q10d - Gender (Demographics) -->
   <var ID="V10d" name="gender" intrvl="discrete">
     <qstn ID="Q10d" responseDomainType="category">
-      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>Gender</qstnLit>
     </qstn>
     <catgry>
@@ -724,7 +726,6 @@
   <!-- Variable: q10e - Length of residence (Demographics) -->
   <var ID="V10e" name="residence_length" intrvl="discrete">
     <qstn ID="Q10e" responseDomainType="category">
-      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>I have lived in this neighbourhood for</qstnLit>
     </qstn>
     <catgry>
@@ -752,7 +753,6 @@
   <!-- Variable: q10f - Home ownership (Demographics) -->
   <var ID="V10f" name="home_ownership" intrvl="discrete">
     <qstn ID="Q10f" responseDomainType="category">
-      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>I own a house in this community</qstnLit>
     </qstn>
     <catgry>
@@ -772,7 +772,6 @@
   <!-- Variable: q10g - Respondent type (Demographics) -->
   <var ID="V10g" name="respondent_type" intrvl="discrete">
     <qstn ID="Q10g" responseDomainType="category">
-      <preQTxt>Questions about yourself…</preQTxt>
       <qstnLit>The person answering these questions is….</qstnLit>
     </qstn>
     <catgry>

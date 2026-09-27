@@ -391,6 +391,10 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	studyRecord.Set("topic_classifications", topicClassifications)
 	studyRecord.Set("keywords", keywords)
 	studyRecord.Set("language", baseLang)
+	// The codebook as imported: exports read it, not the fields above, so
+	// whatever it carries beyond them (skip logic, cdl: notes, sections,
+	// question order) comes back out (#37).
+	studyRecord.Set("codebook", string(rawXML))
 
 	if err := app.Save(studyRecord); err != nil {
 		return "", err
@@ -415,7 +419,9 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 		gM := mxj.Map(gMap)
 		gType, _ := gM.ValueForPathString("-type")
 		varIdsAttr, _ := gM.ValueForPathString("-var")
-		if varIdsAttr != "" && gType != "" {
+		// A section (formtransform's plain group) says nothing about the
+		// answer type; it must not hide the grid its members are also in.
+		if varIdsAttr != "" && gType != "" && gType != "section" {
 			for _, id := range strings.Fields(varIdsAttr) {
 				varGroupTypeMap[id] = gType
 			}
@@ -445,6 +451,8 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			vQuest := qstnLitTexts[ddiId] // token-based extraction preserves mixed-content text
 			vPreQ := textAtLang(vM, "qstn.preQTxt", baseLang)
 			vIvInstr := textAtLang(vM, "qstn.ivuInstr", baseLang)
+			vHint := textAtLang(vM, "qstn.postQTxt", baseLang)
+			vUniverse := textAtLang(vM, "universe", baseLang)
 			vTr := translations{}
 			for lang, text := range qstnLitOthers[ddiId] {
 				vTr.add(lang, "question", text)
@@ -454,6 +462,12 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			}
 			for lang, text := range translationsAt(vM, "qstn.ivuInstr", baseLang) {
 				vTr.add(lang, "ivu_instructions", text)
+			}
+			for lang, text := range translationsAt(vM, "qstn.postQTxt", baseLang) {
+				vTr.add(lang, "hint", text)
+			}
+			for lang, text := range translationsAt(vM, "universe", baseLang) {
+				vTr.add(lang, "universe", text)
 			}
 			vQstnType, _ := vM.ValueForPathString("qstn.-responseDomainType")
 			vIntrvl, _ := vM.ValueForPathString("-intrvl")
@@ -496,6 +510,8 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			varRecord.Set("question", vQuest)
 			varRecord.Set("prequestion_text", vPreQ)
 			varRecord.Set("ivu_instructions", vIvInstr)
+			varRecord.Set("hint", vHint)
+			varRecord.Set("universe", vUniverse)
 			varRecord.Set("interval", vIntrvl)
 			varRecord.Set("var_format_type", vFmtType)
 			varRecord.Set("answer_type", inferAnswerType(vQstnType, varGroupTypeMap[ddiId]))

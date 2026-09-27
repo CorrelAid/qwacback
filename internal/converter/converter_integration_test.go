@@ -433,14 +433,14 @@ func TestIntegration_RoundTrip_ValidatesOutput(t *testing.T) {
 	}
 }
 
-// hint and guidance_hint come back as <preQTxt> and <ivuInstr> since
-// formtransform v0.2.0 (#12); the result must still validate.
+// hint and guidance_hint come back as <postQTxt> (since formtransform v0.7.0,
+// #39; <preQTxt> before) and <ivuInstr> (#12); the result must validate.
 func TestIntegration_XLSFormToDDI_ValidatesHintAndGuidance(t *testing.T) {
 	client := getSchematronClient(t)
 
 	xlsformJSON := `{
 		"survey": [
-			{"type": "integer", "name": "alter", "label": "Wie alt sind Sie?", "hint": "In Jahren", "parameters": "guidance_hint=Bei Unsicherheit nachfragen"}
+			{"type": "integer", "name": "alter", "label": "Wie alt sind Sie?", "hint": "In Jahren", "guidance_hint": "Bei Unsicherheit nachfragen"}
 		],
 		"choices": [],
 		"settings": {}
@@ -450,7 +450,7 @@ func TestIntegration_XLSFormToDDI_ValidatesHintAndGuidance(t *testing.T) {
 	if err != nil {
 		t.Fatalf("XLSFormToDDI failed: %v", err)
 	}
-	for _, want := range []string{"<preQTxt>In Jahren</preQTxt>", "<ivuInstr>Bei Unsicherheit nachfragen</ivuInstr>"} {
+	for _, want := range []string{"<postQTxt>In Jahren</postQTxt>", "<ivuInstr>Bei Unsicherheit nachfragen</ivuInstr>"} {
 		if !strings.Contains(string(ddiXML), want) {
 			t.Errorf("missing %s in:\n%s", want, ddiXML)
 		}
