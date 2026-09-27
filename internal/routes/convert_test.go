@@ -103,7 +103,8 @@ func TestQuestionTypesRoute(t *testing.T) {
 		ExpectedStatus: 200,
 		ExpectedContent: []string{
 			`"single_choice_other":{`, `"registryType":"select_one_other"`,
-			`"withOther":true`, `"en":"Integer"`, `"aliases":["int"]`,
+			`"withOther":true`, `"en":"Integer"`, `"de":"Ganzzahl"`, `"aliases":["int"]`,
+			`"appearance":"minimal"`,
 		},
 		TestAppFactory: setupTestApp,
 	}).Test(t)

@@ -11,10 +11,11 @@ import (
 	"qwacback/internal/converter"
 )
 
-// A trimmed QUESTION_TYPES as formtransform v0.7.0 serializes it.
+// A trimmed QUESTION_TYPES as formtransform v0.7.1 serializes it.
 const catalogue = `{
-  "select_one": {"id":"type:select_one","label":"Select One","kind":"question","useWhen":"u","isVariant":false,"isComposite":false,"typeString":"select_one"},
-  "select_one_other": {"id":"variant:select_one_other","label":"Select One with Other","kind":"question","useWhen":"u","isVariant":true,"isComposite":false,"typeString":"select_one","base":"select_one"},
+  "select_one": {"id":"type:select_one","label":"Select One","labels":{"en":"Select One","de":"Einfachauswahl"},"kind":"question","useWhen":"u","isVariant":false,"isComposite":false,"typeString":"select_one"},
+  "select_one_other": {"id":"variant:select_one_other","label":"Select One with Other","labels":{"en":"Select One with Other","de":"Einfachauswahl mit Sonstiges"},"kind":"question","useWhen":"u","isVariant":true,"isComposite":false,"typeString":"select_one","base":"select_one","presentation":{"withOther":true,"withLongList":false}},
+  "select_one_long_list": {"id":"variant:select_one_long_list","label":"Select One (Long List)","kind":"question","useWhen":"u","isVariant":true,"isComposite":false,"typeString":"select_one","base":"select_one","presentation":{"appearanceString":"minimal","withOther":false,"withLongList":true}},
   "integer": {"id":"type:integer","label":"Integer","kind":"question","useWhen":"u","isVariant":false,"isComposite":false,"typeString":"integer","aliases":["int"],"constraints":{"maxNameLength":20}},
   "grid": {"id":"composite:grid","label":"Grid / Matrix Group","kind":"question","useWhen":"u","isVariant":false,"isComposite":true,"bases":["begin_group","select_one"]}
 }`
@@ -46,9 +47,16 @@ func TestByAnswerType(t *testing.T) {
 		t.Fatal(err)
 	}
 	other := got["single_choice_other"]
-	if other.RegistryType != "select_one_other" || other.Label["en"] != "Select One with Other" || other.Base != "select_one" ||
+	if other.RegistryType != "select_one_other" || other.Label["de"] != "Einfachauswahl mit Sonstiges" || other.Base != "select_one" ||
 		other.Presentation != (Presentation{Choice: "one", WithOther: true}) {
 		t.Errorf("single_choice_other: %+v", other)
+	}
+	if ll := got["single_choice_long_list"]; ll.Presentation != (Presentation{Choice: "one", LongList: true, Appearance: "minimal"}) {
+		t.Errorf("single_choice_long_list: %+v", ll.Presentation)
+	}
+	// An entry without `labels` (before v0.7.1) still gets its English label.
+	if in := got["integer"]; in.Label["en"] != "Integer" {
+		t.Errorf("integer label: %+v", in.Label)
 	}
 	if in := got["integer"]; len(in.Aliases) != 1 || in.Aliases[0] != "int" {
 		t.Errorf("integer aliases: %+v", in)
@@ -101,8 +109,17 @@ func TestIntegration_EveryAnswerTypeInRegistry(t *testing.T) {
 		t.Fatal(err)
 	}
 	for name, at := range answerTypes {
-		if _, ok := ans[name]; !ok {
+		got, ok := ans[name]
+		if !ok {
 			t.Errorf("answer type %s: registry has no %s", name, at.slug)
+			continue
+		}
+		if got.Label["de"] == "" {
+			t.Errorf("answer type %s: no German label", name)
+		}
+		// qwacback's fallback agrees with the registry.
+		if rp := reg[at.slug].Presentation; rp != nil && (rp.WithOther != at.p.WithOther || rp.WithLongList != at.p.LongList) {
+			t.Errorf("answer type %s: registry presentation %+v, qwacback %+v", name, *rp, at.p)
 		}
 	}
 	if len(reg) < len(answerTypes) {

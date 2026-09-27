@@ -82,7 +82,7 @@ For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
 
 - **GET `/api/examples`** — Answer type examples (XLSForm + DDI pairs).
 - **GET `/api/examples/{type}`** — Single example by type (`single_choice`, `multiple_choice`, `grid`, `integer`, `text`, etc.).
-- **GET `/api/question-types`** — The registry's question-type catalogue of the pinned formtransform, keyed by qwacback's answer types: `registryType`, `label` per language, `kind`, `base`, `aliases` and `presentation` (`choice`: `one`/`multiple`, `withOther`, `longList`, `grid`). `?registry=1` returns every registry type keyed by registry slug instead. Clients get the catalogue here instead of importing `@correlaid/formtransform`.
+- **GET `/api/question-types`** — The registry's question-type catalogue of the pinned formtransform, keyed by qwacback's answer types: `registryType`, `label` per language (`en`, `de`), `kind`, `base`, `aliases` and `presentation` (`choice`: `one`/`multiple`, `withOther`, `longList`, `grid`, `appearance`). `withOther`, `longList` and `appearance` are the registry's. `?registry=1` returns every registry type keyed by registry slug instead. Clients get the catalogue here instead of importing `@correlaid/formtransform`.
 - **GET `/api/docs/markup-guide`** — DDI encoding conventions.
 
 ### PocketBase built-in API
