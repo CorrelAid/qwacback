@@ -578,6 +578,10 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		if err != nil {
 			return xlsformError(err, "question "+qId)
 		}
+		// A question alone: its skip logic may name questions outside it (#46).
+		if xlsformJSON, err = converter.DropOutsideReferences(xlsformJSON); err != nil {
+			return xlsformError(err, "question "+qId)
+		}
 
 		setXMLCache(app, "question:xlsform:"+qId, xlsformJSON)
 		e.Response.Header().Set("X-Cache", "MISS")
