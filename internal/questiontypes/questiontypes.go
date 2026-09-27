@@ -86,7 +86,11 @@ var answerTypes = map[string]struct {
 	"multiple_choice_long_list": {"select_multiple_long_list", Presentation{Choice: "multiple", LongList: true}},
 	"grid":                      {"grid", Presentation{Choice: "one", Grid: true}},
 	"integer":                   {"integer", Presentation{}},
+	"decimal":                   {"decimal", Presentation{}},
+	"range":                     {"range", Presentation{}},
 	"text":                      {"text", Presentation{}},
+	"date":                      {"date", Presentation{}},
+	"time":                      {"time", Presentation{}},
 }
 
 // retryAfter is how long a failed load is remembered before the next request

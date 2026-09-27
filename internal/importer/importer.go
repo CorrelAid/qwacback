@@ -298,12 +298,29 @@ func conceptsAt(m mxj.Map) (concept, vocab string, tags []ConceptTag) {
 	return concept, vocab, tags
 }
 
-// inferAnswerType maps DDI responseDomainType + group type to an answer type.
-func inferAnswerType(responseDomainType, groupType string) string {
-	switch responseDomainType {
+// inferAnswerType maps a var to an answer type the way formtransform's
+// ddiToXlsform reads it back (#44):
+//   - numeric: integer with var/@dcml="0", range with a valrng/range that
+//     no cdl:constraint explains, else decimal
+//   - text: date or time by varFormat/@category, else text
+//   - category: grid inside a grid group, else single_choice
+//   - multiple: multiple_choice
+func inferAnswerType(vM mxj.Map, groupType string) string {
+	domain, _ := vM.ValueForPathString("qstn.-responseDomainType")
+	switch domain {
 	case "numeric":
-		return "integer"
+		if dcml, _ := vM.ValueForPathString("-dcml"); dcml == "0" {
+			return "integer"
+		}
+		if ranges, _ := vM.ValuesForPath("valrng.range"); len(ranges) > 0 && !hasNote(vM, "cdl:constraint") {
+			return "range"
+		}
+		return "decimal"
 	case "text":
+		switch category, _ := vM.ValueForPathString("varFormat.-category"); category {
+		case "date", "time":
+			return category
+		}
 		return "text"
 	case "multiple":
 		return "multiple_choice"
@@ -315,6 +332,17 @@ func inferAnswerType(responseDomainType, groupType string) string {
 	default:
 		return ""
 	}
+}
+
+// hasNote reports whether m has a <notes> child of the given type.
+func hasNote(m mxj.Map, noteType string) bool {
+	notes, _ := m.ValuesForPath("notes")
+	for _, n := range notes {
+		if nm, ok := n.(map[string]interface{}); ok && nm["-type"] == noteType {
+			return true
+		}
+	}
+	return false
 }
 
 // ImportCodebook parses the XML and inserts studies, groups, variables and
@@ -469,7 +497,6 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			for lang, text := range translationsAt(vM, "universe", baseLang) {
 				vTr.add(lang, "universe", text)
 			}
-			vQstnType, _ := vM.ValueForPathString("qstn.-responseDomainType")
 			vIntrvl, _ := vM.ValueForPathString("-intrvl")
 			vFmtType, _ := vM.ValueForPathString("varFormat.-type")
 
@@ -514,7 +541,7 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			varRecord.Set("universe", vUniverse)
 			varRecord.Set("interval", vIntrvl)
 			varRecord.Set("var_format_type", vFmtType)
-			varRecord.Set("answer_type", inferAnswerType(vQstnType, varGroupTypeMap[ddiId]))
+			varRecord.Set("answer_type", inferAnswerType(vM, varGroupTypeMap[ddiId]))
 			varRecord.Set("has_long_list", hasLongList)
 			varRecord.Set("long_list_standard", vocab)
 			varRecord.Set("categories", categories)
