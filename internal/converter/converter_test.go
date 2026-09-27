@@ -516,3 +516,35 @@ func TestDDIToXLSForm_IvuInstrToGuidanceHintColumn(t *testing.T) {
 		t.Errorf("JSON is missing the guidance_hint column: %s", out)
 	}
 }
+
+// #30: with one element per language, the untagged (base) one wins, also
+// when it comes after the tagged one. A fragment has no codeBook/@xml:lang.
+func TestDDIToXLSForm_MultilingualTakesUntagged(t *testing.T) {
+	ddi := `<var ID="V_beruf" name="beruf">
+  <qstn responseDomainType="category">
+    <preQTxt xml:lang="en">EN-pre</preQTxt>
+    <preQTxt>Vorab</preQTxt>
+    <qstnLit xml:lang="en">Occupation?</qstnLit>
+    <qstnLit>Beruf?</qstnLit>
+    <ivuInstr>Nachfragen</ivuInstr>
+    <ivuInstr xml:lang="en">Probe</ivuInstr>
+  </qstn>
+  <catgry><catValu>1</catValu><labl xml:lang="en">Yes</labl><labl>Ja</labl></catgry>
+  <concept>Beruf</concept>
+</var>`
+	out, err := DDIToXLSForm([]byte(ddi))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var form XLSForm
+	if err := json.Unmarshal(out, &form); err != nil {
+		t.Fatal(err)
+	}
+	row := form.Survey[0]
+	if row.Label != "Beruf?" || row.Hint != "Vorab" || row.GuidanceHint != "Nachfragen" {
+		t.Errorf("survey row: got label=%q hint=%q guidance_hint=%q", row.Label, row.Hint, row.GuidanceHint)
+	}
+	if len(form.Choices) != 1 || form.Choices[0].Label != "Ja" {
+		t.Errorf("choices: got %+v", form.Choices)
+	}
+}
