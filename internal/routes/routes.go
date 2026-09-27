@@ -13,6 +13,7 @@ import (
 	"qwacback/internal/examples"
 	"qwacback/internal/exporter"
 	"qwacback/internal/importer"
+	"qwacback/internal/questiontypes"
 	"qwacback/internal/schematron"
 	"regexp"
 	"sort"
@@ -363,6 +364,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 				"validate":         "/api/validate",
 				"import":           "/api/import",
 				"examples":         "/api/examples",
+				"question_types":   "/api/question-types",
 				"markup_guide":     "/api/docs/markup-guide",
 			},
 		})
@@ -622,6 +624,26 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		e.Response.Header().Set("X-Content-Type-Options", "nosniff")
 		_, err = e.Response.Write(xlsformJSON)
 		return err
+	})
+
+	// Question types - Public: the registry's catalogue of the pinned
+	// formtransform, keyed by qwacback's answer types, or with ?registry=1
+	// every registry type keyed by registry slug (#40).
+	se.Router.GET("/api/question-types", func(e *core.RequestEvent) error {
+		var (
+			out interface{}
+			err error
+		)
+		if q := e.Request.URL.Query().Get("registry"); q == "1" || q == "true" {
+			out, err = questiontypes.Registry()
+		} else {
+			out, err = questiontypes.ByAnswerType()
+		}
+		if err != nil {
+			return apis.NewApiError(http.StatusServiceUnavailable, "Question types are temporarily unavailable", nil)
+		}
+		e.Response.Header().Set("Cache-Control", "public, max-age=3600")
+		return e.JSON(200, out)
 	})
 
 	// Examples - Public

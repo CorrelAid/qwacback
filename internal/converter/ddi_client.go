@@ -117,17 +117,29 @@ func DDIToXLSForm(ddiXML []byte) ([]byte, error) {
 	return callDDIEmitter("/ddi-to-xlsform", "application/xml", ddiXML)
 }
 
+// QuestionTypes returns formtransform's QUESTION_TYPES, the registry's
+// question-type catalogue of the pinned release, as JSON keyed by slug (#40).
+func QuestionTypes() ([]byte, error) {
+	return doDDIEmitter(http.MethodGet, "/question-types", "", nil)
+}
+
 func callDDIEmitter(path, contentType string, payload []byte) ([]byte, error) {
+	return doDDIEmitter(http.MethodPost, path, contentType, payload)
+}
+
+func doDDIEmitter(method, path, contentType string, payload []byte) ([]byte, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), ddiEmitterHTTPTimeout)
 	defer cancel()
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost,
+	req, err := http.NewRequestWithContext(ctx, method,
 		strings.TrimRight(DDIEmitterURL, "/")+path,
 		bytes.NewReader(payload))
 	if err != nil {
 		return nil, fmt.Errorf("%w: build request: %v", ErrConverterUnavailable, err)
 	}
-	req.Header.Set("content-type", contentType)
+	if contentType != "" {
+		req.Header.Set("content-type", contentType)
+	}
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {

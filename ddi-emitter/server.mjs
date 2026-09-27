@@ -1,8 +1,8 @@
 // Node sidecar that converts between XLSForm JSON and DDI Codebook XML via
-// @correlaid/formtransform, both ways. Started by qwacback (Dockerfile) and
+// @correlaid/formtransform, both ways, and serves its question-type catalogue. Started by qwacback (Dockerfile) and
 // reached over HTTP from internal/converter/ddi_client.go.
 import { createServer } from 'node:http';
-import { ConversionError, ddiToXlsform, xlsformToDdi } from '@correlaid/formtransform';
+import { ConversionError, QUESTION_TYPES, ddiToXlsform, xlsformToDdi } from '@correlaid/formtransform';
 
 const PORT = Number(process.env.DDI_EMITTER_PORT ?? 8091);
 
@@ -56,6 +56,11 @@ const server = createServer(async (req, res) => {
   if (req.method === 'GET' && req.url === '/healthz') {
     res.writeHead(200, { 'content-type': 'text/plain' });
     res.end('ok');
+    return;
+  }
+  if (req.method === 'GET' && req.url === '/question-types') {
+    // The registry's question-type catalogue, as the pinned release has it.
+    send(res, 200, JSON.stringify(QUESTION_TYPES), { 'content-type': 'application/json' });
     return;
   }
   if (req.method === 'POST' && req.url === '/ddi-to-xlsform') {
