@@ -140,7 +140,7 @@ type DDIVarGrp struct {
 	Type      string     `xml:"type,attr,omitempty"`
 	Var       string     `xml:"var,attr,omitempty"`       // Space-separated variable IDs
 	VarGrpRef string     `xml:"varGrp,attr,omitempty"`    // Space-separated child varGrp IDs
-	Txt       string     `xml:"txt,omitempty"`
+	Txt       LangText   `xml:"txt"`
 	Concepts  []DDIConcept `xml:"concept"`
 }
 
@@ -154,19 +154,52 @@ func firstConcept(cs []DDIConcept) DDIConcept {
 	return cs[0]
 }
 
+// LangText is a DDI text element that may repeat once per language, e.g.
+// <qstnLit>Beruf?</qstnLit><qstnLit xml:lang="en">Occupation?</qstnLit>
+// (formtransform#135). It keeps the base-language text: the first element
+// without xml:lang, else the first element. Decoding into a plain string
+// field would keep the last one (#30). A fragment has no <codeBook> that
+// could name the base language, so an untagged element counts as the base.
+type LangText struct {
+	Value  string
+	tagged bool
+	set    bool
+}
+
+func (t *LangText) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	var v struct {
+		Text string `xml:",chardata"`
+	}
+	if err := d.DecodeElement(&v, &start); err != nil {
+		return err
+	}
+	tagged := false
+	for _, a := range start.Attr {
+		if a.Name.Local == "lang" && a.Name.Space == xmlNamespace {
+			tagged = true
+		}
+	}
+	if !t.set || (t.tagged && !tagged) {
+		t.Value, t.tagged, t.set = v.Text, tagged, true
+	}
+	return nil
+}
+
+const xmlNamespace = "http://www.w3.org/XML/1998/namespace"
+
 // DDIQstn represents a DDI <qstn> element
 type DDIQstn struct {
-	ResponseDomainType string `xml:"responseDomainType,attr,omitempty"`
-	PreQTxt            string `xml:"preQTxt,omitempty"`
-	QstnLit            string `xml:"qstnLit,omitempty"`
-	IvuInstr           string `xml:"ivuInstr,omitempty"`
+	ResponseDomainType string   `xml:"responseDomainType,attr,omitempty"`
+	PreQTxt            LangText `xml:"preQTxt"`
+	QstnLit            LangText `xml:"qstnLit"`
+	IvuInstr           LangText `xml:"ivuInstr"`
 }
 
 // DDICategory represents a DDI <catgry> element
 type DDICategory struct {
-	Missing string `xml:"missing,attr,omitempty"`
-	CatValu string `xml:"catValu"`
-	Labl    string `xml:"labl,omitempty"`
+	Missing string   `xml:"missing,attr,omitempty"`
+	CatValu string   `xml:"catValu"`
+	Labl    LangText `xml:"labl"`
 }
 
 // DDIVarFormat represents a DDI <varFormat> element
@@ -391,7 +424,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 	row := SurveyRow{
 		Type:  "select_multiple " + listName,
 		Name:  baseName,
-		Label: grp.Txt,
+		Label: grp.Txt.Value,
 	}
 	if row.Label == "" {
 		row.Label = grp.Concept().Value
@@ -414,7 +447,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 
 		choiceLabel := ""
 		if v.Qstn != nil {
-			choiceLabel = v.Qstn.QstnLit
+			choiceLabel = v.Qstn.QstnLit.Value
 		}
 
 		form.Choices = append(form.Choices, ChoiceRow{
@@ -429,7 +462,7 @@ func convertMultipleRespToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, varB
 		form.Choices = append(form.Choices, ChoiceRow{
 			ListName: listName,
 			Name:     "other",
-			Label:    otherVar.Qstn.QstnLit,
+			Label:    otherVar.Qstn.QstnLit.Value,
 		})
 	}
 }
@@ -443,7 +476,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 		return
 	}
 
-	label := grp.Txt
+	label := grp.Txt.Value
 	if label == "" {
 		label = grp.Concept().Value
 	}
@@ -470,7 +503,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 			Name: v.Name,
 		}
 		if v.Qstn != nil {
-			row.Label = v.Qstn.QstnLit
+			row.Label = v.Qstn.QstnLit.Value
 		}
 		form.Survey = append(form.Survey, row)
 
@@ -483,7 +516,7 @@ func convertGridToXLSForm(grp DDIVarGrp, varByID map[string]DDIVar, form *XLSFor
 				form.Choices = append(form.Choices, ChoiceRow{
 					ListName: listName,
 					Name:     cat.CatValu,
-					Label:    cat.Labl,
+					Label:    cat.Labl.Value,
 				})
 			}
 			choicesAdded = true
@@ -514,8 +547,8 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 
 	if v.Qstn != nil {
 		// Use qstnLit as primary label if available
-		if v.Qstn.QstnLit != "" {
-			row.Label = v.Qstn.QstnLit
+		if v.Qstn.QstnLit.Value != "" {
+			row.Label = v.Qstn.QstnLit.Value
 		}
 
 		// Map DDI responseDomainType to XLSForm type
@@ -543,13 +576,13 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 		}
 
 		// Map pre-question text to hint
-		if v.Qstn.PreQTxt != "" {
-			row.Hint = v.Qstn.PreQTxt
+		if v.Qstn.PreQTxt.Value != "" {
+			row.Hint = v.Qstn.PreQTxt.Value
 		}
 
 		// Map interviewer instructions to parameters
-		if v.Qstn.IvuInstr != "" {
-			row.GuidanceHint = v.Qstn.IvuInstr
+		if v.Qstn.IvuInstr.Value != "" {
+			row.GuidanceHint = v.Qstn.IvuInstr.Value
 		}
 	}
 
@@ -578,7 +611,7 @@ func convertDDIVarToXLSForm(v DDIVar, form *XLSForm, varByName map[string]DDIVar
 			form.Choices = append(form.Choices, ChoiceRow{
 				ListName: v.Name,
 				Name:     cat.CatValu,
-				Label:    cat.Labl,
+				Label:    cat.Labl.Value,
 			})
 		}
 	}

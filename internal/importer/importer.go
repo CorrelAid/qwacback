@@ -25,13 +25,29 @@ func deterministicID(parts ...string) string {
 
 var abstractRe = regexp.MustCompile(`(?s)<abstract[^>]*>(.*?)</abstract>`)
 
+// xmlLang returns an element's xml:lang attribute, or "".
+func xmlLang(attrs []xml.Attr) string {
+	for _, a := range attrs {
+		if a.Name.Local == "lang" && a.Name.Space == "http://www.w3.org/XML/1998/namespace" {
+			return a.Value
+		}
+	}
+	return ""
+}
+
 // extractVarQstnLits walks the raw XML token stream and returns a map of
 // variable DDI ID → full qstnLit text content. It uses encoding/xml directly
 // instead of mxj because mxj cannot represent XML mixed content: text nodes
 // interleaved with child elements (e.g. "text <em>bold</em> more text") lose
 // the "tail" text that follows each closing tag.
+//
+// A qstnLit may repeat once per language (formtransform#135). The base
+// language wins: the first qstnLit without xml:lang or with the
+// codeBook's xml:lang, else the first one (#30).
 func extractVarQstnLits(rawXML []byte) map[string]string {
 	result := make(map[string]string)
+	isBase := make(map[string]bool) // var ID → result holds a base-language text
+	var baseLang, curLang string
 	decoder := xml.NewDecoder(bytes.NewReader(rawXML))
 	decoder.Strict = true
 
@@ -48,6 +64,8 @@ func extractVarQstnLits(rawXML []byte) map[string]string {
 		switch t := token.(type) {
 		case xml.StartElement:
 			switch t.Name.Local {
+			case "codeBook":
+				baseLang = xmlLang(t.Attr)
 			case "var":
 				inVar = true
 				for _, attr := range t.Attr {
@@ -64,6 +82,7 @@ func extractVarQstnLits(rawXML []byte) map[string]string {
 				if inQstn {
 					inQstnLit = true
 					qstnLitDepth = 1
+					curLang = xmlLang(t.Attr)
 					sb.Reset()
 				}
 			default:
@@ -82,8 +101,11 @@ func extractVarQstnLits(rawXML []byte) map[string]string {
 				if inQstnLit {
 					qstnLitDepth--
 					if qstnLitDepth == 0 {
-						if currentVarID != "" {
+						base := curLang == "" || curLang == baseLang
+						_, have := result[currentVarID]
+						if currentVarID != "" && !isBase[currentVarID] && (base || !have) {
 							result[currentVarID] = strings.TrimSpace(sb.String())
+							isBase[currentVarID] = base
 						}
 						inQstnLit = false
 					}
@@ -146,6 +168,29 @@ func textAt(mv mxj.Map, path string) string {
 		return ""
 	}
 	return strings.TrimSpace(extractText(vals[0]))
+}
+
+// textAtLang is textAt for elements that may repeat once per language
+// (preQTxt, ivuInstr, labl, txt; formtransform#135). It returns the first
+// element without xml:lang or with the base language (the codeBook's
+// xml:lang), else the first element. textAt would return the last (#30).
+func textAtLang(mv mxj.Map, path, baseLang string) string {
+	vals, err := mv.ValuesForPath(path)
+	if err != nil || len(vals) == 0 {
+		return ""
+	}
+	pick := vals[0]
+	for _, v := range vals {
+		lang := ""
+		if m, ok := v.(map[string]interface{}); ok {
+			lang, _ = m["-lang"].(string)
+		}
+		if lang == "" || lang == baseLang {
+			pick = v
+			break
+		}
+	}
+	return strings.TrimSpace(extractText(pick))
 }
 
 // ConceptTag is a <concept> after the first one on a var or varGrp: an extra
@@ -285,6 +330,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 	// after the first <xhtml:em>) is silently dropped. The token-based extractor
 	// collects all CharData across the full element depth.
 	qstnLitTexts := extractVarQstnLits(rawXML)
+	baseLang, _ := mv.ValueForPathString("codeBook.-lang")
 
 	// Pre-scan variable groups to build a map of variable DDI ID -> group type
 	// This is needed to infer XLSForm question types (e.g. matrix vs select_one)
@@ -326,8 +372,8 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			vName, _ := vM.ValueForPathString("-name")
 			vConcept, vocab, vTags := conceptsAt(vM)
 			vQuest := qstnLitTexts[ddiId] // token-based extraction preserves mixed-content text
-			vPreQ := textAt(vM, "qstn.preQTxt")
-			vIvInstr := textAt(vM, "qstn.ivuInstr")
+			vPreQ := textAtLang(vM, "qstn.preQTxt", baseLang)
+			vIvInstr := textAtLang(vM, "qstn.ivuInstr", baseLang)
 			vQstnType, _ := vM.ValueForPathString("qstn.-responseDomainType")
 			vIntrvl, _ := vM.ValueForPathString("-intrvl")
 			vFmtType, _ := vM.ValueForPathString("varFormat.-type")
@@ -342,7 +388,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 				}
 				cM := mxj.Map(cMap)
 				val := textAt(cM, "catValu")
-				lab := textAt(cM, "labl")
+				lab := textAtLang(cM, "labl", baseLang)
 				missing, _ := cM.ValueForPathString("-missing")
 
 				categories = append(categories, map[string]interface{}{
@@ -438,7 +484,7 @@ func ImportCodebookData(app core.App, mv mxj.Map, rawXML []byte) error {
 			gi.varIdsAttr, _ = gM.ValueForPathString("-var")
 			gi.varGrpAttr, _ = gM.ValueForPathString("-varGrp")
 			gi.concept, _, gi.tags = conceptsAt(gM)
-			gi.txt = textAt(gM, "txt")
+			gi.txt = textAtLang(gM, "txt", baseLang)
 			parsed = append(parsed, gi)
 		}
 
