@@ -28,13 +28,23 @@ type Entry struct {
 	IsComposite bool              `json:"isComposite"`
 	Aliases     []string          `json:"aliases,omitempty"`
 	Constraints json.RawMessage   `json:"constraints,omitempty"`
+	// Presentation is the registry's, on variants only.
+	Presentation *RegistryPresentation `json:"presentation,omitempty"`
 }
 
-// registryEntry is an entry as QUESTION_TYPES serializes it: one English
-// label (skos:prefLabel has no language yet, formtransform#161).
+// RegistryPresentation is how the registry says a variant is shown.
+type RegistryPresentation struct {
+	WithOther        bool   `json:"withOther"`
+	WithLongList     bool   `json:"withLongList"`
+	AppearanceString string `json:"appearanceString,omitempty"`
+}
+
+// registryEntry is an entry as QUESTION_TYPES serializes it: `label` is the
+// English one, `labels` has every language (since v0.7.1, formtransform#161).
 type registryEntry struct {
 	Entry
-	Label string `json:"label"`
+	Label  string            `json:"label"`
+	Labels map[string]string `json:"labels"`
 }
 
 // Presentation is how a client renders the answer type.
@@ -44,6 +54,9 @@ type Presentation struct {
 	WithOther bool   `json:"withOther"`
 	LongList  bool   `json:"longList"`
 	Grid      bool   `json:"grid"`
+	// Appearance is the XLSForm appearance the type implies, e.g. "minimal"
+	// for a long list.
+	Appearance string `json:"appearance,omitempty"`
 }
 
 // AnswerType is one of qwacback's answer types with its registry type.
@@ -58,8 +71,9 @@ type AnswerType struct {
 
 // answerTypes maps qwacback's answer types (variables.answer_type plus the
 // _other / _long_list suffixes, see routes.effectiveAnswerType) to registry
-// slugs and to how they are presented. The presentation is derived here
-// until QUESTION_TYPES exports it (formtransform#161).
+// slugs and to how they are presented. Choice and Grid are qwacback's; for
+// variants, WithOther, LongList and Appearance come from the registry's
+// presentation (formtransform#161), the values here are the fallback.
 var answerTypes = map[string]struct {
 	slug string
 	p    Presentation
@@ -125,7 +139,10 @@ func build(raw []byte) (map[string]Entry, map[string]AnswerType, error) {
 	reg := make(map[string]Entry, len(entries))
 	for slug, e := range entries {
 		entry := e.Entry
-		entry.Label = map[string]string{"en": e.Label}
+		entry.Label = e.Labels
+		if len(entry.Label) == 0 {
+			entry.Label = map[string]string{"en": e.Label}
+		}
 		reg[slug] = entry
 	}
 	ans := make(map[string]AnswerType, len(answerTypes))
@@ -137,13 +154,17 @@ func build(raw []byte) (map[string]Entry, map[string]AnswerType, error) {
 			log.Printf("WARNING: question types: registry has no %q for answer type %q", at.slug, name)
 			continue
 		}
+		p := at.p
+		if rp := e.Presentation; rp != nil {
+			p.WithOther, p.LongList, p.Appearance = rp.WithOther, rp.WithLongList, rp.AppearanceString
+		}
 		ans[name] = AnswerType{
 			RegistryType: at.slug,
 			Label:        e.Label,
 			Kind:         e.Kind,
 			Base:         e.Base,
 			Aliases:      e.Aliases,
-			Presentation: at.p,
+			Presentation: p,
 		}
 	}
 	return reg, ans, nil
