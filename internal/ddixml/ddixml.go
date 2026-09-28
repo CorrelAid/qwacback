@@ -160,47 +160,39 @@ func Wrapped(children []*Element, lang string) ([]byte, error) {
 }
 
 func write(children []*Element, lang string, bare bool) ([]byte, error) {
-	var buf bytes.Buffer
-	buf.WriteString(xml.Header)
-	enc := xml.NewEncoder(&buf)
-	enc.Indent("", "  ")
-
 	langAttr := xml.Attr{Name: xml.Name{Space: XMLNamespace, Local: "lang"}, Value: lang}
 	wrapper := xml.StartElement{Name: xml.Name{Local: "dataDscr"}}
 	first := 0 // tokens of children[0] to skip when its start tag is replaced
-	var root xml.StartElement
+	var toks []xml.Token
 	if lang != "" {
 		if bare {
-			root = children[0].Start()
+			root := children[0].Start()
 			root.Attr = append([]xml.Attr{langAttr}, root.Attr...)
+			toks = append(toks, root)
 			first = 1
 		} else {
 			wrapper.Attr = []xml.Attr{langAttr}
 		}
 	}
 	if !bare {
-		if err := enc.EncodeToken(wrapper); err != nil {
-			return nil, err
-		}
-	}
-	if first == 1 {
-		if err := enc.EncodeToken(root); err != nil {
-			return nil, err
-		}
+		toks = append([]xml.Token{wrapper}, toks...)
 	}
 	for i, c := range children {
-		toks := c.Tokens
 		if i == 0 {
-			toks = toks[first:]
-		}
-		for _, tok := range toks {
-			if err := enc.EncodeToken(tok); err != nil {
-				return nil, err
-			}
+			toks = append(toks, c.Tokens[first:]...)
+		} else {
+			toks = append(toks, c.Tokens...)
 		}
 	}
 	if !bare {
-		if err := enc.EncodeToken(wrapper.End()); err != nil {
+		toks = append(toks, wrapper.End())
+	}
+
+	var buf bytes.Buffer
+	buf.WriteString(xml.Header)
+	enc := xml.NewEncoder(&buf)
+	for _, tok := range indent(toks) {
+		if err := enc.EncodeToken(tok); err != nil {
 			return nil, err
 		}
 	}
@@ -208,4 +200,64 @@ func write(children []*Element, lang string, bare bool) ([]byte, error) {
 		return nil, err
 	}
 	return buf.Bytes(), nil
+}
+
+// indent lays tokens out with two-space indentation between elements, but
+// leaves elements with text in them (mixed content, like the XHTML
+// <p>…<em>…</em>…</p> of a question text) exactly as they are. Encoder.Indent
+// would add a line break before the <em> and so change the question text.
+func indent(toks []xml.Token) []xml.Token {
+	// Which elements have text of their own, by the index of their start tag.
+	mixed := map[int]bool{}
+	var open []int
+	for i, tok := range toks {
+		switch t := tok.(type) {
+		case xml.StartElement:
+			open = append(open, i)
+		case xml.EndElement:
+			open = open[:len(open)-1]
+		case xml.CharData:
+			if len(open) > 0 && len(bytes.TrimSpace(t)) > 0 {
+				mixed[open[len(open)-1]] = true
+			}
+		}
+	}
+
+	type frame struct{ inline, hasChildren bool }
+	var out []xml.Token
+	var stack []frame
+	newline := func(depth int) xml.CharData {
+		return xml.CharData("\n" + string(bytes.Repeat([]byte("  "), depth)))
+	}
+	for i, tok := range toks {
+		inline := len(stack) > 0 && stack[len(stack)-1].inline
+		switch t := tok.(type) {
+		case xml.StartElement:
+			if !inline {
+				if len(stack) > 0 {
+					stack[len(stack)-1].hasChildren = true
+				}
+				if len(out) > 0 {
+					out = append(out, newline(len(stack)))
+				}
+			}
+			stack = append(stack, frame{inline: inline || mixed[i]})
+			out = append(out, t)
+		case xml.EndElement:
+			f := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			if !f.inline && f.hasChildren {
+				out = append(out, newline(len(stack)))
+			}
+			out = append(out, t)
+		case xml.CharData:
+			// Whitespace between elements is replaced by the indentation.
+			if inline || len(bytes.TrimSpace(t)) > 0 {
+				out = append(out, t)
+			}
+		default:
+			out = append(out, tok)
+		}
+	}
+	return out
 }
