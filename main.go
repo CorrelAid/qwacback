@@ -75,15 +75,18 @@ func main() {
 	}
 
 	app.OnServe().BindFunc(func(se *core.ServeEvent) error {
-		// Log all incoming requests to stdout for diagnostics
+		// Log all incoming requests to stdout for diagnostics. ip is the client
+		// as the rate limiter sees it (TrustedProxy applied), remote the
+		// connection's peer, i.e. the proxy in production.
 		se.Router.BindFunc(func(e *core.RequestEvent) error {
 			start := time.Now()
 			err := e.Next()
-			log.Printf("[HTTP] %s %s -> %d (%s) remote=%s",
+			log.Printf("[HTTP] %s %s -> %d (%s) ip=%s remote=%s",
 				e.Request.Method,
 				e.Request.URL.RequestURI(),
 				e.Status(),
 				time.Since(start).Round(time.Millisecond),
+				e.RealIP(),
 				e.Request.RemoteAddr,
 			)
 			if err != nil {
