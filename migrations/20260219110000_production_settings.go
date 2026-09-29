@@ -28,6 +28,13 @@ func init() {
 		settings.Logs.MaxDays = 30
 
 		// 4. Configure Rate Limiting
+		// The limits are per client IP. Behind Coolify's proxy the connection
+		// comes from the proxy, so without this every visitor shared one guest
+		// budget and a busy qwac session made formulaid's searches fail with
+		// 429. Take the rightmost X-Forwarded-For entry: the one the proxy
+		// appends, which clients can't forge.
+		settings.TrustedProxy.Headers = []string{"X-Forwarded-For"}
+		settings.TrustedProxy.UseLeftmostIP = false
 		settings.RateLimits.Enabled = true
 		settings.RateLimits.Rules = []core.RateLimitRule{
 			// Guest limits (stricter)
