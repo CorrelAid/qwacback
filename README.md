@@ -50,6 +50,8 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 
 - **GET `/api/questions`** — List all questions across all studies.
 - **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, hint, interviewer instructions, skip logic as prose in `universe`, etc.). No additional API calls needed for a detail view.
+
+Each study carries its terms of use, so a client can show them with every reused question. `/api/questions/{id}` embeds them in `study` as `license`, `copyright`, `citation` and `source_uri`; the `studies` records have them as `license`, `copyright`, `citation` and `holdings_uri`. They are read from the codebook (see DDI_MARKUP_GUIDE.md §5) and are empty when it states none.
 - **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question, cut unchanged from the stored codebook.
 - **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.

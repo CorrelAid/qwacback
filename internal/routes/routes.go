@@ -847,13 +847,26 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		}
 
 		// Embed study info
+		// License, copyright, citation and source say how the question may be
+		// reused and how to attribute it; empty when the codebook states none.
 		type studyInfo struct {
-			ID    string `json:"id"`
-			Title string `json:"title"`
+			ID        string `json:"id"`
+			Title     string `json:"title"`
+			License   string `json:"license"`
+			Copyright string `json:"copyright"`
+			Citation  string `json:"citation"`
+			SourceURI string `json:"source_uri"`
 		}
 		var study studyInfo
 		if s, err := app.FindRecordById("studies", studyID); err == nil {
-			study = studyInfo{ID: s.Id, Title: s.GetString("title")}
+			study = studyInfo{
+				ID:        s.Id,
+				Title:     s.GetString("title"),
+				License:   s.GetString("license"),
+				Copyright: s.GetString("copyright"),
+				Citation:  s.GetString("citation"),
+				SourceURI: s.GetString("holdings_uri"),
+			}
 		}
 
 		// Embed group info (nil for standalone variables)

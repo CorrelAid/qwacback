@@ -257,7 +257,22 @@ Both `timePrd` and `collDate` use the `event` attribute: `"start"`, `"end"`, or 
 
 ---
 
-## 5. Template Placeholders
+## 5. License and Attribution
+
+qwac is public, so each study says under which terms its questions may be reused and how to credit them. qwacback stores these four elements on the study and returns them with every question:
+
+| Element | Location | qwacback field | Example |
+|---------|----------|----------------|---------|
+| `conditions` | `stdyDscr/dataAccs/useStmt` | `license` | `CC BY 4.0` |
+| `copyright` | `citation/prodStmt` | `copyright` | `© The authors 2024` |
+| `biblCit` | `citation` | `citation` | the full citation (APA) to give with the items |
+| `holdings/@URI` | `citation` | `holdings_uri` (`source_uri` in `/api/questions/{id}`) | where the instrument is published |
+
+Within `citation` the XSD order is `titlStmt`, `rspStmt`, `prodStmt` (`producer`, `copyright`, `prodDate`, …), `distStmt`, `serStmt`, `verStmt`, `biblCit`, `holdings`; `dataAccs` comes after `stdyInfo`. Leave `conditions` out rather than guess: an empty license means "not stated", not "free to use".
+
+---
+
+## 6. Template Placeholders
 
 For template surveys where question wording is adapted per deployment, encode placeholders directly in `qstnLit` using angle brackets. Since `qstnLit` extends `simpleTextType` (which allows `xhtml:BlkNoForm.mix`), use XHTML to render placeholders in italics — wrap in `<xhtml:p>` since only block-level XHTML elements are valid direct children.
 
@@ -269,7 +284,7 @@ Rules:
 
 ---
 
-## 6. Quick Reference
+## 7. Quick Reference
 
 ### Elements
 
