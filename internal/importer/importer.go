@@ -422,6 +422,7 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	studyRecord.Set("analysis_unit", analysisUnit)
 	studyRecord.Set("data_kind", dataKind)
 	studyRecord.Set("license", license)
+	studyRecord.Set("license_id", LicenseID(license))
 	studyRecord.Set("copyright", copyright)
 	studyRecord.Set("citation", citation)
 	studyRecord.Set("topic_classifications", topicClassifications)
