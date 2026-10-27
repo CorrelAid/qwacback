@@ -1,0 +1,173 @@
+{
+ "study": {
+  "title": "ATTARI-12 – Attitudes Towards Artificial Intelligence Scale",
+  "id": "q13-attari12",
+  "authors": [
+   {
+    "name": "Jan-Philipp Stein",
+    "affiliation": "Technische Universität Chemnitz"
+   },
+   {
+    "name": "Tanja Messingschlager",
+    "affiliation": "Universität Würzburg"
+   },
+   {
+    "name": "Timo Gnambs",
+    "affiliation": "Leibniz-Institut für Bildungsverläufe (LIfBi), Bamberg"
+   },
+   {
+    "name": "Fabian Hutmacher",
+    "affiliation": "Universität Würzburg"
+   },
+   {
+    "name": "Markus Appel",
+    "affiliation": "Universität Würzburg"
+   }
+  ],
+  "producer": {
+   "name": "Stein, Messingschlager, Gnambs, Hutmacher & Appel",
+   "affiliation": "TU Chemnitz / Universität Würzburg / LIfBi"
+  },
+  "citation": "Stein, J.-P., Messingschlager, T., Gnambs, T., Hutmacher, F., & Appel, M. (2024). Attitudes towards AI: Measurement and associations with personality. Scientific Reports, 14, 2909. https://doi.org/10.1038/s41598-024-53335-2",
+  "url": "https://doi.org/10.1038/s41598-024-53335-2",
+  "abstract": "Unidimensional 12-item scale of general attitudes towards artificial intelligence, from aversion to enthusiasm, independent of specific applications. Items cover cognitive, affective and behavioural facets; six are negatively worded and reverse-coded. It was validated with US adults (English) and German university students (German version) and is answered on a five-point agreement scale.",
+  "keywords": [
+   "Einstellung",
+   "attitudes",
+   "künstliche Intelligenz",
+   "artificial intelligence",
+   "Technikakzeptanz"
+  ],
+  "topics": [
+   "Künstliche Intelligenz",
+   "Einstellungen"
+  ],
+  "nation": "USA; Deutschland",
+  "universe": "Erwachsene (US-amerikanische MTurk-Stichproben; deutsche Studierende)",
+  "anlyUnit": "Individuum",
+  "timePrd": "2024",
+  "license": "Open Access. This article is licensed under a Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/). Items from the article's Appendix (English) and Supplement S8 (German version); same item lists on OSF (https://osf.io/3j67a/).",
+  "copyright": "© The Author(s) 2024"
+ },
+ "survey": [
+  {
+   "type": "begin_group",
+   "name": "attari12",
+   "appearance": "field-list",
+   "label::Deutsch (de)": "Im Folgenden interessieren wir uns für Ihre Einstellungen gegenüber Künstlicher Intelligenz (KI). Künstliche Intelligenz kann Aufgaben ausführen, die üblicherweise menschliche Intelligenz erfordern. Sie befähigt Maschinen dazu, selbstständig und ähnlich dem Menschen, ihre Umwelt wahrzunehmen, zu handeln, zu lernen und sich anzupassen. Künstliche Intelligenz kann Teil eines Computers oder einer Onlineplattform sein – man kann ihr aber auch in verschiedenen anderen technischen Geräten, wie etwa Robotern, begegnen.",
+   "label::English (en)": "In the following, we are interested in your attitudes towards artificial intelligence (AI). AI can execute tasks that typically require human intelligence. It enables machines to sense, act, learn, and adapt in an autonomous, human-like way. AI may be part of a computer or online platform—but it can also be encountered in various other hardware devices such as robots."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_1",
+   "label::Deutsch (de)": "Künstliche Intelligenz wird die Welt verbessern.",
+   "label::English (en)": "AI will make this world a better place."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_2",
+   "label::Deutsch (de)": "Ich habe starke negative Emotionen gegenüber künstlicher Intelligenz.",
+   "label::English (en)": "I have strong negative emotions about AI."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_3",
+   "label::Deutsch (de)": "Ich möchte Technologien nutzen, die auf künstlicher Intelligenz basieren.",
+   "label::English (en)": "I want to use technologies that rely on AI."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_4",
+   "label::Deutsch (de)": "Künstliche Intelligenz hat mehr Nachteile als Vorteile.",
+   "label::English (en)": "AI has more disadvantages than advantages."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_5",
+   "label::Deutsch (de)": "Ich freue mich auf zukünftige Entwicklungen im Bereich künstliche Intelligenz.",
+   "label::English (en)": "I look forward to future AI developments."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_6",
+   "label::Deutsch (de)": "Künstliche Intelligenz bietet Lösungen für viele globale Probleme.",
+   "label::English (en)": "AI offers solutions to many world problems."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_7",
+   "label::Deutsch (de)": "Ich bevorzuge Technologien, die keine künstliche Intelligenz beinhalten.",
+   "label::English (en)": "I prefer technologies that do not feature AI."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_8",
+   "label::Deutsch (de)": "Ich fürchte mich vor künstlicher Intelligenz.",
+   "label::English (en)": "I am afraid of AI."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_9",
+   "label::Deutsch (de)": "Ich würde mich eher für eine Technologie mit künstlicher Intelligenz entscheiden als für eine ohne.",
+   "label::English (en)": "I would rather choose a technology with AI than one without it."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_10",
+   "label::Deutsch (de)": "Künstliche Intelligenz verursacht eher Probleme, anstatt sie zu lösen.",
+   "label::English (en)": "AI creates problems rather than solving them."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_11",
+   "label::Deutsch (de)": "Wenn ich an künstliche Intelligenz denke, habe ich hauptsächlich positive Gefühle.",
+   "label::English (en)": "When I think about AI, I have mostly positive feelings."
+  },
+  {
+   "type": "select_one attari_agree5",
+   "name": "attari_12",
+   "label::Deutsch (de)": "Ich möchte mit Technologien, die auf künstlicher Intelligenz beruhen, lieber nichts zu tun haben.",
+   "label::English (en)": "I would rather avoid technologies that are based on AI."
+  },
+  {
+   "type": "end_group"
+  }
+ ],
+ "choices": [
+  {
+   "list_name": "attari_agree5",
+   "name": "1",
+   "label::Deutsch (de)": "1",
+   "label::English (en)": "strongly disagree"
+  },
+  {
+   "list_name": "attari_agree5",
+   "name": "2",
+   "label::Deutsch (de)": "2",
+   "label::English (en)": "2"
+  },
+  {
+   "list_name": "attari_agree5",
+   "name": "3",
+   "label::Deutsch (de)": "3",
+   "label::English (en)": "3"
+  },
+  {
+   "list_name": "attari_agree5",
+   "name": "4",
+   "label::Deutsch (de)": "4",
+   "label::English (en)": "4"
+  },
+  {
+   "list_name": "attari_agree5",
+   "name": "5",
+   "label::Deutsch (de)": "5",
+   "label::English (en)": "strongly agree"
+  }
+ ],
+ "settings": {
+  "default_language": "Deutsch (de)",
+  "form_title": "ATTARI-12 – Attitudes Towards Artificial Intelligence Scale",
+  "form_id": "q13-attari12"
+ }
+}

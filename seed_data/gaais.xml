@@ -1,0 +1,673 @@
+<?xml version="1.0" ?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" xml:lang="en">
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>GAAIS – General Attitudes towards Artificial Intelligence Scale</titl>
+        <IDNo>q18-gaais</IDNo>
+      </titlStmt><rspStmt><AuthEnty affiliation="University of Chester">Schepman, A.</AuthEnty><AuthEnty affiliation="University of Chester">Rodway, P.</AuthEnty></rspStmt>
+      <prodStmt><producer>Schepman &amp; Rodway, University of Chester</producer><copyright>© 2022 The Author(s)</copyright>
+        <prodDate date="2026-10-27">2026-10-27</prodDate>
+      </prodStmt><biblCit>Schepman, A., &amp; Rodway, P. (2023). The General Attitudes towards Artificial Intelligence Scale (GAAIS): Confirmatory validation and associations with personality, corporate distrust, and general trust. International Journal of Human–Computer Interaction, 39(13), 2724–2741. https://doi.org/10.1080/10447318.2022.2085400 — initial validation: Schepman, A., &amp; Rodway, P. (2020). Computers in Human Behavior Reports, 1, 100014. https://doi.org/10.1016/j.chbr.2020.100014</biblCit><holdings URI="https://doi.org/10.1080/10447318.2022.2085400">https://doi.org/10.1080/10447318.2022.2085400</holdings>
+    </citation><stdyInfo><subject><keyword>Einstellung</keyword><keyword>attitudes</keyword><keyword>künstliche Intelligenz</keyword><keyword>artificial intelligence</keyword><keyword>KI</keyword><keyword>AI</keyword><topcClas>Einstellungen</topcClas></subject><abstract>20-item scale of general attitudes towards artificial intelligence with two subscales: positive attitudes (12 items: societal and personal utility, positive emotions) and negative attitudes (8 items: concerns, negative emotions). Validated with UK adults; five-point agreement scale. The negative items are reverse-scored; no overall score is formed.</abstract><sumDscr><timePrd event="single">2021</timePrd><nation>United Kingdom</nation><anlyUnit>Individual</anlyUnit><universe clusion="I">Adults (validation samples: UK residents aged 18+)</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/): non-commercial re-use and reproduction, original properly cited, not altered or built upon. Items reproduced verbatim; this codebook changes the format only.</conditions></useStmt></dataAccs>
+    <notes type="cdl:setting" subject="default_language">English (en)</notes>
+  </stdyDscr>
+  <fileDscr ID="F1" URI="data.csv">
+    <fileTxt>
+      <fileName>data.csv</fileName>
+      <dimensns>
+        <caseQnty>0</caseQnty>
+      </dimensns>
+      <fileType>Comma-separated values (CSV)</fileType>
+      <format>text/csv</format>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr>
+    <varGrp ID="VG_gaais" name="gaais" type="section" var="V_gaais_pos1 V_gaais_pos2 V_gaais_neg3 V_gaais_pos4 V_gaais_pos5 V_gaais_neg6 V_gaais_pos7 V_gaais_neg8 V_gaais_neg9 V_gaais_neg10 V_gaais_pos11 V_gaais_pos12 V_gaais_pos13 V_gaais_pos14 V_gaais_neg15 V_gaais_pos16 V_gaais_pos17 V_gaais_pos18 V_gaais_neg19 V_gaais_neg20">
+      <txt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</txt>
+      <concept>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</concept>
+      <notes type="cdl:appearance">field-list</notes>
+      <notes type="cdl:end_column" subject="name">gaais</notes>
+    </varGrp>
+    <var ID="V_gaais_pos1" name="gaais_pos1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="1">
+        <qstnLit>For routine transactions, I would rather interact with an artificially intelligent system than with a human.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>For routine transactions, I would rather interact with an artificially intelligent system than with a human.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos2" name="gaais_pos2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="2">
+        <qstnLit>Artificial Intelligence can provide new economic opportunities for this country.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Artificial Intelligence can provide new economic opportunities for this country.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg3" name="gaais_neg3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="3">
+        <qstnLit>Organisations use Artificial Intelligence unethically.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Organisations use Artificial Intelligence unethically.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos4" name="gaais_pos4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="4">
+        <qstnLit>Artificially intelligent systems can help people feel happier.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Artificially intelligent systems can help people feel happier.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos5" name="gaais_pos5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="5">
+        <qstnLit>I am impressed by what Artificial Intelligence can do.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>I am impressed by what Artificial Intelligence can do.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg6" name="gaais_neg6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="6">
+        <qstnLit>I think artificially intelligent systems make many errors.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>I think artificially intelligent systems make many errors.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos7" name="gaais_pos7" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="7">
+        <qstnLit>I am interested in using artificially intelligent systems in my daily life.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>I am interested in using artificially intelligent systems in my daily life.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg8" name="gaais_neg8" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="8">
+        <qstnLit>I find Artificial Intelligence sinister.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>I find Artificial Intelligence sinister.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg9" name="gaais_neg9" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="9">
+        <qstnLit>Artificial Intelligence might take control of people.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Artificial Intelligence might take control of people.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg10" name="gaais_neg10" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="10">
+        <qstnLit>I think Artificial Intelligence is dangerous.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>I think Artificial Intelligence is dangerous.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos11" name="gaais_pos11" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="11">
+        <qstnLit>Artificial Intelligence can have positive impacts on people’s wellbeing.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Artificial Intelligence can have positive impacts on people’s wellbeing.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos12" name="gaais_pos12" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="12">
+        <qstnLit>Artificial Intelligence is exciting.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Artificial Intelligence is exciting.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos13" name="gaais_pos13" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="13">
+        <qstnLit>An artificially intelligent agent would be better than an employee in many routine jobs.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>An artificially intelligent agent would be better than an employee in many routine jobs.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos14" name="gaais_pos14" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="14">
+        <qstnLit>There are many beneficial applications of Artificial Intelligence.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>There are many beneficial applications of Artificial Intelligence.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg15" name="gaais_neg15" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="15">
+        <qstnLit>I shiver with discomfort when I think about future uses of Artificial Intelligence.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>I shiver with discomfort when I think about future uses of Artificial Intelligence.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos16" name="gaais_pos16" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="16">
+        <qstnLit>Artificially intelligent systems can perform better than humans.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Artificially intelligent systems can perform better than humans.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos17" name="gaais_pos17" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="17">
+        <qstnLit>Much of society will benefit from a future full of Artificial Intelligence.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Much of society will benefit from a future full of Artificial Intelligence.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_pos18" name="gaais_pos18" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="18">
+        <qstnLit>I would like to use Artificial Intelligence in my own job.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>I would like to use Artificial Intelligence in my own job.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg19" name="gaais_neg19" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="19">
+        <qstnLit>People like me will suffer if Artificial Intelligence is used more and more.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>People like me will suffer if Artificial Intelligence is used more and more.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+    <var ID="V_gaais_neg20" name="gaais_neg20" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="20">
+        <qstnLit>Artificial Intelligence is used to spy on people.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neutral</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Strongly agree</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>Prefer not to answer</labl>
+      </catgry>
+      <concept>Artificial Intelligence is used to spy on people.</concept>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:list">gaais_agree5</notes>
+    </var>
+  </dataDscr>
+</codeBook>

@@ -1,0 +1,344 @@
+{
+ "study": {
+  "title": "MAILS – Meta AI Literacy Scale",
+  "id": "q08-mails",
+  "authors": [
+   {
+    "name": "Astrid Carolus",
+    "affiliation": "Universität Würzburg"
+   },
+   {
+    "name": "Martin J. Koch",
+    "affiliation": "Universität Würzburg"
+   },
+   {
+    "name": "Samantha Straka",
+    "affiliation": "Universität Würzburg"
+   },
+   {
+    "name": "Marc Erich Latoschik",
+    "affiliation": "Universität Würzburg"
+   },
+   {
+    "name": "Carolin Wienrich",
+    "affiliation": "Universität Würzburg"
+   }
+  ],
+  "producer": {
+   "name": "Lehrstuhl für Mensch-Computer-Interaktion, Universität Würzburg",
+   "affiliation": "Universität Würzburg"
+  },
+  "citation": "Carolus, A., Koch, M. J., Straka, S., Latoschik, M. E., & Wienrich, C. (2023). MAILS – Meta AI literacy scale: Development and testing of an AI literacy questionnaire based on well-founded competency models and psychological change- and meta-competencies. Computers in Human Behavior: Artificial Humans, 1(2), 100014. https://doi.org/10.1016/j.chbah.2023.100014",
+  "url": "https://hci.uni-wuerzburg.de/research/MAILS/",
+  "abstract": "Self-report scale of AI literacy with 34 items rated from 0 to 10. Besides the AI literacy facets use and apply, know and understand, detect AI, AI ethics and create AI, it covers AI self-efficacy (problem solving, learning) and AI self-competency (persuasion literacy, emotion regulation). It was developed with German-speaking adults and is published in German and English; a 10-item short version (Koch et al., 2024) reuses items of the long version.",
+  "keywords": [
+   "KI-Kompetenz",
+   "AI literacy",
+   "Selbstwirksamkeit",
+   "self-efficacy",
+   "künstliche Intelligenz",
+   "artificial intelligence"
+  ],
+  "topics": [
+   "Digitale Kompetenzen",
+   "Künstliche Intelligenz"
+  ],
+  "nation": "Deutschland",
+  "universe": "Erwachsene (deutschsprachige Allgemeinbevölkerung)",
+  "anlyUnit": "Individuum",
+  "timePrd": "2023",
+  "license": "Questionnaire PDFs published by the authors at https://hci.uni-wuerzburg.de/research/MAILS/ without a license statement. The items are also printed in the article (Appendix A), which is \"an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/)\", and in the arXiv preprint (arXiv:2302.09319) under CC BY 4.0. Cite Carolus et al. (2023).",
+  "copyright": "© 2023 The Authors (Carolus, Koch, Straka, Latoschik, Wienrich)"
+ },
+ "survey": [
+  {
+   "type": "begin_group",
+   "name": "mails",
+   "appearance": "field-list",
+   "label::Deutsch (de)": "Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?",
+   "label::English (en)": "In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?",
+   "hint::Deutsch (de)": "Ein Wert von 0 bedeutet, dass eine Fähigkeit gar nicht oder kaum ausgeprägt ist. Ein Wert von 10 bedeutet, dass eine Fähigkeit sehr gut oder (nahezu) perfekt ausgeprägt ist. Bitte kreisen Sie den Wert ein, der Ihre Fähigkeit am besten beschreibt.",
+   "hint::English (en)": "A value of 0 means that an ability is not at all or hardly pronounced. A value of 10 means that an ability is very well or (almost) perfectly pronounced. Please circle the value that best describes your ability."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_1",
+   "label::Deutsch (de)": "Ich kann KI-Anwendungen bedienen.",
+   "label::English (en)": "I can operate AI applications."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_2",
+   "label::Deutsch (de)": "Ich kann KI-Anwendungen nutzen, um meine Leben zu vereinfachen.",
+   "label::English (en)": "I can use AI applications to make my life easier."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_3",
+   "label::Deutsch (de)": "Ich kann KI sinnvoll einsetzen, um meine Ziele zu erreichen.",
+   "label::English (en)": "I can use artificial intelligence meaningfully to achieve my goals."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_4",
+   "label::Deutsch (de)": "Im Alltag kann ich mit KI so interagieren, dass es meine Aufgaben leichter macht.",
+   "label::English (en)": "I can interact with AI in a way that makes my tasks easier."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_5",
+   "label::Deutsch (de)": "Ich kann gewinnbringend mit KI zusammenarbeiten.",
+   "label::English (en)": "I can work together gainfully with an artificial intelligence."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_6",
+   "label::Deutsch (de)": "Ich kann gewinnbringend mit KI kommunizieren.",
+   "label::English (en)": "I can communicate gainfully with artificial intelligence."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_7",
+   "label::Deutsch (de)": "Ich kenne die wichtigsten Konzepte des Themas „KI\".",
+   "label::English (en)": "I know the most important concepts of the topic \"artificial intelligence\"."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_8",
+   "label::Deutsch (de)": "Ich kenne Definitionen künstlicher Intelligenz.",
+   "label::English (en)": "I know definitions of artificial intelligence."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_9",
+   "label::Deutsch (de)": "Ich kann beurteilen, welche Grenzen und Chancen der Einsatz einer KI mit sich bringt.",
+   "label::English (en)": "I can assess what the limitations and opportunities of using an AI are."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_10",
+   "label::Deutsch (de)": "Ich kann einschätzen, welche Vor- und Nachteile der Einsatz einer KI mit sich bringt.",
+   "label::English (en)": "I can assess what advantages and disadvantages the use of an artificial intelligence entails."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_11",
+   "label::Deutsch (de)": "Ich kann mir neue Verwendungszwecke für KI ausdenken.",
+   "label::English (en)": "I can think of new uses for AI."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_12",
+   "label::Deutsch (de)": "Ich kann mir mögliche zukünftige Anwendungen von KI vorstellen.",
+   "label::English (en)": "I can imagine possible future uses of AI."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_13",
+   "label::Deutsch (de)": "Ich kann erkennen, ob ich es mit einer Anwendung zu tun habe, die auf KI basiert.",
+   "label::English (en)": "I can tell if I am dealing with an application based on artificial intelligence."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_14",
+   "label::Deutsch (de)": "Ich kann Geräte, die KI nutzen, von Geräten unterscheiden, die keine KI nutzen.",
+   "label::English (en)": "I can distinguish devices that use AI from devices that do not."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_15",
+   "label::Deutsch (de)": "Ich kann unterscheiden, ob ich mit einer KI oder einem „echten Menschen“ interagiere.",
+   "label::English (en)": "I can distinguish if I interact with an AI or a \"real human\"."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_16",
+   "label::Deutsch (de)": "Ich kann abwägen, welche Konsequenzen die Nutzung von KI für die Gesellschaft hat.",
+   "label::English (en)": "I can weigh the consequences of using AI for society."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_17",
+   "label::Deutsch (de)": "Ich kann ethische Gesichtspunkte bei der Entscheidung einbeziehen, ob ich die Daten nutze, die eine KI bereitstellt.",
+   "label::English (en)": "I can incorporate ethical considerations when deciding whether to use data provided by an AI."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_18",
+   "label::Deutsch (de)": "Ich kann KI-basierte Anwendungen auf ihre ethischen Implikationen hin analysieren.",
+   "label::English (en)": "I can analyze AI-based applications for their ethical implications."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_19",
+   "label::Deutsch (de)": "Ich kann neue KI-Anwendungen designen.",
+   "label::English (en)": "I can design new AI applications."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_20",
+   "label::Deutsch (de)": "Ich kann neue Anwendungen im Bereich „künstliche Intelligenz“ programmieren.",
+   "label::English (en)": "I can program new applications in the field of \"artificial intelligence\"."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_21",
+   "label::Deutsch (de)": "Ich kann neue KI-Anwendungen entwickeln.",
+   "label::English (en)": "I can develop new AI applications."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_22",
+   "label::Deutsch (de)": "Ich kann sinnvolle Werkzeuge (z.B. Frameworks, Programmiersprachen) auswählen, um eine KI zu programmieren.",
+   "label::English (en)": "I can select useful tools (e.g., frameworks, programming languages) to program an AI."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_23",
+   "label::Deutsch (de)": "In schwierigen Situationen bei der Nutzung von KI kann ich mich auf meine Fähigkeiten verlassen.",
+   "label::English (en)": "I can rely on my skills in difficult situations when using AI."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_24",
+   "label::Deutsch (de)": "Die meisten Probleme im Umgang mit künstlicher Intelligenz kann ich aus eigener Kraft gut meistern.",
+   "label::English (en)": "I can handle most problems in dealing with artificial intelligence well on my own."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_25",
+   "label::Deutsch (de)": "Auch anstrengende und komplizierte Aufgaben bei der Zusammenarbeit mit künstlicher Intelligenz kann ich in der Regel gut lösen.",
+   "label::English (en)": "I can also usually solve strenuous and complicated tasks when working with artificial intelligence well."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_26",
+   "label::Deutsch (de)": "Trotz der schnellen Veränderungen im Bereich der KI, kann ich stets auf dem aktuellen Stand bleiben.",
+   "label::English (en)": "Despite the rapid changes in the field of artificial intelligence, I can always keep up to date."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_27",
+   "label::Deutsch (de)": "Ich kann mich über aktuelle Neuerungen bei KI-Anwendungen informieren.",
+   "label::English (en)": "I can keep up with the latest innovations in AI applications."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_28",
+   "label::Deutsch (de)": "Obwohl es häufig neue KI-Anwendungen gibt, gelingt es mir, mein Wissen und meine Fähigkeiten aktuell zu halten.",
+   "label::English (en)": "Although there are often new AI applications, I manage to always be \"up-to date\"."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_29",
+   "label::Deutsch (de)": "Ich lasse mich in meinen Entscheidungen nicht durch KI beeinflussen.",
+   "label::English (en)": "I don't let AI influence me in my decisions."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_30",
+   "label::Deutsch (de)": "Ich kann verhindern, dass KI mich in meinen Entscheidungen beeinflusst.",
+   "label::English (en)": "I can prevent an AI from influencing me in my decisions."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_31",
+   "label::Deutsch (de)": "Ich merke, wenn ich in meinen Entscheidungen von KI beeinflusst werde.",
+   "label::English (en)": "I realise if artificial intelligence is influencing me in my decisions."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_32",
+   "label::Deutsch (de)": "Während ich mit KI Aufgaben erledige, behalte ich die Kontrolle über Gefühle wie Frustration oder Angst.",
+   "label::English (en)": "I keep control over feelings like frustration and anxiety while doing things with AI."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_33",
+   "label::Deutsch (de)": "Ich kann damit umgehen, wenn mich Interaktionen mit KI frustrieren oder ängstigen.",
+   "label::English (en)": "I can handle it when interactions with AI frustrate or frighten me."
+  },
+  {
+   "type": "select_one mails_0_10",
+   "name": "mails_34",
+   "label::Deutsch (de)": "Ich kann meine Euphorie kontrollieren, die aufkommt, wenn ich KI zu verschiedenen Zwecken nutze.",
+   "label::English (en)": "I can control my euphoria that arises when I use artificial intelligence for different purposes."
+  },
+  {
+   "type": "end_group"
+  }
+ ],
+ "choices": [
+  {
+   "list_name": "mails_0_10",
+   "name": "0",
+   "label::Deutsch (de)": "0",
+   "label::English (en)": "0"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "1",
+   "label::Deutsch (de)": "1",
+   "label::English (en)": "1"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "2",
+   "label::Deutsch (de)": "2",
+   "label::English (en)": "2"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "3",
+   "label::Deutsch (de)": "3",
+   "label::English (en)": "3"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "4",
+   "label::Deutsch (de)": "4",
+   "label::English (en)": "4"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "5",
+   "label::Deutsch (de)": "5",
+   "label::English (en)": "5"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "6",
+   "label::Deutsch (de)": "6",
+   "label::English (en)": "6"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "7",
+   "label::Deutsch (de)": "7",
+   "label::English (en)": "7"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "8",
+   "label::Deutsch (de)": "8",
+   "label::English (en)": "8"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "9",
+   "label::Deutsch (de)": "9",
+   "label::English (en)": "9"
+  },
+  {
+   "list_name": "mails_0_10",
+   "name": "10",
+   "label::Deutsch (de)": "10",
+   "label::English (en)": "10"
+  }
+ ],
+ "settings": {
+  "default_language": "Deutsch (de)",
+  "form_title": "MAILS – Meta AI Literacy Scale",
+  "form_id": "q08-mails"
+ }
+}
