@@ -130,3 +130,4 @@ Each stream records its status in `out/<id>/SOURCE.md`. The integration stream c
 | q19-eu-aes2022 | ready | Eurostat AES manual v1.3, CC BY 4.0 + disclaimer, 113 questions |
 
 Rules (user): wording literally from the latest published source, no mixing across versions; verbatim conversion counts as a format change (ND ok).
+| q20-eu-ict-ent-ai | ready | Eurostat ICT enterprises 2025 manual (KS-01-25-065) Annex 1, Module E (AI), CC BY 4.0 + disclaimer; 2026 MQ not used (draft/restricted) |
