@@ -849,10 +849,12 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		// Embed study info
 		// License, copyright, citation and source say how the question may be
 		// reused and how to attribute it; empty when the codebook states none.
+		// LicenseID is the SPDX ID of a Creative Commons license, else empty.
 		type studyInfo struct {
 			ID        string `json:"id"`
 			Title     string `json:"title"`
 			License   string `json:"license"`
+			LicenseID string `json:"license_id"`
 			Copyright string `json:"copyright"`
 			Citation  string `json:"citation"`
 			SourceURI string `json:"source_uri"`
@@ -863,6 +865,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 				ID:        s.Id,
 				Title:     s.GetString("title"),
 				License:   s.GetString("license"),
+				LicenseID: s.GetString("license_id"),
 				Copyright: s.GetString("copyright"),
 				Citation:  s.GetString("citation"),
 				SourceURI: s.GetString("holdings_uri"),

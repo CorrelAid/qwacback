@@ -263,12 +263,14 @@ qwac is public, so each study says under which terms its questions may be reused
 
 | Element | Location | qwacback field | Example |
 |---------|----------|----------------|---------|
-| `conditions` | `stdyDscr/dataAccs/useStmt` | `license` | `CC BY 4.0` |
+| `conditions` | `stdyDscr/dataAccs/useStmt` | `license`, `license_id` | `CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)` |
 | `copyright` | `citation/prodStmt` | `copyright` | `© The authors 2024` |
 | `biblCit` | `citation` | `citation` | the full citation (APA) to give with the items |
 | `holdings/@URI` | `citation` | `holdings_uri` (`source_uri` in `/api/questions/{id}`) | where the instrument is published |
 
 Within `citation` the XSD order is `titlStmt`, `rspStmt`, `prodStmt` (`producer`, `copyright`, `prodDate`, …), `distStmt`, `serStmt`, `verStmt`, `biblCit`, `holdings`; `dataAccs` comes after `stdyInfo`. Leave `conditions` out rather than guess: an empty license means "not stated", not "free to use".
+
+Start `conditions` with the license's short name when it is a Creative Commons license: `CC BY 4.0`, `CC BY-SA 4.0`, `CC BY-NC 4.0`, `CC BY-NC-SA 4.0` or `CC BY-NC-ND 4.0`, then whatever else needs saying. qwacback stores that license's SPDX ID in `license_id` (`CC-BY-4.0`, `CC-BY-NC-ND-4.0`, …) so clients can show its button. Other terms of use, or a CC license quoted further on, give an empty `license_id`.
 
 ---
 

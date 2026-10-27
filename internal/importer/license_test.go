@@ -16,7 +16,7 @@ const licensedCodebook = `<?xml version="1.0"?>
       <biblCit>Doe, J. (2024). A scale. Journal, 1, 1–2.</biblCit>
       <holdings URI="https://doi.org/10.0000/example">Article</holdings>
     </citation>
-    <dataAccs><useStmt><conditions>CC BY 4.0</conditions></useStmt></dataAccs>
+    <dataAccs><useStmt><conditions>CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)</conditions></useStmt></dataAccs>
   </stdyDscr>
   <dataDscr>
     <var ID="V_q1" name="q1" intrvl="contin" dcml="0">
@@ -46,13 +46,34 @@ func TestImportStoresLicense(t *testing.T) {
 		t.Fatal(err)
 	}
 	for field, want := range map[string]string{
-		"license":      "CC BY 4.0",
+		"license":      "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+		"license_id":   "CC-BY-4.0",
 		"copyright":    "© The authors 2024",
 		"citation":     "Doe, J. (2024). A scale. Journal, 1, 1–2.",
 		"holdings_uri": "https://doi.org/10.0000/example",
 	} {
 		if got := s.GetString(field); got != want {
 			t.Errorf("%s = %q, want %q", field, got, want)
+		}
+	}
+}
+
+func TestLicenseID(t *testing.T) {
+	for conditions, want := range map[string]string{
+		"CC BY 4.0": "CC-BY-4.0",
+		"CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). …": "CC-BY-SA-4.0",
+		"CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/).":   "CC-BY-NC-4.0",
+		"  CC BY-NC-ND 4.0 (https://…): non-commercial re-use":              "CC-BY-NC-ND-4.0",
+		"CC BY-NC-SA 4.0": "CC-BY-NC-SA-4.0",
+		// Only a license named first counts, not one quoted further on.
+		"© European Union. Eurostat copyright notice: … licensed under the Creative Commons Attribution 4.0 International licence.": "",
+		"Questionnaire PDFs without a license statement; the article is under CC BY-NC-ND 4.0.":                                     "",
+		"CC BY 3.0":  "",
+		"CC BY 4.01": "",
+		"":           "",
+	} {
+		if got := LicenseID(conditions); got != want {
+			t.Errorf("LicenseID(%q) = %q, want %q", conditions, got, want)
 		}
 	}
 }
