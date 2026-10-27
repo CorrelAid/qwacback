@@ -113,6 +113,7 @@ So **`seed_data/` is the source of truth** for the question bank:
 
 - To add or change a study, a question or its search tags, edit the DDI file in `seed_data/` and merge. The next deploy re-seeds from it.
 - Studies imported through `/api/import` and edits in the PocketBase dashboard last only until the next deploy.
+- To add a published questionnaire, use `tools/survey-import/` (see its `PLAN.md`): transcribe the source literally to XLSForm JSON, build the codebook with the pinned formtransform, validate it with the pinned worker, and record source and license in `SOURCE.md`.
 - Record IDs are derived from the study title and the variable/group name, so they stay the same across deploys as long as those don't change.
 
 ### Published images
@@ -180,6 +181,7 @@ internal/
 migrations/     Schema setup, settings, user init, seed data
 ddi-emitter/    Node sidecar: DDI ↔ XLSForm via @correlaid/formtransform
 seed_data/      The question bank: DDI-XML files imported on every start (the database is not persisted)
+tools/survey-import/  Turning published questionnaires into seed codebooks: build and validate tools, one folder per source
 .registry-version   Pinned formtransform release tag (drives ddi-emitter and the worker image)
 ```
 

@@ -1,0 +1,57 @@
+{
+ "study": {
+  "title": "Van Westendorp Price Sensitivity Meter (PSM)",
+  "id": "q14-van-westendorp",
+  "authors": [
+   {
+    "name": "Van Westendorp, P. H.",
+    "affiliation": ""
+   }
+  ],
+  "producer": "Wikipedia contributors (question wording)",
+  "citation": "Van Westendorp, P. H. (1976). NSS-Price Sensitivity Meter (PSM): A new approach to study consumer perception of prices. In Proceedings of the 29th ESOMAR Congress (pp. 139–167). ESOMAR. Question wording: Wikipedia contributors (2025). Van Westendorp's Price Sensitivity Meter. In Wikipedia, The Free Encyclopedia (revision 1289425806, 8 May 2025). https://en.wikipedia.org/w/index.php?title=Van_Westendorp%27s_Price_Sensitivity_Meter&oldid=1289425806",
+  "url": "https://en.wikipedia.org/w/index.php?title=Van_Westendorp%27s_Price_Sensitivity_Meter&oldid=1289425806",
+  "sourceLabel": "Wikipedia: Van Westendorp's Price Sensitivity Meter (revision 1289425806)",
+  "abstract": "Four standard price questions of the Van Westendorp Price Sensitivity Meter (1976): the price at which a product is too expensive, too cheap (doubt about quality), starting to get expensive, and a bargain. The cumulative answer distributions are intersected to estimate an acceptable price range.",
+  "keywords": [
+   "Preis",
+   "Zahlungsbereitschaft",
+   "willingness to pay",
+   "price sensitivity",
+   "Preissensitivität",
+   "pricing"
+  ],
+  "topics": [
+   "Konsum"
+  ],
+  "universe": "Potential buyers or users of the product under study",
+  "anlyUnit": "Individual",
+  "license": "Question wording: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), from Wikipedia, revision 1289425806. This codebook, as a derivative, is shared under CC BY-SA 4.0. The method itself (Van Westendorp 1976) is free to use."
+ },
+ "survey": [
+  {
+   "type": "decimal",
+   "name": "psm_too_expensive",
+   "label": "At what price would you consider the product to be so expensive that you would not consider buying it?"
+  },
+  {
+   "type": "decimal",
+   "name": "psm_too_cheap",
+   "label": "At what price would you consider the product to be priced so low that you would feel the quality couldn't be very good?"
+  },
+  {
+   "type": "decimal",
+   "name": "psm_expensive",
+   "label": "At what price would you consider the product starting to get expensive, so that it is not out of the question, but you would have to give some thought to buying it?"
+  },
+  {
+   "type": "decimal",
+   "name": "psm_cheap",
+   "label": "At what price would you consider the product to be a bargain—a great buy for the money?"
+  }
+ ],
+ "choices": [],
+ "settings": {
+  "default_language": "English (en)"
+ }
+}

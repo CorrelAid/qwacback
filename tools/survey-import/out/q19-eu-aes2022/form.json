@@ -1,0 +1,2267 @@
+{
+  "study": {
+    "title": "Adult Education Survey 2022 (AES): Model questions",
+    "id": "q19-eu-aes2022",
+    "authors": [
+      {
+        "name": "Eurostat",
+        "affiliation": "European Commission, Eurostat, Unit F-3: Labour market and lifelong learning"
+      }
+    ],
+    "producer": {
+      "name": "Eurostat"
+    },
+    "citation": "Eurostat. (2023). 2022 AES manual: Methodological guidelines for the adult education survey (Version 1.3, 30 March 2023). European Commission, Eurostat, Unit F-3. https://circabc.europa.eu/w/browse/a81f03f5-b8e6-4b84-a93d-ef847ef85db0",
+    "url": "https://circabc.europa.eu/w/browse/a81f03f5-b8e6-4b84-a93d-ef847ef85db0",
+    "sourceLabel": "2022 AES MANUAL V1.3, Section 3 \"Explanatory notes\" (Eurostat, CIRCABC)",
+    "abstract": "Model questions proposed by Eurostat for the 2022 wave of the EU Adult Education Survey, which national statistical institutes adapt into their own questionnaires. They ask adults about their household and background, labour status and job, access to guidance, participation in formal and non-formal education and training in the last 12 months (with details on the most recent formal activity and a randomly selected non-formal activity), obstacles to participation, informal learning, languages, health and household income.",
+    "keywords": [
+      "adult education",
+      "lifelong learning",
+      "non-formal education",
+      "informal learning",
+      "formal education",
+      "obstacles to participation",
+      "AES",
+      "official statistics"
+    ],
+    "topics": [
+      "Education",
+      "Adult learning",
+      "Continuing education"
+    ],
+    "nation": "European Union",
+    "universe": "Residents aged 18–69 in private households",
+    "anlyUnit": "Individuals",
+    "timePrd": "2022",
+    "dataKind": "Model questionnaire",
+    "license": "© European Union. Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): \"The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made.\" \"Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011.\" (Commission Decision 2011/833/EU). \"When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included.\" Changes: format conversion of the model questions in Section 3 of the 2022 AES manual (v1.3) to DDI; wording unchanged; technical and derived variables, transmission codes and repeated activity blocks omitted. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it.",
+    "copyright": "© European Union, 2023 (Eurostat)"
+  },
+  "survey": [
+    {
+      "type": "begin_group",
+      "name": "household",
+      "label": "Household composition"
+    },
+    {
+      "type": "begin_group",
+      "name": "hhnbpers",
+      "label": "How many people usually live in your household? Please include yourself.",
+      "appearance": "field-list"
+    },
+    {
+      "type": "integer",
+      "name": "hhnbpers_tot",
+      "label": "Total number of members of the household (including the respondent)",
+      "constraint": ". >= 1 and . <= 98"
+    },
+    {
+      "type": "integer",
+      "name": "hhnbpers_0_13",
+      "label": "0-13 years old members of the household",
+      "constraint": ". >= 0 and . <= 98"
+    },
+    {
+      "type": "integer",
+      "name": "hhnbpers_14_24",
+      "label": "14-24 years old members of the household (including the respondent)",
+      "constraint": ". >= 0 and . <= 98"
+    },
+    {
+      "type": "integer",
+      "name": "hhnbpers_25plus",
+      "label": "Members of the household 25 years old and older (including the respondent)",
+      "constraint": ". >= 0 and . <= 98"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "select_one hhtype",
+      "name": "hhtype",
+      "label": "What is the type of your household?"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "person",
+      "label": "Person and household characteristics"
+    },
+    {
+      "type": "select_one sex",
+      "name": "sex",
+      "label": "What is your sex?",
+      "hint": "Depending on the data collection mode or information being available from administrative sources, it might usually not be necessary to ask the respondents directly."
+    },
+    {
+      "type": "integer",
+      "name": "birthyear",
+      "label": "What is your year of birth?",
+      "constraint": ". >= 1000 and . <= 9999"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "birthpass",
+      "label": "Have you already had your birthday this year?"
+    },
+    {
+      "type": "select_one citizen",
+      "name": "citizen",
+      "label": "What is your citizenship?",
+      "hint": "In case the information is available from administrative sources it might not be necessary to ask the respondents directly."
+    },
+    {
+      "type": "text",
+      "name": "citizen_country",
+      "label": "Country of main citizenship (SCL GEO alpha-2 code); see annex 6",
+      "relevant": "${citizen} = 'geo'"
+    },
+    {
+      "type": "select_one birthplace",
+      "name": "birthplace",
+      "label": "In which country were you born?",
+      "hint": "In situations (e.g. specific countries or regions) where this question may not capture appropriately the information on the place of usual residence of the individual's mother at the time of delivery, the following question should be asked: \"Which was the country of usual residence of your mother at the time when you were born?\""
+    },
+    {
+      "type": "text",
+      "name": "birthplace_country",
+      "label": "Country of birth (SCL GEO alpha-2 code); see annex 6",
+      "relevant": "${birthplace} = 'geo'"
+    },
+    {
+      "type": "select_one restime",
+      "name": "restime",
+      "label": "For native-born persons the following questions are recommended:\nDid you ever live [have your usual residence] abroad for a period of at least 1 year? y/n\nIf yes: Considering the date you last arrived in this country (established your usual residence in this country) – for how many years have you lived in this country since then? [please consider whole/completed years only]\nFor foreign-born persons the following question is recommended:\nConsidering the date you last arrived in this country (established your usual residence in this country) – for how many years have you lived in this country since then? [please consider whole/completed years only]",
+      "hint": "Different questions need to be asked depending on whether a person was born in the country or not."
+    },
+    {
+      "type": "integer",
+      "name": "restime_years",
+      "label": "Number of years in this country (since last establishing the place of usual residence in this country)",
+      "constraint": ". >= 1 and . <= 69",
+      "relevant": "${restime} = '01_69'"
+    },
+    {
+      "type": "select_one marstadefacto",
+      "name": "marstadefacto",
+      "label": "Are you living with a partner in the same household?",
+      "hint": "Husband/wife/civil partner/partner/cohabitee"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "dropeduc_g",
+      "label": "Educational attainment - details, including education interrupted or abandoned"
+    },
+    {
+      "type": "select_one dropeduc",
+      "name": "dropeduc",
+      "label": "Are there any formal education programmes that you started, but then stopped without completing?",
+      "hint": "Please consider all formal education programmes that you ever started but then did not successfully complete. Please also include changes of field. If you are currently participating in a formal programme, this programme should not be taken into account. However, if you are currently taking a gap year, please include it."
+    },
+    {
+      "type": "select_one isced_prog",
+      "name": "dropeduclevel",
+      "label": "What was the level of this formal education programme?",
+      "hint": "In case of several programmes not completed, please report the programme with the highest level; in case of several programmes not completed at the same level, please report the orientation of the most recent one.\nPlease use the national ISCED mapping to identify and classify the programme.",
+      "relevant": "${dropeduc} = '1' or ${dropeduc} = '2'"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "labour",
+      "label": "Labour market participation"
+    },
+    {
+      "type": "select_one mainstat",
+      "name": "mainstat",
+      "label": "What is your current main labour status?\nor\nThinking about your current situation, to which of the following groups would you assign yourself?"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "emp12m",
+      "label": "Have you done any work for pay or profit, at any time during the last 12 months, including paid apprenticeship or paid traineeship, or unpaid work for a family business?",
+      "relevant": "${mainstat} = '20' or ${mainstat} = '32' or ${mainstat} = '33' or ${mainstat} = '31' or ${mainstat} = '35' or ${mainstat} = '34' or ${mainstat} = '36'"
+    },
+    {
+      "type": "begin_group",
+      "name": "job",
+      "label": "Elementary job characteristics",
+      "relevant": "${mainstat} = '10'"
+    },
+    {
+      "type": "select_one ftpt",
+      "name": "ftpt",
+      "label": "Do you work full-time or part-time?"
+    },
+    {
+      "type": "select_one jobstat",
+      "name": "jobstat",
+      "label": "What is your professional status (based on your main job)?"
+    },
+    {
+      "type": "select_one permjob",
+      "name": "permjob",
+      "label": "Do you have a fixed-term contract or a permanent contract, i.e. a contract without fixed end?",
+      "relevant": "${jobstat} = '20'"
+    },
+    {
+      "type": "text",
+      "name": "jobisco",
+      "label": "What is your occupation (based on the main job)?",
+      "hint": "ISCO-08 coded at 2-digit level (i.e. a 4-digit code – OC00); see annex 8"
+    },
+    {
+      "type": "text",
+      "name": "locnace",
+      "label": "What is the economic activity of the local unit where you are employed?",
+      "hint": "NACE Rev. 2 coded at 2-digit level (i.e. a 3-digit code – X00); see annex 7"
+    },
+    {
+      "type": "select_one locsizefirm",
+      "name": "locsizefirm",
+      "label": "How many people are working at the local unit where you are employed?"
+    },
+    {
+      "type": "integer",
+      "name": "locsizefirm_exact",
+      "label": "Exact number of persons, if between 1 and 9",
+      "constraint": ". >= 1 and . <= 9",
+      "relevant": "${locsizefirm} = '1_9'"
+    },
+    {
+      "type": "integer",
+      "name": "jobtime",
+      "label": "What year did you start working in your current main job?",
+      "hint": "Year in which the person started working for current employer or as self-employed in main job",
+      "constraint": ". >= 1000 and . <= 9999"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "parents_edu",
+      "label": "Educational background"
+    },
+    {
+      "type": "select_one hatfather",
+      "name": "hatfather",
+      "label": "What is the highest level of education successfully completed by your father (male guardian)?"
+    },
+    {
+      "type": "select_one hatmother",
+      "name": "hatmother",
+      "label": "What is the highest level of education successfully completed by your mother (female guardian)?"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "parents_birth",
+      "label": "Citizenship and migrant background"
+    },
+    {
+      "type": "select_one birthfather",
+      "name": "birthfather",
+      "label": "In which country was your father born (male guardian)?",
+      "hint": "In situations (e.g. specific countries or regions) where this question may not capture appropriately the information on the place of usual residence of the mother of the person's father at the time of delivery, the following question should be asked: \"Which was the country of usual residence of your father's mother at the time when he was born?\""
+    },
+    {
+      "type": "text",
+      "name": "birthfather_country",
+      "label": "Country of birth of the father (SCL GEO alpha-2 code); see annex 6",
+      "relevant": "${birthfather} = 'geo'"
+    },
+    {
+      "type": "select_one birthmother",
+      "name": "birthmother",
+      "label": "In which country was your mother born (female guardian)?",
+      "hint": "In situations (e.g. specific countries or regions) where this question may not capture appropriately the information on the place of usual residence of the mother of the person's mother at the time of delivery, the following question should be asked: \"Which was the country of usual residence of your mother's mother at the time when she was born?\""
+    },
+    {
+      "type": "text",
+      "name": "birthmother_country",
+      "label": "Country of birth of the mother (SCL GEO alpha-2 code); see annex 6",
+      "relevant": "${birthmother} = 'geo'"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "guidance",
+      "label": "Access to information on learning possibilities and guidance (12 months)"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "seekinfo",
+      "label": "During the last 12 months, have you looked for any information concerning learning possibilities (either on formal or non-formal education and training)?"
+    },
+    {
+      "type": "select_one selected",
+      "name": "guide_1",
+      "label": "During the last 12 months, have you received any counselling or advice on learning possibilities, including support to search for information and applying to learning possibilities?"
+    },
+    {
+      "type": "select_one selected",
+      "name": "guide_2",
+      "label": "During the last 12 months, have you done any screening or evaluation of your individual learning needs based on professional tests and/or interviews (i.e. test/interviews developed by a professional counsellor or advisor)?"
+    },
+    {
+      "type": "select_one selected",
+      "name": "guide_3",
+      "label": "During the last 12 months, have you received any advice or help on the procedure for validation or recognition of skills, competences or prior learning?"
+    },
+    {
+      "type": "select_multiple guidesource",
+      "name": "guidesource",
+      "label": "From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply)",
+      "relevant": "${guide_1} = '1' or ${guide_2} = '1' or ${guide_3} = '1'"
+    },
+    {
+      "type": "select_multiple guideinter",
+      "name": "guideinter",
+      "label": "With whom did you interact for the guidance received in the last 12 months? (mark all that apply)",
+      "relevant": "${guide_1} = '1' or ${guide_2} = '1' or ${guide_3} = '1'"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "fed_g",
+      "label": "Participation in formal education activities (12 months)"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "fed",
+      "label": "During the last 12 months, that is since <<month, year>> have you participated (as a student or apprentice) in formal education or training (<any of the following formal education or training programmes>)?",
+      "hint": "The question(s) for this variable should be phrased by countries in a way that the concept of formal education and training – designed to lead to a qualification/certificate recognised by the relevant national education authorities – is described as fully as possible. This can be achieved by listing the formal education programmes/qualifications (or categories thereof)."
+    },
+    {
+      "type": "integer",
+      "name": "fednum",
+      "label": "In how many formal education or training activities did you participate in during the last 12 months?",
+      "hint": "Number of activities",
+      "constraint": ". >= 1 and . <= 99",
+      "relevant": "${fed} = '1'"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "fed_recent",
+      "label": "Most recent formal education activity - details (12 months)",
+      "relevant": "${fednum} >= 1"
+    },
+    {
+      "type": "integer",
+      "name": "fedstartyear",
+      "label": "In which year did your most recent formal education or training activity (<FEDNAME>) start?",
+      "hint": "The 4 digits of the year when the most recent formal education or training activity started",
+      "constraint": ". >= 1000 and . <= 9999"
+    },
+    {
+      "type": "integer",
+      "name": "fedstartmonth",
+      "label": "In which month did your most recent formal education or training activity (<FEDNAME>) start?",
+      "hint": "Number of the month when the most recent formal education or training activity started (2 digits)",
+      "constraint": ". >= 1 and . <= 12"
+    },
+    {
+      "type": "select_one mainstat_start",
+      "name": "fedmainstat",
+      "label": "What was your main labour status at the start of your most recent formal education or training activity (<FEDNAME>)?\nor\nThinking about the situation at the moment when you started your most recent formal education or training activity (<FEDNAME>), to which of the following groups would you assign yourself?"
+    },
+    {
+      "type": "select_one isced_prog",
+      "name": "fedlevel",
+      "label": "What is/was the level of the most recent formal education or training activity (<FEDNAME>) <level of the corresponding formal education or training programme>?"
+    },
+    {
+      "type": "select_one fedcomp",
+      "name": "fedcomp",
+      "label": "Have you successfully completed the most recent formal education or training activity (<FEDNAME>)?"
+    },
+    {
+      "type": "select_one fedfield",
+      "name": "fedfield",
+      "label": "What was the field of the most recent formal education or training activity (<FEDNAME>)?",
+      "relevant": "${fedlevel} >= 34"
+    },
+    {
+      "type": "select_one place",
+      "name": "fedplace",
+      "label": "How was the instruction of the most recent formal education activity (<FEDNAME>) organised?\nOr\nWhere did the instruction hours of the most recent formal education activity (<FEDNAME>) take place?"
+    },
+    {
+      "type": "select_one freq",
+      "name": "fedonmat",
+      "label": "During the most recent formal education or training activity (<FEDNAME>), how frequently did the teaching staff make teaching materials available via the internet to participants, or point to such material?"
+    },
+    {
+      "type": "select_one freq",
+      "name": "fedontea",
+      "label": "During the most recent formal education or training activity (<FEDNAME>), how frequently did you interact online with the teaching staff regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)"
+    },
+    {
+      "type": "select_one freq",
+      "name": "fedonpar",
+      "label": "During the most recent formal education or training activity (<FEDNAME>), how frequently did you interact online with other participants regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)"
+    },
+    {
+      "type": "select_multiple fedreason",
+      "name": "fedreason",
+      "label": "What were the reasons for participating in the most recent formal education or training activity (<FEDNAME>)? (mark all that apply)"
+    },
+    {
+      "type": "select_one fedreason",
+      "name": "fedreasonmain",
+      "label": "Among the reasons you previously selected, which one was the most important?",
+      "hint": "Code of the reason from 01a to 09 as in variable FEDREASON",
+      "relevant": "count-selected(${fedreason}) > 0"
+    },
+    {
+      "type": "select_one worktime",
+      "name": "fedworktime",
+      "label": "Did the most recent formal education or training activity (<FEDNAME>) take place during paid working hours? Please also take into account instruction hours that have been compensated for by free time.",
+      "hint": "FEDWORKTIME = 5 should only be asked if the respondent was not employed at the start of the activity (FEDMAINSTAT ≠ 1)"
+    },
+    {
+      "type": "integer",
+      "name": "fednbhours",
+      "label": "During the last 12 months, how many instruction hours did you attend for the most recent formal education or training activity (<FEDNAME>)?",
+      "hint": "Total number of instruction hours",
+      "constraint": ". >= 0 and . <= 9999"
+    },
+    {
+      "type": "select_one paid",
+      "name": "fedpaid",
+      "label": "Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (<FEDNAME>)?"
+    },
+    {
+      "type": "select_multiple paidby",
+      "name": "fedpaidby",
+      "label": "Which of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (<FEDNAME>)? (mark all that apply)",
+      "relevant": "${fedpaid} = '2' or ${fedpaid} = '3'"
+    },
+    {
+      "type": "select_one usea",
+      "name": "fedusea",
+      "label": "How much are you currently using the skills or knowledge that you acquired through the most recent formal education or training activity (<FEDNAME>)?"
+    },
+    {
+      "type": "select_multiple outcome",
+      "name": "fedoutcome",
+      "label": "Have the new skills or knowledge acquired through the most recent formal education or training activity (<FEDNAME>) helped you in any of the following ways? (mark all that apply)",
+      "hint": "FEDOUTCOME_7 (‘no outcome yet’) should only be selected if none of the other variables (FEDOUTCOME_1 to FEDOUTCOME_6) are selected.",
+      "constraint": "not(selected(., '7') and count-selected(.) > 1)"
+    },
+    {
+      "type": "select_one outcome",
+      "name": "fedoutcomemain",
+      "label": "Among the outcomes you previously selected, which one was the most important?",
+      "hint": "Code of the outcome from 1 to 7 as in variable FEDOUTCOME",
+      "relevant": "count-selected(${fedoutcome}) > 0"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "nfe_g",
+      "label": "Participation in non-formal education activities (12 months)"
+    },
+    {
+      "type": "begin_group",
+      "name": "nfe",
+      "label": "During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?",
+      "appearance": "field-list"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "nfecourse",
+      "label": "a) Courses"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "nfeworkshop",
+      "label": "b) Workshops and seminars"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "nfeguidejt",
+      "label": "c) Guided on-the-job training",
+      "relevant": "${mainstat} = '10' or ${emp12m} = '1'"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "nfelesson",
+      "label": "d) Private lessons"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "integer",
+      "name": "nfenum",
+      "label": "In how many such non-formal learning activities have you participated during the last 12 months?",
+      "hint": "Number of activities",
+      "constraint": ". >= 1 and . <= 99",
+      "relevant": "${nfecourse} = '1' or ${nfeworkshop} = '1' or ${nfeguidejt} = '1' or ${nfelesson} = '1'"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "nfeact01",
+      "label": "Non-formal education activities - details (12 months)",
+      "relevant": "${nfenum} >= 1"
+    },
+    {
+      "type": "select_one nfetype",
+      "name": "nfeact01_type",
+      "label": "What was the type of the non-formal learning activity (<NFEACTxx_NAME>)?",
+      "hint": "(NFEACTxx_TYPE = 3 might only be asked if MAINSTAT = 10 or EMP12M = 1, see implementation guidelines below)"
+    },
+    {
+      "type": "select_one mainstat_start",
+      "name": "nfeact01_mainstat",
+      "label": "What was your main labour status at the start of the non-formal learning activity (<NFEACTxx_NAME>)?\nor\nThinking about the situation at the moment when you started the non-formal learning activity (<NFEACTxx_NAME>), to which of the following groups would you assign yourself?"
+    },
+    {
+      "type": "select_one purp",
+      "name": "nfeact01_purp",
+      "label": "Was the non-formal learning activity (<NFEACTxx_NAME>) mainly job-related?"
+    },
+    {
+      "type": "select_one worktime",
+      "name": "nfeact01_worktime",
+      "label": "Did the non-formal learning activity (<NFEACTxx_NAME>) take place during paid working hours? Please also take into account instruction hours that have been compensated for by free time.",
+      "hint": "NFEACTxx_WORKTIME = 5 should only be asked if the respondent was not employed at the start of the activity (NFEACTxx_MAINSTAT ≠ 1)"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "nfeact01_paidby",
+      "label": "Did your employer or prospective employer pay partially or fully for the non-formal learning activity (<NFEACTxx_NAME>)?"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "nferand1",
+      "label": "Non-formal education activities - details (12 months)",
+      "relevant": "${nfenum} >= 1"
+    },
+    {
+      "type": "select_one nfefield",
+      "name": "nfefield1",
+      "label": "What was the field of the 1st non-formal learning activity (<NFERAND1_NAME>)?"
+    },
+    {
+      "type": "select_one skills",
+      "name": "nfeskillsmain1",
+      "label": "What were the main skills acquired through the non-formal learning activity (<NFERAND1_NAME>)? (select one item from the list only)"
+    },
+    {
+      "type": "select_one place",
+      "name": "nfeplace1",
+      "label": "How was (the instruction of) the 1st non-formal learning activity (<NFERAND1_NAME>) organised?\nOr\nWhere did (the instruction hours of) the 1st non-formal learning activity (<NFERAND1_NAME>) take place?"
+    },
+    {
+      "type": "select_one freq",
+      "name": "nfeonmat1",
+      "label": "During the 1st non-formal learning activity (<NFERAND1_NAME>), how frequently did the teaching staff make teaching materials available via the internet to participants, or point to such material?"
+    },
+    {
+      "type": "select_one freq",
+      "name": "nfeontea1",
+      "label": "During the 1st non-formal learning activity (<NFERAND1_NAME>), how frequently did you interact online with the teaching staff regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)"
+    },
+    {
+      "type": "select_one freq_part",
+      "name": "nfeonpar1",
+      "label": "During the 1st non-formal learning activity (<NFERAND1_NAME>), how frequently did you interact online with other participants regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)"
+    },
+    {
+      "type": "select_one initia",
+      "name": "nfeinitia1",
+      "label": "Who initiated the 1st non-formal learning activity (<NFERAND1_NAME>)?",
+      "relevant": "${nfeact01_purp} = '1'"
+    },
+    {
+      "type": "select_multiple nfereason",
+      "name": "nfereason1",
+      "label": "What were the reasons for participating in the 1st non-formal learning activity (<NFERAND1_NAME>)? (mark all that apply)",
+      "hint": "Reasons 01a, 01b, 02, 03, 04 and 13 should only be asked if the activity is job-related (NFEACTxx_PURP = 1)."
+    },
+    {
+      "type": "select_one nfereason",
+      "name": "nfereasonmain1",
+      "label": "Among the reasons you previously selected, which one was the most important?",
+      "hint": "Code of the reason from 01a to 13 as in variable NFEREASON1",
+      "relevant": "count-selected(${nfereason1}) > 0"
+    },
+    {
+      "type": "integer",
+      "name": "nfenbhours1",
+      "label": "During the last 12 months, how many instruction hours did you attend for the 1st non-formal learning activity (<NFERAND1_NAME>)?",
+      "hint": "Total number of instruction hours",
+      "constraint": ". >= 0 and . <= 9999"
+    },
+    {
+      "type": "select_one paid",
+      "name": "nfepaid1",
+      "label": "Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (<NFERAND1_NAME>)?"
+    },
+    {
+      "type": "select_multiple paidby",
+      "name": "nfepaidby1",
+      "label": "Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (<NFERAND1_NAME>)? (mark all that apply)",
+      "relevant": "${nfepaid1} = '2' or ${nfepaid1} = '3'"
+    },
+    {
+      "type": "decimal",
+      "name": "nfepaidval1",
+      "label": "How much did you personally or any member of your household or any relative pay for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (<NFERAND1_NAME>)?",
+      "hint": "In euros",
+      "relevant": "${nfepaid1} = '1' or ${nfepaid1} = '2' or (${nfepaid1} = '3' and selected(${nfepaidby1}, '4'))"
+    },
+    {
+      "type": "select_one provider",
+      "name": "nfeprovider1",
+      "label": "Who was the provider of the 1st non-formal learning activity (<NFERAND1_NAME>)?"
+    },
+    {
+      "type": "select_one cert",
+      "name": "nfecert1",
+      "label": "Does/did the 1st non-formal learning activity (<NFERAND1_NAME>) lead to a certificate?\nIf yes, is/was this certificate required by your employer or a professional body for the execution of your current or planned activity as employer or employee?"
+    },
+    {
+      "type": "select_one usea",
+      "name": "nfeusea1",
+      "label": "How much are you currently using the skills or knowledge that you acquired through the 1st non-formal learning activity (<NFERAND1_NAME>)?"
+    },
+    {
+      "type": "select_multiple outcome",
+      "name": "nfeoutcome1",
+      "label": "Have the new skills or knowledge acquired through the 1st non-formal learning activity (<NFERAND1_NAME>) helped you in any of the following ways? (mark all that apply)",
+      "hint": "NFEOUTCOME1_7 (‘no outcome yet’) should only be selected if none of the other variables (NFEOUTCOME1_1 to NFEOUTCOME1_6) are selected.",
+      "constraint": "not(selected(., '7') and count-selected(.) > 1)"
+    },
+    {
+      "type": "select_one outcome",
+      "name": "nfeoutcomemain1",
+      "label": "Among the outcomes you previously selected, which one was the most important?",
+      "hint": "Code of the outcome from 1 to 7 as in variable NFEOUTCOME1",
+      "relevant": "count-selected(${nfeoutcome1}) > 0"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "obstacles",
+      "label": "Obstacles to participation in education and training (12 months)"
+    },
+    {
+      "type": "select_one want_a",
+      "name": "want_a",
+      "label": "You have previously described the formal and/or non-formal education and training activities in which you have participated or are currently participating. Would you have liked to participate even more in such education and training activities in the past 12 months?",
+      "hint": "WANT_A: for persons who participated in formal and/or non-formal education and training (FEDNUM ≥ 1 or NFENUM ≥ 1)",
+      "relevant": "${fed} = '1' or ${nfecourse} = '1' or ${nfeworkshop} = '1' or ${nfeguidejt} = '1' or ${nfelesson} = '1'"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "noneed_a",
+      "label": "Is this because you did not need additional education or training?",
+      "hint": "NONEED_A: for persons who participated in education and training and did not want to participate more (WANT_A = no / WANT = 1)",
+      "relevant": "${want_a} = '1'"
+    },
+    {
+      "type": "select_one want_b",
+      "name": "want_b",
+      "label": "You have previously indicated that you did not participate in any formal or non-formal education and training activities. Would you have liked to participate in such education and training activities in the past 12 months?",
+      "hint": "WANT_B: for persons who did not participate in any formal or non-formal education and training (FEDNUM = 0 and NFENUM = 0)",
+      "relevant": "${fed} = '2' and ${nfecourse} = '2' and ${nfeworkshop} = '2' and not(${nfeguidejt} = '1') and ${nfelesson} = '2'"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "noneed_b",
+      "label": "Is this because you did not need education or training?",
+      "hint": "NONEED_B: for persons who did not participate in education and training and did not want to participate (WANT_B = no / WANT = 3)",
+      "relevant": "${want_b} = '3'"
+    },
+    {
+      "type": "select_multiple difftype",
+      "name": "difftype",
+      "label": "From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)\nOr\nWhich of the following obstacles prevented you from participation in education and training? (mark all that apply)",
+      "hint": "WANT = 2 or 4",
+      "relevant": "${want_a} = '2' or ${want_b} = '4'"
+    },
+    {
+      "type": "select_multiple difftype",
+      "name": "difftype_noneed",
+      "label": "From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)\nOr\nWhich of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply)",
+      "hint": "NONEED = 2",
+      "relevant": "${noneed_a} = '2' or ${noneed_b} = '2'"
+    },
+    {
+      "type": "select_one difftype",
+      "name": "diffmain",
+      "label": "Among the reasons/obstacles that you previously selected, which one was the most important?",
+      "hint": "Code of the reason from 01 to 14 as in variable DIFFTYPE",
+      "relevant": "count-selected(${difftype}) > 0 or count-selected(${difftype_noneed}) > 0"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "informal",
+      "label": "Informal learning"
+    },
+    {
+      "type": "note",
+      "name": "inf_intro",
+      "label": "Apart from the learning activities mentioned earlier, you can also deliberately acquire or improve knowledge and skills in a planned manner by self-learning or teaching yourself, whether at work or during your free time, alone or with others. Below is a list of various forms how this can be done.\nOr\nApart from the learning activities mentioned earlier, you can also acquire or improve knowledge and skills on your own, outside of institutionalised education and training activities, either at work or during your free time. Yet, this learning must be planned beforehand and you must have goals for yourself regarding own efforts and outcomes. In being intentional and planned, such learning is distinguished from incidental or random learning, i.e. knowledge and skills that we acquire every day, without thinking much about it.",
+      "hint": "Suggested introduction to the model question:"
+    },
+    {
+      "type": "select_multiple inf",
+      "name": "inf",
+      "label": "During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply)"
+    },
+    {
+      "type": "select_one infpurp",
+      "name": "infpurp",
+      "label": "Were any of these informal learning activities mainly job-related?",
+      "relevant": "count-selected(${inf}) > 0"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "languages",
+      "label": "Self-reported skills"
+    },
+    {
+      "type": "begin_group",
+      "name": "langmother",
+      "label": "Which language(s) is (are) your mother tongue(s)?",
+      "appearance": "field-list"
+    },
+    {
+      "type": "text",
+      "name": "langmoth1",
+      "label": "Code of the first language (ISO 639 alpha-3); see annex 9"
+    },
+    {
+      "type": "text",
+      "name": "langmoth2",
+      "label": "Code of the second language (ISO 639 alpha-3) or 000 (none); see annex 9"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "langused",
+      "label": "Apart from your mother tongue(s), are there any other languages you speak or understand, even if just a little?\nIf the answer is yes:\nWhat other languages are they? List all languages.\nor\nWhat other languages are they? If there are several, list all languages ranked by your language proficiency.",
+      "appearance": "field-list"
+    },
+    {
+      "type": "text",
+      "name": "langused_1",
+      "label": "Code of the first language or 000 (none) or -1"
+    },
+    {
+      "type": "text",
+      "name": "langused_2",
+      "label": "Code of the second language or 000 (none) or -1"
+    },
+    {
+      "type": "text",
+      "name": "langused_3",
+      "label": "Code of the third language or 000 (none) or -1"
+    },
+    {
+      "type": "text",
+      "name": "langused_4",
+      "label": "Code of the fourth language or 000 (none) or -1"
+    },
+    {
+      "type": "text",
+      "name": "langused_5",
+      "label": "Code of the fifth language or 000 (none) or -1"
+    },
+    {
+      "type": "text",
+      "name": "langused_6",
+      "label": "Code of the sixth language or 000 (none) or -1"
+    },
+    {
+      "type": "text",
+      "name": "langused_7",
+      "label": "Code of the seventh language or 000 (none) or -1"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "text",
+      "name": "langbest1",
+      "label": "Which of the languages you mentioned before (excluding your mother tongue(s)) do you know best?",
+      "hint": "Code of the language (ISO 639 alpha-3)\nNo question is needed if the languages used were already ranked by proficiency level in the questions asked for LANGUSED, i.e. LANGBEST1 is already identified.",
+      "relevant": "${langused_1} != '' and ${langused_1} != '000' and ${langused_1} != '-1'"
+    },
+    {
+      "type": "select_one langlevel",
+      "name": "langlevel1",
+      "label": "Which one of the following descriptions best illustrates your knowledge about the first best known language you mentioned before (excluding mother tongue)?",
+      "hint": "(Descriptions to be taken from https://www.coe.int/en/web/portfolio/self-assessment-grid)",
+      "relevant": "${langbest1} != ''"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "health",
+      "label": "Disability and other elements of Minimum European Health Module"
+    },
+    {
+      "type": "select_one genhealth",
+      "name": "genhealth",
+      "label": "How is your health in general? Is it… very good, good, fair, bad, very bad."
+    },
+    {
+      "type": "select_one gali",
+      "name": "gali",
+      "label": "Are you limited because of a health problem in activities people usually do? Would you say you are… severely limited, limited but not severely, or not limited at all?"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "gali_q2",
+      "label": "Have you been limited for at least the past 6 months?",
+      "hint": "If answer to QUESTION_1 is ‘severely limited’ or ‘limited but not severely’ ask QUESTION_2:",
+      "relevant": "${gali} = '1' or ${gali} = '2'"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "income",
+      "label": "Total monthly household income"
+    },
+    {
+      "type": "decimal",
+      "name": "hhincome",
+      "label": "Please take into account all sources of cash (money) income of all household members: Income from work (employment and self-employment), social benefits, and other sources of cash income (e.g. from capital and investments or inter-household cash transfers received).\nWhat is the [net] monthly [cash/money] income of your household after deduction of taxes and contributions to social security and pensions (deducting cash transfers paid to other households, e.g. alimony or child support payments)? If income varies between months, please give a monthly average.",
+      "hint": "[Exact figure to be provided]"
+    },
+    {
+      "type": "select_one hhincome_band",
+      "name": "hhincome_band",
+      "label": "If you do not know the exact amount, could you estimate which of the following intervals best represents the total net monthly income of your household?",
+      "hint": "The cut-off values between income bands should be presented in the national currency."
+    },
+    {
+      "type": "end_group"
+    }
+  ],
+  "choices": [
+    {
+      "list_name": "yes_no",
+      "name": "1",
+      "label": "Yes"
+    },
+    {
+      "list_name": "yes_no",
+      "name": "2",
+      "label": "No"
+    },
+    {
+      "list_name": "selected",
+      "name": "1",
+      "label": "selected"
+    },
+    {
+      "list_name": "selected",
+      "name": "2",
+      "label": "not selected"
+    },
+    {
+      "list_name": "hhtype",
+      "name": "1",
+      "label": "One-person household"
+    },
+    {
+      "list_name": "hhtype",
+      "name": "2",
+      "label": "Lone parent with at least one child aged less than 25"
+    },
+    {
+      "list_name": "hhtype",
+      "name": "3",
+      "label": "Lone parent with all children aged 25 or more"
+    },
+    {
+      "list_name": "hhtype",
+      "name": "4",
+      "label": "Couple without any child or children"
+    },
+    {
+      "list_name": "hhtype",
+      "name": "5",
+      "label": "Couple with at least one child aged less than 25"
+    },
+    {
+      "list_name": "hhtype",
+      "name": "6",
+      "label": "Couple with all children aged 25 or more"
+    },
+    {
+      "list_name": "hhtype",
+      "name": "7",
+      "label": "Other type of household"
+    },
+    {
+      "list_name": "sex",
+      "name": "1",
+      "label": "Male"
+    },
+    {
+      "list_name": "sex",
+      "name": "2",
+      "label": "Female"
+    },
+    {
+      "list_name": "citizen",
+      "name": "geo",
+      "label": "Country of main citizenship (SCL GEO alpha-2 code); see annex 6"
+    },
+    {
+      "list_name": "citizen",
+      "name": "STLS",
+      "label": "Stateless"
+    },
+    {
+      "list_name": "citizen",
+      "name": "FOR",
+      "label": "Foreign citizenship but country unknown"
+    },
+    {
+      "list_name": "citizen",
+      "name": "RNC",
+      "label": "Recognised non-citizens"
+    },
+    {
+      "list_name": "birthplace",
+      "name": "geo",
+      "label": "Country of birth (SCL GEO alpha-2 code); see annex 6"
+    },
+    {
+      "list_name": "birthplace",
+      "name": "FOR",
+      "label": "Foreign-born but country of birth unknown"
+    },
+    {
+      "list_name": "restime",
+      "name": "99",
+      "label": "Born in this country and never lived abroad for a period of at least 1 year"
+    },
+    {
+      "list_name": "restime",
+      "name": "00",
+      "label": "Less than 1 year in the country but intention to stay at least 1 year in total (residence definition)"
+    },
+    {
+      "list_name": "restime",
+      "name": "01_69",
+      "label": "Number of years in this country (since last establishing the place of usual residence in this country)"
+    },
+    {
+      "list_name": "marstadefacto",
+      "name": "1",
+      "label": "Person living with a legal or de facto partner"
+    },
+    {
+      "list_name": "marstadefacto",
+      "name": "2",
+      "label": "Person not living with a legal or de facto partner"
+    },
+    {
+      "list_name": "dropeduc",
+      "name": "1",
+      "label": "Yes, one"
+    },
+    {
+      "list_name": "dropeduc",
+      "name": "2",
+      "label": "Yes, several"
+    },
+    {
+      "list_name": "dropeduc",
+      "name": "3",
+      "label": "No"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "10",
+      "label": "ISCED 1 Primary education"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "20",
+      "label": "ISCED 2 Lower secondary education"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "34",
+      "label": "ISCED 3 Upper secondary education – general"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "35",
+      "label": "ISCED 3 Upper secondary education – vocational"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "39",
+      "label": "ISCED 3 Upper secondary education – orientation unknown"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "44",
+      "label": "ISCED 4 Post-secondary non-tertiary education – general"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "45",
+      "label": "ISCED 4 Post-secondary non-tertiary education – vocational"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "49",
+      "label": "ISCED 4 Post-secondary non-tertiary education – orientation unknown"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "54",
+      "label": "ISCED 5 Short-cycle tertiary education – general"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "55",
+      "label": "ISCED 5 Short-cycle tertiary education – vocational"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "59",
+      "label": "ISCED 5 Short-cycle tertiary education – orientation unknown"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "60",
+      "label": "ISCED 6 Bachelor’s or equivalent level"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "70",
+      "label": "ISCED 7 Master’s or equivalent level"
+    },
+    {
+      "list_name": "isced_prog",
+      "name": "80",
+      "label": "ISCED 8 Doctoral or equivalent level"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "10",
+      "label": "Employed"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "20",
+      "label": "Unemployed"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "32",
+      "label": "Retired"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "33",
+      "label": "Unable to work due to long-standing health problems"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "31",
+      "label": "Student, pupil"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "35",
+      "label": "Fulfilling domestic tasks"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "34",
+      "label": "Compulsory military or civilian service"
+    },
+    {
+      "list_name": "mainstat",
+      "name": "36",
+      "label": "Other"
+    },
+    {
+      "list_name": "ftpt",
+      "name": "1",
+      "label": "Full-time job"
+    },
+    {
+      "list_name": "ftpt",
+      "name": "2",
+      "label": "Part-time job"
+    },
+    {
+      "list_name": "jobstat",
+      "name": "11",
+      "label": "Self-employed person with employees"
+    },
+    {
+      "list_name": "jobstat",
+      "name": "12",
+      "label": "Self-employed person without employees"
+    },
+    {
+      "list_name": "jobstat",
+      "name": "20",
+      "label": "Employee"
+    },
+    {
+      "list_name": "jobstat",
+      "name": "30",
+      "label": "Family worker (unpaid)"
+    },
+    {
+      "list_name": "permjob",
+      "name": "1",
+      "label": "Fixed-term contract"
+    },
+    {
+      "list_name": "permjob",
+      "name": "2",
+      "label": "Permanent job"
+    },
+    {
+      "list_name": "locsizefirm",
+      "name": "1_9",
+      "label": "Exact number of persons, if between 1 and 9"
+    },
+    {
+      "list_name": "locsizefirm",
+      "name": "10",
+      "label": "10 to 19 persons"
+    },
+    {
+      "list_name": "locsizefirm",
+      "name": "11",
+      "label": "20 to 49 persons"
+    },
+    {
+      "list_name": "locsizefirm",
+      "name": "12",
+      "label": "50 to 249 persons"
+    },
+    {
+      "list_name": "locsizefirm",
+      "name": "13",
+      "label": "250 persons or more"
+    },
+    {
+      "list_name": "locsizefirm",
+      "name": "14",
+      "label": "Do not know but less than 10 persons"
+    },
+    {
+      "list_name": "locsizefirm",
+      "name": "15",
+      "label": "Do not know but 10 persons or more"
+    },
+    {
+      "list_name": "hatfather",
+      "name": "1",
+      "label": "At most lower secondary"
+    },
+    {
+      "list_name": "hatfather",
+      "name": "2",
+      "label": "Upper secondary"
+    },
+    {
+      "list_name": "hatfather",
+      "name": "3",
+      "label": "Tertiary"
+    },
+    {
+      "list_name": "hatfather",
+      "name": "-2",
+      "label": "Not applicable (father unknown)"
+    },
+    {
+      "list_name": "hatmother",
+      "name": "1",
+      "label": "At most lower secondary"
+    },
+    {
+      "list_name": "hatmother",
+      "name": "2",
+      "label": "Upper secondary"
+    },
+    {
+      "list_name": "hatmother",
+      "name": "3",
+      "label": "Tertiary"
+    },
+    {
+      "list_name": "hatmother",
+      "name": "-2",
+      "label": "Not applicable (mother unknown)"
+    },
+    {
+      "list_name": "birthfather",
+      "name": "geo",
+      "label": "Country of birth of the father (SCL GEO alpha-2 code); see annex 6"
+    },
+    {
+      "list_name": "birthfather",
+      "name": "FOR",
+      "label": "Father foreign-born but country of birth of the father unknown"
+    },
+    {
+      "list_name": "birthfather",
+      "name": "-2",
+      "label": "Not applicable (father unknown)"
+    },
+    {
+      "list_name": "birthmother",
+      "name": "geo",
+      "label": "Country of birth of the mother (SCL GEO alpha-2 code); see annex 6"
+    },
+    {
+      "list_name": "birthmother",
+      "name": "FOR",
+      "label": "Mother foreign-born but country of birth of the mother unknown"
+    },
+    {
+      "list_name": "birthmother",
+      "name": "-2",
+      "label": "Not applicable (mother unknown)"
+    },
+    {
+      "list_name": "guidesource",
+      "name": "1",
+      "label": "Education or training institutions (school, college, university, vocational education and training (VET) centre, institution for adult learning, validation centre, etc.)"
+    },
+    {
+      "list_name": "guidesource",
+      "name": "2",
+      "label": "Public employment services"
+    },
+    {
+      "list_name": "guidesource",
+      "name": "3",
+      "label": "Employer or prospective employer"
+    },
+    {
+      "list_name": "guidesource",
+      "name": "4",
+      "label": "Other institutions/organisations"
+    },
+    {
+      "list_name": "guideinter",
+      "name": "1",
+      "label": "Interaction with a person: face to face, skype, phone, e-mail, dedicated websites etc."
+    },
+    {
+      "list_name": "guideinter",
+      "name": "2",
+      "label": "Interaction without a person: bots/web robots, online automatic applications as long as they provide for interaction"
+    },
+    {
+      "list_name": "mainstat_start",
+      "name": "1",
+      "label": "Employed"
+    },
+    {
+      "list_name": "mainstat_start",
+      "name": "2",
+      "label": "Unemployed"
+    },
+    {
+      "list_name": "mainstat_start",
+      "name": "3",
+      "label": "Outside the labour market"
+    },
+    {
+      "list_name": "fedcomp",
+      "name": "1",
+      "label": "No, dropped out before the expected end"
+    },
+    {
+      "list_name": "fedcomp",
+      "name": "2",
+      "label": "No, it is still ongoing"
+    },
+    {
+      "list_name": "fedcomp",
+      "name": "3",
+      "label": "Yes, completed"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "1",
+      "label": "Generic programmes and qualifications"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "2",
+      "label": "Education"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "3",
+      "label": "Arts"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "4",
+      "label": "Humanities"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "5",
+      "label": "Language acquisition"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "6",
+      "label": "Literature and linguistics"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "7",
+      "label": "Social and behavioural sciences"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "8",
+      "label": "Journalism and information"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "9",
+      "label": "Business and administration"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "10",
+      "label": "Law"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "11",
+      "label": "Natural sciences, mathematics and statistics"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "12",
+      "label": "Computer use"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "13",
+      "label": "Database and network design and administration; software and applications development and analysis"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "14",
+      "label": "Engineering and engineering trades, manufacturing and processing"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "15",
+      "label": "Architecture and construction"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "16",
+      "label": "Agriculture, forestry, fisheries and veterinary"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "17",
+      "label": "Health"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "18",
+      "label": "Welfare"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "19",
+      "label": "Personal services, hygiene and occupational health services"
+    },
+    {
+      "list_name": "fedfield",
+      "name": "20",
+      "label": "Security services, transport services"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "1a",
+      "label": "Basic programmes and qualifications"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "1b",
+      "label": "Literacy and numeracy"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "1c",
+      "label": "Personal skills and development"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "2",
+      "label": "Education"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "3",
+      "label": "Arts"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "4",
+      "label": "Humanities"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "5",
+      "label": "Language acquisition"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "6",
+      "label": "Literature and linguistics"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "7",
+      "label": "Social and behavioural sciences"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "8",
+      "label": "Journalism and information"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "9",
+      "label": "Business and administration"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "10",
+      "label": "Law"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "11",
+      "label": "Natural sciences, mathematics and statistics"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "12",
+      "label": "Computer use"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "13",
+      "label": "Database and network design and administration; software and applications development and analysis"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "14",
+      "label": "Engineering and engineering trades, manufacturing and processing"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "15",
+      "label": "Architecture and construction"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "16",
+      "label": "Agriculture, forestry, fisheries and veterinary"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "17",
+      "label": "Health"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "18",
+      "label": "Welfare"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "19",
+      "label": "Personal services, hygiene and occupational health services"
+    },
+    {
+      "list_name": "nfefield",
+      "name": "20",
+      "label": "Security services, transport services"
+    },
+    {
+      "list_name": "place",
+      "name": "1",
+      "label": "Completely online"
+    },
+    {
+      "list_name": "place",
+      "name": "2",
+      "label": "Mostly online"
+    },
+    {
+      "list_name": "place",
+      "name": "3",
+      "label": "Mostly on-site"
+    },
+    {
+      "list_name": "place",
+      "name": "4",
+      "label": "Completely on-site"
+    },
+    {
+      "list_name": "freq",
+      "name": "1",
+      "label": "Frequently"
+    },
+    {
+      "list_name": "freq",
+      "name": "2",
+      "label": "Sometimes"
+    },
+    {
+      "list_name": "freq",
+      "name": "3",
+      "label": "Never"
+    },
+    {
+      "list_name": "freq_part",
+      "name": "1",
+      "label": "Frequently"
+    },
+    {
+      "list_name": "freq_part",
+      "name": "2",
+      "label": "Sometimes"
+    },
+    {
+      "list_name": "freq_part",
+      "name": "3",
+      "label": "Never"
+    },
+    {
+      "list_name": "freq_part",
+      "name": "4",
+      "label": "No other participants"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "01a",
+      "label": "To do my job better"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "01b",
+      "label": "To improve my career prospects"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "02",
+      "label": "To be less likely to lose my job"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "03",
+      "label": "To increase my possibilities of getting a job or changing a job/profession"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "04",
+      "label": "To start my own business"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "05",
+      "label": "I was obliged to participate"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "06_7",
+      "label": "To increase my knowledge/skills for my own general interest and curiosity"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "08",
+      "label": "To obtain a certificate"
+    },
+    {
+      "list_name": "fedreason",
+      "name": "09",
+      "label": "To meet new people/for fun"
+    },
+    {
+      "list_name": "worktime",
+      "name": "1",
+      "label": "Only during paid working hours"
+    },
+    {
+      "list_name": "worktime",
+      "name": "2",
+      "label": "Mostly during paid working hours"
+    },
+    {
+      "list_name": "worktime",
+      "name": "3",
+      "label": "Mostly outside paid working hours"
+    },
+    {
+      "list_name": "worktime",
+      "name": "4",
+      "label": "Only outside paid working hours"
+    },
+    {
+      "list_name": "worktime",
+      "name": "5",
+      "label": "Not working at that time"
+    },
+    {
+      "list_name": "paid",
+      "name": "1",
+      "label": "Fully paid by yourself"
+    },
+    {
+      "list_name": "paid",
+      "name": "2",
+      "label": "Partly paid by yourself and partly by somebody else"
+    },
+    {
+      "list_name": "paid",
+      "name": "3",
+      "label": "Fully paid by somebody else"
+    },
+    {
+      "list_name": "paid",
+      "name": "4",
+      "label": "Free activity"
+    },
+    {
+      "list_name": "paidby",
+      "name": "1",
+      "label": "Employer or prospective employer"
+    },
+    {
+      "list_name": "paidby",
+      "name": "2",
+      "label": "Public employment services"
+    },
+    {
+      "list_name": "paidby",
+      "name": "3",
+      "label": "Other public or private institutions"
+    },
+    {
+      "list_name": "paidby",
+      "name": "4",
+      "label": "A household member or a relative"
+    },
+    {
+      "list_name": "usea",
+      "name": "1",
+      "label": "A lot"
+    },
+    {
+      "list_name": "usea",
+      "name": "2",
+      "label": "A fair amount"
+    },
+    {
+      "list_name": "usea",
+      "name": "3",
+      "label": "Very little"
+    },
+    {
+      "list_name": "usea",
+      "name": "4",
+      "label": "Not at all"
+    },
+    {
+      "list_name": "outcome",
+      "name": "1",
+      "label": "Getting a (new) job"
+    },
+    {
+      "list_name": "outcome",
+      "name": "3",
+      "label": "Higher salary/wages"
+    },
+    {
+      "list_name": "outcome",
+      "name": "2",
+      "label": "Promotion in the job"
+    },
+    {
+      "list_name": "outcome",
+      "name": "4",
+      "label": "New tasks"
+    },
+    {
+      "list_name": "outcome",
+      "name": "5",
+      "label": "Better performance in present job"
+    },
+    {
+      "list_name": "outcome",
+      "name": "6",
+      "label": "Personal benefits (meet other people, refresh or acquire skills on general or specific subjects, etc.)"
+    },
+    {
+      "list_name": "outcome",
+      "name": "7",
+      "label": "No outcome yet"
+    },
+    {
+      "list_name": "nfetype",
+      "name": "1",
+      "label": "Courses"
+    },
+    {
+      "list_name": "nfetype",
+      "name": "2",
+      "label": "Workshops and seminars"
+    },
+    {
+      "list_name": "nfetype",
+      "name": "3",
+      "label": "Guided on-the-job training"
+    },
+    {
+      "list_name": "nfetype",
+      "name": "4",
+      "label": "Private lessons"
+    },
+    {
+      "list_name": "purp",
+      "name": "1",
+      "label": "Mainly job-related"
+    },
+    {
+      "list_name": "purp",
+      "name": "2",
+      "label": "Mainly non-job-related"
+    },
+    {
+      "list_name": "skills",
+      "name": "1",
+      "label": "IT skills (general and professional)"
+    },
+    {
+      "list_name": "skills",
+      "name": "2",
+      "label": "Management skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "3",
+      "label": "Team working skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "4",
+      "label": "Customer/clients/patients/students handling skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "5",
+      "label": "Problem solving skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "6",
+      "label": "Office administration skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "7",
+      "label": "Foreign language skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "8",
+      "label": "Technical and/or practical skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "9",
+      "label": "Communication skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "10",
+      "label": "Numeracy and/or literacy skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "11",
+      "label": "Health and safety skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "12",
+      "label": "Creative and musical skills, handicraft, cooking, gardening"
+    },
+    {
+      "list_name": "skills",
+      "name": "13",
+      "label": "Mental strength, intra-personal or self-knowledge skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "14",
+      "label": "Physical skills"
+    },
+    {
+      "list_name": "skills",
+      "name": "15",
+      "label": "Other"
+    },
+    {
+      "list_name": "initia",
+      "name": "1",
+      "label": "Suggested by employer or prospective employer"
+    },
+    {
+      "list_name": "initia",
+      "name": "2",
+      "label": "Obliged by employer or prospective employer"
+    },
+    {
+      "list_name": "initia",
+      "name": "3",
+      "label": "Suggested by public employment services"
+    },
+    {
+      "list_name": "initia",
+      "name": "4",
+      "label": "Obliged by public employment services"
+    },
+    {
+      "list_name": "initia",
+      "name": "5",
+      "label": "You yourself"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "01a",
+      "label": "To do my job better"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "01b",
+      "label": "To improve my career prospects"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "02",
+      "label": "To be less likely to lose my job"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "03",
+      "label": "To increase my possibilities of getting a job or changing a job/profession"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "04",
+      "label": "To start my own business"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "13",
+      "label": "Because of organisational and/or technological changes at work"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "11",
+      "label": "Required by the employer or prospective employer or by law"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "06_7",
+      "label": "To increase my knowledge/skills for my own general interest and curiosity"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "08",
+      "label": "To obtain a certificate"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "09",
+      "label": "To meet new people/for fun"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "10",
+      "label": "For health reasons"
+    },
+    {
+      "list_name": "nfereason",
+      "name": "12",
+      "label": "To do voluntary work better"
+    },
+    {
+      "list_name": "provider",
+      "name": "1",
+      "label": "Formal education institution"
+    },
+    {
+      "list_name": "provider",
+      "name": "2",
+      "label": "Non-formal education and training institution"
+    },
+    {
+      "list_name": "provider",
+      "name": "4",
+      "label": "Employer or prospective employer"
+    },
+    {
+      "list_name": "provider",
+      "name": "11",
+      "label": "Other public or private institution"
+    },
+    {
+      "list_name": "provider",
+      "name": "8",
+      "label": "Individual"
+    },
+    {
+      "list_name": "cert",
+      "name": "1",
+      "label": "Yes, required by the employer or prospective employer or a professional body or by law"
+    },
+    {
+      "list_name": "cert",
+      "name": "2",
+      "label": "Yes, not required by the employer or prospective employer or a professional body or by law"
+    },
+    {
+      "list_name": "cert",
+      "name": "3",
+      "label": "No (acknowledgement of attendance)"
+    },
+    {
+      "list_name": "want_a",
+      "name": "2",
+      "label": "Yes"
+    },
+    {
+      "list_name": "want_a",
+      "name": "1",
+      "label": "No"
+    },
+    {
+      "list_name": "want_b",
+      "name": "4",
+      "label": "Yes"
+    },
+    {
+      "list_name": "want_b",
+      "name": "3",
+      "label": "No"
+    },
+    {
+      "list_name": "difftype",
+      "name": "01",
+      "label": "Prerequisites"
+    },
+    {
+      "list_name": "difftype",
+      "name": "02",
+      "label": "Cost"
+    },
+    {
+      "list_name": "difftype",
+      "name": "03a",
+      "label": "Lack of employer support"
+    },
+    {
+      "list_name": "difftype",
+      "name": "03b",
+      "label": "Lack of public services support"
+    },
+    {
+      "list_name": "difftype",
+      "name": "04",
+      "label": "Schedule"
+    },
+    {
+      "list_name": "difftype",
+      "name": "05",
+      "label": "Distance"
+    },
+    {
+      "list_name": "difftype",
+      "name": "07",
+      "label": "Family responsibilities"
+    },
+    {
+      "list_name": "difftype",
+      "name": "08a",
+      "label": "Health"
+    },
+    {
+      "list_name": "difftype",
+      "name": "08b",
+      "label": "Age"
+    },
+    {
+      "list_name": "difftype",
+      "name": "09",
+      "label": "Other personal reasons"
+    },
+    {
+      "list_name": "difftype",
+      "name": "10",
+      "label": "No suitable education or training activity (offer)"
+    },
+    {
+      "list_name": "difftype",
+      "name": "12",
+      "label": "Negative previous learning experience"
+    },
+    {
+      "list_name": "difftype",
+      "name": "13",
+      "label": "Course was booked out"
+    },
+    {
+      "list_name": "difftype",
+      "name": "14",
+      "label": "Too few registrations"
+    },
+    {
+      "list_name": "inf",
+      "name": "inffamily",
+      "label": "Learning from a family member, a friend or a colleague"
+    },
+    {
+      "list_name": "inf",
+      "name": "infmaterial",
+      "label": "Learning by using printed material (books, professional magazines, etc.)"
+    },
+    {
+      "list_name": "inf",
+      "name": "infdevice",
+      "label": "Learning by using electronic devices (online or offline)"
+    },
+    {
+      "list_name": "inf",
+      "name": "infmuseum",
+      "label": "Learning by guided tours in museums, historical or natural or industrial sites"
+    },
+    {
+      "list_name": "inf",
+      "name": "inflibraries",
+      "label": "Learning by visiting learning centres (including libraries)"
+    },
+    {
+      "list_name": "infpurp",
+      "name": "1",
+      "label": "At least one informal learning activity job-related"
+    },
+    {
+      "list_name": "infpurp",
+      "name": "2",
+      "label": "Non-job-related"
+    },
+    {
+      "list_name": "langlevel",
+      "name": "0",
+      "label": "Hardly any language skills"
+    },
+    {
+      "list_name": "langlevel",
+      "name": "1",
+      "label": "Beginner (basic user)"
+    },
+    {
+      "list_name": "langlevel",
+      "name": "2",
+      "label": "Intermediate (independent user)"
+    },
+    {
+      "list_name": "langlevel",
+      "name": "3",
+      "label": "Advanced (proficient user)"
+    },
+    {
+      "list_name": "genhealth",
+      "name": "1",
+      "label": "Very good"
+    },
+    {
+      "list_name": "genhealth",
+      "name": "2",
+      "label": "Good"
+    },
+    {
+      "list_name": "genhealth",
+      "name": "3",
+      "label": "Fair (neither good nor bad)"
+    },
+    {
+      "list_name": "genhealth",
+      "name": "4",
+      "label": "Bad"
+    },
+    {
+      "list_name": "genhealth",
+      "name": "5",
+      "label": "Very bad"
+    },
+    {
+      "list_name": "gali",
+      "name": "1",
+      "label": "Severely limited"
+    },
+    {
+      "list_name": "gali",
+      "name": "2",
+      "label": "Limited but not severely"
+    },
+    {
+      "list_name": "gali",
+      "name": "3",
+      "label": "Not limited at all"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "1",
+      "label": "0 to under [1st cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "2",
+      "label": "[1st cut-off value] to under [2nd cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "3",
+      "label": "[2nd cut-off value] to under [3rd cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "4",
+      "label": "[3rd cut-off value] to under [4th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "5",
+      "label": "[4th cut-off value] to under [5th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "6",
+      "label": "[5th cut-off value] to under [6th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "7",
+      "label": "[6th cut-off value] to under [7th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "8",
+      "label": "[7th cut-off value] to under [8th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "9",
+      "label": "[8th cut-off value] to under [9th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "10",
+      "label": "[9th cut-off value] to under [10th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "11",
+      "label": "[10th cut-off value] to under [11th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "12",
+      "label": "[11th cut-off value] to under [12th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "13",
+      "label": "[12th cut-off value] to under [13th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "14",
+      "label": "[13th cut-off value] to under [14th cut-off value]"
+    },
+    {
+      "list_name": "hhincome_band",
+      "name": "15",
+      "label": "[14th cut-off value] or above"
+    }
+  ],
+  "settings": {
+    "default_language": "English (en)",
+    "form_title": "Adult Education Survey 2022 (AES): Model questions",
+    "form_id": "q19-eu-aes2022"
+  }
+}

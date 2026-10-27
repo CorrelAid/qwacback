@@ -1,0 +1,370 @@
+{
+ "study": {
+  "title": "TEI – Training Evaluations Inventar",
+  "id": "q15-tei",
+  "authors": [
+   {
+    "name": "Sandrina Ritzmann",
+    "affiliation": ""
+   },
+   {
+    "name": "Vera Hagemann",
+    "affiliation": ""
+   },
+   {
+    "name": "Annette Kluge",
+    "affiliation": ""
+   }
+  ],
+  "producer": {
+   "name": "Leibniz-Institut für Psychologie (ZPID), Open Test Archive",
+   "affiliation": "ZPID, Trier"
+  },
+  "citation": "Ritzmann, S., Hagemann, V. & Kluge, A. (2020). TEI. Training Evaluations Inventar [Verfahrensdokumentation, Fragebogen Deutsch und Englisch]. In Leibniz-Institut für Psychologie (ZPID) (Hrsg.), Open Test Archive. Trier: ZPID. https://doi.org/10.23668/psycharchives.3454",
+  "url": "https://www.testarchiv.eu/de/test/9007914",
+  "abstract": "Paper-and-pencil questionnaire for evaluating vocational training courses from the participants' point of view. Its 45 statements, rated on a five-point agreement scale, cover five training outcome dimensions (fun, usefulness, difficulty, knowledge growth, attitude towards the training) and five training design dimensions (problem-based learning, activation, demonstration, application, integration). It was developed with team trainings at a European airline and a German fire brigade; bracketed parts of the items are adapted to the course type and content before use.",
+  "keywords": [
+   "Trainingsevaluation",
+   "training evaluation",
+   "Weiterbildung",
+   "Trainingsdesign",
+   "Lernerfolg",
+   "Kirkpatrick"
+  ],
+  "topics": [
+   "Weiterbildung",
+   "Evaluation"
+  ],
+  "nation": "Deutschland; Europa (Fluggesellschaft)",
+  "universe": "Teilnehmende beruflicher Trainings ab 18 Jahren (Berufstätige); auch 16-jährige Auszubildende",
+  "anlyUnit": "Individuum",
+  "timePrd": "2020",
+  "license": "CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International, https://creativecommons.org/licenses/by-sa/4.0/). Copyright remains with the authors. Terms of use (Open Test Archive): \"By using this test, I agree to abide by the terms of the Creative Commons License CC BY-SA 4.0. After completion of my work with the measure, I will inform the test authors about the use of the measure and the results I have obtained by means of the feedback form.\" This codebook is a derivative of the TEI and is shared under CC BY-SA 4.0 as well.",
+  "copyright": "© Ritzmann, S., Hagemann, V. & Kluge, A. (2020); Copyright Autor(-Innen)"
+ },
+ "survey": [
+  {
+   "type": "begin_group",
+   "name": "tei",
+   "appearance": "field-list",
+   "label::Deutsch (de)": "Training Evaluations Inventar (TEI)",
+   "label::English (en)": "Training-Evaluation-Inventory (TEI)"
+  },
+  {
+   "type": "note",
+   "name": "tei_hinweis",
+   "label::Deutsch (de)": "Vor der Durchführung müssen die durch eckige Klammern markierten Bereiche im Fragebogen an den jeweiligen Kurstyp (z.B. Training, Seminar, Workshop, …) und dessen Inhalte angepasst werden.",
+   "label::English (en)": "Before conducting the training, the fields in the questionnaire marked by square brackets must be adapted to the respective course type (e.g. training, seminar, workshop, ...) and its contents."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_01",
+   "label::Deutsch (de)": "Das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hat mir generell gefallen.",
+   "label::English (en)": "Overall, I liked the [DESCRIPTION OF COURSE TYPE – e.g. training]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_02",
+   "label::Deutsch (de)": "Die Lernatmosphäre war angenehm.",
+   "label::English (en)": "The learning atmosphere was agreeable."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_03",
+   "label::Deutsch (de)": "Das Lernen hat Spaß gemacht.",
+   "label::English (en)": "The learning was fun."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_04",
+   "label::Deutsch (de)": "Am Anfang des [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] wurden die Ziele bekannt gegeben, die mit dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] erreicht werden sollten.",
+   "label::English (en)": "At the beginning of the [DESCRIPTION OF COURSE TYPE – e.g. training], the objectives which were to be achieved through the [DESCRIPTION OF COURSE TYPE – e.g. training] were announced."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_05",
+   "label::Deutsch (de)": "Ich finde das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] nützlich für meinen Beruf.",
+   "label::English (en)": "I find the [DESCRIPTION OF COURSE TYPE – e.g. training] useful for my job."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_06",
+   "label::Deutsch (de)": "Zeit in dieses [BEZEICHNUN AUSBILDUNGSGEFÄSS – z.B. Training] zu investieren war sinnvoll.",
+   "label::English (en)": "Investing time in this [DESCRIPTION OF COURSE TYPE – e.g. training] was useful."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_07",
+   "label::Deutsch (de)": "Ich kann die Inhalte des [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] in meinem Beruf anwenden.",
+   "label::English (en)": "I can apply the content of this [DESCRIPTION OF COURSE TYPE – e.g. training] in my job."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_08",
+   "label::Deutsch (de)": "Ich ziehe persönlichen Nutzen aus diesem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training].",
+   "label::English (en)": "I derive personal use from this [DESCRIPTION OF COURSE TYPE – e.g. training]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_09",
+   "label::Deutsch (de)": "Die Inhalte waren verständlich.",
+   "label::English (en)": "The contents were comprehensible."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_10",
+   "label::Deutsch (de)": "Die Sprache (Fremd- und Fachwörter) war verständlich.",
+   "label::English (en)": "The language (foreign words and technical terms) was comprehensible."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_11",
+   "label::Deutsch (de)": "Ich bin thematisch im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] mitgekommen.",
+   "label::English (en)": "I kept up thematically in [DESCRIPTION OF COURSE TYPE – e.g. training]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_12",
+   "label::Deutsch (de)": "Die Zeit war ausreichend für die bearbeiteten Themen.",
+   "label::English (en)": "The time was sufficient for the themes covered."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_13",
+   "label::Deutsch (de)": "Ich habe den Eindruck, mein Wissen hat sich langfristig erweitert.",
+   "label::English (en)": "I have the impression that my knowledge has expanded on a long-term basis."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_14",
+   "label::Deutsch (de)": "Ich werde mir die neuen Themen gut merken können.",
+   "label::English (en)": "I will be able to remember the new themes well."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_15",
+   "label::Deutsch (de)": "Ich würde dieses [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] meinen Kollegen empfehlen.",
+   "label::English (en)": "I would recommend this [DESCRIPTION OF COURSE TYPE – e.g. training] to my colleagues."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_16",
+   "label::Deutsch (de)": "Ich werde das Gelernte im beruflichen Alltag anwenden.",
+   "label::English (en)": "I will apply what I learned to my day-to-day work."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_17",
+   "label::Deutsch (de)": "Ich finde es gut, dass [THEMA/INHALT – z.B. Teamarbeit] vermittelt bzw. besprochen wurden.",
+   "label::English (en)": "I find it good that [THEME/CONTENT – e.g. teamwork] were imparted and/or discussed."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_18",
+   "label::Deutsch (de)": "Ich denke, ich werde auch einige Zeit nach dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] noch berichten können, was ich gelernt habe.",
+   "label::English (en)": "I think I will still be able to report what I learned some time after the [DESCRIPTION OF COURSE TYPE – e.g. training]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_19",
+   "label::Deutsch (de)": "Es wurden zuerst Probleme thematisiert und durch ihre Bearbeitung habe ich somit die Themen gelernt.",
+   "label::English (en)": "First of all, problems were addressed, and by working on them, I consequently learned the themes."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_20",
+   "label::Deutsch (de)": "Ich konnte mein eigenes Wissen in das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] mit einbringen.",
+   "label::English (en)": "I was able to bring my own knowledge into the [DESCRIPTION OF COURSE TYPE – e.g. training]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_21",
+   "label::Deutsch (de)": "Inhalte wurden mit konkreten Beispielen erläutert.",
+   "label::English (en)": "Contents were illustrated with concrete examples."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_22",
+   "label::Deutsch (de)": "Ich konnte echte Probleme bearbeiten und darin die zuvor gelernten Inhalte vertiefen.",
+   "label::English (en)": "I was able to work on real problems and therein consolidate the previously learned contents."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_23",
+   "label::Deutsch (de)": "Ich konnte meine bisherigen beruflichen Erlebnisse einbringen.",
+   "label::English (en)": "I was able to bring my previous professional experiences."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_24",
+   "label::Deutsch (de)": "Es wurden wahre Vorfälle aus [ARBEITSFELD – z.B. Fliegen] vorgestellt und durch das selbständige Entwickeln von Lösungen habe ich die Themen vertieft.",
+   "label::English (en)": "Real incidents from [FIELD OF WORK – e.g. aviation] were presented, and through the independent development of solutions, I consolidated the themes."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_25",
+   "label::Deutsch (de)": "Der Trainer machte deutlich, welches die zentralen Punkte der besprochenen Themen waren.",
+   "label::English (en)": "The trainer made it clear what the central points of the discussed themes were."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_26",
+   "label::Deutsch (de)": "Es wurden Situationen aus dem Arbeitsalltag vorgestellt und ich musste herausfinden, was das mit [THEMA – z.B. Teamarbeitsfähigkeiten] zu tun hat.",
+   "label::English (en)": "Situations from day-to-day work were presented and I had to find out how they were linked to [THEME – e.g. teamwork abilities]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_27",
+   "label::Deutsch (de)": "Ich konnte mein berufliches Wissen zu [THEMA – z.B. Teamarbeitsfähigkeiten] in das Seminar/Training mit einbringen.",
+   "label::English (en)": "I was able to bring my own professional knowledge on [THEME – e.g. teamwork abilities] into the seminar/training."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_28",
+   "label::Deutsch (de)": "Auf meine bisherigen Erfahrungen zu den behandelten Themen ist eingegangen worden.",
+   "label::English (en)": "My previous experiences regarding the themes covered were addressed."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_29",
+   "label::Deutsch (de)": "Es wurden problematische Situationen aus dem Arbeitsalltag vorgestellt und ich musste herausfinden, mit welchen Fähigkeiten/welchem Wissen die Situation hätte verbessert werden können.",
+   "label::English (en)": "Problematic Situations from day-to-day work were presented and I had to find through which abilities/knowledge the situation could have been improved."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_30",
+   "label::Deutsch (de)": "Die Lernziele waren mir bekannt.",
+   "label::English (en)": "I was aware of learning objectives."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_31",
+   "label::Deutsch (de)": "Die Lernziele wurden erreicht.",
+   "label::English (en)": "The learning objectives were achieved."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_32",
+   "label::Deutsch (de)": "Die eingesetzten Medien (PPT, Video, Poster, etc.) waren hilfreich für mein Verständnis.",
+   "label::English (en)": "The media employed (PPT, video, posters etc.) were helpful for my understanding."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_33",
+   "label::Deutsch (de)": "Im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] wurden Situationen vorgestellt, die wir dann auf [THEMENASPEKTE – z.B. Teamarbeits-Aspekte] hin genauer betrachteten.",
+   "label::English (en)": "In the [DESCRIPTION OF COURSE TYPE – e.g. training], situations were presented which we then considered in more detail in terms of [THEMATIC ASPECTS – e.g. aspects of teamwork]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_34",
+   "label::Deutsch (de)": "Ich konnte das Gelernte im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] üben.",
+   "label::English (en)": "I was able to practice what I had learned in [DESCRIPTION OF COURSE TYPE – e.g. training]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_35",
+   "label::Deutsch (de)": "Ich habe im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] Feedback zu meinem Verhalten/meiner Leistung bekommen.",
+   "label::English (en)": "In the [DESCRIPTION OF COURSE TYPE – e.g. training] I received feedback on my behavior/my performance."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_36",
+   "label::Deutsch (de)": "Ich konnte das Feedback umsetzen und im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] an meinem Verhalten/meiner Leistung arbeiten.",
+   "label::English (en)": "I was able to implement the feedback and work on my behavior/my performance in the [DESCRIPTION OF COURSE TYPE – e.g. training]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_37",
+   "label::Deutsch (de)": "Die eingesetzten Medien (PPT, Video, Poster, etc.) waren geeignet, die Inhalte zu präsentieren.",
+   "label::English (en)": "The media employed (PPT, video, posters etc.) were suitable for presenting the contents."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_38",
+   "label::Deutsch (de)": "Mir ist klar geworden, wie ich die behandelten Inhalte im Arbeitsalltag anwenden kann",
+   "label::English (en)": "It became clear to me how I can apply the themes covered in day-to-day work."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_39",
+   "label::Deutsch (de)": "Der Trainer hat mich aufgefordert, mein Wissen und meine Erlebnisse zu [THEMA – z.B. Teamarbeitsfähigkeiten] aus dem Berufsalltag einzubringen.",
+   "label::English (en)": "The trainer invited me to bring my own knowledge and experiences from my day-to-day work regarding [THEME – e.g. teamwork abilities]."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_40",
+   "label::Deutsch (de)": "Das Feedback aus dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hilft mir, weiter am Gelernten zu arbeiten.",
+   "label::English (en)": "The feedback from the [DESCRIPTION OF COURSE TYPE – e.g. training] helps me to work further on what I learned."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_41",
+   "label::Deutsch (de)": "Inhalte wurden in Diskussionen vertieft.",
+   "label::English (en)": "Contents were consolidated in discussions."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_42",
+   "label::Deutsch (de)": "In der Diskussion habe ich erfahren, dass Kollegen andere Sichtweisen zu dem behandelten Thema haben.",
+   "label::English (en)": "In the discussion, I discovered that colleagues have different views on the theme covered."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_43",
+   "label::Deutsch (de)": "Ich hatte Gelegenheit, das Gelernte zu reflektieren.",
+   "label::English (en)": "I had the opportunity to reflect on what I had learned."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_44",
+   "label::Deutsch (de)": "Im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hatte ich die Möglichkeit, Dinge, die ich später in der Arbeit umsetzen soll, schon einmal auszuprobieren.",
+   "label::English (en)": "In the [DESCRIPTION OF COURSE TYPE – e.g. training], I had the opportunity to try out things which I should later implement in my work."
+  },
+  {
+   "type": "select_one tei_agree5",
+   "name": "tei_45",
+   "label::Deutsch (de)": "Ich kenne die Wichtigkeit einzelner Themen für unterschiedliche Situationen.",
+   "label::English (en)": "I know the importance of the individual themes for different situations."
+  },
+  {
+   "type": "end_group"
+  }
+ ],
+ "choices": [
+  {
+   "list_name": "tei_agree5",
+   "name": "1",
+   "label::Deutsch (de)": "Stimme ich nicht zu",
+   "label::English (en)": "I do not agree"
+  },
+  {
+   "list_name": "tei_agree5",
+   "name": "2",
+   "label::Deutsch (de)": "Stimme ich eher nicht zu",
+   "label::English (en)": "I rather not agree"
+  },
+  {
+   "list_name": "tei_agree5",
+   "name": "3",
+   "label::Deutsch (de)": "Weder noch",
+   "label::English (en)": "Neither nor"
+  },
+  {
+   "list_name": "tei_agree5",
+   "name": "4",
+   "label::Deutsch (de)": "Stimme ich eher zu",
+   "label::English (en)": "I rather agree"
+  },
+  {
+   "list_name": "tei_agree5",
+   "name": "5",
+   "label::Deutsch (de)": "Stimme ich sehr zu",
+   "label::English (en)": "I agree very much"
+  }
+ ],
+ "settings": {
+  "default_language": "Deutsch (de)",
+  "form_title": "TEI – Training Evaluations Inventar",
+  "form_id": "q15-tei"
+ }
+}

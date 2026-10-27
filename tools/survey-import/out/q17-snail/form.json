@@ -1,0 +1,290 @@
+{
+ "study": {
+  "title": "SNAIL – Scale for the assessment of non-experts' AI literacy",
+  "id": "q17-snail",
+  "authors": [
+   {
+    "name": "Matthias Carl Laupichler",
+    "affiliation": "Institute of Medical Education, University Hospital Bonn"
+   },
+   {
+    "name": "Alexandra Aster",
+    "affiliation": "Institute of Medical Education, University Hospital Bonn"
+   },
+   {
+    "name": "Nicolas Haverkamp",
+    "affiliation": "Department of Psychology, University of Bonn"
+   },
+   {
+    "name": "Tobias Raupach",
+    "affiliation": "Institute of Medical Education, University Hospital Bonn"
+   }
+  ],
+  "producer": {
+   "name": "Laupichler, Aster, Haverkamp & Raupach",
+   "affiliation": "University Hospital Bonn / University of Bonn"
+  },
+  "citation": "Laupichler, M. C., Aster, A., Haverkamp, N., & Raupach, T. (2023). Development of the \"Scale for the assessment of non-experts' AI literacy\" – An exploratory factor analysis. Computers in Human Behavior Reports, 12, 100338. https://doi.org/10.1016/j.chbr.2023.100338",
+  "url": "https://doi.org/10.1016/j.chbr.2023.100338",
+  "abstract": "Self-assessment scale of AI literacy for non-experts, i.e. people without formal AI or computer science training. 31 \"I can …\" statements, rated on a seven-point agreement scale, cover three factors: Technical Understanding, Critical Appraisal and Practical Application. The items come from a Delphi study and were reduced from 39 by exploratory factor analysis with an online sample; the German version is the authors' systematic translation (Laupichler, Aster, Perschewski & Schleiss 2023).",
+  "keywords": [
+   "KI-Kompetenz",
+   "AI literacy",
+   "künstliche Intelligenz",
+   "artificial intelligence",
+   "Selbsteinschätzung",
+   "self-assessment"
+  ],
+  "topics": [
+   "Künstliche Intelligenz",
+   "Kompetenzen"
+  ],
+  "nation": "International (English online sample); Deutschland (German version)",
+  "universe": "Erwachsene ohne formale KI- oder Informatikausbildung (non-experts)",
+  "anlyUnit": "Individuum",
+  "timePrd": "2023",
+  "license": "Open access, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): \"This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).\" (Laupichler et al. 2023, Computers in Human Behavior Reports 12, 100338). English items from Table 1 of that article. German items from Supplementary Material S1 of Laupichler, M. C., Aster, A., Perschewski, J.-O., & Schleiss, J. (2023). Evaluating AI courses: A valid and reliable instrument for assessing artificial-intelligence learning through comparative self-assessment. Education Sciences, 13(10), 978. https://doi.org/10.3390/educsci13100978 — \"open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/)\".",
+  "copyright": "© 2023 The Authors. Published by Elsevier Ltd. German version: © 2023 by the authors, Licensee MDPI, Basel, Switzerland."
+ },
+ "survey": [
+  {
+   "type": "begin_group",
+   "name": "snail",
+   "appearance": "field-list",
+   "label::Deutsch (de)": "Scale for the assessment of non-experts' AI literacy (SNAIL)",
+   "label::English (en)": "Scale for the assessment of non-experts' AI literacy (SNAIL)"
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v01",
+   "label::Deutsch (de)": "Ich kann erkennen, ob die Technologien, die ich nutze, von künstlicher Intelligenz unterstützt werden.",
+   "label::English (en)": "I can tell if the technologies I use are supported by artificial intelligence."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v02",
+   "label::Deutsch (de)": "Ich kann Beispiele technischer Anwendungen nennen, die von künstlicher Intelligenz unterstützt werden.",
+   "label::English (en)": "I can name examples of technical applications that are supported by artificial intelligence."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v04",
+   "label::Deutsch (de)": "Ich kann den Unterschied zwischen genereller (oder starker) und enger (oder schwacher) künstlicher Intelligenz erklären.",
+   "label::English (en)": "I can explain the difference between general (or strong) and narrow (or weak) artificial intelligence."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v05",
+   "label::Deutsch (de)": "Ich kann bewerten, ob Darstellungen von KI in den Medien (z.B. in Filmen oder Videospielen) die aktuellen Fähigkeiten von KI-Technologien übersteigen.",
+   "label::English (en)": "I can evaluate whether media representations of AI (e.g., in movies or video games) go beyond the current capabilities of AI technologies."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v06",
+   "label::Deutsch (de)": "Ich kann Schwächen von künstlicher Intelligenz nennen.",
+   "label::English (en)": "I can name weaknesses of artificial intelligence."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v08",
+   "label::Deutsch (de)": "Ich kann Risiken beschreiben, welche auftreten können, wenn Systeme künstlicher Intelligenz verwendet werden.",
+   "label::English (en)": "I can describe risks that may arise when using artificial intelligence systems."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v12",
+   "label::Deutsch (de)": "Ich kann erklären, wie KI Anwendungen Entscheidungen treffen.",
+   "label::English (en)": "I can explain how AI applications make decisions."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v13",
+   "label::Deutsch (de)": "Ich kann erklären, wie Machine Learning generell funktioniert.",
+   "label::English (en)": "I can explain how machine learning works at a general level."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v14",
+   "label::Deutsch (de)": "Ich kann beschreiben, wie Machine Learning Modelle trainiert, validiert und getestet werden.",
+   "label::English (en)": "I can describe how machine learning models are trained, validated, and tested."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v15",
+   "label::Deutsch (de)": "Ich kann den Unterschied zwischen “Supervised Learning” und “Unsupervised Learning” erklären (im Kontext von Machine Learning).",
+   "label::English (en)": "I can explain the difference between 'supervised learning' and 'unsupervised learning' (in the context of machine learning)."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v16",
+   "label::Deutsch (de)": "Ich kann erklären, wie “Reinforcement Learning” im Wesentlichen funktioniert (im Kontext von Machine Learning).",
+   "label::English (en)": "I can explain how 'reinforcement learning' works on a basic level (in the context of machine learning)."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v17",
+   "label::Deutsch (de)": "Ich kann erklären, in welchem Verhältnis Deep Learning zu Machine Learning steht.",
+   "label::English (en)": "I can explain how deep learning relates to machine learning"
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v18",
+   "label::Deutsch (de)": "Ich kann erklären, was der Begriff “künstliches neuronales Netz” bedeutet.",
+   "label::English (en)": "I can explain what the term 'artificial neural network' means."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v19",
+   "label::Deutsch (de)": "Ich kann die Auswirkungen von Anwendungen der künstlichen Intelligenz in mindestens einem Themenbereich kritisch bewerten.",
+   "label::English (en)": "I can critically evaluate the implications of artificial intelligence applications in at least one subject area."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v20",
+   "label::Deutsch (de)": "Ich kann erklären, warum Daten eine wichtige Rolle bei der Entwicklung und Anwendung künstlicher Intelligenz spielen.",
+   "label::English (en)": "I can explain why data plays an important role in the development and application of artificial intelligence."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v21",
+   "label::Deutsch (de)": "Ich kann beschreiben, warum Menschen eine wichtige Rolle bei der Entwicklung von Systemen künstlicher Intelligenz spielen.",
+   "label::English (en)": "I can describe why humans play an important role in the development of artificial intelligence systems."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v22",
+   "label::Deutsch (de)": "Ich kann beschreiben, wie einige Systeme künstlicher Intelligenz in ihrer Umgebung handeln und auf ihre Umgebung reagieren können.",
+   "label::English (en)": "I can describe how some artificial intelligence systems can act in their environment and react to their environment."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v23",
+   "label::Deutsch (de)": "Ich kann erklären, wie Sensoren von Computern verwendet werden, um Daten zu sammeln, welche für KI-Zwecke genutzt werden können.",
+   "label::English (en)": "I can explain how sensors are used by computers to collect data that can be used for AI purposes."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v24",
+   "label::Deutsch (de)": "Ich kann Anwendungen nennen, bei denen KI-unterstütztes Natural Language Processing/Understanding genutzt wird.",
+   "label::English (en)": "I can name applications in which AI-assisted natural language processing/understanding is used."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v25",
+   "label::Deutsch (de)": "Ich kann ethische Bedenken rund um künstliche Intelligenz identifizieren.",
+   "label::English (en)": "I can identify ethical issues surrounding artificial intelligence."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v28",
+   "label::Deutsch (de)": "Ich kann den potentiellen Einfluss von künstlicher Intelligenz auf Individuen und die Gesellschaft kritisch reflektieren.",
+   "label::English (en)": "I can critically reflect on the potential impact of artificial intelligence on individuals and society."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v29",
+   "label::Deutsch (de)": "Ich kann erklären, warum KI in letzter Zeit zunehmend wichtiger geworden ist.",
+   "label::English (en)": "I can explain why AI has recently become increasingly important."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v30",
+   "label::Deutsch (de)": "Ich kann erklären, wie sich regelbasierte Systeme von Machine Learning Systemen unterscheiden.",
+   "label::English (en)": "I can explain how rule-based systems differ from machine learning systems."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v31",
+   "label::Deutsch (de)": "Ich kann beurteilen, ob ein Problem in meinem Fachbereich mit Methoden der künstlichen Intelligenz gelöst werden kann und sollte.",
+   "label::English (en)": "I can assess if a problem in my field can and should be solved with artificial intelligence methods."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v32",
+   "label::Deutsch (de)": "Ich kann beschreiben, was künstliche Intelligenz ist.",
+   "label::English (en)": "I can describe what artificial intelligence is."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v33",
+   "label::Deutsch (de)": "Ich kann das Konzept der erklärbaren KI beschreiben.",
+   "label::English (en)": "I can describe the concept of explainable AI."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v34",
+   "label::Deutsch (de)": "Ich kann erklären, warum Datensicherheit beachtet werden muss, wenn Anwendungen künstlicher Intelligenz entwickelt und verwendet werden.",
+   "label::English (en)": "I can explain why data security must be considered when developing and using artificial intelligence applications."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v35",
+   "label::Deutsch (de)": "Ich kann erklären, warum Datenschutz beachtet werden muss, wenn Anwendungen künstlicher Intelligenz entwickelt und verwendet werden.",
+   "label::English (en)": "I can explain why data privacy must be considered when developing and using artificial intelligence applications."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v36",
+   "label::Deutsch (de)": "Ich kann das Konzept von Big Data beschreiben.",
+   "label::English (en)": "I can describe the concept of big data."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v37",
+   "label::Deutsch (de)": "Ich kann Beispiele aus meinem täglichen Leben (privat oder beruflich) geben, bei denen ich in Kontakt mit künstlicher Intelligenz sein könnte.",
+   "label::English (en)": "I can give examples from my daily life (personal or professional) where I might be in contact with artificial intelligence."
+  },
+  {
+   "type": "select_one snail_agree6",
+   "name": "snail_v39",
+   "label::Deutsch (de)": "Ich kann potentielle rechtliche Probleme beschreiben, welche entstehen können, wenn künstliche Intelligenz genutzt wird.",
+   "label::English (en)": "I can describe potential legal problems that may arise when using artificial intelligence."
+  },
+  {
+   "type": "end_group"
+  }
+ ],
+ "choices": [
+  {
+   "list_name": "snail_agree6",
+   "name": "1",
+   "label::Deutsch (de)": "Stimme überhaupt nicht zu",
+   "label::English (en)": "Strongly disagree"
+  },
+  {
+   "list_name": "snail_agree6",
+   "name": "2",
+   "label::Deutsch (de)": "2",
+   "label::English (en)": "2"
+  },
+  {
+   "list_name": "snail_agree6",
+   "name": "3",
+   "label::Deutsch (de)": "3",
+   "label::English (en)": "3"
+  },
+  {
+   "list_name": "snail_agree6",
+   "name": "4",
+   "label::Deutsch (de)": "4",
+   "label::English (en)": "4"
+  },
+  {
+   "list_name": "snail_agree6",
+   "name": "5",
+   "label::Deutsch (de)": "5",
+   "label::English (en)": "5"
+  },
+  {
+   "list_name": "snail_agree6",
+   "name": "6",
+   "label::Deutsch (de)": "Stimme voll und ganz zu",
+   "label::English (en)": "Strongly agree"
+  }
+ ],
+ "settings": {
+  "default_language": "Deutsch (de)",
+  "form_title": "SNAIL – Scale for the assessment of non-experts' AI literacy",
+  "form_id": "q17-snail"
+ }
+}

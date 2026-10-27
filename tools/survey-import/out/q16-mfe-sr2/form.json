@@ -1,0 +1,381 @@
+{
+ "study": {
+  "title": "Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2)",
+  "id": "q16-mfe-sr2",
+  "authors": [
+   {
+    "name": "Oberhoff, L.",
+    "affiliation": "Universität Münster"
+   },
+   {
+    "name": "Schulze Tast, I.",
+    "affiliation": "Universität Münster"
+   },
+   {
+    "name": "Humberg, S.",
+    "affiliation": "Universität Münster"
+   }
+  ],
+  "producer": "GESIS – Leibniz-Institut für Sozialwissenschaften (ZIS)",
+  "citation": "Oberhoff, L., Schulze Tast, I., & Humberg, S. (2025). Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2). Zusammenstellung sozialwissenschaftlicher Items und Skalen (ZIS). https://doi.org/10.6102/zis363",
+  "url": "https://doi.org/10.6102/zis363",
+  "sourceLabel": "ZIS – Open Access Repositorium für Messinstrumente",
+  "abstract": "Fragebogen für die studentische Evaluation von Seminaren. Erfasst die Bewertung der Didaktik der Lehrperson, erlebte Über- bzw. Unterforderung, die Beteiligung der anderen Teilnehmenden, die Materialien und den subjektiven Lernerfolg, dazu Rahmenbedingungen der Teilnahme, eine Gesamtbewertung und offenes Feedback. 20 Items, 3–10 Minuten.",
+  "keywords": [
+   "Lehrevaluation",
+   "Seminar",
+   "Lehre",
+   "Veranstaltungskritik",
+   "Hochschule",
+   "Weiterbildung",
+   "Evaluation"
+  ],
+  "topics": [
+   "Bildung"
+  ],
+  "nation": "Deutschland",
+  "universe": "Studierende, die ein Seminar besucht haben",
+  "anlyUnit": "Individuum",
+  "timePrd": "2025",
+  "license": "CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/). Für die Nutzung zu anderen Zwecken die Autor:innen kontaktieren.",
+  "copyright": "© Oberhoff, Schulze Tast & Humberg 2025"
+ },
+ "survey": [
+  {
+   "type": "select_one fehltermine",
+   "name": "mfe_1",
+   "label": "Wie viele Sitzungen hast Du bei diesem Seminar gefehlt?"
+  },
+  {
+   "type": "decimal",
+   "name": "mfe_2",
+   "label": "Wie viele Stunden hast Du das Seminar im Schnitt pro Woche vor- und nachbereitet?"
+  },
+  {
+   "type": "select_multiple seminarwahl",
+   "name": "mfe_3",
+   "label": "Ich habe dieses spezielle Seminar gewählt:"
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_4",
+   "label": "Ich habe durch die Veranstaltung einen guten Überblick über die behandelten Themengebiete bekommen."
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_5",
+   "label": "Der/Die Lehrende benutzte oft Beispiele, die mein Verständnis der Lehrinhalte gefördert haben."
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_6",
+   "label": "Ich finde, der/die Lehrende ging auf Fragen und Anregungen der Studierenden angemessen ein."
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_7",
+   "label": "Ich finde, der/die Lehrende hat das Thema interessant aufgearbeitet."
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_8",
+   "label": "Ich konnte im Verlauf der Veranstaltung die Gliederung immer nachvollziehen."
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_9",
+   "label": "Ich finde, der/die Lehrende teilte die zur Verfügung stehende Zeit gut ein."
+  },
+  {
+   "type": "select_one forderung7",
+   "name": "mfe_10",
+   "label": "Ich fühle mich durch die Inhalte des Seminars…"
+  },
+  {
+   "type": "select_one forderung7",
+   "name": "mfe_11",
+   "label": "Ich fühle mich durch das Tempo der Stoffvermittlung…"
+  },
+  {
+   "type": "select_one forderung7",
+   "name": "mfe_12",
+   "label": "Ich fühle mich durch den mit dem Seminar verbundenen Zeitaufwand…"
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_13",
+   "label": "Die meisten Teilnehmenden waren gut auf die einzelnen Termine vorbereitet."
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_14",
+   "label": "Die meisten Teilnehmenden brachten sich aktiv ein."
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_15",
+   "label": "Die im Rahmen des Seminars verwendeten Materialien (Folien, Filme, Skizzen, etc.) trugen zum Verständnis der Inhalte bei."
+  },
+  {
+   "type": "select_one materialmenge",
+   "name": "mfe_16",
+   "label": "Ich fand die Menge des Materials, das in der Veranstaltung zur Verfügung gestellt wurde, …"
+  },
+  {
+   "type": "select_one zustimmung7",
+   "name": "mfe_17",
+   "label": "Ich habe in der Veranstaltung viel gelernt."
+  },
+  {
+   "type": "select_one janein",
+   "name": "mfe_18",
+   "label": "Ich würde dieses Seminar anderen Studierenden weiterempfehlen."
+  },
+  {
+   "type": "select_one punkte",
+   "name": "mfe_19",
+   "label": "Im Punktesystem der gymnasialen Oberstufe (0 (ungenügend) bis 15 (sehr gut +)) bewerte ich dieses Seminar mit folgender Punktzahl:"
+  },
+  {
+   "type": "text",
+   "name": "mfe_20",
+   "label": "Anmerkungen für die/den Lehrende/n (Vorschläge/Lob/konstruktive Kritik):",
+   "hint": "Bitte formuliere Deine Kritik sachlich, konstruktiv, und wenn möglich als Ich-Botschaft (siehe auch unsere Netiquette unter https://www.uni-muenster.de/PsyEval/netiquette/netiquette.html)."
+  }
+ ],
+ "choices": [
+  {
+   "list_name": "fehltermine",
+   "name": "0",
+   "label": "keine"
+  },
+  {
+   "list_name": "fehltermine",
+   "name": "1",
+   "label": "eine"
+  },
+  {
+   "list_name": "fehltermine",
+   "name": "2",
+   "label": "zwei"
+  },
+  {
+   "list_name": "fehltermine",
+   "name": "3",
+   "label": "drei oder mehr Sitzungen"
+  },
+  {
+   "list_name": "fehltermine",
+   "name": "block",
+   "label": "dies war eine Blockveranstaltung"
+  },
+  {
+   "list_name": "seminarwahl",
+   "name": "zeit",
+   "label": "aus Zeitgründen"
+  },
+  {
+   "list_name": "seminarwahl",
+   "name": "interesse",
+   "label": "aus Interesse am Thema"
+  },
+  {
+   "list_name": "seminarwahl",
+   "name": "dozent",
+   "label": "wegen des/der Dozent*in"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "1",
+   "label": "1 = stimme gar nicht zu"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "2",
+   "label": "2"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "3",
+   "label": "3"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "4",
+   "label": "4"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "5",
+   "label": "5"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "6",
+   "label": "6"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "7",
+   "label": "7 = stimme vollkommen zu"
+  },
+  {
+   "list_name": "zustimmung7",
+   "name": "na",
+   "label": "nicht sinnvoll beantwortbar"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "1",
+   "label": "sehr unterfordert"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "2",
+   "label": "unterfordert"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "3",
+   "label": "eher unterfordert"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "4",
+   "label": "angemessen gefordert"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "5",
+   "label": "eher überfordert"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "6",
+   "label": "überfordert"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "7",
+   "label": "sehr überfordert"
+  },
+  {
+   "list_name": "forderung7",
+   "name": "na",
+   "label": "nicht sinnvoll beantwortbar"
+  },
+  {
+   "list_name": "materialmenge",
+   "name": "zu_gering",
+   "label": "zu gering"
+  },
+  {
+   "list_name": "materialmenge",
+   "name": "angemessen",
+   "label": "angemessen"
+  },
+  {
+   "list_name": "materialmenge",
+   "name": "zu_gross",
+   "label": "zu groß"
+  },
+  {
+   "list_name": "materialmenge",
+   "name": "na",
+   "label": "nicht sinnvoll beantwortbar"
+  },
+  {
+   "list_name": "janein",
+   "name": "ja",
+   "label": "Ja"
+  },
+  {
+   "list_name": "janein",
+   "name": "nein",
+   "label": "Nein"
+  },
+  {
+   "list_name": "punkte",
+   "name": "0",
+   "label": "0 (ungenügend)"
+  },
+  {
+   "list_name": "punkte",
+   "name": "1",
+   "label": "1"
+  },
+  {
+   "list_name": "punkte",
+   "name": "2",
+   "label": "2"
+  },
+  {
+   "list_name": "punkte",
+   "name": "3",
+   "label": "3"
+  },
+  {
+   "list_name": "punkte",
+   "name": "4",
+   "label": "4"
+  },
+  {
+   "list_name": "punkte",
+   "name": "5",
+   "label": "5"
+  },
+  {
+   "list_name": "punkte",
+   "name": "6",
+   "label": "6"
+  },
+  {
+   "list_name": "punkte",
+   "name": "7",
+   "label": "7"
+  },
+  {
+   "list_name": "punkte",
+   "name": "8",
+   "label": "8"
+  },
+  {
+   "list_name": "punkte",
+   "name": "9",
+   "label": "9"
+  },
+  {
+   "list_name": "punkte",
+   "name": "10",
+   "label": "10"
+  },
+  {
+   "list_name": "punkte",
+   "name": "11",
+   "label": "11"
+  },
+  {
+   "list_name": "punkte",
+   "name": "12",
+   "label": "12"
+  },
+  {
+   "list_name": "punkte",
+   "name": "13",
+   "label": "13"
+  },
+  {
+   "list_name": "punkte",
+   "name": "14",
+   "label": "14"
+  },
+  {
+   "list_name": "punkte",
+   "name": "15",
+   "label": "15 (sehr gut +)"
+  }
+ ],
+ "settings": {
+  "default_language": "Deutsch (de)"
+ }
+}

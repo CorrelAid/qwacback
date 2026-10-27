@@ -1,0 +1,184 @@
+{
+ "study": {
+  "title": "GAAIS – General Attitudes towards Artificial Intelligence Scale",
+  "id": "q18-gaais",
+  "authors": [
+   {
+    "name": "Schepman, A.",
+    "affiliation": "University of Chester"
+   },
+   {
+    "name": "Rodway, P.",
+    "affiliation": "University of Chester"
+   }
+  ],
+  "producer": "Schepman & Rodway, University of Chester",
+  "citation": "Schepman, A., & Rodway, P. (2023). The General Attitudes towards Artificial Intelligence Scale (GAAIS): Confirmatory validation and associations with personality, corporate distrust, and general trust. International Journal of Human–Computer Interaction, 39(13), 2724–2741. https://doi.org/10.1080/10447318.2022.2085400 — initial validation: Schepman, A., & Rodway, P. (2020). Computers in Human Behavior Reports, 1, 100014. https://doi.org/10.1016/j.chbr.2020.100014",
+  "url": "https://doi.org/10.1080/10447318.2022.2085400",
+  "abstract": "20-item scale of general attitudes towards artificial intelligence with two subscales: positive attitudes (12 items: societal and personal utility, positive emotions) and negative attitudes (8 items: concerns, negative emotions). Validated with UK adults; five-point agreement scale. The negative items are reverse-scored; no overall score is formed.",
+  "keywords": [
+   "Einstellung",
+   "attitudes",
+   "künstliche Intelligenz",
+   "artificial intelligence",
+   "KI",
+   "AI"
+  ],
+  "topics": [
+   "Einstellungen"
+  ],
+  "nation": "United Kingdom",
+  "universe": "Adults (validation samples: UK residents aged 18+)",
+  "anlyUnit": "Individual",
+  "timePrd": "2021",
+  "license": "CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/): non-commercial re-use and reproduction, original properly cited, not altered or built upon. Items reproduced verbatim; this codebook changes the format only.",
+  "copyright": "© 2022 The Author(s)"
+ },
+ "survey": [
+  {
+   "type": "begin_group",
+   "name": "gaais",
+   "appearance": "field-list",
+   "label": "We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos1",
+   "label": "For routine transactions, I would rather interact with an artificially intelligent system than with a human."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos2",
+   "label": "Artificial Intelligence can provide new economic opportunities for this country."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg3",
+   "label": "Organisations use Artificial Intelligence unethically."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos4",
+   "label": "Artificially intelligent systems can help people feel happier."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos5",
+   "label": "I am impressed by what Artificial Intelligence can do."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg6",
+   "label": "I think artificially intelligent systems make many errors."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos7",
+   "label": "I am interested in using artificially intelligent systems in my daily life."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg8",
+   "label": "I find Artificial Intelligence sinister."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg9",
+   "label": "Artificial Intelligence might take control of people."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg10",
+   "label": "I think Artificial Intelligence is dangerous."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos11",
+   "label": "Artificial Intelligence can have positive impacts on people’s wellbeing."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos12",
+   "label": "Artificial Intelligence is exciting."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos13",
+   "label": "An artificially intelligent agent would be better than an employee in many routine jobs."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos14",
+   "label": "There are many beneficial applications of Artificial Intelligence."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg15",
+   "label": "I shiver with discomfort when I think about future uses of Artificial Intelligence."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos16",
+   "label": "Artificially intelligent systems can perform better than humans."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos17",
+   "label": "Much of society will benefit from a future full of Artificial Intelligence."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_pos18",
+   "label": "I would like to use Artificial Intelligence in my own job."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg19",
+   "label": "People like me will suffer if Artificial Intelligence is used more and more."
+  },
+  {
+   "type": "select_one gaais_agree5",
+   "name": "gaais_neg20",
+   "label": "Artificial Intelligence is used to spy on people."
+  },
+  {
+   "type": "end_group",
+   "name": "gaais"
+  }
+ ],
+ "choices": [
+  {
+   "list_name": "gaais_agree5",
+   "name": "1",
+   "label": "Strongly disagree"
+  },
+  {
+   "list_name": "gaais_agree5",
+   "name": "2",
+   "label": "Disagree"
+  },
+  {
+   "list_name": "gaais_agree5",
+   "name": "3",
+   "label": "Neutral"
+  },
+  {
+   "list_name": "gaais_agree5",
+   "name": "4",
+   "label": "Agree"
+  },
+  {
+   "list_name": "gaais_agree5",
+   "name": "5",
+   "label": "Strongly agree"
+  },
+  {
+   "list_name": "gaais_agree5",
+   "name": "na",
+   "label": "Prefer not to answer"
+  }
+ ],
+ "settings": {
+  "default_language": "English (en)"
+ }
+}

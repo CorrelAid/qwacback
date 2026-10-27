@@ -1,0 +1,443 @@
+<?xml version="1.0" ?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" xml:lang="de">
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>ATTARI-12 – Attitudes Towards Artificial Intelligence Scale</titl>
+        <IDNo>q13-attari12</IDNo>
+      </titlStmt><rspStmt><AuthEnty affiliation="Technische Universität Chemnitz">Jan-Philipp Stein</AuthEnty><AuthEnty affiliation="Universität Würzburg">Tanja Messingschlager</AuthEnty><AuthEnty affiliation="Leibniz-Institut für Bildungsverläufe (LIfBi), Bamberg">Timo Gnambs</AuthEnty><AuthEnty affiliation="Universität Würzburg">Fabian Hutmacher</AuthEnty><AuthEnty affiliation="Universität Würzburg">Markus Appel</AuthEnty></rspStmt>
+      <prodStmt><producer affiliation="TU Chemnitz / Universität Würzburg / LIfBi">Stein, Messingschlager, Gnambs, Hutmacher &amp; Appel</producer><copyright>© The Author(s) 2024</copyright>
+        <prodDate date="2026-10-27">2026-10-27</prodDate>
+      </prodStmt><biblCit>Stein, J.-P., Messingschlager, T., Gnambs, T., Hutmacher, F., &amp; Appel, M. (2024). Attitudes towards AI: Measurement and associations with personality. Scientific Reports, 14, 2909. https://doi.org/10.1038/s41598-024-53335-2</biblCit><holdings URI="https://doi.org/10.1038/s41598-024-53335-2">https://doi.org/10.1038/s41598-024-53335-2</holdings>
+    </citation><stdyInfo><subject><keyword>Einstellung</keyword><keyword>attitudes</keyword><keyword>künstliche Intelligenz</keyword><keyword>artificial intelligence</keyword><keyword>Technikakzeptanz</keyword><topcClas>Künstliche Intelligenz</topcClas><topcClas>Einstellungen</topcClas></subject><abstract>Unidimensional 12-item scale of general attitudes towards artificial intelligence, from aversion to enthusiasm, independent of specific applications. Items cover cognitive, affective and behavioural facets; six are negatively worded and reverse-coded. It was validated with US adults (English) and German university students (German version) and is answered on a five-point agreement scale.</abstract><sumDscr><timePrd event="single">2024</timePrd><nation>USA; Deutschland</nation><anlyUnit>Individuum</anlyUnit><universe clusion="I">Erwachsene (US-amerikanische MTurk-Stichproben; deutsche Studierende)</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>Open Access. This article is licensed under a Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/). Items from the article's Appendix (English) and Supplement S8 (German version); same item lists on OSF (https://osf.io/3j67a/).</conditions></useStmt></dataAccs>
+    <notes type="cdl:setting" subject="default_language">Deutsch (de)</notes>
+    <notes type="cdl:language" subject="de">de</notes>
+    <notes type="cdl:language" subject="en">en</notes>
+  </stdyDscr>
+  <fileDscr ID="F1" URI="data.csv">
+    <fileTxt>
+      <fileName>data.csv</fileName>
+      <dimensns>
+        <caseQnty>0</caseQnty>
+      </dimensns>
+      <fileType>Comma-separated values (CSV)</fileType>
+      <format>text/csv</format>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr>
+    <varGrp ID="VG_attari12" name="attari12" type="section" var="V_attari_1 V_attari_2 V_attari_3 V_attari_4 V_attari_5 V_attari_6 V_attari_7 V_attari_8 V_attari_9 V_attari_10 V_attari_11 V_attari_12">
+      <txt>Im Folgenden interessieren wir uns für Ihre Einstellungen gegenüber Künstlicher Intelligenz (KI). Künstliche Intelligenz kann Aufgaben ausführen, die üblicherweise menschliche Intelligenz erfordern. Sie befähigt Maschinen dazu, selbstständig und ähnlich dem Menschen, ihre Umwelt wahrzunehmen, zu handeln, zu lernen und sich anzupassen. Künstliche Intelligenz kann Teil eines Computers oder einer Onlineplattform sein – man kann ihr aber auch in verschiedenen anderen technischen Geräten, wie etwa Robotern, begegnen.</txt>
+      <txt xml:lang="en">In the following, we are interested in your attitudes towards artificial intelligence (AI). AI can execute tasks that typically require human intelligence. It enables machines to sense, act, learn, and adapt in an autonomous, human-like way. AI may be part of a computer or online platform—but it can also be encountered in various other hardware devices such as robots.</txt>
+      <concept>Im Folgenden interessieren wir uns für Ihre Einstellungen gegenüber Künstlicher Intelligenz (KI). Künstliche Intelligenz kann Aufgaben ausführen, die üblicherweise menschliche Intelligenz erfordern. Sie befähigt Maschinen dazu, selbstständig und ähnlich dem Menschen, ihre Umwelt wahrzunehmen, zu handeln, zu lernen und sich anzupassen. Künstliche Intelligenz kann Teil eines Computers oder einer Onlineplattform sein – man kann ihr aber auch in verschiedenen anderen technischen Geräten, wie etwa Robotern, begegnen.</concept>
+      <notes type="cdl:appearance">field-list</notes>
+    </varGrp>
+    <var ID="V_attari_1" name="attari_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="1">
+        <qstnLit>Künstliche Intelligenz wird die Welt verbessern.</qstnLit>
+        <qstnLit xml:lang="en">AI will make this world a better place.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Künstliche Intelligenz wird die Welt verbessern.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_2" name="attari_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="2">
+        <qstnLit>Ich habe starke negative Emotionen gegenüber künstlicher Intelligenz.</qstnLit>
+        <qstnLit xml:lang="en">I have strong negative emotions about AI.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Ich habe starke negative Emotionen gegenüber künstlicher Intelligenz.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_3" name="attari_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="3">
+        <qstnLit>Ich möchte Technologien nutzen, die auf künstlicher Intelligenz basieren.</qstnLit>
+        <qstnLit xml:lang="en">I want to use technologies that rely on AI.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Ich möchte Technologien nutzen, die auf künstlicher Intelligenz basieren.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_4" name="attari_4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="4">
+        <qstnLit>Künstliche Intelligenz hat mehr Nachteile als Vorteile.</qstnLit>
+        <qstnLit xml:lang="en">AI has more disadvantages than advantages.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Künstliche Intelligenz hat mehr Nachteile als Vorteile.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_5" name="attari_5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="5">
+        <qstnLit>Ich freue mich auf zukünftige Entwicklungen im Bereich künstliche Intelligenz.</qstnLit>
+        <qstnLit xml:lang="en">I look forward to future AI developments.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Ich freue mich auf zukünftige Entwicklungen im Bereich künstliche Intelligenz.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_6" name="attari_6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="6">
+        <qstnLit>Künstliche Intelligenz bietet Lösungen für viele globale Probleme.</qstnLit>
+        <qstnLit xml:lang="en">AI offers solutions to many world problems.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Künstliche Intelligenz bietet Lösungen für viele globale Probleme.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_7" name="attari_7" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="7">
+        <qstnLit>Ich bevorzuge Technologien, die keine künstliche Intelligenz beinhalten.</qstnLit>
+        <qstnLit xml:lang="en">I prefer technologies that do not feature AI.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Ich bevorzuge Technologien, die keine künstliche Intelligenz beinhalten.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_8" name="attari_8" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="8">
+        <qstnLit>Ich fürchte mich vor künstlicher Intelligenz.</qstnLit>
+        <qstnLit xml:lang="en">I am afraid of AI.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Ich fürchte mich vor künstlicher Intelligenz.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_9" name="attari_9" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="9">
+        <qstnLit>Ich würde mich eher für eine Technologie mit künstlicher Intelligenz entscheiden als für eine ohne.</qstnLit>
+        <qstnLit xml:lang="en">I would rather choose a technology with AI than one without it.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Ich würde mich eher für eine Technologie mit künstlicher Intelligenz entscheiden als für eine ohne.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_10" name="attari_10" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="10">
+        <qstnLit>Künstliche Intelligenz verursacht eher Probleme, anstatt sie zu lösen.</qstnLit>
+        <qstnLit xml:lang="en">AI creates problems rather than solving them.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Künstliche Intelligenz verursacht eher Probleme, anstatt sie zu lösen.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_11" name="attari_11" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="11">
+        <qstnLit>Wenn ich an künstliche Intelligenz denke, habe ich hauptsächlich positive Gefühle.</qstnLit>
+        <qstnLit xml:lang="en">When I think about AI, I have mostly positive feelings.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Wenn ich an künstliche Intelligenz denke, habe ich hauptsächlich positive Gefühle.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+    <var ID="V_attari_12" name="attari_12" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="12">
+        <qstnLit>Ich möchte mit Technologien, die auf künstlicher Intelligenz beruhen, lieber nichts zu tun haben.</qstnLit>
+        <qstnLit xml:lang="en">I would rather avoid technologies that are based on AI.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>1</labl>
+        <labl xml:lang="en">strongly disagree</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>2</labl>
+        <labl xml:lang="en">2</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>3</labl>
+        <labl xml:lang="en">3</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>4</labl>
+        <labl xml:lang="en">4</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5</labl>
+        <labl xml:lang="en">strongly agree</labl>
+      </catgry>
+      <concept>Ich möchte mit Technologien, die auf künstlicher Intelligenz beruhen, lieber nichts zu tun haben.</concept>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">attari_agree5</notes>
+    </var>
+  </dataDscr>
+</codeBook>
