@@ -361,6 +361,11 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	analysisUnit := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.anlyUnit")
 	dataKind := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.dataKind")
 
+	// Terms of use and attribution, shown with every reused question.
+	license := textAt(mv, "codeBook.stdyDscr.dataAccs.useStmt.conditions")
+	copyright := textAt(mv, "codeBook.stdyDscr.citation.prodStmt.copyright")
+	citation := textAt(mv, "codeBook.stdyDscr.citation.biblCit")
+
 	// Elements with attributes need #text to get just the text content
 	author, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.rspStmt.AuthEnty.#text")
 	authorAffil, _ := mv.ValueForPathString("codeBook.stdyDscr.citation.rspStmt.AuthEnty.-affiliation")
@@ -416,6 +421,9 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	studyRecord.Set("holdings_description", holdingsDesc)
 	studyRecord.Set("analysis_unit", analysisUnit)
 	studyRecord.Set("data_kind", dataKind)
+	studyRecord.Set("license", license)
+	studyRecord.Set("copyright", copyright)
+	studyRecord.Set("citation", citation)
 	studyRecord.Set("topic_classifications", topicClassifications)
 	studyRecord.Set("keywords", keywords)
 	studyRecord.Set("language", baseLang)
