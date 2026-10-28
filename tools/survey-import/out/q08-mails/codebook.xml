@@ -7,7 +7,7 @@
         <IDNo>q08-mails</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Universität Würzburg">Astrid Carolus</AuthEnty><AuthEnty affiliation="Universität Würzburg">Martin J. Koch</AuthEnty><AuthEnty affiliation="Universität Würzburg">Samantha Straka</AuthEnty><AuthEnty affiliation="Universität Würzburg">Marc Erich Latoschik</AuthEnty><AuthEnty affiliation="Universität Würzburg">Carolin Wienrich</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="Universität Würzburg">Lehrstuhl für Mensch-Computer-Interaktion, Universität Würzburg</producer><copyright>© 2023 The Authors (Carolus, Koch, Straka, Latoschik, Wienrich)</copyright>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Carolus, A., Koch, M. J., Straka, S., Latoschik, M. E., &amp; Wienrich, C. (2023). MAILS – Meta AI literacy scale: Development and testing of an AI literacy questionnaire based on well-founded competency models and psychological change- and meta-competencies. Computers in Human Behavior: Artificial Humans, 1(2), 100014. https://doi.org/10.1016/j.chbah.2023.100014</biblCit><holdings URI="https://hci.uni-wuerzburg.de/research/MAILS/">https://hci.uni-wuerzburg.de/research/MAILS/</holdings>
     </citation><stdyInfo><subject><keyword>KI-Kompetenz</keyword><keyword>AI literacy</keyword><keyword>Selbstwirksamkeit</keyword><keyword>self-efficacy</keyword><keyword>künstliche Intelligenz</keyword><keyword>artificial intelligence</keyword><topcClas>Digitale Kompetenzen</topcClas><topcClas>Künstliche Intelligenz</topcClas></subject><abstract>Self-report scale of AI literacy with 34 items rated from 0 to 10. Besides the AI literacy facets use and apply, know and understand, detect AI, AI ethics and create AI, it covers AI self-efficacy (problem solving, learning) and AI self-competency (persuasion literacy, emotion regulation). It was developed with German-speaking adults and is published in German and English; a 10-item short version (Koch et al., 2024) reuses items of the long version.</abstract><sumDscr><timePrd event="single">2023</timePrd><nation>Deutschland</nation><anlyUnit>Individuum</anlyUnit><universe clusion="I">Erwachsene (deutschsprachige Allgemeinbevölkerung)</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>Questionnaire PDFs published by the authors at https://hci.uni-wuerzburg.de/research/MAILS/ without a license statement. The items are also printed in the article (Appendix A), which is &quot;an open access article under the CC BY-NC-ND license (http://creativecommons.org/licenses/by-nc-nd/4.0/)&quot;, and in the arXiv preprint (arXiv:2302.09319) under CC BY 4.0. Cite Carolus et al. (2023).</conditions></useStmt></dataAccs>
     <notes type="cdl:setting" subject="default_language">Deutsch (de)</notes>
@@ -25,16 +25,17 @@
     </fileTxt>
   </fileDscr>
   <dataDscr>
-    <varGrp ID="VG_mails" name="mails" type="section" var="V_mails_1 V_mails_2 V_mails_3 V_mails_4 V_mails_5 V_mails_6 V_mails_7 V_mails_8 V_mails_9 V_mails_10 V_mails_11 V_mails_12 V_mails_13 V_mails_14 V_mails_15 V_mails_16 V_mails_17 V_mails_18 V_mails_19 V_mails_20 V_mails_21 V_mails_22 V_mails_23 V_mails_24 V_mails_25 V_mails_26 V_mails_27 V_mails_28 V_mails_29 V_mails_30 V_mails_31 V_mails_32 V_mails_33 V_mails_34">
+    <varGrp ID="VG_mails" name="mails" type="grid" var="V_mails_1 V_mails_2 V_mails_3 V_mails_4 V_mails_5 V_mails_6 V_mails_7 V_mails_8 V_mails_9 V_mails_10 V_mails_11 V_mails_12 V_mails_13 V_mails_14 V_mails_15 V_mails_16 V_mails_17 V_mails_18 V_mails_19 V_mails_20 V_mails_21 V_mails_22 V_mails_23 V_mails_24 V_mails_25 V_mails_26 V_mails_27 V_mails_28 V_mails_29 V_mails_30 V_mails_31 V_mails_32 V_mails_33 V_mails_34">
       <txt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</txt>
       <txt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</txt>
       <concept>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</concept>
       <notes type="cdl:hint">Ein Wert von 0 bedeutet, dass eine Fähigkeit gar nicht oder kaum ausgeprägt ist. Ein Wert von 10 bedeutet, dass eine Fähigkeit sehr gut oder (nahezu) perfekt ausgeprägt ist. Bitte kreisen Sie den Wert ein, der Ihre Fähigkeit am besten beschreibt.</notes>
       <notes type="cdl:hint" xml:lang="en">A value of 0 means that an ability is not at all or hardly pronounced. A value of 10 means that an ability is very well or (almost) perfectly pronounced. Please circle the value that best describes your ability.</notes>
-      <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <var ID="V_mails_1" name="mails_1" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann KI-Anwendungen bedienen.</qstnLit>
         <qstnLit xml:lang="en">I can operate AI applications.</qstnLit>
       </qstn>
@@ -99,6 +100,8 @@
     </var>
     <var ID="V_mails_2" name="mails_2" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="2">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann KI-Anwendungen nutzen, um meine Leben zu vereinfachen.</qstnLit>
         <qstnLit xml:lang="en">I can use AI applications to make my life easier.</qstnLit>
       </qstn>
@@ -163,6 +166,8 @@
     </var>
     <var ID="V_mails_3" name="mails_3" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="3">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann KI sinnvoll einsetzen, um meine Ziele zu erreichen.</qstnLit>
         <qstnLit xml:lang="en">I can use artificial intelligence meaningfully to achieve my goals.</qstnLit>
       </qstn>
@@ -227,6 +232,8 @@
     </var>
     <var ID="V_mails_4" name="mails_4" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="4">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Im Alltag kann ich mit KI so interagieren, dass es meine Aufgaben leichter macht.</qstnLit>
         <qstnLit xml:lang="en">I can interact with AI in a way that makes my tasks easier.</qstnLit>
       </qstn>
@@ -291,6 +298,8 @@
     </var>
     <var ID="V_mails_5" name="mails_5" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="5">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann gewinnbringend mit KI zusammenarbeiten.</qstnLit>
         <qstnLit xml:lang="en">I can work together gainfully with an artificial intelligence.</qstnLit>
       </qstn>
@@ -355,6 +364,8 @@
     </var>
     <var ID="V_mails_6" name="mails_6" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="6">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann gewinnbringend mit KI kommunizieren.</qstnLit>
         <qstnLit xml:lang="en">I can communicate gainfully with artificial intelligence.</qstnLit>
       </qstn>
@@ -419,6 +430,8 @@
     </var>
     <var ID="V_mails_7" name="mails_7" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="7">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kenne die wichtigsten Konzepte des Themas „KI&quot;.</qstnLit>
         <qstnLit xml:lang="en">I know the most important concepts of the topic &quot;artificial intelligence&quot;.</qstnLit>
       </qstn>
@@ -483,6 +496,8 @@
     </var>
     <var ID="V_mails_8" name="mails_8" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="8">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kenne Definitionen künstlicher Intelligenz.</qstnLit>
         <qstnLit xml:lang="en">I know definitions of artificial intelligence.</qstnLit>
       </qstn>
@@ -547,6 +562,8 @@
     </var>
     <var ID="V_mails_9" name="mails_9" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="9">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann beurteilen, welche Grenzen und Chancen der Einsatz einer KI mit sich bringt.</qstnLit>
         <qstnLit xml:lang="en">I can assess what the limitations and opportunities of using an AI are.</qstnLit>
       </qstn>
@@ -611,6 +628,8 @@
     </var>
     <var ID="V_mails_10" name="mails_10" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="10">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann einschätzen, welche Vor- und Nachteile der Einsatz einer KI mit sich bringt.</qstnLit>
         <qstnLit xml:lang="en">I can assess what advantages and disadvantages the use of an artificial intelligence entails.</qstnLit>
       </qstn>
@@ -675,6 +694,8 @@
     </var>
     <var ID="V_mails_11" name="mails_11" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="11">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann mir neue Verwendungszwecke für KI ausdenken.</qstnLit>
         <qstnLit xml:lang="en">I can think of new uses for AI.</qstnLit>
       </qstn>
@@ -739,6 +760,8 @@
     </var>
     <var ID="V_mails_12" name="mails_12" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="12">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann mir mögliche zukünftige Anwendungen von KI vorstellen.</qstnLit>
         <qstnLit xml:lang="en">I can imagine possible future uses of AI.</qstnLit>
       </qstn>
@@ -803,6 +826,8 @@
     </var>
     <var ID="V_mails_13" name="mails_13" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="13">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann erkennen, ob ich es mit einer Anwendung zu tun habe, die auf KI basiert.</qstnLit>
         <qstnLit xml:lang="en">I can tell if I am dealing with an application based on artificial intelligence.</qstnLit>
       </qstn>
@@ -867,6 +892,8 @@
     </var>
     <var ID="V_mails_14" name="mails_14" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="14">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann Geräte, die KI nutzen, von Geräten unterscheiden, die keine KI nutzen.</qstnLit>
         <qstnLit xml:lang="en">I can distinguish devices that use AI from devices that do not.</qstnLit>
       </qstn>
@@ -931,6 +958,8 @@
     </var>
     <var ID="V_mails_15" name="mails_15" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="15">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann unterscheiden, ob ich mit einer KI oder einem „echten Menschen“ interagiere.</qstnLit>
         <qstnLit xml:lang="en">I can distinguish if I interact with an AI or a &quot;real human&quot;.</qstnLit>
       </qstn>
@@ -995,6 +1024,8 @@
     </var>
     <var ID="V_mails_16" name="mails_16" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="16">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann abwägen, welche Konsequenzen die Nutzung von KI für die Gesellschaft hat.</qstnLit>
         <qstnLit xml:lang="en">I can weigh the consequences of using AI for society.</qstnLit>
       </qstn>
@@ -1059,6 +1090,8 @@
     </var>
     <var ID="V_mails_17" name="mails_17" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="17">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann ethische Gesichtspunkte bei der Entscheidung einbeziehen, ob ich die Daten nutze, die eine KI bereitstellt.</qstnLit>
         <qstnLit xml:lang="en">I can incorporate ethical considerations when deciding whether to use data provided by an AI.</qstnLit>
       </qstn>
@@ -1123,6 +1156,8 @@
     </var>
     <var ID="V_mails_18" name="mails_18" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="18">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann KI-basierte Anwendungen auf ihre ethischen Implikationen hin analysieren.</qstnLit>
         <qstnLit xml:lang="en">I can analyze AI-based applications for their ethical implications.</qstnLit>
       </qstn>
@@ -1187,6 +1222,8 @@
     </var>
     <var ID="V_mails_19" name="mails_19" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="19">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann neue KI-Anwendungen designen.</qstnLit>
         <qstnLit xml:lang="en">I can design new AI applications.</qstnLit>
       </qstn>
@@ -1251,6 +1288,8 @@
     </var>
     <var ID="V_mails_20" name="mails_20" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="20">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann neue Anwendungen im Bereich „künstliche Intelligenz“ programmieren.</qstnLit>
         <qstnLit xml:lang="en">I can program new applications in the field of &quot;artificial intelligence&quot;.</qstnLit>
       </qstn>
@@ -1315,6 +1354,8 @@
     </var>
     <var ID="V_mails_21" name="mails_21" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="21">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann neue KI-Anwendungen entwickeln.</qstnLit>
         <qstnLit xml:lang="en">I can develop new AI applications.</qstnLit>
       </qstn>
@@ -1379,6 +1420,8 @@
     </var>
     <var ID="V_mails_22" name="mails_22" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="22">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann sinnvolle Werkzeuge (z.B. Frameworks, Programmiersprachen) auswählen, um eine KI zu programmieren.</qstnLit>
         <qstnLit xml:lang="en">I can select useful tools (e.g., frameworks, programming languages) to program an AI.</qstnLit>
       </qstn>
@@ -1443,6 +1486,8 @@
     </var>
     <var ID="V_mails_23" name="mails_23" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="23">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>In schwierigen Situationen bei der Nutzung von KI kann ich mich auf meine Fähigkeiten verlassen.</qstnLit>
         <qstnLit xml:lang="en">I can rely on my skills in difficult situations when using AI.</qstnLit>
       </qstn>
@@ -1507,6 +1552,8 @@
     </var>
     <var ID="V_mails_24" name="mails_24" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="24">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Die meisten Probleme im Umgang mit künstlicher Intelligenz kann ich aus eigener Kraft gut meistern.</qstnLit>
         <qstnLit xml:lang="en">I can handle most problems in dealing with artificial intelligence well on my own.</qstnLit>
       </qstn>
@@ -1571,6 +1618,8 @@
     </var>
     <var ID="V_mails_25" name="mails_25" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="25">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Auch anstrengende und komplizierte Aufgaben bei der Zusammenarbeit mit künstlicher Intelligenz kann ich in der Regel gut lösen.</qstnLit>
         <qstnLit xml:lang="en">I can also usually solve strenuous and complicated tasks when working with artificial intelligence well.</qstnLit>
       </qstn>
@@ -1635,6 +1684,8 @@
     </var>
     <var ID="V_mails_26" name="mails_26" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="26">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Trotz der schnellen Veränderungen im Bereich der KI, kann ich stets auf dem aktuellen Stand bleiben.</qstnLit>
         <qstnLit xml:lang="en">Despite the rapid changes in the field of artificial intelligence, I can always keep up to date.</qstnLit>
       </qstn>
@@ -1699,6 +1750,8 @@
     </var>
     <var ID="V_mails_27" name="mails_27" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="27">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann mich über aktuelle Neuerungen bei KI-Anwendungen informieren.</qstnLit>
         <qstnLit xml:lang="en">I can keep up with the latest innovations in AI applications.</qstnLit>
       </qstn>
@@ -1763,6 +1816,8 @@
     </var>
     <var ID="V_mails_28" name="mails_28" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="28">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Obwohl es häufig neue KI-Anwendungen gibt, gelingt es mir, mein Wissen und meine Fähigkeiten aktuell zu halten.</qstnLit>
         <qstnLit xml:lang="en">Although there are often new AI applications, I manage to always be &quot;up-to date&quot;.</qstnLit>
       </qstn>
@@ -1827,6 +1882,8 @@
     </var>
     <var ID="V_mails_29" name="mails_29" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="29">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich lasse mich in meinen Entscheidungen nicht durch KI beeinflussen.</qstnLit>
         <qstnLit xml:lang="en">I don't let AI influence me in my decisions.</qstnLit>
       </qstn>
@@ -1891,6 +1948,8 @@
     </var>
     <var ID="V_mails_30" name="mails_30" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="30">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann verhindern, dass KI mich in meinen Entscheidungen beeinflusst.</qstnLit>
         <qstnLit xml:lang="en">I can prevent an AI from influencing me in my decisions.</qstnLit>
       </qstn>
@@ -1955,6 +2014,8 @@
     </var>
     <var ID="V_mails_31" name="mails_31" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="31">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich merke, wenn ich in meinen Entscheidungen von KI beeinflusst werde.</qstnLit>
         <qstnLit xml:lang="en">I realise if artificial intelligence is influencing me in my decisions.</qstnLit>
       </qstn>
@@ -2019,6 +2080,8 @@
     </var>
     <var ID="V_mails_32" name="mails_32" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="32">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Während ich mit KI Aufgaben erledige, behalte ich die Kontrolle über Gefühle wie Frustration oder Angst.</qstnLit>
         <qstnLit xml:lang="en">I keep control over feelings like frustration and anxiety while doing things with AI.</qstnLit>
       </qstn>
@@ -2083,6 +2146,8 @@
     </var>
     <var ID="V_mails_33" name="mails_33" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="33">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann damit umgehen, wenn mich Interaktionen mit KI frustrieren oder ängstigen.</qstnLit>
         <qstnLit xml:lang="en">I can handle it when interactions with AI frustrate or frighten me.</qstnLit>
       </qstn>
@@ -2147,6 +2212,8 @@
     </var>
     <var ID="V_mails_34" name="mails_34" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="34">
+        <preQTxt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</preQTxt>
+        <preQTxt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</preQTxt>
         <qstnLit>Ich kann meine Euphorie kontrollieren, die aufkommt, wenn ich KI zu verschiedenen Zwecken nutze.</qstnLit>
         <qstnLit xml:lang="en">I can control my euphoria that arises when I use artificial intelligence for different purposes.</qstnLit>
       </qstn>

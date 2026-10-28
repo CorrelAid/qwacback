@@ -54,7 +54,7 @@
       "type": "begin_group",
       "name": "e1",
       "label": "Does your enterprise use any of the following Artificial Intelligence (AI) technologies?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "hint": "E1 a) to h) = “No” then go to E4 (if optional included) else go to F1."
     },
     {
@@ -109,7 +109,7 @@
       "type": "begin_group",
       "name": "e2",
       "label": "Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "relevant": "${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'"
     },
     {
@@ -161,7 +161,7 @@
       "type": "begin_group",
       "name": "e3",
       "label": "How did you enterprise acquire the Artificial Intelligence software or systems that it uses?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "relevant": "${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'",
       "hint": "– Optional"
     },
@@ -204,7 +204,7 @@
       "type": "begin_group",
       "name": "e5",
       "label": "What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "relevant": "${e4} = '1'",
       "hint": "– Optional"
     },

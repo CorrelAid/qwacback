@@ -7,7 +7,7 @@
         <IDNo>q18-gaais</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="University of Chester">Schepman, A.</AuthEnty><AuthEnty affiliation="University of Chester">Rodway, P.</AuthEnty></rspStmt>
       <prodStmt><producer>Schepman &amp; Rodway, University of Chester</producer><copyright>© 2022 The Author(s)</copyright>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Schepman, A., &amp; Rodway, P. (2023). The General Attitudes towards Artificial Intelligence Scale (GAAIS): Confirmatory validation and associations with personality, corporate distrust, and general trust. International Journal of Human–Computer Interaction, 39(13), 2724–2741. https://doi.org/10.1080/10447318.2022.2085400 — initial validation: Schepman, A., &amp; Rodway, P. (2020). Computers in Human Behavior Reports, 1, 100014. https://doi.org/10.1016/j.chbr.2020.100014</biblCit><holdings URI="https://doi.org/10.1080/10447318.2022.2085400">https://doi.org/10.1080/10447318.2022.2085400</holdings>
     </citation><stdyInfo><subject><keyword>Einstellung</keyword><keyword>attitudes</keyword><keyword>künstliche Intelligenz</keyword><keyword>artificial intelligence</keyword><keyword>KI</keyword><keyword>AI</keyword><topcClas>Einstellungen</topcClas></subject><abstract>20-item scale of general attitudes towards artificial intelligence with two subscales: positive attitudes (12 items: societal and personal utility, positive emotions) and negative attitudes (8 items: concerns, negative emotions). Validated with UK adults; five-point agreement scale. The negative items are reverse-scored; no overall score is formed.</abstract><sumDscr><timePrd event="single">2021</timePrd><nation>United Kingdom</nation><anlyUnit>Individual</anlyUnit><universe clusion="I">Adults (validation samples: UK residents aged 18+)</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/): non-commercial re-use and reproduction, original properly cited, not altered or built upon. Items reproduced verbatim; this codebook changes the format only.</conditions></useStmt></dataAccs>
     <notes type="cdl:setting" subject="default_language">English (en)</notes>
@@ -23,14 +23,14 @@
     </fileTxt>
   </fileDscr>
   <dataDscr>
-    <varGrp ID="VG_gaais" name="gaais" type="section" var="V_gaais_pos1 V_gaais_pos2 V_gaais_neg3 V_gaais_pos4 V_gaais_pos5 V_gaais_neg6 V_gaais_pos7 V_gaais_neg8 V_gaais_neg9 V_gaais_neg10 V_gaais_pos11 V_gaais_pos12 V_gaais_pos13 V_gaais_pos14 V_gaais_neg15 V_gaais_pos16 V_gaais_pos17 V_gaais_pos18 V_gaais_neg19 V_gaais_neg20">
+    <varGrp ID="VG_gaais" name="gaais" type="grid" var="V_gaais_pos1 V_gaais_pos2 V_gaais_neg3 V_gaais_pos4 V_gaais_pos5 V_gaais_neg6 V_gaais_pos7 V_gaais_neg8 V_gaais_neg9 V_gaais_neg10 V_gaais_pos11 V_gaais_pos12 V_gaais_pos13 V_gaais_pos14 V_gaais_neg15 V_gaais_pos16 V_gaais_pos17 V_gaais_pos18 V_gaais_neg19 V_gaais_neg20">
       <txt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</txt>
       <concept>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</concept>
-      <notes type="cdl:appearance">field-list</notes>
       <notes type="cdl:end_column" subject="name">gaais</notes>
     </varGrp>
     <var ID="V_gaais_pos1" name="gaais_pos1" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>For routine transactions, I would rather interact with an artificially intelligent system than with a human.</qstnLit>
       </qstn>
       <catgry>
@@ -63,6 +63,7 @@
     </var>
     <var ID="V_gaais_pos2" name="gaais_pos2" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="2">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Artificial Intelligence can provide new economic opportunities for this country.</qstnLit>
       </qstn>
       <catgry>
@@ -95,6 +96,7 @@
     </var>
     <var ID="V_gaais_neg3" name="gaais_neg3" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="3">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Organisations use Artificial Intelligence unethically.</qstnLit>
       </qstn>
       <catgry>
@@ -127,6 +129,7 @@
     </var>
     <var ID="V_gaais_pos4" name="gaais_pos4" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="4">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Artificially intelligent systems can help people feel happier.</qstnLit>
       </qstn>
       <catgry>
@@ -159,6 +162,7 @@
     </var>
     <var ID="V_gaais_pos5" name="gaais_pos5" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="5">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>I am impressed by what Artificial Intelligence can do.</qstnLit>
       </qstn>
       <catgry>
@@ -191,6 +195,7 @@
     </var>
     <var ID="V_gaais_neg6" name="gaais_neg6" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="6">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>I think artificially intelligent systems make many errors.</qstnLit>
       </qstn>
       <catgry>
@@ -223,6 +228,7 @@
     </var>
     <var ID="V_gaais_pos7" name="gaais_pos7" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="7">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>I am interested in using artificially intelligent systems in my daily life.</qstnLit>
       </qstn>
       <catgry>
@@ -255,6 +261,7 @@
     </var>
     <var ID="V_gaais_neg8" name="gaais_neg8" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="8">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>I find Artificial Intelligence sinister.</qstnLit>
       </qstn>
       <catgry>
@@ -287,6 +294,7 @@
     </var>
     <var ID="V_gaais_neg9" name="gaais_neg9" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="9">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Artificial Intelligence might take control of people.</qstnLit>
       </qstn>
       <catgry>
@@ -319,6 +327,7 @@
     </var>
     <var ID="V_gaais_neg10" name="gaais_neg10" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="10">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>I think Artificial Intelligence is dangerous.</qstnLit>
       </qstn>
       <catgry>
@@ -351,6 +360,7 @@
     </var>
     <var ID="V_gaais_pos11" name="gaais_pos11" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="11">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Artificial Intelligence can have positive impacts on people’s wellbeing.</qstnLit>
       </qstn>
       <catgry>
@@ -383,6 +393,7 @@
     </var>
     <var ID="V_gaais_pos12" name="gaais_pos12" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="12">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Artificial Intelligence is exciting.</qstnLit>
       </qstn>
       <catgry>
@@ -415,6 +426,7 @@
     </var>
     <var ID="V_gaais_pos13" name="gaais_pos13" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="13">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>An artificially intelligent agent would be better than an employee in many routine jobs.</qstnLit>
       </qstn>
       <catgry>
@@ -447,6 +459,7 @@
     </var>
     <var ID="V_gaais_pos14" name="gaais_pos14" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="14">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>There are many beneficial applications of Artificial Intelligence.</qstnLit>
       </qstn>
       <catgry>
@@ -479,6 +492,7 @@
     </var>
     <var ID="V_gaais_neg15" name="gaais_neg15" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="15">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>I shiver with discomfort when I think about future uses of Artificial Intelligence.</qstnLit>
       </qstn>
       <catgry>
@@ -511,6 +525,7 @@
     </var>
     <var ID="V_gaais_pos16" name="gaais_pos16" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="16">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Artificially intelligent systems can perform better than humans.</qstnLit>
       </qstn>
       <catgry>
@@ -543,6 +558,7 @@
     </var>
     <var ID="V_gaais_pos17" name="gaais_pos17" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="17">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Much of society will benefit from a future full of Artificial Intelligence.</qstnLit>
       </qstn>
       <catgry>
@@ -575,6 +591,7 @@
     </var>
     <var ID="V_gaais_pos18" name="gaais_pos18" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="18">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>I would like to use Artificial Intelligence in my own job.</qstnLit>
       </qstn>
       <catgry>
@@ -607,6 +624,7 @@
     </var>
     <var ID="V_gaais_neg19" name="gaais_neg19" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="19">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>People like me will suffer if Artificial Intelligence is used more and more.</qstnLit>
       </qstn>
       <catgry>
@@ -639,6 +657,7 @@
     </var>
     <var ID="V_gaais_neg20" name="gaais_neg20" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="20">
+        <preQTxt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</preQTxt>
         <qstnLit>Artificial Intelligence is used to spy on people.</qstnLit>
       </qstn>
       <catgry>

@@ -44,17 +44,17 @@
  },
  "survey": [
   {
-   "type": "begin_group",
-   "name": "tei",
-   "appearance": "field-list",
-   "label::Deutsch (de)": "Training Evaluations Inventar (TEI)",
-   "label::English (en)": "Training-Evaluation-Inventory (TEI)"
-  },
-  {
    "type": "note",
    "name": "tei_hinweis",
    "label::Deutsch (de)": "Vor der Durchführung müssen die durch eckige Klammern markierten Bereiche im Fragebogen an den jeweiligen Kurstyp (z.B. Training, Seminar, Workshop, …) und dessen Inhalte angepasst werden.",
    "label::English (en)": "Before conducting the training, the fields in the questionnaire marked by square brackets must be adapted to the respective course type (e.g. training, seminar, workshop, ...) and its contents."
+  },
+  {
+   "type": "begin_group",
+   "name": "tei",
+   "appearance": "table-list",
+   "label::Deutsch (de)": "Training Evaluations Inventar (TEI)",
+   "label::English (en)": "Training-Evaluation-Inventory (TEI)"
   },
   {
    "type": "select_one tei_agree5",

@@ -7,9 +7,12 @@
         <IDNo>q15-tei</IDNo>
       </titlStmt><rspStmt><AuthEnty>Sandrina Ritzmann</AuthEnty><AuthEnty>Vera Hagemann</AuthEnty><AuthEnty>Annette Kluge</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="ZPID, Trier">Leibniz-Institut für Psychologie (ZPID), Open Test Archive</producer><copyright>© Ritzmann, S., Hagemann, V. &amp; Kluge, A. (2020); Copyright Autor(-Innen)</copyright>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Ritzmann, S., Hagemann, V. &amp; Kluge, A. (2020). TEI. Training Evaluations Inventar [Verfahrensdokumentation, Fragebogen Deutsch und Englisch]. In Leibniz-Institut für Psychologie (ZPID) (Hrsg.), Open Test Archive. Trier: ZPID. https://doi.org/10.23668/psycharchives.3454</biblCit><holdings URI="https://www.testarchiv.eu/de/test/9007914">https://www.testarchiv.eu/de/test/9007914</holdings>
     </citation><stdyInfo><subject><keyword>Trainingsevaluation</keyword><keyword>training evaluation</keyword><keyword>Weiterbildung</keyword><keyword>Trainingsdesign</keyword><keyword>Lernerfolg</keyword><keyword>Kirkpatrick</keyword><topcClas>Weiterbildung</topcClas><topcClas>Evaluation</topcClas></subject><abstract>Paper-and-pencil questionnaire for evaluating vocational training courses from the participants' point of view. Its 45 statements, rated on a five-point agreement scale, cover five training outcome dimensions (fun, usefulness, difficulty, knowledge growth, attitude towards the training) and five training design dimensions (problem-based learning, activation, demonstration, application, integration). It was developed with team trainings at a European airline and a German fire brigade; bracketed parts of the items are adapted to the course type and content before use.</abstract><sumDscr><timePrd event="single">2020</timePrd><nation>Deutschland; Europa (Fluggesellschaft)</nation><anlyUnit>Individuum</anlyUnit><universe clusion="I">Teilnehmende beruflicher Trainings ab 18 Jahren (Berufstätige); auch 16-jährige Auszubildende</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY-SA 4.0 (Creative Commons Attribution-ShareAlike 4.0 International, https://creativecommons.org/licenses/by-sa/4.0/). Copyright remains with the authors. Terms of use (Open Test Archive): &quot;By using this test, I agree to abide by the terms of the Creative Commons License CC BY-SA 4.0. After completion of my work with the measure, I will inform the test authors about the use of the measure and the results I have obtained by means of the feedback form.&quot; This codebook is a derivative of the TEI and is shared under CC BY-SA 4.0 as well.</conditions></useStmt></dataAccs>
+    <notes type="instruction" subject="tei_hinweis">Vor der Durchführung müssen die durch eckige Klammern markierten Bereiche im Fragebogen an den jeweiligen Kurstyp (z.B. Training, Seminar, Workshop, …) und dessen Inhalte angepasst werden.</notes>
+    <notes type="instruction" subject="tei_hinweis" xml:lang="en">Before conducting the training, the fields in the questionnaire marked by square brackets must be adapted to the respective course type (e.g. training, seminar, workshop, ...) and its contents.</notes>
+    <notes type="cdl:position" subject="tei_hinweis">in= after=</notes>
     <notes type="cdl:setting" subject="default_language">Deutsch (de)</notes>
     <notes type="cdl:language" subject="de">de</notes>
     <notes type="cdl:language" subject="en">en</notes>
@@ -25,16 +28,15 @@
     </fileTxt>
   </fileDscr>
   <dataDscr>
-    <varGrp ID="VG_tei" name="tei" type="section" var="V_tei_01 V_tei_02 V_tei_03 V_tei_04 V_tei_05 V_tei_06 V_tei_07 V_tei_08 V_tei_09 V_tei_10 V_tei_11 V_tei_12 V_tei_13 V_tei_14 V_tei_15 V_tei_16 V_tei_17 V_tei_18 V_tei_19 V_tei_20 V_tei_21 V_tei_22 V_tei_23 V_tei_24 V_tei_25 V_tei_26 V_tei_27 V_tei_28 V_tei_29 V_tei_30 V_tei_31 V_tei_32 V_tei_33 V_tei_34 V_tei_35 V_tei_36 V_tei_37 V_tei_38 V_tei_39 V_tei_40 V_tei_41 V_tei_42 V_tei_43 V_tei_44 V_tei_45">
+    <varGrp ID="VG_tei" name="tei" type="grid" var="V_tei_01 V_tei_02 V_tei_03 V_tei_04 V_tei_05 V_tei_06 V_tei_07 V_tei_08 V_tei_09 V_tei_10 V_tei_11 V_tei_12 V_tei_13 V_tei_14 V_tei_15 V_tei_16 V_tei_17 V_tei_18 V_tei_19 V_tei_20 V_tei_21 V_tei_22 V_tei_23 V_tei_24 V_tei_25 V_tei_26 V_tei_27 V_tei_28 V_tei_29 V_tei_30 V_tei_31 V_tei_32 V_tei_33 V_tei_34 V_tei_35 V_tei_36 V_tei_37 V_tei_38 V_tei_39 V_tei_40 V_tei_41 V_tei_42 V_tei_43 V_tei_44 V_tei_45">
       <txt>Training Evaluations Inventar (TEI)</txt>
       <txt xml:lang="en">Training-Evaluation-Inventory (TEI)</txt>
       <concept>Training Evaluations Inventar (TEI)</concept>
-      <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <var ID="V_tei_01" name="tei_01" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
-        <preQTxt>Vor der Durchführung müssen die durch eckige Klammern markierten Bereiche im Fragebogen an den jeweiligen Kurstyp (z.B. Training, Seminar, Workshop, …) und dessen Inhalte angepasst werden.</preQTxt>
-        <preQTxt xml:lang="en">Before conducting the training, the fields in the questionnaire marked by square brackets must be adapted to the respective course type (e.g. training, seminar, workshop, ...) and its contents.</preQTxt>
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hat mir generell gefallen.</qstnLit>
         <qstnLit xml:lang="en">Overall, I liked the [DESCRIPTION OF COURSE TYPE – e.g. training].</qstnLit>
       </qstn>
@@ -66,10 +68,11 @@
       <concept>Das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hat mir generell gefallen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
-      <notes type="cdl:note_names">tei_hinweis</notes>
     </var>
     <var ID="V_tei_02" name="tei_02" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="2">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die Lernatmosphäre war angenehm.</qstnLit>
         <qstnLit xml:lang="en">The learning atmosphere was agreeable.</qstnLit>
       </qstn>
@@ -104,6 +107,8 @@
     </var>
     <var ID="V_tei_03" name="tei_03" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="3">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Das Lernen hat Spaß gemacht.</qstnLit>
         <qstnLit xml:lang="en">The learning was fun.</qstnLit>
       </qstn>
@@ -138,6 +143,8 @@
     </var>
     <var ID="V_tei_04" name="tei_04" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="4">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Am Anfang des [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] wurden die Ziele bekannt gegeben, die mit dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] erreicht werden sollten.</qstnLit>
         <qstnLit xml:lang="en">At the beginning of the [DESCRIPTION OF COURSE TYPE – e.g. training], the objectives which were to be achieved through the [DESCRIPTION OF COURSE TYPE – e.g. training] were announced.</qstnLit>
       </qstn>
@@ -172,6 +179,8 @@
     </var>
     <var ID="V_tei_05" name="tei_05" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="5">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich finde das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] nützlich für meinen Beruf.</qstnLit>
         <qstnLit xml:lang="en">I find the [DESCRIPTION OF COURSE TYPE – e.g. training] useful for my job.</qstnLit>
       </qstn>
@@ -206,6 +215,8 @@
     </var>
     <var ID="V_tei_06" name="tei_06" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="6">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Zeit in dieses [BEZEICHNUN AUSBILDUNGSGEFÄSS – z.B. Training] zu investieren war sinnvoll.</qstnLit>
         <qstnLit xml:lang="en">Investing time in this [DESCRIPTION OF COURSE TYPE – e.g. training] was useful.</qstnLit>
       </qstn>
@@ -240,6 +251,8 @@
     </var>
     <var ID="V_tei_07" name="tei_07" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="7">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich kann die Inhalte des [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] in meinem Beruf anwenden.</qstnLit>
         <qstnLit xml:lang="en">I can apply the content of this [DESCRIPTION OF COURSE TYPE – e.g. training] in my job.</qstnLit>
       </qstn>
@@ -274,6 +287,8 @@
     </var>
     <var ID="V_tei_08" name="tei_08" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="8">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich ziehe persönlichen Nutzen aus diesem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training].</qstnLit>
         <qstnLit xml:lang="en">I derive personal use from this [DESCRIPTION OF COURSE TYPE – e.g. training].</qstnLit>
       </qstn>
@@ -308,6 +323,8 @@
     </var>
     <var ID="V_tei_09" name="tei_09" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="9">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die Inhalte waren verständlich.</qstnLit>
         <qstnLit xml:lang="en">The contents were comprehensible.</qstnLit>
       </qstn>
@@ -342,6 +359,8 @@
     </var>
     <var ID="V_tei_10" name="tei_10" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="10">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die Sprache (Fremd- und Fachwörter) war verständlich.</qstnLit>
         <qstnLit xml:lang="en">The language (foreign words and technical terms) was comprehensible.</qstnLit>
       </qstn>
@@ -376,6 +395,8 @@
     </var>
     <var ID="V_tei_11" name="tei_11" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="11">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich bin thematisch im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] mitgekommen.</qstnLit>
         <qstnLit xml:lang="en">I kept up thematically in [DESCRIPTION OF COURSE TYPE – e.g. training].</qstnLit>
       </qstn>
@@ -410,6 +431,8 @@
     </var>
     <var ID="V_tei_12" name="tei_12" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="12">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die Zeit war ausreichend für die bearbeiteten Themen.</qstnLit>
         <qstnLit xml:lang="en">The time was sufficient for the themes covered.</qstnLit>
       </qstn>
@@ -444,6 +467,8 @@
     </var>
     <var ID="V_tei_13" name="tei_13" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="13">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich habe den Eindruck, mein Wissen hat sich langfristig erweitert.</qstnLit>
         <qstnLit xml:lang="en">I have the impression that my knowledge has expanded on a long-term basis.</qstnLit>
       </qstn>
@@ -478,6 +503,8 @@
     </var>
     <var ID="V_tei_14" name="tei_14" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="14">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich werde mir die neuen Themen gut merken können.</qstnLit>
         <qstnLit xml:lang="en">I will be able to remember the new themes well.</qstnLit>
       </qstn>
@@ -512,6 +539,8 @@
     </var>
     <var ID="V_tei_15" name="tei_15" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="15">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich würde dieses [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] meinen Kollegen empfehlen.</qstnLit>
         <qstnLit xml:lang="en">I would recommend this [DESCRIPTION OF COURSE TYPE – e.g. training] to my colleagues.</qstnLit>
       </qstn>
@@ -546,6 +575,8 @@
     </var>
     <var ID="V_tei_16" name="tei_16" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="16">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich werde das Gelernte im beruflichen Alltag anwenden.</qstnLit>
         <qstnLit xml:lang="en">I will apply what I learned to my day-to-day work.</qstnLit>
       </qstn>
@@ -580,6 +611,8 @@
     </var>
     <var ID="V_tei_17" name="tei_17" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="17">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich finde es gut, dass [THEMA/INHALT – z.B. Teamarbeit] vermittelt bzw. besprochen wurden.</qstnLit>
         <qstnLit xml:lang="en">I find it good that [THEME/CONTENT – e.g. teamwork] were imparted and/or discussed.</qstnLit>
       </qstn>
@@ -614,6 +647,8 @@
     </var>
     <var ID="V_tei_18" name="tei_18" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="18">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich denke, ich werde auch einige Zeit nach dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] noch berichten können, was ich gelernt habe.</qstnLit>
         <qstnLit xml:lang="en">I think I will still be able to report what I learned some time after the [DESCRIPTION OF COURSE TYPE – e.g. training].</qstnLit>
       </qstn>
@@ -648,6 +683,8 @@
     </var>
     <var ID="V_tei_19" name="tei_19" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="19">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Es wurden zuerst Probleme thematisiert und durch ihre Bearbeitung habe ich somit die Themen gelernt.</qstnLit>
         <qstnLit xml:lang="en">First of all, problems were addressed, and by working on them, I consequently learned the themes.</qstnLit>
       </qstn>
@@ -682,6 +719,8 @@
     </var>
     <var ID="V_tei_20" name="tei_20" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="20">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich konnte mein eigenes Wissen in das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] mit einbringen.</qstnLit>
         <qstnLit xml:lang="en">I was able to bring my own knowledge into the [DESCRIPTION OF COURSE TYPE – e.g. training].</qstnLit>
       </qstn>
@@ -716,6 +755,8 @@
     </var>
     <var ID="V_tei_21" name="tei_21" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="21">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Inhalte wurden mit konkreten Beispielen erläutert.</qstnLit>
         <qstnLit xml:lang="en">Contents were illustrated with concrete examples.</qstnLit>
       </qstn>
@@ -750,6 +791,8 @@
     </var>
     <var ID="V_tei_22" name="tei_22" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="22">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich konnte echte Probleme bearbeiten und darin die zuvor gelernten Inhalte vertiefen.</qstnLit>
         <qstnLit xml:lang="en">I was able to work on real problems and therein consolidate the previously learned contents.</qstnLit>
       </qstn>
@@ -784,6 +827,8 @@
     </var>
     <var ID="V_tei_23" name="tei_23" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="23">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich konnte meine bisherigen beruflichen Erlebnisse einbringen.</qstnLit>
         <qstnLit xml:lang="en">I was able to bring my previous professional experiences.</qstnLit>
       </qstn>
@@ -818,6 +863,8 @@
     </var>
     <var ID="V_tei_24" name="tei_24" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="24">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Es wurden wahre Vorfälle aus [ARBEITSFELD – z.B. Fliegen] vorgestellt und durch das selbständige Entwickeln von Lösungen habe ich die Themen vertieft.</qstnLit>
         <qstnLit xml:lang="en">Real incidents from [FIELD OF WORK – e.g. aviation] were presented, and through the independent development of solutions, I consolidated the themes.</qstnLit>
       </qstn>
@@ -852,6 +899,8 @@
     </var>
     <var ID="V_tei_25" name="tei_25" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="25">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Der Trainer machte deutlich, welches die zentralen Punkte der besprochenen Themen waren.</qstnLit>
         <qstnLit xml:lang="en">The trainer made it clear what the central points of the discussed themes were.</qstnLit>
       </qstn>
@@ -886,6 +935,8 @@
     </var>
     <var ID="V_tei_26" name="tei_26" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="26">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Es wurden Situationen aus dem Arbeitsalltag vorgestellt und ich musste herausfinden, was das mit [THEMA – z.B. Teamarbeitsfähigkeiten] zu tun hat.</qstnLit>
         <qstnLit xml:lang="en">Situations from day-to-day work were presented and I had to find out how they were linked to [THEME – e.g. teamwork abilities].</qstnLit>
       </qstn>
@@ -920,6 +971,8 @@
     </var>
     <var ID="V_tei_27" name="tei_27" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="27">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich konnte mein berufliches Wissen zu [THEMA – z.B. Teamarbeitsfähigkeiten] in das Seminar/Training mit einbringen.</qstnLit>
         <qstnLit xml:lang="en">I was able to bring my own professional knowledge on [THEME – e.g. teamwork abilities] into the seminar/training.</qstnLit>
       </qstn>
@@ -954,6 +1007,8 @@
     </var>
     <var ID="V_tei_28" name="tei_28" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="28">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Auf meine bisherigen Erfahrungen zu den behandelten Themen ist eingegangen worden.</qstnLit>
         <qstnLit xml:lang="en">My previous experiences regarding the themes covered were addressed.</qstnLit>
       </qstn>
@@ -988,6 +1043,8 @@
     </var>
     <var ID="V_tei_29" name="tei_29" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="29">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Es wurden problematische Situationen aus dem Arbeitsalltag vorgestellt und ich musste herausfinden, mit welchen Fähigkeiten/welchem Wissen die Situation hätte verbessert werden können.</qstnLit>
         <qstnLit xml:lang="en">Problematic Situations from day-to-day work were presented and I had to find through which abilities/knowledge the situation could have been improved.</qstnLit>
       </qstn>
@@ -1022,6 +1079,8 @@
     </var>
     <var ID="V_tei_30" name="tei_30" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="30">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die Lernziele waren mir bekannt.</qstnLit>
         <qstnLit xml:lang="en">I was aware of learning objectives.</qstnLit>
       </qstn>
@@ -1056,6 +1115,8 @@
     </var>
     <var ID="V_tei_31" name="tei_31" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="31">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die Lernziele wurden erreicht.</qstnLit>
         <qstnLit xml:lang="en">The learning objectives were achieved.</qstnLit>
       </qstn>
@@ -1090,6 +1151,8 @@
     </var>
     <var ID="V_tei_32" name="tei_32" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="32">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die eingesetzten Medien (PPT, Video, Poster, etc.) waren hilfreich für mein Verständnis.</qstnLit>
         <qstnLit xml:lang="en">The media employed (PPT, video, posters etc.) were helpful for my understanding.</qstnLit>
       </qstn>
@@ -1124,6 +1187,8 @@
     </var>
     <var ID="V_tei_33" name="tei_33" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="33">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] wurden Situationen vorgestellt, die wir dann auf [THEMENASPEKTE – z.B. Teamarbeits-Aspekte] hin genauer betrachteten.</qstnLit>
         <qstnLit xml:lang="en">In the [DESCRIPTION OF COURSE TYPE – e.g. training], situations were presented which we then considered in more detail in terms of [THEMATIC ASPECTS – e.g. aspects of teamwork].</qstnLit>
       </qstn>
@@ -1158,6 +1223,8 @@
     </var>
     <var ID="V_tei_34" name="tei_34" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="34">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich konnte das Gelernte im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] üben.</qstnLit>
         <qstnLit xml:lang="en">I was able to practice what I had learned in [DESCRIPTION OF COURSE TYPE – e.g. training].</qstnLit>
       </qstn>
@@ -1192,6 +1259,8 @@
     </var>
     <var ID="V_tei_35" name="tei_35" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="35">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich habe im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] Feedback zu meinem Verhalten/meiner Leistung bekommen.</qstnLit>
         <qstnLit xml:lang="en">In the [DESCRIPTION OF COURSE TYPE – e.g. training] I received feedback on my behavior/my performance.</qstnLit>
       </qstn>
@@ -1226,6 +1295,8 @@
     </var>
     <var ID="V_tei_36" name="tei_36" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="36">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich konnte das Feedback umsetzen und im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] an meinem Verhalten/meiner Leistung arbeiten.</qstnLit>
         <qstnLit xml:lang="en">I was able to implement the feedback and work on my behavior/my performance in the [DESCRIPTION OF COURSE TYPE – e.g. training].</qstnLit>
       </qstn>
@@ -1260,6 +1331,8 @@
     </var>
     <var ID="V_tei_37" name="tei_37" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="37">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Die eingesetzten Medien (PPT, Video, Poster, etc.) waren geeignet, die Inhalte zu präsentieren.</qstnLit>
         <qstnLit xml:lang="en">The media employed (PPT, video, posters etc.) were suitable for presenting the contents.</qstnLit>
       </qstn>
@@ -1294,6 +1367,8 @@
     </var>
     <var ID="V_tei_38" name="tei_38" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="38">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Mir ist klar geworden, wie ich die behandelten Inhalte im Arbeitsalltag anwenden kann</qstnLit>
         <qstnLit xml:lang="en">It became clear to me how I can apply the themes covered in day-to-day work.</qstnLit>
       </qstn>
@@ -1328,6 +1403,8 @@
     </var>
     <var ID="V_tei_39" name="tei_39" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="39">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Der Trainer hat mich aufgefordert, mein Wissen und meine Erlebnisse zu [THEMA – z.B. Teamarbeitsfähigkeiten] aus dem Berufsalltag einzubringen.</qstnLit>
         <qstnLit xml:lang="en">The trainer invited me to bring my own knowledge and experiences from my day-to-day work regarding [THEME – e.g. teamwork abilities].</qstnLit>
       </qstn>
@@ -1362,6 +1439,8 @@
     </var>
     <var ID="V_tei_40" name="tei_40" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="40">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Das Feedback aus dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hilft mir, weiter am Gelernten zu arbeiten.</qstnLit>
         <qstnLit xml:lang="en">The feedback from the [DESCRIPTION OF COURSE TYPE – e.g. training] helps me to work further on what I learned.</qstnLit>
       </qstn>
@@ -1396,6 +1475,8 @@
     </var>
     <var ID="V_tei_41" name="tei_41" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="41">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Inhalte wurden in Diskussionen vertieft.</qstnLit>
         <qstnLit xml:lang="en">Contents were consolidated in discussions.</qstnLit>
       </qstn>
@@ -1430,6 +1511,8 @@
     </var>
     <var ID="V_tei_42" name="tei_42" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="42">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>In der Diskussion habe ich erfahren, dass Kollegen andere Sichtweisen zu dem behandelten Thema haben.</qstnLit>
         <qstnLit xml:lang="en">In the discussion, I discovered that colleagues have different views on the theme covered.</qstnLit>
       </qstn>
@@ -1464,6 +1547,8 @@
     </var>
     <var ID="V_tei_43" name="tei_43" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="43">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich hatte Gelegenheit, das Gelernte zu reflektieren.</qstnLit>
         <qstnLit xml:lang="en">I had the opportunity to reflect on what I had learned.</qstnLit>
       </qstn>
@@ -1498,6 +1583,8 @@
     </var>
     <var ID="V_tei_44" name="tei_44" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="44">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hatte ich die Möglichkeit, Dinge, die ich später in der Arbeit umsetzen soll, schon einmal auszuprobieren.</qstnLit>
         <qstnLit xml:lang="en">In the [DESCRIPTION OF COURSE TYPE – e.g. training], I had the opportunity to try out things which I should later implement in my work.</qstnLit>
       </qstn>
@@ -1532,6 +1619,8 @@
     </var>
     <var ID="V_tei_45" name="tei_45" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="45">
+        <preQTxt>Training Evaluations Inventar (TEI)</preQTxt>
+        <preQTxt xml:lang="en">Training-Evaluation-Inventory (TEI)</preQTxt>
         <qstnLit>Ich kenne die Wichtigkeit einzelner Themen für unterschiedliche Situationen.</qstnLit>
         <qstnLit xml:lang="en">I know the importance of the individual themes for different situations.</qstnLit>
       </qstn>

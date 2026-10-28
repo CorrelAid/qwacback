@@ -562,7 +562,7 @@ end();
 
 // ---- Non-formal education ----------------------------------------------------
 begin('nfe_g', 'Participation in non-formal education activities (12 months)');
-begin('nfe', 'During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?', { appearance: 'field-list' });
+begin('nfe', 'During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?', { appearance: 'table-list' });
 row({ type: 'select_one yes_no', name: 'nfecourse', label: 'a) Courses' });
 row({ type: 'select_one yes_no', name: 'nfeworkshop', label: 'b) Workshops and seminars' });
 row({ type: 'select_one yes_no', name: 'nfeguidejt', label: 'c) Guided on-the-job training', relevant: any(eq('mainstat', '10'), eq('emp12m', '1')) });

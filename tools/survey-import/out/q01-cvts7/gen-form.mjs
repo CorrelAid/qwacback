@@ -9,13 +9,15 @@ const row = (r) => S.push(r);
 const begin = (name, label, extra = {}) => row({ type: 'begin_group', name, label, ...extra });
 const end = () => row({ type: 'end_group' });
 const choices = (list, items) => items.forEach(([name, label]) => C.push({ list_name: list, name, label }));
-const SEP = ' — ';
+// Stem printed once above a table of rows: a note, which formtransform puts in
+// the first row's preQTxt.
+const stem = (name, label) => row({ type: 'note', name, label });
 
 choices('ja_nein', [['1', 'Ja'], ['2', 'Nein']]);
 
 // Grid of Ja/Nein rows sharing one stem.
 const jnGrid = (name, stem, rows, extra = {}) => {
-  begin(name, stem, { appearance: 'field-list', ...extra });
+  begin(name, stem, { appearance: 'table-list', ...extra });
   for (const [code, label] of rows) row({ type: 'select_one ja_nein', name: `${name}_${code}`, label });
   end();
 };
@@ -54,20 +56,21 @@ row({
 // ---- Teil 1 ---------------------------------------------------------------
 begin('teil1', 'Teil 1: Fragen an alle Unternehmen – Strukturdaten des Unternehmens');
 const q11 = `Wie viele in Deutschland Beschäftigte ${OHNE} hatte Ihr Unternehmen insgesamt?`;
-row({ type: 'integer', name: 'f1_1_002', label: q11 + SEP + 'Beschäftigte am 31.12.2025 insgesamt', hint: 'Anzahl' });
+row({ type: 'integer', name: 'f1_1_002', label: q11, hint: 'Beschäftigte am 31.12.2025 insgesamt. Anzahl' });
+stem('f1_1_geschlecht', 'davon: Geschlecht (nach Geburtenregister)');
 for (const [c, l] of [['002a', 'Männlich'], ['002b', 'Weiblich'], ['002c', 'Divers'], ['002d', 'Ohne Angabe (nach Geburtenregister)']])
-  row({ type: 'integer', name: `f1_1_${c}`, label: q11 + SEP + 'davon: Geschlecht (nach Geburtenregister)' + SEP + l, hint: `Anzahl. ${GESCHL_HINT}` });
+  row({ type: 'integer', name: `f1_1_${c}`, label: l, hint: `Anzahl. ${GESCHL_HINT}` });
 row({
   type: 'integer',
   name: 'f1_2_006',
-  label: `Geben Sie bitte den Gesamtumfang der von den Beschäftigten ${OHNE} in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.` + SEP + 'Geleistete Arbeitsstunden im Jahr 2025 insgesamt',
-  hint: 'Stunden',
+  label: `Geben Sie bitte den Gesamtumfang der von den Beschäftigten ${OHNE} in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.`,
+  hint: 'Geleistete Arbeitsstunden im Jahr 2025 insgesamt. Stunden',
 });
 row({
   type: 'integer',
   name: 'f1_3_007',
-  label: 'Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.' + SEP + 'Personalaufwendungen im Jahr 2025',
-  hint: 'Volle Euro',
+  label: 'Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.',
+  hint: 'Personalaufwendungen im Jahr 2025. Volle Euro',
 });
 end();
 
@@ -165,7 +168,7 @@ const act33 = [
 jnGrid('f3_3', q33, act33, { hint: 'Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens.' });
 choices('anteil', [['1', 'unter 10 %'], ['2', '10 % bis unter 50 %'], ['3', '50 % und mehr']]);
 const q33a = 'Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.';
-begin('f3_3_anteil', q33a, { appearance: 'field-list' });
+begin('f3_3_anteil', q33a, { appearance: 'table-list' });
 for (const [c, l] of act33) row({ type: 'select_one anteil', name: `f3_3_${c}a`, label: l, relevant: yes(`f3_3_${c}`) });
 end();
 choices('ja_nein_2024', [['1', 'Ja'], ['2', 'Nein'], ['3', 'Unternehmen existierte 2024 nicht']]);
@@ -178,11 +181,11 @@ row({
   label: 'Bitte machen Sie hier Angaben zu Beiträgen und Einnahmen Ihres Unternehmens 2025 für die Weiterbildung seiner Beschäftigten. Beiträge und Einnahmen für die Aus- und Weiterbildung von Auszubildenden, Studierenden in Dualen Studiengängen sowie Praktikanten/Trainees mit einem Ausbildungsvertrag sind hier auszuschließen.',
 });
 const q36a = 'Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?';
-row({ type: 'select_one ja_nein', name: 'f3_6_066', label: q36a, hint: 'Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an.' });
-row({ type: 'integer', name: 'f3_6_067', label: q36a + SEP + 'Ja', hint: 'Volle Euro', relevant: yes('f3_6_066') });
+row({ type: 'select_one ja_nein', name: 'f3_6_066', label: q36a });
+row({ type: 'integer', name: 'f3_6_067', label: 'Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an.', hint: 'Volle Euro', relevant: yes('f3_6_066') });
 const q36b = 'Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?';
-row({ type: 'select_one ja_nein', name: 'f3_6_068', label: q36b, hint: 'Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an. Nein: Weiter mit Teil 4, 5 oder 6 des Fragebogens gemäß der Einteilung auf Seite 11 unten.' });
-row({ type: 'integer', name: 'f3_6_069', label: q36b + SEP + 'Ja', hint: 'Volle Euro', relevant: yes('f3_6_068') });
+row({ type: 'select_one ja_nein', name: 'f3_6_068', label: q36b, hint: 'Nein: Weiter mit Teil 4, 5 oder 6 des Fragebogens gemäß der Einteilung auf Seite 11 unten.' });
+row({ type: 'integer', name: 'f3_6_069', label: 'Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an.', hint: 'Volle Euro', relevant: yes('f3_6_068') });
 end();
 jnGrid('f3_7', 'Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?', [
   ['070', 'Zahlungen aus Branchenfonds zur Finanzierung der Weiterbildung'],
@@ -213,16 +216,16 @@ row({
     'Liegen in Ihrem Unternehmen Angaben zu Teilnehmenden-Fällen vor (Beschäftigte, die im Jahr 2025 an mehreren Lehrveranstaltungen teilgenommen haben, werden mehrfach gezählt), so tragen Sie bitte diese Angaben in die zweite Spalte der Tabelle ein.\n' +
     'Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die Tabelle ein.',
 });
-const q41 = 'Teilnehmende an internen und externen Lehrveranstaltungen';
 for (const [suffix, col] of [['075', 'Personen'], ['078', 'Teilnehmenden-Fälle']]) {
-  row({ type: 'integer', name: `f4_1_${suffix}`, label: `${q41}${SEP}Teilnehmende insgesamt${SEP}${col}`, hint: 'Anzahl' });
+  row({ type: 'integer', name: `f4_1_${suffix}`, label: 'Teilnehmende insgesamt', hint: `Anzahl. ${col}` });
+  stem(`f4_1_${suffix}_geschlecht`, 'davon: Geschlecht (nach Geburtenregister)');
   for (const [s, l] of [['a', 'Männlich'], ['b', 'Weiblich'], ['c', 'Divers'], ['d', 'Ohne Angabe (nach Geburtenregister)']])
-    row({ type: 'integer', name: `f4_1_${suffix}${s}`, label: `${q41}${SEP}davon: Geschlecht (nach Geburtenregister)${SEP}${l}${SEP}${col}`, hint: `Anzahl. ${GESCHL_HINT}` });
+    row({ type: 'integer', name: `f4_1_${suffix}${s}`, label: l, hint: `Anzahl. ${col}. ${GESCHL_HINT}` });
 }
 const q42 = 'Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.';
-row({ type: 'integer', name: 'f4_2_081', label: q42 + SEP + 'Teilnahmestunden insgesamt' });
-row({ type: 'integer', name: 'f4_2_082', label: q42 + SEP + 'davon an: internen Lehrveranstaltungen' });
-row({ type: 'integer', name: 'f4_2_083', label: q42 + SEP + 'davon an: externen Lehrveranstaltungen' });
+row({ type: 'integer', name: 'f4_2_081', label: q42, hint: 'Teilnahmestunden insgesamt' });
+row({ type: 'integer', name: 'f4_2_082', label: 'davon an: internen Lehrveranstaltungen' });
+row({ type: 'integer', name: 'f4_2_083', label: 'externen Lehrveranstaltungen' });
 quali('quali_stunden', ['084', '085', '086', '087', '088', '089', '090', '091', '092', '093', '094', '095'], 'Technische, praktische oder arbeitsplatzspezifische Kompetenzen', false);
 row({
   type: 'select_multiple quali_stunden',
@@ -234,8 +237,9 @@ row({
 const q44 = 'Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?';
 const h44 =
   'Beispiele für vorgeschriebene Lehrveranstaltungen im Bereich „Gesundheit und Arbeitsschutz“ sind § 12 Arbeitsschutzgesetz, § 11 Lärm- und Vibrations-Arbeitsschutzverordnung, § 20 Druckluftverordnung, § 14 Gefahrstoffverordnung, §§ 35 und 43 Absatz 4 Infektionsschutzgesetz; Gabelstaplerschein, Schweißerpass. Bitte tragen Sie die entsprechenden prozentualen Anteile ein. = Teilnahmestunden an Lehrveranstaltungen insgesamt: 100 %';
-row({ type: 'decimal', name: 'f4_4_097', label: q44 + SEP + 'Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz', hint: 'Prozent. ' + h44 });
-row({ type: 'decimal', name: 'f4_4_098', label: q44 + SEP + '+ Sonstige Teilnahmestunden an Lehrveranstaltungen', hint: 'Prozent' });
+stem('f4_4_frage', q44);
+row({ type: 'decimal', name: 'f4_4_097', label: 'Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz', hint: 'Prozent. ' + h44 });
+row({ type: 'decimal', name: 'f4_4_098', label: '+ Sonstige Teilnahmestunden an Lehrveranstaltungen', hint: 'Prozent' });
 choices('anbieter', [
   ['k099', 'Fachschulen, Universitäten und Fachhochschulen'],
   ['k100', 'Öffentliche Bildungsanbieter (z. B. Volkshochschulen)'],
@@ -267,7 +271,7 @@ for (const [no, amt, l] of [
   ['115', '116', 'Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde'],
 ]) {
   row({ type: 'select_one ja_nein', name: `f4_6_${no}`, label: l });
-  row({ type: 'integer', name: `f4_6_${amt}`, label: l + SEP + 'Ja', hint: 'Volle Euro', relevant: yes(`f4_6_${no}`) });
+  row({ type: 'integer', name: `f4_6_${amt}`, label: l, hint: 'Volle Euro', relevant: yes(`f4_6_${no}`) });
 }
 row({
   type: 'integer',
