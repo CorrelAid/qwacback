@@ -28,7 +28,6 @@
     <varGrp ID="VG_snail" name="snail" type="grid" var="V_snail_v01 V_snail_v02 V_snail_v04 V_snail_v05 V_snail_v06 V_snail_v08 V_snail_v12 V_snail_v13 V_snail_v14 V_snail_v15 V_snail_v16 V_snail_v17 V_snail_v18 V_snail_v19 V_snail_v20 V_snail_v21 V_snail_v22 V_snail_v23 V_snail_v24 V_snail_v25 V_snail_v28 V_snail_v29 V_snail_v30 V_snail_v31 V_snail_v32 V_snail_v33 V_snail_v34 V_snail_v35 V_snail_v36 V_snail_v37 V_snail_v39">
       <txt>Scale for the assessment of non-experts' AI literacy (SNAIL)</txt>
       <txt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</txt>
-      <concept>Scale for the assessment of non-experts' AI literacy (SNAIL)</concept>
     </varGrp>
     <var ID="V_snail_v01" name="snail_v01" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
@@ -67,7 +66,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erkennen, ob die Technologien, die ich nutze, von künstlicher Intelligenz unterstützt werden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -108,7 +106,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann Beispiele technischer Anwendungen nennen, die von künstlicher Intelligenz unterstützt werden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -149,7 +146,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann den Unterschied zwischen genereller (oder starker) und enger (oder schwacher) künstlicher Intelligenz erklären.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -190,7 +186,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann bewerten, ob Darstellungen von KI in den Medien (z.B. in Filmen oder Videospielen) die aktuellen Fähigkeiten von KI-Technologien übersteigen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -231,7 +226,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann Schwächen von künstlicher Intelligenz nennen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -272,7 +266,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann Risiken beschreiben, welche auftreten können, wenn Systeme künstlicher Intelligenz verwendet werden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -313,7 +306,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, wie KI Anwendungen Entscheidungen treffen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -354,7 +346,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, wie Machine Learning generell funktioniert.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -395,7 +386,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann beschreiben, wie Machine Learning Modelle trainiert, validiert und getestet werden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -436,7 +426,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann den Unterschied zwischen “Supervised Learning” und “Unsupervised Learning” erklären (im Kontext von Machine Learning).</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -477,7 +466,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, wie “Reinforcement Learning” im Wesentlichen funktioniert (im Kontext von Machine Learning).</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -518,7 +506,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, in welchem Verhältnis Deep Learning zu Machine Learning steht.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -559,7 +546,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, was der Begriff “künstliches neuronales Netz” bedeutet.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -600,7 +586,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann die Auswirkungen von Anwendungen der künstlichen Intelligenz in mindestens einem Themenbereich kritisch bewerten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -641,7 +626,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, warum Daten eine wichtige Rolle bei der Entwicklung und Anwendung künstlicher Intelligenz spielen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -682,7 +666,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann beschreiben, warum Menschen eine wichtige Rolle bei der Entwicklung von Systemen künstlicher Intelligenz spielen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -723,7 +706,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann beschreiben, wie einige Systeme künstlicher Intelligenz in ihrer Umgebung handeln und auf ihre Umgebung reagieren können.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -764,7 +746,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, wie Sensoren von Computern verwendet werden, um Daten zu sammeln, welche für KI-Zwecke genutzt werden können.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -805,7 +786,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann Anwendungen nennen, bei denen KI-unterstütztes Natural Language Processing/Understanding genutzt wird.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -846,7 +826,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann ethische Bedenken rund um künstliche Intelligenz identifizieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -887,7 +866,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann den potentiellen Einfluss von künstlicher Intelligenz auf Individuen und die Gesellschaft kritisch reflektieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -928,7 +906,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, warum KI in letzter Zeit zunehmend wichtiger geworden ist.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -969,7 +946,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, wie sich regelbasierte Systeme von Machine Learning Systemen unterscheiden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1010,7 +986,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann beurteilen, ob ein Problem in meinem Fachbereich mit Methoden der künstlichen Intelligenz gelöst werden kann und sollte.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1051,7 +1026,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann beschreiben, was künstliche Intelligenz ist.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1092,7 +1066,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann das Konzept der erklärbaren KI beschreiben.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1133,7 +1106,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, warum Datensicherheit beachtet werden muss, wenn Anwendungen künstlicher Intelligenz entwickelt und verwendet werden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1174,7 +1146,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann erklären, warum Datenschutz beachtet werden muss, wenn Anwendungen künstlicher Intelligenz entwickelt und verwendet werden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1215,7 +1186,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann das Konzept von Big Data beschreiben.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1256,7 +1226,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann Beispiele aus meinem täglichen Leben (privat oder beruflich) geben, bei denen ich in Kontakt mit künstlicher Intelligenz sein könnte.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>
@@ -1297,7 +1266,6 @@
         <labl>Stimme voll und ganz zu</labl>
         <labl xml:lang="en">Strongly agree</labl>
       </catgry>
-      <concept>Ich kann potentielle rechtliche Probleme beschreiben, welche entstehen können, wenn künstliche Intelligenz genutzt wird.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">snail_agree6</notes>
     </var>

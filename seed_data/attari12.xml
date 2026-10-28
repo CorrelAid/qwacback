@@ -28,7 +28,6 @@
     <varGrp ID="VG_attari12" name="attari12" type="grid" var="V_attari_1 V_attari_2 V_attari_3 V_attari_4 V_attari_5 V_attari_6 V_attari_7 V_attari_8 V_attari_9 V_attari_10 V_attari_11 V_attari_12">
       <txt>Im Folgenden interessieren wir uns für Ihre Einstellungen gegenüber Künstlicher Intelligenz (KI). Künstliche Intelligenz kann Aufgaben ausführen, die üblicherweise menschliche Intelligenz erfordern. Sie befähigt Maschinen dazu, selbstständig und ähnlich dem Menschen, ihre Umwelt wahrzunehmen, zu handeln, zu lernen und sich anzupassen. Künstliche Intelligenz kann Teil eines Computers oder einer Onlineplattform sein – man kann ihr aber auch in verschiedenen anderen technischen Geräten, wie etwa Robotern, begegnen.</txt>
       <txt xml:lang="en">In the following, we are interested in your attitudes towards artificial intelligence (AI). AI can execute tasks that typically require human intelligence. It enables machines to sense, act, learn, and adapt in an autonomous, human-like way. AI may be part of a computer or online platform—but it can also be encountered in various other hardware devices such as robots.</txt>
-      <concept>Im Folgenden interessieren wir uns für Ihre Einstellungen gegenüber Künstlicher Intelligenz (KI). Künstliche Intelligenz kann Aufgaben ausführen, die üblicherweise menschliche Intelligenz erfordern. Sie befähigt Maschinen dazu, selbstständig und ähnlich dem Menschen, ihre Umwelt wahrzunehmen, zu handeln, zu lernen und sich anzupassen. Künstliche Intelligenz kann Teil eines Computers oder einer Onlineplattform sein – man kann ihr aber auch in verschiedenen anderen technischen Geräten, wie etwa Robotern, begegnen.</concept>
     </varGrp>
     <var ID="V_attari_1" name="attari_1" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
@@ -62,7 +61,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Künstliche Intelligenz wird die Welt verbessern.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -98,7 +96,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Ich habe starke negative Emotionen gegenüber künstlicher Intelligenz.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -134,7 +131,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Ich möchte Technologien nutzen, die auf künstlicher Intelligenz basieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -170,7 +166,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Künstliche Intelligenz hat mehr Nachteile als Vorteile.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -206,7 +201,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Ich freue mich auf zukünftige Entwicklungen im Bereich künstliche Intelligenz.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -242,7 +236,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Künstliche Intelligenz bietet Lösungen für viele globale Probleme.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -278,7 +271,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Ich bevorzuge Technologien, die keine künstliche Intelligenz beinhalten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -314,7 +306,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Ich fürchte mich vor künstlicher Intelligenz.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -350,7 +341,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Ich würde mich eher für eine Technologie mit künstlicher Intelligenz entscheiden als für eine ohne.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -386,7 +376,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Künstliche Intelligenz verursacht eher Probleme, anstatt sie zu lösen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -422,7 +411,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Wenn ich an künstliche Intelligenz denke, habe ich hauptsächlich positive Gefühle.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>
@@ -458,7 +446,6 @@
         <labl>5</labl>
         <labl xml:lang="en">strongly agree</labl>
       </catgry>
-      <concept>Ich möchte mit Technologien, die auf künstlicher Intelligenz beruhen, lieber nichts zu tun haben.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">attari_agree5</notes>
     </var>

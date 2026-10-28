@@ -4,7 +4,7 @@ This guide defines the conventions for mapping survey questionnaires to DDI 2.5 
 
 ### Validation
 
-This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines structure and element ordering but is permissive — most elements are optional. The project-specific **Schematron rules** (shipped in the `ghcr.io/correlaid/schematron-worker` image, version pinned via `.registry-version`) enforce stricter conventions on top: required elements (e.g. `concept` on every `var`/`varGrp`), forbidden elements (e.g. `labl` on `var`/`varGrp`), restricted `varGrp` types, category/label requirements, and consistency checks (e.g. `preQTxt` matching `varGrp/txt`). The rules in this guide reflect both layers combined.
+This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines structure and element ordering but is permissive — most elements are optional. The project-specific **Schematron rules** (shipped in the `ghcr.io/correlaid/schematron-worker` image, version pinned via `.registry-version`) enforce stricter conventions on top: required elements (e.g. `labl` on every `catgry` of a category variable), forbidden elements (e.g. `labl` on `var`/`varGrp`), restricted `varGrp` types, category/label requirements, and consistency checks (e.g. `preQTxt` matching `varGrp/txt`). The rules in this guide reflect both layers combined.
 
 ### Examples
 
@@ -37,7 +37,7 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 
 #### `concept` rules
 
-`concept` is **required** on every `var` and `varGrp`. It names what the variable or group measures — this does not need to be a latent construct. For simple demographic or factual items, a plain descriptive phrase is correct.
+`concept` is **optional** (formtransform v0.8.0; it was required before, and formtransform filled it with the question label). It comes only from an XLSForm `concept` column (`concept::<Language (code)>` for translations); without one there is no `<concept>`. Don't copy the question text into it. When present, it names what the variable or group measures — this does not need to be a latent construct. For simple demographic or factual items, a plain descriptive phrase is correct.
 
 *   **Standalone variables**: Describe what the question measures in plain language (e.g. `Gender`, `Age group`, `Perceived community safety (day)`).
 *   **Grid sub-items**: Use a `Construct: Facet` pattern (e.g. `Trust: Parliament`, `Civic network: Council`).
@@ -51,7 +51,7 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
     <concept xml:lang="de">Nachbarschaft</concept>
     ```
 
-    DDI 2.5 allows any number of `concept` elements. The CDL Schematron rules accept several from formtransform v0.4.0 on (they require at least one non-empty one).
+    DDI 2.5 allows any number of `concept` elements. The CDL Schematron rules accept several from formtransform v0.4.0 on.
 
 ### `labl`
 
@@ -91,7 +91,7 @@ Four `varGrp` types are used:
 
 | Type | Purpose |
 | :--- | :--- |
-| `grid` | Matrix / Likert grid — items sharing the same scale and introductory text |
+| `grid` | Sub-questions of one question: a Likert matrix (items sharing one scale) or, from formtransform v0.8.0, a table of number fields (XLSForm `table-list` group of `integer`/`decimal`/`range` rows) |
 | `multipleResp` | Select-multiple (checkboxes) — each option becomes a binary 0/1 variable |
 | `other` | Parent wrapper for semi-open questions — groups a child `varGrp` and/or `_other` text variable together |
 | `section` | A plain questionnaire group (XLSForm `begin_group`): its label in `txt`, nested via `@varGrp`. qwacback keeps sections in the stored codebook only; they don't become questions |
@@ -132,7 +132,7 @@ On import, the application captures each element's position as a numeric `order`
 | `time` | `discrete` | `text` | `character`, `category="time"` | `<var>` |
 | `single_choice` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<var>` + `<catgry>` per option |
 | `multiple_choice` | `discrete` | `multiple` | `numeric` (0/1 binaries) | `<varGrp type="multipleResp">` + binary `<var>` per option |
-| `grid` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<varGrp type="grid">` + `<var>` per item (categories repeated) |
+| `grid` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<varGrp type="grid">` + `<var>` per item (categories repeated). A grid of number fields has `integer`/`decimal`/`range` members instead; the question's answer type is still `grid` |
 
 ### Subcategory flags
 
@@ -193,7 +193,8 @@ A parent `varGrp` references a child `multipleResp` group (via `@varGrp`) and th
 
 *   The `varGrp/txt` and each member variable's `qstn/preQTxt` must be identical.
 *   `multipleResp` members must have `responseDomainType="multiple"`.
-*   `grid` members must have `responseDomainType="category"`.
+*   `grid` members must be all `responseDomainType="category"` or all `numeric` (a number table).
+*   A note printed between a grid's rows (e.g. "davon: Geschlecht" before a breakdown) is `<notes type="cdl:grid_note" subject="<name of the row after it>">` on the `varGrp`, one per language. qwacback stores it on that variable as `grid_note`.
 *   Grid categories **must be repeated** on every member variable (DDI 2.5 has no shared category reference).
 *   Checkbox categories have **no `labl`** — the binary 0/1 values are self-explanatory.
 
@@ -298,7 +299,7 @@ Rules:
 | `ivuInstr` | `qstn` | Interviewer instructions (not shown to respondent) |
 | `catgry` | `var` | Response category; contains `catValu` and optionally `labl` |
 | `labl` | `catgry` | Human-readable label for a category value (required for `category`, omitted for `multiple`) |
-| `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (required). Further `concept` elements are search tags |
+| `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (optional, never the question text). Further `concept` elements are search tags |
 | `txt` | `varGrp` | Shared introductory question text for grid/checkbox groups |
 | `varFormat` | `var` | Technical data format (must appear second-to-last inside `var`) |
 | `universe` | `var` | Who is asked the question: skip logic as prose (`clusion="I"`) |

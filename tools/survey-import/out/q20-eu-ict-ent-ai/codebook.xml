@@ -35,30 +35,25 @@ or embedded in devices, e.g.:
   <dataDscr>
     <varGrp ID="VG_module_e" name="module_e" type="section" var="V_e4" varGrp="VG_module_e_e1 VG_module_e_e2 VG_module_e_e3 VG_module_e_e5">
       <txt>Module E: Artificial Intelligence</txt>
-      <concept>Module E: Artificial Intelligence</concept>
       <notes type="cdl:hint">(Scope: enterprises with access to the internet, i.e. if A1&gt;0)</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e1" name="module_e/e1" type="grid" var="V_e1_a V_e1_b V_e1_c V_e1_d V_e1_e V_e1_f V_e1_g V_e1_h">
       <txt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</txt>
-      <concept>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</concept>
       <notes type="cdl:hint">E1 a) to h) = “No” then go to E4 (if optional included) else go to F1.</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e2" name="module_e/e2" type="grid" var="V_e2_a V_e2_b V_e2_c V_e2_d V_e2_e V_e2_f V_e2_g">
       <txt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</txt>
-      <concept>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</concept>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e3" name="module_e/e3" type="grid" var="V_e3_a V_e3_b V_e3_c V_e3_d V_e3_e">
       <txt>How did you enterprise acquire the Artificial Intelligence software or systems that it uses?</txt>
-      <concept>How did you enterprise acquire the Artificial Intelligence software or systems that it uses?</concept>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'</notes>
       <notes type="cdl:hint">– Optional</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e5" name="module_e/e5" type="grid" var="V_e5_a V_e5_b V_e5_c V_e5_d V_e5_e V_e5_f V_e5_g V_e5_h">
       <txt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</txt>
-      <concept>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</concept>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e4} = '1'</notes>
       <notes type="cdl:hint">– Optional</notes>
@@ -77,7 +72,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>a) AI technologies performing analysis of written language (e.g. text mining)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -95,7 +89,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>b) AI Technologies converting spoken language into machine-readable format (speech recognition)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -113,7 +106,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -130,7 +122,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>d) AI Technologies generating pictures, videos, sound/audio</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -147,7 +138,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -165,7 +155,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>f) Machine learning (e.g. deep learning) for data analysis</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -183,7 +172,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -200,7 +188,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -222,7 +209,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>a) Use of AI for marketing or sales</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -245,7 +231,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>b) Use of AI for production or service processes</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -268,7 +253,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>c) Use of AI for organisation of business administration processes or management</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -289,7 +273,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>d) Use of AI for logistics</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -310,7 +293,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>e) Use of AI for ICT security</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -332,7 +314,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>f) Use of AI for accounting, controlling or finance management</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -352,7 +333,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>g) Use of AI for research and development (R&amp;D) or innovation activity (excluding research on AI)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -370,7 +350,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>a) They were developed by own employees (including those employed in parent or affiliate enterprise)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -388,7 +367,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>b) Commercial software or systems were modified by own employees (including those employed in parent or affiliate enterprise)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -406,7 +384,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>c) Open-source software or systems were modified by own employees (including those employed in parent or affiliate enterprise)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -424,7 +401,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>d) Commercial software or systems ready to use were purchased (including examples where it was already incorporated in a purchased item or system)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -442,7 +418,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>e) External providers were contracted to develop or modify them</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -463,7 +438,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '0' and ${e1_b} = '0' and ${e1_c} = '0' and ${e1_d} = '0' and ${e1_e} = '0' and ${e1_f} = '0' and ${e1_g} = '0' and ${e1_h} = '0'</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -482,7 +456,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>a) The costs seem too high</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -500,7 +473,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>b) There is a lack of relevant expertise in the enterprise</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -518,7 +490,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>c) Incompatibility with existing equipment, software or systems</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -536,7 +507,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>d) Difficulties with availability or quality of the necessary data</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -554,7 +524,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>e) Concerns regarding violation of data protection and privacy</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -572,7 +541,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>f) Lack of clarity about the legal consequences (e.g. liability in case of damage caused by the use of Artificial Intelligence)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -590,7 +558,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>g) Ethical considerations</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -608,7 +575,6 @@ or embedded in devices, e.g.:
         <catValu>0</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>h) Artificial Intelligence technologies are not useful for the enterprise</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>

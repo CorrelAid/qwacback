@@ -26,28 +26,22 @@
   <dataDscr>
     <varGrp ID="VG_household" name="household" type="section" var="V_hhtype" varGrp="VG_household_hhnbpers">
       <txt>Household composition</txt>
-      <concept>Household composition</concept>
     </varGrp>
     <varGrp ID="VG_household_hhnbpers" name="household/hhnbpers" type="section" var="V_hhnbpers_tot V_hhnbpers_0_13 V_hhnbpers_14_24 V_hhnbpers_25plus">
       <txt>How many people usually live in your household? Please include yourself.</txt>
-      <concept>How many people usually live in your household? Please include yourself.</concept>
       <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <varGrp ID="VG_person" name="person" type="section" var="V_sex V_birthyear V_birthpass V_citizen V_citizen_country V_birthplace V_birthplace_country V_restime V_restime_years V_marstadefacto">
       <txt>Person and household characteristics</txt>
-      <concept>Person and household characteristics</concept>
     </varGrp>
     <varGrp ID="VG_dropeduc_g" name="dropeduc_g" type="section" var="V_dropeduc V_dropeduclevel">
       <txt>Educational attainment - details, including education interrupted or abandoned</txt>
-      <concept>Educational attainment - details, including education interrupted or abandoned</concept>
     </varGrp>
     <varGrp ID="VG_labour" name="labour" type="section" var="V_mainstat V_emp12m" varGrp="VG_labour_job">
       <txt>Labour market participation</txt>
-      <concept>Labour market participation</concept>
     </varGrp>
     <varGrp ID="VG_labour_job" name="labour/job" type="section" var="V_ftpt V_jobstat V_permjob V_jobisco V_locnace V_locsizefirm V_locsizefirm_exact V_jobtime">
       <txt>Elementary job characteristics</txt>
-      <concept>Elementary job characteristics</concept>
       <universe clusion="I">Only if “What is your current main labour status?
 or
 Thinking about your current situation, to which of the following groups would you assign yourself?” = Employed</universe>
@@ -55,57 +49,45 @@ Thinking about your current situation, to which of the following groups would yo
     </varGrp>
     <varGrp ID="VG_parents_edu" name="parents_edu" type="section" var="V_hatfather V_hatmother">
       <txt>Educational background</txt>
-      <concept>Educational background</concept>
     </varGrp>
     <varGrp ID="VG_parents_birth" name="parents_birth" type="section" var="V_birthfather V_birthfather_country V_birthmother V_birthmother_country">
       <txt>Citizenship and migrant background</txt>
-      <concept>Citizenship and migrant background</concept>
     </varGrp>
     <varGrp ID="VG_guidance" name="guidance" type="section" var="V_seekinfo V_guide_1 V_guide_2 V_guide_3" varGrp="VG_guidesource VG_guideinter">
       <txt>Access to information on learning possibilities and guidance (12 months)</txt>
-      <concept>Access to information on learning possibilities and guidance (12 months)</concept>
     </varGrp>
     <varGrp ID="VG_fed_g" name="fed_g" type="section" var="V_fed V_fednum">
       <txt>Participation in formal education activities (12 months)</txt>
-      <concept>Participation in formal education activities (12 months)</concept>
     </varGrp>
     <varGrp ID="VG_fed_recent" name="fed_recent" type="section" var="V_fedstartyear V_fedstartmonth V_fedmainstat V_fedlevel V_fedcomp V_fedfield V_fedplace V_fedonmat V_fedontea V_fedonpar V_fedreasonmain V_fedworktime V_fednbhours V_fedpaid V_fedusea V_fedoutcomemain" varGrp="VG_fedreason VG_fedpaidby VG_fedoutcome">
       <txt>Most recent formal education activity - details (12 months)</txt>
-      <concept>Most recent formal education activity - details (12 months)</concept>
       <universe clusion="I">Only if “In how many formal education or training activities did you participate in during the last 12 months?” ≥ 1</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${fednum} &gt;= 1</notes>
     </varGrp>
     <varGrp ID="VG_nfe_g" name="nfe_g" type="section" var="V_nfenum" varGrp="VG_nfe_g_nfe">
       <txt>Participation in non-formal education activities (12 months)</txt>
-      <concept>Participation in non-formal education activities (12 months)</concept>
     </varGrp>
     <varGrp ID="VG_nfeact01" name="nfeact01" type="section" var="V_nfeact01_type V_nfeact01_mainstat V_nfeact01_purp V_nfeact01_worktime V_nfeact01_paidby">
       <txt>Non-formal education activities - details (12 months)</txt>
-      <concept>Non-formal education activities - details (12 months)</concept>
       <universe clusion="I">Only if “In how many such non-formal learning activities have you participated during the last 12 months?” ≥ 1</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${nfenum} &gt;= 1</notes>
     </varGrp>
     <varGrp ID="VG_nferand1" name="nferand1" type="section" var="V_nfefield1 V_nfeskillsmain1 V_nfeplace1 V_nfeonmat1 V_nfeontea1 V_nfeonpar1 V_nfeinitia1 V_nfereasonmain1 V_nfenbhours1 V_nfepaid1 V_nfepaidval1 V_nfeprovider1 V_nfecert1 V_nfeusea1 V_nfeoutcomemain1" varGrp="VG_nfereason1 VG_nfepaidby1 VG_nfeoutcome1">
       <txt>Non-formal education activities - details (12 months)</txt>
-      <concept>Non-formal education activities - details (12 months)</concept>
       <universe clusion="I">Only if “In how many such non-formal learning activities have you participated during the last 12 months?” ≥ 1</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${nfenum} &gt;= 1</notes>
     </varGrp>
     <varGrp ID="VG_obstacles" name="obstacles" type="section" var="V_want_a V_noneed_a V_want_b V_noneed_b V_diffmain" varGrp="VG_difftype VG_difftype_noneed">
       <txt>Obstacles to participation in education and training (12 months)</txt>
-      <concept>Obstacles to participation in education and training (12 months)</concept>
     </varGrp>
     <varGrp ID="VG_informal" name="informal" type="section" var="V_infpurp" varGrp="VG_inf">
       <txt>Informal learning</txt>
-      <concept>Informal learning</concept>
     </varGrp>
     <varGrp ID="VG_languages" name="languages" type="section" var="V_langbest1 V_langlevel1" varGrp="VG_languages_langmother VG_languages_langused">
       <txt>Self-reported skills</txt>
-      <concept>Self-reported skills</concept>
     </varGrp>
     <varGrp ID="VG_languages_langmother" name="languages/langmother" type="section" var="V_langmoth1 V_langmoth2">
       <txt>Which language(s) is (are) your mother tongue(s)?</txt>
-      <concept>Which language(s) is (are) your mother tongue(s)?</concept>
       <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <varGrp ID="VG_languages_langused" name="languages/langused" type="section" var="V_langused_1 V_langused_2 V_langused_3 V_langused_4 V_langused_5 V_langused_6 V_langused_7">
@@ -114,72 +96,56 @@ If the answer is yes:
 What other languages are they? List all languages.
 or
 What other languages are they? If there are several, list all languages ranked by your language proficiency.</txt>
-      <concept>Apart from your mother tongue(s), are there any other languages you speak or understand, even if just a little?
-If the answer is yes:
-What other languages are they? List all languages.
-or
-What other languages are they? If there are several, list all languages ranked by your language proficiency.</concept>
       <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <varGrp ID="VG_health" name="health" type="section" var="V_genhealth V_gali V_gali_q2">
       <txt>Disability and other elements of Minimum European Health Module</txt>
-      <concept>Disability and other elements of Minimum European Health Module</concept>
     </varGrp>
     <varGrp ID="VG_income" name="income" type="section" var="V_hhincome V_hhincome_band">
       <txt>Total monthly household income</txt>
-      <concept>Total monthly household income</concept>
     </varGrp>
     <varGrp ID="VG_nfe_g_nfe" name="nfe_g/nfe" type="grid" var="V_nfecourse V_nfeworkshop V_nfeguidejt V_nfelesson">
       <txt>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</txt>
-      <concept>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</concept>
     </varGrp>
     <varGrp ID="VG_guidesource" name="guidesource" type="multipleResp" var="V_guidesource_1 V_guidesource_2 V_guidesource_3 V_guidesource_4">
       <txt>From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply)</txt>
-      <concept>From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply)</concept>
       <universe clusion="I">Only if “During the last 12 months, have you received any counselling or advice on learning possibilities, including support to search for information and applying to learning possibilities?” = selected or “During the last 12 months, have you done any screening or evaluation of your individual learning needs based on professional tests and/or interviews (i.e. test/interviews developed by a professional counsellor or advisor)?” = selected or “During the last 12 months, have you received any advice or help on the procedure for validation or recognition of skills, competences or prior learning?” = selected</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${guide_1} = '1' or ${guide_2} = '1' or ${guide_3} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_guideinter" name="guideinter" type="multipleResp" var="V_guideinter_1 V_guideinter_2">
       <txt>With whom did you interact for the guidance received in the last 12 months? (mark all that apply)</txt>
-      <concept>With whom did you interact for the guidance received in the last 12 months? (mark all that apply)</concept>
       <universe clusion="I">Only if “During the last 12 months, have you received any counselling or advice on learning possibilities, including support to search for information and applying to learning possibilities?” = selected or “During the last 12 months, have you done any screening or evaluation of your individual learning needs based on professional tests and/or interviews (i.e. test/interviews developed by a professional counsellor or advisor)?” = selected or “During the last 12 months, have you received any advice or help on the procedure for validation or recognition of skills, competences or prior learning?” = selected</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${guide_1} = '1' or ${guide_2} = '1' or ${guide_3} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_fedreason" name="fedreason" type="multipleResp" var="V_fedreason_01a V_fedreason_01b V_fedreason_02 V_fedreason_03 V_fedreason_04 V_fedreason_05 V_fedreason_06_7 V_fedreason_08 V_fedreason_09">
       <txt>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply)</txt>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply)</concept>
       <universe clusion="I">Only if “In how many formal education or training activities did you participate in during the last 12 months?” ≥ 1</universe>
     </varGrp>
     <varGrp ID="VG_fedpaidby" name="fedpaidby" type="multipleResp" var="V_fedpaidby_1 V_fedpaidby_2 V_fedpaidby_3 V_fedpaidby_4">
       <txt>Which of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply)</txt>
-      <concept>Which of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply)</concept>
       <universe clusion="I">Only if “In how many formal education or training activities did you participate in during the last 12 months?” ≥ 1 and (“Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)?” = Partly paid by yourself and partly by somebody else or “Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)?” = Fully paid by somebody else)</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${fedpaid} = '2' or ${fedpaid} = '3'</notes>
       <notes type="cdl:list">paidby</notes>
     </varGrp>
     <varGrp ID="VG_fedoutcome" name="fedoutcome" type="multipleResp" var="V_fedoutcome_1 V_fedoutcome_3 V_fedoutcome_2 V_fedoutcome_4 V_fedoutcome_5 V_fedoutcome_6 V_fedoutcome_7">
       <txt>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply)</txt>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply)</concept>
       <universe clusion="I">Only if “In how many formal education or training activities did you participate in during the last 12 months?” ≥ 1</universe>
       <notes type="cdl:constraint" subject="xlsform-xpath">not(selected(., '7') and count-selected(.) &gt; 1)</notes>
       <notes type="cdl:list">outcome</notes>
     </varGrp>
     <varGrp ID="VG_nfereason1" name="nfereason1" type="multipleResp" var="V_nfereason1_01a V_nfereason1_01b V_nfereason1_02 V_nfereason1_03 V_nfereason1_04 V_nfereason1_13 V_nfereason1_11 V_nfereason1_06_7 V_nfereason1_08 V_nfereason1_09 V_nfereason1_10 V_nfereason1_12">
       <txt>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply)</txt>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply)</concept>
       <universe clusion="I">Only if “In how many such non-formal learning activities have you participated during the last 12 months?” ≥ 1</universe>
       <notes type="cdl:list">nfereason</notes>
     </varGrp>
     <varGrp ID="VG_nfepaidby1" name="nfepaidby1" type="multipleResp" var="V_nfepaidby1_1 V_nfepaidby1_2 V_nfepaidby1_3 V_nfepaidby1_4">
       <txt>Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply)</txt>
-      <concept>Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply)</concept>
       <universe clusion="I">Only if “In how many such non-formal learning activities have you participated during the last 12 months?” ≥ 1 and (“Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?” = Partly paid by yourself and partly by somebody else or “Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?” = Fully paid by somebody else)</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${nfepaid1} = '2' or ${nfepaid1} = '3'</notes>
       <notes type="cdl:list">paidby</notes>
     </varGrp>
     <varGrp ID="VG_nfeoutcome1" name="nfeoutcome1" type="multipleResp" var="V_nfeoutcome1_1 V_nfeoutcome1_3 V_nfeoutcome1_2 V_nfeoutcome1_4 V_nfeoutcome1_5 V_nfeoutcome1_6 V_nfeoutcome1_7">
       <txt>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply)</txt>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply)</concept>
       <universe clusion="I">Only if “In how many such non-formal learning activities have you participated during the last 12 months?” ≥ 1</universe>
       <notes type="cdl:constraint" subject="xlsform-xpath">not(selected(., '7') and count-selected(.) &gt; 1)</notes>
       <notes type="cdl:list">outcome</notes>
@@ -188,9 +154,6 @@ What other languages are they? If there are several, list all languages ranked b
       <txt>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
 Or
 Which of the following obstacles prevented you from participation in education and training? (mark all that apply)</txt>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply)</concept>
       <universe clusion="I">Only if “You have previously described the formal and/or non-formal education and training activities in which you have participated or are currently participating. Would you have liked to participate even more in such education and training activities in the past 12 months?” = Yes or “You have previously indicated that you did not participate in any formal or non-formal education and training activities. Would you have liked to participate in such education and training activities in the past 12 months?” = Yes</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${want_a} = '2' or ${want_b} = '4'</notes>
     </varGrp>
@@ -198,16 +161,12 @@ Which of the following obstacles prevented you from participation in education a
       <txt>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
 Or
 Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply)</txt>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply)</concept>
       <universe clusion="I">Only if “Is this because you did not need additional education or training?” = No or “Is this because you did not need education or training?” = No</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${noneed_a} = '2' or ${noneed_b} = '2'</notes>
       <notes type="cdl:list">difftype</notes>
     </varGrp>
     <varGrp ID="VG_inf" name="inf" type="multipleResp" var="V_inf_inffamily V_inf_infmaterial V_inf_infdevice V_inf_infmuseum V_inf_inflibraries">
       <txt>During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply)</txt>
-      <concept>During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply)</concept>
       <notes>Apart from the learning activities mentioned earlier, you can also deliberately acquire or improve knowledge and skills in a planned manner by self-learning or teaching yourself, whether at work or during your free time, alone or with others. Below is a list of various forms how this can be done.
 Or
 Apart from the learning activities mentioned earlier, you can also acquire or improve knowledge and skills on your own, outside of institutionalised education and training activities, either at work or during your free time. Yet, this learning must be planned beforehand and you must have goals for yourself regarding own efforts and outcomes. In being intentional and planned, such learning is distinguished from incidental or random learning, i.e. knowledge and skills that we acquire every day, without thinking much about it.</notes>
@@ -220,7 +179,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
       <valrng>
         <range min="1" max="98"/>
       </valrng>
-      <concept>Total number of members of the household (including the respondent)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 98</notes>
     </var>
@@ -231,7 +189,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
       <valrng>
         <range min="0" max="98"/>
       </valrng>
-      <concept>0-13 years old members of the household</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 98</notes>
     </var>
@@ -242,7 +199,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
       <valrng>
         <range min="0" max="98"/>
       </valrng>
-      <concept>14-24 years old members of the household (including the respondent)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 98</notes>
     </var>
@@ -253,7 +209,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
       <valrng>
         <range min="0" max="98"/>
       </valrng>
-      <concept>Members of the household 25 years old and older (including the respondent)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 98</notes>
     </var>
@@ -289,7 +244,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
         <catValu>7</catValu>
         <labl>Other type of household</labl>
       </catgry>
-      <concept>What is the type of your household?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_sex" name="sex" intrvl="discrete" files="F1">
@@ -305,7 +259,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
         <catValu>2</catValu>
         <labl>Female</labl>
       </catgry>
-      <concept>What is your sex?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_birthyear" name="birthyear" intrvl="contin" dcml="0" files="F1">
@@ -315,7 +268,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
       <valrng>
         <range min="1000" max="9999"/>
       </valrng>
-      <concept>What is your year of birth?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1000 and . &lt;= 9999</notes>
     </var>
@@ -331,7 +283,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Have you already had your birthday this year?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -356,7 +307,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
         <catValu>RNC</catValu>
         <labl>Recognised non-citizens</labl>
       </catgry>
-      <concept>What is your citizenship?</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_citizen_country" name="citizen_country" intrvl="discrete" files="F1">
@@ -365,7 +315,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
         <backward qstn="V_citizen"/>
       </qstn>
       <universe clusion="I">Only if “What is your citizenship?” = Country of main citizenship (SCL GEO alpha-2 code); see annex 6</universe>
-      <concept>Country of main citizenship (SCL GEO alpha-2 code); see annex 6</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${citizen} = 'geo'</notes>
     </var>
@@ -382,7 +331,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
         <catValu>FOR</catValu>
         <labl>Foreign-born but country of birth unknown</labl>
       </catgry>
-      <concept>In which country were you born?</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_birthplace_country" name="birthplace_country" intrvl="discrete" files="F1">
@@ -391,7 +339,6 @@ Apart from the learning activities mentioned earlier, you can also acquire or im
         <backward qstn="V_birthplace"/>
       </qstn>
       <universe clusion="I">Only if “In which country were you born?” = Country of birth (SCL GEO alpha-2 code); see annex 6</universe>
-      <concept>Country of birth (SCL GEO alpha-2 code); see annex 6</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${birthplace} = 'geo'</notes>
     </var>
@@ -416,11 +363,6 @@ Considering the date you last arrived in this country (established your usual re
         <catValu>01_69</catValu>
         <labl>Number of years in this country (since last establishing the place of usual residence in this country)</labl>
       </catgry>
-      <concept>For native-born persons the following questions are recommended:
-Did you ever live [have your usual residence] abroad for a period of at least 1 year? y/n
-If yes: Considering the date you last arrived in this country (established your usual residence in this country) – for how many years have you lived in this country since then? [please consider whole/completed years only]
-For foreign-born persons the following question is recommended:
-Considering the date you last arrived in this country (established your usual residence in this country) – for how many years have you lived in this country since then? [please consider whole/completed years only]</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_restime_years" name="restime_years" intrvl="contin" dcml="0" files="F1">
@@ -436,7 +378,6 @@ Did you ever live [have your usual residence] abroad for a period of at least 1 
 If yes: Considering the date you last arrived in this country (established your usual residence in this country) – for how many years have you lived in this country since then? [please consider whole/completed years only]
 For foreign-born persons the following question is recommended:
 Considering the date you last arrived in this country (established your usual residence in this country) – for how many years have you lived in this country since then? [please consider whole/completed years only]” = Number of years in this country (since last establishing the place of usual residence in this country)</universe>
-      <concept>Number of years in this country (since last establishing the place of usual residence in this country)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${restime} = '01_69'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 69</notes>
@@ -454,7 +395,6 @@ Considering the date you last arrived in this country (established your usual re
         <catValu>2</catValu>
         <labl>Person not living with a legal or de facto partner</labl>
       </catgry>
-      <concept>Are you living with a partner in the same household?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_dropeduc" name="dropeduc" intrvl="discrete" files="F1">
@@ -474,7 +414,6 @@ Considering the date you last arrived in this country (established your usual re
         <catValu>3</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Are there any formal education programmes that you started, but then stopped without completing?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_dropeduclevel" name="dropeduclevel" intrvl="discrete" files="F1">
@@ -541,7 +480,6 @@ Please use the national ISCED mapping to identify and classify the programme.</p
         <catValu>80</catValu>
         <labl>ISCED 8 Doctoral or equivalent level</labl>
       </catgry>
-      <concept>What was the level of this formal education programme?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${dropeduc} = '1' or ${dropeduc} = '2'</notes>
       <notes type="cdl:list">isced_prog</notes>
@@ -584,9 +522,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>36</catValu>
         <labl>Other</labl>
       </catgry>
-      <concept>What is your current main labour status?
-or
-Thinking about your current situation, to which of the following groups would you assign yourself?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_emp12m" name="emp12m" intrvl="discrete" files="F1">
@@ -617,7 +552,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Have you done any work for pay or profit, at any time during the last 12 months, including paid apprenticeship or paid traineeship, or unpaid work for a family business?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${mainstat} = '20' or ${mainstat} = '32' or ${mainstat} = '33' or ${mainstat} = '31' or ${mainstat} = '35' or ${mainstat} = '34' or ${mainstat} = '36'</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -637,7 +571,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>Part-time job</labl>
       </catgry>
-      <concept>Do you work full-time or part-time?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_jobstat" name="jobstat" intrvl="discrete" files="F1">
@@ -663,7 +596,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>30</catValu>
         <labl>Family worker (unpaid)</labl>
       </catgry>
-      <concept>What is your professional status (based on your main job)?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_permjob" name="permjob" intrvl="discrete" files="F1">
@@ -682,7 +614,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>Permanent job</labl>
       </catgry>
-      <concept>Do you have a fixed-term contract or a permanent contract, i.e. a contract without fixed end?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${jobstat} = '20'</notes>
     </var>
@@ -694,7 +625,6 @@ Thinking about your current situation, to which of the following groups would yo
       <universe clusion="I">Only if “What is your current main labour status?
 or
 Thinking about your current situation, to which of the following groups would you assign yourself?” = Employed</universe>
-      <concept>What is your occupation (based on the main job)?</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_locnace" name="locnace" intrvl="discrete" files="F1">
@@ -705,7 +635,6 @@ Thinking about your current situation, to which of the following groups would yo
       <universe clusion="I">Only if “What is your current main labour status?
 or
 Thinking about your current situation, to which of the following groups would you assign yourself?” = Employed</universe>
-      <concept>What is the economic activity of the local unit where you are employed?</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_locsizefirm" name="locsizefirm" intrvl="discrete" files="F1">
@@ -743,7 +672,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>15</catValu>
         <labl>Do not know but 10 persons or more</labl>
       </catgry>
-      <concept>How many people are working at the local unit where you are employed?</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_locsizefirm_exact" name="locsizefirm_exact" intrvl="contin" dcml="0" files="F1">
@@ -757,7 +685,6 @@ Thinking about your current situation, to which of the following groups would yo
       <universe clusion="I">Only if “What is your current main labour status?
 or
 Thinking about your current situation, to which of the following groups would you assign yourself?” = Employed and “How many people are working at the local unit where you are employed?” = Exact number of persons, if between 1 and 9</universe>
-      <concept>Exact number of persons, if between 1 and 9</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${locsizefirm} = '1_9'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 9</notes>
@@ -773,7 +700,6 @@ Thinking about your current situation, to which of the following groups would yo
       <universe clusion="I">Only if “What is your current main labour status?
 or
 Thinking about your current situation, to which of the following groups would you assign yourself?” = Employed</universe>
-      <concept>What year did you start working in your current main job?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1000 and . &lt;= 9999</notes>
     </var>
@@ -797,7 +723,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>-2</catValu>
         <labl>Not applicable (father unknown)</labl>
       </catgry>
-      <concept>What is the highest level of education successfully completed by your father (male guardian)?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_hatmother" name="hatmother" intrvl="discrete" files="F1">
@@ -820,7 +745,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>-2</catValu>
         <labl>Not applicable (mother unknown)</labl>
       </catgry>
-      <concept>What is the highest level of education successfully completed by your mother (female guardian)?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_birthfather" name="birthfather" intrvl="discrete" files="F1">
@@ -840,7 +764,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>-2</catValu>
         <labl>Not applicable (father unknown)</labl>
       </catgry>
-      <concept>In which country was your father born (male guardian)?</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_birthfather_country" name="birthfather_country" intrvl="discrete" files="F1">
@@ -849,7 +772,6 @@ Thinking about your current situation, to which of the following groups would yo
         <backward qstn="V_birthfather"/>
       </qstn>
       <universe clusion="I">Only if “In which country was your father born (male guardian)?” = Country of birth of the father (SCL GEO alpha-2 code); see annex 6</universe>
-      <concept>Country of birth of the father (SCL GEO alpha-2 code); see annex 6</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${birthfather} = 'geo'</notes>
     </var>
@@ -870,7 +792,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>-2</catValu>
         <labl>Not applicable (mother unknown)</labl>
       </catgry>
-      <concept>In which country was your mother born (female guardian)?</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_birthmother_country" name="birthmother_country" intrvl="discrete" files="F1">
@@ -879,7 +800,6 @@ Thinking about your current situation, to which of the following groups would yo
         <backward qstn="V_birthmother"/>
       </qstn>
       <universe clusion="I">Only if “In which country was your mother born (female guardian)?” = Country of birth of the mother (SCL GEO alpha-2 code); see annex 6</universe>
-      <concept>Country of birth of the mother (SCL GEO alpha-2 code); see annex 6</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${birthmother} = 'geo'</notes>
     </var>
@@ -895,7 +815,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>During the last 12 months, have you looked for any information concerning learning possibilities (either on formal or non-formal education and training)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -911,7 +830,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>not selected</labl>
       </catgry>
-      <concept>During the last 12 months, have you received any counselling or advice on learning possibilities, including support to search for information and applying to learning possibilities?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">selected</notes>
     </var>
@@ -927,7 +845,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>not selected</labl>
       </catgry>
-      <concept>During the last 12 months, have you done any screening or evaluation of your individual learning needs based on professional tests and/or interviews (i.e. test/interviews developed by a professional counsellor or advisor)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">selected</notes>
     </var>
@@ -943,7 +860,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>not selected</labl>
       </catgry>
-      <concept>During the last 12 months, have you received any advice or help on the procedure for validation or recognition of skills, competences or prior learning?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">selected</notes>
     </var>
@@ -960,7 +876,6 @@ Thinking about your current situation, to which of the following groups would yo
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply): Education or training institutions (school, college, university, vocational education and training (VET) centre, institution for adult learning, validation centre, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_guidesource_2" name="guidesource_2" intrvl="discrete" files="F1">
@@ -976,7 +891,6 @@ Thinking about your current situation, to which of the following groups would yo
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply): Public employment services</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_guidesource_3" name="guidesource_3" intrvl="discrete" files="F1">
@@ -992,7 +906,6 @@ Thinking about your current situation, to which of the following groups would yo
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply): Employer or prospective employer</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_guidesource_4" name="guidesource_4" intrvl="discrete" files="F1">
@@ -1008,7 +921,6 @@ Thinking about your current situation, to which of the following groups would yo
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply): Other institutions/organisations</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_guideinter_1" name="guideinter_1" intrvl="discrete" files="F1">
@@ -1024,7 +936,6 @@ Thinking about your current situation, to which of the following groups would yo
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>With whom did you interact for the guidance received in the last 12 months? (mark all that apply): Interaction with a person: face to face, skype, phone, e-mail, dedicated websites etc.</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_guideinter_2" name="guideinter_2" intrvl="discrete" files="F1">
@@ -1040,7 +951,6 @@ Thinking about your current situation, to which of the following groups would yo
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>With whom did you interact for the guidance received in the last 12 months? (mark all that apply): Interaction without a person: bots/web robots, online automatic applications as long as they provide for interaction</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fed" name="fed" intrvl="discrete" files="F1">
@@ -1056,7 +966,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>During the last 12 months, that is since &lt;&lt;month, year&gt;&gt; have you participated (as a student or apprentice) in formal education or training (&lt;any of the following formal education or training programmes&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -1070,7 +979,6 @@ Thinking about your current situation, to which of the following groups would yo
         <range min="1" max="99"/>
       </valrng>
       <universe clusion="I">Only if “During the last 12 months, that is since &lt;&lt;month, year&gt;&gt; have you participated (as a student or apprentice) in formal education or training (&lt;any of the following formal education or training programmes&gt;)?” = Yes</universe>
-      <concept>In how many formal education or training activities did you participate in during the last 12 months?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${fed} = '1'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 99</notes>
@@ -1084,7 +992,6 @@ Thinking about your current situation, to which of the following groups would yo
         <range min="1000" max="9999"/>
       </valrng>
       <universe clusion="I">Only if “In how many formal education or training activities did you participate in during the last 12 months?” ≥ 1</universe>
-      <concept>In which year did your most recent formal education or training activity (&lt;FEDNAME&gt;) start?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1000 and . &lt;= 9999</notes>
     </var>
@@ -1097,7 +1004,6 @@ Thinking about your current situation, to which of the following groups would yo
         <range min="1" max="12"/>
       </valrng>
       <universe clusion="I">Only if “In how many formal education or training activities did you participate in during the last 12 months?” ≥ 1</universe>
-      <concept>In which month did your most recent formal education or training activity (&lt;FEDNAME&gt;) start?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 12</notes>
     </var>
@@ -1120,9 +1026,6 @@ Thinking about the situation at the moment when you started your most recent for
         <catValu>3</catValu>
         <labl>Outside the labour market</labl>
       </catgry>
-      <concept>What was your main labour status at the start of your most recent formal education or training activity (&lt;FEDNAME&gt;)?
-or
-Thinking about the situation at the moment when you started your most recent formal education or training activity (&lt;FEDNAME&gt;), to which of the following groups would you assign yourself?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mainstat_start</notes>
     </var>
@@ -1187,7 +1090,6 @@ Thinking about the situation at the moment when you started your most recent for
         <catValu>80</catValu>
         <labl>ISCED 8 Doctoral or equivalent level</labl>
       </catgry>
-      <concept>What is/was the level of the most recent formal education or training activity (&lt;FEDNAME&gt;) &lt;level of the corresponding formal education or training programme&gt;?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">isced_prog</notes>
     </var>
@@ -1208,7 +1110,6 @@ Thinking about the situation at the moment when you started your most recent for
         <catValu>3</catValu>
         <labl>Yes, completed</labl>
       </catgry>
-      <concept>Have you successfully completed the most recent formal education or training activity (&lt;FEDNAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedfield" name="fedfield" intrvl="discrete" files="F1">
@@ -1297,7 +1198,6 @@ Thinking about the situation at the moment when you started your most recent for
         <catValu>20</catValu>
         <labl>Security services, transport services</labl>
       </catgry>
-      <concept>What was the field of the most recent formal education or training activity (&lt;FEDNAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${fedlevel} &gt;= 34</notes>
     </var>
@@ -1324,9 +1224,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>4</catValu>
         <labl>Completely on-site</labl>
       </catgry>
-      <concept>How was the instruction of the most recent formal education activity (&lt;FEDNAME&gt;) organised?
-Or
-Where did the instruction hours of the most recent formal education activity (&lt;FEDNAME&gt;) take place?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">place</notes>
     </var>
@@ -1347,7 +1244,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>3</catValu>
         <labl>Never</labl>
       </catgry>
-      <concept>During the most recent formal education or training activity (&lt;FEDNAME&gt;), how frequently did the teaching staff make teaching materials available via the internet to participants, or point to such material?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">freq</notes>
     </var>
@@ -1368,7 +1264,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>3</catValu>
         <labl>Never</labl>
       </catgry>
-      <concept>During the most recent formal education or training activity (&lt;FEDNAME&gt;), how frequently did you interact online with the teaching staff regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">freq</notes>
     </var>
@@ -1389,7 +1284,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>3</catValu>
         <labl>Never</labl>
       </catgry>
-      <concept>During the most recent formal education or training activity (&lt;FEDNAME&gt;), how frequently did you interact online with other participants regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">freq</notes>
     </var>
@@ -1405,7 +1299,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To do my job better</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_01b" name="fedreason_01b" intrvl="discrete" files="F1">
@@ -1420,7 +1313,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To improve my career prospects</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_02" name="fedreason_02" intrvl="discrete" files="F1">
@@ -1435,7 +1327,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To be less likely to lose my job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_03" name="fedreason_03" intrvl="discrete" files="F1">
@@ -1450,7 +1341,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To increase my possibilities of getting a job or changing a job/profession</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_04" name="fedreason_04" intrvl="discrete" files="F1">
@@ -1465,7 +1355,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To start my own business</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_05" name="fedreason_05" intrvl="discrete" files="F1">
@@ -1480,7 +1369,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): I was obliged to participate</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_06_7" name="fedreason_06_7" intrvl="discrete" files="F1">
@@ -1495,7 +1383,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To increase my knowledge/skills for my own general interest and curiosity</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_08" name="fedreason_08" intrvl="discrete" files="F1">
@@ -1510,7 +1397,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To obtain a certificate</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreason_09" name="fedreason_09" intrvl="discrete" files="F1">
@@ -1525,7 +1411,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): To meet new people/for fun</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedreasonmain" name="fedreasonmain" intrvl="discrete" files="F1">
@@ -1570,7 +1455,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>09</catValu>
         <labl>To meet new people/for fun</labl>
       </catgry>
-      <concept>Among the reasons you previously selected, which one was the most important?</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">count-selected(${fedreason}) &gt; 0</notes>
       <notes type="cdl:list">fedreason</notes>
@@ -1601,7 +1485,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>5</catValu>
         <labl>Not working at that time</labl>
       </catgry>
-      <concept>Did the most recent formal education or training activity (&lt;FEDNAME&gt;) take place during paid working hours? Please also take into account instruction hours that have been compensated for by free time.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">worktime</notes>
     </var>
@@ -1614,7 +1497,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <range min="0" max="9999"/>
       </valrng>
       <universe clusion="I">Only if “In how many formal education or training activities did you participate in during the last 12 months?” ≥ 1</universe>
-      <concept>During the last 12 months, how many instruction hours did you attend for the most recent formal education or training activity (&lt;FEDNAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 9999</notes>
     </var>
@@ -1639,7 +1521,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>4</catValu>
         <labl>Free activity</labl>
       </catgry>
-      <concept>Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">paid</notes>
     </var>
@@ -1656,7 +1537,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): Employer or prospective employer</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedpaidby_2" name="fedpaidby_2" intrvl="discrete" files="F1">
@@ -1672,7 +1552,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): Public employment services</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedpaidby_3" name="fedpaidby_3" intrvl="discrete" files="F1">
@@ -1688,7 +1567,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): Other public or private institutions</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedpaidby_4" name="fedpaidby_4" intrvl="discrete" files="F1">
@@ -1704,7 +1582,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the most recent formal education or training activity (&lt;FEDNAME&gt;)? (mark all that apply): A household member or a relative</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedusea" name="fedusea" intrvl="discrete" files="F1">
@@ -1728,7 +1605,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>4</catValu>
         <labl>Not at all</labl>
       </catgry>
-      <concept>How much are you currently using the skills or knowledge that you acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">usea</notes>
     </var>
@@ -1745,7 +1621,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply): Getting a (new) job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedoutcome_3" name="fedoutcome_3" intrvl="discrete" files="F1">
@@ -1761,7 +1636,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply): Higher salary/wages</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedoutcome_2" name="fedoutcome_2" intrvl="discrete" files="F1">
@@ -1777,7 +1651,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply): Promotion in the job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedoutcome_4" name="fedoutcome_4" intrvl="discrete" files="F1">
@@ -1793,7 +1666,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply): New tasks</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedoutcome_5" name="fedoutcome_5" intrvl="discrete" files="F1">
@@ -1809,7 +1681,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply): Better performance in present job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedoutcome_6" name="fedoutcome_6" intrvl="discrete" files="F1">
@@ -1825,7 +1696,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply): Personal benefits (meet other people, refresh or acquire skills on general or specific subjects, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedoutcome_7" name="fedoutcome_7" intrvl="discrete" files="F1">
@@ -1841,7 +1711,6 @@ Where did the instruction hours of the most recent formal education activity (&l
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the most recent formal education or training activity (&lt;FEDNAME&gt;) helped you in any of the following ways? (mark all that apply): No outcome yet</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_fedoutcomemain" name="fedoutcomemain" intrvl="discrete" files="F1">
@@ -1878,7 +1747,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>7</catValu>
         <labl>No outcome yet</labl>
       </catgry>
-      <concept>Among the outcomes you previously selected, which one was the most important?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">count-selected(${fedoutcome}) &gt; 0</notes>
       <notes type="cdl:list">outcome</notes>
@@ -1896,7 +1764,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>a) Courses</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -1913,7 +1780,6 @@ Where did the instruction hours of the most recent formal education activity (&l
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>b) Workshops and seminars</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -1934,7 +1800,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>c) Guided on-the-job training</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${mainstat} = '10' or ${emp12m} = '1'</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -1952,7 +1817,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>d) Private lessons</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -1966,7 +1830,6 @@ Thinking about your current situation, to which of the following groups would yo
         <range min="1" max="99"/>
       </valrng>
       <universe clusion="I">Only if “a) Courses” = Yes or “b) Workshops and seminars” = Yes or “c) Guided on-the-job training” = Yes or “d) Private lessons” = Yes</universe>
-      <concept>In how many such non-formal learning activities have you participated during the last 12 months?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${nfecourse} = '1' or ${nfeworkshop} = '1' or ${nfeguidejt} = '1' or ${nfelesson} = '1'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 99</notes>
@@ -1993,7 +1856,6 @@ Thinking about your current situation, to which of the following groups would yo
         <catValu>4</catValu>
         <labl>Private lessons</labl>
       </catgry>
-      <concept>What was the type of the non-formal learning activity (&lt;NFEACTxx_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">nfetype</notes>
     </var>
@@ -2016,9 +1878,6 @@ Thinking about the situation at the moment when you started the non-formal learn
         <catValu>3</catValu>
         <labl>Outside the labour market</labl>
       </catgry>
-      <concept>What was your main labour status at the start of the non-formal learning activity (&lt;NFEACTxx_NAME&gt;)?
-or
-Thinking about the situation at the moment when you started the non-formal learning activity (&lt;NFEACTxx_NAME&gt;), to which of the following groups would you assign yourself?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mainstat_start</notes>
     </var>
@@ -2035,7 +1894,6 @@ Thinking about the situation at the moment when you started the non-formal learn
         <catValu>2</catValu>
         <labl>Mainly non-job-related</labl>
       </catgry>
-      <concept>Was the non-formal learning activity (&lt;NFEACTxx_NAME&gt;) mainly job-related?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">purp</notes>
     </var>
@@ -2065,7 +1923,6 @@ Thinking about the situation at the moment when you started the non-formal learn
         <catValu>5</catValu>
         <labl>Not working at that time</labl>
       </catgry>
-      <concept>Did the non-formal learning activity (&lt;NFEACTxx_NAME&gt;) take place during paid working hours? Please also take into account instruction hours that have been compensated for by free time.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">worktime</notes>
     </var>
@@ -2082,7 +1939,6 @@ Thinking about the situation at the moment when you started the non-formal learn
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Did your employer or prospective employer pay partially or fully for the non-formal learning activity (&lt;NFEACTxx_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -2179,7 +2035,6 @@ Thinking about the situation at the moment when you started the non-formal learn
         <catValu>20</catValu>
         <labl>Security services, transport services</labl>
       </catgry>
-      <concept>What was the field of the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">nfefield</notes>
     </var>
@@ -2248,7 +2103,6 @@ Thinking about the situation at the moment when you started the non-formal learn
         <catValu>15</catValu>
         <labl>Other</labl>
       </catgry>
-      <concept>What were the main skills acquired through the non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (select one item from the list only)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">skills</notes>
     </var>
@@ -2275,9 +2129,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>4</catValu>
         <labl>Completely on-site</labl>
       </catgry>
-      <concept>How was (the instruction of) the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) organised?
-Or
-Where did (the instruction hours of) the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) take place?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">place</notes>
     </var>
@@ -2298,7 +2149,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>3</catValu>
         <labl>Never</labl>
       </catgry>
-      <concept>During the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;), how frequently did the teaching staff make teaching materials available via the internet to participants, or point to such material?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">freq</notes>
     </var>
@@ -2319,7 +2169,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>3</catValu>
         <labl>Never</labl>
       </catgry>
-      <concept>During the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;), how frequently did you interact online with the teaching staff regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">freq</notes>
     </var>
@@ -2344,7 +2193,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>4</catValu>
         <labl>No other participants</labl>
       </catgry>
-      <concept>During the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;), how frequently did you interact online with other participants regarding training contents? (E.g. via the website of the training provider, e-mail, WhatsApp, social media, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">freq_part</notes>
     </var>
@@ -2374,7 +2222,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>5</catValu>
         <labl>You yourself</labl>
       </catgry>
-      <concept>Who initiated the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${nfeact01_purp} = '1'</notes>
       <notes type="cdl:list">initia</notes>
@@ -2392,7 +2239,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To do my job better</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_01b" name="nfereason1_01b" intrvl="discrete" files="F1">
@@ -2408,7 +2254,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To improve my career prospects</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_02" name="nfereason1_02" intrvl="discrete" files="F1">
@@ -2424,7 +2269,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To be less likely to lose my job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_03" name="nfereason1_03" intrvl="discrete" files="F1">
@@ -2440,7 +2284,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To increase my possibilities of getting a job or changing a job/profession</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_04" name="nfereason1_04" intrvl="discrete" files="F1">
@@ -2456,7 +2299,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To start my own business</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_13" name="nfereason1_13" intrvl="discrete" files="F1">
@@ -2472,7 +2314,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): Because of organisational and/or technological changes at work</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_11" name="nfereason1_11" intrvl="discrete" files="F1">
@@ -2488,7 +2329,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): Required by the employer or prospective employer or by law</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_06_7" name="nfereason1_06_7" intrvl="discrete" files="F1">
@@ -2504,7 +2344,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To increase my knowledge/skills for my own general interest and curiosity</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_08" name="nfereason1_08" intrvl="discrete" files="F1">
@@ -2520,7 +2359,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To obtain a certificate</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_09" name="nfereason1_09" intrvl="discrete" files="F1">
@@ -2536,7 +2374,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To meet new people/for fun</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_10" name="nfereason1_10" intrvl="discrete" files="F1">
@@ -2552,7 +2389,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): For health reasons</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereason1_12" name="nfereason1_12" intrvl="discrete" files="F1">
@@ -2568,7 +2404,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>What were the reasons for participating in the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): To do voluntary work better</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfereasonmain1" name="nfereasonmain1" intrvl="discrete" files="F1">
@@ -2625,7 +2460,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>12</catValu>
         <labl>To do voluntary work better</labl>
       </catgry>
-      <concept>Among the reasons you previously selected, which one was the most important?</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">count-selected(${nfereason1}) &gt; 0</notes>
       <notes type="cdl:list">nfereason</notes>
@@ -2639,7 +2473,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <range min="0" max="9999"/>
       </valrng>
       <universe clusion="I">Only if “In how many such non-formal learning activities have you participated during the last 12 months?” ≥ 1</universe>
-      <concept>During the last 12 months, how many instruction hours did you attend for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 9999</notes>
     </var>
@@ -2664,7 +2497,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>4</catValu>
         <labl>Free activity</labl>
       </catgry>
-      <concept>Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">paid</notes>
     </var>
@@ -2681,7 +2513,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): Employer or prospective employer</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfepaidby1_2" name="nfepaidby1_2" intrvl="discrete" files="F1">
@@ -2697,7 +2528,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): Public employment services</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfepaidby1_3" name="nfepaidby1_3" intrvl="discrete" files="F1">
@@ -2713,7 +2543,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): Other public or private institutions</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfepaidby1_4" name="nfepaidby1_4" intrvl="discrete" files="F1">
@@ -2729,7 +2558,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply): A household member or a relative</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfepaidval1" name="nfepaidval1" intrvl="contin" files="F1">
@@ -2739,7 +2567,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <backward qstn="V_nfepaid1 VG_nfepaidby1"/>
       </qstn>
       <universe clusion="I">Only if “In how many such non-formal learning activities have you participated during the last 12 months?” ≥ 1 and (“Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?” = Fully paid by yourself or “Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?” = Partly paid by yourself and partly by somebody else or (“Which of the following best describes the payment for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?” = Fully paid by somebody else and “Which one of the following entities paid (partly/fully) for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)? (mark all that apply)” includes A household member or a relative))</universe>
-      <concept>How much did you personally or any member of your household or any relative pay for tuition, registration, exam fees, and expenses for books or technical study means, regarding your studies for the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${nfepaid1} = '1' or ${nfepaid1} = '2' or (${nfepaid1} = '3' and selected(${nfepaidby1}, '4'))</notes>
     </var>
@@ -2768,7 +2595,6 @@ Where did (the instruction hours of) the 1st non-formal learning activity (&lt;N
         <catValu>8</catValu>
         <labl>Individual</labl>
       </catgry>
-      <concept>Who was the provider of the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">provider</notes>
     </var>
@@ -2790,8 +2616,6 @@ If yes, is/was this certificate required by your employer or a professional body
         <catValu>3</catValu>
         <labl>No (acknowledgement of attendance)</labl>
       </catgry>
-      <concept>Does/did the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) lead to a certificate?
-If yes, is/was this certificate required by your employer or a professional body for the execution of your current or planned activity as employer or employee?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">cert</notes>
     </var>
@@ -2816,7 +2640,6 @@ If yes, is/was this certificate required by your employer or a professional body
         <catValu>4</catValu>
         <labl>Not at all</labl>
       </catgry>
-      <concept>How much are you currently using the skills or knowledge that you acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">usea</notes>
     </var>
@@ -2833,7 +2656,6 @@ If yes, is/was this certificate required by your employer or a professional body
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply): Getting a (new) job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfeoutcome1_3" name="nfeoutcome1_3" intrvl="discrete" files="F1">
@@ -2849,7 +2671,6 @@ If yes, is/was this certificate required by your employer or a professional body
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply): Higher salary/wages</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfeoutcome1_2" name="nfeoutcome1_2" intrvl="discrete" files="F1">
@@ -2865,7 +2686,6 @@ If yes, is/was this certificate required by your employer or a professional body
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply): Promotion in the job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfeoutcome1_4" name="nfeoutcome1_4" intrvl="discrete" files="F1">
@@ -2881,7 +2701,6 @@ If yes, is/was this certificate required by your employer or a professional body
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply): New tasks</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfeoutcome1_5" name="nfeoutcome1_5" intrvl="discrete" files="F1">
@@ -2897,7 +2716,6 @@ If yes, is/was this certificate required by your employer or a professional body
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply): Better performance in present job</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfeoutcome1_6" name="nfeoutcome1_6" intrvl="discrete" files="F1">
@@ -2913,7 +2731,6 @@ If yes, is/was this certificate required by your employer or a professional body
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply): Personal benefits (meet other people, refresh or acquire skills on general or specific subjects, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfeoutcome1_7" name="nfeoutcome1_7" intrvl="discrete" files="F1">
@@ -2929,7 +2746,6 @@ If yes, is/was this certificate required by your employer or a professional body
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Have the new skills or knowledge acquired through the 1st non-formal learning activity (&lt;NFERAND1_NAME&gt;) helped you in any of the following ways? (mark all that apply): No outcome yet</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_nfeoutcomemain1" name="nfeoutcomemain1" intrvl="discrete" files="F1">
@@ -2966,7 +2782,6 @@ If yes, is/was this certificate required by your employer or a professional body
         <catValu>7</catValu>
         <labl>No outcome yet</labl>
       </catgry>
-      <concept>Among the outcomes you previously selected, which one was the most important?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">count-selected(${nfeoutcome1}) &gt; 0</notes>
       <notes type="cdl:list">outcome</notes>
@@ -2986,7 +2801,6 @@ If yes, is/was this certificate required by your employer or a professional body
         <catValu>1</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>You have previously described the formal and/or non-formal education and training activities in which you have participated or are currently participating. Would you have liked to participate even more in such education and training activities in the past 12 months?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${fed} = '1' or ${nfecourse} = '1' or ${nfeworkshop} = '1' or ${nfeguidejt} = '1' or ${nfelesson} = '1'</notes>
     </var>
@@ -3005,7 +2819,6 @@ If yes, is/was this certificate required by your employer or a professional body
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Is this because you did not need additional education or training?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${want_a} = '1'</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -3025,7 +2838,6 @@ If yes, is/was this certificate required by your employer or a professional body
         <catValu>3</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>You have previously indicated that you did not participate in any formal or non-formal education and training activities. Would you have liked to participate in such education and training activities in the past 12 months?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${fed} = '2' and ${nfecourse} = '2' and ${nfeworkshop} = '2' and not(${nfeguidejt} = '1') and ${nfelesson} = '2'</notes>
     </var>
@@ -3044,7 +2856,6 @@ If yes, is/was this certificate required by your employer or a professional body
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Is this because you did not need education or training?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${want_b} = '3'</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -3065,9 +2876,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Prerequisites</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_02" name="difftype_02" intrvl="discrete" files="F1">
@@ -3086,9 +2894,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Cost</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_03a" name="difftype_03a" intrvl="discrete" files="F1">
@@ -3107,9 +2912,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Lack of employer support</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_03b" name="difftype_03b" intrvl="discrete" files="F1">
@@ -3128,9 +2930,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Lack of public services support</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_04" name="difftype_04" intrvl="discrete" files="F1">
@@ -3149,9 +2948,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Schedule</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_05" name="difftype_05" intrvl="discrete" files="F1">
@@ -3170,9 +2966,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Distance</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_07" name="difftype_07" intrvl="discrete" files="F1">
@@ -3191,9 +2984,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Family responsibilities</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_08a" name="difftype_08a" intrvl="discrete" files="F1">
@@ -3212,9 +3002,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Health</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_08b" name="difftype_08b" intrvl="discrete" files="F1">
@@ -3233,9 +3020,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Age</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_09" name="difftype_09" intrvl="discrete" files="F1">
@@ -3254,9 +3038,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Other personal reasons</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_10" name="difftype_10" intrvl="discrete" files="F1">
@@ -3275,9 +3056,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): No suitable education or training activity (offer)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_12" name="difftype_12" intrvl="discrete" files="F1">
@@ -3296,9 +3074,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Negative previous learning experience</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_13" name="difftype_13" intrvl="discrete" files="F1">
@@ -3317,9 +3092,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Course was booked out</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_14" name="difftype_14" intrvl="discrete" files="F1">
@@ -3338,9 +3110,6 @@ Which of the following obstacles prevented you from participation in education a
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from participation in education and training? (mark all that apply): Too few registrations</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_01" name="difftype_noneed_01" intrvl="discrete" files="F1">
@@ -3359,9 +3128,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Prerequisites</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_02" name="difftype_noneed_02" intrvl="discrete" files="F1">
@@ -3380,9 +3146,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Cost</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_03a" name="difftype_noneed_03a" intrvl="discrete" files="F1">
@@ -3401,9 +3164,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Lack of employer support</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_03b" name="difftype_noneed_03b" intrvl="discrete" files="F1">
@@ -3422,9 +3182,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Lack of public services support</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_04" name="difftype_noneed_04" intrvl="discrete" files="F1">
@@ -3443,9 +3200,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Schedule</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_05" name="difftype_noneed_05" intrvl="discrete" files="F1">
@@ -3464,9 +3218,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Distance</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_07" name="difftype_noneed_07" intrvl="discrete" files="F1">
@@ -3485,9 +3236,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Family responsibilities</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_08a" name="difftype_noneed_08a" intrvl="discrete" files="F1">
@@ -3506,9 +3254,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Health</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_08b" name="difftype_noneed_08b" intrvl="discrete" files="F1">
@@ -3527,9 +3272,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Age</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_09" name="difftype_noneed_09" intrvl="discrete" files="F1">
@@ -3548,9 +3290,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Other personal reasons</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_10" name="difftype_noneed_10" intrvl="discrete" files="F1">
@@ -3569,9 +3308,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): No suitable education or training activity (offer)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_12" name="difftype_noneed_12" intrvl="discrete" files="F1">
@@ -3590,9 +3326,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Negative previous learning experience</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_13" name="difftype_noneed_13" intrvl="discrete" files="F1">
@@ -3611,9 +3344,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Course was booked out</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_difftype_noneed_14" name="difftype_noneed_14" intrvl="discrete" files="F1">
@@ -3632,9 +3362,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>From the following list, what were the reasons for you not to want to participate in education and training? (mark all that apply)
-Or
-Which of the following obstacles prevented you from wanting to participate in education and training? (mark all that apply): Too few registrations</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_diffmain" name="diffmain" intrvl="discrete" files="F1">
@@ -3699,7 +3426,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
         <catValu>14</catValu>
         <labl>Too few registrations</labl>
       </catgry>
-      <concept>Among the reasons/obstacles that you previously selected, which one was the most important?</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">count-selected(${difftype}) &gt; 0 or count-selected(${difftype_noneed}) &gt; 0</notes>
       <notes type="cdl:list">difftype</notes>
@@ -3715,7 +3441,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply): Learning from a family member, a friend or a colleague</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_inf_infmaterial" name="inf_infmaterial" intrvl="discrete" files="F1">
@@ -3729,7 +3454,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply): Learning by using printed material (books, professional magazines, etc.)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_inf_infdevice" name="inf_infdevice" intrvl="discrete" files="F1">
@@ -3743,7 +3467,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply): Learning by using electronic devices (online or offline)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_inf_infmuseum" name="inf_infmuseum" intrvl="discrete" files="F1">
@@ -3757,7 +3480,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply): Learning by guided tours in museums, historical or natural or industrial sites</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_inf_inflibraries" name="inf_inflibraries" intrvl="discrete" files="F1">
@@ -3771,7 +3493,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>During the past 12 months, have you deliberately tried to learn anything on a particular topic or area, or are you currently doing it, through one of the forms mentioned below? (mark all that apply): Learning by visiting learning centres (including libraries)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_infpurp" name="infpurp" intrvl="discrete" files="F1">
@@ -3787,7 +3508,6 @@ Which of the following obstacles prevented you from wanting to participate in ed
         <catValu>2</catValu>
         <labl>Non-job-related</labl>
       </catgry>
-      <concept>Were any of these informal learning activities mainly job-related?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">count-selected(${inf}) &gt; 0</notes>
     </var>
@@ -3795,63 +3515,54 @@ Which of the following obstacles prevented you from wanting to participate in ed
       <qstn responseDomainType="text" seqNo="98">
         <qstnLit>Code of the first language (ISO 639 alpha-3); see annex 9</qstnLit>
       </qstn>
-      <concept>Code of the first language (ISO 639 alpha-3); see annex 9</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langmoth2" name="langmoth2" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="99">
         <qstnLit>Code of the second language (ISO 639 alpha-3) or 000 (none); see annex 9</qstnLit>
       </qstn>
-      <concept>Code of the second language (ISO 639 alpha-3) or 000 (none); see annex 9</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langused_1" name="langused_1" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="100">
         <qstnLit>Code of the first language or 000 (none) or -1</qstnLit>
       </qstn>
-      <concept>Code of the first language or 000 (none) or -1</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langused_2" name="langused_2" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="101">
         <qstnLit>Code of the second language or 000 (none) or -1</qstnLit>
       </qstn>
-      <concept>Code of the second language or 000 (none) or -1</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langused_3" name="langused_3" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="102">
         <qstnLit>Code of the third language or 000 (none) or -1</qstnLit>
       </qstn>
-      <concept>Code of the third language or 000 (none) or -1</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langused_4" name="langused_4" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="103">
         <qstnLit>Code of the fourth language or 000 (none) or -1</qstnLit>
       </qstn>
-      <concept>Code of the fourth language or 000 (none) or -1</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langused_5" name="langused_5" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="104">
         <qstnLit>Code of the fifth language or 000 (none) or -1</qstnLit>
       </qstn>
-      <concept>Code of the fifth language or 000 (none) or -1</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langused_6" name="langused_6" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="105">
         <qstnLit>Code of the sixth language or 000 (none) or -1</qstnLit>
       </qstn>
-      <concept>Code of the sixth language or 000 (none) or -1</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langused_7" name="langused_7" intrvl="discrete" files="F1">
       <qstn responseDomainType="text" seqNo="106">
         <qstnLit>Code of the seventh language or 000 (none) or -1</qstnLit>
       </qstn>
-      <concept>Code of the seventh language or 000 (none) or -1</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_langbest1" name="langbest1" intrvl="discrete" files="F1">
@@ -3862,7 +3573,6 @@ No question is needed if the languages used were already ranked by proficiency l
         <backward qstn="V_langused_1"/>
       </qstn>
       <universe clusion="I">Only if “Code of the first language or 000 (none) or -1” is answered and “Code of the first language or 000 (none) or -1” ≠ “000” and “Code of the first language or 000 (none) or -1” ≠ “-1”</universe>
-      <concept>Which of the languages you mentioned before (excluding your mother tongue(s)) do you know best?</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${langused_1} != '' and ${langused_1} != '000' and ${langused_1} != '-1'</notes>
     </var>
@@ -3889,7 +3599,6 @@ No question is needed if the languages used were already ranked by proficiency l
         <catValu>3</catValu>
         <labl>Advanced (proficient user)</labl>
       </catgry>
-      <concept>Which one of the following descriptions best illustrates your knowledge about the first best known language you mentioned before (excluding mother tongue)?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${langbest1} != ''</notes>
       <notes type="cdl:list">langlevel</notes>
@@ -3918,7 +3627,6 @@ No question is needed if the languages used were already ranked by proficiency l
         <catValu>5</catValu>
         <labl>Very bad</labl>
       </catgry>
-      <concept>How is your health in general? Is it… very good, good, fair, bad, very bad.</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_gali" name="gali" intrvl="discrete" files="F1">
@@ -3937,7 +3645,6 @@ No question is needed if the languages used were already ranked by proficiency l
         <catValu>3</catValu>
         <labl>Not limited at all</labl>
       </catgry>
-      <concept>Are you limited because of a health problem in activities people usually do? Would you say you are… severely limited, limited but not severely, or not limited at all?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_gali_q2" name="gali_q2" intrvl="discrete" files="F1">
@@ -3955,7 +3662,6 @@ No question is needed if the languages used were already ranked by proficiency l
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Have you been limited for at least the past 6 months?</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${gali} = '1' or ${gali} = '2'</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -3966,8 +3672,6 @@ No question is needed if the languages used were already ranked by proficiency l
 What is the [net] monthly [cash/money] income of your household after deduction of taxes and contributions to social security and pensions (deducting cash transfers paid to other households, e.g. alimony or child support payments)? If income varies between months, please give a monthly average.</qstnLit>
         <postQTxt>[Exact figure to be provided]</postQTxt>
       </qstn>
-      <concept>Please take into account all sources of cash (money) income of all household members: Income from work (employment and self-employment), social benefits, and other sources of cash income (e.g. from capital and investments or inter-household cash transfers received).
-What is the [net] monthly [cash/money] income of your household after deduction of taxes and contributions to social security and pensions (deducting cash transfers paid to other households, e.g. alimony or child support payments)? If income varies between months, please give a monthly average.</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_hhincome_band" name="hhincome_band" intrvl="discrete" files="F1">
@@ -4035,7 +3739,6 @@ What is the [net] monthly [cash/money] income of your household after deduction 
         <catValu>15</catValu>
         <labl>[14th cut-off value] or above</labl>
       </catgry>
-      <concept>If you do not know the exact amount, could you estimate which of the following intervals best represents the total net monthly income of your household?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
   </dataDscr>

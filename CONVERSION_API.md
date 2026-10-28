@@ -100,7 +100,6 @@ curl -X POST http://localhost:8090/api/convert/xlsform-to-ddi \
   <valrng>
     <range maxExclusive="120"></range>
   </valrng>
-  <concept>How old are you?</concept>
   <varFormat type="numeric" schema="other"></varFormat>
   <notes type="cdl:constraint" subject="xlsform-xpath">. &lt; 120</notes>
 </var>

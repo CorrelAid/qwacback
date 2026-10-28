@@ -202,6 +202,41 @@ func textAtLang(mv mxj.Map, path, baseLang string) string {
 	return strings.TrimSpace(extractText(pick))
 }
 
+// gridNote is a sub-heading printed between a grid's rows, e.g. "davon:
+// Geschlecht" before a breakdown; formtransform (>= 0.8.0) keeps it on the
+// grid as <notes type="cdl:grid_note" subject="<the row after it>">.
+type gridNote struct {
+	text         string
+	translations map[string]string
+}
+
+// collectGridNotes adds g's grid notes to byVar, keyed by the variable name
+// each one precedes.
+func collectGridNotes(g mxj.Map, baseLang string, byVar map[string]gridNote) {
+	notes, _ := g.ValuesForPath("notes")
+	for _, n := range notes {
+		m, ok := n.(map[string]interface{})
+		if !ok || m["-type"] != "cdl:grid_note" {
+			continue
+		}
+		subject, _ := m["-subject"].(string)
+		text := strings.TrimSpace(extractText(n))
+		if subject == "" || text == "" {
+			continue
+		}
+		note := byVar[subject]
+		if lang, _ := m["-lang"].(string); lang == "" || lang == baseLang {
+			note.text = text
+		} else {
+			if note.translations == nil {
+				note.translations = map[string]string{}
+			}
+			note.translations[lang] = text
+		}
+		byVar[subject] = note
+	}
+}
+
 // translationsAt returns the other-language versions of a repeatable
 // element (formtransform#135): xml:lang → text for every element tagged
 // with a language other than the base (#35).
@@ -447,6 +482,8 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	// Pre-scan variable groups to build a map of variable DDI ID -> group type
 	// This is needed to infer XLSForm question types (e.g. matrix vs select_one)
 	varGroupTypeMap := make(map[string]string) // variable DDI ID -> group type
+	// variable name -> the grid note printed before it
+	notesByVar := map[string]gridNote{}
 	grpsPre, _ := mv.ValuesForPath("codeBook.dataDscr.varGrp")
 	for _, g := range grpsPre {
 		gMap, ok := g.(map[string]interface{})
@@ -454,6 +491,7 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			continue
 		}
 		gM := mxj.Map(gMap)
+		collectGridNotes(gM, baseLang, notesByVar)
 		gType, _ := gM.ValueForPathString("-type")
 		varIdsAttr, _ := gM.ValueForPathString("-var")
 		// A section (formtransform's plain group) says nothing about the
@@ -506,6 +544,10 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			for lang, text := range translationsAt(vM, "universe", baseLang) {
 				vTr.add(lang, "universe", text)
 			}
+			gNote := notesByVar[vName]
+			for lang, text := range gNote.translations {
+				vTr.add(lang, "grid_note", text)
+			}
 			vIntrvl, _ := vM.ValueForPathString("-intrvl")
 			vFmtType, _ := vM.ValueForPathString("varFormat.-type")
 
@@ -547,6 +589,7 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			varRecord.Set("prequestion_text", vPreQ)
 			varRecord.Set("ivu_instructions", vIvInstr)
 			varRecord.Set("hint", vHint)
+			varRecord.Set("grid_note", gNote.text)
 			varRecord.Set("universe", vUniverse)
 			varRecord.Set("interval", vIntrvl)
 			varRecord.Set("var_format_type", vFmtType)

@@ -7,7 +7,7 @@
         <IDNo>q14-van-westendorp</IDNo>
       </titlStmt><rspStmt><AuthEnty>Van Westendorp, P. H.</AuthEnty></rspStmt>
       <prodStmt><producer>Wikipedia contributors (question wording)</producer>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Van Westendorp, P. H. (1976). NSS-Price Sensitivity Meter (PSM): A new approach to study consumer perception of prices. In Proceedings of the 29th ESOMAR Congress (pp. 139–167). ESOMAR. Question wording: Wikipedia contributors (2025). Van Westendorp's Price Sensitivity Meter. In Wikipedia, The Free Encyclopedia (revision 1289425806, 8 May 2025). https://en.wikipedia.org/w/index.php?title=Van_Westendorp%27s_Price_Sensitivity_Meter&amp;oldid=1289425806</biblCit><holdings URI="https://en.wikipedia.org/w/index.php?title=Van_Westendorp%27s_Price_Sensitivity_Meter&amp;oldid=1289425806">Wikipedia: Van Westendorp's Price Sensitivity Meter (revision 1289425806)</holdings>
     </citation><stdyInfo><subject><keyword>Preis</keyword><keyword>Zahlungsbereitschaft</keyword><keyword>willingness to pay</keyword><keyword>price sensitivity</keyword><keyword>Preissensitivität</keyword><keyword>pricing</keyword><topcClas>Konsum</topcClas></subject><abstract>Four standard price questions of the Van Westendorp Price Sensitivity Meter (1976): the price at which a product is too expensive, too cheap (doubt about quality), starting to get expensive, and a bargain. The cumulative answer distributions are intersected to estimate an acceptable price range.</abstract><sumDscr><anlyUnit>Individual</anlyUnit><universe clusion="I">Potential buyers or users of the product under study</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Question wording from Wikipedia, revision 1289425806. This codebook, as a derivative, is shared under CC BY-SA 4.0. The method itself (Van Westendorp 1976) is free to use.</conditions></useStmt></dataAccs>
     <notes type="cdl:setting" subject="default_language">English (en)</notes>
@@ -27,28 +27,24 @@
       <qstn responseDomainType="numeric" seqNo="1">
         <qstnLit>At what price would you consider the product to be so expensive that you would not consider buying it?</qstnLit>
       </qstn>
-      <concept>At what price would you consider the product to be so expensive that you would not consider buying it?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_psm_too_cheap" name="psm_too_cheap" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="2">
         <qstnLit>At what price would you consider the product to be priced so low that you would feel the quality couldn't be very good?</qstnLit>
       </qstn>
-      <concept>At what price would you consider the product to be priced so low that you would feel the quality couldn't be very good?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_psm_expensive" name="psm_expensive" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="3">
         <qstnLit>At what price would you consider the product starting to get expensive, so that it is not out of the question, but you would have to give some thought to buying it?</qstnLit>
       </qstn>
-      <concept>At what price would you consider the product starting to get expensive, so that it is not out of the question, but you would have to give some thought to buying it?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_psm_cheap" name="psm_cheap" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="4">
         <qstnLit>At what price would you consider the product to be a bargain—a great buy for the money?</qstnLit>
       </qstn>
-      <concept>At what price would you consider the product to be a bargain—a great buy for the money?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
   </dataDscr>

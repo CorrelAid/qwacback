@@ -25,7 +25,6 @@
   <dataDscr>
     <varGrp ID="VG_gaais" name="gaais" type="grid" var="V_gaais_pos1 V_gaais_pos2 V_gaais_neg3 V_gaais_pos4 V_gaais_pos5 V_gaais_neg6 V_gaais_pos7 V_gaais_neg8 V_gaais_neg9 V_gaais_neg10 V_gaais_pos11 V_gaais_pos12 V_gaais_pos13 V_gaais_pos14 V_gaais_neg15 V_gaais_pos16 V_gaais_pos17 V_gaais_pos18 V_gaais_neg19 V_gaais_neg20">
       <txt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</txt>
-      <concept>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</concept>
       <notes type="cdl:end_column" subject="name">gaais</notes>
     </varGrp>
     <var ID="V_gaais_pos1" name="gaais_pos1" intrvl="discrete" files="F1">
@@ -57,7 +56,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>For routine transactions, I would rather interact with an artificially intelligent system than with a human.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -90,7 +88,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Artificial Intelligence can provide new economic opportunities for this country.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -123,7 +120,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Organisations use Artificial Intelligence unethically.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -156,7 +152,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Artificially intelligent systems can help people feel happier.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -189,7 +184,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>I am impressed by what Artificial Intelligence can do.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -222,7 +216,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>I think artificially intelligent systems make many errors.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -255,7 +248,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>I am interested in using artificially intelligent systems in my daily life.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -288,7 +280,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>I find Artificial Intelligence sinister.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -321,7 +312,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Artificial Intelligence might take control of people.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -354,7 +344,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>I think Artificial Intelligence is dangerous.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -387,7 +376,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Artificial Intelligence can have positive impacts on people’s wellbeing.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -420,7 +408,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Artificial Intelligence is exciting.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -453,7 +440,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>An artificially intelligent agent would be better than an employee in many routine jobs.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -486,7 +472,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>There are many beneficial applications of Artificial Intelligence.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -519,7 +504,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>I shiver with discomfort when I think about future uses of Artificial Intelligence.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -552,7 +536,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Artificially intelligent systems can perform better than humans.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -585,7 +568,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Much of society will benefit from a future full of Artificial Intelligence.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -618,7 +600,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>I would like to use Artificial Intelligence in my own job.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -651,7 +632,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>People like me will suffer if Artificial Intelligence is used more and more.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>
@@ -684,7 +664,6 @@
         <catValu>na</catValu>
         <labl>Prefer not to answer</labl>
       </catgry>
-      <concept>Artificial Intelligence is used to spy on people.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">gaais_agree5</notes>
     </var>

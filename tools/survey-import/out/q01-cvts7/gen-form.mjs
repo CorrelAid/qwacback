@@ -9,9 +9,15 @@ const row = (r) => S.push(r);
 const begin = (name, label, extra = {}) => row({ type: 'begin_group', name, label, ...extra });
 const end = () => row({ type: 'end_group' });
 const choices = (list, items) => items.forEach(([name, label]) => C.push({ list_name: list, name, label }));
-// Stem printed once above a table of rows: a note, which formtransform puts in
-// the first row's preQTxt.
-const stem = (name, label) => row({ type: 'note', name, label });
+// A table of number fields under one printed question: a table-list group,
+// which formtransform (>= 0.8.0) writes as a grid whose rows all carry the
+// question. A sub-heading between rows is a note row (cdl:grid_note).
+const table = (name, label, fill) => {
+  begin(name, label, { appearance: 'table-list' });
+  fill();
+  end();
+};
+const subhead = (name, label) => row({ type: 'note', name, label });
 
 choices('ja_nein', [['1', 'Ja'], ['2', 'Nein']]);
 
@@ -56,10 +62,12 @@ row({
 // ---- Teil 1 ---------------------------------------------------------------
 begin('teil1', 'Teil 1: Fragen an alle Unternehmen – Strukturdaten des Unternehmens');
 const q11 = `Wie viele in Deutschland Beschäftigte ${OHNE} hatte Ihr Unternehmen insgesamt?`;
-row({ type: 'integer', name: 'f1_1_002', label: q11, hint: 'Beschäftigte am 31.12.2025 insgesamt. Anzahl' });
-stem('f1_1_geschlecht', 'davon: Geschlecht (nach Geburtenregister)');
-for (const [c, l] of [['002a', 'Männlich'], ['002b', 'Weiblich'], ['002c', 'Divers'], ['002d', 'Ohne Angabe (nach Geburtenregister)']])
-  row({ type: 'integer', name: `f1_1_${c}`, label: l, hint: `Anzahl. ${GESCHL_HINT}` });
+table('f1_1', q11, () => {
+  row({ type: 'integer', name: 'f1_1_002', label: 'Beschäftigte am 31.12.2025 insgesamt', hint: 'Anzahl' });
+  subhead('f1_1_geschlecht', 'davon: Geschlecht (nach Geburtenregister)');
+  for (const [c, l] of [['002a', 'Männlich'], ['002b', 'Weiblich'], ['002c', 'Divers'], ['002d', 'Ohne Angabe (nach Geburtenregister)']])
+    row({ type: 'integer', name: `f1_1_${c}`, label: l, hint: `Anzahl. ${GESCHL_HINT}` });
+});
 row({
   type: 'integer',
   name: 'f1_2_006',
@@ -211,21 +219,24 @@ row({
   type: 'note',
   name: 'f4_1_hinweis',
   label:
-    'Teilnehmende an internen und externen Lehrveranstaltungen\n' +
     'Zunächst hätten wir gerne Angaben zu den Teilnehmenden an internen und externen Lehrveranstaltungen. Dabei sollten die Beschäftigten jeweils nur einmal gezählt werden, unabhängig davon, an wie vielen Lehrveranstaltungen sie im Laufe des Jahres 2025 teilgenommen haben. Wenn Sie Angaben auf der Basis von Personen machen können, tragen Sie bitte diese Angaben in die erste Spalte der Tabelle ein.\n' +
     'Liegen in Ihrem Unternehmen Angaben zu Teilnehmenden-Fällen vor (Beschäftigte, die im Jahr 2025 an mehreren Lehrveranstaltungen teilgenommen haben, werden mehrfach gezählt), so tragen Sie bitte diese Angaben in die zweite Spalte der Tabelle ein.\n' +
     'Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die Tabelle ein.',
 });
-for (const [suffix, col] of [['075', 'Personen'], ['078', 'Teilnehmenden-Fälle']]) {
-  row({ type: 'integer', name: `f4_1_${suffix}`, label: 'Teilnehmende insgesamt', hint: `Anzahl. ${col}` });
-  stem(`f4_1_${suffix}_geschlecht`, 'davon: Geschlecht (nach Geburtenregister)');
-  for (const [s, l] of [['a', 'Männlich'], ['b', 'Weiblich'], ['c', 'Divers'], ['d', 'Ohne Angabe (nach Geburtenregister)']])
-    row({ type: 'integer', name: `f4_1_${suffix}${s}`, label: l, hint: `Anzahl. ${col}. ${GESCHL_HINT}` });
-}
+table('f4_1', 'Teilnehmende an internen und externen Lehrveranstaltungen', () => {
+  for (const [suffix, col] of [['075', 'Personen'], ['078', 'Teilnehmenden-Fälle']]) {
+    row({ type: 'integer', name: `f4_1_${suffix}`, label: 'Teilnehmende insgesamt', hint: `Anzahl. ${col}` });
+    subhead(`f4_1_${suffix}_geschlecht`, 'davon: Geschlecht (nach Geburtenregister)');
+    for (const [s, l] of [['a', 'Männlich'], ['b', 'Weiblich'], ['c', 'Divers'], ['d', 'Ohne Angabe (nach Geburtenregister)']])
+      row({ type: 'integer', name: `f4_1_${suffix}${s}`, label: l, hint: `Anzahl. ${col}. ${GESCHL_HINT}` });
+  }
+});
 const q42 = 'Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.';
-row({ type: 'integer', name: 'f4_2_081', label: q42, hint: 'Teilnahmestunden insgesamt' });
-row({ type: 'integer', name: 'f4_2_082', label: 'davon an: internen Lehrveranstaltungen' });
-row({ type: 'integer', name: 'f4_2_083', label: 'externen Lehrveranstaltungen' });
+table('f4_2', q42, () => {
+  row({ type: 'integer', name: 'f4_2_081', label: 'Teilnahmestunden insgesamt' });
+  row({ type: 'integer', name: 'f4_2_082', label: 'davon an: internen Lehrveranstaltungen' });
+  row({ type: 'integer', name: 'f4_2_083', label: 'externen Lehrveranstaltungen' });
+});
 quali('quali_stunden', ['084', '085', '086', '087', '088', '089', '090', '091', '092', '093', '094', '095'], 'Technische, praktische oder arbeitsplatzspezifische Kompetenzen', false);
 row({
   type: 'select_multiple quali_stunden',
@@ -237,9 +248,10 @@ row({
 const q44 = 'Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?';
 const h44 =
   'Beispiele für vorgeschriebene Lehrveranstaltungen im Bereich „Gesundheit und Arbeitsschutz“ sind § 12 Arbeitsschutzgesetz, § 11 Lärm- und Vibrations-Arbeitsschutzverordnung, § 20 Druckluftverordnung, § 14 Gefahrstoffverordnung, §§ 35 und 43 Absatz 4 Infektionsschutzgesetz; Gabelstaplerschein, Schweißerpass. Bitte tragen Sie die entsprechenden prozentualen Anteile ein. = Teilnahmestunden an Lehrveranstaltungen insgesamt: 100 %';
-stem('f4_4_frage', q44);
-row({ type: 'decimal', name: 'f4_4_097', label: 'Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz', hint: 'Prozent. ' + h44 });
-row({ type: 'decimal', name: 'f4_4_098', label: '+ Sonstige Teilnahmestunden an Lehrveranstaltungen', hint: 'Prozent' });
+table('f4_4', q44, () => {
+  row({ type: 'decimal', name: 'f4_4_097', label: 'Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz', hint: 'Prozent. ' + h44 });
+  row({ type: 'decimal', name: 'f4_4_098', label: '+ Sonstige Teilnahmestunden an Lehrveranstaltungen', hint: 'Prozent' });
+});
 choices('anbieter', [
   ['k099', 'Fachschulen, Universitäten und Fachhochschulen'],
   ['k100', 'Öffentliche Bildungsanbieter (z. B. Volkshochschulen)'],
