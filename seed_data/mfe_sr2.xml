@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2)</titl><altTitl>MFE-Sr2</altTitl>
+        <titl>Münsteraner Fragebogen zur Evaluation von Seminaren</titl><subTitl>2. Revision</subTitl><altTitl>MFE-Sr2</altTitl>
         <IDNo>q16-mfe-sr2</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Universität Münster">Oberhoff, L.</AuthEnty><AuthEnty affiliation="Universität Münster">Schulze Tast, I.</AuthEnty><AuthEnty affiliation="Universität Münster">Humberg, S.</AuthEnty></rspStmt>
       <prodStmt><producer>GESIS – Leibniz-Institut für Sozialwissenschaften (ZIS)</producer><copyright>© Oberhoff, Schulze Tast &amp; Humberg 2025</copyright>
@@ -25,7 +25,6 @@
   <dataDscr>
     <varGrp ID="VG_mfe_3" name="mfe_3" type="multipleResp" var="V_mfe_3_zeit V_mfe_3_interesse V_mfe_3_dozent">
       <txt>Ich habe dieses spezielle Seminar gewählt:</txt>
-      <concept>Gründe für die Seminarwahl</concept>
       <notes type="cdl:list">seminarwahl</notes>
     </varGrp>
     <var ID="V_mfe_1" name="mfe_1" intrvl="discrete" files="F1">
@@ -52,7 +51,6 @@
         <catValu>block</catValu>
         <labl>dies war eine Blockveranstaltung</labl>
       </catgry>
-      <concept>Gefehlte Sitzungen</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">fehltermine</notes>
     </var>
@@ -60,7 +58,6 @@
       <qstn responseDomainType="numeric" seqNo="2">
         <qstnLit>Wie viele Stunden hast Du das Seminar im Schnitt pro Woche vor- und nachbereitet?</qstnLit>
       </qstn>
-      <concept>Vor- und Nachbereitungszeit</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_mfe_3_zeit" name="mfe_3_zeit" intrvl="discrete" files="F1">
@@ -138,7 +135,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Überblick über die Themengebiete</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -178,7 +174,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Verständnisfördernde Beispiele</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -218,7 +213,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Eingehen auf Fragen</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -258,7 +252,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Interessante Aufarbeitung</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -298,7 +291,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Nachvollziehbare Gliederung</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -338,7 +330,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Zeiteinteilung</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -378,7 +369,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Forderung durch die Inhalte</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">forderung7</notes>
     </var>
@@ -418,7 +408,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Forderung durch das Tempo</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">forderung7</notes>
     </var>
@@ -458,7 +447,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Forderung durch den Zeitaufwand</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">forderung7</notes>
     </var>
@@ -498,7 +486,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Vorbereitung der Teilnehmenden</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -538,7 +525,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Beteiligung der Teilnehmenden</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -578,7 +564,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Nutzen der Materialien</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -602,7 +587,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Menge des Materials</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">materialmenge</notes>
     </var>
@@ -642,7 +626,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Lernerfolg</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -658,7 +641,6 @@
         <catValu>nein</catValu>
         <labl>Nein</labl>
       </catgry>
-      <concept>Weiterempfehlung</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">janein</notes>
     </var>
@@ -730,7 +712,6 @@
         <catValu>15</catValu>
         <labl>15 (sehr gut +)</labl>
       </catgry>
-      <concept>Gesamtbewertung in Punkten</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">punkte</notes>
     </var>
@@ -739,7 +720,6 @@
         <qstnLit>Anmerkungen für die/den Lehrende/n (Vorschläge/Lob/konstruktive Kritik):</qstnLit>
         <postQTxt>Bitte formuliere Deine Kritik sachlich, konstruktiv, und wenn möglich als Ich-Botschaft (siehe auch unsere Netiquette unter https://www.uni-muenster.de/PsyEval/netiquette/netiquette.html).</postQTxt>
       </qstn>
-      <concept>Anmerkungen für Lehrende</concept>
       <varFormat type="character" schema="other"/>
     </var>
   </dataDscr>

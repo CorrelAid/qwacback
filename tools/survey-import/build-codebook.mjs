@@ -60,10 +60,10 @@ const insert = (after, content) => {
   xml = xml.slice(0, i + after.length) + content + xml.slice(i + after.length);
 };
 
-// Inserted in DDI 2.5 sequence order: citation (titlStmt (titl, altTitl, …),
-// rspStmt, prodStmt, …, biblCit, holdings), then stdyInfo and dataAccs before
-// stdyDscr/notes. altTitl is the short name lists and tags show, e.g. "CVTS7".
-insert('</titl>', el('altTitl', study.shortTitle));
+// Inserted in DDI 2.5 sequence order: citation (titlStmt, rspStmt, prodStmt,
+// …, biblCit, holdings), then stdyInfo and dataAccs before stdyDscr/notes.
+// titlStmt: titl, subTitl, altTitl, then formtransform's parTitl and IDNo.
+insert('</titl>', el('subTitl', study.subtitle) + el('altTitl', study.shortTitle));
 const authors = (study.authors ?? []).map((a) =>
   typeof a === 'string' ? el('AuthEnty', a) : el('AuthEnty', a.name, { affiliation: a.affiliation }),
 );

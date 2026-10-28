@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>European Company Survey 2019: Management questionnaire</titl><altTitl>ECS 2019</altTitl>
+        <titl>European Company Survey 2019</titl><subTitl>Online questionnaire for Management respondents</subTitl><altTitl>ECS 2019</altTitl>
         <IDNo>q21-ecs2019</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="European Foundation for the Improvement of Living and Working Conditions">Eurofound</AuthEnty><AuthEnty affiliation="European Centre for the Development of Vocational Training">Cedefop</AuthEnty></rspStmt>
       <prodStmt><producer>European Foundation for the Improvement of Living and Working Conditions (Eurofound)</producer><copyright>© European Foundation for the Improvement of Living and Working Conditions (Eurofound) and European Centre for the Development of Vocational Training (Cedefop), 2020</copyright>
@@ -25,96 +25,79 @@
   <dataDscr>
     <varGrp ID="VG_manager_number" name="manager_number" type="grid" var="V_manager_n">
       <txt>How many people that work in this establishment are managers? Your best estimate is good enough.</txt>
-      <concept>Number of managers</concept>
       <notes type="cdl:hint">‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.
 Enter the exact number of managers or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_manager_percentage" name="manager_percentage" type="grid" var="V_manager_pct">
       <txt>How many people that work in this establishment are managers? Your best estimate is good enough.</txt>
-      <concept>Share of managers</concept>
       <notes type="cdl:hint">‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.
 Enter the exact number of managers or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_empperm_number" name="empperm_number" type="grid" var="V_empperm_n">
       <txt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</txt>
-      <concept>Number with open-ended contracts</concept>
       <notes type="cdl:hint">When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_empperm_percentage" name="empperm_percentage" type="grid" var="V_empperm_pct">
       <txt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</txt>
-      <concept>Share with open-ended contracts</concept>
       <notes type="cdl:hint">When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_emppart_number" name="emppart_number" type="grid" var="V_emppart_n">
       <txt>How many employees in this establishment work part-time? Your best estimate is good enough.</txt>
-      <concept>Number of part-time employees</concept>
       <notes type="cdl:hint">‘Part-time’ refers to working less than 35 hours per week.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_emppart_percentage" name="emppart_percentage" type="grid" var="V_emppart_pct">
       <txt>How many employees in this establishment work part-time? Your best estimate is good enough.</txt>
-      <concept>Share of part-time employees</concept>
       <notes type="cdl:hint">‘Part-time’ refers to working less than 35 hours per week.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_ictcomp_number" name="ictcomp_number" type="grid" var="V_ictcomp_n">
       <txt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</txt>
-      <concept>Number using computers</concept>
       <notes type="cdl:hint">The term 'employees' refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_ictcomp_percentage" name="ictcomp_percentage" type="grid" var="V_ictcomp_pct">
       <txt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</txt>
-      <concept>Share using computers</concept>
       <notes type="cdl:hint">The term 'employees' refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_disc" name="disc" type="grid" var="V_disc_help V_disc_hours V_disc_sugg">
       <txt>To be evaluated positively, how important is it that employees at this establishment show the following behaviour?</txt>
-      <concept>Behaviour valued in employees</concept>
       <notes type="cdl:hint">For each question, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_moti" name="moti" type="grid" var="V_moti_mon V_moti_mis V_moti_chal V_moti_learn">
       <txt>How often are the following practices used to motivate and retain employees at this establishment?</txt>
-      <concept>Motivation and retention practices</concept>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_compprobs_number" name="compprobs_number" type="grid" var="V_compprobs_n">
       <txt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</txt>
-      <concept>Number solving unfamiliar problems</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_compprobs_percentage" name="compprobs_percentage" type="grid" var="V_compprobs_pct">
       <txt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</txt>
-      <concept>Share solving unfamiliar problems</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_comorg_number" name="comorg_number" type="grid" var="V_comorg_n">
       <txt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</txt>
-      <concept>Number organising own time</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_comorg_percentage" name="comorg_percentage" type="grid" var="V_comorg_pct">
       <txt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</txt>
-      <concept>Share organising own time</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_pcwkmach_number" name="pcwkmach_number" type="grid" var="V_pcwkmach_n">
       <txt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</txt>
-      <concept>Number with machine-paced work</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_pcwkmach_percentage" name="pcwkmach_percentage" type="grid" var="V_pcwkmach_pct">
       <txt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</txt>
-      <concept>Share with machine-paced work</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_skill_pct" name="skill_pct" type="grid" var="V_skill_pct_skillsmatch V_skill_pct_overskill V_skill_pct_underskill">
       <txt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
 Please think about the employees in this establishment, their current skills and the skills they need to do their job.</txt>
-      <concept>Skill match (percentage)</concept>
       <notes type="cdl:hint">You can answer again with an exact number of employees, or by using the percentage of employees.
 QUESTION USING PERCENTAGES
 The answers to these three questions should add up to 100%. The term 'employees' refers to the people that work in this establishment that are not managers. Your best estimate is good enough.</notes>
@@ -122,131 +105,107 @@ The answers to these three questions should add up to 100%. The term 'employees'
     <varGrp ID="VG_skill_n" name="skill_n" type="grid" var="V_skill_n_skillsmatch V_skill_n_overskill V_skill_n_underskill">
       <txt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
 Please think about the employees in this establishment, their current skills and the skills they need to do their job.</txt>
-      <concept>Skill match (number)</concept>
       <notes type="cdl:hint">QUESTION USING AN EXACT NUMBER OF EMPLOYEES
 There are [WPSIZE_MM_N - MANAGER] people that work in this establishment that are not managers. The answers to these three questions should add up to this number. Your best estimate is good enough.</notes>
     </varGrp>
     <varGrp ID="VG_contr_number" name="contr_number" type="grid" var="V_contr_n">
       <txt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</txt>
-      <concept>Number needing continuous training</concept>
       <notes type="cdl:hint">Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_contr_percentage" name="contr_percentage" type="grid" var="V_contr_pct">
       <txt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</txt>
-      <concept>Share needing continuous training</concept>
       <notes type="cdl:hint">Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_learnnoneed_number" name="learnnoneed_number" type="grid" var="V_learnnoneed_n">
       <txt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</txt>
-      <concept>Number with limited learning</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_learnnoneed_percentage" name="learnnoneed_percentage" type="grid" var="V_learnnoneed_pct">
       <txt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</txt>
-      <concept>Share with limited learning</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_trainlearn" name="trainlearn" type="grid" var="V_trainlearn_1 V_trainlearn_2 V_trainlearn_3">
       <txt>What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.</txt>
-      <concept>Ways of improving skills</concept>
     </varGrp>
     <varGrp ID="VG_paidtrain_number" name="paidtrain_number" type="grid" var="V_paidtrain_n">
       <txt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</txt>
-      <concept>Number in paid training</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_paidtrain_percentage" name="paidtrain_percentage" type="grid" var="V_paidtrain_pct">
       <txt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</txt>
-      <concept>Share in paid training</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_onjob_number" name="onjob_number" type="grid" var="V_onjob_n">
       <txt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</txt>
-      <concept>Number with on-the-job training</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_onjob_percentage" name="onjob_percentage" type="grid" var="V_onjob_pct">
       <txt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</txt>
-      <concept>Share with on-the-job training</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_tr" name="tr" type="grid" var="V_tr_ski V_tr_flex V_tr_inn V_tr_mot">
       <txt>How important are the following reasons for providing training to employees in this establishment?</txt>
-      <concept>Reasons for providing training</concept>
       <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${trainatall} = '1'</notes>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_hirready_number" name="hirready_number" type="grid" var="V_hirready_n">
       <txt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</txt>
-      <concept>Number of new hires lacking skills</concept>
       <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${newlyhir} &gt;= 1</notes>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_hirready_percentage" name="hirready_percentage" type="grid" var="V_hirready_pct">
       <txt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</txt>
-      <concept>Share of new hires lacking skills</concept>
       <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${newlyhir} &gt;= 1</notes>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_hir" name="hir" type="grid" var="V_hir_att V_hir_qual V_hir_exp V_hir_ecando">
       <txt>When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</txt>
-      <concept>Important characteristics in recruiting</concept>
     </varGrp>
     <varGrp ID="VG_vp_number" name="vp_number" type="grid" var="V_vpbres_n V_vpinper_n V_vpgrpe_n V_vpprsh_n">
       <txt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</txt>
-      <concept>Number receiving variable pay</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.
 Number</notes>
     </varGrp>
     <varGrp ID="VG_vp_percentage" name="vp_percentage" type="grid" var="V_vpbres_pct V_vpinper_pct V_vpgrpe_pct V_vpprsh_pct">
       <txt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</txt>
-      <concept>Share receiving variable pay</concept>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.
 Percentage</notes>
     </varGrp>
     <varGrp ID="VG_invol" name="invol" type="grid" var="V_invol_regmee V_invol_staffme V_invol_dissinf V_invol_somedi">
       <txt>Which of the following practices are used to involve employees in this establishment in how work is organised?</txt>
-      <concept>Employee involvement practices</concept>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_mmepin" name="mmepin" type="grid" var="V_mmepin_org V_mmepin_dism V_mmepin_train V_mmepin_time V_mmepin_pay">
       <txt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</txt>
-      <concept>Employee influence on decisions</concept>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_mmerin" name="mmerin" type="grid" var="V_mmerin_org V_mmerin_dism V_mmerin_train V_mmerin_time V_mmerin_pay">
       <txt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</txt>
-      <concept>Representation influence on decisions</concept>
       <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerin_noer}, '1'))</notes>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_pmstrat" name="pmstrat" type="grid" var="V_pmstrat_lp V_pmstrat_bq V_pmstrat_cust V_pmstrat_nps">
       <txt>How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</txt>
-      <concept>Competitive success factors</concept>
     </varGrp>
     <varGrp ID="VG_wpsize_mm_n_dk" name="wpsize_mm_n_dk" type="multipleResp" var="V_wpsize_mm_n_dk_1">
       <txt>Indicate a number or tick the ‘Don’t know’ box.</txt>
-      <concept>Number of people working here (don't know)</concept>
       <notes type="cdl:list">dk</notes>
     </varGrp>
     <varGrp ID="VG_ca" name="ca" type="multipleResp" var="V_ca_1 V_ca_2 V_ca_3 V_ca_4 V_ca_5 V_ca_6">
       <txt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</txt>
-      <concept>Collective wage agreements</concept>
     </varGrp>
     <varGrp ID="VG_mmerconfirm" name="mmerconfirm" type="multipleResp" var="V_mmerconfirm_1 V_mmerconfirm_2 V_mmerconfirm_3 V_mmerconfirm_4 V_mmerconfirm_5 V_mmerconfirm_6 V_mmerconfirm_7 V_mmerconfirm_8 V_mmerconfirm_9">
       <txt>Which of the following forms of official employee representation currently exist in this establishment?</txt>
-      <concept>Forms of employee representation</concept>
       <notes type="cdl:constraint" subject="xlsform-xpath">not(selected(., '9') and count-selected(.) &gt; 1)</notes>
     </varGrp>
     <varGrp ID="VG_mmerin_noer" name="mmerin_noer" type="multipleResp" var="V_mmerin_noer_1">
       <txt>If there is no employee representation at your establishment, tick the box below and continue with the next question.</txt>
-      <concept>No employee representation</concept>
       <notes type="cdl:list">noer</notes>
     </varGrp>
     <var ID="V_wpsize_mm_n" name="wpsize_mm_n" intrvl="contin" dcml="0" files="F1">
@@ -259,7 +218,6 @@ Indicate a number or tick the ‘Don’t know’ box.</postQTxt>
       <valrng>
         <range min="0"/>
       </valrng>
-      <concept>Number of people working here</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
     </var>
@@ -293,7 +251,6 @@ Indicate a number or tick the ‘Don’t know’ box.</postQTxt>
         <catValu>na</catValu>
         <labl>No answer</labl>
       </catgry>
-      <concept>Main activity</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_yearsop" name="yearsop" intrvl="contin" dcml="0" files="F1">
@@ -305,7 +262,6 @@ Indicate the year [format – YYYY].</postQTxt>
       <valrng>
         <range min="1000" max="9999"/>
       </valrng>
-      <concept>Year activity started</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1000 and . &lt;= 9999</notes>
     </var>
@@ -334,7 +290,6 @@ Indicate the year [format – YYYY].</postQTxt>
         <catValu>5</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Production of goods or services</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">activity</notes>
     </var>
@@ -363,7 +318,6 @@ Indicate the year [format – YYYY].</postQTxt>
         <catValu>5</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Design or development activity</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">activity</notes>
     </var>
@@ -380,7 +334,6 @@ Indicate the year [format – YYYY].</postQTxt>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Online buying or selling</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -411,7 +364,6 @@ Tick one box only.</postQTxt>
         <catValu>5</catValu>
         <labl>Not applicable - our establishment does not engage in sales</labl>
       </catgry>
-      <concept>Share of sales abroad</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_chowner" name="chowner" intrvl="discrete" files="F1">
@@ -432,7 +384,6 @@ Tick one box only.</postQTxt>
         <catValu>3</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Change in ownership</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_innoprod" name="innoprod" intrvl="discrete" files="F1">
@@ -452,7 +403,6 @@ Tick one box only.</postQTxt>
         <catValu>3</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Product or service innovation</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">inno</notes>
     </var>
@@ -473,7 +423,6 @@ Tick one box only.</postQTxt>
         <catValu>3</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Process innovation</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">inno</notes>
     </var>
@@ -494,7 +443,6 @@ Tick one box only.</postQTxt>
         <catValu>3</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Marketing innovation</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">inno</notes>
     </var>
@@ -523,7 +471,6 @@ Tick one box only.</postQTxt>
         <catValu>5</catValu>
         <labl>Decreased by more than 10%</labl>
       </catgry>
-      <concept>Change in number of employees</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_manager_n" name="manager_n" intrvl="contin" dcml="0" files="F1">
@@ -682,7 +629,6 @@ No ➔ GO TO QUESTION 19</ivuInstr>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Existence of teams</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -701,7 +647,6 @@ No ➔ GO TO QUESTION 19</ivuInstr>
         <catValu>2</catValu>
         <labl>Most of them work in more than one team</labl>
       </catgry>
-      <concept>Single or multiple teams</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${teamex} = '1'</notes>
     </var>
@@ -720,7 +665,6 @@ No ➔ GO TO QUESTION 19</ivuInstr>
         <catValu>2</catValu>
         <labl>Tasks are distributed by a superior</labl>
       </catgry>
-      <concept>Task distribution in teams</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${teamex} = '1'</notes>
     </var>
@@ -790,7 +734,6 @@ GO TO QUESTION 20</ivuInstr>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Purchase of customised software</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -810,7 +753,6 @@ GO TO QUESTION 20</ivuInstr>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Use of robots</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -831,7 +773,6 @@ Tick one box only.</postQTxt>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Data analytics for processes</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -849,7 +790,6 @@ Tick one box only.</postQTxt>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Data analytics for monitoring employees</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -877,7 +817,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>This establishment does not use data analytics</labl>
       </catgry>
-      <concept>Change in use of data analytics</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${itprodimp} = '1' or ${itpermon} = '1'</notes>
       <notes type="cdl:list">itchange</notes>
@@ -890,7 +829,6 @@ Tick one box only.</postQTxt>
       <valrng>
         <range min="1"/>
       </valrng>
-      <concept>Number of hierarchical levels</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1</notes>
     </var>
@@ -907,7 +845,6 @@ Tick one box only.</postQTxt>
         <catValu>2</catValu>
         <labl>Managers create an environment in which employees can autonomously carry out their tasks</labl>
       </catgry>
-      <concept>Management approach</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_disc_help" name="disc_help" intrvl="discrete" files="F1">
@@ -1316,7 +1253,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Very quickly</labl>
       </catgry>
-      <concept>Pace of skill change</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_contr_n" name="contr_n" intrvl="contin" dcml="0" files="F1">
@@ -1556,7 +1492,6 @@ No ➔ GO TO QUESTION 42</ivuInstr>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Provision of training</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -1575,7 +1510,6 @@ No ➔ GO TO QUESTION 42</ivuInstr>
         <catValu>2</catValu>
         <labl>Workload and work schedules are adjusted to allow employees to participate in training and professional development activities</labl>
       </catgry>
-      <concept>Workload and training participation</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${trainatall} = '1'</notes>
     </var>
@@ -1689,7 +1623,6 @@ No ➔ GO TO QUESTION 42</ivuInstr>
       <valrng>
         <range min="0"/>
       </valrng>
-      <concept>Number of new hires</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
     </var>
@@ -1767,7 +1700,6 @@ No ➔ GO TO QUESTION 42</ivuInstr>
         <catValu>5</catValu>
         <labl>Never</labl>
       </catgry>
-      <concept>Internal candidates first</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_hir_att" name="hir_att" intrvl="contin" dcml="0" files="F1">
@@ -2015,7 +1947,6 @@ No ➔ GO TO QUESTION 42</ivuInstr>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Employers' organisation membership</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -2286,7 +2217,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Very constructive</labl>
       </catgry>
-      <concept>Attitude of employee representation</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerconfirm}, '9'))</notes>
       <notes type="cdl:list">constructive</notes>
@@ -2314,7 +2244,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Management prefers not to consult with employees or their representatives</labl>
       </catgry>
-      <concept>Consultation preference of management</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerconfirm}, '9'))</notes>
     </var>
@@ -2341,7 +2270,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Not at all</labl>
       </catgry>
-      <concept>Management trust in representation</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerconfirm}, '9'))</notes>
       <notes type="cdl:list">extent</notes>
@@ -2440,7 +2368,6 @@ Tick one box only.</postQTxt>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Use of suggestion schemes</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -2466,7 +2393,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Not at all</labl>
       </catgry>
-      <concept>Delays from employee involvement</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">extent</notes>
       <notes type="cdl:note_names">intro_ei</notes>
@@ -2492,7 +2418,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Not at all</labl>
       </catgry>
-      <concept>Advantage from employee involvement</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">extent</notes>
     </var>
@@ -2809,7 +2734,6 @@ Tick one box only.</postQTxt>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Sickness leave too high</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
       <notes type="cdl:note_names">intro_hrm</notes>
@@ -2835,7 +2759,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Very motivated</labl>
       </catgry>
-      <concept>Employee motivation</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">motivated</notes>
     </var>
@@ -2860,7 +2783,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Very difficult</labl>
       </catgry>
-      <concept>Difficulty finding skilled employees</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">difficult</notes>
     </var>
@@ -2885,7 +2807,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Very difficult</labl>
       </catgry>
-      <concept>Difficulty retaining employees</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">difficult</notes>
     </var>
@@ -2914,7 +2835,6 @@ Tick one box only.</postQTxt>
         <catValu>5</catValu>
         <labl>Very good</labl>
       </catgry>
-      <concept>Management-employee relations</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">relations</notes>
     </var>
@@ -2931,7 +2851,6 @@ Tick one box only.</postQTxt>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Industrial action</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -3000,7 +2919,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Very competitive</labl>
       </catgry>
-      <concept>Market competitiveness</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">competitive</notes>
     </var>
@@ -3025,7 +2943,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Very predictable</labl>
       </catgry>
-      <concept>Predictability of demand</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">predictable</notes>
     </var>
@@ -3046,7 +2963,6 @@ Tick one box only.</postQTxt>
         <catValu>3</catValu>
         <labl>It has decreased</labl>
       </catgry>
-      <concept>Change in output</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_profit" name="profit" intrvl="discrete" files="F1">
@@ -3072,7 +2988,6 @@ Tick one box only.</postQTxt>
         <catValu>4</catValu>
         <labl>Not applicable, our company is a not-for-profit organisation</labl>
       </catgry>
-      <concept>Profit in 2018</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_profplan" name="profplan" intrvl="discrete" files="F1">
@@ -3090,7 +3005,6 @@ Tick one box only.</postQTxt>
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
-      <concept>Expected profit in 2018</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${profit} != '4'</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -3112,7 +3026,6 @@ Tick one box only.</postQTxt>
         <catValu>3</catValu>
         <labl>It will decrease</labl>
       </catgry>
-      <concept>Expected change in employees</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_mainact2d" name="mainact2d" intrvl="discrete" files="F1">
@@ -3134,7 +3047,6 @@ Tick one box only.</postQTxt>
         <catValu>na</catValu>
         <labl>No answer</labl>
       </catgry>
-      <concept>Main activity (detailed)</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${mainact} = 'nace'</notes>
     </var>
@@ -3156,7 +3068,6 @@ Tick one box only.</postQTxt>
         <catValu>3</catValu>
         <labl>Other</labl>
       </catgry>
-      <concept>Respondent gender</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:note_names">intro_res</notes>
     </var>
@@ -3189,7 +3100,6 @@ Tick one box only.</postQTxt>
         <catValu>6</catValu>
         <labl>Other</labl>
       </catgry>
-      <concept>Respondent position</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
   </dataDscr>

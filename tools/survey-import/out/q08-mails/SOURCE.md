@@ -64,3 +64,7 @@ Not imported as a separate group; the 10 short-version items are identical in wo
 
 ## Decision (2026-10-27)
 The user decided that a verbatim conversion to DDI is a format change, not an alteration, so the ND terms allow it. Verdict: **ready**.
+
+## Titles (#64, 2026-10-28)
+
+`titl` „Meta AI Literacy Scale“, `altTitl` „MAILS“: printed in the published article (abstract: „the Meta AI Literacy Scale (MAILS)“; title „MAILS - Meta AI literacy scale: …“).

@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>GAAIS – General Attitudes towards Artificial Intelligence Scale</titl><altTitl>GAAIS</altTitl>
+        <titl>General Attitudes towards Artificial Intelligence Scale</titl><altTitl>GAAIS</altTitl>
         <IDNo>q18-gaais</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="University of Chester">Schepman, A.</AuthEnty><AuthEnty affiliation="University of Chester">Rodway, P.</AuthEnty></rspStmt>
       <prodStmt><producer>Schepman &amp; Rodway, University of Chester</producer><copyright>© 2022 The Author(s)</copyright>
@@ -25,7 +25,6 @@
   <dataDscr>
     <varGrp ID="VG_gaais" name="gaais" type="grid" var="V_gaais_pos1 V_gaais_pos2 V_gaais_neg3 V_gaais_pos4 V_gaais_pos5 V_gaais_neg6 V_gaais_pos7 V_gaais_neg8 V_gaais_neg9 V_gaais_neg10 V_gaais_pos11 V_gaais_pos12 V_gaais_pos13 V_gaais_pos14 V_gaais_neg15 V_gaais_pos16 V_gaais_pos17 V_gaais_pos18 V_gaais_neg19 V_gaais_neg20">
       <txt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</txt>
-      <concept>General attitudes towards AI</concept>
       <notes type="cdl:end_column" subject="name">gaais</notes>
     </varGrp>
     <var ID="V_gaais_pos1" name="gaais_pos1" intrvl="discrete" files="F1">

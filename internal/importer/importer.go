@@ -378,6 +378,15 @@ func hasNote(m mxj.Map, noteType string) bool {
 	return false
 }
 
+// StudyTitles returns a codebook's short title (titlStmt/altTitl, e.g.
+// "ATTARI-12") and subtitle (titlStmt/subTitl), each the first one in the
+// base language, so lists can name a study the way its source does (#64).
+func StudyTitles(mv mxj.Map) (shortTitle, subtitle string) {
+	baseLang, _ := mv.ValueForPathString("codeBook.-lang")
+	return textAtLang(mv, "codeBook.stdyDscr.citation.titlStmt.altTitl", baseLang),
+		textAtLang(mv, "codeBook.stdyDscr.citation.titlStmt.subTitl", baseLang)
+}
+
 // ImportCodebook parses the XML and inserts studies, groups, variables and
 // categories into PocketBase. It returns the ID of the new study.
 func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
@@ -388,9 +397,9 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	// Extract Study info — use textAt() for fields that may carry XML attributes
 	title := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.titl")
 	idNo := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.IDNo")
-	// A short name for lists and tags, e.g. "CVTS7"; the title stays the
-	// full name (and the source of the record IDs).
-	shortTitle := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.altTitl")
+	// A short name for lists and tags, e.g. "CVTS 7", and the subtitle; the
+	// title stays the full name (and the source of the record IDs).
+	shortTitle, subtitle := StudyTitles(mv)
 	timePeriod := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.timePrd")   // has event attr
 	nation := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.nation")         // has abbr attr
 	universe := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.universe")     // has clusion attr
@@ -446,6 +455,7 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	studyRecord.Set("title", title)
 	studyRecord.Set("id_no", idNo)
 	studyRecord.Set("short_title", shortTitle)
+	studyRecord.Set("subtitle", subtitle)
 	studyRecord.Set("abstract", abstract)
 	studyRecord.Set("time_period", timePeriod)
 	studyRecord.Set("nation", nation)
