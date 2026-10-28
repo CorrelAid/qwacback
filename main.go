@@ -25,7 +25,9 @@ import (
 )
 
 func main() {
-	app := pocketbase.New()
+	// PB_ENCRYPTION_KEY (32 characters) encrypts the stored app settings,
+	// e.g. backup S3 credentials; unset, they are stored in plain text.
+	app := pocketbase.NewWithConfig(pocketbase.Config{DefaultEncryptionEnv: "PB_ENCRYPTION_KEY"})
 
 	// loosely check if it was executed using "go run"
 	isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())

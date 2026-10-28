@@ -257,7 +257,7 @@ curl -X POST http://localhost:8090/api/import \
 | `PB_ADMIN_PASSWORD` | Initial superuser password | `yourpassword123` |
 | `PB_USER_EMAIL` | Initial regular user email | `user@example.com` |
 | `PB_USER_PASSWORD` | Initial regular user password | `userpassword123` |
-| `PB_ENCRYPTION_KEY` | 32-char key for settings encryption | (optional) |
+| `PB_ENCRYPTION_KEY` | Exactly 32 characters; encrypts the stored app settings (e.g. backup S3 credentials). Unset: settings are stored in plain text. Set it before the first start with a persistent volume and keep it: settings saved with one key can't be read with another | (optional) |
 | `GOMEMLIMIT` | Soft memory limit for Go GC | `512MiB` |
 | `NATS_PORT` | Port for embedded NATS server | (optional — no validation without it) |
 | `NATS_TOKEN` | Auth token for embedded NATS server | (required when `NATS_PORT` is set) |
