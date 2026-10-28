@@ -824,7 +824,7 @@ const study = {
   url: 'https://circabc.europa.eu/w/browse/a81f03f5-b8e6-4b84-a93d-ef847ef85db0',
   sourceLabel: '2022 AES MANUAL V1.3, Section 3 "Explanatory notes" (Eurostat, CIRCABC)',
   abstract:
-    'Model questions proposed by Eurostat for the 2022 wave of the EU Adult Education Survey, which national statistical institutes adapt into their own questionnaires. They ask adults about their household and background, labour status and job, access to guidance, participation in formal and non-formal education and training in the last 12 months (with details on the most recent formal activity and a randomly selected non-formal activity), obstacles to participation, informal learning, languages, health and household income.',
+    'Model questions proposed by Eurostat for the 2022 wave of the EU Adult Education Survey, which national statistical institutes adapt into their own questionnaires. They ask adults about their household and background, labour status and job, access to guidance, participation in formal and non-formal education and training in the last 12 months (with details on the most recent formal activity and a randomly selected non-formal activity), obstacles to participation, informal learning, languages, health and household income. The wording follows the 2022 AES manual, version 1.3 (2023); Eurostat’s earlier model questionnaire for the 2022 AES (2021) is at https://ec.europa.eu/eurostat/cache/metadata/Annexes/trng_aes_12m_sims_hr_an_3.pdf.',
   keywords: ['adult education', 'lifelong learning', 'non-formal education', 'informal learning', 'formal education', 'obstacles to participation', 'AES', 'official statistics'],
   topics: ['Education', 'Adult learning', 'Continuing education'],
   nation: 'European Union',
