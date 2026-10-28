@@ -1,6 +1,7 @@
 {
   "study": {
     "title": "European Company Survey 2019: Management questionnaire",
+    "shortTitle": "ECS 2019",
     "id": "q21-ecs2019",
     "authors": [
       {
@@ -50,24 +51,28 @@
       "type": "integer",
       "name": "wpsize_mm_n",
       "label": "Approximately how many people work in this establishment?",
+      "concept": "Number of people working here",
       "hint": "Please include all people that are employed by the establishment, regardless of the type of contract and regardless of whether they are physically present or carry out their work outside of the premises. Each employee is counted as one person, regardless whether they are working full-time or part-time. Your best estimate is good enough.\nWhen the term 'establishment' is used in this survey, it refers the local site at which you work.\nIndicate a number or tick the ‘Don’t know’ box.",
       "constraint": ". >= 0"
     },
     {
       "type": "select_multiple dk",
       "name": "wpsize_mm_n_dk",
-      "label": "Indicate a number or tick the ‘Don’t know’ box."
+      "label": "Indicate a number or tick the ‘Don’t know’ box.",
+      "concept": "Number of people working here (don't know)"
     },
     {
       "type": "select_one mainact",
       "name": "mainact",
       "label": "Please select this establishment's main activity category from the list below.",
+      "concept": "Main activity",
       "hint": "Tick one box only."
     },
     {
       "type": "integer",
       "name": "yearsop",
       "label": "Since what year has this establishment been carrying out this activity?",
+      "concept": "Year activity started",
       "hint": "Please disregard any changes in ownership structure or location.\nIndicate the year [format – YYYY].",
       "constraint": ". >= 1000 and . <= 9999"
     },
@@ -75,60 +80,70 @@
       "type": "select_one activity",
       "name": "actprod",
       "label": "Is this establishment engaged in the production of goods, assembly of parts or delivery of services?",
+      "concept": "Production of goods or services",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one activity",
       "name": "actdede",
       "label": "Is this establishment engaged in the design or development of new products or services?",
+      "concept": "Design or development activity",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one yes_no",
       "name": "ecommerce",
       "label": "Does this establishment buy or sell goods or services on the internet? For instance, by using business-to-business portals, e-commerce etc.",
+      "concept": "Online buying or selling",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one salesint",
       "name": "salesint",
       "label": "Since the beginning of 2016, what percentage of this establishment's sales were to customers in other countries?",
+      "concept": "Share of sales abroad",
       "hint": "If this establishment was set up after 2016, please answer the question for the period since the establishment was set up.\nIf this establishment is not engaged in sales, please select ‘Not applicable’. If this establishment does sell its products or services, but does not sell them internationally, please select 'We do not engage in export (0%)'.\nTick one box only."
     },
     {
       "type": "select_one chowner",
       "name": "chowner",
       "label": "Since the beginning of 2016, has there been any change in the ownership of the company to which this establishment belongs?",
+      "concept": "Change in ownership",
       "hint": "‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.\nTick one box only."
     },
     {
       "type": "select_one inno",
       "name": "innoprod",
       "label": "Since the beginning of 2016, has this establishment introduced any new or significantly changed products or services?",
+      "concept": "Product or service innovation",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one inno",
       "name": "innoproc",
       "label": "Since the beginning of 2016, has this establishment introduced any new or significantly changed processes either for producing goods or supplying services?",
+      "concept": "Process innovation",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one inno",
       "name": "innomark",
       "label": "Since the beginning of 2016, has this establishment introduced any new or significantly changed marketing methods?",
+      "concept": "Marketing innovation",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one chemp",
       "name": "chemp",
       "label": "How has the total number of employees in this establishment changed since the beginning of 2016?",
+      "concept": "Change in number of employees",
       "hint": "Tick one box only."
     },
     {
       "type": "begin_group",
       "name": "manager_number",
       "label": "How many people that work in this establishment are managers? Your best estimate is good enough.",
+      "concept": "Number of managers",
       "appearance": "table-list",
       "hint": "‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.\nEnter the exact number of managers or tick one of the percentage categories."
     },
@@ -145,6 +160,7 @@
       "type": "begin_group",
       "name": "manager_percentage",
       "label": "How many people that work in this establishment are managers? Your best estimate is good enough.",
+      "concept": "Share of managers",
       "appearance": "table-list",
       "hint": "‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.\nEnter the exact number of managers or tick one of the percentage categories."
     },
@@ -160,6 +176,7 @@
       "type": "begin_group",
       "name": "empperm_number",
       "label": "How many employees in this establishment have an open-ended contract? Your best estimate is good enough.",
+      "concept": "Number with open-ended contracts",
       "appearance": "table-list",
       "hint": "When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -176,6 +193,7 @@
       "type": "begin_group",
       "name": "empperm_percentage",
       "label": "How many employees in this establishment have an open-ended contract? Your best estimate is good enough.",
+      "concept": "Share with open-ended contracts",
       "appearance": "table-list",
       "hint": "When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -191,6 +209,7 @@
       "type": "begin_group",
       "name": "emppart_number",
       "label": "How many employees in this establishment work part-time? Your best estimate is good enough.",
+      "concept": "Number of part-time employees",
       "appearance": "table-list",
       "hint": "‘Part-time’ refers to working less than 35 hours per week.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -207,6 +226,7 @@
       "type": "begin_group",
       "name": "emppart_percentage",
       "label": "How many employees in this establishment work part-time? Your best estimate is good enough.",
+      "concept": "Share of part-time employees",
       "appearance": "table-list",
       "hint": "‘Part-time’ refers to working less than 35 hours per week.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -222,6 +242,7 @@
       "type": "select_one yes_no",
       "name": "teamex",
       "label": "A team is a group of people working together with a shared responsibility for the execution of allocated tasks. Team members can come from the same unit or from different units across the establishment. Do you have any teams fitting this definition in this establishment?",
+      "concept": "Existence of teams",
       "hint": "Tick one box only.",
       "guidance_hint": "Yes ➔ GO TO QUESTION 17\nNo ➔ GO TO QUESTION 19"
     },
@@ -229,6 +250,7 @@
       "type": "select_one teasin",
       "name": "teasin",
       "label": "With regard to the employees doing teamwork, do most of them work in a single team or do most of them work in more than one team?",
+      "concept": "Single or multiple teams",
       "hint": "Tick one box only.",
       "relevant": "${teamex} = '1'"
     },
@@ -236,6 +258,7 @@
       "type": "select_one tauton",
       "name": "tauton",
       "label": "Please think about the tasks to be performed by these teams. Who usually decides how the tasks are distributed within the team?",
+      "concept": "Task distribution in teams",
       "hint": "Tick one box only.",
       "relevant": "${teamex} = '1'"
     },
@@ -243,6 +266,7 @@
       "type": "begin_group",
       "name": "ictcomp_number",
       "label": "How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.",
+      "concept": "Number using computers",
       "appearance": "table-list",
       "hint": "The term 'employees' refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -260,6 +284,7 @@
       "type": "begin_group",
       "name": "ictcomp_percentage",
       "label": "How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.",
+      "concept": "Share using computers",
       "appearance": "table-list",
       "hint": "The term 'employees' refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -276,6 +301,7 @@
       "type": "select_one yes_no",
       "name": "ictapp",
       "label": "Since the beginning of 2016, did this establishment purchase any software that was specifically developed or customised to meet the needs of the establishment?",
+      "concept": "Purchase of customised software",
       "hint": "Tick one box only.",
       "relevant": "not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')"
     },
@@ -283,6 +309,7 @@
       "type": "select_one yes_no",
       "name": "ictrob",
       "label": "Robots are programmable machines that are capable of carrying out a complex series of actions automatically, which may include the interaction with people. Does this establishment use robots?",
+      "concept": "Use of robots",
       "hint": "Tick one box only.",
       "relevant": "not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')"
     },
@@ -290,6 +317,7 @@
       "type": "select_one yes_no",
       "name": "itprodimp",
       "label": "Does this establishment use data analytics to improve the processes of production or service delivery?",
+      "concept": "Data analytics for processes",
       "hint": "Data analytics refers to the use of digital tools for analysing data collected at this establishment or from other sources.\nTick one box only.",
       "relevant": "not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')"
     },
@@ -297,12 +325,14 @@
       "type": "select_one yes_no",
       "name": "itpermon",
       "label": "Does this establishment use data analytics to monitor employee performance?",
+      "concept": "Data analytics for monitoring employees",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one itchange",
       "name": "itperfmonuse",
       "label": "Since the beginning of 2016, how would you say the use of data analytics in this establishment has changed?",
+      "concept": "Change in use of data analytics",
       "hint": "Tick one box only.",
       "guidance_hint": "(ASK IF QUESTION 22 = YES OR QUESTION 23 = YES)",
       "relevant": "${itprodimp} = '1' or ${itpermon} = '1'"
@@ -311,6 +341,7 @@
       "type": "integer",
       "name": "hiera",
       "label": "Counting in the same way as is done in the examples below, how many hierarchical levels do you have in this establishment?",
+      "concept": "Number of hierarchical levels",
       "hint": "Indicate the number of hierarchical levels.",
       "constraint": ". >= 1"
     },
@@ -318,12 +349,14 @@
       "type": "select_one supcheck",
       "name": "supcheck",
       "label": "Different establishments use different approaches to manage the way employees carry out their tasks. Which of these two statements best describes the general approach to management at this establishment? Please think about the approach that is used the most by managers.",
+      "concept": "Management approach",
       "hint": "Tick one box only."
     },
     {
       "type": "begin_group",
       "name": "disc",
       "label": "To be evaluated positively, how important is it that employees at this establishment show the following behaviour?",
+      "concept": "Behaviour valued in employees",
       "appearance": "table-list",
       "hint": "For each question, Tick one box only."
     },
@@ -349,6 +382,7 @@
       "type": "begin_group",
       "name": "moti",
       "label": "How often are the following practices used to motivate and retain employees at this establishment?",
+      "concept": "Motivation and retention practices",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only."
     },
@@ -379,6 +413,7 @@
       "type": "begin_group",
       "name": "compprobs_number",
       "label": "For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.",
+      "concept": "Number solving unfamiliar problems",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -395,6 +430,7 @@
       "type": "begin_group",
       "name": "compprobs_percentage",
       "label": "For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.",
+      "concept": "Share solving unfamiliar problems",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -410,6 +446,7 @@
       "type": "begin_group",
       "name": "comorg_number",
       "label": "For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.",
+      "concept": "Number organising own time",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -426,6 +463,7 @@
       "type": "begin_group",
       "name": "comorg_percentage",
       "label": "For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.",
+      "concept": "Share organising own time",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -441,6 +479,7 @@
       "type": "begin_group",
       "name": "pcwkmach_number",
       "label": "For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.",
+      "concept": "Number with machine-paced work",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -457,6 +496,7 @@
       "type": "begin_group",
       "name": "pcwkmach_percentage",
       "label": "For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.",
+      "concept": "Share with machine-paced work",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -472,6 +512,7 @@
       "type": "begin_group",
       "name": "skill_pct",
       "label": "Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.\nPlease think about the employees in this establishment, their current skills and the skills they need to do their job.",
+      "concept": "Skill match (percentage)",
       "appearance": "table-list",
       "hint": "You can answer again with an exact number of employees, or by using the percentage of employees.\nQUESTION USING PERCENTAGES\nThe answers to these three questions should add up to 100%. The term 'employees' refers to the people that work in this establishment that are not managers. Your best estimate is good enough."
     },
@@ -503,6 +544,7 @@
       "type": "begin_group",
       "name": "skill_n",
       "label": "Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.\nPlease think about the employees in this establishment, their current skills and the skills they need to do their job.",
+      "concept": "Skill match (number)",
       "appearance": "table-list",
       "hint": "QUESTION USING AN EXACT NUMBER OF EMPLOYEES\nThere are [WPSIZE_MM_N - MANAGER] people that work in this establishment that are not managers. The answers to these three questions should add up to this number. Your best estimate is good enough."
     },
@@ -531,12 +573,14 @@
       "type": "select_one skillch",
       "name": "skillch",
       "label": "How quickly do the knowledge and skills needed from the employees in this establishment change?",
+      "concept": "Pace of skill change",
       "hint": "If this differs a lot between different groups of employees, please think of the largest group of employees in this establishment.\nTick one box only."
     },
     {
       "type": "begin_group",
       "name": "contr_number",
       "label": "How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.",
+      "concept": "Number needing continuous training",
       "appearance": "table-list",
       "hint": "Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -553,6 +597,7 @@
       "type": "begin_group",
       "name": "contr_percentage",
       "label": "How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.",
+      "concept": "Share needing continuous training",
       "appearance": "table-list",
       "hint": "Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.\nEnter the exact number of employees or tick one of the percentage categories."
     },
@@ -568,6 +613,7 @@
       "type": "begin_group",
       "name": "learnnoneed_number",
       "label": "How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.",
+      "concept": "Number with limited learning",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -584,6 +630,7 @@
       "type": "begin_group",
       "name": "learnnoneed_percentage",
       "label": "How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.",
+      "concept": "Share with limited learning",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -599,6 +646,7 @@
       "type": "begin_group",
       "name": "trainlearn",
       "label": "What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.",
+      "concept": "Ways of improving skills",
       "appearance": "table-list"
     },
     {
@@ -626,6 +674,7 @@
       "type": "begin_group",
       "name": "paidtrain_number",
       "label": "In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.",
+      "concept": "Number in paid training",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -642,6 +691,7 @@
       "type": "begin_group",
       "name": "paidtrain_percentage",
       "label": "In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.",
+      "concept": "Share in paid training",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -657,6 +707,7 @@
       "type": "begin_group",
       "name": "onjob_number",
       "label": "In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.",
+      "concept": "Number with on-the-job training",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -673,6 +724,7 @@
       "type": "begin_group",
       "name": "onjob_percentage",
       "label": "In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.",
+      "concept": "Share with on-the-job training",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
     },
@@ -688,6 +740,7 @@
       "type": "select_one yes_no",
       "name": "trainatall",
       "label": "Since the beginning of 2016, has this establishment provided any training to any of its employees?",
+      "concept": "Provision of training",
       "hint": "Training includes on-the-job training as well as training courses followed at work, on location or on the internet.\nTick one box only.",
       "guidance_hint": "Yes ➔ GO TO QUESTION 40\nNo ➔ GO TO QUESTION 42"
     },
@@ -695,6 +748,7 @@
       "type": "select_one wpsupp",
       "name": "wpsupp",
       "label": "Workload and work schedules can prevent the participation of employees in training activities. Which of the following statements best describes what happens in practice at this establishment?",
+      "concept": "Workload and training participation",
       "hint": "Tick one box only.",
       "relevant": "${trainatall} = '1'"
     },
@@ -702,6 +756,7 @@
       "type": "begin_group",
       "name": "tr",
       "label": "How important are the following reasons for providing training to employees in this establishment?",
+      "concept": "Reasons for providing training",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only.",
       "relevant": "${trainatall} = '1'"
@@ -733,6 +788,7 @@
       "type": "integer",
       "name": "newlyhir",
       "label": "Since the beginning of 2016, how many new employees have been hired at this establishment?",
+      "concept": "Number of new hires",
       "hint": "Indicate a number.",
       "guidance_hint": "➔ IF 0, GO TO QUESTION 44\n➔ IF AT LEAST 1, GO TO QUESTION 43",
       "constraint": ". >= 0"
@@ -741,6 +797,7 @@
       "type": "begin_group",
       "name": "hirready_number",
       "label": "How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.",
+      "concept": "Number of new hires lacking skills",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.",
       "relevant": "${newlyhir} >= 1"
@@ -758,6 +815,7 @@
       "type": "begin_group",
       "name": "hirready_percentage",
       "label": "How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.",
+      "concept": "Share of new hires lacking skills",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.",
       "relevant": "${newlyhir} >= 1"
@@ -774,12 +832,14 @@
       "type": "select_one hirinter",
       "name": "hirinter",
       "label": "When recruiting, how often does management start by looking whether there are any suitable internal candidates?",
+      "concept": "Internal candidates first",
       "hint": "Tick one box only."
     },
     {
       "type": "begin_group",
       "name": "hir",
       "label": "When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.",
+      "concept": "Important characteristics in recruiting",
       "appearance": "table-list"
     },
     {
@@ -813,6 +873,7 @@
       "type": "begin_group",
       "name": "vp_number",
       "label": "In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.",
+      "concept": "Number receiving variable pay",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.\nNumber"
     },
@@ -847,6 +908,7 @@
       "type": "begin_group",
       "name": "vp_percentage",
       "label": "In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.",
+      "concept": "Share receiving variable pay",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.\nPercentage"
     },
@@ -877,12 +939,14 @@
       "type": "select_one yes_no",
       "name": "comemporg",
       "label": "Is the company to which this establishment belongs a member of any employers' organisation which participates in the negotiation of collective agreements?",
+      "concept": "Employers' organisation membership",
       "hint": "Tick one box only."
     },
     {
       "type": "select_multiple ca",
       "name": "ca",
       "label": "Are the wages of any employees in this establishment set by any of the following types of collective agreements?",
+      "concept": "Collective wage agreements",
       "hint": "Tick all that apply.",
       "guidance_hint": "[COUNTRY SPECIFIC LIST]"
     },
@@ -890,6 +954,7 @@
       "type": "select_multiple mmerconfirm",
       "name": "mmerconfirm",
       "label": "Which of the following forms of official employee representation currently exist in this establishment?",
+      "concept": "Forms of employee representation",
       "hint": "Tick all that apply.",
       "guidance_hint": "[COUNTRY SPECIFIC LIST]\nGO TO QUESTION 50\nThere is no official employee representation ➔ GO TO QUESTION 53",
       "constraint": "not(selected(., '9') and count-selected(.) > 1)"
@@ -898,6 +963,7 @@
       "type": "select_one constructive",
       "name": "eratt",
       "label": "How would you describe the general attitude of the employee representation at this establishment?",
+      "concept": "Attitude of employee representation",
       "hint": "The term establishment' refers to the local site at which you work.\nTick one box only.",
       "relevant": "not(selected(${mmerconfirm}, '9'))"
     },
@@ -905,6 +971,7 @@
       "type": "select_one indir",
       "name": "indir",
       "label": "Would you say the management at this establishment prefers to consult with the employee representation or would management rather consult directly with employees?",
+      "concept": "Consultation preference of management",
       "hint": "Tick one box only.",
       "relevant": "not(selected(${mmerconfirm}, '9'))"
     },
@@ -912,6 +979,7 @@
       "type": "select_one extent",
       "name": "ertrus",
       "label": "In your opinion, to what extent does management at this establishment trust the employee representation?",
+      "concept": "Management trust in representation",
       "hint": "Tick one box only.",
       "relevant": "not(selected(${mmerconfirm}, '9'))"
     },
@@ -919,6 +987,7 @@
       "type": "begin_group",
       "name": "invol",
       "label": "Which of the following practices are used to involve employees in this establishment in how work is organised?",
+      "concept": "Employee involvement practices",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only."
     },
@@ -949,6 +1018,7 @@
       "type": "select_one yes_no",
       "name": "suggs",
       "label": "Does this establishment make use of suggestion schemes?",
+      "concept": "Use of suggestion schemes",
       "hint": "Suggestion scheme: The collection of ideas and suggestions from the employees, voluntary and at any time, often by means of a physical or virtual ‘suggestion box’.\nTick one box only."
     },
     {
@@ -960,18 +1030,21 @@
       "type": "select_one extent",
       "name": "eidelay",
       "label": "In your opinion, to what extent does involving employees cause delays in the implementation of changes?",
+      "concept": "Delays from employee involvement",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one extent",
       "name": "eicomp",
       "label": "In your opinion, to what extent does involving employees in work organisation changes give the establishment a competitive advantage?",
+      "concept": "Advantage from employee involvement",
       "hint": "Tick one box only."
     },
     {
       "type": "begin_group",
       "name": "mmepin",
       "label": "Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?",
+      "concept": "Employee influence on decisions",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only."
     },
@@ -1007,12 +1080,14 @@
       "type": "select_multiple noer",
       "name": "mmerin_noer",
       "label": "If there is no employee representation at your establishment, tick the box below and continue with the next question.",
+      "concept": "No employee representation",
       "guidance_hint": "➔ GO TO QUESTION 59"
     },
     {
       "type": "begin_group",
       "name": "mmerin",
       "label": "Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?",
+      "concept": "Representation influence on decisions",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only.",
       "relevant": "not(selected(${mmerin_noer}, '1'))"
@@ -1054,42 +1129,49 @@
       "type": "select_one yes_no",
       "name": "sickleave",
       "label": "Do you think the level of sickness leave in this establishment is too high?",
+      "concept": "Sickness leave too high",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one motivated",
       "name": "lowmot",
       "label": "Overall, how motivated do you think employees in this establishment are?",
+      "concept": "Employee motivation",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one difficult",
       "name": "findskill",
       "label": "How difficult is it for this establishment to find employees with the required skills?",
+      "concept": "Difficulty finding skilled employees",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one difficult",
       "name": "retainemp",
       "label": "How difficult is it for this establishment to retain employees?",
+      "concept": "Difficulty retaining employees",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one relations",
       "name": "qwprel",
       "label": "How would you describe the relations between management and employees in this establishment in general?",
+      "concept": "Management-employee relations",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one yes_no",
       "name": "indact",
       "label": "Since the beginning of 2016, did any industrial action (such as a strike, work-to-rule, or manifestation) take place that was directly related to an issue specific to this establishment?",
+      "concept": "Industrial action",
       "hint": "Tick one box only."
     },
     {
       "type": "begin_group",
       "name": "pmstrat",
       "label": "How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.",
+      "concept": "Competitive success factors",
       "appearance": "table-list"
     },
     {
@@ -1123,24 +1205,28 @@
       "type": "select_one competitive",
       "name": "competmark",
       "label": "How competitive would you say the market for the main products or services provided by this establishment is?",
+      "concept": "Market competitiveness",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one predictable",
       "name": "pdemstab",
       "label": "How predictable would you say that the demand for the main products or services of this establishment is?",
+      "concept": "Predictability of demand",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one prodvol",
       "name": "prodvol",
       "label": "Since the beginning of 2016, how has the amount of goods or services produced by this establishment changed?",
+      "concept": "Change in output",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one profit",
       "name": "profit",
       "label": "In 2018, did this establishment make a profit?",
+      "concept": "Profit in 2018",
       "hint": "Tick one box only.",
       "guidance_hint": "GO TO QUESTION 70\n➔ GO TO QUESTION 71"
     },
@@ -1148,6 +1234,7 @@
       "type": "select_one yes_no",
       "name": "profplan",
       "label": "Did this establishment expect to make a profit in 2018?",
+      "concept": "Expected profit in 2018",
       "hint": "Tick one box only.",
       "relevant": "${profit} != '4'"
     },
@@ -1155,12 +1242,14 @@
       "type": "select_one chempfut",
       "name": "chempfut",
       "label": "In the next three years, how do you expect the total number of employees in this establishment to change?",
+      "concept": "Expected change in employees",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one mainact2d",
       "name": "mainact2d",
       "label": "Please select this establishment's main activity category from the list below.",
+      "concept": "Main activity (detailed)",
       "hint": "Tick one box only.",
       "relevant": "${mainact} = 'nace'"
     },
@@ -1173,12 +1262,14 @@
       "type": "select_one sexres",
       "name": "sexres",
       "label": "Which of the following categories best captures how you think of yourself?",
+      "concept": "Respondent gender",
       "hint": "Tick one box only."
     },
     {
       "type": "select_one posres",
       "name": "posres",
       "label": "What position do you hold?",
+      "concept": "Respondent position",
       "hint": "Tick one box only."
     }
   ],

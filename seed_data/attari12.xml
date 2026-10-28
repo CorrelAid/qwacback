@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>ATTARI-12 – Attitudes Towards Artificial Intelligence Scale</titl>
+        <titl>ATTARI-12 – Attitudes Towards Artificial Intelligence Scale</titl><altTitl>ATTARI-12</altTitl>
         <IDNo>q13-attari12</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Technische Universität Chemnitz">Jan-Philipp Stein</AuthEnty><AuthEnty affiliation="Universität Würzburg">Tanja Messingschlager</AuthEnty><AuthEnty affiliation="Leibniz-Institut für Bildungsverläufe (LIfBi), Bamberg">Timo Gnambs</AuthEnty><AuthEnty affiliation="Universität Würzburg">Fabian Hutmacher</AuthEnty><AuthEnty affiliation="Universität Würzburg">Markus Appel</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="TU Chemnitz / Universität Würzburg / LIfBi">Stein, Messingschlager, Gnambs, Hutmacher &amp; Appel</producer><copyright>© The Author(s) 2024</copyright>
@@ -28,6 +28,8 @@
     <varGrp ID="VG_attari12" name="attari12" type="grid" var="V_attari_1 V_attari_2 V_attari_3 V_attari_4 V_attari_5 V_attari_6 V_attari_7 V_attari_8 V_attari_9 V_attari_10 V_attari_11 V_attari_12">
       <txt>Im Folgenden interessieren wir uns für Ihre Einstellungen gegenüber Künstlicher Intelligenz (KI). Künstliche Intelligenz kann Aufgaben ausführen, die üblicherweise menschliche Intelligenz erfordern. Sie befähigt Maschinen dazu, selbstständig und ähnlich dem Menschen, ihre Umwelt wahrzunehmen, zu handeln, zu lernen und sich anzupassen. Künstliche Intelligenz kann Teil eines Computers oder einer Onlineplattform sein – man kann ihr aber auch in verschiedenen anderen technischen Geräten, wie etwa Robotern, begegnen.</txt>
       <txt xml:lang="en">In the following, we are interested in your attitudes towards artificial intelligence (AI). AI can execute tasks that typically require human intelligence. It enables machines to sense, act, learn, and adapt in an autonomous, human-like way. AI may be part of a computer or online platform—but it can also be encountered in various other hardware devices such as robots.</txt>
+      <concept>Einstellungen gegenüber KI</concept>
+      <concept xml:lang="en">Attitudes towards AI</concept>
     </varGrp>
     <var ID="V_attari_1" name="attari_1" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">

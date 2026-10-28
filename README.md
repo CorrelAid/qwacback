@@ -51,7 +51,9 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 - **GET `/api/questions`** — List all questions across all studies.
 - **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, hint, interviewer instructions, skip logic as prose in `universe`, etc.). No additional API calls needed for a detail view. A `range` variable (standalone or a number-grid row) has `range: {"min": 0, "max": 5, "step": 0.5}`, its XLSForm `start`/`end`/`step` with only the bounds the codebook states (DDI_MARKUP_GUIDE.md §3, Range bounds); other variables have no `range`.
 
-Each study carries its terms of use, so a client can show them with every reused question. `/api/questions/{id}` embeds them in `study` as `license`, `copyright`, `citation` and `source_uri`; the `studies` records have them as `license`, `copyright`, `citation` and `holdings_uri`. They are read from the codebook (see DDI_MARKUP_GUIDE.md §5) and are empty when it states none.
+Each study carries its terms of use, so a client can show them with every reused question. `/api/questions/{id}` embeds them in `study` as `license`, `copyright`, `citation` and `source_uri`; the `studies` records have them as `license`, `copyright`, `citation` and `holdings_uri`. They are read from the codebook (see DDI_MARKUP_GUIDE.md §6) and are empty when it states none.
+
+A study's short name for lists and tags, e.g. `CVTS7`, is `short_title` on the `studies` records and `study.short_title` in `/api/questions/{id}`, from the codebook's `titlStmt/altTitl` (DDI_MARKUP_GUIDE.md §5); empty when it has none, then show `title`.
 - **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question, cut unchanged from the stored codebook.
 - **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.

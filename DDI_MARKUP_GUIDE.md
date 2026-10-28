@@ -42,6 +42,8 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 *   **Standalone variables**: Describe what the question measures in plain language (e.g. `Gender`, `Age group`, `Perceived community safety (day)`).
 *   **Grid sub-items**: Use a `Construct: Facet` pattern (e.g. `Trust: Parliament`, `Civic network: Council`).
 *   **Variable groups**: Name the overarching topic or construct (e.g. `Trust in institutions`, `Device ownership`).
+
+qwac lists a question by its concept, and by its text only when there is none, so a grid with a paragraph-long introduction or a long question becomes a multi-line title. Give every standalone variable and every question group (grid, multiple choice, choice with "Other") a concept of a few words in the question's language. In a form, that is the `concept` (or `concept::<Language (code)>`) cell of the question row or the `begin_group` row.
 *   The `concept` element supports `vocab` and `vocabURI` attributes to link to controlled vocabularies.
 *   **Search tags:** further `concept` elements after the first one are search tags, typically the concept in the other language. They make an item findable in German and English without changing its wording. The first `concept` stays the concept. Tags never carry `vocab`, which marks a long list.
 
@@ -273,7 +275,13 @@ Both `timePrd` and `collDate` use the `event` attribute: `"start"`, `"end"`, or 
 
 ---
 
-## 5. License and Attribution
+## 5. Study Title
+
+`titlStmt/titl` is the study's full title as published. qwacback derives the study's and its questions' record IDs from it, so changing it later changes every link to them. Lists and tags show the short name in `titlStmt/altTitl` (`short_title`) when there is one: the instrument's acronym or a few words, e.g. `CVTS7`, `ATTARI-12`, `ECS 2019`. In `titlStmt` the XSD order is `titl`, `subTitl`, `altTitl`, `parTitl`, `IDNo`. `tools/survey-import` writes it from the study's `shortTitle`.
+
+---
+
+## 6. License and Attribution
 
 qwac is public, so each study says under which terms its questions may be reused and how to credit them. qwacback stores these four elements on the study and returns them with every question:
 
@@ -290,7 +298,7 @@ Start `conditions` with the license's short name when it is a Creative Commons l
 
 ---
 
-## 6. Template Placeholders
+## 7. Template Placeholders
 
 For template surveys where question wording is adapted per deployment, encode placeholders directly in `qstnLit` using angle brackets. Since `qstnLit` extends `simpleTextType` (which allows `xhtml:BlkNoForm.mix`), use XHTML to render placeholders in italics — wrap in `<xhtml:p>` since only block-level XHTML elements are valid direct children.
 
@@ -302,7 +310,7 @@ Rules:
 
 ---
 
-## 7. Quick Reference
+## 8. Quick Reference
 
 ### Elements
 
