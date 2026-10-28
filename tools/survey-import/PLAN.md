@@ -132,3 +132,11 @@ Each stream records its status in `out/<id>/SOURCE.md`. The integration stream c
 
 Rules (user): wording literally from the latest published source, no mixing across versions; verbatim conversion counts as a format change (ND ok).
 | q20-eu-ict-ent-ai | ready | Eurostat ICT enterprises 2025 manual (KS-01-25-065) Annex 1, Module E (AI), CC BY 4.0 + disclaimer; 2026 MQ not used (draft/restricted) |
+
+### Update 2026-10-28
+| id | verdict | notes |
+|---|---|---|
+| q21-ecs2019 | ready | Eurofound ECS 2019 management questionnaire (publication version 14 July 2020), Q1–Q74, en; Eurofound reuse terms (attribution, no distortion), not CC |
+| q22-lpp | blocked-license | LPP employer survey wave 6 (2023): no license note; IAB imprint requires consent. No Weiterbildung section anyway |
+| q23-wers2011 | ready | WERS 2011 Management Questionnaire, Section C + the employee-profile items it depends on, en; Open Government Licence v3.0 |
+| q24-iab-bp | blocked-license | IAB-Betriebspanel questionnaires (1993–2017 public) carry no license; IAB imprint requires consent |

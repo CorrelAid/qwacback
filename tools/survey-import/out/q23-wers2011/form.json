@@ -1,0 +1,959 @@
+{
+  "study": {
+    "title": "Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work",
+    "id": "q23-wers2011",
+    "authors": [
+      {
+        "name": "Department for Business, Innovation and Skills (BIS)",
+        "affiliation": "UK Government"
+      },
+      {
+        "name": "Advisory, Conciliation and Arbitration Service (Acas)",
+        "affiliation": "Acas"
+      },
+      {
+        "name": "Economic and Social Research Council (ESRC)",
+        "affiliation": "ESRC"
+      },
+      {
+        "name": "UK Commission for Employment and Skills (UKCES)",
+        "affiliation": "UKCES"
+      },
+      {
+        "name": "National Institute of Economic and Social Research (NIESR)",
+        "affiliation": "NIESR"
+      }
+    ],
+    "producer": {
+      "name": "Department for Business, Innovation and Skills (BIS)",
+      "affiliation": "UK Government"
+    },
+    "citation": "Department for Business, Innovation and Skills. (2011). Sixth Workplace Employment Relations Study (WERS6): Management questionnaire (MQ) (BIS/11/803). GOV.UK. https://www.gov.uk/government/publications/the-2011-workplace-employment-relations-study-wers",
+    "url": "https://www.gov.uk/government/publications/the-2011-workplace-employment-relations-study-wers",
+    "sourceLabel": "BIS/11/803, WERS6 Management Questionnaire (MQ), Section C and the EPQ items it depends on (GOV.UK)",
+    "abstract": "This study contains Section C (recruitment, training and organisation of work) of the management interview of the sixth Workplace Employment Relations Study (WERS 2011), a CAPI interview with the most senior manager responsible for staff and employment relations at British workplaces, plus the employee-profile items it builds on (number of employees, occupational structure). The manager reports how vacancies are filled and which recruitment criteria, tests and channels are used, and, for the largest non-managerial occupational group, induction, the share given off-the-job training, training days and training content, multi-skilling, job autonomy and teamworking. A last item asks for the share of all employees using computers.",
+    "keywords": [
+      "training",
+      "recruitment",
+      "skills",
+      "job autonomy",
+      "teamworking",
+      "employment relations",
+      "workplaces",
+      "WERS"
+    ],
+    "topics": [
+      "Employment",
+      "Labour relations",
+      "Education and training"
+    ],
+    "nation": "United Kingdom (Great Britain)",
+    "universe": "Workplaces in Great Britain with at least 5 employees; respondent: the most senior manager responsible for staff and employment relations at the workplace. Most of Section C refers to the largest non-managerial occupational group of the workplace.",
+    "anlyUnit": "Workplaces",
+    "timePrd": "2011",
+    "dataKind": "Questionnaire (CAPI specification)",
+    "license": "Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). GOV.UK publication page (https://www.gov.uk/government/publications/the-2011-workplace-employment-relations-study-wers): \"All content is available under the Open Government Licence v3.0, except where otherwise stated\" \"© Crown copyright\". The questionnaire PDF (https://assets.publishing.service.gov.uk/media/5a74f4a0e5274a59fa716449/11-803-wers6-sixth-workplace-study-management-questionnaire.pdf) states no other terms. Contains public sector information licensed under the Open Government Licence v3.0. Changes: format conversion of Section C and of the EPQ items ZALLEMPS, SOC_1 to SOC_9 and ZSOCDESC to DDI; wording unchanged; all other sections omitted. This DDI version was made by the qwac project (CorrelAid), not by the Department for Business, Innovation and Skills or the other WERS sponsors, and does not imply their endorsement.",
+    "copyright": "© Crown copyright"
+  },
+  "survey": [
+    {
+      "type": "begin_group",
+      "name": "section_epq",
+      "label": "EMPLOYEE PROFILE QUESTIONNAIRE"
+    },
+    {
+      "type": "integer",
+      "name": "zallemps",
+      "label": "Currently how many employees do you have on the payroll at this workplace?",
+      "guidance_hint": "INTERVIEWER: To start the interview, please enter the relevant data from the EPQ.\nINTERVIEWER: THIS IS Q1 IN THE PAPER EPQ\nPROMPT: Remember to include yourself if you are an employee at the workplace but do NOT include casual workers without a contract of employment, freelance, self-employed or agency workers.",
+      "required": "yes",
+      "constraint": ". >= 5 and . <= 999997",
+      "constraint_message": "THERE MUST BE AT LEAST 5 EMPLOYEES AT THE WORKPLACE. PLEASE CHECK."
+    },
+    {
+      "type": "begin_group",
+      "name": "soc",
+      "label": "How many male and female employees are in each of the following occupational groups?",
+      "appearance": "table-list"
+    },
+    {
+      "type": "integer",
+      "name": "zmgr_male",
+      "label": "Managers and senior officials",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zmgr_fem",
+      "label": "Managers and senior officials",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zpro_male",
+      "label": "Professional occupations",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zpro_fem",
+      "label": "Professional occupations",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "ztec_male",
+      "label": "Associate professional and technical occupations",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "ztec_fem",
+      "label": "Associate professional and technical occupations",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zadm_male",
+      "label": "Administrative and secretarial occupations",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zadm_fem",
+      "label": "Administrative and secretarial occupations",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zskl_male",
+      "label": "Skilled trades occupations",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zskl_fem",
+      "label": "Skilled trades occupations",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zper_male",
+      "label": "Caring, leisure and other personal service occupations",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zper_fem",
+      "label": "Caring, leisure and other personal service occupations",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zsal_male",
+      "label": "Sales and customer service occupations",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zsal_fem",
+      "label": "Sales and customer service occupations",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zope_male",
+      "label": "Process, plant and machine operatives and drivers",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zope_fem",
+      "label": "Process, plant and machine operatives and drivers",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zrou_male",
+      "label": "Routine occupations",
+      "hint": "Male",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "integer",
+      "name": "zrou_fem",
+      "label": "Routine occupations",
+      "hint": "Female",
+      "guidance_hint": "INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.\nPROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.",
+      "constraint": ". <= ${zallemps}",
+      "constraint_message": "THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES."
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "text",
+      "name": "zsocdesc",
+      "label": "From what you have said, the largest non-managerial group of employees at this workplace is classified as [LOGIDX: TITLE OF LARGEST OCCUPATIONAL GROUP].\nHow would you describe the main tasks and activities of this largest group?",
+      "guidance_hint": "INTERVIEWER: Probe for details about the most common job in this group, record verbatim: OPEN"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "section_c",
+      "label": "RECRUITMENT, TRAINING AND ORGANISATION OF WORK"
+    },
+    {
+      "type": "select_one cfillvac",
+      "name": "cfillvac",
+      "label": "Which of these statements best describes your approach to filling vacancies at this workplace?",
+      "guidance_hint": "SHOW CARD C1\nINTERVIEWER: For larger public sector employers, individual departments and agencies should be treated as separate employers"
+    },
+    {
+      "type": "select_multiple cfactors",
+      "name": "cfactors",
+      "label": "Which of the following factors are important when recruiting new employees?",
+      "guidance_hint": "SHOW CARD C2\nPROBE: Which others? UNTIL 'None'.\nCODE ALL THAT APPLY."
+    },
+    {
+      "type": "text",
+      "name": "cfactors_other",
+      "label": "Other (please specify CFACTOTH)",
+      "relevant": "selected(${cfactors}, 'other')"
+    },
+    {
+      "type": "select_multiple cspecix",
+      "name": "cspecix",
+      "label": "When filling vacancies, do you have any special procedures to encourage applications from the following groups?",
+      "guidance_hint": "SHOW CARD C3\nPROBE: Which others? UNTIL 'None'.\nCODE ALL THAT APPLY."
+    },
+    {
+      "type": "select_multiple catestw",
+      "name": "catestw",
+      "label": "When filling vacancies at this workplace, do you ever conduct any type of personality or attitude test for managerial positions, non-managerial positions or not at all?",
+      "guidance_hint": "CODE ALL THAT APPLY."
+    },
+    {
+      "type": "select_multiple cptestw",
+      "name": "cptestw",
+      "label": "When filling vacancies at this workplace, do you ever conduct any type of performance or competency test for managerial positions, non-managerial positions or not at all?",
+      "guidance_hint": "CODE ALL THAT APPLY."
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "clogvac",
+      "label": "Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].\nHave there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?"
+    },
+    {
+      "type": "select_multiple cchanx",
+      "name": "cchanx",
+      "label": "This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?",
+      "guidance_hint": "SHOW CARD C4\nPROBE: Which others? UNTIL 'None'.",
+      "relevant": "${clogvac} = '1'"
+    },
+    {
+      "type": "text",
+      "name": "cchanx_other",
+      "label": "Some other way (please specify COTHCHN)",
+      "relevant": "selected(${cchanx}, 'other')"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "cinduct",
+      "label": "Is there a standard induction programme designed to introduce new [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] to this workplace?",
+      "guidance_hint": "INTERVIEWER: Do not include probation periods."
+    },
+    {
+      "type": "select_one cstuckin",
+      "name": "cstuckin",
+      "label": "About how long does it normally take before new [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are able to do their job as well as more experienced employees already working here?",
+      "guidance_hint": "SHOW CARD C5"
+    },
+    {
+      "type": "note",
+      "name": "trintro",
+      "label": "I am now going to ask about training activities. I am interested in all training for which employees are given a break from their normal work duties, whether the training takes place at their immediate work position or elsewhere."
+    },
+    {
+      "type": "select_one coffjob",
+      "name": "coffjob",
+      "label": "What proportion of experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] have been given time off from their normal daily work duties to undertake training over the past 12 months?",
+      "guidance_hint": "SHOW CARD C6"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "coffchk",
+      "label": "Did any experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] have time off from their normal daily work duties to undertake training over the past 12 months?",
+      "relevant": "string-length(${coffjob}) = 0"
+    },
+    {
+      "type": "select_one ctrain",
+      "name": "ctrain",
+      "label": "On average, how many days of training did experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] undertake over the past 12 months?",
+      "relevant": "(string-length(${coffjob}) > 0 and ${coffjob} != '7') or ${coffchk} = '1'"
+    },
+    {
+      "type": "select_multiple chow",
+      "name": "chow",
+      "label": "Did this training cover any of the matters listed on this card?:",
+      "guidance_hint": "SHOW CARD C7\nPROBE: Which others? UNTIL 'None'.\nCODE ALL THAT APPLY.",
+      "relevant": "(string-length(${coffjob}) > 0 and ${coffjob} != '7') or ${coffchk} = '1'"
+    },
+    {
+      "type": "select_one card_c8",
+      "name": "cothjob",
+      "label": "Approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?",
+      "guidance_hint": "SHOW CARD C8\nINTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question."
+    },
+    {
+      "type": "integer",
+      "name": "cothjobt",
+      "label": "(How many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?)",
+      "guidance_hint": "ENTER NUMBER\nSOFT CHECK if COTHJOBT>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
+      "constraint": ". >= 1 and . <= 999997",
+      "relevant": "${cothjob} = '97'"
+    },
+    {
+      "type": "select_one card_c8",
+      "name": "cothdo",
+      "label": "And approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?",
+      "guidance_hint": "SHOW CARD C8\nINTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question."
+    },
+    {
+      "type": "integer",
+      "name": "cothdot",
+      "label": "(And approximately, how many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?)",
+      "guidance_hint": "ENTER NUMBER\nSOFT CHECK if COTHDOT>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
+      "constraint": ". >= 1 and . <= 999997",
+      "relevant": "${cothdo} = '97'"
+    },
+    {
+      "type": "begin_group",
+      "name": "card_c9_grid",
+      "label": "Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...",
+      "appearance": "table-list"
+    },
+    {
+      "type": "select_one card_c9",
+      "name": "cvariety",
+      "label": "...variety in their work?",
+      "guidance_hint": "SHOW CARD C9"
+    },
+    {
+      "type": "select_one card_c9",
+      "name": "cdiscrete",
+      "label": "...discretion over how they do their work? :",
+      "guidance_hint": "SHOW CARD C9"
+    },
+    {
+      "type": "select_one card_c9",
+      "name": "control",
+      "label": "...control over the pace at which they work? :",
+      "guidance_hint": "SHOW CARD C9"
+    },
+    {
+      "type": "select_one card_c9",
+      "name": "cdesign",
+      "label": "...involvement in decisions over how their work is organised?",
+      "guidance_hint": "SHOW CARD C9"
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "select_one cteams",
+      "name": "cteams",
+      "label": "What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?",
+      "guidance_hint": "SHOW CARD C10\nINTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question"
+    },
+    {
+      "type": "integer",
+      "name": "cteamst",
+      "label": "(How many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?)",
+      "guidance_hint": "ENTER NUMBER\nSOFT CHECK if CTEAMST>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
+      "constraint": ". >= 1 and . <= 999997",
+      "relevant": "${cteams} = '97'"
+    },
+    {
+      "type": "begin_group",
+      "name": "cteamho",
+      "label": "Do each of the following statements apply to the way that teamworking operates among [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace?",
+      "appearance": "table-list",
+      "relevant": "${cteams} != '7'"
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "cteamhoa",
+      "label": "...Team members depend on each other's work to be able to do their job."
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "cteamhoc",
+      "label": "...Team members jointly decide how the work is to be done."
+    },
+    {
+      "type": "select_one yes_no",
+      "name": "cteamhod",
+      "label": "...Teams are given responsibility for specific products or services."
+    },
+    {
+      "type": "end_group"
+    },
+    {
+      "type": "integer",
+      "name": "ccomput",
+      "label": "I would now like you to think about the whole workforce at this workplace.\nIn this workplace, what percentage of all employees use computers as part of their normal work duties? Please answer to the nearest 10%.",
+      "guidance_hint": "INTERVIEWER: If respondent gives answer as an exact number you can code “997” here and record the number at the next question.\nSOFT CHECK if CCOMPUT>100 and CCOMPUT≠997: \"The number entered here is a percentage. It should not be greater than 100.\"",
+      "constraint": ". >= 0 and . <= 997"
+    },
+    {
+      "type": "integer",
+      "name": "ccomputt",
+      "label": "(In this workplace, how many employees use computers as part of their normal work duties?)",
+      "guidance_hint": "ENTER NUMBER\nSOFT CHECK if CCOMPUTT>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
+      "constraint": ". >= 1 and . <= 999997",
+      "relevant": "${ccomput} = 997"
+    },
+    {
+      "type": "end_group"
+    }
+  ],
+  "choices": [
+    {
+      "list_name": "yes_no",
+      "name": "1",
+      "label": "Yes"
+    },
+    {
+      "list_name": "yes_no",
+      "name": "2",
+      "label": "No"
+    },
+    {
+      "list_name": "cfillvac",
+      "name": "1",
+      "label": "Internal applicants are only source, no external recruitment"
+    },
+    {
+      "list_name": "cfillvac",
+      "name": "2",
+      "label": "Internal applicants are given preference, other things being equal, over external applicants"
+    },
+    {
+      "list_name": "cfillvac",
+      "name": "3",
+      "label": "Applications from internal and external applicants are treated equally"
+    },
+    {
+      "list_name": "cfillvac",
+      "name": "4",
+      "label": "External applicants are given preference, other things being equal, over internal applicants"
+    },
+    {
+      "list_name": "cfillvac",
+      "name": "5",
+      "label": "External applicants are only source, no internal recruitment"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "1",
+      "label": "References"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "2",
+      "label": "Availability"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "3",
+      "label": "Recommended by another employee"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "4",
+      "label": "Skills"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "5",
+      "label": "Age"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "6",
+      "label": "Qualifications"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "7",
+      "label": "Experience"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "8",
+      "label": "Motivation"
+    },
+    {
+      "list_name": "cfactors",
+      "name": "other",
+      "label": "Other (please specify CFACTOTH)"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "1",
+      "label": "Women returning to work after having children"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "2",
+      "label": "Women in general"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "3",
+      "label": "Members of minority ethnic groups"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "4",
+      "label": "Older workers"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "5",
+      "label": "Disabled people"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "6",
+      "label": "People who have been unemployed for 12 months or more"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "7",
+      "label": "Part-time workers or job sharers"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "8",
+      "label": "Gay, lesbian and transgender communities"
+    },
+    {
+      "list_name": "cspecix",
+      "name": "9",
+      "label": "None of these",
+      "exclusive": "yes"
+    },
+    {
+      "list_name": "catestw",
+      "name": "1",
+      "label": "Managerial"
+    },
+    {
+      "list_name": "catestw",
+      "name": "2",
+      "label": "Non-managerial"
+    },
+    {
+      "list_name": "catestw",
+      "name": "3",
+      "label": "No tests conducted",
+      "exclusive": "yes"
+    },
+    {
+      "list_name": "cptestw",
+      "name": "1",
+      "label": "Managerial"
+    },
+    {
+      "list_name": "cptestw",
+      "name": "2",
+      "label": "Non-managerial"
+    },
+    {
+      "list_name": "cptestw",
+      "name": "3",
+      "label": "No tests conducted.",
+      "exclusive": "yes"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "1",
+      "label": "Local or regional newspapers"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "2",
+      "label": "Trade, professional or specialist press"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "3",
+      "label": "Internal notices"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "4",
+      "label": "Notice in office or shop window"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "5",
+      "label": "Jobcentre / Employment Service office"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "6",
+      "label": "Careers Service (School/College/University)"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "7",
+      "label": "Fee charging, private employment or recruitment agency"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "8",
+      "label": "Direct approach to potential recruit(s)"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "9",
+      "label": "Replying to speculative applications"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "10",
+      "label": "Recommendation or enquiry by existing employee"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "11",
+      "label": "Word of mouth"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "12",
+      "label": "Intranet or own website"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "13",
+      "label": "Internet – external website(s)"
+    },
+    {
+      "list_name": "cchanx",
+      "name": "other",
+      "label": "Some other way (please specify COTHCHN)"
+    },
+    {
+      "list_name": "cstuckin",
+      "name": "1",
+      "label": "One week or less"
+    },
+    {
+      "list_name": "cstuckin",
+      "name": "2",
+      "label": "More than one week, up to one month"
+    },
+    {
+      "list_name": "cstuckin",
+      "name": "3",
+      "label": "More than one month, up to six months"
+    },
+    {
+      "list_name": "cstuckin",
+      "name": "4",
+      "label": "More than six months, up to one year"
+    },
+    {
+      "list_name": "cstuckin",
+      "name": "5",
+      "label": "More than one year"
+    },
+    {
+      "list_name": "coffjob",
+      "name": "1",
+      "label": "All (100%)"
+    },
+    {
+      "list_name": "coffjob",
+      "name": "2",
+      "label": "Almost all (80-99%)"
+    },
+    {
+      "list_name": "coffjob",
+      "name": "3",
+      "label": "Most (60-79%)"
+    },
+    {
+      "list_name": "coffjob",
+      "name": "4",
+      "label": "Around half (40-59%)"
+    },
+    {
+      "list_name": "coffjob",
+      "name": "5",
+      "label": "Some (20-39%)"
+    },
+    {
+      "list_name": "coffjob",
+      "name": "6",
+      "label": "Just a few (1-19%)"
+    },
+    {
+      "list_name": "coffjob",
+      "name": "7",
+      "label": "None (0%)"
+    },
+    {
+      "list_name": "ctrain",
+      "name": "1",
+      "label": "No time"
+    },
+    {
+      "list_name": "ctrain",
+      "name": "2",
+      "label": "Less than one day"
+    },
+    {
+      "list_name": "ctrain",
+      "name": "3",
+      "label": "1 to less than 2 days"
+    },
+    {
+      "list_name": "ctrain",
+      "name": "4",
+      "label": "2 to less than 5 days"
+    },
+    {
+      "list_name": "ctrain",
+      "name": "5",
+      "label": "5 to less than 10 days"
+    },
+    {
+      "list_name": "ctrain",
+      "name": "6",
+      "label": "10 days or more"
+    },
+    {
+      "list_name": "chow",
+      "name": "1",
+      "label": "Computing skills"
+    },
+    {
+      "list_name": "chow",
+      "name": "2",
+      "label": "Team working"
+    },
+    {
+      "list_name": "chow",
+      "name": "3",
+      "label": "Communication skills"
+    },
+    {
+      "list_name": "chow",
+      "name": "4",
+      "label": "Leadership skills"
+    },
+    {
+      "list_name": "chow",
+      "name": "5",
+      "label": "Operation of new equipment"
+    },
+    {
+      "list_name": "chow",
+      "name": "6",
+      "label": "Customer service/liaison"
+    },
+    {
+      "list_name": "chow",
+      "name": "7",
+      "label": "Health and safety"
+    },
+    {
+      "list_name": "chow",
+      "name": "8",
+      "label": "Problem-solving methods"
+    },
+    {
+      "list_name": "chow",
+      "name": "9",
+      "label": "Equal opportunities and diversity"
+    },
+    {
+      "list_name": "chow",
+      "name": "10",
+      "label": "Reliability and working to deadlines"
+    },
+    {
+      "list_name": "chow",
+      "name": "11",
+      "label": "Quality control procedures"
+    },
+    {
+      "list_name": "chow",
+      "name": "12",
+      "label": "None of these",
+      "exclusive": "yes"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "1",
+      "label": "All (100%)"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "2",
+      "label": "Almost all (80-99%)"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "3",
+      "label": "Most (60-79%)"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "4",
+      "label": "Around half (40-59%)"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "5",
+      "label": "Some (20-39%)"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "6",
+      "label": "Just a few (1-19%)"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "7",
+      "label": "None (0%)"
+    },
+    {
+      "list_name": "card_c8",
+      "name": "97",
+      "label": "INTERVIEWER: Exact number to be entered."
+    },
+    {
+      "list_name": "cteams",
+      "name": "1",
+      "label": "All (100%)"
+    },
+    {
+      "list_name": "cteams",
+      "name": "2",
+      "label": "Almost all (80-99%)"
+    },
+    {
+      "list_name": "cteams",
+      "name": "3",
+      "label": "Most (60-79%)"
+    },
+    {
+      "list_name": "cteams",
+      "name": "4",
+      "label": "Around half (40-59%)"
+    },
+    {
+      "list_name": "cteams",
+      "name": "5",
+      "label": "Some (20-39%)"
+    },
+    {
+      "list_name": "cteams",
+      "name": "6",
+      "label": "Just a few (1-19%,"
+    },
+    {
+      "list_name": "cteams",
+      "name": "7",
+      "label": "None (0%)"
+    },
+    {
+      "list_name": "cteams",
+      "name": "97",
+      "label": "INTERVIEWER: Exact number to be entered"
+    },
+    {
+      "list_name": "card_c9",
+      "name": "1",
+      "label": "A lot"
+    },
+    {
+      "list_name": "card_c9",
+      "name": "2",
+      "label": "Some"
+    },
+    {
+      "list_name": "card_c9",
+      "name": "3",
+      "label": "A little"
+    },
+    {
+      "list_name": "card_c9",
+      "name": "4",
+      "label": "None"
+    }
+  ],
+  "settings": {
+    "default_language": "English (en)",
+    "form_title": "Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work",
+    "form_id": "q23-wers2011"
+  }
+}
