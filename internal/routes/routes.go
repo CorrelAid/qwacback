@@ -917,32 +917,6 @@ func setSecureXMLHeaders(e *core.RequestEvent, disposition string) {
 	}
 }
 
-// rangeBounds is a range variable's min, max and step as its codebook states
-// them; a bound it doesn't state is omitted.
-type rangeBounds struct {
-	Min  *float64 `json:"min,omitempty"`
-	Max  *float64 `json:"max,omitempty"`
-	Step *float64 `json:"step,omitempty"`
-}
-
-// recordRange reads the `range_bounds` JSON field of a variable record; nil
-// when it has none.
-func recordRange(r *core.Record) *rangeBounds {
-	raw := r.GetString("range_bounds")
-	if raw == "" || raw == "null" {
-		return nil
-	}
-	var b rangeBounds
-	if err := json.Unmarshal([]byte(raw), &b); err != nil {
-		log.Printf("WARNING: failed to unmarshal range_bounds for %s: %v", r.Id, err)
-		return nil
-	}
-	if b.Min == nil && b.Max == nil && b.Step == nil {
-		return nil
-	}
-	return &b
-}
-
 // ErrQuestionNotFound is returned by QuestionDetail for an ID that is neither
 // a question group nor a standalone variable.
 var ErrQuestionNotFound = errors.New("question not found")
@@ -1048,7 +1022,6 @@ func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
 		GridNote         string         `json:"grid_note,omitempty"`
 		Universe         string         `json:"universe"`
 		AnswerType       string         `json:"answer_type"`
-		Range            *rangeBounds   `json:"range,omitempty"`
 		HasOther         bool           `json:"has_other"`
 		HasLongList      bool           `json:"has_long_list"`
 		LongListStandard string         `json:"long_list_standard"`
@@ -1086,8 +1059,7 @@ func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
 			GridNote:         v.GetString("grid_note"),
 			Universe:         v.GetString("universe"),
 			AnswerType:       effectiveAnswerType(v),
-			Range:            recordRange(v),
-			HasOther:        v.GetBool("has_other"),
+			HasOther:         v.GetBool("has_other"),
 			HasLongList:      v.GetBool("has_long_list"),
 			LongListStandard: v.GetString("long_list_standard"),
 			Categories:       cats,
