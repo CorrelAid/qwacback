@@ -238,7 +238,7 @@ qwacback exposes a [Model Context Protocol](https://modelcontextprotocol.io/) se
 |---|---|
 | `search_questions` | Search questions by text, concept, name, or answer type |
 | `search_studies` | Search studies by title, keywords, or abstract (optional `topic` filter) |
-| `get_question` | Get a single question by ID |
+| `get_question` | Get a single question by ID in full: study, group and every variable with item text, hint, categories and grid note |
 | `list_questions` | List all questions, optionally filtered by study |
 
 All tools are read-only.

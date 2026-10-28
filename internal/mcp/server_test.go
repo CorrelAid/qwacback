@@ -2,6 +2,7 @@ package mcp_test
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"testing"
 
@@ -211,5 +212,70 @@ func TestMCP_GetQuestion_NotFound(t *testing.T) {
 
 	if !result.IsError {
 		t.Error("expected error for nonexistent question")
+	}
+}
+
+// get_question returns the items of a grid, not only its stem and variable
+// IDs, so a client can read what each row asks.
+func TestMCP_GetQuestion_GridItems(t *testing.T) {
+	client, cleanup := setupTestMCP(t)
+	defer cleanup()
+
+	ctx := context.Background()
+	call := func(name string, args map[string]any) string {
+		t.Helper()
+		result, err := client.CallTool(ctx, gomcp.CallToolRequest{
+			Params: gomcp.CallToolParams{Name: name, Arguments: args},
+		})
+		if err != nil {
+			t.Fatal(err)
+		}
+		if result.IsError || len(result.Content) == 0 {
+			t.Fatalf("%s: %+v", name, result.Content)
+		}
+		text, ok := result.Content[0].(gomcp.TextContent)
+		if !ok {
+			t.Fatalf("%s: content is %T", name, result.Content[0])
+		}
+		return text.Text
+	}
+
+	var found []struct {
+		ID   string `json:"id"`
+		Name string `json:"name"`
+	}
+	if err := json.Unmarshal([]byte(call("search_questions", map[string]any{"query": "contact"})), &found); err != nil {
+		t.Fatal(err)
+	}
+	id := ""
+	for _, q := range found {
+		if q.Name == "contact_knowledge" {
+			id = q.ID
+		}
+	}
+	if id == "" {
+		t.Fatalf("contact_knowledge not found in %+v", found)
+	}
+
+	var detail struct {
+		AnswerType string `json:"answer_type"`
+		Variables  []struct {
+			Question   string `json:"question"`
+			Categories []struct {
+				Label string `json:"label"`
+			} `json:"categories"`
+		} `json:"variables"`
+	}
+	if err := json.Unmarshal([]byte(call("get_question", map[string]any{"id": id})), &detail); err != nil {
+		t.Fatal(err)
+	}
+	if detail.AnswerType != "grid" || len(detail.Variables) != 4 {
+		t.Fatalf("answer_type %q with %d variables, want grid with 4", detail.AnswerType, len(detail.Variables))
+	}
+	if q := detail.Variables[0].Question; q != "Local Community Groups" {
+		t.Errorf("first item = %q, want %q", q, "Local Community Groups")
+	}
+	if len(detail.Variables[0].Categories) == 0 {
+		t.Error("first item has no categories")
 	}
 }

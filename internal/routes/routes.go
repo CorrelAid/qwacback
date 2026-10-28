@@ -812,161 +812,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		if !pocketbaseIDRegex.MatchString(qId) {
 			return apis.NewBadRequestError("Invalid ID format", nil)
 		}
-
-		// Determine whether the ID is a group or a standalone variable, and grab the study ID.
-		var studyID string
-		var grpRecord *core.Record
-		var varRecord *core.Record
-
-		if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
-			grpRecord = grp
-			studyID = grp.GetString("study")
-		} else if v, err := app.FindRecordById("variables", qId); err == nil {
-			varRecord = v
-			studyID = v.GetString("study")
-		} else {
+		detail, err := QuestionDetail(app, qId)
+		if errors.Is(err, ErrQuestionNotFound) {
 			return apis.NewNotFoundError("Question not found", nil)
-		}
-
-		questions, err := AssembleQuestions(app, studyID)
-		if err != nil {
+		} else if err != nil {
 			return apis.NewInternalServerError("Failed to assemble questions", nil)
 		}
-
-		var q Question
-		found := false
-		for _, candidate := range questions {
-			if candidate.ID == qId {
-				q = candidate
-				found = true
-				break
-			}
-		}
-		if !found {
-			return apis.NewNotFoundError("Question not found", nil)
-		}
-
-		// Embed study info
-		// License, copyright, citation and source say how the question may be
-		// reused and how to attribute it; empty when the codebook states none.
-		// LicenseID is the SPDX ID of a Creative Commons license, else empty.
-		type studyInfo struct {
-			ID        string `json:"id"`
-			Title     string `json:"title"`
-			License   string `json:"license"`
-			LicenseID string `json:"license_id"`
-			Copyright string `json:"copyright"`
-			Citation  string `json:"citation"`
-			SourceURI string `json:"source_uri"`
-		}
-		var study studyInfo
-		if s, err := app.FindRecordById("studies", studyID); err == nil {
-			study = studyInfo{
-				ID:        s.Id,
-				Title:     s.GetString("title"),
-				License:   s.GetString("license"),
-				LicenseID: s.GetString("license_id"),
-				Copyright: s.GetString("copyright"),
-				Citation:  s.GetString("citation"),
-				SourceURI: s.GetString("holdings_uri"),
-			}
-		}
-
-		// Embed group info (nil for standalone variables)
-		type groupInfo struct {
-			ID          string `json:"id"`
-			Type        string `json:"type"`
-			Concept     string `json:"concept"`
-			Description string `json:"description"`
-			Translations any   `json:"translations,omitempty"`
-		}
-		var group *groupInfo
-		if grpRecord != nil {
-			group = &groupInfo{
-				ID:           grpRecord.Id,
-				Type:         grpRecord.GetString("type"),
-				Concept:      grpRecord.GetString("concept"),
-				Description:  grpRecord.GetString("description"),
-				Translations: grpRecord.Get("translations"),
-			}
-		}
-
-		// Embed full variable data for each variable_id in the question
-		type categoryItem struct {
-			Label     string `json:"label"`
-			Value     string `json:"value"`
-			IsMissing bool   `json:"is_missing"`
-		}
-		type variableDetail struct {
-			ID               string         `json:"id"`
-			Name             string         `json:"name"`
-			Concept          string         `json:"concept"`
-			Question         string         `json:"question"`
-			PrequestionText  string         `json:"prequestion_text"`
-			IvuInstructions  string         `json:"ivu_instructions"`
-			Hint             string         `json:"hint"`
-			GridNote         string         `json:"grid_note,omitempty"`
-			Universe         string         `json:"universe"`
-			AnswerType       string         `json:"answer_type"`
-			HasOther         bool           `json:"has_other"`
-			HasLongList      bool           `json:"has_long_list"`
-			LongListStandard string         `json:"long_list_standard"`
-			Categories       []categoryItem `json:"categories"`
-			Translations     any            `json:"translations,omitempty"`
-		}
-
-		var varIDs []string
-		if varRecord != nil {
-			// Standalone variable: the question ID is the variable ID
-			varIDs = []string{varRecord.Id}
-		} else {
-			varIDs = q.VariableIDs
-		}
-
-		variables := make([]variableDetail, 0, len(varIDs))
-		for _, vid := range varIDs {
-			v, err := app.FindRecordById("variables", vid)
-			if err != nil {
-				continue
-			}
-			var cats []categoryItem
-			if raw := v.Get("categories"); raw != nil {
-				b, _ := json.Marshal(raw)
-				json.Unmarshal(b, &cats)
-			}
-			variables = append(variables, variableDetail{
-				ID:               v.Id,
-				Name:             v.GetString("name"),
-				Concept:          v.GetString("concept"),
-				Question:         v.GetString("question"),
-				PrequestionText:  v.GetString("prequestion_text"),
-				IvuInstructions:  v.GetString("ivu_instructions"),
-				Hint:             v.GetString("hint"),
-				GridNote:         v.GetString("grid_note"),
-				Universe:         v.GetString("universe"),
-				AnswerType:       effectiveAnswerType(v),
-				HasOther:         v.GetBool("has_other"),
-				HasLongList:      v.GetBool("has_long_list"),
-				LongListStandard: v.GetString("long_list_standard"),
-				Categories:       cats,
-				Translations:     v.Get("translations"),
-			})
-		}
-
-		return e.JSON(200, map[string]interface{}{
-			"id":           q.ID,
-			"name":         q.Name,
-			"concept":      q.Concept,
-			"question_text": q.QuestionText,
-			"answer_type":  q.AnswerType,
-			"order":        q.Order,
-			"study":        study,
-			"group":        group,
-			"variables":    variables,
-			"tags":         q.Tags,
-			"language":     q.Language,
-			"translations": q.Translations,
-		})
+		return e.JSON(200, detail)
 	})
 
 	// Questions for a single study - Public
@@ -1063,4 +915,168 @@ func setSecureXMLHeaders(e *core.RequestEvent, disposition string) {
 	if disposition != "" {
 		h.Set("Content-Disposition", disposition)
 	}
+}
+
+// ErrQuestionNotFound is returned by QuestionDetail for an ID that is neither
+// a question group nor a standalone variable.
+var ErrQuestionNotFound = errors.New("question not found")
+
+// QuestionDetail is a question with its study, group and every variable in
+// full (item texts, hints, categories, grid notes, translations), as
+// GET /api/questions/{id} and the MCP get_question tool return it.
+func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
+	// Determine whether the ID is a group or a standalone variable, and grab the study ID.
+	var studyID string
+	var grpRecord *core.Record
+	var varRecord *core.Record
+
+	if grp, err := app.FindRecordById("variable_groups", qId); err == nil {
+		grpRecord = grp
+		studyID = grp.GetString("study")
+	} else if v, err := app.FindRecordById("variables", qId); err == nil {
+		varRecord = v
+		studyID = v.GetString("study")
+	} else {
+		return nil, ErrQuestionNotFound
+	}
+
+	questions, err := AssembleQuestions(app, studyID)
+	if err != nil {
+		return nil, err
+	}
+
+	var q Question
+	found := false
+	for _, candidate := range questions {
+		if candidate.ID == qId {
+			q = candidate
+			found = true
+			break
+		}
+	}
+	if !found {
+		return nil, ErrQuestionNotFound
+	}
+
+	// Embed study info
+	// License, copyright, citation and source say how the question may be
+	// reused and how to attribute it; empty when the codebook states none.
+	// LicenseID is the SPDX ID of a Creative Commons license, else empty.
+	type studyInfo struct {
+		ID        string `json:"id"`
+		Title     string `json:"title"`
+		License   string `json:"license"`
+		LicenseID string `json:"license_id"`
+		Copyright string `json:"copyright"`
+		Citation  string `json:"citation"`
+		SourceURI string `json:"source_uri"`
+	}
+	var study studyInfo
+	if s, err := app.FindRecordById("studies", studyID); err == nil {
+		study = studyInfo{
+			ID:        s.Id,
+			Title:     s.GetString("title"),
+			License:   s.GetString("license"),
+			LicenseID: s.GetString("license_id"),
+			Copyright: s.GetString("copyright"),
+			Citation:  s.GetString("citation"),
+			SourceURI: s.GetString("holdings_uri"),
+		}
+	}
+
+	// Embed group info (nil for standalone variables)
+	type groupInfo struct {
+		ID          string `json:"id"`
+		Type        string `json:"type"`
+		Concept     string `json:"concept"`
+		Description string `json:"description"`
+		Translations any   `json:"translations,omitempty"`
+	}
+	var group *groupInfo
+	if grpRecord != nil {
+		group = &groupInfo{
+			ID:           grpRecord.Id,
+			Type:         grpRecord.GetString("type"),
+			Concept:      grpRecord.GetString("concept"),
+			Description:  grpRecord.GetString("description"),
+			Translations: grpRecord.Get("translations"),
+		}
+	}
+
+	// Embed full variable data for each variable_id in the question
+	type categoryItem struct {
+		Label     string `json:"label"`
+		Value     string `json:"value"`
+		IsMissing bool   `json:"is_missing"`
+	}
+	type variableDetail struct {
+		ID               string         `json:"id"`
+		Name             string         `json:"name"`
+		Concept          string         `json:"concept"`
+		Question         string         `json:"question"`
+		PrequestionText  string         `json:"prequestion_text"`
+		IvuInstructions  string         `json:"ivu_instructions"`
+		Hint             string         `json:"hint"`
+		GridNote         string         `json:"grid_note,omitempty"`
+		Universe         string         `json:"universe"`
+		AnswerType       string         `json:"answer_type"`
+		HasOther         bool           `json:"has_other"`
+		HasLongList      bool           `json:"has_long_list"`
+		LongListStandard string         `json:"long_list_standard"`
+		Categories       []categoryItem `json:"categories"`
+		Translations     any            `json:"translations,omitempty"`
+	}
+
+	var varIDs []string
+	if varRecord != nil {
+		// Standalone variable: the question ID is the variable ID
+		varIDs = []string{varRecord.Id}
+	} else {
+		varIDs = q.VariableIDs
+	}
+
+	variables := make([]variableDetail, 0, len(varIDs))
+	for _, vid := range varIDs {
+		v, err := app.FindRecordById("variables", vid)
+		if err != nil {
+			continue
+		}
+		var cats []categoryItem
+		if raw := v.Get("categories"); raw != nil {
+			b, _ := json.Marshal(raw)
+			json.Unmarshal(b, &cats)
+		}
+		variables = append(variables, variableDetail{
+			ID:               v.Id,
+			Name:             v.GetString("name"),
+			Concept:          v.GetString("concept"),
+			Question:         v.GetString("question"),
+			PrequestionText:  v.GetString("prequestion_text"),
+			IvuInstructions:  v.GetString("ivu_instructions"),
+			Hint:             v.GetString("hint"),
+			GridNote:         v.GetString("grid_note"),
+			Universe:         v.GetString("universe"),
+			AnswerType:       effectiveAnswerType(v),
+			HasOther:         v.GetBool("has_other"),
+			HasLongList:      v.GetBool("has_long_list"),
+			LongListStandard: v.GetString("long_list_standard"),
+			Categories:       cats,
+			Translations:     v.Get("translations"),
+		})
+	}
+
+	return map[string]interface{}{
+		"id":           q.ID,
+		"name":         q.Name,
+		"concept":      q.Concept,
+		"question_text": q.QuestionText,
+		"answer_type":  q.AnswerType,
+		"order":        q.Order,
+		"study":        study,
+		"group":        group,
+		"variables":    variables,
+		"tags":         q.Tags,
+		"language":     q.Language,
+		"translations": q.Translations,
+	}, nil
 }
