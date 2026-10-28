@@ -335,8 +335,9 @@ func conceptsAt(m mxj.Map) (concept, vocab string, tags []ConceptTag) {
 
 // inferAnswerType maps a var to an answer type the way formtransform's
 // ddiToXlsform reads it back (#44):
-//   - numeric: integer with var/@dcml="0", range with a valrng/range that
-//     no cdl:constraint explains, else decimal
+//   - numeric: integer with var/@dcml="0", else decimal. qwac has no slider,
+//     so an XLSForm range (valrng/range without a cdl:constraint) is a
+//     decimal here too; the codebook keeps it as written.
 //   - text: date or time by varFormat/@category, else text
 //   - category: grid inside a grid group, else single_choice
 //   - multiple: multiple_choice
@@ -346,9 +347,6 @@ func inferAnswerType(vM mxj.Map, groupType string) string {
 	case "numeric":
 		if dcml, _ := vM.ValueForPathString("-dcml"); dcml == "0" {
 			return "integer"
-		}
-		if ranges, _ := vM.ValuesForPath("valrng.range"); len(ranges) > 0 && !hasNote(vM, "cdl:constraint") {
-			return "range"
 		}
 		return "decimal"
 	case "text":
