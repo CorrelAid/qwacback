@@ -134,6 +134,21 @@ On import, the application captures each element's position as a numeric `order`
 | `multiple_choice` | `discrete` | `multiple` | `numeric` (0/1 binaries) | `<varGrp type="multipleResp">` + binary `<var>` per option |
 | `grid` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<varGrp type="grid">` + `<var>` per item (categories repeated). A grid of number fields has `integer`/`decimal`/`range` members instead; the question's answer type is still `grid` |
 
+### Range bounds
+
+A `range` variable (standalone or a number-grid row) carries the XLSForm `parameters` `start`, `end` and `step`. formtransform writes start and end as `<valrng><range min="…" max="…"/></valrng>` (filling in its defaults, 1 and 10, when the form has none) and the `parameters` cell verbatim as `<notes type="cdl:parameters">start=0 end=5 step=0.5</notes>`:
+
+```xml
+<var ID="V_hours" name="hours" intrvl="contin">
+  <qstn responseDomainType="numeric"><qstnLit>…</qstnLit></qstn>
+  <valrng><range min="0" max="5"/></valrng>
+  <varFormat type="numeric" schema="other"/>
+  <notes type="cdl:parameters">start=0 end=5 step=0.5</notes>
+</var>
+```
+
+qwacback stores them on the variable as `range_bounds` (`{"min": 0, "max": 5, "step": 0.5}`): `min`/`max` from `valrng/range/@min`/`@max`, else `start`/`end` from the note; `step` from the note only. A bound the codebook doesn't state is left out (no `step` without a `cdl:parameters` step), and `min` is the XLSForm `start`, so it is greater than `max` for a descending range. `/api/questions/{id}` returns them as `range` on the variable. An `integer`'s or `decimal`'s `valrng` comes from its constraint and is not stored as bounds.
+
 ### Subcategory flags
 
 Two boolean fields on the `variables` collection modify the base type:
