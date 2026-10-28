@@ -54,15 +54,10 @@
       "label": "Teil 1: Fragen an alle Unternehmen – Strukturdaten des Unternehmens"
     },
     {
-      "type": "note",
-      "name": "f1_1_frage",
-      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?"
-    },
-    {
       "type": "integer",
       "name": "f1_1_002",
-      "label": "Beschäftigte am 31.12.2025 insgesamt",
-      "hint": "Anzahl"
+      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?",
+      "hint": "Beschäftigte am 31.12.2025 insgesamt. Anzahl"
     },
     {
       "type": "note",
@@ -94,26 +89,16 @@
       "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
-      "type": "note",
-      "name": "f1_2_frage",
-      "label": "Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an."
-    },
-    {
       "type": "integer",
       "name": "f1_2_006",
-      "label": "Geleistete Arbeitsstunden im Jahr 2025 insgesamt",
-      "hint": "Stunden"
-    },
-    {
-      "type": "note",
-      "name": "f1_3_frage",
-      "label": "Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein."
+      "label": "Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.",
+      "hint": "Geleistete Arbeitsstunden im Jahr 2025 insgesamt. Stunden"
     },
     {
       "type": "integer",
       "name": "f1_3_007",
-      "label": "Personalaufwendungen im Jahr 2025",
-      "hint": "Volle Euro"
+      "label": "Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.",
+      "hint": "Personalaufwendungen im Jahr 2025. Volle Euro"
     },
     {
       "type": "end_group"
@@ -509,14 +494,10 @@
       "hint": "Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
-      "type": "note",
-      "name": "f4_2_frage",
-      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen."
-    },
-    {
       "type": "integer",
       "name": "f4_2_081",
-      "label": "Teilnahmestunden insgesamt"
+      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.",
+      "hint": "Teilnahmestunden insgesamt"
     },
     {
       "type": "integer",

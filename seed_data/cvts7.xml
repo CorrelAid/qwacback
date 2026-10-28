@@ -156,13 +156,11 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </varGrp>
     <var ID="V_f1_1_002" name="f1_1_002" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="1">
-        <preQTxt>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?</preQTxt>
-        <qstnLit>Beschäftigte am 31.12.2025 insgesamt</qstnLit>
-        <postQTxt>Anzahl</postQTxt>
+        <qstnLit>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?</qstnLit>
+        <postQTxt>Beschäftigte am 31.12.2025 insgesamt. Anzahl</postQTxt>
       </qstn>
-      <concept>Beschäftigte am 31.12.2025 insgesamt</concept>
+      <concept>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?</concept>
       <varFormat type="numeric" schema="other"/>
-      <notes type="cdl:note_names">f1_1_frage</notes>
     </var>
     <var ID="V_f1_1_002a" name="f1_1_002a" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="2">
@@ -200,23 +198,19 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f1_2_006" name="f1_2_006" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="6">
-        <preQTxt>Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.</preQTxt>
-        <qstnLit>Geleistete Arbeitsstunden im Jahr 2025 insgesamt</qstnLit>
-        <postQTxt>Stunden</postQTxt>
+        <qstnLit>Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.</qstnLit>
+        <postQTxt>Geleistete Arbeitsstunden im Jahr 2025 insgesamt. Stunden</postQTxt>
       </qstn>
-      <concept>Geleistete Arbeitsstunden im Jahr 2025 insgesamt</concept>
+      <concept>Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.</concept>
       <varFormat type="numeric" schema="other"/>
-      <notes type="cdl:note_names">f1_2_frage</notes>
     </var>
     <var ID="V_f1_3_007" name="f1_3_007" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="7">
-        <preQTxt>Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.</preQTxt>
-        <qstnLit>Personalaufwendungen im Jahr 2025</qstnLit>
-        <postQTxt>Volle Euro</postQTxt>
+        <qstnLit>Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.</qstnLit>
+        <postQTxt>Personalaufwendungen im Jahr 2025. Volle Euro</postQTxt>
       </qstn>
-      <concept>Personalaufwendungen im Jahr 2025</concept>
+      <concept>Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.</concept>
       <varFormat type="numeric" schema="other"/>
-      <notes type="cdl:note_names">f1_3_frage</notes>
     </var>
     <var ID="V_f2_1_010" name="f2_1_010" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="8">
@@ -1247,13 +1241,12 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f4_2_081" name="f4_2_081" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="59">
-        <preQTxt>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.</preQTxt>
-        <qstnLit>Teilnahmestunden insgesamt</qstnLit>
+        <qstnLit>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.</qstnLit>
+        <postQTxt>Teilnahmestunden insgesamt</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnahmestunden insgesamt</concept>
+      <concept>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.</concept>
       <varFormat type="numeric" schema="other"/>
-      <notes type="cdl:note_names">f4_2_frage</notes>
     </var>
     <var ID="V_f4_2_082" name="f4_2_082" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="60">

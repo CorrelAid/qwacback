@@ -56,24 +56,21 @@ row({
 // ---- Teil 1 ---------------------------------------------------------------
 begin('teil1', 'Teil 1: Fragen an alle Unternehmen – Strukturdaten des Unternehmens');
 const q11 = `Wie viele in Deutschland Beschäftigte ${OHNE} hatte Ihr Unternehmen insgesamt?`;
-stem('f1_1_frage', q11);
-row({ type: 'integer', name: 'f1_1_002', label: 'Beschäftigte am 31.12.2025 insgesamt', hint: 'Anzahl' });
+row({ type: 'integer', name: 'f1_1_002', label: q11, hint: 'Beschäftigte am 31.12.2025 insgesamt. Anzahl' });
 stem('f1_1_geschlecht', 'davon: Geschlecht (nach Geburtenregister)');
 for (const [c, l] of [['002a', 'Männlich'], ['002b', 'Weiblich'], ['002c', 'Divers'], ['002d', 'Ohne Angabe (nach Geburtenregister)']])
   row({ type: 'integer', name: `f1_1_${c}`, label: l, hint: `Anzahl. ${GESCHL_HINT}` });
-stem('f1_2_frage', `Geben Sie bitte den Gesamtumfang der von den Beschäftigten ${OHNE} in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.`);
 row({
   type: 'integer',
   name: 'f1_2_006',
-  label: 'Geleistete Arbeitsstunden im Jahr 2025 insgesamt',
-  hint: 'Stunden',
+  label: `Geben Sie bitte den Gesamtumfang der von den Beschäftigten ${OHNE} in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.`,
+  hint: 'Geleistete Arbeitsstunden im Jahr 2025 insgesamt. Stunden',
 });
-stem('f1_3_frage', 'Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.');
 row({
   type: 'integer',
   name: 'f1_3_007',
-  label: 'Personalaufwendungen im Jahr 2025',
-  hint: 'Volle Euro',
+  label: 'Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.',
+  hint: 'Personalaufwendungen im Jahr 2025. Volle Euro',
 });
 end();
 
@@ -226,8 +223,7 @@ for (const [suffix, col] of [['075', 'Personen'], ['078', 'Teilnehmenden-Fälle'
     row({ type: 'integer', name: `f4_1_${suffix}${s}`, label: l, hint: `Anzahl. ${col}. ${GESCHL_HINT}` });
 }
 const q42 = 'Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.';
-stem('f4_2_frage', q42);
-row({ type: 'integer', name: 'f4_2_081', label: 'Teilnahmestunden insgesamt' });
+row({ type: 'integer', name: 'f4_2_081', label: q42, hint: 'Teilnahmestunden insgesamt' });
 row({ type: 'integer', name: 'f4_2_082', label: 'davon an: internen Lehrveranstaltungen' });
 row({ type: 'integer', name: 'f4_2_083', label: 'externen Lehrveranstaltungen' });
 quali('quali_stunden', ['084', '085', '086', '087', '088', '089', '090', '091', '092', '093', '094', '095'], 'Technische, praktische oder arbeitsplatzspezifische Kompetenzen', false);
