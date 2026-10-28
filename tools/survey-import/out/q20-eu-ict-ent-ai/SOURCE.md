@@ -201,3 +201,14 @@ E5 a–h). This matches Annex 1's own count: "E Artificial Intelligence 15 / 14"
 - The study title says 2025 and cites the manual (2025 survey). The questionnaire it reproduces is V1.5, whose own
   version date is not printed in Annex 1.
 - E3–E5 are optional. Countries may omit them, so not every national 2025 survey asks for the reasons for not using AI.
+
+## German version (added 2026-10-28)
+
+- Source: Statistisches Bundesamt (Destatis), Qualitätsbericht "IKT-Erhebung in Unternehmen 2025", questionnaire section E (pp. 6–8, PDF pp. 22–24): https://www.destatis.de/DE/Methoden/Qualitaet/Qualitaetsberichte/Unternehmen/ikt-unternehmen-2025.pdf?__blob=publicationFile&v=2 (retrieved 2026-10-28; in downloads/q20-eu-ict-ent-ai/destatis/).
+- License (PDF imprint): "© Statistisches Bundesamt (Destatis), 2025. Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet."
+- Mapping by content: Destatis E1.1–1.8 = Eurostat E1 a–h; E2.1–2.7 = E2 a–g; E3 = Eurostat E4; E4.1–4.8 = Eurostat E5 a–h. Destatis does not ask Eurostat E3 (acquisition), so E3 has no German text. Destatis E1.3 says "oder Programmiercodes" where Annex 1's E1 c) has no "or programming codes" (the manual's variable table has it); both kept as printed.
+- Kept as printed: "Inkompatibillität", "Systeme,die", "Gesichtserkennungsysteme", "Tiefenlernen /Deep Learning", "Pick-and Pack-Lösungen", the full stop after E4.8.
+- Removed: soft hyphens, line-end hyphenation, footnote numbers 16–18, item numbers, and the routing lines ("Falls die Fragen E1.1 bis E1.8 mit „Nein" beantwortet wurden, weiter mit Frage E3.", "Bitte beantworten Sie die Frage E3 nur dann, …"), whose numbers follow Destatis' numbering; the English routing hints and `relevant` stay.
+- The E1 glossary hints and the module scope hint have no German counterpart and stay English only.
+- Check: verify-labels-de.py, 65 German lines, 0 not found; three planted errors were all caught.
+

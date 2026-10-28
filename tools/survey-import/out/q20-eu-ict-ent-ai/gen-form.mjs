@@ -160,16 +160,131 @@ end(); // module_e
 
 const URL_DOC = 'https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/w/ks-01-25-065';
 
+// German: the wording Destatis uses for these questions in its national
+// questionnaire, as printed in the quality report "IKT-Erhebung in
+// Unternehmen 2025" (questionnaire pp. 6–8, PDF pp. 22–24). Destatis drops
+// Eurostat's E3 (how AI was acquired), so E3 has no German text, and its
+// E3/E4 are Eurostat's E4/E5; mapped by content. Soft hyphens, line-end
+// hyphenation and footnote numbers are removed; item numbers and the
+// "weiter mit Frage …" routing lines (Destatis numbering) are left out.
+// verify-labels-de.py checks every German text against the PDF.
+const DE = {
+  module_e: { label: 'Künstliche Intelligenz (KI)' },
+  e_intro: {
+    label: L(
+      'Künstliche Intelligenz (KI) bezieht sich auf Systeme, die Technologien wie Text Mining, Computer Vision, Spracherkennung, Generierung natürlicher Sprache, maschinelles Lernen und Deep Learning nutzen, um Daten zu sammeln, zu verwenden und/oder zu produzieren, um mit einem unterschiedlichen Grad an Autonomie z. B. Vorhersagen, Empfehlungen oder Entscheidungen zu treffen.',
+      'Künstliche Intelligenz kann rein softwarebasiert sein, z. B.:',
+      '– Systeme,die Inhalte erstellen (generative KI)',
+      '– Chatbots und virtuelle Assistenten, die auf der Verarbeitung natürlicher Sprache basieren,',
+      '– Gesichtserkennungsysteme, die auf maschinellem Sehen oder Spracherkennungssystemen basieren',
+      '– Datenanalyse basierend auf maschinellem Lernen',
+      'oder in Geräten eingebettet sein z. B.',
+      '– Autonome Roboter für Lagerautomatisierung oder Montagearbeiten',
+      '– Autonome Drohnen zur Produktionsüberwachung oder Paketabfertigung',
+    ),
+  },
+  e1: { label: 'Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?' },
+  e1_a: { label: 'Technologien zur Analyse von Schriftsprache (Text Mining)' },
+  e1_b: { label: 'Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)' },
+  e1_c: { label: 'Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)' },
+  e1_d: { label: 'Technologien zur Erzeugung von Bildern, Videos, Ton/Audio' },
+  e1_e: { label: 'Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)' },
+  e1_f: { label: 'Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse' },
+  e1_g: { label: 'Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)' },
+  e1_h: { label: 'Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)' },
+  e2: { label: 'Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?' },
+  e2_a: {
+    label: 'Für Marketing oder Vertrieb',
+    hint: L(
+      'Einige der Beispiele können sein:',
+      '– Kundenprofiling, Preisoptimierung, personalisierte Marketingangebote, Marktanalyse basierend auf maschinellem Lernen',
+      '– Chatbots basierend auf der Verarbeitung natürlicher Sprache für den Kundensupport',
+      '– autonome Roboter für die Auftragsabwicklung',
+    ),
+  },
+  e2_b: {
+    label: 'Für Produktions- oder Dienstleistungsprozesse',
+    hint: L(
+      'Einige der Beispiele können sein:',
+      '– vorausschauende Wartung basierend auf maschinellem Lernen',
+      '– Tools zum Klassifizieren von Produkten oder zur Feststellung von Mängeln in Produkten basierend auf Computer Vision',
+      '– autonome Drohnen für Produktionsüberwachung, Sicherheits- oder Inspektionsaufgaben',
+      '– Montagearbeiten durch autonome Roboter',
+    ),
+  },
+  e2_c: {
+    label: 'Zur Organisation von Unternehmensverwaltungsprozessen oder das Management',
+    hint: L(
+      'Einige der Beispiele können sein:',
+      '– virtuelle Geschäftsassistenten, die auf maschinellem Lernen und/oder Verarbeitung natürlicher Sprache basieren, z. B. zur Dokumentenerstellung',
+      '– Datenanalyse oder strategische Entscheidungsfindung, z. B. Risikobewertung, basierend auf maschinellem Lernen',
+      '– Planung oder Geschäftsprognosen basierend auf maschinellem Lernen',
+      '– Personalmanagement basierend auf maschinellem Lernen oder der Verarbeitung natürlicher Sprache, z. B. Vorauswahl von Bewerbern, Erstellung von Mitarbeiterprofilen oder Leistungsanalysen',
+    ),
+  },
+  e2_d: {
+    label: 'Für die Logistik',
+    hint: L(
+      'Einige der Beispiele können sein:',
+      '– autonome Roboter für Pick-and Pack-Lösungen in Lagern für Paketversand, Rückverfolgung, Verteilung oder Sortierung',
+      '– Routenoptimierung basierend auf maschinellem Lernen',
+    ),
+  },
+  e2_e: {
+    label: 'Für die IT-Sicherheit',
+    hint: L(
+      'Einige der Beispiele können sein:',
+      '– Gesichtserkennung basierend auf Computer Vision zur Authentifizierung von IT-Benutzern',
+      '– Erkennung und Prävention von Cyber-Angriffen auf der Grundlage von maschinellem Lernen',
+    ),
+  },
+  e2_f: {
+    label: 'Für Buchführung, Controlling oder Finanzverwaltung',
+    hint: L(
+      'Einige der Beispiele können sein:',
+      '– Maschinelles Lernen zur Analyse von Daten, die bei finanziellen Entscheidungen helfen',
+      '– Rechnungsverarbeitung basierend auf maschinellem Lernen',
+      '– Maschinelles Lernen oder Verarbeitung natürlicher Sprache für Buchführungsunterlagen',
+    ),
+  },
+  e2_g: {
+    label: 'Für Forschung und Entwicklung (F&E) oder Innovationstätigkeit (ohne KI-Forschung)',
+    hint: L(
+      'Einige der Beispiele können sein:',
+      '– Analyse von Daten zur Durchführung von Forschungsarbeiten, Lösung von Forschungsproblemen, Entwicklung eines neuen oder deutlich verbesserten Produkts/Dienstes auf der Grundlage von maschinellem Lernen',
+    ),
+  },
+  e4: { label: 'Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?' },
+  e5: { label: 'Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?' },
+  e5_a: { label: 'Die Kosten erscheinen zu hoch' },
+  e5_b: { label: 'Es fehlt an entsprechendem Wissen im Unternehmen' },
+  e5_c: { label: 'Inkompatibillität mit vorhandenem Bestand an Geräten, Software oder Systemen' },
+  e5_d: { label: 'Schwierigkeiten mit der Verfügbarkeit oder Qualität der erforderlichen Daten' },
+  e5_e: { label: 'Bedenken hinsichtlich der Wahrung des Datenschutzes und der Privatsphäre' },
+  e5_f: { label: 'Unklarheit über die rechtlichen Folgen (z. B. Haftung bei Schäden durch den Einsatz von künstlicher Intelligenz)' },
+  e5_g: { label: 'Ethische Überlegungen' },
+  e5_h: { label: 'Technologien der künstlichen Intelligenz sind für das Unternehmen nicht sinnvoll.' },
+};
+const DE_LANG = 'Deutsch (de)';
+for (const r of S) {
+  const de = DE[r.name];
+  if (!de) continue;
+  r[`label::${DE_LANG}`] = de.label;
+  if (de.hint) r[`hint::${DE_LANG}`] = de.hint;
+}
+const DE_CHOICES = { 1: 'Ja', 0: 'Nein' };
+for (const c of C) if (c.list_name === 'yes_no') c[`label::${DE_LANG}`] = DE_CHOICES[c.name];
+
 const study = {
   title: 'EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)',
   id: 'q20-eu-ict-ent-ai',
   authors: [{ name: 'Eurostat', affiliation: 'European Commission, Eurostat' }],
   producer: { name: 'Eurostat' },
-  citation: "Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073",
+  citation: "Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073 — German wording: Statistisches Bundesamt (Destatis). (2025). Qualitätsbericht: IKT-Erhebung in Unternehmen 2025 [Fragebogen, Abschnitt E]. https://www.destatis.de/DE/Methoden/Qualitaet/Qualitaetsberichte/Unternehmen/ikt-unternehmen-2025.pdf",
   url: URL_DOC,
   sourceLabel: 'KS-01-25-065, Annex 1 – Model questionnaire (ICT-ENT 2025 V1.5), Module E "Artificial Intelligence" (Eurostat)',
   abstract:
-    'This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers\' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences).',
+    'This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers\' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences). The German texts are Destatis\u2019 wording of these questions in its national questionnaire for 2025, which does not ask E3 (how AI was acquired).',
   keywords: ['artificial intelligence', 'AI adoption', 'barriers to AI use', 'machine learning', 'data protection', 'enterprises', 'ICT usage', 'official statistics'],
   topics: ['Information society', 'Digital economy', 'Artificial intelligence'],
   nation: 'European Union',
@@ -180,8 +295,8 @@ const study = {
   dataKind: 'Model questionnaire',
   license:
     'CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). © European Union, 2025. Manual KS-01-25-065: "Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated." Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): "The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made." "Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011." (Commission Decision 2011/833/EU). "When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included." ' +
-    'Changes: format conversion of Module E "Artificial Intelligence" of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it.',
-  copyright: '© European Union, 2025 (Eurostat)',
+    'Changes: format conversion of Module E "Artificial Intelligence" of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it. German texts: Destatis, Qualitätsbericht "IKT-Erhebung in Unternehmen 2025" (questionnaire, section E): "© Statistisches Bundesamt (Destatis), 2025. Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet." They are attached as the German version of the matching Eurostat questions (Destatis E3/E4 = Eurostat E4/E5); item numbers and routing lines omitted.',
+  copyright: '© European Union, 2025 (Eurostat); German texts © Statistisches Bundesamt (Destatis), 2025',
 };
 
 writeFileSync(

@@ -6,10 +6,10 @@
         <titl>EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)</titl>
         <IDNo>q20-eu-ict-ent-ai</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="European Commission, Eurostat">Eurostat</AuthEnty></rspStmt>
-      <prodStmt><producer>Eurostat</producer><copyright>© European Union, 2025 (Eurostat)</copyright>
+      <prodStmt><producer>Eurostat</producer><copyright>© European Union, 2025 (Eurostat); German texts © Statistisches Bundesamt (Destatis), 2025</copyright>
         <prodDate date="2026-10-28">2026-10-28</prodDate>
-      </prodStmt><biblCit>Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073</biblCit><holdings URI="https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/w/ks-01-25-065">KS-01-25-065, Annex 1 – Model questionnaire (ICT-ENT 2025 V1.5), Module E &quot;Artificial Intelligence&quot; (Eurostat)</holdings>
-    </citation><stdyInfo><subject><keyword>artificial intelligence</keyword><keyword>AI adoption</keyword><keyword>barriers to AI use</keyword><keyword>machine learning</keyword><keyword>data protection</keyword><keyword>enterprises</keyword><keyword>ICT usage</keyword><keyword>official statistics</keyword><topcClas>Information society</topcClas><topcClas>Digital economy</topcClas><topcClas>Artificial intelligence</topcClas></subject><abstract>This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences).</abstract><sumDscr><timePrd event="single">2025</timePrd><nation>European Union</nation><anlyUnit>Enterprises</anlyUnit><universe clusion="I">Enterprises with 10 or more employees and self-employed persons (NACE Rev. 2 sections C–J, L–N and group 95.1; optional: 0–9). Module E: enterprises with access to the internet.</universe><dataKind>Model questionnaire</dataKind></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). © European Union, 2025. Manual KS-01-25-065: &quot;Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated.&quot; Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): &quot;The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made.&quot; &quot;Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011.&quot; (Commission Decision 2011/833/EU). &quot;When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included.&quot; Changes: format conversion of Module E &quot;Artificial Intelligence&quot; of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it.</conditions></useStmt></dataAccs>
+      </prodStmt><biblCit>Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073 — German wording: Statistisches Bundesamt (Destatis). (2025). Qualitätsbericht: IKT-Erhebung in Unternehmen 2025 [Fragebogen, Abschnitt E]. https://www.destatis.de/DE/Methoden/Qualitaet/Qualitaetsberichte/Unternehmen/ikt-unternehmen-2025.pdf</biblCit><holdings URI="https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/w/ks-01-25-065">KS-01-25-065, Annex 1 – Model questionnaire (ICT-ENT 2025 V1.5), Module E &quot;Artificial Intelligence&quot; (Eurostat)</holdings>
+    </citation><stdyInfo><subject><keyword>artificial intelligence</keyword><keyword>AI adoption</keyword><keyword>barriers to AI use</keyword><keyword>machine learning</keyword><keyword>data protection</keyword><keyword>enterprises</keyword><keyword>ICT usage</keyword><keyword>official statistics</keyword><topcClas>Information society</topcClas><topcClas>Digital economy</topcClas><topcClas>Artificial intelligence</topcClas></subject><abstract>This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences). The German texts are Destatis’ wording of these questions in its national questionnaire for 2025, which does not ask E3 (how AI was acquired).</abstract><sumDscr><timePrd event="single">2025</timePrd><nation>European Union</nation><anlyUnit>Enterprises</anlyUnit><universe clusion="I">Enterprises with 10 or more employees and self-employed persons (NACE Rev. 2 sections C–J, L–N and group 95.1; optional: 0–9). Module E: enterprises with access to the internet.</universe><dataKind>Model questionnaire</dataKind></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). © European Union, 2025. Manual KS-01-25-065: &quot;Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated.&quot; Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): &quot;The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made.&quot; &quot;Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011.&quot; (Commission Decision 2011/833/EU). &quot;When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included.&quot; Changes: format conversion of Module E &quot;Artificial Intelligence&quot; of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it. German texts: Destatis, Qualitätsbericht &quot;IKT-Erhebung in Unternehmen 2025&quot; (questionnaire, section E): &quot;© Statistisches Bundesamt (Destatis), 2025. Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet.&quot; They are attached as the German version of the matching Eurostat questions (Destatis E3/E4 = Eurostat E4/E5); item numbers and routing lines omitted.</conditions></useStmt></dataAccs>
     <notes type="instruction" subject="e_intro">Artificial intelligence refers to systems that use technologies such as: text mining, computer vision, speech recognition, natural language generation, machine learning, deep learning to gather and/or use data to predict, recommend or decide, with varying levels of autonomy, the best action to achieve specific goals.
 Artificial intelligence systems can be purely software based, e.g.:
 • chatbots and business virtual assistants based on natural language processing;
@@ -19,6 +19,15 @@ Artificial intelligence systems can be purely software based, e.g.:
 or embedded in devices, e.g.:
 • autonomous robots for warehouse automation or production assembly works;
 • autonomous drones for production surveillance or parcel handling.</notes>
+    <notes type="instruction" subject="e_intro" xml:lang="de">Künstliche Intelligenz (KI) bezieht sich auf Systeme, die Technologien wie Text Mining, Computer Vision, Spracherkennung, Generierung natürlicher Sprache, maschinelles Lernen und Deep Learning nutzen, um Daten zu sammeln, zu verwenden und/oder zu produzieren, um mit einem unterschiedlichen Grad an Autonomie z. B. Vorhersagen, Empfehlungen oder Entscheidungen zu treffen.
+Künstliche Intelligenz kann rein softwarebasiert sein, z. B.:
+– Systeme,die Inhalte erstellen (generative KI)
+– Chatbots und virtuelle Assistenten, die auf der Verarbeitung natürlicher Sprache basieren,
+– Gesichtserkennungsysteme, die auf maschinellem Sehen oder Spracherkennungssystemen basieren
+– Datenanalyse basierend auf maschinellem Lernen
+oder in Geräten eingebettet sein z. B.
+– Autonome Roboter für Lagerautomatisierung oder Montagearbeiten
+– Autonome Drohnen zur Produktionsüberwachung oder Paketabfertigung</notes>
     <notes type="cdl:position" subject="e_intro">in=module_e after=</notes>
     <notes type="cdl:setting" subject="default_language">English (en)</notes>
   </stdyDscr>
@@ -35,42 +44,53 @@ or embedded in devices, e.g.:
   <dataDscr>
     <varGrp ID="VG_module_e" name="module_e" type="section" var="V_e4" varGrp="VG_module_e_e1 VG_module_e_e2 VG_module_e_e3 VG_module_e_e5">
       <txt>Module E: Artificial Intelligence</txt>
+      <txt xml:lang="de">Künstliche Intelligenz (KI)</txt>
       <notes type="cdl:hint">(Scope: enterprises with access to the internet, i.e. if A1&gt;0)</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e1" name="module_e/e1" type="grid" var="V_e1_a V_e1_b V_e1_c V_e1_d V_e1_e V_e1_f V_e1_g V_e1_h">
       <txt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</txt>
+      <txt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</txt>
       <notes type="cdl:hint">E1 a) to h) = “No” then go to E4 (if optional included) else go to F1.</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e2" name="module_e/e2" type="grid" var="V_e2_a V_e2_b V_e2_c V_e2_d V_e2_e V_e2_f V_e2_g">
       <txt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</txt>
+      <txt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</txt>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e3" name="module_e/e3" type="grid" var="V_e3_a V_e3_b V_e3_c V_e3_d V_e3_e">
       <txt>How did you enterprise acquire the Artificial Intelligence software or systems that it uses?</txt>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'</notes>
       <notes type="cdl:hint">– Optional</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e5" name="module_e/e5" type="grid" var="V_e5_a V_e5_b V_e5_c V_e5_d V_e5_e V_e5_f V_e5_g V_e5_h">
       <txt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</txt>
+      <txt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</txt>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e4} = '1'</notes>
       <notes type="cdl:hint">– Optional</notes>
     </varGrp>
     <var ID="V_e1_a" name="e1_a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>a) AI technologies performing analysis of written language (e.g. text mining)</qstnLit>
+        <qstnLit xml:lang="de">Technologien zur Analyse von Schriftsprache (Text Mining)</qstnLit>
         <postQTxt>Text mining refers to the use of advanced techniques for automated detection of patterns in (large) texts.</postQTxt>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -78,16 +98,20 @@ or embedded in devices, e.g.:
     <var ID="V_e1_b" name="e1_b" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="2">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>b) AI Technologies converting spoken language into machine-readable format (speech recognition)</qstnLit>
+        <qstnLit xml:lang="de">Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)</qstnLit>
         <postQTxt>Speech recognition is the ability of a machine or program to identify words and phrases in spoken language and convert them to a machine-readable format.</postQTxt>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -95,16 +119,20 @@ or embedded in devices, e.g.:
     <var ID="V_e1_c" name="e1_c" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="3">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)</qstnLit>
+        <qstnLit xml:lang="de">Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)</qstnLit>
         <postQTxt>Natural language generation is the ability for a computer program to convert data into natural language representation.</postQTxt>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -112,15 +140,19 @@ or embedded in devices, e.g.:
     <var ID="V_e1_d" name="e1_d" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="4">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>d) AI Technologies generating pictures, videos, sound/audio</qstnLit>
+        <qstnLit xml:lang="de">Technologien zur Erzeugung von Bildern, Videos, Ton/Audio</qstnLit>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -128,15 +160,19 @@ or embedded in devices, e.g.:
     <var ID="V_e1_e" name="e1_e" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="5">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)</qstnLit>
+        <qstnLit xml:lang="de">Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)</qstnLit>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -144,16 +180,20 @@ or embedded in devices, e.g.:
     <var ID="V_e1_f" name="e1_f" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="6">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>f) Machine learning (e.g. deep learning) for data analysis</qstnLit>
+        <qstnLit xml:lang="de">Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse</qstnLit>
         <postQTxt>Machine learning (e.g. deep learning) involves ‘training’ a computer model to better perform an automated task, e.g. pattern recognition.</postQTxt>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -161,16 +201,20 @@ or embedded in devices, e.g.:
     <var ID="V_e1_g" name="e1_g" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="7">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)</qstnLit>
+        <qstnLit xml:lang="de">Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)</qstnLit>
         <postQTxt>Artificial Intelligence based robotic process automation refers to software that automates business processes (e.g. workflows automation) based on Artificial Intelligence technologies.</postQTxt>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -178,15 +222,19 @@ or embedded in devices, e.g.:
     <var ID="V_e1_h" name="e1_h" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="8">
         <preQTxt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</preQTxt>
         <qstnLit>h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)</qstnLit>
+        <qstnLit xml:lang="de">Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)</qstnLit>
       </qstn>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -194,20 +242,29 @@ or embedded in devices, e.g.:
     <var ID="V_e2_a" name="e2_a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="9">
         <preQTxt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</preQTxt>
         <qstnLit>a) Use of AI for marketing or sales</qstnLit>
+        <qstnLit xml:lang="de">Für Marketing oder Vertrieb</qstnLit>
         <postQTxt>some of the examples may be:
 • customer profiling, price optimisation, personalised marketing offers, market analysis based on machine learning
 • chatbots based on natural language processing for customer support
 • autonomous robots for orders processing</postQTxt>
+        <postQTxt xml:lang="de">Einige der Beispiele können sein:
+– Kundenprofiling, Preisoptimierung, personalisierte Marketingangebote, Marktanalyse basierend auf maschinellem Lernen
+– Chatbots basierend auf der Verarbeitung natürlicher Sprache für den Kundensupport
+– autonome Roboter für die Auftragsabwicklung</postQTxt>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -215,21 +272,31 @@ or embedded in devices, e.g.:
     <var ID="V_e2_b" name="e2_b" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="10">
         <preQTxt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</preQTxt>
         <qstnLit>b) Use of AI for production or service processes</qstnLit>
+        <qstnLit xml:lang="de">Für Produktions- oder Dienstleistungsprozesse</qstnLit>
         <postQTxt>some of the examples may be:
 • predictive maintenance or process optimization based on machine learning
 • tools to classify products or find defects in products based on computer vision
 • autonomous drones for production surveillance, security or inspection tasks
 • assembly works performed by autonomous robots</postQTxt>
+        <postQTxt xml:lang="de">Einige der Beispiele können sein:
+– vorausschauende Wartung basierend auf maschinellem Lernen
+– Tools zum Klassifizieren von Produkten oder zur Feststellung von Mängeln in Produkten basierend auf Computer Vision
+– autonome Drohnen für Produktionsüberwachung, Sicherheits- oder Inspektionsaufgaben
+– Montagearbeiten durch autonome Roboter</postQTxt>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -237,21 +304,31 @@ or embedded in devices, e.g.:
     <var ID="V_e2_c" name="e2_c" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="11">
         <preQTxt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</preQTxt>
         <qstnLit>c) Use of AI for organisation of business administration processes or management</qstnLit>
+        <qstnLit xml:lang="de">Zur Organisation von Unternehmensverwaltungsprozessen oder das Management</qstnLit>
         <postQTxt>some of the examples may be:
 • business virtual assistants based on machine learning and/or natural language processing, e.g. for document drafting
 • data analysis or strategic decision making based on machine learning, e.g. risk assessment based on machine learning
 • planning or business forecasting based on machine learning
 • human resources management based on machine learning or natural language processing, e.g. candidates pre-selection screening, employee profiling or performance analysis</postQTxt>
+        <postQTxt xml:lang="de">Einige der Beispiele können sein:
+– virtuelle Geschäftsassistenten, die auf maschinellem Lernen und/oder Verarbeitung natürlicher Sprache basieren, z. B. zur Dokumentenerstellung
+– Datenanalyse oder strategische Entscheidungsfindung, z. B. Risikobewertung, basierend auf maschinellem Lernen
+– Planung oder Geschäftsprognosen basierend auf maschinellem Lernen
+– Personalmanagement basierend auf maschinellem Lernen oder der Verarbeitung natürlicher Sprache, z. B. Vorauswahl von Bewerbern, Erstellung von Mitarbeiterprofilen oder Leistungsanalysen</postQTxt>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -259,19 +336,27 @@ or embedded in devices, e.g.:
     <var ID="V_e2_d" name="e2_d" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="12">
         <preQTxt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</preQTxt>
         <qstnLit>d) Use of AI for logistics</qstnLit>
+        <qstnLit xml:lang="de">Für die Logistik</qstnLit>
         <postQTxt>some of the examples may be:
 • autonomous robots for pick-and-pack solutions in warehouses for parcel shipping, tracing, distribution or sorting
 • route optimization based on machine learning</postQTxt>
+        <postQTxt xml:lang="de">Einige der Beispiele können sein:
+– autonome Roboter für Pick-and Pack-Lösungen in Lagern für Paketversand, Rückverfolgung, Verteilung oder Sortierung
+– Routenoptimierung basierend auf maschinellem Lernen</postQTxt>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -279,19 +364,27 @@ or embedded in devices, e.g.:
     <var ID="V_e2_e" name="e2_e" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="13">
         <preQTxt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</preQTxt>
         <qstnLit>e) Use of AI for ICT security</qstnLit>
+        <qstnLit xml:lang="de">Für die IT-Sicherheit</qstnLit>
         <postQTxt>some of the examples may be:
 • face recognition based on computer vision for authentication of ICT users
 • detection and prevention of cyber-attacks based on machine learning</postQTxt>
+        <postQTxt xml:lang="de">Einige der Beispiele können sein:
+– Gesichtserkennung basierend auf Computer Vision zur Authentifizierung von IT-Benutzern
+– Erkennung und Prävention von Cyber-Angriffen auf der Grundlage von maschinellem Lernen</postQTxt>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -299,20 +392,29 @@ or embedded in devices, e.g.:
     <var ID="V_e2_f" name="e2_f" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="14">
         <preQTxt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</preQTxt>
         <qstnLit>f) Use of AI for accounting, controlling or finance management</qstnLit>
+        <qstnLit xml:lang="de">Für Buchführung, Controlling oder Finanzverwaltung</qstnLit>
         <postQTxt>some of the examples may be:
 • machine learning to analyse data that helps to make financial decisions
 • invoice processing based on machine learning
 • machine learning or natural language processing used for bookkeeping tasks</postQTxt>
+        <postQTxt xml:lang="de">Einige der Beispiele können sein:
+– Maschinelles Lernen zur Analyse von Daten, die bei finanziellen Entscheidungen helfen
+– Rechnungsverarbeitung basierend auf maschinellem Lernen
+– Maschinelles Lernen oder Verarbeitung natürlicher Sprache für Buchführungsunterlagen</postQTxt>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -320,18 +422,25 @@ or embedded in devices, e.g.:
     <var ID="V_e2_g" name="e2_g" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="15">
         <preQTxt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</preQTxt>
+        <preQTxt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</preQTxt>
         <qstnLit>g) Use of AI for research and development (R&amp;D) or innovation activity (excluding research on AI)</qstnLit>
+        <qstnLit xml:lang="de">Für Forschung und Entwicklung (F&amp;E) oder Innovationstätigkeit (ohne KI-Forschung)</qstnLit>
         <postQTxt>some of the examples may be:
 • analysis of data for conducting research, solving research problems, developing a new or significantly improved product/service based on machine learning</postQTxt>
+        <postQTxt xml:lang="de">Einige der Beispiele können sein:
+– Analyse von Daten zur Durchführung von Forschungsarbeiten, Lösung von Forschungsproblemen, Entwicklung eines neuen oder deutlich verbesserten Produkts/Dienstes auf der Grundlage von maschinellem Lernen</postQTxt>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -342,13 +451,16 @@ or embedded in devices, e.g.:
         <qstnLit>a) They were developed by own employees (including those employed in parent or affiliate enterprise)</qstnLit>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -359,13 +471,16 @@ or embedded in devices, e.g.:
         <qstnLit>b) Commercial software or systems were modified by own employees (including those employed in parent or affiliate enterprise)</qstnLit>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -376,13 +491,16 @@ or embedded in devices, e.g.:
         <qstnLit>c) Open-source software or systems were modified by own employees (including those employed in parent or affiliate enterprise)</qstnLit>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -393,13 +511,16 @@ or embedded in devices, e.g.:
         <qstnLit>d) Commercial software or systems ready to use were purchased (including examples where it was already incorporated in a purchased item or system)</qstnLit>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -410,13 +531,16 @@ or embedded in devices, e.g.:
         <qstnLit>e) External providers were contracted to develop or modify them</qstnLit>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -424,19 +548,23 @@ or embedded in devices, e.g.:
     <var ID="V_e4" name="e4" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="21">
         <qstnLit>Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?</qstnLit>
+        <qstnLit xml:lang="de">Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?</qstnLit>
         <postQTxt>Questions E4 is presented only to respondents who answered ‘No’ to E1a)-h) i.e. enterprises that did not use any of the Artificial Intelligence technologies listed in question E1.
 – Optional
 (Filter question)</postQTxt>
         <backward qstn="V_e1_a V_e1_b V_e1_c V_e1_d V_e1_e V_e1_f V_e1_g V_e1_h"/>
       </qstn>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = No and “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = No and “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = No and “d) AI Technologies generating pictures, videos, sound/audio” = No and “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = No and “f) Machine learning (e.g. deep learning) for data analysis” = No and “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = No and “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = No</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Nein und „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Nein und „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Nein und „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Nein und „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Nein und „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Nein und „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Nein und „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Nein</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '0' and ${e1_b} = '0' and ${e1_c} = '0' and ${e1_d} = '0' and ${e1_e} = '0' and ${e1_f} = '0' and ${e1_g} = '0' and ${e1_h} = '0'</notes>
@@ -445,16 +573,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_a" name="e5_a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="22">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>a) The costs seem too high</qstnLit>
+        <qstnLit xml:lang="de">Die Kosten erscheinen zu hoch</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -462,16 +595,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_b" name="e5_b" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="23">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>b) There is a lack of relevant expertise in the enterprise</qstnLit>
+        <qstnLit xml:lang="de">Es fehlt an entsprechendem Wissen im Unternehmen</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -479,16 +617,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_c" name="e5_c" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="24">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>c) Incompatibility with existing equipment, software or systems</qstnLit>
+        <qstnLit xml:lang="de">Inkompatibillität mit vorhandenem Bestand an Geräten, Software oder Systemen</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -496,16 +639,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_d" name="e5_d" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="25">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>d) Difficulties with availability or quality of the necessary data</qstnLit>
+        <qstnLit xml:lang="de">Schwierigkeiten mit der Verfügbarkeit oder Qualität der erforderlichen Daten</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -513,16 +661,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_e" name="e5_e" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="26">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>e) Concerns regarding violation of data protection and privacy</qstnLit>
+        <qstnLit xml:lang="de">Bedenken hinsichtlich der Wahrung des Datenschutzes und der Privatsphäre</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -530,16 +683,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_f" name="e5_f" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="27">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>f) Lack of clarity about the legal consequences (e.g. liability in case of damage caused by the use of Artificial Intelligence)</qstnLit>
+        <qstnLit xml:lang="de">Unklarheit über die rechtlichen Folgen (z. B. Haftung bei Schäden durch den Einsatz von künstlicher Intelligenz)</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -547,16 +705,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_g" name="e5_g" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="28">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>g) Ethical considerations</qstnLit>
+        <qstnLit xml:lang="de">Ethische Überlegungen</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
@@ -564,16 +727,21 @@ or embedded in devices, e.g.:
     <var ID="V_e5_h" name="e5_h" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="29">
         <preQTxt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</preQTxt>
+        <preQTxt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</preQTxt>
         <qstnLit>h) Artificial Intelligence technologies are not useful for the enterprise</qstnLit>
+        <qstnLit xml:lang="de">Technologien der künstlichen Intelligenz sind für das Unternehmen nicht sinnvoll.</qstnLit>
       </qstn>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>
+      <universe clusion="I" xml:lang="de">Nur wenn „Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?“ = Ja</universe>
       <catgry>
         <catValu>1</catValu>
         <labl>Yes</labl>
+        <labl xml:lang="de">Ja</labl>
       </catgry>
       <catgry>
         <catValu>0</catValu>
         <labl>No</labl>
+        <labl xml:lang="de">Nein</labl>
       </catgry>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>

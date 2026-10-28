@@ -11,10 +11,10 @@
     "producer": {
       "name": "Eurostat"
     },
-    "citation": "Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073",
+    "citation": "Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073 — German wording: Statistisches Bundesamt (Destatis). (2025). Qualitätsbericht: IKT-Erhebung in Unternehmen 2025 [Fragebogen, Abschnitt E]. https://www.destatis.de/DE/Methoden/Qualitaet/Qualitaetsberichte/Unternehmen/ikt-unternehmen-2025.pdf",
     "url": "https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/w/ks-01-25-065",
     "sourceLabel": "KS-01-25-065, Annex 1 – Model questionnaire (ICT-ENT 2025 V1.5), Module E \"Artificial Intelligence\" (Eurostat)",
-    "abstract": "This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences).",
+    "abstract": "This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences). The German texts are Destatis’ wording of these questions in its national questionnaire for 2025, which does not ask E3 (how AI was acquired).",
     "keywords": [
       "artificial intelligence",
       "AI adoption",
@@ -35,72 +35,83 @@
     "anlyUnit": "Enterprises",
     "timePrd": "2025",
     "dataKind": "Model questionnaire",
-    "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). © European Union, 2025. Manual KS-01-25-065: \"Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated.\" Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): \"The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made.\" \"Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011.\" (Commission Decision 2011/833/EU). \"When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included.\" Changes: format conversion of Module E \"Artificial Intelligence\" of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it.",
-    "copyright": "© European Union, 2025 (Eurostat)"
+    "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). © European Union, 2025. Manual KS-01-25-065: \"Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated.\" Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): \"The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made.\" \"Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011.\" (Commission Decision 2011/833/EU). \"When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included.\" Changes: format conversion of Module E \"Artificial Intelligence\" of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it. German texts: Destatis, Qualitätsbericht \"IKT-Erhebung in Unternehmen 2025\" (questionnaire, section E): \"© Statistisches Bundesamt (Destatis), 2025. Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet.\" They are attached as the German version of the matching Eurostat questions (Destatis E3/E4 = Eurostat E4/E5); item numbers and routing lines omitted.",
+    "copyright": "© European Union, 2025 (Eurostat); German texts © Statistisches Bundesamt (Destatis), 2025"
   },
   "survey": [
     {
       "type": "begin_group",
       "name": "module_e",
       "label": "Module E: Artificial Intelligence",
-      "hint": "(Scope: enterprises with access to the internet, i.e. if A1>0)"
+      "hint": "(Scope: enterprises with access to the internet, i.e. if A1>0)",
+      "label::Deutsch (de)": "Künstliche Intelligenz (KI)"
     },
     {
       "type": "note",
       "name": "e_intro",
-      "label": "Artificial intelligence refers to systems that use technologies such as: text mining, computer vision, speech recognition, natural language generation, machine learning, deep learning to gather and/or use data to predict, recommend or decide, with varying levels of autonomy, the best action to achieve specific goals.\nArtificial intelligence systems can be purely software based, e.g.:\n• chatbots and business virtual assistants based on natural language processing;\n• face recognition systems based on computer vision or speech recognition systems;\n• machine translation software;\n• data analysis based on machine learning;\nor embedded in devices, e.g.:\n• autonomous robots for warehouse automation or production assembly works;\n• autonomous drones for production surveillance or parcel handling."
+      "label": "Artificial intelligence refers to systems that use technologies such as: text mining, computer vision, speech recognition, natural language generation, machine learning, deep learning to gather and/or use data to predict, recommend or decide, with varying levels of autonomy, the best action to achieve specific goals.\nArtificial intelligence systems can be purely software based, e.g.:\n• chatbots and business virtual assistants based on natural language processing;\n• face recognition systems based on computer vision or speech recognition systems;\n• machine translation software;\n• data analysis based on machine learning;\nor embedded in devices, e.g.:\n• autonomous robots for warehouse automation or production assembly works;\n• autonomous drones for production surveillance or parcel handling.",
+      "label::Deutsch (de)": "Künstliche Intelligenz (KI) bezieht sich auf Systeme, die Technologien wie Text Mining, Computer Vision, Spracherkennung, Generierung natürlicher Sprache, maschinelles Lernen und Deep Learning nutzen, um Daten zu sammeln, zu verwenden und/oder zu produzieren, um mit einem unterschiedlichen Grad an Autonomie z. B. Vorhersagen, Empfehlungen oder Entscheidungen zu treffen.\nKünstliche Intelligenz kann rein softwarebasiert sein, z. B.:\n– Systeme,die Inhalte erstellen (generative KI)\n– Chatbots und virtuelle Assistenten, die auf der Verarbeitung natürlicher Sprache basieren,\n– Gesichtserkennungsysteme, die auf maschinellem Sehen oder Spracherkennungssystemen basieren\n– Datenanalyse basierend auf maschinellem Lernen\noder in Geräten eingebettet sein z. B.\n– Autonome Roboter für Lagerautomatisierung oder Montagearbeiten\n– Autonome Drohnen zur Produktionsüberwachung oder Paketabfertigung"
     },
     {
       "type": "begin_group",
       "name": "e1",
       "label": "Does your enterprise use any of the following Artificial Intelligence (AI) technologies?",
       "appearance": "table-list",
-      "hint": "E1 a) to h) = “No” then go to E4 (if optional included) else go to F1."
+      "hint": "E1 a) to h) = “No” then go to E4 (if optional included) else go to F1.",
+      "label::Deutsch (de)": "Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_a",
       "label": "a) AI technologies performing analysis of written language (e.g. text mining)",
-      "hint": "Text mining refers to the use of advanced techniques for automated detection of patterns in (large) texts."
+      "hint": "Text mining refers to the use of advanced techniques for automated detection of patterns in (large) texts.",
+      "label::Deutsch (de)": "Technologien zur Analyse von Schriftsprache (Text Mining)"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_b",
       "label": "b) AI Technologies converting spoken language into machine-readable format (speech recognition)",
-      "hint": "Speech recognition is the ability of a machine or program to identify words and phrases in spoken language and convert them to a machine-readable format."
+      "hint": "Speech recognition is the ability of a machine or program to identify words and phrases in spoken language and convert them to a machine-readable format.",
+      "label::Deutsch (de)": "Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_c",
       "label": "c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)",
-      "hint": "Natural language generation is the ability for a computer program to convert data into natural language representation."
+      "hint": "Natural language generation is the ability for a computer program to convert data into natural language representation.",
+      "label::Deutsch (de)": "Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_d",
-      "label": "d) AI Technologies generating pictures, videos, sound/audio"
+      "label": "d) AI Technologies generating pictures, videos, sound/audio",
+      "label::Deutsch (de)": "Technologien zur Erzeugung von Bildern, Videos, Ton/Audio"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_e",
-      "label": "e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)"
+      "label": "e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)",
+      "label::Deutsch (de)": "Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_f",
       "label": "f) Machine learning (e.g. deep learning) for data analysis",
-      "hint": "Machine learning (e.g. deep learning) involves ‘training’ a computer model to better perform an automated task, e.g. pattern recognition."
+      "hint": "Machine learning (e.g. deep learning) involves ‘training’ a computer model to better perform an automated task, e.g. pattern recognition.",
+      "label::Deutsch (de)": "Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_g",
       "label": "g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)",
-      "hint": "Artificial Intelligence based robotic process automation refers to software that automates business processes (e.g. workflows automation) based on Artificial Intelligence technologies."
+      "hint": "Artificial Intelligence based robotic process automation refers to software that automates business processes (e.g. workflows automation) based on Artificial Intelligence technologies.",
+      "label::Deutsch (de)": "Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)"
     },
     {
       "type": "select_one yes_no",
       "name": "e1_h",
-      "label": "h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)"
+      "label": "h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)",
+      "label::Deutsch (de)": "Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)"
     },
     {
       "type": "end_group"
@@ -110,49 +121,64 @@
       "name": "e2",
       "label": "Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?",
       "appearance": "table-list",
-      "relevant": "${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'"
+      "relevant": "${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'",
+      "label::Deutsch (de)": "Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?"
     },
     {
       "type": "select_one yes_no",
       "name": "e2_a",
       "label": "a) Use of AI for marketing or sales",
-      "hint": "some of the examples may be:\n• customer profiling, price optimisation, personalised marketing offers, market analysis based on machine learning\n• chatbots based on natural language processing for customer support\n• autonomous robots for orders processing"
+      "hint": "some of the examples may be:\n• customer profiling, price optimisation, personalised marketing offers, market analysis based on machine learning\n• chatbots based on natural language processing for customer support\n• autonomous robots for orders processing",
+      "label::Deutsch (de)": "Für Marketing oder Vertrieb",
+      "hint::Deutsch (de)": "Einige der Beispiele können sein:\n– Kundenprofiling, Preisoptimierung, personalisierte Marketingangebote, Marktanalyse basierend auf maschinellem Lernen\n– Chatbots basierend auf der Verarbeitung natürlicher Sprache für den Kundensupport\n– autonome Roboter für die Auftragsabwicklung"
     },
     {
       "type": "select_one yes_no",
       "name": "e2_b",
       "label": "b) Use of AI for production or service processes",
-      "hint": "some of the examples may be:\n• predictive maintenance or process optimization based on machine learning\n• tools to classify products or find defects in products based on computer vision\n• autonomous drones for production surveillance, security or inspection tasks\n• assembly works performed by autonomous robots"
+      "hint": "some of the examples may be:\n• predictive maintenance or process optimization based on machine learning\n• tools to classify products or find defects in products based on computer vision\n• autonomous drones for production surveillance, security or inspection tasks\n• assembly works performed by autonomous robots",
+      "label::Deutsch (de)": "Für Produktions- oder Dienstleistungsprozesse",
+      "hint::Deutsch (de)": "Einige der Beispiele können sein:\n– vorausschauende Wartung basierend auf maschinellem Lernen\n– Tools zum Klassifizieren von Produkten oder zur Feststellung von Mängeln in Produkten basierend auf Computer Vision\n– autonome Drohnen für Produktionsüberwachung, Sicherheits- oder Inspektionsaufgaben\n– Montagearbeiten durch autonome Roboter"
     },
     {
       "type": "select_one yes_no",
       "name": "e2_c",
       "label": "c) Use of AI for organisation of business administration processes or management",
-      "hint": "some of the examples may be:\n• business virtual assistants based on machine learning and/or natural language processing, e.g. for document drafting\n• data analysis or strategic decision making based on machine learning, e.g. risk assessment based on machine learning\n• planning or business forecasting based on machine learning\n• human resources management based on machine learning or natural language processing, e.g. candidates pre-selection screening, employee profiling or performance analysis"
+      "hint": "some of the examples may be:\n• business virtual assistants based on machine learning and/or natural language processing, e.g. for document drafting\n• data analysis or strategic decision making based on machine learning, e.g. risk assessment based on machine learning\n• planning or business forecasting based on machine learning\n• human resources management based on machine learning or natural language processing, e.g. candidates pre-selection screening, employee profiling or performance analysis",
+      "label::Deutsch (de)": "Zur Organisation von Unternehmensverwaltungsprozessen oder das Management",
+      "hint::Deutsch (de)": "Einige der Beispiele können sein:\n– virtuelle Geschäftsassistenten, die auf maschinellem Lernen und/oder Verarbeitung natürlicher Sprache basieren, z. B. zur Dokumentenerstellung\n– Datenanalyse oder strategische Entscheidungsfindung, z. B. Risikobewertung, basierend auf maschinellem Lernen\n– Planung oder Geschäftsprognosen basierend auf maschinellem Lernen\n– Personalmanagement basierend auf maschinellem Lernen oder der Verarbeitung natürlicher Sprache, z. B. Vorauswahl von Bewerbern, Erstellung von Mitarbeiterprofilen oder Leistungsanalysen"
     },
     {
       "type": "select_one yes_no",
       "name": "e2_d",
       "label": "d) Use of AI for logistics",
-      "hint": "some of the examples may be:\n• autonomous robots for pick-and-pack solutions in warehouses for parcel shipping, tracing, distribution or sorting\n• route optimization based on machine learning"
+      "hint": "some of the examples may be:\n• autonomous robots for pick-and-pack solutions in warehouses for parcel shipping, tracing, distribution or sorting\n• route optimization based on machine learning",
+      "label::Deutsch (de)": "Für die Logistik",
+      "hint::Deutsch (de)": "Einige der Beispiele können sein:\n– autonome Roboter für Pick-and Pack-Lösungen in Lagern für Paketversand, Rückverfolgung, Verteilung oder Sortierung\n– Routenoptimierung basierend auf maschinellem Lernen"
     },
     {
       "type": "select_one yes_no",
       "name": "e2_e",
       "label": "e) Use of AI for ICT security",
-      "hint": "some of the examples may be:\n• face recognition based on computer vision for authentication of ICT users\n• detection and prevention of cyber-attacks based on machine learning"
+      "hint": "some of the examples may be:\n• face recognition based on computer vision for authentication of ICT users\n• detection and prevention of cyber-attacks based on machine learning",
+      "label::Deutsch (de)": "Für die IT-Sicherheit",
+      "hint::Deutsch (de)": "Einige der Beispiele können sein:\n– Gesichtserkennung basierend auf Computer Vision zur Authentifizierung von IT-Benutzern\n– Erkennung und Prävention von Cyber-Angriffen auf der Grundlage von maschinellem Lernen"
     },
     {
       "type": "select_one yes_no",
       "name": "e2_f",
       "label": "f) Use of AI for accounting, controlling or finance management",
-      "hint": "some of the examples may be:\n• machine learning to analyse data that helps to make financial decisions\n• invoice processing based on machine learning\n• machine learning or natural language processing used for bookkeeping tasks"
+      "hint": "some of the examples may be:\n• machine learning to analyse data that helps to make financial decisions\n• invoice processing based on machine learning\n• machine learning or natural language processing used for bookkeeping tasks",
+      "label::Deutsch (de)": "Für Buchführung, Controlling oder Finanzverwaltung",
+      "hint::Deutsch (de)": "Einige der Beispiele können sein:\n– Maschinelles Lernen zur Analyse von Daten, die bei finanziellen Entscheidungen helfen\n– Rechnungsverarbeitung basierend auf maschinellem Lernen\n– Maschinelles Lernen oder Verarbeitung natürlicher Sprache für Buchführungsunterlagen"
     },
     {
       "type": "select_one yes_no",
       "name": "e2_g",
       "label": "g) Use of AI for research and development (R&D) or innovation activity (excluding research on AI)",
-      "hint": "some of the examples may be:\n• analysis of data for conducting research, solving research problems, developing a new or significantly improved product/service based on machine learning"
+      "hint": "some of the examples may be:\n• analysis of data for conducting research, solving research problems, developing a new or significantly improved product/service based on machine learning",
+      "label::Deutsch (de)": "Für Forschung und Entwicklung (F&E) oder Innovationstätigkeit (ohne KI-Forschung)",
+      "hint::Deutsch (de)": "Einige der Beispiele können sein:\n– Analyse von Daten zur Durchführung von Forschungsarbeiten, Lösung von Forschungsproblemen, Entwicklung eines neuen oder deutlich verbesserten Produkts/Dienstes auf der Grundlage von maschinellem Lernen"
     },
     {
       "type": "end_group"
@@ -198,7 +224,8 @@
       "name": "e4",
       "label": "Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?",
       "hint": "Questions E4 is presented only to respondents who answered ‘No’ to E1a)-h) i.e. enterprises that did not use any of the Artificial Intelligence technologies listed in question E1.\n– Optional\n(Filter question)",
-      "relevant": "${e1_a} = '0' and ${e1_b} = '0' and ${e1_c} = '0' and ${e1_d} = '0' and ${e1_e} = '0' and ${e1_f} = '0' and ${e1_g} = '0' and ${e1_h} = '0'"
+      "relevant": "${e1_a} = '0' and ${e1_b} = '0' and ${e1_c} = '0' and ${e1_d} = '0' and ${e1_e} = '0' and ${e1_f} = '0' and ${e1_g} = '0' and ${e1_h} = '0'",
+      "label::Deutsch (de)": "Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?"
     },
     {
       "type": "begin_group",
@@ -206,47 +233,56 @@
       "label": "What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?",
       "appearance": "table-list",
       "relevant": "${e4} = '1'",
-      "hint": "– Optional"
+      "hint": "– Optional",
+      "label::Deutsch (de)": "Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_a",
-      "label": "a) The costs seem too high"
+      "label": "a) The costs seem too high",
+      "label::Deutsch (de)": "Die Kosten erscheinen zu hoch"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_b",
-      "label": "b) There is a lack of relevant expertise in the enterprise"
+      "label": "b) There is a lack of relevant expertise in the enterprise",
+      "label::Deutsch (de)": "Es fehlt an entsprechendem Wissen im Unternehmen"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_c",
-      "label": "c) Incompatibility with existing equipment, software or systems"
+      "label": "c) Incompatibility with existing equipment, software or systems",
+      "label::Deutsch (de)": "Inkompatibillität mit vorhandenem Bestand an Geräten, Software oder Systemen"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_d",
-      "label": "d) Difficulties with availability or quality of the necessary data"
+      "label": "d) Difficulties with availability or quality of the necessary data",
+      "label::Deutsch (de)": "Schwierigkeiten mit der Verfügbarkeit oder Qualität der erforderlichen Daten"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_e",
-      "label": "e) Concerns regarding violation of data protection and privacy"
+      "label": "e) Concerns regarding violation of data protection and privacy",
+      "label::Deutsch (de)": "Bedenken hinsichtlich der Wahrung des Datenschutzes und der Privatsphäre"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_f",
-      "label": "f) Lack of clarity about the legal consequences (e.g. liability in case of damage caused by the use of Artificial Intelligence)"
+      "label": "f) Lack of clarity about the legal consequences (e.g. liability in case of damage caused by the use of Artificial Intelligence)",
+      "label::Deutsch (de)": "Unklarheit über die rechtlichen Folgen (z. B. Haftung bei Schäden durch den Einsatz von künstlicher Intelligenz)"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_g",
-      "label": "g) Ethical considerations"
+      "label": "g) Ethical considerations",
+      "label::Deutsch (de)": "Ethische Überlegungen"
     },
     {
       "type": "select_one yes_no",
       "name": "e5_h",
-      "label": "h) Artificial Intelligence technologies are not useful for the enterprise"
+      "label": "h) Artificial Intelligence technologies are not useful for the enterprise",
+      "label::Deutsch (de)": "Technologien der künstlichen Intelligenz sind für das Unternehmen nicht sinnvoll."
     },
     {
       "type": "end_group"
@@ -259,12 +295,14 @@
     {
       "list_name": "yes_no",
       "name": "1",
-      "label": "Yes"
+      "label": "Yes",
+      "label::Deutsch (de)": "Ja"
     },
     {
       "list_name": "yes_no",
       "name": "0",
-      "label": "No"
+      "label": "No",
+      "label::Deutsch (de)": "Nein"
     }
   ],
   "settings": {
