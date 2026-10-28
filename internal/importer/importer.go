@@ -7,7 +7,9 @@ import (
 	"encoding/xml"
 	"log"
 	"regexp"
+	"strconv"
 	"strings"
+	"unicode"
 
 	"github.com/clbanning/mxj/v2"
 	"github.com/pocketbase/pocketbase/core"
@@ -369,6 +371,67 @@ func inferAnswerType(vM mxj.Map, groupType string) string {
 	}
 }
 
+// rangeBounds reads a range variable's bounds as the codebook states them:
+// min and max from valrng/range (formtransform writes the XLSForm start and
+// end there, its defaults included), step from the cdl:parameters note, which
+// holds the XLSForm parameters verbatim ("start=0 end=5 step=0.5"). A bound
+// the codebook doesn't state is left out; nil when it states none.
+func rangeBounds(vM mxj.Map) map[string]float64 {
+	bounds := map[string]float64{}
+	set := func(key, value string) {
+		if _, ok := bounds[key]; ok {
+			return
+		}
+		if f, err := strconv.ParseFloat(strings.TrimSpace(value), 64); err == nil {
+			bounds[key] = f
+		}
+	}
+	if ranges, _ := vM.ValuesForPath("valrng.range"); len(ranges) > 0 {
+		if r, ok := ranges[0].(map[string]interface{}); ok {
+			if v, ok := r["-min"].(string); ok {
+				set("min", v)
+			}
+			if v, ok := r["-max"].(string); ok {
+				set("max", v)
+			}
+		}
+	}
+	// key=value pairs as formtransform's parseParameters reads them:
+	// separated by spaces, commas or semicolons, keys case-insensitive.
+	params := strings.FieldsFunc(noteText(vM, "cdl:parameters"), func(r rune) bool {
+		return r == ',' || r == ';' || unicode.IsSpace(r)
+	})
+	for _, p := range params {
+		key, value, ok := strings.Cut(p, "=")
+		if !ok {
+			continue
+		}
+		switch strings.ToLower(key) {
+		case "start":
+			set("min", value)
+		case "end":
+			set("max", value)
+		case "step":
+			set("step", value)
+		}
+	}
+	if len(bounds) == 0 {
+		return nil
+	}
+	return bounds
+}
+
+// noteText is the text of m's first <notes> child of the given type, or "".
+func noteText(m mxj.Map, noteType string) string {
+	notes, _ := m.ValuesForPath("notes")
+	for _, n := range notes {
+		if nm, ok := n.(map[string]interface{}); ok && nm["-type"] == noteType {
+			return extractText(nm)
+		}
+	}
+	return ""
+}
+
 // hasNote reports whether m has a <notes> child of the given type.
 func hasNote(m mxj.Map, noteType string) bool {
 	notes, _ := m.ValuesForPath("notes")
@@ -593,7 +656,13 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 			varRecord.Set("universe", vUniverse)
 			varRecord.Set("interval", vIntrvl)
 			varRecord.Set("var_format_type", vFmtType)
-			varRecord.Set("answer_type", inferAnswerType(vM, varGroupTypeMap[ddiId]))
+			answerType := inferAnswerType(vM, varGroupTypeMap[ddiId])
+			varRecord.Set("answer_type", answerType)
+			if answerType == "range" {
+				// Only a range's bounds: an integer's or decimal's valrng
+				// comes from its constraint (cdl:constraint), not parameters.
+				varRecord.Set("range_bounds", rangeBounds(vM))
+			}
 			varRecord.Set("has_long_list", hasLongList)
 			varRecord.Set("long_list_standard", vocab)
 			varRecord.Set("categories", categories)

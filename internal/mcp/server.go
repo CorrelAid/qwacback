@@ -91,7 +91,7 @@ func NewMCPServer(app core.App) *mcpserver.MCPServer {
 
 	s.AddTool(
 		mcp.NewTool("get_question",
-			mcp.WithDescription("Get a single question by ID in full: concept, question text, answer type, its study (title, license, citation, source), its group, and every variable with its item text, hint, answer type, categories, grid note and translations. Use this to read the items of a grid or multiple-choice question; search and list return only the question stem and variable IDs."),
+			mcp.WithDescription("Get a single question by ID in full: concept, question text, answer type, its study (title, license, citation, source), its group, and every variable with its item text, hint, answer type, categories, range bounds (min, max, step of a range), grid note and translations. Use this to read the items of a grid or multiple-choice question; search and list return only the question stem and variable IDs."),
 			mcp.WithString("id", mcp.Required(), mcp.Description("Question ID (15-char alphanumeric)")),
 			mcp.WithToolAnnotation(readOnlyAnnotation),
 		),
