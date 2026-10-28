@@ -41,7 +41,7 @@ func TestImportAnswerTypes(t *testing.T) {
 		"b": "decimal", // numeric without dcml
 		"c": "date",
 		"d": "time",
-		"e": "range", // valrng without a constraint
+		"e": "decimal", // an XLSForm range: no slider type
 		"f": "text",
 		"g": "decimal", // valrng from a constraint
 		"h": "integer", // integer with a constraint (two notes)

@@ -49,7 +49,7 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 ### Questions
 
 - **GET `/api/questions`** — List all questions across all studies.
-- **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, hint, interviewer instructions, skip logic as prose in `universe`, etc.). No additional API calls needed for a detail view. A `range` variable (standalone or a number-grid row) has `range: {"min": 0, "max": 5, "step": 0.5}`, its XLSForm `start`/`end`/`step` with only the bounds the codebook states (DDI_MARKUP_GUIDE.md §3, Range bounds); other variables have no `range`.
+- **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, hint, interviewer instructions, skip logic as prose in `universe`, etc.). No additional API calls needed for a detail view.
 
 Each study carries its terms of use, so a client can show them with every reused question. `/api/questions/{id}` embeds them in `study` as `license`, `copyright`, `citation` and `source_uri`; the `studies` records have them as `license`, `copyright`, `citation` and `holdings_uri`. They are read from the codebook (see DDI_MARKUP_GUIDE.md §6) and are empty when it states none.
 
@@ -86,7 +86,7 @@ For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
 
 - **GET `/api/examples`** — Answer type examples (XLSForm + DDI pairs).
 - **GET `/api/examples/{type}`** — Single example by type (`single_choice`, `multiple_choice`, `grid`, `integer`, `text`, etc.).
-- **GET `/api/question-types`** — The registry's question-type catalogue of the pinned formtransform, keyed by qwacback's answer types: `registryType`, `label` per language (`en`, `de`), `kind`, `base`, `aliases` and `presentation` (`choice`: `one`/`multiple`, `withOther`, `longList`, `grid`, `appearance`). A `grid` has no `choice`: its rows are choice rows (answer type `grid`) or number rows (`integer`, `decimal`, `range`), and a row's `grid_note` is a sub-heading printed before it. `withOther`, `longList` and `appearance` are the registry's. `?registry=1` returns every registry type keyed by registry slug instead. Clients get the catalogue here instead of importing `@correlaid/formtransform`.
+- **GET `/api/question-types`** — The registry's question-type catalogue of the pinned formtransform, keyed by qwacback's answer types: `registryType`, `label` per language (`en`, `de`), `kind`, `base`, `aliases` and `presentation` (`choice`: `one`/`multiple`, `withOther`, `longList`, `grid`, `appearance`). A `grid` has no `choice`: its rows are choice rows (answer type `grid`) or number rows (`integer`, `decimal`), and a row's `grid_note` is a sub-heading printed before it. `withOther`, `longList` and `appearance` are the registry's. `?registry=1` returns every registry type keyed by registry slug instead. Clients get the catalogue here instead of importing `@correlaid/formtransform`.
 - **GET `/api/docs/markup-guide`** — DDI encoding conventions.
 
 ### PocketBase built-in API

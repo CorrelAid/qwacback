@@ -35,7 +35,7 @@ alone touches `seed_data/` and git.
      (MAILS: de + en), add it as `label::English (en)` and the other `::` columns. Never
      translate yourself.
    - Types: `select_one <list>`, `select_multiple <list>`, `integer`,
-     `decimal`, `range`, `text`, `date`, `time`, `note`, `begin_group`/`end_group`
+     `decimal`, `text`, `date`, `time`, `note`, `begin_group`/`end_group`
      for sections. Grid (same scale, several items) = a group with
      `appearance: table-list` and only `select_one` rows sharing one list
      (`field-list` makes a plain section, not a grid; keep notes outside). The working
