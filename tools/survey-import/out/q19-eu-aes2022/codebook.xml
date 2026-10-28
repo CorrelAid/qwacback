@@ -7,7 +7,7 @@
         <IDNo>q19-eu-aes2022</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="European Commission, Eurostat, Unit F-3: Labour market and lifelong learning">Eurostat</AuthEnty></rspStmt>
       <prodStmt><producer>Eurostat</producer><copyright>© European Union, 2023 (Eurostat)</copyright>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Eurostat. (2023). 2022 AES manual: Methodological guidelines for the adult education survey (Version 1.3, 30 March 2023). European Commission, Eurostat, Unit F-3. https://circabc.europa.eu/w/browse/a81f03f5-b8e6-4b84-a93d-ef847ef85db0</biblCit><holdings URI="https://circabc.europa.eu/w/browse/a81f03f5-b8e6-4b84-a93d-ef847ef85db0">2022 AES MANUAL V1.3, Section 3 &quot;Explanatory notes&quot; (Eurostat, CIRCABC)</holdings>
     </citation><stdyInfo><subject><keyword>adult education</keyword><keyword>lifelong learning</keyword><keyword>non-formal education</keyword><keyword>informal learning</keyword><keyword>formal education</keyword><keyword>obstacles to participation</keyword><keyword>AES</keyword><keyword>official statistics</keyword><topcClas>Education</topcClas><topcClas>Adult learning</topcClas><topcClas>Continuing education</topcClas></subject><abstract>Model questions proposed by Eurostat for the 2022 wave of the EU Adult Education Survey, which national statistical institutes adapt into their own questionnaires. They ask adults about their household and background, labour status and job, access to guidance, participation in formal and non-formal education and training in the last 12 months (with details on the most recent formal activity and a randomly selected non-formal activity), obstacles to participation, informal learning, languages, health and household income.</abstract><sumDscr><timePrd event="single">2022</timePrd><nation>European Union</nation><anlyUnit>Individuals</anlyUnit><universe clusion="I">Residents aged 18–69 in private households</universe><dataKind>Model questionnaire</dataKind></sumDscr></stdyInfo><dataAccs><useStmt><conditions>© European Union. Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): &quot;The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made.&quot; &quot;Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011.&quot; (Commission Decision 2011/833/EU). &quot;When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included.&quot; Changes: format conversion of the model questions in Section 3 of the 2022 AES manual (v1.3) to DDI; wording unchanged; technical and derived variables, transmission codes and repeated activity blocks omitted. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it.</conditions></useStmt></dataAccs>
     <notes type="cdl:row_hint" subject="inf_intro">Suggested introduction to the model question:</notes>
@@ -79,11 +79,6 @@ Thinking about your current situation, to which of the following groups would yo
       <txt>Participation in non-formal education activities (12 months)</txt>
       <concept>Participation in non-formal education activities (12 months)</concept>
     </varGrp>
-    <varGrp ID="VG_nfe_g_nfe" name="nfe_g/nfe" type="section" var="V_nfecourse V_nfeworkshop V_nfeguidejt V_nfelesson">
-      <txt>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</txt>
-      <concept>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</concept>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
     <varGrp ID="VG_nfeact01" name="nfeact01" type="section" var="V_nfeact01_type V_nfeact01_mainstat V_nfeact01_purp V_nfeact01_worktime V_nfeact01_paidby">
       <txt>Non-formal education activities - details (12 months)</txt>
       <concept>Non-formal education activities - details (12 months)</concept>
@@ -133,6 +128,10 @@ What other languages are they? If there are several, list all languages ranked b
     <varGrp ID="VG_income" name="income" type="section" var="V_hhincome V_hhincome_band">
       <txt>Total monthly household income</txt>
       <concept>Total monthly household income</concept>
+    </varGrp>
+    <varGrp ID="VG_nfe_g_nfe" name="nfe_g/nfe" type="grid" var="V_nfecourse V_nfeworkshop V_nfeguidejt V_nfelesson">
+      <txt>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</txt>
+      <concept>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</concept>
     </varGrp>
     <varGrp ID="VG_guidesource" name="guidesource" type="multipleResp" var="V_guidesource_1 V_guidesource_2 V_guidesource_3 V_guidesource_4">
       <txt>From which of the following institutions/organisations did you receive guidance on learning in the last 12 months? (mark all that apply)</txt>
@@ -1886,6 +1885,7 @@ Where did the instruction hours of the most recent formal education activity (&l
     </var>
     <var ID="V_nfecourse" name="nfecourse" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="61">
+        <preQTxt>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</preQTxt>
         <qstnLit>a) Courses</qstnLit>
       </qstn>
       <catgry>
@@ -1902,6 +1902,7 @@ Where did the instruction hours of the most recent formal education activity (&l
     </var>
     <var ID="V_nfeworkshop" name="nfeworkshop" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="62">
+        <preQTxt>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</preQTxt>
         <qstnLit>b) Workshops and seminars</qstnLit>
       </qstn>
       <catgry>
@@ -1918,6 +1919,7 @@ Where did the instruction hours of the most recent formal education activity (&l
     </var>
     <var ID="V_nfeguidejt" name="nfeguidejt" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="63">
+        <preQTxt>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</preQTxt>
         <qstnLit>c) Guided on-the-job training</qstnLit>
         <backward qstn="V_mainstat V_emp12m"/>
       </qstn>
@@ -1939,6 +1941,7 @@ Thinking about your current situation, to which of the following groups would yo
     </var>
     <var ID="V_nfelesson" name="nfelesson" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="64">
+        <preQTxt>During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?</preQTxt>
         <qstnLit>d) Private lessons</qstnLit>
       </qstn>
       <catgry>

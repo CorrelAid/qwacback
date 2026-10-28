@@ -7,7 +7,7 @@
         <IDNo>q01-cvts7</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Statistisches Amt für Hamburg und Schleswig-Holstein (Statistikamt Nord)">Statistische Ämter des Bundes und der Länder</AuthEnty></rspStmt>
       <prodStmt><producer>Statistisches Amt für Hamburg und Schleswig-Holstein (Statistikamt Nord)</producer><copyright>© Statistisches Amt für Hamburg und Schleswig-Holstein, Hamburg 2026</copyright>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Statistische Ämter des Bundes und der Länder. (2026). Europäische Erhebung über die berufliche Weiterbildung in Unternehmen (CVTS7): Fragebogen [Erhebungsunterlage]. Statistikamt Nord. https://www.statistik-nord.de/fileadmin/Dokumente/Erhebungen/Bildung-Rechtspflege/CVTS7_Fragebogen.pdf</biblCit><holdings URI="https://www.statistik-nord.de/fileadmin/Dokumente/Erhebungen/Bildung-Rechtspflege/CVTS7_Fragebogen.pdf">CVTS7 Fragebogen „Berufliche Weiterbildung in Unternehmen 2025“ (PDF, Statistikamt Nord)</holdings>
     </citation><stdyInfo><subject><keyword>berufliche Weiterbildung</keyword><keyword>betriebliche Weiterbildung</keyword><keyword>CVTS</keyword><keyword>Weiterbildungskosten</keyword><keyword>Lehrveranstaltungen</keyword><keyword>Erstausbildung</keyword><keyword>amtliche Statistik</keyword><topcClas>Bildung</topcClas><topcClas>Weiterbildung</topcClas><topcClas>Unternehmen</topcClas></subject><abstract>Paper questionnaire of the seventh European Continuing Vocational Training Survey (CVTS7) as used in Germany, reference year 2025. It asks enterprises with at least 10 employees about their structure, training strategies, courses and other forms of continuing vocational training, participants, hours and costs, quality assessment, reasons for not training, and initial vocational training. Routing sends training and non-training enterprises to different parts.</abstract><sumDscr><timePrd event="single">2025</timePrd><nation>Deutschland</nation><anlyUnit>Unternehmen</anlyUnit><universe clusion="I">Unternehmen mit mindestens 10 Beschäftigten in Deutschland (Bezugsjahr 2025)</universe><dataKind>Erhebungsunterlage (Fragebogen)</dataKind></sumDscr></stdyInfo><dataAccs><useStmt><conditions>© Statistisches Amt für Hamburg und Schleswig-Holstein, Hamburg 2026. „Sie können Informationen speichern, (auch auszugsweise) mit Quellenangabe weitergeben, vervielfältigen und verbreiten sowie Links zur Homepage des Statistikamtes Nord speichern. Die Informationen dürfen im Übrigen nicht verändert oder verfälscht werden.“ (https://www.statistik-nord.de/impressum). Erhebungsunterlage einer amtlichen Statistik (Statistische Ämter des Bundes und der Länder).</conditions></useStmt></dataAccs>
     <notes type="instruction" subject="hinweis_definition">Was ist berufliche Weiterbildung im Sinne dieser Erhebung?
@@ -49,43 +49,13 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
       <txt>Teil 2: Fragen an alle Unternehmen – Weiterbildungsstrategien des Unternehmens</txt>
       <concept>Teil 2: Fragen an alle Unternehmen – Weiterbildungsstrategien des Unternehmens</concept>
     </varGrp>
-    <varGrp ID="VG_teil2_f2_3" name="teil2/f2_3" type="section" var="V_f2_3_012 V_f2_3_013 V_f2_3_014 V_f2_3_015">
-      <txt>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</txt>
-      <concept>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</concept>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
-    <varGrp ID="VG_teil2_f2_8" name="teil2/f2_8" type="section" var="V_f2_8_040 V_f2_8_041 V_f2_8_042 V_f2_8_043 V_f2_8_044 V_f2_8_045 V_f2_8_046">
-      <txt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</txt>
-      <concept>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</concept>
-      <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
-      <notes type="cdl:relevant" subject="xlsform-xpath">${f2_8_039} = '1'</notes>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
     <varGrp ID="VG_teil3" name="teil3" type="section" var="V_f3_1_052 V_f3_2_053 V_f3_4_064 V_f3_5_065" varGrp="VG_teil3_f3_3 VG_teil3_f3_3_anteil VG_teil3_f3_6 VG_teil3_f3_7">
       <txt>Teil 3: Fragen an alle Unternehmen – Weiterbildungsaktivitäten des Unternehmens</txt>
       <concept>Teil 3: Fragen an alle Unternehmen – Weiterbildungsaktivitäten des Unternehmens</concept>
     </varGrp>
-    <varGrp ID="VG_teil3_f3_3" name="teil3/f3_3" type="section" var="V_f3_3_054 V_f3_3_056 V_f3_3_058 V_f3_3_060 V_f3_3_062">
-      <txt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</txt>
-      <concept>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</concept>
-      <notes type="cdl:hint">Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens.</notes>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
-    <varGrp ID="VG_teil3_f3_3_anteil" name="teil3/f3_3_anteil" type="section" var="V_f3_3_054a V_f3_3_056a V_f3_3_058a V_f3_3_060a V_f3_3_062a">
-      <txt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</txt>
-      <concept>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</concept>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
     <varGrp ID="VG_teil3_f3_6" name="teil3/f3_6" type="section" var="V_f3_6_066 V_f3_6_067 V_f3_6_068 V_f3_6_069">
       <txt>Beiträge und Einnahmen für Weiterbildungsaktivitäten</txt>
       <concept>Beiträge und Einnahmen für Weiterbildungsaktivitäten</concept>
-    </varGrp>
-    <varGrp ID="VG_teil3_f3_7" name="teil3/f3_7" type="section" var="V_f3_7_070 V_f3_7_071 V_f3_7_072 V_f3_7_073">
-      <txt>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</txt>
-      <concept>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</concept>
-      <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
-      <notes type="cdl:relevant" subject="xlsform-xpath">${f3_6_068} = '1'</notes>
-      <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <varGrp ID="VG_teil4" name="teil4" type="section" var="V_f4_1_075 V_f4_1_075a V_f4_1_075b V_f4_1_075c V_f4_1_075d V_f4_1_078 V_f4_1_078a V_f4_1_078b V_f4_1_078c V_f4_1_078d V_f4_2_081 V_f4_2_082 V_f4_2_083 V_f4_4_097 V_f4_4_098" varGrp="VG_f4_3 VG_f4_5 VG_teil4_f4_6">
       <txt>Teil 4: Fragen an Unternehmen, die 2025 Lehrveranstaltungen angeboten haben</txt>
@@ -104,43 +74,64 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">(${f3_1_052} = '1' or ${f3_2_053} = '1' or ${f3_3_054} = '1' or ${f3_3_056} = '1' or ${f3_3_058} = '1' or ${f3_3_060} = '1' or ${f3_3_062} = '1')</notes>
     </varGrp>
-    <varGrp ID="VG_teil5_f5_1" name="teil5/f5_1" type="section" var="V_f5_1_124 V_f5_1_125 V_f5_1_126 V_f5_1_127 V_f5_1_127a">
-      <txt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</txt>
-      <concept>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</concept>
-      <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
-      <notes type="cdl:relevant" subject="xlsform-xpath">${f5_1_123} = '1' or ${f5_1_123} = '2'</notes>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
-    <varGrp ID="VG_teil5_f5_2" name="teil5/f5_2" type="section" var="V_f5_2_128 V_f5_2_129 V_f5_2_130 V_f5_2_131 V_f5_2_132 V_f5_2_133 V_f5_2_134 V_f5_2_135 V_f5_2_136">
-      <txt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</txt>
-      <concept>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</concept>
-      <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
-      <notes type="cdl:hint">Beantworten Sie bitte als nächstes Teil 7 des Fragebogens.</notes>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
     <varGrp ID="VG_teil6" name="teil6" type="section" varGrp="VG_teil6_f6">
       <txt>Teil 6: Fragen an Unternehmen, die 2025 keine Weiterbildung angeboten haben</txt>
       <concept>Teil 6: Fragen an Unternehmen, die 2025 keine Weiterbildung angeboten haben</concept>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">not((${f3_1_052} = '1' or ${f3_2_053} = '1' or ${f3_3_054} = '1' or ${f3_3_056} = '1' or ${f3_3_058} = '1' or ${f3_3_060} = '1' or ${f3_3_062} = '1'))</notes>
     </varGrp>
-    <varGrp ID="VG_teil6_f6" name="teil6/f6" type="section" var="V_f6_137 V_f6_138 V_f6_139 V_f6_140 V_f6_141 V_f6_142 V_f6_143 V_f6_144 V_f6_145">
-      <txt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</txt>
-      <concept>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</concept>
-      <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
-      <notes type="cdl:appearance">field-list</notes>
-    </varGrp>
     <varGrp ID="VG_teil7" name="teil7" type="section" var="V_f7_1_146a" varGrp="VG_teil7_f7_2">
       <txt>Teil 7: Fragen an alle Unternehmen zur betrieblichen Erstausbildung</txt>
       <concept>Teil 7: Fragen an alle Unternehmen zur betrieblichen Erstausbildung</concept>
     </varGrp>
-    <varGrp ID="VG_teil7_f7_2" name="teil7/f7_2" type="section" var="V_f7_2_147 V_f7_2_148 V_f7_2_149 V_f7_2_150 V_f7_2_151">
+    <varGrp ID="VG_teil2_f2_3" name="teil2/f2_3" type="grid" var="V_f2_3_012 V_f2_3_013 V_f2_3_014 V_f2_3_015">
+      <txt>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</txt>
+      <concept>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</concept>
+    </varGrp>
+    <varGrp ID="VG_teil2_f2_8" name="teil2/f2_8" type="grid" var="V_f2_8_040 V_f2_8_041 V_f2_8_042 V_f2_8_043 V_f2_8_044 V_f2_8_045 V_f2_8_046">
+      <txt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</txt>
+      <concept>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</concept>
+      <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${f2_8_039} = '1'</notes>
+    </varGrp>
+    <varGrp ID="VG_teil3_f3_3" name="teil3/f3_3" type="grid" var="V_f3_3_054 V_f3_3_056 V_f3_3_058 V_f3_3_060 V_f3_3_062">
+      <txt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</txt>
+      <concept>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</concept>
+      <notes type="cdl:hint">Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens.</notes>
+    </varGrp>
+    <varGrp ID="VG_teil3_f3_3_anteil" name="teil3/f3_3_anteil" type="grid" var="V_f3_3_054a V_f3_3_056a V_f3_3_058a V_f3_3_060a V_f3_3_062a">
+      <txt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</txt>
+      <concept>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</concept>
+    </varGrp>
+    <varGrp ID="VG_teil3_f3_7" name="teil3/f3_7" type="grid" var="V_f3_7_070 V_f3_7_071 V_f3_7_072 V_f3_7_073">
+      <txt>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</txt>
+      <concept>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</concept>
+      <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${f3_6_068} = '1'</notes>
+    </varGrp>
+    <varGrp ID="VG_teil5_f5_1" name="teil5/f5_1" type="grid" var="V_f5_1_124 V_f5_1_125 V_f5_1_126 V_f5_1_127 V_f5_1_127a">
+      <txt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</txt>
+      <concept>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</concept>
+      <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${f5_1_123} = '1' or ${f5_1_123} = '2'</notes>
+    </varGrp>
+    <varGrp ID="VG_teil5_f5_2" name="teil5/f5_2" type="grid" var="V_f5_2_128 V_f5_2_129 V_f5_2_130 V_f5_2_131 V_f5_2_132 V_f5_2_133 V_f5_2_134 V_f5_2_135 V_f5_2_136">
+      <txt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</txt>
+      <concept>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</concept>
+      <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
+      <notes type="cdl:hint">Beantworten Sie bitte als nächstes Teil 7 des Fragebogens.</notes>
+    </varGrp>
+    <varGrp ID="VG_teil6_f6" name="teil6/f6" type="grid" var="V_f6_137 V_f6_138 V_f6_139 V_f6_140 V_f6_141 V_f6_142 V_f6_143 V_f6_144 V_f6_145">
+      <txt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</txt>
+      <concept>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</concept>
+      <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
+    </varGrp>
+    <varGrp ID="VG_teil7_f7_2" name="teil7/f7_2" type="grid" var="V_f7_2_147 V_f7_2_148 V_f7_2_149 V_f7_2_150 V_f7_2_151">
       <txt>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</txt>
       <concept>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</concept>
       <universe clusion="I">Nur wenn „Beschäftigt Ihr Unternehmen normalerweise Auszubildende?“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f7_1_146a} = '1'</notes>
       <notes type="cdl:hint">Falls Sie normalerweise Auszubildende haben, beantworten Sie bitte noch die nachfolgende Frage 7.2.</notes>
-      <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <varGrp ID="VG_f2_4" name="f2_4" type="multipleResp" var="V_f2_4_k021 V_f2_4_k022 V_f2_4_k023 V_f2_4_k024 V_f2_4_k025 V_f2_4_k026 V_f2_4_k027 V_f2_4_k028 V_f2_4_k029 V_f2_4_k030 V_f2_4_k031 V_f2_4_k032 V_f2_4_k033">
       <txt>Welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) der Beschäftigten werden in Ihrem Unternehmen im Allgemeinen für die Unternehmensentwicklung der nächsten Jahre als am wichtigsten erachtet?</txt>
@@ -257,6 +248,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_3_012" name="f2_3_012" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="10">
+        <preQTxt>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</preQTxt>
         <qstnLit>Regelmäßige berufliche Weiterbildung der derzeitigen Beschäftigten</qstnLit>
       </qstn>
       <catgry>
@@ -273,6 +265,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_3_013" name="f2_3_013" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="11">
+        <preQTxt>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</preQTxt>
         <qstnLit>Einstellung neuen Personals, das über die erforderlichen Qualifikationen verfügt</qstnLit>
       </qstn>
       <catgry>
@@ -289,6 +282,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_3_014" name="f2_3_014" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="12">
+        <preQTxt>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</preQTxt>
         <qstnLit>Einstellung neuen Personals verbunden mit spezifischer Weiterbildung zur Erlangung der erforderlichen Qualifikationen</qstnLit>
       </qstn>
       <catgry>
@@ -305,6 +299,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_3_015" name="f2_3_015" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="13">
+        <preQTxt>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</preQTxt>
         <qstnLit>Interne Reorganisation, um die bei den Beschäftigten bestehenden Qualifikationen besser zu nutzen</qstnLit>
       </qstn>
       <catgry>
@@ -601,6 +596,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_8_040" name="f2_8_040" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="20">
+        <preQTxt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</preQTxt>
         <qstnLit>Festlegung der Ziele und Prioritäten der betrieblichen Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
@@ -618,6 +614,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_8_041" name="f2_8_041" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="21">
+        <preQTxt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</preQTxt>
         <qstnLit>Festlegung der Kriterien für die Auswahl von Teilnehmenden an Weiterbildungsmaßnahmen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
@@ -635,6 +632,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_8_042" name="f2_8_042" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="22">
+        <preQTxt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</preQTxt>
         <qstnLit>Art der Weiterbildung (z. B. interne oder externe Lehrveranstaltungen, andere Formen wie Lernzirkel)</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
@@ -652,6 +650,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_8_043" name="f2_8_043" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="23">
+        <preQTxt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</preQTxt>
         <qstnLit>Themen der Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
@@ -669,6 +668,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_8_044" name="f2_8_044" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="24">
+        <preQTxt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</preQTxt>
         <qstnLit>Festlegung des Weiterbildungsbudgets</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
@@ -686,6 +686,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_8_045" name="f2_8_045" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="25">
+        <preQTxt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</preQTxt>
         <qstnLit>Auswahl externer Weiterbildungsanbieter</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
@@ -703,6 +704,7 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </var>
     <var ID="V_f2_8_046" name="f2_8_046" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="26">
+        <preQTxt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</preQTxt>
         <qstnLit>Evaluierung/Bewertung der Ergebnisse von Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
@@ -762,6 +764,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_054" name="f3_3_054" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="29">
+        <preQTxt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</preQTxt>
         <qstnLit>Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))</qstnLit>
       </qstn>
       <catgry>
@@ -778,6 +781,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_056" name="f3_3_056" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="30">
+        <preQTxt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</preQTxt>
         <qstnLit>Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche</qstnLit>
       </qstn>
       <catgry>
@@ -794,6 +798,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_058" name="f3_3_058" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="31">
+        <preQTxt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</preQTxt>
         <qstnLit>Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen</qstnLit>
       </qstn>
       <catgry>
@@ -810,6 +815,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_060" name="f3_3_060" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="32">
+        <preQTxt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</preQTxt>
         <qstnLit>Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln</qstnLit>
       </qstn>
       <catgry>
@@ -826,6 +832,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_062" name="f3_3_062" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="33">
+        <preQTxt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</preQTxt>
         <qstnLit>Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien</qstnLit>
       </qstn>
       <catgry>
@@ -842,6 +849,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_054a" name="f3_3_054a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="34">
+        <preQTxt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</preQTxt>
         <qstnLit>Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))</qstnLit>
         <backward qstn="V_f3_3_054"/>
       </qstn>
@@ -865,6 +873,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_056a" name="f3_3_056a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="35">
+        <preQTxt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</preQTxt>
         <qstnLit>Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche</qstnLit>
         <backward qstn="V_f3_3_056"/>
       </qstn>
@@ -888,6 +897,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_058a" name="f3_3_058a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="36">
+        <preQTxt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</preQTxt>
         <qstnLit>Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen</qstnLit>
         <backward qstn="V_f3_3_058"/>
       </qstn>
@@ -911,6 +921,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_060a" name="f3_3_060a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="37">
+        <preQTxt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</preQTxt>
         <qstnLit>Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln</qstnLit>
         <backward qstn="V_f3_3_060"/>
       </qstn>
@@ -934,6 +945,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_3_062a" name="f3_3_062a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="38">
+        <preQTxt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</preQTxt>
         <qstnLit>Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien</qstnLit>
         <backward qstn="V_f3_3_062"/>
       </qstn>
@@ -1055,6 +1067,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_7_070" name="f3_7_070" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="45">
+        <preQTxt>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</preQTxt>
         <qstnLit>Zahlungen aus Branchenfonds zur Finanzierung der Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
@@ -1072,6 +1085,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_7_071" name="f3_7_071" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="46">
+        <preQTxt>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</preQTxt>
         <qstnLit>Zuschüsse der Europäischen Union (z. B. Mitfinanzierung von Qualifizierungsangeboten für die Bezieher von Kurzarbeitergeld aus dem Europäischen Sozialfonds)</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
@@ -1089,6 +1103,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_7_072" name="f3_7_072" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="47">
+        <preQTxt>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</preQTxt>
         <qstnLit>Öffentliche Zuschüsse (z. B. Förderung der Weiterbildung Geringqualifizierter und beschäftigter älterer Arbeitnehmer in Unternehmen (WeGebAU), Qualifizierungsangebote für die Bezieher von Kurzarbeitergeld, Bildungsscheck NRW)</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
@@ -1106,6 +1121,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_7_073" name="f3_7_073" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="48">
+        <preQTxt>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</preQTxt>
         <qstnLit>Einnahmen aus sonstigen Quellen (z. B. aus privaten Stiftungen, Zahlungen, die das Unternehmen aufgrund der Durchführung von Weiterbildungskursen für externe Organisationen und Personen erhält)</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
@@ -1748,6 +1764,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_1_124" name="f5_1_124" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="78">
+        <preQTxt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</preQTxt>
         <qstnLit>Bescheinigung/Zertifizierung nach schriftlichem oder praktischem Test der Teilnehmenden</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
@@ -1765,6 +1782,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_1_125" name="f5_1_125" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="79">
+        <preQTxt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</preQTxt>
         <qstnLit>Messung der Zufriedenheit der Teilnehmenden durch einen Fragebogen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
@@ -1782,6 +1800,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_1_126" name="f5_1_126" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="80">
+        <preQTxt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</preQTxt>
         <qstnLit>Bewertung des Verhaltens oder der Leistung der Teilnehmenden in Bezug auf die Weiterbildungsziele</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
@@ -1799,6 +1818,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_1_127" name="f5_1_127" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="81">
+        <preQTxt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</preQTxt>
         <qstnLit>Bewertung/Messung der Auswirkungen der Weiterbildung auf die Leistung bestimmter Abteilungen oder des ganzen Unternehmens</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
@@ -1816,6 +1836,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_1_127a" name="f5_1_127a" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="82">
+        <preQTxt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</preQTxt>
         <qstnLit>Andere Bewertungsmethoden</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
@@ -1833,6 +1854,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_128" name="f5_2_128" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="83">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Das Weiterbildungsangebot entsprach dem Bedarf des Unternehmens (keine Einschränkungen)</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1850,6 +1872,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_129" name="f5_2_129" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="84">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Die benötigten Qualifikationen wurden bevorzugt durch Neueinstellung entsprechend qualifizierten Personals gewonnen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1867,6 +1890,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_130" name="f5_2_130" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="85">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Schwierigkeiten, den Weiterbildungsbedarf des Unternehmens einzuschätzen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1884,6 +1908,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_131" name="f5_2_131" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="86">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Mangelndes Angebot an passenden Lehrveranstaltungen auf dem Weiterbildungsmarkt</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1901,6 +1926,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_132" name="f5_2_132" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="87">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Die hohen Kosten für Lehrveranstaltungen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1918,6 +1944,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_133" name="f5_2_133" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="88">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Das Unternehmen legte den Schwerpunkt auf die betriebliche Erstausbildung statt auf Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1935,6 +1962,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_134" name="f5_2_134" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="89">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Umfangreiche Weiterbildungsmaßnahmen in den letzten Jahren</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1952,6 +1980,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_135" name="f5_2_135" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="90">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Die hohe Arbeitsbelastung und die begrenzt verfügbare Zeit der Beschäftigten für Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1969,6 +1998,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f5_2_136" name="f5_2_136" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="91">
+        <preQTxt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</preQTxt>
         <qstnLit>Sonstige Gründe</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
@@ -1986,6 +2016,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_137" name="f6_137" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="92">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Die vorhandenen Qualifikationen der Beschäftigten entsprachen dem Bedarf des Unternehmens</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2003,6 +2034,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_138" name="f6_138" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="93">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Die benötigten Qualifikationen wurden bevorzugt durch Neueinstellung entsprechend qualifizierten Personals gewonnen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2020,6 +2052,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_139" name="f6_139" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="94">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Schwierigkeiten, den Weiterbildungsbedarf des Unternehmens einzuschätzen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2037,6 +2070,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_140" name="f6_140" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="95">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Mangelndes Angebot an passenden Lehrveranstaltungen auf dem Weiterbildungsmarkt</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2054,6 +2088,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_141" name="f6_141" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="96">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Die hohen Kosten für Lehrveranstaltungen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2071,6 +2106,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_142" name="f6_142" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="97">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Das Unternehmen legte den Schwerpunkt auf die betriebliche Erstausbildung statt auf Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2088,6 +2124,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_143" name="f6_143" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="98">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Umfangreiche Weiterbildungsmaßnahmen in den letzten Jahren</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2105,6 +2142,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_144" name="f6_144" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="99">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Die hohe Arbeitsbelastung und die begrenzt verfügbare Zeit der Beschäftigten für Weiterbildung</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2122,6 +2160,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f6_145" name="f6_145" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="100">
+        <preQTxt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</preQTxt>
         <qstnLit>Sonstige Gründe</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
@@ -2159,6 +2198,7 @@ Nicht zur betrieblichen Erstausbildung zählen Unternehmenspraktika von Schüler
     </var>
     <var ID="V_f7_2_147" name="f7_2_147" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="102">
+        <preQTxt>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</preQTxt>
         <qstnLit>Um zukünftige Beschäftigte entsprechend des Bedarfs des Unternehmens zu qualifizieren</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Beschäftigt Ihr Unternehmen normalerweise Auszubildende?“ = Ja</universe>
@@ -2176,6 +2216,7 @@ Nicht zur betrieblichen Erstausbildung zählen Unternehmenspraktika von Schüler
     </var>
     <var ID="V_f7_2_148" name="f7_2_148" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="103">
+        <preQTxt>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</preQTxt>
         <qstnLit>Um die besten Auszubildenden nach Abschluss ihrer Ausbildung zu übernehmen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Beschäftigt Ihr Unternehmen normalerweise Auszubildende?“ = Ja</universe>
@@ -2193,6 +2234,7 @@ Nicht zur betrieblichen Erstausbildung zählen Unternehmenspraktika von Schüler
     </var>
     <var ID="V_f7_2_149" name="f7_2_149" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="104">
+        <preQTxt>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</preQTxt>
         <qstnLit>Um das Risiko personeller Fehlentscheidungen bei der Einstellung externer Arbeitskräfte zu vermeiden</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Beschäftigt Ihr Unternehmen normalerweise Auszubildende?“ = Ja</universe>
@@ -2210,6 +2252,7 @@ Nicht zur betrieblichen Erstausbildung zählen Unternehmenspraktika von Schüler
     </var>
     <var ID="V_f7_2_150" name="f7_2_150" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="105">
+        <preQTxt>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</preQTxt>
         <qstnLit>Um Auszubildende bereits während der Ausbildung als Arbeitskräfte einzusetzen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Beschäftigt Ihr Unternehmen normalerweise Auszubildende?“ = Ja</universe>
@@ -2227,6 +2270,7 @@ Nicht zur betrieblichen Erstausbildung zählen Unternehmenspraktika von Schüler
     </var>
     <var ID="V_f7_2_151" name="f7_2_151" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="106">
+        <preQTxt>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</preQTxt>
         <qstnLit>Sonstige Gründe (z. B. um das Unternehmen attraktiver für potentielle Beschäftigte zu machen, Sicherung des Fachkräftenachwuchses, Firmentradition)</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Beschäftigt Ihr Unternehmen normalerweise Auszubildende?“ = Ja</universe>

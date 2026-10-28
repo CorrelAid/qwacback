@@ -489,7 +489,7 @@
       "type": "begin_group",
       "name": "nfe",
       "label": "During the last 12 months have you participated in any of the following activities - completed or ongoing - with the intention to improve knowledge or skills in any area (including hobbies) either during your free time or your working time?",
-      "appearance": "field-list"
+      "appearance": "table-list"
     },
     {
       "type": "select_one yes_no",

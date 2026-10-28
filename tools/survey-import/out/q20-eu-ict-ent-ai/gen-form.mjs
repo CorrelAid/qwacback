@@ -56,7 +56,7 @@ row({
 
 // ---- E1 (mandatory)
 begin('e1', 'Does your enterprise use any of the following Artificial Intelligence (AI) technologies?', {
-  appearance: 'field-list',
+  appearance: 'table-list',
   hint: 'E1 a) to h) = “No” then go to E4 (if optional included) else go to F1.',
 });
 grid('e1', [
@@ -79,7 +79,7 @@ end();
 // ---- E2 (mandatory in 2025; AI users)
 const ex = 'some of the examples may be:';
 begin('e2', 'Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?', {
-  appearance: 'field-list',
+  appearance: 'table-list',
   relevant: anyAI,
 });
 grid('e2', [
@@ -114,7 +114,7 @@ end();
 
 // ---- E3 (optional; AI users)
 begin('e3', 'How did you enterprise acquire the Artificial Intelligence software or systems that it uses?', {
-  appearance: 'field-list',
+  appearance: 'table-list',
   relevant: anyAI,
   hint: '– Optional',
 });
@@ -140,7 +140,7 @@ row({
   relevant: noAI,
 });
 begin('e5', 'What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?', {
-  appearance: 'field-list',
+  appearance: 'table-list',
   relevant: `\${e4} = '1'`,
   hint: '– Optional',
 });
@@ -179,7 +179,7 @@ const study = {
   timePrd: '2025',
   dataKind: 'Model questionnaire',
   license:
-    '© European Union, 2025. Manual KS-01-25-065: "Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated." Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): "The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made." "Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011." (Commission Decision 2011/833/EU). "When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included." ' +
+    'CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). © European Union, 2025. Manual KS-01-25-065: "Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated." Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): "The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made." "Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011." (Commission Decision 2011/833/EU). "When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included." ' +
     'Changes: format conversion of Module E "Artificial Intelligence" of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it.',
   copyright: '© European Union, 2025 (Eurostat)',
 };

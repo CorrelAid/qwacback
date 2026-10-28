@@ -7,7 +7,7 @@
         <IDNo>q17-snail</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Institute of Medical Education, University Hospital Bonn">Matthias Carl Laupichler</AuthEnty><AuthEnty affiliation="Institute of Medical Education, University Hospital Bonn">Alexandra Aster</AuthEnty><AuthEnty affiliation="Department of Psychology, University of Bonn">Nicolas Haverkamp</AuthEnty><AuthEnty affiliation="Institute of Medical Education, University Hospital Bonn">Tobias Raupach</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="University Hospital Bonn / University of Bonn">Laupichler, Aster, Haverkamp &amp; Raupach</producer><copyright>© 2023 The Authors. Published by Elsevier Ltd. German version: © 2023 by the authors, Licensee MDPI, Basel, Switzerland.</copyright>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Laupichler, M. C., Aster, A., Haverkamp, N., &amp; Raupach, T. (2023). Development of the &quot;Scale for the assessment of non-experts' AI literacy&quot; – An exploratory factor analysis. Computers in Human Behavior Reports, 12, 100338. https://doi.org/10.1016/j.chbr.2023.100338</biblCit><holdings URI="https://doi.org/10.1016/j.chbr.2023.100338">https://doi.org/10.1016/j.chbr.2023.100338</holdings>
     </citation><stdyInfo><subject><keyword>KI-Kompetenz</keyword><keyword>AI literacy</keyword><keyword>künstliche Intelligenz</keyword><keyword>artificial intelligence</keyword><keyword>Selbsteinschätzung</keyword><keyword>self-assessment</keyword><topcClas>Künstliche Intelligenz</topcClas><topcClas>Kompetenzen</topcClas></subject><abstract>Self-assessment scale of AI literacy for non-experts, i.e. people without formal AI or computer science training. 31 &quot;I can …&quot; statements, rated on a six-point agreement scale (the scale of the latest source, S1 of Laupichler et al. 2023; the original paper used seven points), cover three factors: Technical Understanding, Critical Appraisal and Practical Application. The items come from a Delphi study and were reduced from 39 by exploratory factor analysis with an online sample; the German version is the authors' systematic translation (Laupichler, Aster, Perschewski &amp; Schleiss 2023).</abstract><sumDscr><timePrd event="single">2023</timePrd><nation>International (English online sample); Deutschland (German version)</nation><anlyUnit>Individuum</anlyUnit><universe clusion="I">Erwachsene ohne formale KI- oder Informatikausbildung (non-experts)</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Open access: &quot;This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).&quot; (Laupichler et al. 2023, Computers in Human Behavior Reports 12, 100338). English items from Table 1 of that article. German items from Supplementary Material S1 of Laupichler, M. C., Aster, A., Perschewski, J.-O., &amp; Schleiss, J. (2023). Evaluating AI courses: A valid and reliable instrument for assessing artificial-intelligence learning through comparative self-assessment. Education Sciences, 13(10), 978. https://doi.org/10.3390/educsci13100978 — &quot;open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/)&quot;.</conditions></useStmt></dataAccs>
     <notes type="cdl:setting" subject="default_language">Deutsch (de)</notes>
@@ -25,14 +25,15 @@
     </fileTxt>
   </fileDscr>
   <dataDscr>
-    <varGrp ID="VG_snail" name="snail" type="section" var="V_snail_v01 V_snail_v02 V_snail_v04 V_snail_v05 V_snail_v06 V_snail_v08 V_snail_v12 V_snail_v13 V_snail_v14 V_snail_v15 V_snail_v16 V_snail_v17 V_snail_v18 V_snail_v19 V_snail_v20 V_snail_v21 V_snail_v22 V_snail_v23 V_snail_v24 V_snail_v25 V_snail_v28 V_snail_v29 V_snail_v30 V_snail_v31 V_snail_v32 V_snail_v33 V_snail_v34 V_snail_v35 V_snail_v36 V_snail_v37 V_snail_v39">
+    <varGrp ID="VG_snail" name="snail" type="grid" var="V_snail_v01 V_snail_v02 V_snail_v04 V_snail_v05 V_snail_v06 V_snail_v08 V_snail_v12 V_snail_v13 V_snail_v14 V_snail_v15 V_snail_v16 V_snail_v17 V_snail_v18 V_snail_v19 V_snail_v20 V_snail_v21 V_snail_v22 V_snail_v23 V_snail_v24 V_snail_v25 V_snail_v28 V_snail_v29 V_snail_v30 V_snail_v31 V_snail_v32 V_snail_v33 V_snail_v34 V_snail_v35 V_snail_v36 V_snail_v37 V_snail_v39">
       <txt>Scale for the assessment of non-experts' AI literacy (SNAIL)</txt>
       <txt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</txt>
       <concept>Scale for the assessment of non-experts' AI literacy (SNAIL)</concept>
-      <notes type="cdl:appearance">field-list</notes>
     </varGrp>
     <var ID="V_snail_v01" name="snail_v01" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erkennen, ob die Technologien, die ich nutze, von künstlicher Intelligenz unterstützt werden.</qstnLit>
         <qstnLit xml:lang="en">I can tell if the technologies I use are supported by artificial intelligence.</qstnLit>
       </qstn>
@@ -72,6 +73,8 @@
     </var>
     <var ID="V_snail_v02" name="snail_v02" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="2">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann Beispiele technischer Anwendungen nennen, die von künstlicher Intelligenz unterstützt werden.</qstnLit>
         <qstnLit xml:lang="en">I can name examples of technical applications that are supported by artificial intelligence.</qstnLit>
       </qstn>
@@ -111,6 +114,8 @@
     </var>
     <var ID="V_snail_v04" name="snail_v04" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="3">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann den Unterschied zwischen genereller (oder starker) und enger (oder schwacher) künstlicher Intelligenz erklären.</qstnLit>
         <qstnLit xml:lang="en">I can explain the difference between general (or strong) and narrow (or weak) artificial intelligence.</qstnLit>
       </qstn>
@@ -150,6 +155,8 @@
     </var>
     <var ID="V_snail_v05" name="snail_v05" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="4">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann bewerten, ob Darstellungen von KI in den Medien (z.B. in Filmen oder Videospielen) die aktuellen Fähigkeiten von KI-Technologien übersteigen.</qstnLit>
         <qstnLit xml:lang="en">I can evaluate whether media representations of AI (e.g., in movies or video games) go beyond the current capabilities of AI technologies.</qstnLit>
       </qstn>
@@ -189,6 +196,8 @@
     </var>
     <var ID="V_snail_v06" name="snail_v06" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="5">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann Schwächen von künstlicher Intelligenz nennen.</qstnLit>
         <qstnLit xml:lang="en">I can name weaknesses of artificial intelligence.</qstnLit>
       </qstn>
@@ -228,6 +237,8 @@
     </var>
     <var ID="V_snail_v08" name="snail_v08" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="6">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann Risiken beschreiben, welche auftreten können, wenn Systeme künstlicher Intelligenz verwendet werden.</qstnLit>
         <qstnLit xml:lang="en">I can describe risks that may arise when using artificial intelligence systems.</qstnLit>
       </qstn>
@@ -267,6 +278,8 @@
     </var>
     <var ID="V_snail_v12" name="snail_v12" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="7">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, wie KI Anwendungen Entscheidungen treffen.</qstnLit>
         <qstnLit xml:lang="en">I can explain how AI applications make decisions.</qstnLit>
       </qstn>
@@ -306,6 +319,8 @@
     </var>
     <var ID="V_snail_v13" name="snail_v13" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="8">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, wie Machine Learning generell funktioniert.</qstnLit>
         <qstnLit xml:lang="en">I can explain how machine learning works at a general level.</qstnLit>
       </qstn>
@@ -345,6 +360,8 @@
     </var>
     <var ID="V_snail_v14" name="snail_v14" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="9">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann beschreiben, wie Machine Learning Modelle trainiert, validiert und getestet werden.</qstnLit>
         <qstnLit xml:lang="en">I can describe how machine learning models are trained, validated, and tested.</qstnLit>
       </qstn>
@@ -384,6 +401,8 @@
     </var>
     <var ID="V_snail_v15" name="snail_v15" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="10">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann den Unterschied zwischen “Supervised Learning” und “Unsupervised Learning” erklären (im Kontext von Machine Learning).</qstnLit>
         <qstnLit xml:lang="en">I can explain the difference between 'supervised learning' and 'unsupervised learning' (in the context of machine learning).</qstnLit>
       </qstn>
@@ -423,6 +442,8 @@
     </var>
     <var ID="V_snail_v16" name="snail_v16" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="11">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, wie “Reinforcement Learning” im Wesentlichen funktioniert (im Kontext von Machine Learning).</qstnLit>
         <qstnLit xml:lang="en">I can explain how 'reinforcement learning' works on a basic level (in the context of machine learning).</qstnLit>
       </qstn>
@@ -462,6 +483,8 @@
     </var>
     <var ID="V_snail_v17" name="snail_v17" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="12">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, in welchem Verhältnis Deep Learning zu Machine Learning steht.</qstnLit>
         <qstnLit xml:lang="en">I can explain how deep learning relates to machine learning</qstnLit>
       </qstn>
@@ -501,6 +524,8 @@
     </var>
     <var ID="V_snail_v18" name="snail_v18" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="13">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, was der Begriff “künstliches neuronales Netz” bedeutet.</qstnLit>
         <qstnLit xml:lang="en">I can explain what the term 'artificial neural network' means.</qstnLit>
       </qstn>
@@ -540,6 +565,8 @@
     </var>
     <var ID="V_snail_v19" name="snail_v19" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="14">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann die Auswirkungen von Anwendungen der künstlichen Intelligenz in mindestens einem Themenbereich kritisch bewerten.</qstnLit>
         <qstnLit xml:lang="en">I can critically evaluate the implications of artificial intelligence applications in at least one subject area.</qstnLit>
       </qstn>
@@ -579,6 +606,8 @@
     </var>
     <var ID="V_snail_v20" name="snail_v20" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="15">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, warum Daten eine wichtige Rolle bei der Entwicklung und Anwendung künstlicher Intelligenz spielen.</qstnLit>
         <qstnLit xml:lang="en">I can explain why data plays an important role in the development and application of artificial intelligence.</qstnLit>
       </qstn>
@@ -618,6 +647,8 @@
     </var>
     <var ID="V_snail_v21" name="snail_v21" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="16">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann beschreiben, warum Menschen eine wichtige Rolle bei der Entwicklung von Systemen künstlicher Intelligenz spielen.</qstnLit>
         <qstnLit xml:lang="en">I can describe why humans play an important role in the development of artificial intelligence systems.</qstnLit>
       </qstn>
@@ -657,6 +688,8 @@
     </var>
     <var ID="V_snail_v22" name="snail_v22" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="17">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann beschreiben, wie einige Systeme künstlicher Intelligenz in ihrer Umgebung handeln und auf ihre Umgebung reagieren können.</qstnLit>
         <qstnLit xml:lang="en">I can describe how some artificial intelligence systems can act in their environment and react to their environment.</qstnLit>
       </qstn>
@@ -696,6 +729,8 @@
     </var>
     <var ID="V_snail_v23" name="snail_v23" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="18">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, wie Sensoren von Computern verwendet werden, um Daten zu sammeln, welche für KI-Zwecke genutzt werden können.</qstnLit>
         <qstnLit xml:lang="en">I can explain how sensors are used by computers to collect data that can be used for AI purposes.</qstnLit>
       </qstn>
@@ -735,6 +770,8 @@
     </var>
     <var ID="V_snail_v24" name="snail_v24" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="19">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann Anwendungen nennen, bei denen KI-unterstütztes Natural Language Processing/Understanding genutzt wird.</qstnLit>
         <qstnLit xml:lang="en">I can name applications in which AI-assisted natural language processing/understanding is used.</qstnLit>
       </qstn>
@@ -774,6 +811,8 @@
     </var>
     <var ID="V_snail_v25" name="snail_v25" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="20">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann ethische Bedenken rund um künstliche Intelligenz identifizieren.</qstnLit>
         <qstnLit xml:lang="en">I can identify ethical issues surrounding artificial intelligence.</qstnLit>
       </qstn>
@@ -813,6 +852,8 @@
     </var>
     <var ID="V_snail_v28" name="snail_v28" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="21">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann den potentiellen Einfluss von künstlicher Intelligenz auf Individuen und die Gesellschaft kritisch reflektieren.</qstnLit>
         <qstnLit xml:lang="en">I can critically reflect on the potential impact of artificial intelligence on individuals and society.</qstnLit>
       </qstn>
@@ -852,6 +893,8 @@
     </var>
     <var ID="V_snail_v29" name="snail_v29" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="22">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, warum KI in letzter Zeit zunehmend wichtiger geworden ist.</qstnLit>
         <qstnLit xml:lang="en">I can explain why AI has recently become increasingly important.</qstnLit>
       </qstn>
@@ -891,6 +934,8 @@
     </var>
     <var ID="V_snail_v30" name="snail_v30" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="23">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, wie sich regelbasierte Systeme von Machine Learning Systemen unterscheiden.</qstnLit>
         <qstnLit xml:lang="en">I can explain how rule-based systems differ from machine learning systems.</qstnLit>
       </qstn>
@@ -930,6 +975,8 @@
     </var>
     <var ID="V_snail_v31" name="snail_v31" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="24">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann beurteilen, ob ein Problem in meinem Fachbereich mit Methoden der künstlichen Intelligenz gelöst werden kann und sollte.</qstnLit>
         <qstnLit xml:lang="en">I can assess if a problem in my field can and should be solved with artificial intelligence methods.</qstnLit>
       </qstn>
@@ -969,6 +1016,8 @@
     </var>
     <var ID="V_snail_v32" name="snail_v32" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="25">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann beschreiben, was künstliche Intelligenz ist.</qstnLit>
         <qstnLit xml:lang="en">I can describe what artificial intelligence is.</qstnLit>
       </qstn>
@@ -1008,6 +1057,8 @@
     </var>
     <var ID="V_snail_v33" name="snail_v33" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="26">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann das Konzept der erklärbaren KI beschreiben.</qstnLit>
         <qstnLit xml:lang="en">I can describe the concept of explainable AI.</qstnLit>
       </qstn>
@@ -1047,6 +1098,8 @@
     </var>
     <var ID="V_snail_v34" name="snail_v34" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="27">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, warum Datensicherheit beachtet werden muss, wenn Anwendungen künstlicher Intelligenz entwickelt und verwendet werden.</qstnLit>
         <qstnLit xml:lang="en">I can explain why data security must be considered when developing and using artificial intelligence applications.</qstnLit>
       </qstn>
@@ -1086,6 +1139,8 @@
     </var>
     <var ID="V_snail_v35" name="snail_v35" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="28">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann erklären, warum Datenschutz beachtet werden muss, wenn Anwendungen künstlicher Intelligenz entwickelt und verwendet werden.</qstnLit>
         <qstnLit xml:lang="en">I can explain why data privacy must be considered when developing and using artificial intelligence applications.</qstnLit>
       </qstn>
@@ -1125,6 +1180,8 @@
     </var>
     <var ID="V_snail_v36" name="snail_v36" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="29">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann das Konzept von Big Data beschreiben.</qstnLit>
         <qstnLit xml:lang="en">I can describe the concept of big data.</qstnLit>
       </qstn>
@@ -1164,6 +1221,8 @@
     </var>
     <var ID="V_snail_v37" name="snail_v37" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="30">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann Beispiele aus meinem täglichen Leben (privat oder beruflich) geben, bei denen ich in Kontakt mit künstlicher Intelligenz sein könnte.</qstnLit>
         <qstnLit xml:lang="en">I can give examples from my daily life (personal or professional) where I might be in contact with artificial intelligence.</qstnLit>
       </qstn>
@@ -1203,6 +1262,8 @@
     </var>
     <var ID="V_snail_v39" name="snail_v39" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="31">
+        <preQTxt>Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
+        <preQTxt xml:lang="en">Scale for the assessment of non-experts' AI literacy (SNAIL)</preQTxt>
         <qstnLit>Ich kann potentielle rechtliche Probleme beschreiben, welche entstehen können, wenn künstliche Intelligenz genutzt wird.</qstnLit>
         <qstnLit xml:lang="en">I can describe potential legal problems that may arise when using artificial intelligence.</qstnLit>
       </qstn>

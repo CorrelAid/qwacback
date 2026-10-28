@@ -15,7 +15,7 @@ choices('ja_nein', [['1', 'Ja'], ['2', 'Nein']]);
 
 // Grid of Ja/Nein rows sharing one stem.
 const jnGrid = (name, stem, rows, extra = {}) => {
-  begin(name, stem, { appearance: 'field-list', ...extra });
+  begin(name, stem, { appearance: 'table-list', ...extra });
   for (const [code, label] of rows) row({ type: 'select_one ja_nein', name: `${name}_${code}`, label });
   end();
 };
@@ -165,7 +165,7 @@ const act33 = [
 jnGrid('f3_3', q33, act33, { hint: 'Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens.' });
 choices('anteil', [['1', 'unter 10 %'], ['2', '10 % bis unter 50 %'], ['3', '50 % und mehr']]);
 const q33a = 'Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.';
-begin('f3_3_anteil', q33a, { appearance: 'field-list' });
+begin('f3_3_anteil', q33a, { appearance: 'table-list' });
 for (const [c, l] of act33) row({ type: 'select_one anteil', name: `f3_3_${c}a`, label: l, relevant: yes(`f3_3_${c}`) });
 end();
 choices('ja_nein_2024', [['1', 'Ja'], ['2', 'Nein'], ['3', 'Unternehmen existierte 2024 nicht']]);

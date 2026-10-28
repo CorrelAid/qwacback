@@ -37,7 +37,8 @@ alone touches `seed_data/` and git.
    - Types: `select_one <list>`, `select_multiple <list>`, `integer`,
      `decimal`, `range`, `text`, `date`, `time`, `note`, `begin_group`/`end_group`
      for sections. Grid (same scale, several items) = a group with
-     `appearance: field-list` and `select_one` rows sharing one list. The working
+     `appearance: table-list` and only `select_one` rows sharing one list
+     (`field-list` makes a plain section, not a grid; keep notes outside). The working
      answer-type examples are in `internal/examples/examples.go`; DDI conventions are in
      `DDI_MARKUP_GUIDE.md` and `CONVERSION_API.md`.
    - "Other, please specify" = `select_one list` with an `other` choice + a

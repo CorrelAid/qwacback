@@ -117,7 +117,7 @@
       "type": "begin_group",
       "name": "f2_3",
       "label": "Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?",
-      "appearance": "field-list"
+      "appearance": "table-list"
     },
     {
       "type": "select_one ja_nein",
@@ -181,7 +181,7 @@
       "type": "begin_group",
       "name": "f2_8",
       "label": "Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "relevant": "${f2_8_039} = '1'"
     },
     {
@@ -251,7 +251,7 @@
       "type": "begin_group",
       "name": "f3_3",
       "label": "Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "hint": "Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens."
     },
     {
@@ -286,7 +286,7 @@
       "type": "begin_group",
       "name": "f3_3_anteil",
       "label": "Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.",
-      "appearance": "field-list"
+      "appearance": "table-list"
     },
     {
       "type": "select_one anteil",
@@ -374,7 +374,7 @@
       "type": "begin_group",
       "name": "f3_7",
       "label": "Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "relevant": "${f3_6_068} = '1'"
     },
     {
@@ -624,7 +624,7 @@
       "type": "begin_group",
       "name": "f5_1",
       "label": "Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "relevant": "${f5_1_123} = '1' or ${f5_1_123} = '2'"
     },
     {
@@ -659,7 +659,7 @@
       "type": "begin_group",
       "name": "f5_2",
       "label": "Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "hint": "Beantworten Sie bitte als nächstes Teil 7 des Fragebogens."
     },
     {
@@ -728,7 +728,7 @@
       "type": "begin_group",
       "name": "f6",
       "label": "Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?",
-      "appearance": "field-list"
+      "appearance": "table-list"
     },
     {
       "type": "select_one ja_nein",
@@ -800,7 +800,7 @@
       "type": "begin_group",
       "name": "f7_2",
       "label": "Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?",
-      "appearance": "field-list",
+      "appearance": "table-list",
       "relevant": "${f7_1_146a} = '1'",
       "hint": "Falls Sie normalerweise Auszubildende haben, beantworten Sie bitte noch die nachfolgende Frage 7.2."
     },
