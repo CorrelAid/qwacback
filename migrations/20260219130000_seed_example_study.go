@@ -1,101 +1,19 @@
 package migrations
 
 import (
-	"fmt"
-	"log"
-	"os"
-	"path/filepath"
-	"time"
-
-	"qwacback/internal/importer"
-	"qwacback/internal/schematron"
-
-	"github.com/clbanning/mxj/v2"
 	"github.com/pocketbase/pocketbase/core"
 	m "github.com/pocketbase/pocketbase/migrations"
 )
 
+// This migration used to import seed_data/*.xml once, into an empty
+// database. With a persistent database it would never pick up later changes
+// to seed_data/, so the seed sync (internal/seed, run on every start) does
+// that now (#56).
+//
+// It stays registered as a no-op: databases that applied it keep a matching
+// entry, and a fresh database runs it without effect.
 func init() {
 	m.Register(func(app core.App) error {
-		if os.Getenv("QWACBACK_SKIP_SEED") == "1" {
-			log.Println("Skipping seeding: QWACBACK_SKIP_SEED=1.")
-			return nil
-		}
-
-		// Only seed if studies collection is empty
-		collection, err := app.FindCollectionByNameOrId("studies")
-		if err != nil {
-			return err
-		}
-
-		total, err := app.CountRecords(collection.Id)
-		if err != nil {
-			return err
-		}
-
-		if total > 0 {
-			log.Println("Skipping seeding: studies already exist.")
-			return nil
-		}
-
-		seedFiles, err := filepath.Glob("seed_data/*.xml")
-		if err != nil {
-			return fmt.Errorf("failed to scan seed_data directory: %w", err)
-		}
-		if len(seedFiles) == 0 {
-			log.Println("No XML files found in seed_data/.")
-			return nil
-		}
-
-		// Optional NATS client for validation
-		var client schematron.Client
-		natsPort := os.Getenv("NATS_PORT")
-		if natsPort != "" {
-			c, err := schematron.NewNatsClient("nats://localhost:"+natsPort, os.Getenv("NATS_TOKEN"))
-			if err != nil {
-				log.Printf("Warning: Could not connect to NATS for seed validation: %v", err)
-			} else {
-				defer c.Close()
-				client = c
-			}
-		}
-
-		if client != nil {
-			if err := client.WaitForWorker(60 * time.Second); err != nil {
-				return fmt.Errorf("schematron worker unavailable: %w", err)
-			}
-		}
-
-		for _, path := range seedFiles {
-			xmlData, err := os.ReadFile(path)
-			if err != nil {
-				log.Printf("Warning: could not read seed file %s: %v", path, err)
-				continue
-			}
-
-			if client != nil {
-				resp, err := client.Validate(xmlData)
-				if err != nil {
-					return fmt.Errorf("seed data %s: Schematron validation unavailable: %w", path, err)
-				}
-				if !resp.Valid {
-					return fmt.Errorf("seed data %s failed Schematron validation: %v", path, resp.Errors)
-				}
-				log.Printf("Seed data %s passed Schematron validation.", path)
-			}
-
-			mv, err := mxj.NewMapXml(xmlData)
-			if err != nil {
-				return fmt.Errorf("failed to parse %s: %w", path, err)
-			}
-
-			if err := importer.ImportCodebookData(app, mv, xmlData); err != nil {
-				return fmt.Errorf("failed to import %s: %w", path, err)
-			}
-
-			log.Printf("Seeded %s successfully.", path)
-		}
-
 		return nil
 	}, nil)
 }

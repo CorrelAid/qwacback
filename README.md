@@ -71,7 +71,9 @@ Questions of a multilingual study also carry `language` (the base language of `q
 ### Import & Validation
 
 - **POST `/api/validate`** — Validate a DDI XML file (XSD + Schematron) without importing. Body: `multipart/form-data` with `file` field.
-- **POST `/api/import`** — Validate and import a DDI XML file. Same body format. **Requires superuser auth.** Responds `{"valid": true, "imported": true, "study_id": "…", "message": …}` on success; `imported: false` when the file is valid but couldn't be stored. Imports aren't persisted across deploys; see [Data lives in `seed_data/`](#data-lives-in-seed_data).
+- **POST `/api/import`** — Validate and import a DDI XML file. Same body format. **Requires superuser auth.** Responds `{"valid": true, "imported": true, "replaced": false, "study_id": "…", "message": …}` on success; `imported: false` when the file is valid but couldn't be stored. Imports are kept across deploys; see [Data and deployment](#data-and-deployment).
+  - A study's ID is derived from its title. If a study with the title exists, the import is refused with **409** and that `study_id`, unless `?replace=1` is given: then the study, its groups and its variables are replaced in one transaction, keeping their IDs (`"replaced": true`).
+  - A study from `seed_data/` is never replaced through the API, not even with `?replace=1` (409): change its file instead.
 
 ### Export & Conversion
 
@@ -107,16 +109,45 @@ docker compose up -d --build
 
 Access the PocketBase Dashboard at `http://localhost:8090/_/`.
 
-### Data lives in `seed_data/`
+### Data and deployment
 
-The database is **not persisted**: there is no volume for `/app/pb_data`, locally or in production (Coolify). Every container start, and so every deploy, begins with an empty PocketBase. The migrations create the superuser from `PB_ADMIN_EMAIL`/`PB_ADMIN_PASSWORD` and import every `seed_data/*.xml`.
+The database lives in `/app/pb_data` (SQLite, plus PocketBase's settings, logs and local backups). Mount a **persistent volume** on it: `docker-compose.yml` does (named volume `pb_data`), and production (Coolify) needs one too. Without a volume every start begins with an empty database, which still works: it is re-seeded from `seed_data/`, but uploads, dashboard edits and settings are lost.
 
-So **`seed_data/` is the source of truth** for the question bank:
+Studies have a `source`:
 
-- To add or change a study, a question or its search tags, edit the DDI file in `seed_data/` and merge. The next deploy re-seeds from it.
-- Studies imported through `/api/import` and edits in the PocketBase dashboard last only until the next deploy.
-- To add a published questionnaire, use `tools/survey-import/` (see its `PLAN.md`): transcribe the source literally to XLSForm JSON, build the codebook with the pinned formtransform, validate it with the pinned worker, and record source and license in `SOURCE.md`.
-- Record IDs are derived from the study title and the variable/group name, so they stay the same across deploys as long as those don't change.
+- **`seed`**: a file in `seed_data/`. **`seed_data/` is the source of truth for these.** On every start, after the migrations, the seed sync (`internal/seed`) brings them in line with the files:
+  - a new file is imported;
+  - a changed file (its `seed_hash`, the importer revision and the file's sha256, differs) replaces the study, its groups and its variables in one transaction;
+  - an unchanged file is skipped;
+  - a seed study whose file is gone is deleted, with its groups and variables.
+
+  New and changed files are validated first when the worker is connected (`NATS_PORT`); a rejected file fails the start before anything is written. Edits to a seed study in the dashboard last until its file changes; to change a study, a question or its search tags, edit the DDI file and merge. `QWACBACK_SKIP_SEED=1` skips the sync.
+- **`upload`**: imported through `/api/import`. The seed sync never touches it. If a seed file has the title of an upload, the sync skips that file and logs a warning instead of overwriting the upload; rename or delete the upload to let the seed in.
+
+To add a published questionnaire, use `tools/survey-import/` (see its `PLAN.md`): transcribe the source literally to XLSForm JSON, build the codebook with the pinned formtransform, validate it with the pinned worker, and record source and license in `SOURCE.md`.
+
+Record IDs are derived from the study title and the variable/group name, so they stay the same across deploys and replacements as long as those don't change.
+
+#### Migrations
+
+The database is persistent, so migrations run on existing data, not only on a fresh database:
+
+- **Date a new migration after all existing ones.** Older migrations (`codebook`, `license`, …) are dated before `20260219130000`, the former one-time seed; that ordering only worked because every start began empty.
+- **A new field needs a backfill for existing rows**, e.g. re-derived from the stored `studies.codebook`. For seed studies, raising `importer.Revision` instead makes the next start re-import them all; uploads still need the backfill.
+
+#### Backups
+
+PocketBase makes scheduled backups (a zip of `pb_data` without its `backups/` folder). Set them either in the dashboard (Settings → Backups) or through the environment: `PB_BACKUP_CRON` (e.g. `0 3 * * *`, daily at 03:00 UTC), `PB_BACKUP_KEEP` (default 7) and, to store them in S3 instead of `pb_data/backups`, `PB_BACKUP_S3_*` (see [Environment Variables](#environment-variables)). When `PB_BACKUP_CRON` is set, the environment owns the backup settings and overwrites dashboard changes on every start. Backups kept only in `pb_data/backups` sit on the same volume as the database; use S3 to survive losing the volume.
+
+**Restore:** in the dashboard, Settings → Backups → a backup → Restore; PocketBase replaces `pb_data` and restarts. Or by hand: stop the container, unzip the backup into the volume (replacing `data.db`, `auxiliary.db` and `storage/`), start it. Either way the seed sync then brings the seed studies in line with the deployed `seed_data/`.
+
+#### Coolify
+
+Production runs on Coolify, configured outside this repo. On the qwacback resource:
+
+1. **Persistent Storage → add a volume** with destination path `/app/pb_data` (if the resource is deployed from `docker-compose.yml`, Coolify takes the `pb_data` volume from it; check that it is listed).
+2. **Environment variables** for backups, e.g. `PB_BACKUP_CRON=0 3 * * *`, `PB_BACKUP_KEEP=14` and the `PB_BACKUP_S3_*` of the backup bucket (secret marked as such), or set them in the dashboard after the first deploy.
+3. Redeploy. The first start with the empty volume seeds every study from `seed_data/`; from then on uploads and settings persist.
 
 ### Published images
 
@@ -180,9 +211,11 @@ internal/
   importer/     XML parsing → PocketBase records
   routes/       API endpoints, question assembly, search
   schematron/   Go NATS client for validation worker
-migrations/     Schema setup, settings, user init, seed data
+  seed/         Seed sync: keeps the seed studies in line with seed_data/ on every start
+  backup/       Scheduled backups from PB_BACKUP_* environment variables
+migrations/     Schema setup, settings, user init, backfills
 ddi-emitter/    Node sidecar: DDI ↔ XLSForm via @correlaid/formtransform
-seed_data/      The question bank: DDI-XML files imported on every start (the database is not persisted)
+seed_data/      The reference studies: DDI-XML files synced into the database on every start
 tools/survey-import/  Turning published questionnaires into seed codebooks: build and validate tools, one folder per source
 .registry-version   Pinned formtransform release tag (drives ddi-emitter and the worker image)
 ```
@@ -228,7 +261,12 @@ curl -X POST http://localhost:8090/api/import \
 | `GOMEMLIMIT` | Soft memory limit for Go GC | `512MiB` |
 | `NATS_PORT` | Port for embedded NATS server | (optional — no validation without it) |
 | `NATS_TOKEN` | Auth token for embedded NATS server | (required when `NATS_PORT` is set) |
-| `QWACBACK_SKIP_SEED` | Set to `1` to skip seeding `seed_data/*.xml` (the database then starts empty) | (unset) |
+| `QWACBACK_SKIP_SEED` | Set to `1` to skip the seed sync of `seed_data/*.xml` on start (seed studies stay as they are) | (unset) |
+| `PB_BACKUP_CRON` | Schedule for PocketBase backups, e.g. `0 3 * * *`; when set, the environment owns the backup settings | (unset — dashboard settings) |
+| `PB_BACKUP_KEEP` | Scheduled backups to keep | `7` |
+| `PB_BACKUP_S3_BUCKET` | Store backups in this S3 bucket instead of `pb_data/backups` | (unset — local) |
+| `PB_BACKUP_S3_REGION`, `PB_BACKUP_S3_ENDPOINT`, `PB_BACKUP_S3_ACCESS_KEY`, `PB_BACKUP_S3_SECRET` | S3 connection for the backups | (unset) |
+| `PB_BACKUP_S3_FORCE_PATH_STYLE` | `true` for path-style S3 addressing (e.g. MinIO) | `false` |
 
 ## MCP Server
 

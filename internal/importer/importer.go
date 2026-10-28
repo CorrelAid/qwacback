@@ -5,6 +5,7 @@ import (
 	"crypto/sha256"
 	"encoding/base32"
 	"encoding/xml"
+	"fmt"
 	"log"
 	"regexp"
 	"strings"
@@ -378,6 +379,38 @@ func hasNote(m mxj.Map, noteType string) bool {
 	return false
 }
 
+// Where a study came from, in studies.source (#56):
+//   - SourceSeed: a file in seed_data/. The seed sync owns it: it replaces
+//     the study when the file changes and deletes it when the file is gone.
+//   - SourceUpload: /api/import. The seed sync never touches it.
+const (
+	SourceSeed   = "seed"
+	SourceUpload = "upload"
+)
+
+// Revision is the importer's revision. It is part of every seed study's
+// seed_hash, so raising it makes the next start re-import all seed studies,
+// e.g. after the importer learns to extract a new field. Uploads need a
+// backfill migration instead.
+const Revision = 1
+
+// SeedHash is the seed_hash of a seed file: the importer revision and the
+// file's sha256, e.g. "1:9f86d0…".
+func SeedHash(rawXML []byte) string {
+	return fmt.Sprintf("%d:%x", Revision, sha256.Sum256(rawXML))
+}
+
+// StudyTitle is the title of the study a codebook describes.
+func StudyTitle(mv mxj.Map) string {
+	return textAt(mv, "codeBook.stdyDscr.citation.titlStmt.titl")
+}
+
+// StudyID is the record ID ImportCodebook gives a codebook's study. It is
+// derived from the title, so the same codebook always maps to the same study.
+func StudyID(mv mxj.Map) string {
+	return deterministicID(StudyTitle(mv))
+}
+
 // StudyTitles returns a codebook's short title (titlStmt/altTitl, e.g.
 // "ATTARI-12") and subtitle (titlStmt/subTitl), each the first one in the
 // base language, so lists can name a study the way its source does (#64).
@@ -388,14 +421,20 @@ func StudyTitles(mv mxj.Map) (shortTitle, subtitle string) {
 }
 
 // ImportCodebook parses the XML and inserts studies, groups, variables and
-// categories into PocketBase. It returns the ID of the new study.
+// categories into PocketBase as an upload. It returns the ID of the new study.
 func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
+	return ImportStudy(app, mv, rawXML, SourceUpload, "")
+}
+
+// ImportStudy is ImportCodebook with the study's source and, for a seed
+// study, its seed_hash. Run it in a transaction to import all or nothing.
+func ImportStudy(app core.App, mv mxj.Map, rawXML []byte, source, seedHash string) (string, error) {
 	// Base language of a multilingual codebook (formtransform#135): the
 	// untagged texts are in it; other languages come as xml:lang siblings.
 	baseLang, _ := mv.ValueForPathString("codeBook.-lang")
 
 	// Extract Study info — use textAt() for fields that may carry XML attributes
-	title := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.titl")
+	title := StudyTitle(mv)
 	idNo := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.IDNo")
 	// A short name for lists and tags, e.g. "CVTS 7", and the subtitle; the
 	// title stays the full name (and the source of the record IDs).
@@ -479,6 +518,8 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	// whatever it carries beyond them (skip logic, cdl: notes, sections,
 	// question order) comes back out (#37).
 	studyRecord.Set("codebook", string(rawXML))
+	studyRecord.Set("source", source)
+	studyRecord.Set("seed_hash", seedHash)
 
 	if err := app.Save(studyRecord); err != nil {
 		return "", err
@@ -751,6 +792,25 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	}
 
 	return studyRecord.Id, nil
+}
+
+// ReplaceStudy deletes the codebook's study, if there is one, with its groups
+// and variables (cascade delete) and imports the codebook in its place, all in
+// one transaction. IDs are derived from the title and the variable and group
+// names, so they stay the same. It returns the ID of the study.
+func ReplaceStudy(app core.App, mv mxj.Map, rawXML []byte, source, seedHash string) (string, error) {
+	var id string
+	err := app.RunInTransaction(func(tx core.App) error {
+		if existing, err := tx.FindRecordById("studies", StudyID(mv)); err == nil {
+			if err := tx.Delete(existing); err != nil {
+				return err
+			}
+		}
+		var err error
+		id, err = ImportStudy(tx, mv, rawXML, source, seedHash)
+		return err
+	})
+	return id, err
 }
 
 // ImportCodebookData is ImportCodebook for callers that don't need the study ID.

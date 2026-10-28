@@ -60,6 +60,12 @@ func setXMLCache(app core.App, key string, data []byte) {
 	})
 }
 
+// ClearXMLCache drops every cached export, e.g. after the seed sync replaced
+// or deleted studies.
+func ClearXMLCache(app core.App) {
+	clearXMLCache(app)
+}
+
 func clearXMLCache(app core.App) {
 	for k := range app.Store().GetAll() {
 		if strings.HasPrefix(k, xmlCachePrefix) {
@@ -436,7 +442,39 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			})
 		}
 
-		studyID, err := importer.ImportCodebook(app, mv, xmlBytes)
+		// A study with this title exists (#56): a seed study changes only
+		// through seed_data/, an upload only when the client asks to replace it.
+		replace := false
+		if existing, err := app.FindRecordById("studies", importer.StudyID(mv)); err == nil {
+			if existing.GetString("source") == importer.SourceSeed {
+				return e.JSON(409, map[string]interface{}{
+					"valid":    true,
+					"imported": false,
+					"study_id": existing.Id,
+					"message":  "A seed study has this title. Seed studies change only through seed_data/.",
+				})
+			}
+			if e.Request.URL.Query().Get("replace") != "1" {
+				return e.JSON(409, map[string]interface{}{
+					"valid":    true,
+					"imported": false,
+					"study_id": existing.Id,
+					"message":  "A study with this title exists. Send ?replace=1 to replace it.",
+				})
+			}
+			replace = true
+		}
+
+		var studyID string
+		if replace {
+			studyID, err = importer.ReplaceStudy(app, mv, xmlBytes, importer.SourceUpload, "")
+		} else {
+			err = app.RunInTransaction(func(tx core.App) error {
+				var err error
+				studyID, err = importer.ImportCodebook(tx, mv, xmlBytes)
+				return err
+			})
+		}
 		if err != nil {
 			log.Printf("ERROR: failed to import XML data")
 			return e.JSON(200, map[string]interface{}{
@@ -451,6 +489,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 		return e.JSON(200, map[string]interface{}{
 			"valid":    true,
 			"imported": true,
+			"replaced": replace,
 			"study_id": studyID,
 			"message":  "XML is valid and imported successfully",
 		})
