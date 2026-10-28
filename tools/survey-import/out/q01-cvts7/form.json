@@ -54,45 +54,65 @@
       "label": "Teil 1: Fragen an alle Unternehmen – Strukturdaten des Unternehmens"
     },
     {
+      "type": "note",
+      "name": "f1_1_frage",
+      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?"
+    },
+    {
       "type": "integer",
       "name": "f1_1_002",
-      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — Beschäftigte am 31.12.2025 insgesamt",
+      "label": "Beschäftigte am 31.12.2025 insgesamt",
       "hint": "Anzahl"
+    },
+    {
+      "type": "note",
+      "name": "f1_1_geschlecht",
+      "label": "davon: Geschlecht (nach Geburtenregister)"
     },
     {
       "type": "integer",
       "name": "f1_1_002a",
-      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Männlich",
+      "label": "Männlich",
       "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f1_1_002b",
-      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Weiblich",
+      "label": "Weiblich",
       "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f1_1_002c",
-      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Divers",
+      "label": "Divers",
       "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f1_1_002d",
-      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister)",
+      "label": "Ohne Angabe (nach Geburtenregister)",
       "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+    },
+    {
+      "type": "note",
+      "name": "f1_2_frage",
+      "label": "Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an."
     },
     {
       "type": "integer",
       "name": "f1_2_006",
-      "label": "Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an. — Geleistete Arbeitsstunden im Jahr 2025 insgesamt",
+      "label": "Geleistete Arbeitsstunden im Jahr 2025 insgesamt",
       "hint": "Stunden"
+    },
+    {
+      "type": "note",
+      "name": "f1_3_frage",
+      "label": "Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein."
     },
     {
       "type": "integer",
       "name": "f1_3_007",
-      "label": "Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein. — Personalaufwendungen im Jahr 2025",
+      "label": "Personalaufwendungen im Jahr 2025",
       "hint": "Volle Euro"
     },
     {
@@ -344,13 +364,12 @@
     {
       "type": "select_one ja_nein",
       "name": "f3_6_066",
-      "label": "Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?",
-      "hint": "Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an."
+      "label": "Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?"
     },
     {
       "type": "integer",
       "name": "f3_6_067",
-      "label": "Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten? — Ja",
+      "label": "Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an.",
       "hint": "Volle Euro",
       "relevant": "${f3_6_066} = '1'"
     },
@@ -358,12 +377,12 @@
       "type": "select_one ja_nein",
       "name": "f3_6_068",
       "label": "Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?",
-      "hint": "Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an. Nein: Weiter mit Teil 4, 5 oder 6 des Fragebogens gemäß der Einteilung auf Seite 11 unten."
+      "hint": "Nein: Weiter mit Teil 4, 5 oder 6 des Fragebogens gemäß der Einteilung auf Seite 11 unten."
     },
     {
       "type": "integer",
       "name": "f3_6_069",
-      "label": "Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten? — Ja",
+      "label": "Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an.",
       "hint": "Volle Euro",
       "relevant": "${f3_6_068} = '1'"
     },
@@ -422,77 +441,92 @@
     {
       "type": "integer",
       "name": "f4_1_075",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — Teilnehmende insgesamt — Personen",
-      "hint": "Anzahl"
+      "label": "Teilnehmende insgesamt",
+      "hint": "Anzahl. Personen"
+    },
+    {
+      "type": "note",
+      "name": "f4_1_075_geschlecht",
+      "label": "davon: Geschlecht (nach Geburtenregister)"
     },
     {
       "type": "integer",
       "name": "f4_1_075a",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Männlich — Personen",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Männlich",
+      "hint": "Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f4_1_075b",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Weiblich — Personen",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Weiblich",
+      "hint": "Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f4_1_075c",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Divers — Personen",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Divers",
+      "hint": "Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f4_1_075d",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister) — Personen",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Ohne Angabe (nach Geburtenregister)",
+      "hint": "Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f4_1_078",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — Teilnehmende insgesamt — Teilnehmenden-Fälle",
-      "hint": "Anzahl"
+      "label": "Teilnehmende insgesamt",
+      "hint": "Anzahl. Teilnehmenden-Fälle"
+    },
+    {
+      "type": "note",
+      "name": "f4_1_078_geschlecht",
+      "label": "davon: Geschlecht (nach Geburtenregister)"
     },
     {
       "type": "integer",
       "name": "f4_1_078a",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Männlich — Teilnehmenden-Fälle",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Männlich",
+      "hint": "Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f4_1_078b",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Weiblich — Teilnehmenden-Fälle",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Weiblich",
+      "hint": "Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f4_1_078c",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Divers — Teilnehmenden-Fälle",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Divers",
+      "hint": "Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
       "type": "integer",
       "name": "f4_1_078d",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister) — Teilnehmenden-Fälle",
-      "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+      "label": "Ohne Angabe (nach Geburtenregister)",
+      "hint": "Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+    },
+    {
+      "type": "note",
+      "name": "f4_2_frage",
+      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen."
     },
     {
       "type": "integer",
       "name": "f4_2_081",
-      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — Teilnahmestunden insgesamt"
+      "label": "Teilnahmestunden insgesamt"
     },
     {
       "type": "integer",
       "name": "f4_2_082",
-      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — davon an: internen Lehrveranstaltungen"
+      "label": "davon an: internen Lehrveranstaltungen"
     },
     {
       "type": "integer",
       "name": "f4_2_083",
-      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — davon an: externen Lehrveranstaltungen"
+      "label": "externen Lehrveranstaltungen"
     },
     {
       "type": "select_multiple quali_stunden",
@@ -502,15 +536,20 @@
       "constraint": "count-selected(.) <= 3"
     },
     {
+      "type": "note",
+      "name": "f4_4_frage",
+      "label": "Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?"
+    },
+    {
       "type": "decimal",
       "name": "f4_4_097",
-      "label": "Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025? — Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz",
+      "label": "Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz",
       "hint": "Prozent. Beispiele für vorgeschriebene Lehrveranstaltungen im Bereich „Gesundheit und Arbeitsschutz“ sind § 12 Arbeitsschutzgesetz, § 11 Lärm- und Vibrations-Arbeitsschutzverordnung, § 20 Druckluftverordnung, § 14 Gefahrstoffverordnung, §§ 35 und 43 Absatz 4 Infektionsschutzgesetz; Gabelstaplerschein, Schweißerpass. Bitte tragen Sie die entsprechenden prozentualen Anteile ein. = Teilnahmestunden an Lehrveranstaltungen insgesamt: 100 %"
     },
     {
       "type": "decimal",
       "name": "f4_4_098",
-      "label": "Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025? — + Sonstige Teilnahmestunden an Lehrveranstaltungen",
+      "label": "+ Sonstige Teilnahmestunden an Lehrveranstaltungen",
       "hint": "Prozent"
     },
     {
@@ -539,7 +578,7 @@
     {
       "type": "integer",
       "name": "f4_6_108",
-      "label": "Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen — Ja",
+      "label": "Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen",
       "hint": "Volle Euro",
       "relevant": "${f4_6_107} = '1'"
     },
@@ -551,7 +590,7 @@
     {
       "type": "integer",
       "name": "f4_6_110",
-      "label": "Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren — Ja",
+      "label": "Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren",
       "hint": "Volle Euro",
       "relevant": "${f4_6_109} = '1'"
     },
@@ -563,7 +602,7 @@
     {
       "type": "integer",
       "name": "f4_6_112",
-      "label": "Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war — Ja",
+      "label": "Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war",
       "hint": "Volle Euro",
       "relevant": "${f4_6_111} = '1'"
     },
@@ -575,7 +614,7 @@
     {
       "type": "integer",
       "name": "f4_6_114",
-      "label": "Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben) — Ja",
+      "label": "Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)",
       "hint": "Volle Euro",
       "relevant": "${f4_6_113} = '1'"
     },
@@ -587,7 +626,7 @@
     {
       "type": "integer",
       "name": "f4_6_116",
-      "label": "Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde — Ja",
+      "label": "Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde",
       "hint": "Volle Euro",
       "relevant": "${f4_6_115} = '1'"
     },

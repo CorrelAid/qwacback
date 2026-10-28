@@ -156,59 +156,67 @@ Ausgeschlossen von diesen Fragen sind die Erstausbildung von Auszubildenden, die
     </varGrp>
     <var ID="V_f1_1_002" name="f1_1_002" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="1">
-        <qstnLit>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — Beschäftigte am 31.12.2025 insgesamt</qstnLit>
+        <preQTxt>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?</preQTxt>
+        <qstnLit>Beschäftigte am 31.12.2025 insgesamt</qstnLit>
         <postQTxt>Anzahl</postQTxt>
       </qstn>
-      <concept>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — Beschäftigte am 31.12.2025 insgesamt</concept>
+      <concept>Beschäftigte am 31.12.2025 insgesamt</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f1_1_frage</notes>
     </var>
     <var ID="V_f1_1_002a" name="f1_1_002a" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="2">
-        <qstnLit>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Männlich</qstnLit>
+        <preQTxt>davon: Geschlecht (nach Geburtenregister)</preQTxt>
+        <qstnLit>Männlich</qstnLit>
         <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
-      <concept>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Männlich</concept>
+      <concept>Männlich</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f1_1_geschlecht</notes>
     </var>
     <var ID="V_f1_1_002b" name="f1_1_002b" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="3">
-        <qstnLit>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Weiblich</qstnLit>
+        <qstnLit>Weiblich</qstnLit>
         <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
-      <concept>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Weiblich</concept>
+      <concept>Weiblich</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f1_1_002c" name="f1_1_002c" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="4">
-        <qstnLit>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Divers</qstnLit>
+        <qstnLit>Divers</qstnLit>
         <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
-      <concept>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Divers</concept>
+      <concept>Divers</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f1_1_002d" name="f1_1_002d" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="5">
-        <qstnLit>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister)</qstnLit>
+        <qstnLit>Ohne Angabe (nach Geburtenregister)</qstnLit>
         <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
-      <concept>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt? — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister)</concept>
+      <concept>Ohne Angabe (nach Geburtenregister)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f1_2_006" name="f1_2_006" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="6">
-        <qstnLit>Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an. — Geleistete Arbeitsstunden im Jahr 2025 insgesamt</qstnLit>
+        <preQTxt>Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.</preQTxt>
+        <qstnLit>Geleistete Arbeitsstunden im Jahr 2025 insgesamt</qstnLit>
         <postQTxt>Stunden</postQTxt>
       </qstn>
-      <concept>Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an. — Geleistete Arbeitsstunden im Jahr 2025 insgesamt</concept>
+      <concept>Geleistete Arbeitsstunden im Jahr 2025 insgesamt</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f1_2_frage</notes>
     </var>
     <var ID="V_f1_3_007" name="f1_3_007" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="7">
-        <qstnLit>Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein. — Personalaufwendungen im Jahr 2025</qstnLit>
+        <preQTxt>Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.</preQTxt>
+        <qstnLit>Personalaufwendungen im Jahr 2025</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
       </qstn>
-      <concept>Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein. — Personalaufwendungen im Jahr 2025</concept>
+      <concept>Personalaufwendungen im Jahr 2025</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f1_3_frage</notes>
     </var>
     <var ID="V_f2_1_010" name="f2_1_010" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="8">
@@ -1011,7 +1019,6 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
       <qstn responseDomainType="category" seqNo="41">
         <preQTxt>Bitte machen Sie hier Angaben zu Beiträgen und Einnahmen Ihres Unternehmens 2025 für die Weiterbildung seiner Beschäftigten. Beiträge und Einnahmen für die Aus- und Weiterbildung von Auszubildenden, Studierenden in Dualen Studiengängen sowie Praktikanten/Trainees mit einem Ausbildungsvertrag sind hier auszuschließen.</preQTxt>
         <qstnLit>Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?</qstnLit>
-        <postQTxt>Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an.</postQTxt>
       </qstn>
       <catgry>
         <catValu>1</catValu>
@@ -1028,19 +1035,19 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_6_067" name="f3_6_067" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="42">
-        <qstnLit>Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten? — Ja</qstnLit>
+        <qstnLit>Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an.</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
         <backward qstn="V_f3_6_066"/>
       </qstn>
       <universe clusion="I">Nur wenn „Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?“ = Ja</universe>
-      <concept>Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten? — Ja</concept>
+      <concept>Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f3_6_066} = '1'</notes>
     </var>
     <var ID="V_f3_6_068" name="f3_6_068" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="43">
         <qstnLit>Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?</qstnLit>
-        <postQTxt>Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an. Nein: Weiter mit Teil 4, 5 oder 6 des Fragebogens gemäß der Einteilung auf Seite 11 unten.</postQTxt>
+        <postQTxt>Nein: Weiter mit Teil 4, 5 oder 6 des Fragebogens gemäß der Einteilung auf Seite 11 unten.</postQTxt>
       </qstn>
       <catgry>
         <catValu>1</catValu>
@@ -1056,12 +1063,12 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
     </var>
     <var ID="V_f3_6_069" name="f3_6_069" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="44">
-        <qstnLit>Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten? — Ja</qstnLit>
+        <qstnLit>Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an.</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
         <backward qstn="V_f3_6_068"/>
       </qstn>
       <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
-      <concept>Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten? — Ja</concept>
+      <concept>Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f3_6_068} = '1'</notes>
     </var>
@@ -1145,117 +1152,123 @@ Teilnehmende an internen und externen Lehrveranstaltungen
 Zunächst hätten wir gerne Angaben zu den Teilnehmenden an internen und externen Lehrveranstaltungen. Dabei sollten die Beschäftigten jeweils nur einmal gezählt werden, unabhängig davon, an wie vielen Lehrveranstaltungen sie im Laufe des Jahres 2025 teilgenommen haben. Wenn Sie Angaben auf der Basis von Personen machen können, tragen Sie bitte diese Angaben in die erste Spalte der Tabelle ein.
 Liegen in Ihrem Unternehmen Angaben zu Teilnehmenden-Fällen vor (Beschäftigte, die im Jahr 2025 an mehreren Lehrveranstaltungen teilgenommen haben, werden mehrfach gezählt), so tragen Sie bitte diese Angaben in die zweite Spalte der Tabelle ein.
 Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die Tabelle ein.</preQTxt>
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — Teilnehmende insgesamt — Personen</qstnLit>
-        <postQTxt>Anzahl</postQTxt>
+        <qstnLit>Teilnehmende insgesamt</qstnLit>
+        <postQTxt>Anzahl. Personen</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — Teilnehmende insgesamt — Personen</concept>
+      <concept>Teilnehmende insgesamt</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:note_names">teil4_hinweis f4_1_hinweis</notes>
     </var>
     <var ID="V_f4_1_075a" name="f4_1_075a" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="50">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Männlich — Personen</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <preQTxt>davon: Geschlecht (nach Geburtenregister)</preQTxt>
+        <qstnLit>Männlich</qstnLit>
+        <postQTxt>Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Männlich — Personen</concept>
+      <concept>Männlich</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f4_1_075_geschlecht</notes>
     </var>
     <var ID="V_f4_1_075b" name="f4_1_075b" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="51">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Weiblich — Personen</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <qstnLit>Weiblich</qstnLit>
+        <postQTxt>Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Weiblich — Personen</concept>
+      <concept>Weiblich</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_1_075c" name="f4_1_075c" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="52">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Divers — Personen</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <qstnLit>Divers</qstnLit>
+        <postQTxt>Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Divers — Personen</concept>
+      <concept>Divers</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_1_075d" name="f4_1_075d" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="53">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister) — Personen</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <qstnLit>Ohne Angabe (nach Geburtenregister)</qstnLit>
+        <postQTxt>Anzahl. Personen. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister) — Personen</concept>
+      <concept>Ohne Angabe (nach Geburtenregister)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_1_078" name="f4_1_078" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="54">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — Teilnehmende insgesamt — Teilnehmenden-Fälle</qstnLit>
-        <postQTxt>Anzahl</postQTxt>
+        <qstnLit>Teilnehmende insgesamt</qstnLit>
+        <postQTxt>Anzahl. Teilnehmenden-Fälle</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — Teilnehmende insgesamt — Teilnehmenden-Fälle</concept>
+      <concept>Teilnehmende insgesamt</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_1_078a" name="f4_1_078a" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="55">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Männlich — Teilnehmenden-Fälle</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <preQTxt>davon: Geschlecht (nach Geburtenregister)</preQTxt>
+        <qstnLit>Männlich</qstnLit>
+        <postQTxt>Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Männlich — Teilnehmenden-Fälle</concept>
+      <concept>Männlich</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f4_1_078_geschlecht</notes>
     </var>
     <var ID="V_f4_1_078b" name="f4_1_078b" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="56">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Weiblich — Teilnehmenden-Fälle</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <qstnLit>Weiblich</qstnLit>
+        <postQTxt>Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Weiblich — Teilnehmenden-Fälle</concept>
+      <concept>Weiblich</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_1_078c" name="f4_1_078c" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="57">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Divers — Teilnehmenden-Fälle</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <qstnLit>Divers</qstnLit>
+        <postQTxt>Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Divers — Teilnehmenden-Fälle</concept>
+      <concept>Divers</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_1_078d" name="f4_1_078d" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="58">
-        <qstnLit>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister) — Teilnehmenden-Fälle</qstnLit>
-        <postQTxt>Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
+        <qstnLit>Ohne Angabe (nach Geburtenregister)</qstnLit>
+        <postQTxt>Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind.</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Teilnehmende an internen und externen Lehrveranstaltungen — davon: Geschlecht (nach Geburtenregister) — Ohne Angabe (nach Geburtenregister) — Teilnehmenden-Fälle</concept>
+      <concept>Ohne Angabe (nach Geburtenregister)</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_2_081" name="f4_2_081" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="59">
-        <qstnLit>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — Teilnahmestunden insgesamt</qstnLit>
+        <preQTxt>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.</preQTxt>
+        <qstnLit>Teilnahmestunden insgesamt</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — Teilnahmestunden insgesamt</concept>
+      <concept>Teilnahmestunden insgesamt</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f4_2_frage</notes>
     </var>
     <var ID="V_f4_2_082" name="f4_2_082" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="60">
-        <qstnLit>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — davon an: internen Lehrveranstaltungen</qstnLit>
+        <qstnLit>davon an: internen Lehrveranstaltungen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — davon an: internen Lehrveranstaltungen</concept>
+      <concept>davon an: internen Lehrveranstaltungen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_2_083" name="f4_2_083" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="61">
-        <qstnLit>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — davon an: externen Lehrveranstaltungen</qstnLit>
+        <qstnLit>externen Lehrveranstaltungen</qstnLit>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen. — davon an: externen Lehrveranstaltungen</concept>
+      <concept>externen Lehrveranstaltungen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_3_k084" name="f4_3_k084" intrvl="discrete" files="F1">
@@ -1452,20 +1465,22 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f4_4_097" name="f4_4_097" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="63">
-        <qstnLit>Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025? — Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz</qstnLit>
+        <preQTxt>Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?</preQTxt>
+        <qstnLit>Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz</qstnLit>
         <postQTxt>Prozent. Beispiele für vorgeschriebene Lehrveranstaltungen im Bereich „Gesundheit und Arbeitsschutz“ sind § 12 Arbeitsschutzgesetz, § 11 Lärm- und Vibrations-Arbeitsschutzverordnung, § 20 Druckluftverordnung, § 14 Gefahrstoffverordnung, §§ 35 und 43 Absatz 4 Infektionsschutzgesetz; Gabelstaplerschein, Schweißerpass. Bitte tragen Sie die entsprechenden prozentualen Anteile ein. = Teilnahmestunden an Lehrveranstaltungen insgesamt: 100 %</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025? — Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz</concept>
+      <concept>Teilnahmestunden an gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich Gesundheit und Arbeitsschutz</concept>
       <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">f4_4_frage</notes>
     </var>
     <var ID="V_f4_4_098" name="f4_4_098" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="64">
-        <qstnLit>Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025? — + Sonstige Teilnahmestunden an Lehrveranstaltungen</qstnLit>
+        <qstnLit>+ Sonstige Teilnahmestunden an Lehrveranstaltungen</qstnLit>
         <postQTxt>Prozent</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
-      <concept>Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025? — + Sonstige Teilnahmestunden an Lehrveranstaltungen</concept>
+      <concept>+ Sonstige Teilnahmestunden an Lehrveranstaltungen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f4_5_k099" name="f4_5_k099" intrvl="discrete" files="F1">
@@ -1608,12 +1623,12 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f4_6_108" name="f4_6_108" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="67">
-        <qstnLit>Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen — Ja</qstnLit>
+        <qstnLit>Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
         <backward qstn="V_f4_6_107"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen“ = Ja</universe>
-      <concept>Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen — Ja</concept>
+      <concept>Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_107} = '1'</notes>
     </var>
@@ -1636,12 +1651,12 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f4_6_110" name="f4_6_110" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="69">
-        <qstnLit>Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren — Ja</qstnLit>
+        <qstnLit>Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
         <backward qstn="V_f4_6_109"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren“ = Ja</universe>
-      <concept>Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren — Ja</concept>
+      <concept>Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_109} = '1'</notes>
     </var>
@@ -1664,12 +1679,12 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f4_6_112" name="f4_6_112" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="71">
-        <qstnLit>Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war — Ja</qstnLit>
+        <qstnLit>Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
         <backward qstn="V_f4_6_111"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war“ = Ja</universe>
-      <concept>Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war — Ja</concept>
+      <concept>Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_111} = '1'</notes>
     </var>
@@ -1692,12 +1707,12 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f4_6_114" name="f4_6_114" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="73">
-        <qstnLit>Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben) — Ja</qstnLit>
+        <qstnLit>Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
         <backward qstn="V_f4_6_113"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)“ = Ja</universe>
-      <concept>Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben) — Ja</concept>
+      <concept>Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_113} = '1'</notes>
     </var>
@@ -1720,12 +1735,12 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </var>
     <var ID="V_f4_6_116" name="f4_6_116" intrvl="contin" dcml="0" files="F1">
       <qstn responseDomainType="numeric" seqNo="75">
-        <qstnLit>Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde — Ja</qstnLit>
+        <qstnLit>Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde</qstnLit>
         <postQTxt>Volle Euro</postQTxt>
         <backward qstn="V_f4_6_115"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde“ = Ja</universe>
-      <concept>Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde — Ja</concept>
+      <concept>Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_115} = '1'</notes>
     </var>

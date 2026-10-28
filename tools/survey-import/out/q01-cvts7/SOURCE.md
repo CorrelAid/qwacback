@@ -32,7 +32,8 @@
 - Names: `f<question>_<form field code>` (e.g. `f1_1_002a`, `f3_3_054a`, `f7_1_146a`); Ja/Nein grids
   `f2_3`, `f2_8`, `f3_3`, `f3_7`, `f5_1`, `f5_2`, `f6`, `f7_2`. Choice codes (1 = Ja, 2 = Nein, …) are ours; the
   paper form has none. Multi-select options use the field codes (`k021` …).
-- Tables (1.1, 4.1, 4.2, 4.4, 3.6, 4.6): each cell is one item; label = verbatim stem + „ — “ + verbatim row label
+- Tables (1.1, 1.2, 1.3, 4.1, 4.2, 4.4): each cell is one item, labelled with its verbatim row label only. The question text printed above the table, and the „davon: Geschlecht (nach Geburtenregister)“ sub-heading, are note rows right before the first row they cover; formtransform puts them in that row's preQTxt only (the following rows carry no stem; formtransform has no numeric table). Column headings (Anzahl, Personen / Teilnehmenden-Fälle, Stunden, Volle Euro, Prozent) are hints. No text is joined across printed lines (2026-10-28; was stem + „ — “ + row label, which the source never prints).
+- Ja/Nein rows with an amount box on „Ja“ (3.6, 4.6): the amount item takes the printed „Falls „Ja“, …“ line (3.6) or its category text (4.6) as label, hint „Volle Euro“.
   (+ column label for 4.1 Personen / Teilnehmenden-Fälle). Units (Anzahl, Stunden, Volle Euro, Prozent) are hints.
 - 3.6 and 4.6: Ja/Nein item plus a Euro amount item that is shown only for „Ja“.
 - 3.3: the paper puts the share category (unter 10 % / 10 % bis unter 50 % / 50 % und mehr) next to each „Ja“ box.
