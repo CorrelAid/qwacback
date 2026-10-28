@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>TEI – Training Evaluations Inventar</titl>
+        <titl>Training Evaluations Inventar</titl><altTitl>TEI</altTitl>
         <IDNo>q15-tei</IDNo>
       </titlStmt><rspStmt><AuthEnty>Sandrina Ritzmann</AuthEnty><AuthEnty>Vera Hagemann</AuthEnty><AuthEnty>Annette Kluge</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="ZPID, Trier">Leibniz-Institut für Psychologie (ZPID), Open Test Archive</producer><copyright>© Ritzmann, S., Hagemann, V. &amp; Kluge, A. (2020); Copyright Autor(-Innen)</copyright>

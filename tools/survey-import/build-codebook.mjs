@@ -62,6 +62,8 @@ const insert = (after, content) => {
 
 // Inserted in DDI 2.5 sequence order: citation (titlStmt, rspStmt, prodStmt,
 // …, biblCit, holdings), then stdyInfo and dataAccs before stdyDscr/notes.
+// titlStmt: titl, subTitl, altTitl, then formtransform's parTitl and IDNo.
+insert('</titl>', el('subTitl', study.subtitle) + el('altTitl', study.shortTitle));
 const authors = (study.authors ?? []).map((a) =>
   typeof a === 'string' ? el('AuthEnty', a) : el('AuthEnty', a.name, { affiliation: a.affiliation }),
 );

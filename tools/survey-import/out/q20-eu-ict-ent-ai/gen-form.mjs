@@ -276,7 +276,9 @@ const DE_CHOICES = { 1: 'Ja', 0: 'Nein' };
 for (const c of C) if (c.list_name === 'yes_no') c[`label::${DE_LANG}`] = DE_CHOICES[c.name];
 
 const study = {
-  title: 'EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)',
+  title: 'EU Survey on ICT Usage and e-Commerce in Enterprises 2025',
+  subtitle: 'Module E: Artificial Intelligence',
+  shortTitle: 'ICT-ENT 2025',
   id: 'q20-eu-ict-ent-ai',
   authors: [{ name: 'Eurostat', affiliation: 'European Commission, Eurostat' }],
   producer: { name: 'Eurostat' },

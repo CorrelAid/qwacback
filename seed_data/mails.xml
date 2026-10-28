@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>MAILS – Meta AI Literacy Scale</titl>
+        <titl>Meta AI Literacy Scale</titl><altTitl>MAILS</altTitl>
         <IDNo>q08-mails</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Universität Würzburg">Astrid Carolus</AuthEnty><AuthEnty affiliation="Universität Würzburg">Martin J. Koch</AuthEnty><AuthEnty affiliation="Universität Würzburg">Samantha Straka</AuthEnty><AuthEnty affiliation="Universität Würzburg">Marc Erich Latoschik</AuthEnty><AuthEnty affiliation="Universität Würzburg">Carolin Wienrich</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="Universität Würzburg">Lehrstuhl für Mensch-Computer-Interaktion, Universität Würzburg</producer><copyright>© 2023 The Authors (Carolus, Koch, Straka, Latoschik, Wienrich)</copyright>

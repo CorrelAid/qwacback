@@ -1,6 +1,7 @@
 {
  "study": {
-  "title": "GAAIS – General Attitudes towards Artificial Intelligence Scale",
+  "title": "General Attitudes towards Artificial Intelligence Scale",
+  "shortTitle": "GAAIS",
   "id": "q18-gaais",
   "authors": [
    {

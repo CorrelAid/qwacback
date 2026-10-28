@@ -1,6 +1,7 @@
 {
  "study": {
-  "title": "SNAIL – Scale for the assessment of non-experts' AI literacy",
+  "title": "Scale for the assessment of non-experts’ AI literacy",
+  "shortTitle": "SNAIL",
   "id": "q17-snail",
   "authors": [
    {
@@ -284,7 +285,7 @@
  ],
  "settings": {
   "default_language": "Deutsch (de)",
-  "form_title": "SNAIL – Scale for the assessment of non-experts' AI literacy",
+  "form_title": "Scale for the assessment of non-experts’ AI literacy",
   "form_id": "q17-snail"
  }
 }

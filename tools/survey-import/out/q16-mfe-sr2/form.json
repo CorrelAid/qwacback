@@ -1,6 +1,8 @@
 {
  "study": {
-  "title": "Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2)",
+  "title": "Münsteraner Fragebogen zur Evaluation von Seminaren",
+  "subtitle": "2. Revision",
+  "shortTitle": "MFE-Sr2",
   "id": "q16-mfe-sr2",
   "authors": [
    {

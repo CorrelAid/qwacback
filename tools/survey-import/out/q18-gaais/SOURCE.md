@@ -12,3 +12,7 @@
 - The numbering is the standard GAAIS order (2023, Table 1 note), and the full wording is in 2023 Table 1. The instructions are in Appendix A (truncated in the paste).
 - Answer options, as revised for 2023 Study 2: Strongly disagree, Disagree, Neutral, Agree, Strongly agree, plus "Prefer not to answer" in the studies.
 - The negative items are reverse-scored; no overall score (not unidimensional).
+
+## Titles (#64, 2026-10-28)
+
+`titl` „General Attitudes towards Artificial Intelligence Scale“, `altTitl` „GAAIS“: title of the 2023 article, „The General Attitudes towards Artificial Intelligence Scale (GAAIS): …“.

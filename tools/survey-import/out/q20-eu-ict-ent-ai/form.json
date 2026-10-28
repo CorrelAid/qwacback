@@ -1,6 +1,8 @@
 {
   "study": {
-    "title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)",
+    "title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025",
+    "subtitle": "Module E: Artificial Intelligence",
+    "shortTitle": "ICT-ENT 2025",
     "id": "q20-eu-ict-ent-ai",
     "authors": [
       {
@@ -307,7 +309,7 @@
   ],
   "settings": {
     "default_language": "English (en)",
-    "form_title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)",
+    "form_title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025",
     "form_id": "q20-eu-ict-ent-ai"
   }
 }

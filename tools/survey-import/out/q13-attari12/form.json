@@ -1,6 +1,7 @@
 {
  "study": {
-  "title": "ATTARI-12 – Attitudes Towards Artificial Intelligence Scale",
+  "title": "Attitudes Towards Artificial Intelligence Scale",
+  "shortTitle": "ATTARI-12",
   "id": "q13-attari12",
   "authors": [
    {
@@ -167,7 +168,7 @@
  ],
  "settings": {
   "default_language": "Deutsch (de)",
-  "form_title": "ATTARI-12 – Attitudes Towards Artificial Intelligence Scale",
+  "form_title": "Attitudes Towards Artificial Intelligence Scale",
   "form_id": "q13-attari12"
  }
 }

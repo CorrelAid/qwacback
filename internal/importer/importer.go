@@ -336,8 +336,9 @@ func conceptsAt(m mxj.Map) (concept, vocab string, tags []ConceptTag) {
 
 // inferAnswerType maps a var to an answer type the way formtransform's
 // ddiToXlsform reads it back (#44):
-//   - numeric: integer with var/@dcml="0", range with a valrng/range that
-//     no cdl:constraint explains, else decimal
+//   - numeric: integer with var/@dcml="0", else decimal. qwac has no slider,
+//     so an XLSForm range (valrng/range without a cdl:constraint) is a
+//     decimal here too; the codebook keeps it as written.
 //   - text: date or time by varFormat/@category, else text
 //   - category: grid inside a grid group, else single_choice
 //   - multiple: multiple_choice
@@ -347,9 +348,6 @@ func inferAnswerType(vM mxj.Map, groupType string) string {
 	case "numeric":
 		if dcml, _ := vM.ValueForPathString("-dcml"); dcml == "0" {
 			return "integer"
-		}
-		if ranges, _ := vM.ValuesForPath("valrng.range"); len(ranges) > 0 && !hasNote(vM, "cdl:constraint") {
-			return "range"
 		}
 		return "decimal"
 	case "text":
@@ -413,6 +411,15 @@ func StudyID(mv mxj.Map) string {
 	return deterministicID(StudyTitle(mv))
 }
 
+// StudyTitles returns a codebook's short title (titlStmt/altTitl, e.g.
+// "ATTARI-12") and subtitle (titlStmt/subTitl), each the first one in the
+// base language, so lists can name a study the way its source does (#64).
+func StudyTitles(mv mxj.Map) (shortTitle, subtitle string) {
+	baseLang, _ := mv.ValueForPathString("codeBook.-lang")
+	return textAtLang(mv, "codeBook.stdyDscr.citation.titlStmt.altTitl", baseLang),
+		textAtLang(mv, "codeBook.stdyDscr.citation.titlStmt.subTitl", baseLang)
+}
+
 // ImportCodebook parses the XML and inserts studies, groups, variables and
 // categories into PocketBase as an upload. It returns the ID of the new study.
 func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
@@ -429,6 +436,9 @@ func ImportStudy(app core.App, mv mxj.Map, rawXML []byte, source, seedHash strin
 	// Extract Study info — use textAt() for fields that may carry XML attributes
 	title := StudyTitle(mv)
 	idNo := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.IDNo")
+	// A short name for lists and tags, e.g. "CVTS 7", and the subtitle; the
+	// title stays the full name (and the source of the record IDs).
+	shortTitle, subtitle := StudyTitles(mv)
 	timePeriod := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.timePrd")   // has event attr
 	nation := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.nation")         // has abbr attr
 	universe := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.universe")     // has clusion attr
@@ -483,6 +493,8 @@ func ImportStudy(app core.App, mv mxj.Map, rawXML []byte, source, seedHash strin
 	studyRecord.Id = deterministicID(title)
 	studyRecord.Set("title", title)
 	studyRecord.Set("id_no", idNo)
+	studyRecord.Set("short_title", shortTitle)
+	studyRecord.Set("subtitle", subtitle)
 	studyRecord.Set("abstract", abstract)
 	studyRecord.Set("time_period", timePeriod)
 	studyRecord.Set("nation", nation)

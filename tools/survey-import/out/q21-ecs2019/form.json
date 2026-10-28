@@ -1,6 +1,8 @@
 {
   "study": {
-    "title": "European Company Survey 2019: Management questionnaire",
+    "title": "European Company Survey 2019",
+    "subtitle": "Online questionnaire for Management respondents",
+    "shortTitle": "ECS 2019",
     "id": "q21-ecs2019",
     "authors": [
       {
@@ -1896,7 +1898,7 @@
   ],
   "settings": {
     "default_language": "English (en)",
-    "form_title": "European Company Survey 2019: Management questionnaire",
+    "form_title": "European Company Survey 2019",
     "form_id": "q21-ecs2019"
   }
 }

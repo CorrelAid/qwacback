@@ -61,3 +61,7 @@ Matches the German S1 factor lists (Technisches Verständnis / Kritische Beurtei
 - Answer scale switched to S1's **6-point** scale (list `snail_agree6`). The endpoint labels are literal from S1: 1 = "Stimme überhaupt nicht zu" / "Strongly disagree", 6 = "Stimme voll und ganz zu" / "Strongly agree". S1 leaves points 2–5 unlabelled, so they carry their code number only.
 - The original SNAIL paper (2023, CHBR) uses a 7-point scale; this codebook follows S1 instead.
 - All 31 items were rechecked character by character against S1: German against the right column, English against the left column without the "(Vnn)" codes, each item read as "Ich kann …" / "I can …" plus the column text, as in S1's example item. All match. The script's apparent mismatches (V15, V21, V28, V33: page-break column merge; V24: "KI-" line break) were checked by hand.
+
+## Titles (#64, 2026-10-28)
+
+`titl` „Scale for the assessment of non-experts’ AI literacy“, `altTitl` „SNAIL“: CHBR article, „“Scale for the assessment of non-experts’ AI literacy” (SNAIL)“ (curly apostrophe as printed).

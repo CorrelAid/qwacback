@@ -1,6 +1,7 @@
 {
  "study": {
-  "title": "TEI – Training Evaluations Inventar",
+  "title": "Training Evaluations Inventar",
+  "shortTitle": "TEI",
   "id": "q15-tei",
   "authors": [
    {
@@ -364,7 +365,7 @@
  ],
  "settings": {
   "default_language": "Deutsch (de)",
-  "form_title": "TEI – Training Evaluations Inventar",
+  "form_title": "Training Evaluations Inventar",
   "form_id": "q15-tei"
  }
 }

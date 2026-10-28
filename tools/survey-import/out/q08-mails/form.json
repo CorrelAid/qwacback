@@ -1,6 +1,7 @@
 {
  "study": {
-  "title": "MAILS – Meta AI Literacy Scale",
+  "title": "Meta AI Literacy Scale",
+  "shortTitle": "MAILS",
   "id": "q08-mails",
   "authors": [
    {
@@ -338,7 +339,7 @@
  ],
  "settings": {
   "default_language": "Deutsch (de)",
-  "form_title": "MAILS – Meta AI Literacy Scale",
+  "form_title": "Meta AI Literacy Scale",
   "form_id": "q08-mails"
  }
 }

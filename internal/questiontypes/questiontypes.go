@@ -89,7 +89,6 @@ var answerTypes = map[string]struct {
 	"grid":                      {"grid", Presentation{Grid: true}},
 	"integer":                   {"integer", Presentation{}},
 	"decimal":                   {"decimal", Presentation{}},
-	"range":                     {"range", Presentation{}},
 	"text":                      {"text", Presentation{}},
 	"date":                      {"date", Presentation{}},
 	"time":                      {"time", Presentation{}},

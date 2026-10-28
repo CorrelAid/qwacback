@@ -736,7 +736,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 
 		page, perPage := parsePagination(e)
 
-		filter := "title ~ {:q} || abstract ~ {:q} || keywords ~ {:q}"
+		filter := "title ~ {:q} || short_title ~ {:q} || abstract ~ {:q} || keywords ~ {:q}"
 		params := dbx.Params{"q": q}
 
 		topic := strings.TrimSpace(e.Request.URL.Query().Get("topic"))
@@ -750,25 +750,27 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewInternalServerError("Search failed", nil)
 		}
 
-		studyFields := []string{"title", "keywords", "abstract"}
+		studyFields := []string{"title", "short_title", "keywords", "abstract"}
 		records, totalItems := rankAndPaginate(allRecords, q, studyFields, page, perPage)
 
 		type studyResult struct {
-			ID       string `json:"id"`
-			Title    string `json:"title"`
-			Abstract string `json:"abstract"`
-			Author   string `json:"author"`
-			Nation   string `json:"nation"`
+			ID         string `json:"id"`
+			Title      string `json:"title"`
+			ShortTitle string `json:"short_title"`
+			Abstract   string `json:"abstract"`
+			Author     string `json:"author"`
+			Nation     string `json:"nation"`
 		}
 
 		items := make([]studyResult, 0, len(records))
 		for _, r := range records {
 			items = append(items, studyResult{
-				ID:       r.Id,
-				Title:    r.GetString("title"),
-				Abstract: r.GetString("abstract"),
-				Author:   r.GetString("author"),
-				Nation:   r.GetString("nation"),
+				ID:         r.Id,
+				Title:      r.GetString("title"),
+				ShortTitle: r.GetString("short_title"),
+				Abstract:   r.GetString("abstract"),
+				Author:     r.GetString("author"),
+				Nation:     r.GetString("nation"),
 			})
 		}
 
@@ -1001,25 +1003,31 @@ func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
 	// License, copyright, citation and source say how the question may be
 	// reused and how to attribute it; empty when the codebook states none.
 	// LicenseID is the SPDX ID of a Creative Commons license, else empty.
+	// ShortTitle (altTitl) and Subtitle (subTitl) are empty when the codebook
+	// has none.
 	type studyInfo struct {
-		ID        string `json:"id"`
-		Title     string `json:"title"`
-		License   string `json:"license"`
-		LicenseID string `json:"license_id"`
-		Copyright string `json:"copyright"`
-		Citation  string `json:"citation"`
-		SourceURI string `json:"source_uri"`
+		ID         string `json:"id"`
+		Title      string `json:"title"`
+		ShortTitle string `json:"short_title"`
+		Subtitle   string `json:"subtitle"`
+		License    string `json:"license"`
+		LicenseID  string `json:"license_id"`
+		Copyright  string `json:"copyright"`
+		Citation   string `json:"citation"`
+		SourceURI  string `json:"source_uri"`
 	}
 	var study studyInfo
 	if s, err := app.FindRecordById("studies", studyID); err == nil {
 		study = studyInfo{
-			ID:        s.Id,
-			Title:     s.GetString("title"),
-			License:   s.GetString("license"),
-			LicenseID: s.GetString("license_id"),
-			Copyright: s.GetString("copyright"),
-			Citation:  s.GetString("citation"),
-			SourceURI: s.GetString("holdings_uri"),
+			ID:         s.Id,
+			Title:      s.GetString("title"),
+			ShortTitle: s.GetString("short_title"),
+			Subtitle:   s.GetString("subtitle"),
+			License:    s.GetString("license"),
+			LicenseID:  s.GetString("license_id"),
+			Copyright:  s.GetString("copyright"),
+			Citation:   s.GetString("citation"),
+			SourceURI:  s.GetString("holdings_uri"),
 		}
 	}
 

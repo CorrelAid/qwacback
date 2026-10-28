@@ -51,7 +51,9 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 - **GET `/api/questions`** — List all questions across all studies.
 - **GET `/api/questions/{id}`** — Get a single question with full detail: embedded study, group, and variable data (categories, prequestion text, hint, interviewer instructions, skip logic as prose in `universe`, etc.). No additional API calls needed for a detail view.
 
-Each study carries its terms of use, so a client can show them with every reused question. `/api/questions/{id}` embeds them in `study` as `license`, `copyright`, `citation` and `source_uri`; the `studies` records have them as `license`, `copyright`, `citation` and `holdings_uri`. They are read from the codebook (see DDI_MARKUP_GUIDE.md §5) and are empty when it states none.
+Each study carries its terms of use, so a client can show them with every reused question. `/api/questions/{id}` embeds them in `study` as `license`, `copyright`, `citation` and `source_uri`; the `studies` records have them as `license`, `copyright`, `citation` and `holdings_uri`. They are read from the codebook (see DDI_MARKUP_GUIDE.md §6) and are empty when it states none.
+
+A study's short name for lists and tags, e.g. `ATTARI-12`, is `short_title` on the `studies` records and `study.short_title` in `/api/questions/{id}`, from the codebook's `titlStmt/altTitl`; its subtitle (`titlStmt/subTitl`) is `subtitle` and `study.subtitle` (DDI_MARKUP_GUIDE.md §5). `/api/search/studies` returns `short_title` too. Both are empty when the codebook has none; then show `title`.
 - **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question, cut unchanged from the stored codebook.
 - **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.
@@ -64,7 +66,7 @@ Questions of a multilingual study also carry `language` (the base language of `q
 
 ### Studies
 
-- **GET `/api/search/studies?q=<term>`** — Search studies by title, keywords, and abstract. Optional `&topic=<classification>` filter. Supports pagination.
+- **GET `/api/search/studies?q=<term>`** — Search studies by title, short title, keywords, and abstract. Optional `&topic=<classification>` filter. Supports pagination.
 
 ### Import & Validation
 
@@ -86,7 +88,7 @@ For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
 
 - **GET `/api/examples`** — Answer type examples (XLSForm + DDI pairs).
 - **GET `/api/examples/{type}`** — Single example by type (`single_choice`, `multiple_choice`, `grid`, `integer`, `text`, etc.).
-- **GET `/api/question-types`** — The registry's question-type catalogue of the pinned formtransform, keyed by qwacback's answer types: `registryType`, `label` per language (`en`, `de`), `kind`, `base`, `aliases` and `presentation` (`choice`: `one`/`multiple`, `withOther`, `longList`, `grid`, `appearance`). A `grid` has no `choice`: its rows are choice rows (answer type `grid`) or number rows (`integer`, `decimal`, `range`), and a row's `grid_note` is a sub-heading printed before it. `withOther`, `longList` and `appearance` are the registry's. `?registry=1` returns every registry type keyed by registry slug instead. Clients get the catalogue here instead of importing `@correlaid/formtransform`.
+- **GET `/api/question-types`** — The registry's question-type catalogue of the pinned formtransform, keyed by qwacback's answer types: `registryType`, `label` per language (`en`, `de`), `kind`, `base`, `aliases` and `presentation` (`choice`: `one`/`multiple`, `withOther`, `longList`, `grid`, `appearance`). A `grid` has no `choice`: its rows are choice rows (answer type `grid`) or number rows (`integer`, `decimal`), and a row's `grid_note` is a sub-heading printed before it. `withOther`, `longList` and `appearance` are the registry's. `?registry=1` returns every registry type keyed by registry slug instead. Clients get the catalogue here instead of importing `@correlaid/formtransform`.
 - **GET `/api/docs/markup-guide`** — DDI encoding conventions.
 
 ### PocketBase built-in API
@@ -275,7 +277,7 @@ qwacback exposes a [Model Context Protocol](https://modelcontextprotocol.io/) se
 | Tool | Description |
 |---|---|
 | `search_questions` | Search questions by text, concept, name, or answer type |
-| `search_studies` | Search studies by title, keywords, or abstract (optional `topic` filter) |
+| `search_studies` | Search studies by title, short title, keywords, or abstract (optional `topic` filter) |
 | `get_question` | Get a single question by ID in full: study, group and every variable with item text, hint, categories and grid note |
 | `list_questions` | List all questions, optionally filtered by study |
 

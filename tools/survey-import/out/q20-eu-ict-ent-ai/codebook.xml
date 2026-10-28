@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)</titl>
+        <titl>EU Survey on ICT Usage and e-Commerce in Enterprises 2025</titl><subTitl>Module E: Artificial Intelligence</subTitl><altTitl>ICT-ENT 2025</altTitl>
         <IDNo>q20-eu-ict-ent-ai</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="European Commission, Eurostat">Eurostat</AuthEnty></rspStmt>
       <prodStmt><producer>Eurostat</producer><copyright>© European Union, 2025 (Eurostat); German texts © Statistisches Bundesamt (Destatis), 2025</copyright>

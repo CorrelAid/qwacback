@@ -816,6 +816,7 @@ end();
 
 const study = {
   title: 'Adult Education Survey 2022 (AES): Model questions',
+  shortTitle: '2022 AES',
   id: 'q19-eu-aes2022',
   authors: [{ name: 'Eurostat', affiliation: 'European Commission, Eurostat, Unit F-3: Labour market and lifelong learning' }],
   producer: { name: 'Eurostat' },

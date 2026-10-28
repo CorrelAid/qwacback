@@ -196,3 +196,7 @@ Section C depends on Section A or other sections.
   of interest.
 - `timePrd` is 2011. Fieldwork ran March 2011 to June 2012 (GOV.UK page).
 - `gen-form.mjs` in this folder generates `form.json` (run it with the output path as its argument).
+
+## Titles (#64, 2026-10-28)
+
+`titl` unchanged. `altTitl` „WERS6“: cover of the MQ, „Sixth Workplace Employment Relations Study (WERS6)“.
