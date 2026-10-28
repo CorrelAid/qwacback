@@ -453,6 +453,9 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	// Extract Study info — use textAt() for fields that may carry XML attributes
 	title := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.titl")
 	idNo := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.IDNo")
+	// A short name for lists and tags, e.g. "CVTS7"; the title stays the
+	// full name (and the source of the record IDs).
+	shortTitle := textAt(mv, "codeBook.stdyDscr.citation.titlStmt.altTitl")
 	timePeriod := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.timePrd")   // has event attr
 	nation := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.nation")         // has abbr attr
 	universe := textAt(mv, "codeBook.stdyDscr.stdyInfo.sumDscr.universe")     // has clusion attr
@@ -507,6 +510,7 @@ func ImportCodebook(app core.App, mv mxj.Map, rawXML []byte) (string, error) {
 	studyRecord.Id = deterministicID(title)
 	studyRecord.Set("title", title)
 	studyRecord.Set("id_no", idNo)
+	studyRecord.Set("short_title", shortTitle)
 	studyRecord.Set("abstract", abstract)
 	studyRecord.Set("time_period", timePeriod)
 	studyRecord.Set("nation", nation)

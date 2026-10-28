@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>Europäische Erhebung über die berufliche Weiterbildung in Unternehmen (CVTS7): Fragebogen</titl>
+        <titl>Europäische Erhebung über die berufliche Weiterbildung in Unternehmen (CVTS7): Fragebogen</titl><altTitl>CVTS7</altTitl>
         <IDNo>q01-cvts7</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Statistisches Amt für Hamburg und Schleswig-Holstein (Statistikamt Nord)">Statistische Ämter des Bundes und der Länder</AuthEnty></rspStmt>
       <prodStmt><producer>Statistisches Amt für Hamburg und Schleswig-Holstein (Statistikamt Nord)</producer><copyright>© Statistisches Amt für Hamburg und Schleswig-Holstein, Hamburg 2026</copyright>
@@ -83,75 +83,91 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
     </varGrp>
     <varGrp ID="VG_teil1_f1_1" name="teil1/f1_1" type="grid" var="V_f1_1_002 V_f1_1_002a V_f1_1_002b V_f1_1_002c V_f1_1_002d">
       <txt>Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?</txt>
+      <concept>Beschäftigte insgesamt</concept>
       <notes type="cdl:grid_note" subject="f1_1_002a">davon: Geschlecht (nach Geburtenregister)</notes>
     </varGrp>
     <varGrp ID="VG_teil2_f2_3" name="teil2/f2_3" type="grid" var="V_f2_3_012 V_f2_3_013 V_f2_3_014 V_f2_3_015">
       <txt>Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?</txt>
+      <concept>Maßnahmen für künftigen Qualifikationsbedarf</concept>
     </varGrp>
     <varGrp ID="VG_teil2_f2_8" name="teil2/f2_8" type="grid" var="V_f2_8_040 V_f2_8_041 V_f2_8_042 V_f2_8_043 V_f2_8_044 V_f2_8_045 V_f2_8_046">
       <txt>Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?</txt>
+      <concept>Mitwirkungsbereiche der Arbeitnehmervertretung</concept>
       <universe clusion="I">Nur wenn „Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f2_8_039} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_teil3_f3_3" name="teil3/f3_3" type="grid" var="V_f3_3_054 V_f3_3_056 V_f3_3_058 V_f3_3_060 V_f3_3_062">
       <txt>Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?</txt>
+      <concept>Andere Weiterbildungsformen 2025</concept>
       <notes type="cdl:hint">Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens.</notes>
     </varGrp>
     <varGrp ID="VG_teil3_f3_3_anteil" name="teil3/f3_3_anteil" type="grid" var="V_f3_3_054a V_f3_3_056a V_f3_3_058a V_f3_3_060a V_f3_3_062a">
       <txt>Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.</txt>
+      <concept>Teilnahmeanteil andere Weiterbildungsformen</concept>
     </varGrp>
     <varGrp ID="VG_teil3_f3_7" name="teil3/f3_7" type="grid" var="V_f3_7_070 V_f3_7_071 V_f3_7_072 V_f3_7_073">
       <txt>Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?</txt>
+      <concept>Genutzte Fördermaßnahmen</concept>
       <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f3_6_068} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_teil4_f4_1" name="teil4/f4_1" type="grid" var="V_f4_1_075 V_f4_1_075a V_f4_1_075b V_f4_1_075c V_f4_1_075d V_f4_1_078 V_f4_1_078a V_f4_1_078b V_f4_1_078c V_f4_1_078d">
       <txt>Teilnehmende an internen und externen Lehrveranstaltungen</txt>
+      <concept>Teilnehmende an Lehrveranstaltungen</concept>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
       <notes type="cdl:grid_note" subject="f4_1_075a">davon: Geschlecht (nach Geburtenregister)</notes>
       <notes type="cdl:grid_note" subject="f4_1_078a">davon: Geschlecht (nach Geburtenregister)</notes>
     </varGrp>
     <varGrp ID="VG_teil4_f4_2" name="teil4/f4_2" type="grid" var="V_f4_2_081 V_f4_2_082 V_f4_2_083">
       <txt>Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.</txt>
+      <concept>Teilnahmestunden 2025</concept>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
     </varGrp>
     <varGrp ID="VG_teil4_f4_4" name="teil4/f4_4" type="grid" var="V_f4_4_097 V_f4_4_098">
       <txt>Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?</txt>
+      <concept>Anteil vorgeschriebener Lehrveranstaltungen</concept>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
     </varGrp>
     <varGrp ID="VG_teil5_f5_1" name="teil5/f5_1" type="grid" var="V_f5_1_124 V_f5_1_125 V_f5_1_126 V_f5_1_127 V_f5_1_127a">
       <txt>Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?</txt>
+      <concept>Methoden der Ergebnisbewertung</concept>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja) und („Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach jeder Maßnahme oder „Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?“ = Ja, nach einigen Maßnahmen)</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f5_1_123} = '1' or ${f5_1_123} = '2'</notes>
     </varGrp>
     <varGrp ID="VG_teil5_f5_2" name="teil5/f5_2" type="grid" var="V_f5_2_128 V_f5_2_129 V_f5_2_130 V_f5_2_131 V_f5_2_132 V_f5_2_133 V_f5_2_134 V_f5_2_135 V_f5_2_136">
       <txt>Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?</txt>
+      <concept>Gründe für eingeschränkte Weiterbildung</concept>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja</universe>
       <notes type="cdl:hint">Beantworten Sie bitte als nächstes Teil 7 des Fragebogens.</notes>
     </varGrp>
     <varGrp ID="VG_teil6_f6" name="teil6/f6" type="grid" var="V_f6_137 V_f6_138 V_f6_139 V_f6_140 V_f6_141 V_f6_142 V_f6_143 V_f6_144 V_f6_145">
       <txt>Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?</txt>
+      <concept>Gründe für keine Weiterbildung</concept>
       <universe clusion="I">Nur wenn nicht („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja oder „Geplante Phasen der Weiterbildung am Arbeitsplatz (Unterweisung durch Vorgesetzte, Spezialisten oder Kollegen, Lernen durch die normalen Arbeitsmittel und andere Medien (Einarbeitung))“ = Ja oder „Geplante Weiterbildung durch Job-Rotation, Austauschprogramme, Abordnungen, Studienbesuche“ = Ja oder „Geplante Weiterbildung durch Besuch von Informationsveranstaltungen wie Fachvorträgen, Fachtagungen/Kongressen/Symposien/Kolloquien, Workshops, Fachmessen, Erfahrungsaustauschkreisen“ = Ja oder „Geplante Weiterbildung durch Teilnahme an Lern- und Qualitätszirkeln“ = Ja oder „Geplante Weiterbildung durch selbstgesteuertes Lernen z. B. durch E-Learning, mit audio-visuellen Hilfen wie Videos und anderen Medien“ = Ja)</universe>
     </varGrp>
     <varGrp ID="VG_teil7_f7_2" name="teil7/f7_2" type="grid" var="V_f7_2_147 V_f7_2_148 V_f7_2_149 V_f7_2_150 V_f7_2_151">
       <txt>Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?</txt>
+      <concept>Gründe für duale Ausbildung</concept>
       <universe clusion="I">Nur wenn „Beschäftigt Ihr Unternehmen normalerweise Auszubildende?“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f7_1_146a} = '1'</notes>
       <notes type="cdl:hint">Falls Sie normalerweise Auszubildende haben, beantworten Sie bitte noch die nachfolgende Frage 7.2.</notes>
     </varGrp>
     <varGrp ID="VG_f2_4" name="f2_4" type="multipleResp" var="V_f2_4_k021 V_f2_4_k022 V_f2_4_k023 V_f2_4_k024 V_f2_4_k025 V_f2_4_k026 V_f2_4_k027 V_f2_4_k028 V_f2_4_k029 V_f2_4_k030 V_f2_4_k031 V_f2_4_k032 V_f2_4_k033">
       <txt>Welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) der Beschäftigten werden in Ihrem Unternehmen im Allgemeinen für die Unternehmensentwicklung der nächsten Jahre als am wichtigsten erachtet?</txt>
+      <concept>Künftig wichtigste Qualifikationen</concept>
       <notes type="cdl:constraint" subject="xlsform-xpath">count-selected(.) &lt;= 3</notes>
       <notes type="cdl:list">quali_wichtig</notes>
     </varGrp>
     <varGrp ID="VG_f4_3" name="f4_3" type="multipleResp" var="V_f4_3_k084 V_f4_3_k085 V_f4_3_k086 V_f4_3_k087 V_f4_3_k088 V_f4_3_k089 V_f4_3_k090 V_f4_3_k091 V_f4_3_k092 V_f4_3_k093 V_f4_3_k094 V_f4_3_k095">
       <txt>Auf welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) entfielen in Ihrem Unternehmen die meisten Stunden interner und externer Lehrveranstaltungen?</txt>
+      <concept>Qualifikationen mit meisten Kursstunden</concept>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
       <notes type="cdl:constraint" subject="xlsform-xpath">count-selected(.) &lt;= 3</notes>
       <notes type="cdl:list">quali_stunden</notes>
     </varGrp>
     <varGrp ID="VG_f4_5" name="f4_5" type="multipleResp" var="V_f4_5_k099 V_f4_5_k100 V_f4_5_k101 V_f4_5_k102 V_f4_5_k103 V_f4_5_k104 V_f4_5_k105">
       <txt>Auf welche Anbieter externer Lehrveranstaltungen entfielen im Jahr 2025 die meisten Stunden?</txt>
+      <concept>Wichtigste externe Anbieter</concept>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f3_2_053} = '1'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">count-selected(.) &lt;= 3</notes>
@@ -203,6 +219,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <qstnLit>Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.</qstnLit>
         <postQTxt>Geleistete Arbeitsstunden im Jahr 2025 insgesamt. Stunden</postQTxt>
       </qstn>
+      <concept>Arbeitsstunden 2025</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f1_3_007" name="f1_3_007" intrvl="contin" dcml="0" files="F1">
@@ -210,6 +227,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <qstnLit>Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.</qstnLit>
         <postQTxt>Personalaufwendungen im Jahr 2025. Volle Euro</postQTxt>
       </qstn>
+      <concept>Personalaufwendungen 2025</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f2_1_010" name="f2_1_010" intrvl="discrete" files="F1">
@@ -224,6 +242,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Verantwortliche für Weiterbildung</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -243,6 +262,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <catValu>3</catValu>
         <labl>Ja, dies ist Teil des allgemeinen Planungsprozesses im Unternehmen</labl>
       </catgry>
+      <concept>Ermittlung des Qualifikationsbedarfs</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">bedarf</notes>
     </var>
@@ -504,6 +524,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Schriftlicher Weiterbildungsplan</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -519,6 +540,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Weiterbildungsbudget</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -534,6 +556,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Vereinbarungen zur Weiterbildung</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -550,6 +573,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Arbeitnehmervertretung vorhanden</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -568,6 +592,7 @@ Liegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Beteiligung der Arbeitnehmervertretung</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f2_8_038} = '1'</notes>
       <notes type="cdl:list">ja_nein</notes>
@@ -711,6 +736,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Interne Lehrveranstaltungen 2025</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
       <notes type="cdl:note_names">teil3_hinweis</notes>
@@ -728,6 +754,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Externe Lehrveranstaltungen 2025</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -942,6 +969,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>3</catValu>
         <labl>Unternehmen existierte 2024 nicht</labl>
       </catgry>
+      <concept>Lehrveranstaltungen 2024</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein_2024</notes>
     </var>
@@ -961,6 +989,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>3</catValu>
         <labl>Unternehmen existierte 2024 nicht</labl>
       </catgry>
+      <concept>Andere Weiterbildungsformen 2024</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein_2024</notes>
     </var>
@@ -977,6 +1006,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Umlagen an Weiterbildungsfonds</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
       <notes type="cdl:note_names">f3_6_hinweis</notes>
@@ -988,6 +1018,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <backward qstn="V_f3_6_066"/>
       </qstn>
       <universe clusion="I">Nur wenn „Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?“ = Ja</universe>
+      <concept>Höhe der Umlagen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f3_6_066} = '1'</notes>
     </var>
@@ -1004,6 +1035,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Fördereinnahmen für Weiterbildung</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -1014,6 +1046,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <backward qstn="V_f3_6_068"/>
       </qstn>
       <universe clusion="I">Nur wenn „Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?“ = Ja</universe>
+      <concept>Höhe der Fördereinnahmen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f3_6_068} = '1'</notes>
     </var>
@@ -1525,6 +1558,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Anbietergebühren angefallen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
       <notes type="cdl:note_names">f4_6_hinweis</notes>
@@ -1536,6 +1570,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <backward qstn="V_f4_6_107"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen“ = Ja</universe>
+      <concept>Höhe der Anbietergebühren</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_107} = '1'</notes>
     </var>
@@ -1552,6 +1587,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Reisekosten angefallen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -1562,6 +1598,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <backward qstn="V_f4_6_109"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren“ = Ja</universe>
+      <concept>Höhe der Reisekosten</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_109} = '1'</notes>
     </var>
@@ -1578,6 +1615,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Kosten Weiterbildungspersonal angefallen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -1588,6 +1626,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <backward qstn="V_f4_6_111"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war“ = Ja</universe>
+      <concept>Höhe der Kosten Weiterbildungspersonal</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_111} = '1'</notes>
     </var>
@@ -1604,6 +1643,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Raum- und Ausstattungskosten angefallen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -1614,6 +1654,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <backward qstn="V_f4_6_113"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)“ = Ja</universe>
+      <concept>Höhe der Raum- und Ausstattungskosten</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_113} = '1'</notes>
     </var>
@@ -1630,6 +1671,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Materialkosten angefallen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
     </var>
@@ -1640,6 +1682,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <backward qstn="V_f4_6_115"/>
       </qstn>
       <universe clusion="I">Nur wenn („Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja) und „Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde“ = Ja</universe>
+      <concept>Höhe der Materialkosten</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${f4_6_115} = '1'</notes>
     </var>
@@ -1649,6 +1692,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <postQTxt>Volle Euro</postQTxt>
       </qstn>
       <universe clusion="I">Nur wenn „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?“ = Ja oder „Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?“ = Ja</universe>
+      <concept>Gesamtkosten der Lehrveranstaltungen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_f5_1_123" name="f5_1_123" intrvl="discrete" files="F1">
@@ -1670,6 +1714,7 @@ Die beiden folgenden Fragen beziehen sich auf interne und auf externe Lehrverans
         <catValu>3</catValu>
         <labl>Nein, die Feststellung der Teilnahme reicht aus</labl>
       </catgry>
+      <concept>Bewertung der Weiterbildungsergebnisse</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">bewertung</notes>
       <notes type="cdl:note_names">teil5_hinweis</notes>
@@ -2080,6 +2125,7 @@ Nicht zur betrieblichen Erstausbildung zählen Unternehmenspraktika von Schüler
         <catValu>2</catValu>
         <labl>Nein</labl>
       </catgry>
+      <concept>Auszubildende im Unternehmen</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">ja_nein</notes>
       <notes type="cdl:note_names">teil7_hinweis</notes>

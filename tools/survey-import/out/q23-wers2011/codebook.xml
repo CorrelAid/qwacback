@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work</titl>
+        <titl>Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work</titl><altTitl>WERS 2011</altTitl>
         <IDNo>q23-wers2011</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="UK Government">Department for Business, Innovation and Skills (BIS)</AuthEnty><AuthEnty affiliation="Acas">Advisory, Conciliation and Arbitration Service (Acas)</AuthEnty><AuthEnty affiliation="ESRC">Economic and Social Research Council (ESRC)</AuthEnty><AuthEnty affiliation="UKCES">UK Commission for Employment and Skills (UKCES)</AuthEnty><AuthEnty affiliation="NIESR">National Institute of Economic and Social Research (NIESR)</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="UK Government">Department for Business, Innovation and Skills (BIS)</producer><copyright>© Crown copyright</copyright>
@@ -31,34 +31,42 @@
     </varGrp>
     <varGrp ID="VG_section_epq_soc" name="section_epq/soc" type="grid" var="V_zmgr_male V_zmgr_fem V_zpro_male V_zpro_fem V_ztec_male V_ztec_fem V_zadm_male V_zadm_fem V_zskl_male V_zskl_fem V_zper_male V_zper_fem V_zsal_male V_zsal_fem V_zope_male V_zope_fem V_zrou_male V_zrou_fem">
       <txt>How many male and female employees are in each of the following occupational groups?</txt>
+      <concept>Employees by occupation and sex</concept>
     </varGrp>
     <varGrp ID="VG_section_c_card_c9_grid" name="section_c/card_c9_grid" type="grid" var="V_cvariety V_cdiscrete V_control V_cdesign">
       <txt>Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...</txt>
+      <concept>Job autonomy</concept>
     </varGrp>
     <varGrp ID="VG_section_c_cteamho" name="section_c/cteamho" type="grid" var="V_cteamhoa V_cteamhoc V_cteamhod">
       <txt>Do each of the following statements apply to the way that teamworking operates among [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace?</txt>
+      <concept>Teamworking practices</concept>
       <universe clusion="I">Only if “What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?” ≠ None (0%)</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${cteams} != '7'</notes>
     </varGrp>
     <varGrp ID="VG_cspecix" name="cspecix" type="multipleResp" var="V_cspecix_1 V_cspecix_2 V_cspecix_3 V_cspecix_4 V_cspecix_5 V_cspecix_6 V_cspecix_7 V_cspecix_8 V_cspecix_9">
       <txt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</txt>
+      <concept>Special recruitment procedures</concept>
       <notes type="cdl:exclusive">9</notes>
     </varGrp>
     <varGrp ID="VG_catestw" name="catestw" type="multipleResp" var="V_catestw_1 V_catestw_2 V_catestw_3">
       <txt>When filling vacancies at this workplace, do you ever conduct any type of personality or attitude test for managerial positions, non-managerial positions or not at all?</txt>
+      <concept>Personality or attitude tests</concept>
       <notes type="cdl:exclusive">3</notes>
     </varGrp>
     <varGrp ID="VG_cptestw" name="cptestw" type="multipleResp" var="V_cptestw_1 V_cptestw_2 V_cptestw_3">
       <txt>When filling vacancies at this workplace, do you ever conduct any type of performance or competency test for managerial positions, non-managerial positions or not at all?</txt>
+      <concept>Performance or competency tests</concept>
       <notes type="cdl:exclusive">3</notes>
     </varGrp>
     <varGrp ID="VG_chow" name="chow" type="multipleResp" var="V_chow_1 V_chow_2 V_chow_3 V_chow_4 V_chow_5 V_chow_6 V_chow_7 V_chow_8 V_chow_9 V_chow_10 V_chow_11 V_chow_12">
       <txt>Did this training cover any of the matters listed on this card?:</txt>
+      <concept>Training content</concept>
       <notes type="cdl:relevant" subject="xlsform-xpath">(string-length(${coffjob}) &gt; 0 and ${coffjob} != '7') or ${coffchk} = '1'</notes>
       <notes type="cdl:exclusive">12</notes>
     </varGrp>
     <varGrp ID="VG_cfactors" name="cfactors" type="other" var="V_cfactors_other" varGrp="VG_cfactors_choices">
       <txt>Which of the following factors are important when recruiting new employees?</txt>
+      <concept>Recruitment factors</concept>
       <notes type="cdl:other_label">Other (please specify CFACTOTH)</notes>
     </varGrp>
     <varGrp ID="VG_cfactors_choices" name="cfactors_choices" type="multipleResp" var="V_cfactors_1 V_cfactors_2 V_cfactors_3 V_cfactors_4 V_cfactors_5 V_cfactors_6 V_cfactors_7 V_cfactors_8">
@@ -66,6 +74,7 @@
     </varGrp>
     <varGrp ID="VG_cchanx" name="cchanx" type="other" var="V_cchanx_other" varGrp="VG_cchanx_choices">
       <txt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</txt>
+      <concept>Recruitment channels</concept>
       <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
 Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${clogvac} = '1'</notes>
@@ -84,6 +93,7 @@ PROMPT: Remember to include yourself if you are an employee at the workplace but
       <valrng>
         <range min="5" max="999997"/>
       </valrng>
+      <concept>Employees on payroll</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 5 and . &lt;= 999997</notes>
       <notes type="cdl:constraint_message">THERE MUST BE AT LEAST 5 EMPLOYEES AT THE WORKPLACE. PLEASE CHECK.</notes>
@@ -311,6 +321,7 @@ PROMPT: Please refer to the accompanying information sheet for definitions of th
 How would you describe the main tasks and activities of this largest group?</qstnLit>
         <ivuInstr>INTERVIEWER: Probe for details about the most common job in this group, record verbatim: OPEN</ivuInstr>
       </qstn>
+      <concept>Tasks of largest occupational group</concept>
       <varFormat type="character" schema="other"/>
     </var>
     <var ID="V_cfillvac" name="cfillvac" intrvl="discrete" files="F1">
@@ -339,6 +350,7 @@ INTERVIEWER: For larger public sector employers, individual departments and agen
         <catValu>5</catValu>
         <labl>External applicants are only source, no internal recruitment</labl>
       </catgry>
+      <concept>Approach to filling vacancies</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_cfactors_1" name="cfactors_1" intrvl="discrete" files="F1">
@@ -719,6 +731,7 @@ Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GRO
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
+      <concept>Vacancies in largest group</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -978,6 +991,7 @@ Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GRO
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
+      <concept>Standard induction programme</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">yes_no</notes>
     </var>
@@ -1006,6 +1020,7 @@ Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GRO
         <catValu>5</catValu>
         <labl>More than one year</labl>
       </catgry>
+      <concept>Time to full proficiency</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_coffjob" name="coffjob" intrvl="discrete" files="F1">
@@ -1042,6 +1057,7 @@ Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GRO
         <catValu>7</catValu>
         <labl>None (0%)</labl>
       </catgry>
+      <concept>Share given off-the-job training</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:note_names">trintro</notes>
     </var>
@@ -1058,6 +1074,7 @@ Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GRO
         <catValu>2</catValu>
         <labl>No</labl>
       </catgry>
+      <concept>Any off-the-job training</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">string-length(${coffjob}) = 0</notes>
       <notes type="cdl:list">yes_no</notes>
@@ -1091,6 +1108,7 @@ Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GRO
         <catValu>6</catValu>
         <labl>10 days or more</labl>
       </catgry>
+      <concept>Days of training</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">(string-length(${coffjob}) &gt; 0 and ${coffjob} != '7') or ${coffchk} = '1'</notes>
     </var>
@@ -1336,6 +1354,7 @@ INTERVIEWER: If respondent gives answer as an exact number you can code “97”
         <catValu>97</catValu>
         <labl>INTERVIEWER: Exact number to be entered.</labl>
       </catgry>
+      <concept>Share trained for other jobs</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">card_c8</notes>
     </var>
@@ -1350,6 +1369,7 @@ SOFT CHECK if COTHJOBT&gt;ZALLEMPS: &quot;Are you sure? The number recorded here
         <range min="1" max="999997"/>
       </valrng>
       <universe clusion="I">Only if “Approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?” = INTERVIEWER: Exact number to be entered.</universe>
+      <concept>Number trained for other jobs</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${cothjob} = '97'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>
@@ -1392,6 +1412,7 @@ INTERVIEWER: If respondent gives answer as an exact number you can code “97”
         <catValu>97</catValu>
         <labl>INTERVIEWER: Exact number to be entered.</labl>
       </catgry>
+      <concept>Share doing other jobs weekly</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">card_c8</notes>
     </var>
@@ -1406,6 +1427,7 @@ SOFT CHECK if COTHDOT&gt;ZALLEMPS: &quot;Are you sure? The number recorded here 
         <range min="1" max="999997"/>
       </valrng>
       <universe clusion="I">Only if “And approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?” = INTERVIEWER: Exact number to be entered.</universe>
+      <concept>Number doing other jobs weekly</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${cothdo} = '97'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>
@@ -1548,6 +1570,7 @@ INTERVIEWER: If respondent gives answer as an exact number you can code “97”
         <catValu>97</catValu>
         <labl>INTERVIEWER: Exact number to be entered</labl>
       </catgry>
+      <concept>Share in formal teams</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_cteamst" name="cteamst" intrvl="contin" dcml="0" files="F1">
@@ -1561,6 +1584,7 @@ SOFT CHECK if CTEAMST&gt;ZALLEMPS: &quot;Are you sure? The number recorded here 
         <range min="1" max="999997"/>
       </valrng>
       <universe clusion="I">Only if “What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?” = INTERVIEWER: Exact number to be entered</universe>
+      <concept>Number in formal teams</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${cteams} = '97'</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>
@@ -1626,6 +1650,7 @@ SOFT CHECK if CCOMPUT&gt;100 and CCOMPUT≠997: &quot;The number entered here is
       <valrng>
         <range min="0" max="997"/>
       </valrng>
+      <concept>Share using computers</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 997</notes>
     </var>
@@ -1641,6 +1666,7 @@ SOFT CHECK if CCOMPUTT&gt;ZALLEMPS: &quot;Are you sure? The number recorded here
       </valrng>
       <universe clusion="I">Only if “I would now like you to think about the whole workforce at this workplace.
 In this workplace, what percentage of all employees use computers as part of their normal work duties? Please answer to the nearest 10%.” = 997</universe>
+      <concept>Number using computers</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:relevant" subject="xlsform-xpath">${ccomput} = 997</notes>
       <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>

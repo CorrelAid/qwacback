@@ -11,7 +11,7 @@ const licensedCodebook = `<?xml version="1.0"?>
 <codeBook xmlns="ddi:codebook:2_5" version="2.5" xml:lang="en">
   <stdyDscr>
     <citation>
-      <titlStmt><titl>Licensed scale</titl></titlStmt>
+      <titlStmt><titl>Licensed scale</titl><altTitl>LS</altTitl></titlStmt>
       <prodStmt><copyright>© The authors 2024</copyright></prodStmt>
       <biblCit>Doe, J. (2024). A scale. Journal, 1, 1–2.</biblCit>
       <holdings URI="https://doi.org/10.0000/example">Article</holdings>
@@ -51,6 +51,7 @@ func TestImportStoresLicense(t *testing.T) {
 		"copyright":    "© The authors 2024",
 		"citation":     "Doe, J. (2024). A scale. Journal, 1, 1–2.",
 		"holdings_uri": "https://doi.org/10.0000/example",
+		"short_title":  "LS",
 	} {
 		if got := s.GetString(field); got != want {
 			t.Errorf("%s = %q, want %q", field, got, want)

@@ -1,6 +1,7 @@
 {
  "study": {
   "title": "Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2)",
+  "shortTitle": "MFE-Sr2",
   "id": "q16-mfe-sr2",
   "authors": [
    {
@@ -44,102 +45,122 @@
   {
    "type": "select_one fehltermine",
    "name": "mfe_1",
-   "label": "Wie viele Sitzungen hast Du bei diesem Seminar gefehlt?"
+   "label": "Wie viele Sitzungen hast Du bei diesem Seminar gefehlt?",
+   "concept": "Gefehlte Sitzungen"
   },
   {
    "type": "decimal",
    "name": "mfe_2",
-   "label": "Wie viele Stunden hast Du das Seminar im Schnitt pro Woche vor- und nachbereitet?"
+   "label": "Wie viele Stunden hast Du das Seminar im Schnitt pro Woche vor- und nachbereitet?",
+   "concept": "Vor- und Nachbereitungszeit"
   },
   {
    "type": "select_multiple seminarwahl",
    "name": "mfe_3",
-   "label": "Ich habe dieses spezielle Seminar gewählt:"
+   "label": "Ich habe dieses spezielle Seminar gewählt:",
+   "concept": "Gründe für die Seminarwahl"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_4",
-   "label": "Ich habe durch die Veranstaltung einen guten Überblick über die behandelten Themengebiete bekommen."
+   "label": "Ich habe durch die Veranstaltung einen guten Überblick über die behandelten Themengebiete bekommen.",
+   "concept": "Überblick über die Themengebiete"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_5",
-   "label": "Der/Die Lehrende benutzte oft Beispiele, die mein Verständnis der Lehrinhalte gefördert haben."
+   "label": "Der/Die Lehrende benutzte oft Beispiele, die mein Verständnis der Lehrinhalte gefördert haben.",
+   "concept": "Verständnisfördernde Beispiele"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_6",
-   "label": "Ich finde, der/die Lehrende ging auf Fragen und Anregungen der Studierenden angemessen ein."
+   "label": "Ich finde, der/die Lehrende ging auf Fragen und Anregungen der Studierenden angemessen ein.",
+   "concept": "Eingehen auf Fragen"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_7",
-   "label": "Ich finde, der/die Lehrende hat das Thema interessant aufgearbeitet."
+   "label": "Ich finde, der/die Lehrende hat das Thema interessant aufgearbeitet.",
+   "concept": "Interessante Aufarbeitung"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_8",
-   "label": "Ich konnte im Verlauf der Veranstaltung die Gliederung immer nachvollziehen."
+   "label": "Ich konnte im Verlauf der Veranstaltung die Gliederung immer nachvollziehen.",
+   "concept": "Nachvollziehbare Gliederung"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_9",
-   "label": "Ich finde, der/die Lehrende teilte die zur Verfügung stehende Zeit gut ein."
+   "label": "Ich finde, der/die Lehrende teilte die zur Verfügung stehende Zeit gut ein.",
+   "concept": "Zeiteinteilung"
   },
   {
    "type": "select_one forderung7",
    "name": "mfe_10",
-   "label": "Ich fühle mich durch die Inhalte des Seminars…"
+   "label": "Ich fühle mich durch die Inhalte des Seminars…",
+   "concept": "Forderung durch die Inhalte"
   },
   {
    "type": "select_one forderung7",
    "name": "mfe_11",
-   "label": "Ich fühle mich durch das Tempo der Stoffvermittlung…"
+   "label": "Ich fühle mich durch das Tempo der Stoffvermittlung…",
+   "concept": "Forderung durch das Tempo"
   },
   {
    "type": "select_one forderung7",
    "name": "mfe_12",
-   "label": "Ich fühle mich durch den mit dem Seminar verbundenen Zeitaufwand…"
+   "label": "Ich fühle mich durch den mit dem Seminar verbundenen Zeitaufwand…",
+   "concept": "Forderung durch den Zeitaufwand"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_13",
-   "label": "Die meisten Teilnehmenden waren gut auf die einzelnen Termine vorbereitet."
+   "label": "Die meisten Teilnehmenden waren gut auf die einzelnen Termine vorbereitet.",
+   "concept": "Vorbereitung der Teilnehmenden"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_14",
-   "label": "Die meisten Teilnehmenden brachten sich aktiv ein."
+   "label": "Die meisten Teilnehmenden brachten sich aktiv ein.",
+   "concept": "Beteiligung der Teilnehmenden"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_15",
-   "label": "Die im Rahmen des Seminars verwendeten Materialien (Folien, Filme, Skizzen, etc.) trugen zum Verständnis der Inhalte bei."
+   "label": "Die im Rahmen des Seminars verwendeten Materialien (Folien, Filme, Skizzen, etc.) trugen zum Verständnis der Inhalte bei.",
+   "concept": "Nutzen der Materialien"
   },
   {
    "type": "select_one materialmenge",
    "name": "mfe_16",
-   "label": "Ich fand die Menge des Materials, das in der Veranstaltung zur Verfügung gestellt wurde, …"
+   "label": "Ich fand die Menge des Materials, das in der Veranstaltung zur Verfügung gestellt wurde, …",
+   "concept": "Menge des Materials"
   },
   {
    "type": "select_one zustimmung7",
    "name": "mfe_17",
-   "label": "Ich habe in der Veranstaltung viel gelernt."
+   "label": "Ich habe in der Veranstaltung viel gelernt.",
+   "concept": "Lernerfolg"
   },
   {
    "type": "select_one janein",
    "name": "mfe_18",
-   "label": "Ich würde dieses Seminar anderen Studierenden weiterempfehlen."
+   "label": "Ich würde dieses Seminar anderen Studierenden weiterempfehlen.",
+   "concept": "Weiterempfehlung"
   },
   {
    "type": "select_one punkte",
    "name": "mfe_19",
-   "label": "Im Punktesystem der gymnasialen Oberstufe (0 (ungenügend) bis 15 (sehr gut +)) bewerte ich dieses Seminar mit folgender Punktzahl:"
+   "label": "Im Punktesystem der gymnasialen Oberstufe (0 (ungenügend) bis 15 (sehr gut +)) bewerte ich dieses Seminar mit folgender Punktzahl:",
+   "concept": "Gesamtbewertung in Punkten"
   },
   {
    "type": "text",
    "name": "mfe_20",
    "label": "Anmerkungen für die/den Lehrende/n (Vorschläge/Lob/konstruktive Kritik):",
+   "concept": "Anmerkungen für Lehrende",
    "hint": "Bitte formuliere Deine Kritik sachlich, konstruktiv, und wenn möglich als Ich-Botschaft (siehe auch unsere Netiquette unter https://www.uni-muenster.de/PsyEval/netiquette/netiquette.html)."
   }
  ],

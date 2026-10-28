@@ -1,6 +1,7 @@
 {
   "study": {
     "title": "Europäische Erhebung über die berufliche Weiterbildung in Unternehmen (CVTS7): Fragebogen",
+    "shortTitle": "CVTS7",
     "id": "q01-cvts7",
     "authors": [
       {
@@ -57,6 +58,7 @@
       "type": "begin_group",
       "name": "f1_1",
       "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?",
+      "concept": "Beschäftigte insgesamt",
       "appearance": "table-list"
     },
     {
@@ -101,12 +103,14 @@
       "type": "integer",
       "name": "f1_2_006",
       "label": "Geben Sie bitte den Gesamtumfang der von den Beschäftigten (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) in Ihrem Unternehmen im Jahr 2025 geleisteten Arbeitsstunden an.",
+      "concept": "Arbeitsstunden 2025",
       "hint": "Geleistete Arbeitsstunden im Jahr 2025 insgesamt. Stunden"
     },
     {
       "type": "integer",
       "name": "f1_3_007",
       "label": "Bitte tragen Sie die Personalaufwendungen (Bruttolöhne und -gehälter sowie Sozialaufwendungen) für die unter Frage 1.1 angegebenen Beschäftigten Ihres Unternehmens für das Jahr 2025 ein.",
+      "concept": "Personalaufwendungen 2025",
       "hint": "Personalaufwendungen im Jahr 2025. Volle Euro"
     },
     {
@@ -120,17 +124,20 @@
     {
       "type": "select_one ja_nein",
       "name": "f2_1_010",
-      "label": "Gibt es in Ihrem Unternehmen eine bestimmte Person oder Organisationseinheit, die für betriebliche Weiterbildung verantwortlich ist?"
+      "label": "Gibt es in Ihrem Unternehmen eine bestimmte Person oder Organisationseinheit, die für betriebliche Weiterbildung verantwortlich ist?",
+      "concept": "Verantwortliche für Weiterbildung"
     },
     {
       "type": "select_one bedarf",
       "name": "f2_2_011",
-      "label": "Ermittelt Ihr Unternehmen regelmäßig den zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) innerhalb des Unternehmens?"
+      "label": "Ermittelt Ihr Unternehmen regelmäßig den zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) innerhalb des Unternehmens?",
+      "concept": "Ermittlung des Qualifikationsbedarfs"
     },
     {
       "type": "begin_group",
       "name": "f2_3",
       "label": "Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?",
+      "concept": "Maßnahmen für künftigen Qualifikationsbedarf",
       "appearance": "table-list"
     },
     {
@@ -160,34 +167,40 @@
       "type": "select_multiple quali_wichtig",
       "name": "f2_4",
       "label": "Welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) der Beschäftigten werden in Ihrem Unternehmen im Allgemeinen für die Unternehmensentwicklung der nächsten Jahre als am wichtigsten erachtet?",
+      "concept": "Künftig wichtigste Qualifikationen",
       "hint": "Kreuzen Sie bitte bis zu drei Qualifikationen an.",
       "constraint": "count-selected(.) <= 3"
     },
     {
       "type": "select_one ja_nein",
       "name": "f2_5_035",
-      "label": "Erstellt Ihr Unternehmen normalerweise im Rahmen seiner Planung der betrieblichen Weiterbildung einen schriftlichen Weiterbildungsplan oder ein Weiterbildungsprogramm?"
+      "label": "Erstellt Ihr Unternehmen normalerweise im Rahmen seiner Planung der betrieblichen Weiterbildung einen schriftlichen Weiterbildungsplan oder ein Weiterbildungsprogramm?",
+      "concept": "Schriftlicher Weiterbildungsplan"
     },
     {
       "type": "select_one ja_nein",
       "name": "f2_6_036",
-      "label": "Hat Ihr Unternehmen normalerweise ein Jahresbudget für die Aus- und Weiterbildung, das Mittel für die betriebliche Weiterbildung einschließt?"
+      "label": "Hat Ihr Unternehmen normalerweise ein Jahresbudget für die Aus- und Weiterbildung, das Mittel für die betriebliche Weiterbildung einschließt?",
+      "concept": "Weiterbildungsbudget"
     },
     {
       "type": "select_one ja_nein",
       "name": "f2_7_037",
-      "label": "Gelten für Ihr Unternehmen tarifvertragliche oder Betriebsvereinbarungen, die die betriebliche Weiterbildung zum Gegenstand haben?"
+      "label": "Gelten für Ihr Unternehmen tarifvertragliche oder Betriebsvereinbarungen, die die betriebliche Weiterbildung zum Gegenstand haben?",
+      "concept": "Vereinbarungen zur Weiterbildung"
     },
     {
       "type": "select_one ja_nein",
       "name": "f2_8_038",
       "label": "Gibt es in Ihrem Unternehmen ein Gremium der Arbeitnehmervertretung, wie z. B. einen Betriebsrat?",
+      "concept": "Arbeitnehmervertretung vorhanden",
       "hint": "Nein: Weiter mit Frage 3.1."
     },
     {
       "type": "select_one ja_nein",
       "name": "f2_8_039",
       "label": "Falls „Ja“, ist das Gremium der Arbeitnehmervertretung an Planung oder Durchführung der betrieblichen Weiterbildung beteiligt?",
+      "concept": "Beteiligung der Arbeitnehmervertretung",
       "hint": "Nein: Weiter mit Frage 3.1.",
       "relevant": "${f2_8_038} = '1'"
     },
@@ -195,6 +208,7 @@
       "type": "begin_group",
       "name": "f2_8",
       "label": "Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?",
+      "concept": "Mitwirkungsbereiche der Arbeitnehmervertretung",
       "appearance": "table-list",
       "relevant": "${f2_8_039} = '1'"
     },
@@ -253,18 +267,21 @@
       "type": "select_one ja_nein",
       "name": "f3_1_052",
       "label": "Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an internen Lehrveranstaltungen teilgenommen?",
+      "concept": "Interne Lehrveranstaltungen 2025",
       "hint": "Interne Lehrveranstaltungen sind Maßnahmen, bei denen die Verantwortung für Ziele, Inhalte und Organisation beim Unternehmen selbst liegt und an denen ausschließlich oder überwiegend Beschäftigte des Unternehmens teilnehmen."
     },
     {
       "type": "select_one ja_nein",
       "name": "f3_2_053",
       "label": "Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an externen Lehrveranstaltungen teilgenommen?",
+      "concept": "Externe Lehrveranstaltungen 2025",
       "hint": "Externe Lehrveranstaltungen sind Maßnahmen, die von externen Trägern (z. B. Kammern, Bildungswerken, Management-Akademien) auf dem freien Markt angeboten werden. Die Verantwortung für die Konzeption, Organisation und Durchführung liegt im Wesentlichen bei dem externen Träger."
     },
     {
       "type": "begin_group",
       "name": "f3_3",
       "label": "Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?",
+      "concept": "Andere Weiterbildungsformen 2025",
       "appearance": "table-list",
       "hint": "Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens."
     },
@@ -300,6 +317,7 @@
       "type": "begin_group",
       "name": "f3_3_anteil",
       "label": "Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.",
+      "concept": "Teilnahmeanteil andere Weiterbildungsformen",
       "appearance": "table-list"
     },
     {
@@ -338,12 +356,14 @@
     {
       "type": "select_one ja_nein_2024",
       "name": "f3_4_064",
-      "label": "Hat Ihr Unternehmen 2024 für seine Beschäftigten interne oder externe Lehrveranstaltungen in Form von Lehrgängen, Kursen und Seminaren durchgeführt?"
+      "label": "Hat Ihr Unternehmen 2024 für seine Beschäftigten interne oder externe Lehrveranstaltungen in Form von Lehrgängen, Kursen und Seminaren durchgeführt?",
+      "concept": "Lehrveranstaltungen 2024"
     },
     {
       "type": "select_one ja_nein_2024",
       "name": "f3_5_065",
-      "label": "Hat Ihr Unternehmen 2024 eine der Maßnahmen im Bereich der anderen Formen der betrieblichen Weiterbildung (siehe Frage 3.3) für seine Beschäftigten durchgeführt?"
+      "label": "Hat Ihr Unternehmen 2024 eine der Maßnahmen im Bereich der anderen Formen der betrieblichen Weiterbildung (siehe Frage 3.3) für seine Beschäftigten durchgeführt?",
+      "concept": "Andere Weiterbildungsformen 2024"
     },
     {
       "type": "begin_group",
@@ -358,12 +378,14 @@
     {
       "type": "select_one ja_nein",
       "name": "f3_6_066",
-      "label": "Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?"
+      "label": "Musste Ihr Unternehmen 2025 Umlagen oder Beiträge an Fonds für die Finanzierung von Weiterbildungsprogrammen leisten?",
+      "concept": "Umlagen an Weiterbildungsfonds"
     },
     {
       "type": "integer",
       "name": "f3_6_067",
       "label": "Falls „Ja“, geben Sie bitte die Umlagen und Beiträge in vollen Euro an.",
+      "concept": "Höhe der Umlagen",
       "hint": "Volle Euro",
       "relevant": "${f3_6_066} = '1'"
     },
@@ -371,12 +393,14 @@
       "type": "select_one ja_nein",
       "name": "f3_6_068",
       "label": "Hatte Ihr Unternehmen 2025 Einnahmen aus Fonds oder erhielt es Zuschüsse (z. B. von der EU oder vom Staat) oder sonstige finanzielle Unterstützung aus anderen Quellen (z. B. Stiftungen) für Weiterbildungsaktivitäten?",
+      "concept": "Fördereinnahmen für Weiterbildung",
       "hint": "Nein: Weiter mit Teil 4, 5 oder 6 des Fragebogens gemäß der Einteilung auf Seite 11 unten."
     },
     {
       "type": "integer",
       "name": "f3_6_069",
       "label": "Falls „Ja“, geben Sie bitte die Einnahmen in vollen Euro an.",
+      "concept": "Höhe der Fördereinnahmen",
       "hint": "Volle Euro",
       "relevant": "${f3_6_068} = '1'"
     },
@@ -387,6 +411,7 @@
       "type": "begin_group",
       "name": "f3_7",
       "label": "Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?",
+      "concept": "Genutzte Fördermaßnahmen",
       "appearance": "table-list",
       "relevant": "${f3_6_068} = '1'"
     },
@@ -436,6 +461,7 @@
       "type": "begin_group",
       "name": "f4_1",
       "label": "Teilnehmende an internen und externen Lehrveranstaltungen",
+      "concept": "Teilnehmende an Lehrveranstaltungen",
       "appearance": "table-list"
     },
     {
@@ -515,6 +541,7 @@
       "type": "begin_group",
       "name": "f4_2",
       "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.",
+      "concept": "Teilnahmestunden 2025",
       "appearance": "table-list"
     },
     {
@@ -539,6 +566,7 @@
       "type": "select_multiple quali_stunden",
       "name": "f4_3",
       "label": "Auf welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) entfielen in Ihrem Unternehmen die meisten Stunden interner und externer Lehrveranstaltungen?",
+      "concept": "Qualifikationen mit meisten Kursstunden",
       "hint": "Bitte kreuzen Sie bis zu drei Qualifikationen an.",
       "constraint": "count-selected(.) <= 3"
     },
@@ -546,6 +574,7 @@
       "type": "begin_group",
       "name": "f4_4",
       "label": "Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?",
+      "concept": "Anteil vorgeschriebener Lehrveranstaltungen",
       "appearance": "table-list"
     },
     {
@@ -567,6 +596,7 @@
       "type": "select_multiple anbieter",
       "name": "f4_5",
       "label": "Auf welche Anbieter externer Lehrveranstaltungen entfielen im Jahr 2025 die meisten Stunden?",
+      "concept": "Wichtigste externe Anbieter",
       "hint": "Falls Ihr Unternehmen externe Lehrveranstaltungen angeboten hat (siehe Frage 3.2), beantworten Sie bitte die folgende Frage 4.5. Bitte kreuzen Sie bis zu drei Anbieter an.",
       "constraint": "count-selected(.) <= 3",
       "relevant": "${f3_2_053} = '1'"
@@ -584,60 +614,70 @@
     {
       "type": "select_one ja_nein",
       "name": "f4_6_107",
-      "label": "Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen"
+      "label": "Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen",
+      "concept": "Anbietergebühren angefallen"
     },
     {
       "type": "integer",
       "name": "f4_6_108",
       "label": "Zahlungen und Gebühren an Weiterbildungsanbieter für die Teilnahme der Beschäftigten an externen Lehrveranstaltungen; Kosten für den Einsatz von externem Weiterbildungspersonal in internen Lehrveranstaltungen",
+      "concept": "Höhe der Anbietergebühren",
       "hint": "Volle Euro",
       "relevant": "${f4_6_107} = '1'"
     },
     {
       "type": "select_one ja_nein",
       "name": "f4_6_109",
-      "label": "Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren"
+      "label": "Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren",
+      "concept": "Reisekosten angefallen"
     },
     {
       "type": "integer",
       "name": "f4_6_110",
       "label": "Reisekosten, Spesen und Tagegeld für Weiterbildungsteilnehmende für die Zeit der Teilnahme an Lehrgängen, Kursen und Seminaren",
+      "concept": "Höhe der Reisekosten",
       "hint": "Volle Euro",
       "relevant": "${f4_6_109} = '1'"
     },
     {
       "type": "select_one ja_nein",
       "name": "f4_6_111",
-      "label": "Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war"
+      "label": "Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war",
+      "concept": "Kosten Weiterbildungspersonal angefallen"
     },
     {
       "type": "integer",
       "name": "f4_6_112",
       "label": "Personalaufwendungen für internes Weiterbildungspersonal, das ausschließlich oder teilweise mit der Konzeption, Organisation und Durchführung von Lehrgängen, Kursen und Seminaren beschäftigt war",
+      "concept": "Höhe der Kosten Weiterbildungspersonal",
       "hint": "Volle Euro",
       "relevant": "${f4_6_111} = '1'"
     },
     {
       "type": "select_one ja_nein",
       "name": "f4_6_113",
-      "label": "Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)"
+      "label": "Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)",
+      "concept": "Raum- und Ausstattungskosten angefallen"
     },
     {
       "type": "integer",
       "name": "f4_6_114",
       "label": "Kosten für Räume und Ausstattung einschließlich Unterhaltungskosten für Schulungszentren (bei nur zeitweiliger Nutzung für Weiterbildung sind die Kosten anteilig anzugeben)",
+      "concept": "Höhe der Raum- und Ausstattungskosten",
       "hint": "Volle Euro",
       "relevant": "${f4_6_113} = '1'"
     },
     {
       "type": "select_one ja_nein",
       "name": "f4_6_115",
-      "label": "Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde"
+      "label": "Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde",
+      "concept": "Materialkosten angefallen"
     },
     {
       "type": "integer",
       "name": "f4_6_116",
       "label": "Kosten für Unterrichtsmaterial, das speziell für Weiterbildungszwecke gekauft wurde",
+      "concept": "Höhe der Materialkosten",
       "hint": "Volle Euro",
       "relevant": "${f4_6_115} = '1'"
     },
@@ -645,6 +685,7 @@
       "type": "integer",
       "name": "f4_6_117",
       "label": "Geben Sie bitte hier noch die Gesamtkosten für Lehrveranstaltungen an, auch wenn Sie die Kosten nicht nach den obigen Kategorien aufschlüsseln konnten.",
+      "concept": "Gesamtkosten der Lehrveranstaltungen",
       "hint": "Volle Euro"
     },
     {
@@ -668,12 +709,14 @@
       "type": "select_one bewertung",
       "name": "f5_1_123",
       "label": "Bewertet Ihr Unternehmen normalerweise die Ergebnisse von Weiterbildungsaktivitäten?",
+      "concept": "Bewertung der Weiterbildungsergebnisse",
       "hint": "Nein, die Feststellung der Teilnahme reicht aus: Weiter mit Frage 5.2."
     },
     {
       "type": "begin_group",
       "name": "f5_1",
       "label": "Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?",
+      "concept": "Methoden der Ergebnisbewertung",
       "appearance": "table-list",
       "relevant": "${f5_1_123} = '1' or ${f5_1_123} = '2'"
     },
@@ -709,6 +752,7 @@
       "type": "begin_group",
       "name": "f5_2",
       "label": "Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?",
+      "concept": "Gründe für eingeschränkte Weiterbildung",
       "appearance": "table-list",
       "hint": "Beantworten Sie bitte als nächstes Teil 7 des Fragebogens."
     },
@@ -778,6 +822,7 @@
       "type": "begin_group",
       "name": "f6",
       "label": "Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?",
+      "concept": "Gründe für keine Weiterbildung",
       "appearance": "table-list"
     },
     {
@@ -844,12 +889,14 @@
     {
       "type": "select_one ja_nein",
       "name": "f7_1_146a",
-      "label": "Beschäftigt Ihr Unternehmen normalerweise Auszubildende?"
+      "label": "Beschäftigt Ihr Unternehmen normalerweise Auszubildende?",
+      "concept": "Auszubildende im Unternehmen"
     },
     {
       "type": "begin_group",
       "name": "f7_2",
       "label": "Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?",
+      "concept": "Gründe für duale Ausbildung",
       "appearance": "table-list",
       "relevant": "${f7_1_146a} = '1'",
       "hint": "Falls Sie normalerweise Auszubildende haben, beantworten Sie bitte noch die nachfolgende Frage 7.2."

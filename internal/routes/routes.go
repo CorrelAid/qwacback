@@ -989,24 +989,26 @@ func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
 	// reused and how to attribute it; empty when the codebook states none.
 	// LicenseID is the SPDX ID of a Creative Commons license, else empty.
 	type studyInfo struct {
-		ID        string `json:"id"`
-		Title     string `json:"title"`
-		License   string `json:"license"`
-		LicenseID string `json:"license_id"`
-		Copyright string `json:"copyright"`
-		Citation  string `json:"citation"`
-		SourceURI string `json:"source_uri"`
+		ID         string `json:"id"`
+		Title      string `json:"title"`
+		ShortTitle string `json:"short_title"`
+		License    string `json:"license"`
+		LicenseID  string `json:"license_id"`
+		Copyright  string `json:"copyright"`
+		Citation   string `json:"citation"`
+		SourceURI  string `json:"source_uri"`
 	}
 	var study studyInfo
 	if s, err := app.FindRecordById("studies", studyID); err == nil {
 		study = studyInfo{
-			ID:        s.Id,
-			Title:     s.GetString("title"),
-			License:   s.GetString("license"),
-			LicenseID: s.GetString("license_id"),
-			Copyright: s.GetString("copyright"),
-			Citation:  s.GetString("citation"),
-			SourceURI: s.GetString("holdings_uri"),
+			ID:         s.Id,
+			Title:      s.GetString("title"),
+			ShortTitle: s.GetString("short_title"),
+			License:    s.GetString("license"),
+			LicenseID:  s.GetString("license_id"),
+			Copyright:  s.GetString("copyright"),
+			Citation:   s.GetString("citation"),
+			SourceURI:  s.GetString("holdings_uri"),
 		}
 	}
 

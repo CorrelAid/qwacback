@@ -1,6 +1,7 @@
 {
  "study": {
   "title": "Van Westendorp Price Sensitivity Meter (PSM)",
+  "shortTitle": "Van Westendorp PSM",
   "id": "q14-van-westendorp",
   "authors": [
    {
@@ -32,22 +33,26 @@
   {
    "type": "decimal",
    "name": "psm_too_expensive",
-   "label": "At what price would you consider the product to be so expensive that you would not consider buying it?"
+   "label": "At what price would you consider the product to be so expensive that you would not consider buying it?",
+   "concept": "Too expensive price"
   },
   {
    "type": "decimal",
    "name": "psm_too_cheap",
-   "label": "At what price would you consider the product to be priced so low that you would feel the quality couldn't be very good?"
+   "label": "At what price would you consider the product to be priced so low that you would feel the quality couldn't be very good?",
+   "concept": "Too cheap price"
   },
   {
    "type": "decimal",
    "name": "psm_expensive",
-   "label": "At what price would you consider the product starting to get expensive, so that it is not out of the question, but you would have to give some thought to buying it?"
+   "label": "At what price would you consider the product starting to get expensive, so that it is not out of the question, but you would have to give some thought to buying it?",
+   "concept": "Getting expensive price"
   },
   {
    "type": "decimal",
    "name": "psm_cheap",
-   "label": "At what price would you consider the product to be a bargain—a great buy for the money?"
+   "label": "At what price would you consider the product to be a bargain—a great buy for the money?",
+   "concept": "Bargain price"
   }
  ],
  "choices": [],

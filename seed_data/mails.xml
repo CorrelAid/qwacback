@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>MAILS – Meta AI Literacy Scale</titl>
+        <titl>MAILS – Meta AI Literacy Scale</titl><altTitl>MAILS</altTitl>
         <IDNo>q08-mails</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Universität Würzburg">Astrid Carolus</AuthEnty><AuthEnty affiliation="Universität Würzburg">Martin J. Koch</AuthEnty><AuthEnty affiliation="Universität Würzburg">Samantha Straka</AuthEnty><AuthEnty affiliation="Universität Würzburg">Marc Erich Latoschik</AuthEnty><AuthEnty affiliation="Universität Würzburg">Carolin Wienrich</AuthEnty></rspStmt>
       <prodStmt><producer affiliation="Universität Würzburg">Lehrstuhl für Mensch-Computer-Interaktion, Universität Würzburg</producer><copyright>© 2023 The Authors (Carolus, Koch, Straka, Latoschik, Wienrich)</copyright>
@@ -28,6 +28,8 @@
     <varGrp ID="VG_mails" name="mails" type="grid" var="V_mails_1 V_mails_2 V_mails_3 V_mails_4 V_mails_5 V_mails_6 V_mails_7 V_mails_8 V_mails_9 V_mails_10 V_mails_11 V_mails_12 V_mails_13 V_mails_14 V_mails_15 V_mails_16 V_mails_17 V_mails_18 V_mails_19 V_mails_20 V_mails_21 V_mails_22 V_mails_23 V_mails_24 V_mails_25 V_mails_26 V_mails_27 V_mails_28 V_mails_29 V_mails_30 V_mails_31 V_mails_32 V_mails_33 V_mails_34">
       <txt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</txt>
       <txt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</txt>
+      <concept>Selbsteingeschätzte KI-Kompetenz</concept>
+      <concept xml:lang="en">Self-assessed AI literacy</concept>
       <notes type="cdl:hint">Ein Wert von 0 bedeutet, dass eine Fähigkeit gar nicht oder kaum ausgeprägt ist. Ein Wert von 10 bedeutet, dass eine Fähigkeit sehr gut oder (nahezu) perfekt ausgeprägt ist. Bitte kreisen Sie den Wert ein, der Ihre Fähigkeit am besten beschreibt.</notes>
       <notes type="cdl:hint" xml:lang="en">A value of 0 means that an ability is not at all or hardly pronounced. A value of 10 means that an ability is very well or (almost) perfectly pronounced. Please circle the value that best describes your ability.</notes>
     </varGrp>
