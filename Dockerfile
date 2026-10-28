@@ -14,6 +14,9 @@ RUN apk add --no-cache ca-certificates && \
 WORKDIR /app
 COPY --from=builder /app/qwacback /app/qwacback
 COPY --from=builder /app/seed_data /app/seed_data
+# /app/pb_data holds the database: mount a persistent volume on it (see
+# docker-compose.yml and README "Deployment"). Created here so a fresh named
+# volume takes over appuser's ownership.
 RUN mkdir -p /app/pb_data && chown -R appuser:appuser /app
 
 USER appuser

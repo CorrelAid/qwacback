@@ -39,6 +39,20 @@ services:
       - NATS_PORT=${NATS_PORT:-4222}
       - NATS_TOKEN=${NATS_TOKEN:-changeme}
       - DDI_EMITTER_URL=http://ddi-emitter:8091
+      # Scheduled backups (README "Backups"); unset = configured in the dashboard
+      - PB_BACKUP_CRON=${PB_BACKUP_CRON:-}
+      - PB_BACKUP_KEEP=${PB_BACKUP_KEEP:-}
+      - PB_BACKUP_S3_BUCKET=${PB_BACKUP_S3_BUCKET:-}
+      - PB_BACKUP_S3_REGION=${PB_BACKUP_S3_REGION:-}
+      - PB_BACKUP_S3_ENDPOINT=${PB_BACKUP_S3_ENDPOINT:-}
+      - PB_BACKUP_S3_ACCESS_KEY=${PB_BACKUP_S3_ACCESS_KEY:-}
+      - PB_BACKUP_S3_SECRET=${PB_BACKUP_S3_SECRET:-}
+      - PB_BACKUP_S3_FORCE_PATH_STYLE=${PB_BACKUP_S3_FORCE_PATH_STYLE:-}
+    volumes:
+      # The database: studies uploaded through /api/import, dashboard edits,
+      # settings and local backups survive a rebuild. `docker compose down -v`
+      # deletes it.
+      - pb_data:/app/pb_data
     restart: always
     command: ["./qwacback", "serve", "--http=0.0.0.0:8080"]
     depends_on:
@@ -48,3 +62,6 @@ services:
         limits:
           memory: 768M
           cpus: '1.0'
+
+volumes:
+  pb_data:

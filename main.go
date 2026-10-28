@@ -17,9 +17,11 @@ import (
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 
 	_ "qwacback/migrations"
+	"qwacback/internal/backup"
 	qwacmcp "qwacback/internal/mcp"
 	"qwacback/internal/routes"
 	"qwacback/internal/schematron"
+	"qwacback/internal/seed"
 )
 
 func main() {
@@ -75,6 +77,27 @@ func main() {
 	}
 
 	app.OnServe().BindFunc(func(se *core.ServeEvent) error {
+		// Runs after the migrations, before the server accepts requests.
+		if ok, err := backup.ApplyFromEnv(app); err != nil {
+			return err
+		} else if ok {
+			log.Printf("Scheduled backups: %q, keeping %d.", app.Settings().Backups.Cron, app.Settings().Backups.CronMaxKeep)
+		}
+
+		// Bring the seed studies in line with seed_data/ (#56). A seed the
+		// worker rejects fails the start.
+		if os.Getenv("QWACBACK_SKIP_SEED") == "1" {
+			log.Println("Skipping seed sync: QWACBACK_SKIP_SEED=1.")
+		} else {
+			res, err := seed.Sync(app, "seed_data", schClient)
+			if err != nil {
+				return fmt.Errorf("seed sync: %w", err)
+			}
+			if res.Changed() {
+				routes.ClearXMLCache(app)
+			}
+		}
+
 		// Log all incoming requests to stdout for diagnostics. ip is the client
 		// as the rate limiter sees it (TrustedProxy applied), remote the
 		// connection's peer, i.e. the proxy in production.
