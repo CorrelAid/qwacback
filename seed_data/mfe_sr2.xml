@@ -7,7 +7,7 @@
         <IDNo>q16-mfe-sr2</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Universität Münster">Oberhoff, L.</AuthEnty><AuthEnty affiliation="Universität Münster">Schulze Tast, I.</AuthEnty><AuthEnty affiliation="Universität Münster">Humberg, S.</AuthEnty></rspStmt>
       <prodStmt><producer>GESIS – Leibniz-Institut für Sozialwissenschaften (ZIS)</producer><copyright>© Oberhoff, Schulze Tast &amp; Humberg 2025</copyright>
-        <prodDate date="2026-10-27">2026-10-27</prodDate>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
       </prodStmt><biblCit>Oberhoff, L., Schulze Tast, I., &amp; Humberg, S. (2025). Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2). Zusammenstellung sozialwissenschaftlicher Items und Skalen (ZIS). https://doi.org/10.6102/zis363</biblCit><holdings URI="https://doi.org/10.6102/zis363">ZIS – Open Access Repositorium für Messinstrumente</holdings>
     </citation><stdyInfo><subject><keyword>Lehrevaluation</keyword><keyword>Seminar</keyword><keyword>Lehre</keyword><keyword>Veranstaltungskritik</keyword><keyword>Hochschule</keyword><keyword>Weiterbildung</keyword><keyword>Evaluation</keyword><topcClas>Bildung</topcClas></subject><abstract>Fragebogen für die studentische Evaluation von Seminaren. Erfasst die Bewertung der Didaktik der Lehrperson, erlebte Über- bzw. Unterforderung, die Beteiligung der anderen Teilnehmenden, die Materialien und den subjektiven Lernerfolg, dazu Rahmenbedingungen der Teilnahme, eine Gesamtbewertung und offenes Feedback. 20 Items, 3–10 Minuten.</abstract><sumDscr><timePrd event="single">2025</timePrd><nation>Deutschland</nation><anlyUnit>Individuum</anlyUnit><universe clusion="I">Studierende, die ein Seminar besucht haben</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/). Für die Nutzung zu anderen Zwecken die Autor:innen kontaktieren.</conditions></useStmt></dataAccs>
     <notes type="cdl:setting" subject="default_language">Deutsch (de)</notes>
@@ -25,7 +25,6 @@
   <dataDscr>
     <varGrp ID="VG_mfe_3" name="mfe_3" type="multipleResp" var="V_mfe_3_zeit V_mfe_3_interesse V_mfe_3_dozent">
       <txt>Ich habe dieses spezielle Seminar gewählt:</txt>
-      <concept>Ich habe dieses spezielle Seminar gewählt:</concept>
       <notes type="cdl:list">seminarwahl</notes>
     </varGrp>
     <var ID="V_mfe_1" name="mfe_1" intrvl="discrete" files="F1">
@@ -52,7 +51,6 @@
         <catValu>block</catValu>
         <labl>dies war eine Blockveranstaltung</labl>
       </catgry>
-      <concept>Wie viele Sitzungen hast Du bei diesem Seminar gefehlt?</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">fehltermine</notes>
     </var>
@@ -60,7 +58,6 @@
       <qstn responseDomainType="numeric" seqNo="2">
         <qstnLit>Wie viele Stunden hast Du das Seminar im Schnitt pro Woche vor- und nachbereitet?</qstnLit>
       </qstn>
-      <concept>Wie viele Stunden hast Du das Seminar im Schnitt pro Woche vor- und nachbereitet?</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_mfe_3_zeit" name="mfe_3_zeit" intrvl="discrete" files="F1">
@@ -74,7 +71,6 @@
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Ich habe dieses spezielle Seminar gewählt:: aus Zeitgründen</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_mfe_3_interesse" name="mfe_3_interesse" intrvl="discrete" files="F1">
@@ -88,7 +84,6 @@
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Ich habe dieses spezielle Seminar gewählt:: aus Interesse am Thema</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_mfe_3_dozent" name="mfe_3_dozent" intrvl="discrete" files="F1">
@@ -102,7 +97,6 @@
       <catgry>
         <catValu>1</catValu>
       </catgry>
-      <concept>Ich habe dieses spezielle Seminar gewählt:: wegen des/der Dozent*in</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_mfe_4" name="mfe_4" intrvl="discrete" files="F1">
@@ -141,7 +135,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich habe durch die Veranstaltung einen guten Überblick über die behandelten Themengebiete bekommen.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -181,7 +174,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Der/Die Lehrende benutzte oft Beispiele, die mein Verständnis der Lehrinhalte gefördert haben.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -221,7 +213,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich finde, der/die Lehrende ging auf Fragen und Anregungen der Studierenden angemessen ein.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -261,7 +252,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich finde, der/die Lehrende hat das Thema interessant aufgearbeitet.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -301,7 +291,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich konnte im Verlauf der Veranstaltung die Gliederung immer nachvollziehen.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -341,7 +330,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich finde, der/die Lehrende teilte die zur Verfügung stehende Zeit gut ein.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -381,7 +369,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich fühle mich durch die Inhalte des Seminars…</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">forderung7</notes>
     </var>
@@ -421,7 +408,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich fühle mich durch das Tempo der Stoffvermittlung…</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">forderung7</notes>
     </var>
@@ -461,7 +447,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich fühle mich durch den mit dem Seminar verbundenen Zeitaufwand…</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">forderung7</notes>
     </var>
@@ -501,7 +486,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Die meisten Teilnehmenden waren gut auf die einzelnen Termine vorbereitet.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -541,7 +525,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Die meisten Teilnehmenden brachten sich aktiv ein.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -581,7 +564,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Die im Rahmen des Seminars verwendeten Materialien (Folien, Filme, Skizzen, etc.) trugen zum Verständnis der Inhalte bei.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -605,7 +587,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich fand die Menge des Materials, das in der Veranstaltung zur Verfügung gestellt wurde, …</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">materialmenge</notes>
     </var>
@@ -645,7 +626,6 @@
         <catValu>na</catValu>
         <labl>nicht sinnvoll beantwortbar</labl>
       </catgry>
-      <concept>Ich habe in der Veranstaltung viel gelernt.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">zustimmung7</notes>
     </var>
@@ -661,7 +641,6 @@
         <catValu>nein</catValu>
         <labl>Nein</labl>
       </catgry>
-      <concept>Ich würde dieses Seminar anderen Studierenden weiterempfehlen.</concept>
       <varFormat type="character" schema="other"/>
       <notes type="cdl:list">janein</notes>
     </var>
@@ -733,7 +712,6 @@
         <catValu>15</catValu>
         <labl>15 (sehr gut +)</labl>
       </catgry>
-      <concept>Im Punktesystem der gymnasialen Oberstufe (0 (ungenügend) bis 15 (sehr gut +)) bewerte ich dieses Seminar mit folgender Punktzahl:</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">punkte</notes>
     </var>
@@ -742,7 +720,6 @@
         <qstnLit>Anmerkungen für die/den Lehrende/n (Vorschläge/Lob/konstruktive Kritik):</qstnLit>
         <postQTxt>Bitte formuliere Deine Kritik sachlich, konstruktiv, und wenn möglich als Ich-Botschaft (siehe auch unsere Netiquette unter https://www.uni-muenster.de/PsyEval/netiquette/netiquette.html).</postQTxt>
       </qstn>
-      <concept>Anmerkungen für die/den Lehrende/n (Vorschläge/Lob/konstruktive Kritik):</concept>
       <varFormat type="character" schema="other"/>
     </var>
   </dataDscr>

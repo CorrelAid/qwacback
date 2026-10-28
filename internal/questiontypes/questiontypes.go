@@ -84,7 +84,9 @@ var answerTypes = map[string]struct {
 	"multiple_choice_other":     {"select_multiple_other", Presentation{Choice: "multiple", WithOther: true}},
 	"single_choice_long_list":   {"select_one_long_list", Presentation{Choice: "one", LongList: true}},
 	"multiple_choice_long_list": {"select_multiple_long_list", Presentation{Choice: "multiple", LongList: true}},
-	"grid":                      {"grid", Presentation{Choice: "one", Grid: true}},
+	// A grid's rows are choice or number questions (formtransform 0.8.0),
+	// so each row's own answer type says how it is answered.
+	"grid":                      {"grid", Presentation{Grid: true}},
 	"integer":                   {"integer", Presentation{}},
 	"decimal":                   {"decimal", Presentation{}},
 	"range":                     {"range", Presentation{}},

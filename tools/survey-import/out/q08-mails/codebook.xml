@@ -28,7 +28,6 @@
     <varGrp ID="VG_mails" name="mails" type="grid" var="V_mails_1 V_mails_2 V_mails_3 V_mails_4 V_mails_5 V_mails_6 V_mails_7 V_mails_8 V_mails_9 V_mails_10 V_mails_11 V_mails_12 V_mails_13 V_mails_14 V_mails_15 V_mails_16 V_mails_17 V_mails_18 V_mails_19 V_mails_20 V_mails_21 V_mails_22 V_mails_23 V_mails_24 V_mails_25 V_mails_26 V_mails_27 V_mails_28 V_mails_29 V_mails_30 V_mails_31 V_mails_32 V_mails_33 V_mails_34">
       <txt>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</txt>
       <txt xml:lang="en">In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?</txt>
-      <concept>Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?</concept>
       <notes type="cdl:hint">Ein Wert von 0 bedeutet, dass eine Fähigkeit gar nicht oder kaum ausgeprägt ist. Ein Wert von 10 bedeutet, dass eine Fähigkeit sehr gut oder (nahezu) perfekt ausgeprägt ist. Bitte kreisen Sie den Wert ein, der Ihre Fähigkeit am besten beschreibt.</notes>
       <notes type="cdl:hint" xml:lang="en">A value of 0 means that an ability is not at all or hardly pronounced. A value of 10 means that an ability is very well or (almost) perfectly pronounced. Please circle the value that best describes your ability.</notes>
     </varGrp>
@@ -94,7 +93,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann KI-Anwendungen bedienen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -160,7 +158,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann KI-Anwendungen nutzen, um meine Leben zu vereinfachen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -226,7 +223,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann KI sinnvoll einsetzen, um meine Ziele zu erreichen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -292,7 +288,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Im Alltag kann ich mit KI so interagieren, dass es meine Aufgaben leichter macht.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -358,7 +353,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann gewinnbringend mit KI zusammenarbeiten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -424,7 +418,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann gewinnbringend mit KI kommunizieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -490,7 +483,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kenne die wichtigsten Konzepte des Themas „KI&quot;.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -556,7 +548,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kenne Definitionen künstlicher Intelligenz.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -622,7 +613,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann beurteilen, welche Grenzen und Chancen der Einsatz einer KI mit sich bringt.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -688,7 +678,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann einschätzen, welche Vor- und Nachteile der Einsatz einer KI mit sich bringt.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -754,7 +743,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann mir neue Verwendungszwecke für KI ausdenken.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -820,7 +808,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann mir mögliche zukünftige Anwendungen von KI vorstellen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -886,7 +873,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann erkennen, ob ich es mit einer Anwendung zu tun habe, die auf KI basiert.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -952,7 +938,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann Geräte, die KI nutzen, von Geräten unterscheiden, die keine KI nutzen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1018,7 +1003,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann unterscheiden, ob ich mit einer KI oder einem „echten Menschen“ interagiere.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1084,7 +1068,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann abwägen, welche Konsequenzen die Nutzung von KI für die Gesellschaft hat.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1150,7 +1133,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann ethische Gesichtspunkte bei der Entscheidung einbeziehen, ob ich die Daten nutze, die eine KI bereitstellt.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1216,7 +1198,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann KI-basierte Anwendungen auf ihre ethischen Implikationen hin analysieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1282,7 +1263,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann neue KI-Anwendungen designen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1348,7 +1328,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann neue Anwendungen im Bereich „künstliche Intelligenz“ programmieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1414,7 +1393,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann neue KI-Anwendungen entwickeln.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1480,7 +1458,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann sinnvolle Werkzeuge (z.B. Frameworks, Programmiersprachen) auswählen, um eine KI zu programmieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1546,7 +1523,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>In schwierigen Situationen bei der Nutzung von KI kann ich mich auf meine Fähigkeiten verlassen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1612,7 +1588,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Die meisten Probleme im Umgang mit künstlicher Intelligenz kann ich aus eigener Kraft gut meistern.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1678,7 +1653,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Auch anstrengende und komplizierte Aufgaben bei der Zusammenarbeit mit künstlicher Intelligenz kann ich in der Regel gut lösen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1744,7 +1718,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Trotz der schnellen Veränderungen im Bereich der KI, kann ich stets auf dem aktuellen Stand bleiben.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1810,7 +1783,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann mich über aktuelle Neuerungen bei KI-Anwendungen informieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1876,7 +1848,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Obwohl es häufig neue KI-Anwendungen gibt, gelingt es mir, mein Wissen und meine Fähigkeiten aktuell zu halten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -1942,7 +1913,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich lasse mich in meinen Entscheidungen nicht durch KI beeinflussen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -2008,7 +1978,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann verhindern, dass KI mich in meinen Entscheidungen beeinflusst.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -2074,7 +2043,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich merke, wenn ich in meinen Entscheidungen von KI beeinflusst werde.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -2140,7 +2108,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Während ich mit KI Aufgaben erledige, behalte ich die Kontrolle über Gefühle wie Frustration oder Angst.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -2206,7 +2173,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann damit umgehen, wenn mich Interaktionen mit KI frustrieren oder ängstigen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>
@@ -2272,7 +2238,6 @@
         <labl>10</labl>
         <labl xml:lang="en">10</labl>
       </catgry>
-      <concept>Ich kann meine Euphorie kontrollieren, die aufkommt, wenn ich KI zu verschiedenen Zwecken nutze.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">mails_0_10</notes>
     </var>

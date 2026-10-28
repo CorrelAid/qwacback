@@ -61,7 +61,7 @@ func TestByAnswerType(t *testing.T) {
 	if in := got["integer"]; len(in.Aliases) != 1 || in.Aliases[0] != "int" {
 		t.Errorf("integer aliases: %+v", in)
 	}
-	if !got["grid"].Presentation.Grid {
+	if p := got["grid"].Presentation; !p.Grid || p.Choice != "" {
 		t.Errorf("grid: %+v", got["grid"])
 	}
 	// Types the trimmed catalogue lacks are left out, not invented.

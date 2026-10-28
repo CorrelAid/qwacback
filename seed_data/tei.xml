@@ -31,7 +31,6 @@
     <varGrp ID="VG_tei" name="tei" type="grid" var="V_tei_01 V_tei_02 V_tei_03 V_tei_04 V_tei_05 V_tei_06 V_tei_07 V_tei_08 V_tei_09 V_tei_10 V_tei_11 V_tei_12 V_tei_13 V_tei_14 V_tei_15 V_tei_16 V_tei_17 V_tei_18 V_tei_19 V_tei_20 V_tei_21 V_tei_22 V_tei_23 V_tei_24 V_tei_25 V_tei_26 V_tei_27 V_tei_28 V_tei_29 V_tei_30 V_tei_31 V_tei_32 V_tei_33 V_tei_34 V_tei_35 V_tei_36 V_tei_37 V_tei_38 V_tei_39 V_tei_40 V_tei_41 V_tei_42 V_tei_43 V_tei_44 V_tei_45">
       <txt>Training Evaluations Inventar (TEI)</txt>
       <txt xml:lang="en">Training-Evaluation-Inventory (TEI)</txt>
-      <concept>Training Evaluations Inventar (TEI)</concept>
     </varGrp>
     <var ID="V_tei_01" name="tei_01" intrvl="discrete" files="F1">
       <qstn responseDomainType="category" seqNo="1">
@@ -65,7 +64,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hat mir generell gefallen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -101,7 +99,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die Lernatmosphäre war angenehm.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -137,7 +134,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Das Lernen hat Spaß gemacht.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -173,7 +169,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Am Anfang des [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] wurden die Ziele bekannt gegeben, die mit dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] erreicht werden sollten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -209,7 +204,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich finde das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] nützlich für meinen Beruf.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -245,7 +239,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Zeit in dieses [BEZEICHNUN AUSBILDUNGSGEFÄSS – z.B. Training] zu investieren war sinnvoll.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -281,7 +274,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich kann die Inhalte des [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] in meinem Beruf anwenden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -317,7 +309,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich ziehe persönlichen Nutzen aus diesem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training].</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -353,7 +344,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die Inhalte waren verständlich.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -389,7 +379,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die Sprache (Fremd- und Fachwörter) war verständlich.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -425,7 +414,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich bin thematisch im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] mitgekommen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -461,7 +449,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die Zeit war ausreichend für die bearbeiteten Themen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -497,7 +484,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich habe den Eindruck, mein Wissen hat sich langfristig erweitert.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -533,7 +519,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich werde mir die neuen Themen gut merken können.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -569,7 +554,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich würde dieses [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] meinen Kollegen empfehlen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -605,7 +589,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich werde das Gelernte im beruflichen Alltag anwenden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -641,7 +624,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich finde es gut, dass [THEMA/INHALT – z.B. Teamarbeit] vermittelt bzw. besprochen wurden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -677,7 +659,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich denke, ich werde auch einige Zeit nach dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] noch berichten können, was ich gelernt habe.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -713,7 +694,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Es wurden zuerst Probleme thematisiert und durch ihre Bearbeitung habe ich somit die Themen gelernt.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -749,7 +729,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich konnte mein eigenes Wissen in das [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] mit einbringen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -785,7 +764,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Inhalte wurden mit konkreten Beispielen erläutert.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -821,7 +799,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich konnte echte Probleme bearbeiten und darin die zuvor gelernten Inhalte vertiefen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -857,7 +834,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich konnte meine bisherigen beruflichen Erlebnisse einbringen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -893,7 +869,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Es wurden wahre Vorfälle aus [ARBEITSFELD – z.B. Fliegen] vorgestellt und durch das selbständige Entwickeln von Lösungen habe ich die Themen vertieft.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -929,7 +904,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Der Trainer machte deutlich, welches die zentralen Punkte der besprochenen Themen waren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -965,7 +939,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Es wurden Situationen aus dem Arbeitsalltag vorgestellt und ich musste herausfinden, was das mit [THEMA – z.B. Teamarbeitsfähigkeiten] zu tun hat.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1001,7 +974,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich konnte mein berufliches Wissen zu [THEMA – z.B. Teamarbeitsfähigkeiten] in das Seminar/Training mit einbringen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1037,7 +1009,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Auf meine bisherigen Erfahrungen zu den behandelten Themen ist eingegangen worden.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1073,7 +1044,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Es wurden problematische Situationen aus dem Arbeitsalltag vorgestellt und ich musste herausfinden, mit welchen Fähigkeiten/welchem Wissen die Situation hätte verbessert werden können.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1109,7 +1079,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die Lernziele waren mir bekannt.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1145,7 +1114,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die Lernziele wurden erreicht.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1181,7 +1149,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die eingesetzten Medien (PPT, Video, Poster, etc.) waren hilfreich für mein Verständnis.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1217,7 +1184,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] wurden Situationen vorgestellt, die wir dann auf [THEMENASPEKTE – z.B. Teamarbeits-Aspekte] hin genauer betrachteten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1253,7 +1219,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich konnte das Gelernte im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] üben.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1289,7 +1254,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich habe im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] Feedback zu meinem Verhalten/meiner Leistung bekommen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1325,7 +1289,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich konnte das Feedback umsetzen und im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] an meinem Verhalten/meiner Leistung arbeiten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1361,7 +1324,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Die eingesetzten Medien (PPT, Video, Poster, etc.) waren geeignet, die Inhalte zu präsentieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1397,7 +1359,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Mir ist klar geworden, wie ich die behandelten Inhalte im Arbeitsalltag anwenden kann</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1433,7 +1394,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Der Trainer hat mich aufgefordert, mein Wissen und meine Erlebnisse zu [THEMA – z.B. Teamarbeitsfähigkeiten] aus dem Berufsalltag einzubringen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1469,7 +1429,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Das Feedback aus dem [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hilft mir, weiter am Gelernten zu arbeiten.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1505,7 +1464,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Inhalte wurden in Diskussionen vertieft.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1541,7 +1499,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>In der Diskussion habe ich erfahren, dass Kollegen andere Sichtweisen zu dem behandelten Thema haben.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1577,7 +1534,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich hatte Gelegenheit, das Gelernte zu reflektieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1613,7 +1569,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Im [BEZEICHNUNG AUSBILDUNGSGEFÄSS – z.B. Training] hatte ich die Möglichkeit, Dinge, die ich später in der Arbeit umsetzen soll, schon einmal auszuprobieren.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>
@@ -1649,7 +1604,6 @@
         <labl>Stimme ich sehr zu</labl>
         <labl xml:lang="en">I agree very much</labl>
       </catgry>
-      <concept>Ich kenne die Wichtigkeit einzelner Themen für unterschiedliche Situationen.</concept>
       <varFormat type="numeric" schema="other"/>
       <notes type="cdl:list">tei_agree5</notes>
     </var>

@@ -54,10 +54,16 @@
       "label": "Teil 1: Fragen an alle Unternehmen – Strukturdaten des Unternehmens"
     },
     {
+      "type": "begin_group",
+      "name": "f1_1",
+      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?",
+      "appearance": "table-list"
+    },
+    {
       "type": "integer",
       "name": "f1_1_002",
-      "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?",
-      "hint": "Beschäftigte am 31.12.2025 insgesamt. Anzahl"
+      "label": "Beschäftigte am 31.12.2025 insgesamt",
+      "hint": "Anzahl"
     },
     {
       "type": "note",
@@ -87,6 +93,9 @@
       "name": "f1_1_002d",
       "label": "Ohne Angabe (nach Geburtenregister)",
       "hint": "Anzahl. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
+    },
+    {
+      "type": "end_group"
     },
     {
       "type": "integer",
@@ -421,7 +430,13 @@
     {
       "type": "note",
       "name": "f4_1_hinweis",
-      "label": "Teilnehmende an internen und externen Lehrveranstaltungen\nZunächst hätten wir gerne Angaben zu den Teilnehmenden an internen und externen Lehrveranstaltungen. Dabei sollten die Beschäftigten jeweils nur einmal gezählt werden, unabhängig davon, an wie vielen Lehrveranstaltungen sie im Laufe des Jahres 2025 teilgenommen haben. Wenn Sie Angaben auf der Basis von Personen machen können, tragen Sie bitte diese Angaben in die erste Spalte der Tabelle ein.\nLiegen in Ihrem Unternehmen Angaben zu Teilnehmenden-Fällen vor (Beschäftigte, die im Jahr 2025 an mehreren Lehrveranstaltungen teilgenommen haben, werden mehrfach gezählt), so tragen Sie bitte diese Angaben in die zweite Spalte der Tabelle ein.\nLiegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die Tabelle ein."
+      "label": "Zunächst hätten wir gerne Angaben zu den Teilnehmenden an internen und externen Lehrveranstaltungen. Dabei sollten die Beschäftigten jeweils nur einmal gezählt werden, unabhängig davon, an wie vielen Lehrveranstaltungen sie im Laufe des Jahres 2025 teilgenommen haben. Wenn Sie Angaben auf der Basis von Personen machen können, tragen Sie bitte diese Angaben in die erste Spalte der Tabelle ein.\nLiegen in Ihrem Unternehmen Angaben zu Teilnehmenden-Fällen vor (Beschäftigte, die im Jahr 2025 an mehreren Lehrveranstaltungen teilgenommen haben, werden mehrfach gezählt), so tragen Sie bitte diese Angaben in die zweite Spalte der Tabelle ein.\nLiegen Ihnen beide Angaben vor, so tragen Sie bitte entsprechende Angaben in die Tabelle ein."
+    },
+    {
+      "type": "begin_group",
+      "name": "f4_1",
+      "label": "Teilnehmende an internen und externen Lehrveranstaltungen",
+      "appearance": "table-list"
     },
     {
       "type": "integer",
@@ -494,10 +509,18 @@
       "hint": "Anzahl. Teilnehmenden-Fälle. Bitte machen Sie Angaben zu „Divers“ und „Ohne Angabe (nach Geburtenregister)“ nur, wenn Ihnen diese Angaben aus dem Geburtenregister bekannt sind."
     },
     {
+      "type": "end_group"
+    },
+    {
+      "type": "begin_group",
+      "name": "f4_2",
+      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.",
+      "appearance": "table-list"
+    },
+    {
       "type": "integer",
       "name": "f4_2_081",
-      "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.",
-      "hint": "Teilnahmestunden insgesamt"
+      "label": "Teilnahmestunden insgesamt"
     },
     {
       "type": "integer",
@@ -510,6 +533,9 @@
       "label": "externen Lehrveranstaltungen"
     },
     {
+      "type": "end_group"
+    },
+    {
       "type": "select_multiple quali_stunden",
       "name": "f4_3",
       "label": "Auf welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) entfielen in Ihrem Unternehmen die meisten Stunden interner und externer Lehrveranstaltungen?",
@@ -517,9 +543,10 @@
       "constraint": "count-selected(.) <= 3"
     },
     {
-      "type": "note",
-      "name": "f4_4_frage",
-      "label": "Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?"
+      "type": "begin_group",
+      "name": "f4_4",
+      "label": "Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?",
+      "appearance": "table-list"
     },
     {
       "type": "decimal",
@@ -532,6 +559,9 @@
       "name": "f4_4_098",
       "label": "+ Sonstige Teilnahmestunden an Lehrveranstaltungen",
       "hint": "Prozent"
+    },
+    {
+      "type": "end_group"
     },
     {
       "type": "select_multiple anbieter",

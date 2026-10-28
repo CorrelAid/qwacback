@@ -905,6 +905,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			PrequestionText  string         `json:"prequestion_text"`
 			IvuInstructions  string         `json:"ivu_instructions"`
 			Hint             string         `json:"hint"`
+			GridNote         string         `json:"grid_note,omitempty"`
 			Universe         string         `json:"universe"`
 			AnswerType       string         `json:"answer_type"`
 			HasOther         bool           `json:"has_other"`
@@ -941,6 +942,7 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 				PrequestionText:  v.GetString("prequestion_text"),
 				IvuInstructions:  v.GetString("ivu_instructions"),
 				Hint:             v.GetString("hint"),
+				GridNote:         v.GetString("grid_note"),
 				Universe:         v.GetString("universe"),
 				AnswerType:       effectiveAnswerType(v),
 				HasOther:         v.GetBool("has_other"),
