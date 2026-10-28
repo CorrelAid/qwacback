@@ -3,6 +3,7 @@ package mcp
 import (
 	"context"
 	"encoding/json"
+	"errors"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	mcpserver "github.com/mark3labs/mcp-go/server"
@@ -90,7 +91,7 @@ func NewMCPServer(app core.App) *mcpserver.MCPServer {
 
 	s.AddTool(
 		mcp.NewTool("get_question",
-			mcp.WithDescription("Get a single question by ID, including its variable IDs, concept, question text, and answer type."),
+			mcp.WithDescription("Get a single question by ID in full: concept, question text, answer type, its study (title, license, citation, source), its group, and every variable with its item text, hint, answer type, categories, grid note and translations. Use this to read the items of a grid or multiple-choice question; search and list return only the question stem and variable IDs."),
 			mcp.WithString("id", mcp.Required(), mcp.Description("Question ID (15-char alphanumeric)")),
 			mcp.WithToolAnnotation(readOnlyAnnotation),
 		),
@@ -195,28 +196,14 @@ func getQuestionHandler(app core.App) mcpserver.ToolHandlerFunc {
 			return mcp.NewToolResultError("missing required parameter: id"), nil
 		}
 
-		var studyID string
-		if grp, err := app.FindRecordById("variable_groups", id); err == nil {
-			studyID = grp.GetString("study")
-		} else if v, err := app.FindRecordById("variables", id); err == nil {
-			studyID = v.GetString("study")
-		} else {
+		detail, err := routes.QuestionDetail(app, id)
+		if errors.Is(err, routes.ErrQuestionNotFound) {
 			return mcp.NewToolResultError("question not found"), nil
-		}
-
-		questions, err := routes.AssembleQuestions(app, studyID)
-		if err != nil {
+		} else if err != nil {
 			return mcp.NewToolResultError("failed to assemble questions"), nil
 		}
-
-		for _, q := range questions {
-			if q.ID == id {
-				b, _ := json.Marshal(q)
-				return mcp.NewToolResultText(string(b)), nil
-			}
-		}
-
-		return mcp.NewToolResultError("question not found"), nil
+		b, _ := json.Marshal(detail)
+		return mcp.NewToolResultText(string(b)), nil
 	}
 }
 

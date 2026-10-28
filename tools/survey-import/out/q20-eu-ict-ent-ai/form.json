@@ -11,7 +11,7 @@
     "producer": {
       "name": "Eurostat"
     },
-    "citation": "Eurostat. (2025, December 17). European businesses statistics compilers' manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 edition; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/w/ks-01-25-065",
+    "citation": "Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073",
     "url": "https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/w/ks-01-25-065",
     "sourceLabel": "KS-01-25-065, Annex 1 – Model questionnaire (ICT-ENT 2025 V1.5), Module E \"Artificial Intelligence\" (Eurostat)",
     "abstract": "This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences).",
