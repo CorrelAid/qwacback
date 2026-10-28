@@ -66,3 +66,7 @@
 - 3.3 grid split, see above (the item order differs from the paper layout).
 - The Teil 6 condition „alle drei Fragen mit Nein“ is read as: 3.1, 3.2 and all five 3.3 activities = Nein.
 - `gen-form.mjs` in this folder generates `form.json` (run it with the output path as its argument).
+
+## Titles (#64, 2026-10-28)
+
+`titl` unchanged. `altTitl` „CVTS 7“: Statistikamt Nord prints the survey as „Weiterbildung CVTS 7“ (site navigation, statistik-nord.de); the form itself prints „CVTS“ on every page. No `subTitl`: the parts of `titl` („Europäische Erhebung …“, „Fragebogen“) are not printed as a title on the form.

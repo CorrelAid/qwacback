@@ -1,7 +1,8 @@
 {
   "study": {
-    "title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)",
-    "shortTitle": "ICT survey 2025: AI",
+    "title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025",
+    "subtitle": "Module E: Artificial Intelligence",
+    "shortTitle": "ICT-ENT 2025",
     "id": "q20-eu-ict-ent-ai",
     "authors": [
       {
@@ -59,9 +60,7 @@
       "label": "Does your enterprise use any of the following Artificial Intelligence (AI) technologies?",
       "appearance": "table-list",
       "hint": "E1 a) to h) = “No” then go to E4 (if optional included) else go to F1.",
-      "label::Deutsch (de)": "Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?",
-      "concept": "AI technologies used",
-      "concept::Deutsch (de)": "Genutzte KI-Technologien"
+      "label::Deutsch (de)": "Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?"
     },
     {
       "type": "select_one yes_no",
@@ -125,9 +124,7 @@
       "label": "Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?",
       "appearance": "table-list",
       "relevant": "${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'",
-      "label::Deutsch (de)": "Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?",
-      "concept": "Purposes of AI use",
-      "concept::Deutsch (de)": "Zwecke der KI-Nutzung"
+      "label::Deutsch (de)": "Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?"
     },
     {
       "type": "select_one yes_no",
@@ -192,7 +189,6 @@
       "type": "begin_group",
       "name": "e3",
       "label": "How did you enterprise acquire the Artificial Intelligence software or systems that it uses?",
-      "concept": "Acquisition of AI systems",
       "appearance": "table-list",
       "relevant": "${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'",
       "hint": "– Optional"
@@ -231,9 +227,7 @@
       "label": "Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?",
       "hint": "Questions E4 is presented only to respondents who answered ‘No’ to E1a)-h) i.e. enterprises that did not use any of the Artificial Intelligence technologies listed in question E1.\n– Optional\n(Filter question)",
       "relevant": "${e1_a} = '0' and ${e1_b} = '0' and ${e1_c} = '0' and ${e1_d} = '0' and ${e1_e} = '0' and ${e1_f} = '0' and ${e1_g} = '0' and ${e1_h} = '0'",
-      "label::Deutsch (de)": "Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?",
-      "concept": "Considered using AI",
-      "concept::Deutsch (de)": "Erwogene KI-Nutzung"
+      "label::Deutsch (de)": "Hat Ihr Unternehmen jemals in Betracht gezogen, eine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz einzusetzen?"
     },
     {
       "type": "begin_group",
@@ -242,9 +236,7 @@
       "appearance": "table-list",
       "relevant": "${e4} = '1'",
       "hint": "– Optional",
-      "label::Deutsch (de)": "Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?",
-      "concept": "Reasons for not using AI",
-      "concept::Deutsch (de)": "Gründe gegen KI-Nutzung"
+      "label::Deutsch (de)": "Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?"
     },
     {
       "type": "select_one yes_no",
@@ -317,7 +309,7 @@
   ],
   "settings": {
     "default_language": "English (en)",
-    "form_title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025: AI module (Model Questionnaire, Module E)",
+    "form_title": "EU Survey on ICT Usage and e-Commerce in Enterprises 2025",
     "form_id": "q20-eu-ict-ent-ai"
   }
 }

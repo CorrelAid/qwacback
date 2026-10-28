@@ -3,7 +3,7 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>Van Westendorp Price Sensitivity Meter (PSM)</titl><altTitl>Van Westendorp PSM</altTitl>
+        <titl>Van Westendorp Price Sensitivity Meter (PSM)</titl><altTitl>PSM</altTitl>
         <IDNo>q14-van-westendorp</IDNo>
       </titlStmt><rspStmt><AuthEnty>Van Westendorp, P. H.</AuthEnty></rspStmt>
       <prodStmt><producer>Wikipedia contributors (question wording)</producer>
@@ -27,28 +27,24 @@
       <qstn responseDomainType="numeric" seqNo="1">
         <qstnLit>At what price would you consider the product to be so expensive that you would not consider buying it?</qstnLit>
       </qstn>
-      <concept>Too expensive price</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_psm_too_cheap" name="psm_too_cheap" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="2">
         <qstnLit>At what price would you consider the product to be priced so low that you would feel the quality couldn't be very good?</qstnLit>
       </qstn>
-      <concept>Too cheap price</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_psm_expensive" name="psm_expensive" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="3">
         <qstnLit>At what price would you consider the product starting to get expensive, so that it is not out of the question, but you would have to give some thought to buying it?</qstnLit>
       </qstn>
-      <concept>Getting expensive price</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
     <var ID="V_psm_cheap" name="psm_cheap" intrvl="contin" files="F1">
       <qstn responseDomainType="numeric" seqNo="4">
         <qstnLit>At what price would you consider the product to be a bargain—a great buy for the money?</qstnLit>
       </qstn>
-      <concept>Bargain price</concept>
       <varFormat type="numeric" schema="other"/>
     </var>
   </dataDscr>

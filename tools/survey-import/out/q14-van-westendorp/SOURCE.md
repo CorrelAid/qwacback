@@ -13,3 +13,7 @@
 ## Checked and not used
 - German Wikipedia: no article of its own. The section in "Preissensivität" (revision 243426498) names the price points („zu billig“, „zu teuer“, „relativ hoch“, „noch günstig“) but no questions.
 - Lautner (2019), master's thesis, FH Burgenland: earlier German version, dropped because it's a weak source and its "zu günstig" lacks the quality clause. Notes in `SOURCE_thesis_superseded.md`.
+
+## Titles (#64, 2026-10-28)
+
+`titl` unchanged. `altTitl` „PSM“: English Wikipedia rev. 1289425806 „The Price Sensitivity Meter (PSM) is …“.

@@ -53,7 +53,7 @@ If `NATS_PORT` is not set, qwacback runs without validation (import-only mode).
 
 Each study carries its terms of use, so a client can show them with every reused question. `/api/questions/{id}` embeds them in `study` as `license`, `copyright`, `citation` and `source_uri`; the `studies` records have them as `license`, `copyright`, `citation` and `holdings_uri`. They are read from the codebook (see DDI_MARKUP_GUIDE.md §6) and are empty when it states none.
 
-A study's short name for lists and tags, e.g. `CVTS7`, is `short_title` on the `studies` records and `study.short_title` in `/api/questions/{id}`, from the codebook's `titlStmt/altTitl` (DDI_MARKUP_GUIDE.md §5); empty when it has none, then show `title`.
+A study's short name for lists and tags, e.g. `ATTARI-12`, is `short_title` on the `studies` records and `study.short_title` in `/api/questions/{id}`, from the codebook's `titlStmt/altTitl`; its subtitle (`titlStmt/subTitl`) is `subtitle` and `study.subtitle` (DDI_MARKUP_GUIDE.md §5). `/api/search/studies` returns `short_title` too. Both are empty when the codebook has none; then show `title`.
 - **GET `/api/questions/{id}/xml`** — DDI-XML fragment for a single question, cut unchanged from the stored codebook.
 - **GET `/api/questions/{id}/xlsform`** — XLSForm JSON for a single question.
 - **GET `/api/studies/{id}/questions`** — List all questions for a single study.
@@ -66,7 +66,7 @@ Questions of a multilingual study also carry `language` (the base language of `q
 
 ### Studies
 
-- **GET `/api/search/studies?q=<term>`** — Search studies by title, keywords, and abstract. Optional `&topic=<classification>` filter. Supports pagination.
+- **GET `/api/search/studies?q=<term>`** — Search studies by title, short title, keywords, and abstract. Optional `&topic=<classification>` filter. Supports pagination.
 
 ### Import & Validation
 
@@ -239,7 +239,7 @@ qwacback exposes a [Model Context Protocol](https://modelcontextprotocol.io/) se
 | Tool | Description |
 |---|---|
 | `search_questions` | Search questions by text, concept, name, or answer type |
-| `search_studies` | Search studies by title, keywords, or abstract (optional `topic` filter) |
+| `search_studies` | Search studies by title, short title, keywords, or abstract (optional `topic` filter) |
 | `get_question` | Get a single question by ID in full: study, group and every variable with item text, hint, categories and grid note |
 | `list_questions` | List all questions, optionally filtered by study |
 

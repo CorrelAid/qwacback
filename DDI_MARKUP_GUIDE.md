@@ -43,7 +43,7 @@ Think of `name` as what you'd call the column in a CSV file, and `concept` as th
 *   **Grid sub-items**: Use a `Construct: Facet` pattern (e.g. `Trust: Parliament`, `Civic network: Council`).
 *   **Variable groups**: Name the overarching topic or construct (e.g. `Trust in institutions`, `Device ownership`).
 
-qwac lists a question by its concept, and by its text only when there is none, so a grid with a paragraph-long introduction or a long question becomes a multi-line title. Give every standalone variable and every question group (grid, multiple choice, choice with "Other") a concept of a few words in the question's language. In a form, that is the `concept` (or `concept::<Language (code)>`) cell of the question row or the `begin_group` row.
+qwac lists a question by its concept, and by its text only when there is none. In your own forms, give every standalone variable and every question group (grid, multiple choice, choice with "Other") a concept of a few words in the question's language: the `concept` (or `concept::<Language (code)>`) cell of the question row or the `begin_group` row. A published instrument imported with `tools/survey-import` gets no concepts we wrote: its codebook holds only text the source prints, so its questions are listed by their text.
 *   The `concept` element supports `vocab` and `vocabURI` attributes to link to controlled vocabularies.
 *   **Search tags:** further `concept` elements after the first one are search tags, typically the concept in the other language. They make an item findable in German and English without changing its wording. The first `concept` stays the concept. Tags never carry `vocab`, which marks a long list.
 
@@ -275,9 +275,32 @@ Both `timePrd` and `collDate` use the `event` attribute: `"start"`, `"end"`, or 
 
 ---
 
-## 5. Study Title
+## 5. Study Title, Subtitle and Short Name
 
-`titlStmt/titl` is the study's full title as published. qwacback derives the study's and its questions' record IDs from it, so changing it later changes every link to them. Lists and tags show the short name in `titlStmt/altTitl` (`short_title`) when there is one: the instrument's acronym or a few words, e.g. `CVTS7`, `ATTARI-12`, `ECS 2019`. In `titlStmt` the XSD order is `titl`, `subTitl`, `altTitl`, `parTitl`, `IDNo`. `tools/survey-import` writes it from the study's `shortTitle`.
+Clients show a study by its short name in tags and question cards, and by its full title on the study page. `titlStmt` carries all three:
+
+| Element | qwacback field | Example |
+|---------|----------------|---------|
+| `titl` | `title` | `Attitudes Towards Artificial Intelligence Scale` |
+| `subTitl` | `subtitle` | `2. Revision` (MFE-Sr2), `Online questionnaire for Management respondents` (ECS 2019) |
+| `altTitl` | `short_title` | `ATTARI-12`, `ECS 2019`, `CVTS 7` |
+
+```xml
+<titlStmt>
+  <titl>European Company Survey 2019</titl>
+  <subTitl>Online questionnaire for Management respondents</subTitl>
+  <altTitl>ECS 2019</altTitl>
+  <IDNo>q21-ecs2019</IDNo>
+</titlStmt>
+```
+
+*   `titl` is the study's full title as published. qwacback derives the study's and its questions' record IDs from it, so changing it later changes every link to them.
+*   For a published instrument, set `subTitl` and `altTitl` only to text the source prints for it: its acronym or short name, its subtitle as printed. Don't abbreviate or coin a name; without one, leave the element out, and clients show `titl`.
+*   Don't repeat them in `titl`: `Attitudes Towards Artificial Intelligence Scale` with `altTitl` `ATTARI-12`, not `ATTARI-12 – Attitudes Towards Artificial Intelligence Scale`.
+*   The XSD order is `titl`, `subTitl`, `altTitl`, `parTitl`, `IDNo`. formtransform writes `titl` (the XLSForm `form_title`), `parTitl` and `IDNo`; `tools/survey-import/build-codebook.mjs` adds `subTitl` and `altTitl` from the study's `subtitle` and `shortTitle`.
+*   qwacback reads the first `subTitl` and `altTitl` in the base language (no `xml:lang`, or the codebook's).
+
+Question groups have no short name yet. DDI 2.5 has `varGrp/labl`, but the CDL Schematron rejects it (see §1) and formtransform doesn't write it (CorrelAid/formtransform#181).
 
 ---
 
@@ -327,6 +350,8 @@ Rules:
 | `varFormat` | `var` | Technical data format (must appear second-to-last inside `var`) |
 | `universe` | `var` | Who is asked the question: skip logic as prose (`clusion="I"`) |
 | `notes` | `var`, `varGrp`, `stdyDscr` | Untyped: free-text annotation. Typed `cdl:…`: a form field DDI has no element for. Last children |
+| `subTitl` | `titlStmt` | Subtitle of the study, as printed (§5) |
+| `altTitl` | `titlStmt` | Short name of the study, e.g. its acronym, as printed (§5) |
 
 ### Attributes
 

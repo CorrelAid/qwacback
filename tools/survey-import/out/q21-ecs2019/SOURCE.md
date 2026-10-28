@@ -193,3 +193,7 @@
   data analytics use. It is kept as printed.
 - **Reference period:** the questions refer to "since the beginning of 2016" and "In 2018"; the fieldwork was in 2019
   (`timePrd` 2019).
+
+## Titles (#64, 2026-10-28)
+
+`titl` „European Company Survey 2019“, `subTitl` „Online questionnaire for Management respondents“, `altTitl` „ECS 2019“: page 1 of the questionnaire PDF (heading and „The European Company Survey 2019 (ECS 2019) …“).

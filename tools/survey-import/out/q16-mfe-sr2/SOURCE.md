@@ -13,3 +13,7 @@
 - Not transcribed: the header with course title and instructor name (filled per deployment).
 - Subscales (positively keyed): DD = Dozierende & Didaktik (4–9), Uef = Überforderung (10–12), Tei = Teilnehmende (13–14), Mat = Material (15, single item), Lern = Lernerfolg (17, single item).
 - Not checked against the Antwortbogen PDF on ZIS (not downloaded); wording is from the ZIS page tables.
+
+## Titles (#64, 2026-10-28)
+
+`titl` „Münsteraner Fragebogen zur Evaluation von Seminaren“, `subTitl` „2. Revision“, `altTitl` „MFE-Sr2“: the ZIS entry title „Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2)“.

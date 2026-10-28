@@ -81,7 +81,7 @@ func NewMCPServer(app core.App) *mcpserver.MCPServer {
 
 	s.AddTool(
 		mcp.NewTool("search_studies",
-			mcp.WithDescription("Search studies by title, keywords, or abstract. Optionally filter by topic classification. Uses substring matching — search one term at a time for best results. For broad topics, run multiple searches with different terms. Examples: query='health' finds health-related studies; query='2020' finds studies from 2020."),
+			mcp.WithDescription("Search studies by title, short title, keywords, or abstract. Optionally filter by topic classification. Uses substring matching — search one term at a time for best results. For broad topics, run multiple searches with different terms. Examples: query='health' finds health-related studies; query='2020' finds studies from 2020."),
 			mcp.WithString("query", mcp.Required(), mcp.Description("Single search term (substring match, case-insensitive). Use one keyword, not a phrase. Example: 'Engagement' not 'bürgerschaftliches Engagement Motivation'.")),
 			mcp.WithString("topic", mcp.Description("Optional topic classification filter")),
 			mcp.WithToolAnnotation(readOnlyAnnotation),
@@ -150,7 +150,7 @@ func searchStudiesHandler(app core.App) mcpserver.ToolHandlerFunc {
 			return mcp.NewToolResultError("missing required parameter: query"), nil
 		}
 
-		filter := "title ~ {:q} || abstract ~ {:q} || keywords ~ {:q}"
+		filter := "title ~ {:q} || short_title ~ {:q} || abstract ~ {:q} || keywords ~ {:q}"
 		params := dbx.Params{"q": q}
 
 		topic := getString(args, "topic")
@@ -165,21 +165,23 @@ func searchStudiesHandler(app core.App) mcpserver.ToolHandlerFunc {
 		}
 
 		type studyResult struct {
-			ID       string `json:"id"`
-			Title    string `json:"title"`
-			Abstract string `json:"abstract"`
-			Author   string `json:"author"`
-			Nation   string `json:"nation"`
+			ID         string `json:"id"`
+			Title      string `json:"title"`
+			ShortTitle string `json:"short_title"`
+			Abstract   string `json:"abstract"`
+			Author     string `json:"author"`
+			Nation     string `json:"nation"`
 		}
 
 		results := make([]studyResult, 0, len(records))
 		for _, r := range records {
 			results = append(results, studyResult{
-				ID:       r.Id,
-				Title:    r.GetString("title"),
-				Abstract: r.GetString("abstract"),
-				Author:   r.GetString("author"),
-				Nation:   r.GetString("nation"),
+				ID:         r.Id,
+				Title:      r.GetString("title"),
+				ShortTitle: r.GetString("short_title"),
+				Abstract:   r.GetString("abstract"),
+				Author:     r.GetString("author"),
+				Nation:     r.GetString("nation"),
 			})
 		}
 

@@ -359,6 +359,7 @@ end();
 
 const study = {
   title: 'Europäische Erhebung über die berufliche Weiterbildung in Unternehmen (CVTS7): Fragebogen',
+  shortTitle: 'CVTS 7',
   id: 'q01-cvts7',
   authors: [{ name: 'Statistische Ämter des Bundes und der Länder', affiliation: 'Statistisches Amt für Hamburg und Schleswig-Holstein (Statistikamt Nord)' }],
   producer: { name: 'Statistisches Amt für Hamburg und Schleswig-Holstein (Statistikamt Nord)' },

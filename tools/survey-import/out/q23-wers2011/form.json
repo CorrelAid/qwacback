@@ -1,7 +1,7 @@
 {
   "study": {
     "title": "Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work",
-    "shortTitle": "WERS 2011",
+    "shortTitle": "WERS6",
     "id": "q23-wers2011",
     "authors": [
       {
@@ -66,7 +66,6 @@
       "type": "integer",
       "name": "zallemps",
       "label": "Currently how many employees do you have on the payroll at this workplace?",
-      "concept": "Employees on payroll",
       "guidance_hint": "INTERVIEWER: To start the interview, please enter the relevant data from the EPQ.\nINTERVIEWER: THIS IS Q1 IN THE PAPER EPQ\nPROMPT: Remember to include yourself if you are an employee at the workplace but do NOT include casual workers without a contract of employment, freelance, self-employed or agency workers.",
       "required": "yes",
       "constraint": ". >= 5 and . <= 999997",
@@ -76,7 +75,6 @@
       "type": "begin_group",
       "name": "soc",
       "label": "How many male and female employees are in each of the following occupational groups?",
-      "concept": "Employees by occupation and sex",
       "appearance": "table-list"
     },
     {
@@ -248,7 +246,6 @@
       "type": "text",
       "name": "zsocdesc",
       "label": "From what you have said, the largest non-managerial group of employees at this workplace is classified as [LOGIDX: TITLE OF LARGEST OCCUPATIONAL GROUP].\nHow would you describe the main tasks and activities of this largest group?",
-      "concept": "Tasks of largest occupational group",
       "guidance_hint": "INTERVIEWER: Probe for details about the most common job in this group, record verbatim: OPEN"
     },
     {
@@ -263,14 +260,12 @@
       "type": "select_one cfillvac",
       "name": "cfillvac",
       "label": "Which of these statements best describes your approach to filling vacancies at this workplace?",
-      "concept": "Approach to filling vacancies",
       "guidance_hint": "SHOW CARD C1\nINTERVIEWER: For larger public sector employers, individual departments and agencies should be treated as separate employers"
     },
     {
       "type": "select_multiple cfactors",
       "name": "cfactors",
       "label": "Which of the following factors are important when recruiting new employees?",
-      "concept": "Recruitment factors",
       "guidance_hint": "SHOW CARD C2\nPROBE: Which others? UNTIL 'None'.\nCODE ALL THAT APPLY."
     },
     {
@@ -283,34 +278,29 @@
       "type": "select_multiple cspecix",
       "name": "cspecix",
       "label": "When filling vacancies, do you have any special procedures to encourage applications from the following groups?",
-      "concept": "Special recruitment procedures",
       "guidance_hint": "SHOW CARD C3\nPROBE: Which others? UNTIL 'None'.\nCODE ALL THAT APPLY."
     },
     {
       "type": "select_multiple catestw",
       "name": "catestw",
       "label": "When filling vacancies at this workplace, do you ever conduct any type of personality or attitude test for managerial positions, non-managerial positions or not at all?",
-      "concept": "Personality or attitude tests",
       "guidance_hint": "CODE ALL THAT APPLY."
     },
     {
       "type": "select_multiple cptestw",
       "name": "cptestw",
       "label": "When filling vacancies at this workplace, do you ever conduct any type of performance or competency test for managerial positions, non-managerial positions or not at all?",
-      "concept": "Performance or competency tests",
       "guidance_hint": "CODE ALL THAT APPLY."
     },
     {
       "type": "select_one yes_no",
       "name": "clogvac",
-      "label": "Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].\nHave there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?",
-      "concept": "Vacancies in largest group"
+      "label": "Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].\nHave there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?"
     },
     {
       "type": "select_multiple cchanx",
       "name": "cchanx",
       "label": "This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?",
-      "concept": "Recruitment channels",
       "guidance_hint": "SHOW CARD C4\nPROBE: Which others? UNTIL 'None'.",
       "relevant": "${clogvac} = '1'"
     },
@@ -324,14 +314,12 @@
       "type": "select_one yes_no",
       "name": "cinduct",
       "label": "Is there a standard induction programme designed to introduce new [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] to this workplace?",
-      "concept": "Standard induction programme",
       "guidance_hint": "INTERVIEWER: Do not include probation periods."
     },
     {
       "type": "select_one cstuckin",
       "name": "cstuckin",
       "label": "About how long does it normally take before new [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are able to do their job as well as more experienced employees already working here?",
-      "concept": "Time to full proficiency",
       "guidance_hint": "SHOW CARD C5"
     },
     {
@@ -343,28 +331,24 @@
       "type": "select_one coffjob",
       "name": "coffjob",
       "label": "What proportion of experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] have been given time off from their normal daily work duties to undertake training over the past 12 months?",
-      "concept": "Share given off-the-job training",
       "guidance_hint": "SHOW CARD C6"
     },
     {
       "type": "select_one yes_no",
       "name": "coffchk",
       "label": "Did any experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] have time off from their normal daily work duties to undertake training over the past 12 months?",
-      "concept": "Any off-the-job training",
       "relevant": "string-length(${coffjob}) = 0"
     },
     {
       "type": "select_one ctrain",
       "name": "ctrain",
       "label": "On average, how many days of training did experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] undertake over the past 12 months?",
-      "concept": "Days of training",
       "relevant": "(string-length(${coffjob}) > 0 and ${coffjob} != '7') or ${coffchk} = '1'"
     },
     {
       "type": "select_multiple chow",
       "name": "chow",
       "label": "Did this training cover any of the matters listed on this card?:",
-      "concept": "Training content",
       "guidance_hint": "SHOW CARD C7\nPROBE: Which others? UNTIL 'None'.\nCODE ALL THAT APPLY.",
       "relevant": "(string-length(${coffjob}) > 0 and ${coffjob} != '7') or ${coffchk} = '1'"
     },
@@ -372,14 +356,12 @@
       "type": "select_one card_c8",
       "name": "cothjob",
       "label": "Approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?",
-      "concept": "Share trained for other jobs",
       "guidance_hint": "SHOW CARD C8\nINTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question."
     },
     {
       "type": "integer",
       "name": "cothjobt",
       "label": "(How many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?)",
-      "concept": "Number trained for other jobs",
       "guidance_hint": "ENTER NUMBER\nSOFT CHECK if COTHJOBT>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
       "constraint": ". >= 1 and . <= 999997",
       "relevant": "${cothjob} = '97'"
@@ -388,14 +370,12 @@
       "type": "select_one card_c8",
       "name": "cothdo",
       "label": "And approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?",
-      "concept": "Share doing other jobs weekly",
       "guidance_hint": "SHOW CARD C8\nINTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question."
     },
     {
       "type": "integer",
       "name": "cothdot",
       "label": "(And approximately, how many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?)",
-      "concept": "Number doing other jobs weekly",
       "guidance_hint": "ENTER NUMBER\nSOFT CHECK if COTHDOT>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
       "constraint": ". >= 1 and . <= 999997",
       "relevant": "${cothdo} = '97'"
@@ -404,7 +384,6 @@
       "type": "begin_group",
       "name": "card_c9_grid",
       "label": "Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...",
-      "concept": "Job autonomy",
       "appearance": "table-list"
     },
     {
@@ -438,14 +417,12 @@
       "type": "select_one cteams",
       "name": "cteams",
       "label": "What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?",
-      "concept": "Share in formal teams",
       "guidance_hint": "SHOW CARD C10\nINTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question"
     },
     {
       "type": "integer",
       "name": "cteamst",
       "label": "(How many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?)",
-      "concept": "Number in formal teams",
       "guidance_hint": "ENTER NUMBER\nSOFT CHECK if CTEAMST>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
       "constraint": ". >= 1 and . <= 999997",
       "relevant": "${cteams} = '97'"
@@ -454,7 +431,6 @@
       "type": "begin_group",
       "name": "cteamho",
       "label": "Do each of the following statements apply to the way that teamworking operates among [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace?",
-      "concept": "Teamworking practices",
       "appearance": "table-list",
       "relevant": "${cteams} != '7'"
     },
@@ -480,7 +456,6 @@
       "type": "integer",
       "name": "ccomput",
       "label": "I would now like you to think about the whole workforce at this workplace.\nIn this workplace, what percentage of all employees use computers as part of their normal work duties? Please answer to the nearest 10%.",
-      "concept": "Share using computers",
       "guidance_hint": "INTERVIEWER: If respondent gives answer as an exact number you can code “997” here and record the number at the next question.\nSOFT CHECK if CCOMPUT>100 and CCOMPUT≠997: \"The number entered here is a percentage. It should not be greater than 100.\"",
       "constraint": ". >= 0 and . <= 997"
     },
@@ -488,7 +463,6 @@
       "type": "integer",
       "name": "ccomputt",
       "label": "(In this workplace, how many employees use computers as part of their normal work duties?)",
-      "concept": "Number using computers",
       "guidance_hint": "ENTER NUMBER\nSOFT CHECK if CCOMPUTT>ZALLEMPS: \"Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.\"",
       "constraint": ". >= 1 and . <= 999997",
       "relevant": "${ccomput} = 997"

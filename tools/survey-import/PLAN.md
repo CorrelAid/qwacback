@@ -53,7 +53,10 @@ alone touches `seed_data/` and git.
      `producer`, `citation` (full APA citation from the list below), `url`,
      `abstract` (2–4 sentences: what it measures, who for; your own words),
      `keywords`, `topics`, `nation`, `universe`, `anlyUnit`, `timePrd` (year),
-     `license` (the exact license / terms statement), `copyright`.
+     `license` (the exact license / terms statement), `copyright`; optionally
+     `shortTitle` (→ `altTitl`) and `subtitle` (→ `subTitl`), only as the source prints
+     them (acronym, printed subtitle; DDI_MARKUP_GUIDE.md §5), never coined. No `concept`
+     cells of our own: an imported instrument carries only text the source prints.
 4. **Build:** `node tools/survey-import/build-codebook.mjs tools/survey-import/out/<id>/form.json`
    → `out/<id>/codebook.xml`. Fix every `error:`. Read the `round-trip warning:` lines: they name fields
    that won't survive export. Fix what's yours to fix.

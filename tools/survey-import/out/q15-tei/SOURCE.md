@@ -75,3 +75,7 @@ Scoring: mean per dimension, interpreted separately; the documents mention no re
 - Scale endpoint: the manual says 1 = „stimme überhaupt nicht zu“, the form prints "Stimme ich nicht zu"; the form label is used.
 - Author affiliations are not stated in the documents, so `affiliation` is left empty.
 - DOI version (.3454 v1 vs. .4493 current), see Citation.
+
+## Titles (#64, 2026-10-28)
+
+`titl` „Training Evaluations Inventar“, `altTitl` „TEI“: cover of the German form (tei-de.pdf) and the Verfahrensdokumentation, „TEI / Training Evaluations Inventar“.

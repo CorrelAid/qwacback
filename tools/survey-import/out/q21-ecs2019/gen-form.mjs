@@ -546,7 +546,9 @@ const URL_PDF =
 const URL_PAGE = 'https://www.eurofound.europa.eu/en/surveys-and-data/surveys/european-company-survey/ecs-2019';
 
 const study = {
-  title: 'European Company Survey 2019: Management questionnaire',
+  title: 'European Company Survey 2019',
+  subtitle: 'Online questionnaire for Management respondents',
+  shortTitle: 'ECS 2019',
   id: 'q21-ecs2019',
   authors: [
     { name: 'Eurofound', affiliation: 'European Foundation for the Improvement of Living and Working Conditions' },

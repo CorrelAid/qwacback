@@ -405,6 +405,7 @@ const PDF =
   'https://assets.publishing.service.gov.uk/media/5a74f4a0e5274a59fa716449/11-803-wers6-sixth-workplace-study-management-questionnaire.pdf';
 const study = {
   title: 'Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work',
+  shortTitle: 'WERS6',
   id: 'q23-wers2011',
   authors: [
     { name: 'Department for Business, Innovation and Skills (BIS)', affiliation: 'UK Government' },

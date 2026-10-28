@@ -26,3 +26,7 @@ Stein, J.-P., Messingschlager, T., Gnambs, T., Hutmacher, F., & Appel, M. (2024)
 ## Doubts
 
 - German endpoint labels missing (see above). The OSF Study-2 questionnaire PDF is an automatic English translation of the German survey ("This document was automatically translated"), so it is no source for German labels.
+
+## Titles (#64, 2026-10-28)
+
+`titl` „Attitudes Towards Artificial Intelligence Scale“, `altTitl` „ATTARI-12“: heading of both OSF item lists, „Attitudes Towards Artificial Intelligence Scale (ATTARI-12)“. No `subTitl` („Deutsche Version“ / „English version“ name one language each).

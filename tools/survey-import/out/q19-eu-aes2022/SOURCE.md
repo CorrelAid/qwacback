@@ -144,3 +144,7 @@
   because that is the manual's detailed topic for both.
 - `study.license` quotes the notice's disclaimer requirement, but the disclaimer sentence itself is ours. The notice
   gives no wording for modified reuse.
+
+## Titles (#64, 2026-10-28)
+
+`titl` unchanged. `altTitl` „2022 AES“: the manual's own name for the survey (title „2022 AES manual“, passim).
