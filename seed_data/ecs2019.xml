@@ -1,0 +1,3106 @@
+<?xml version="1.0" ?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" xml:lang="en">
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>European Company Survey 2019: Management questionnaire</titl>
+        <IDNo>q21-ecs2019</IDNo>
+      </titlStmt><rspStmt><AuthEnty affiliation="European Foundation for the Improvement of Living and Working Conditions">Eurofound</AuthEnty><AuthEnty affiliation="European Centre for the Development of Vocational Training">Cedefop</AuthEnty></rspStmt>
+      <prodStmt><producer>European Foundation for the Improvement of Living and Working Conditions (Eurofound)</producer><copyright>© European Foundation for the Improvement of Living and Working Conditions (Eurofound) and European Centre for the Development of Vocational Training (Cedefop), 2020</copyright>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
+      </prodStmt><biblCit>Eurofound &amp; Cedefop. (2020). European Company Survey 2019: Online questionnaire for management respondents [Questionnaire, version for publication, 14 July 2020]. European Foundation for the Improvement of Living and Working Conditions. https://assets.eurofound.europa.eu/f/279033/9287637f70/ecs_2019_-_mm_questionnaire_for_publication_-_clean_14_july_2020.pdf</biblCit><holdings URI="https://www.eurofound.europa.eu/en/surveys-and-data/surveys/european-company-survey/ecs-2019">European Company Survey 2019 – Online questionnaire for Management respondents (Eurofound, 14 July 2020)</holdings>
+    </citation><stdyInfo><subject><keyword>establishment survey</keyword><keyword>work organisation</keyword><keyword>skills</keyword><keyword>training</keyword><keyword>digitalisation</keyword><keyword>human resource management</keyword><keyword>employee participation</keyword><keyword>social dialogue</keyword><keyword>variable pay</keyword><keyword>innovation</keyword><topcClas>Workplace practices</topcClas><topcClas>Skills and training</topcClas><topcClas>Digitalisation</topcClas><topcClas>Social dialogue</topcClas></subject><abstract>Management questionnaire of the fourth European Company Survey (2019), run jointly by Eurofound and Cedefop as a push-to-web survey of establishments in the EU27 and the United Kingdom. A senior manager reports on the establishment's work organisation, digitalisation (computer use, custom software, robots, data analytics), skills match and skill requirements, training and learning, recruitment, variable pay, employee voice and representation, human resource difficulties and business strategy and performance. The published version shows the wording for subsidiary sites of multi-site companies.</abstract><sumDscr><timePrd event="single">2019</timePrd><nation>EU27 and United Kingdom</nation><anlyUnit>Establishments</anlyUnit><universe clusion="I">Establishments with 10 or more employees in economic sectors engaged in market activities in the 27 EU Member States and the United Kingdom; respondent: the most senior manager in charge of personnel (management questionnaire).</universe><dataKind>Questionnaire</dataKind></sumDscr></stdyInfo><dataAccs><useStmt><conditions>Eurofound copyright, reuse with attribution (not a Creative Commons licence). ECS 2019 overview report (Eurofound and Cedefop, 2020, EF20001): &quot;© European Foundation for the Improvement of Living and Working Conditions, 2020 and European Centre for the Development of Vocational Training, 2020. Reproduction is authorised provided the source is acknowledged. For any use or reproduction of photos or other material that is not under the Eurofound copyright, permission must be sought directly from the copyright holders.&quot; Eurofound legal information (https://www.eurofound.europa.eu/en/legal-information), Copyright: “The reuse of any information of this website is authorised for commercial and non-commercial purposes, under the following conditions: The re-user is obliged to acknowledge the source of the document. The original meaning or the message of the documents should not be distorted. Eurofound cannot be held liable for any consequence stemming from the reuse.” The questionnaire PDF itself carries no copyright notice. Changes: format conversion of the management questionnaire to DDI, wording unchanged; welcome and closing texts, the employee-representative contact block and the report/follow-up consent questions omitted; layout omitted. This DDI version was made by the qwac project (CorrelAid), not by Eurofound or Cedefop.</conditions></useStmt></dataAccs>
+    <notes type="cdl:setting" subject="default_language">English (en)</notes>
+  </stdyDscr>
+  <fileDscr ID="F1" URI="data.csv">
+    <fileTxt>
+      <fileName>data.csv</fileName>
+      <dimensns>
+        <caseQnty>0</caseQnty>
+      </dimensns>
+      <fileType>Comma-separated values (CSV)</fileType>
+      <format>text/csv</format>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr>
+    <varGrp ID="VG_manager_number" name="manager_number" type="grid" var="V_manager_n">
+      <txt>How many people that work in this establishment are managers? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.
+Enter the exact number of managers or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_manager_percentage" name="manager_percentage" type="grid" var="V_manager_pct">
+      <txt>How many people that work in this establishment are managers? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.
+Enter the exact number of managers or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_empperm_number" name="empperm_number" type="grid" var="V_empperm_n">
+      <txt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_empperm_percentage" name="empperm_percentage" type="grid" var="V_empperm_pct">
+      <txt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_emppart_number" name="emppart_number" type="grid" var="V_emppart_n">
+      <txt>How many employees in this establishment work part-time? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">‘Part-time’ refers to working less than 35 hours per week.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_emppart_percentage" name="emppart_percentage" type="grid" var="V_emppart_pct">
+      <txt>How many employees in this establishment work part-time? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">‘Part-time’ refers to working less than 35 hours per week.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_ictcomp_number" name="ictcomp_number" type="grid" var="V_ictcomp_n">
+      <txt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">The term 'employees' refers to the people that work in this establishment that are not managers.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_ictcomp_percentage" name="ictcomp_percentage" type="grid" var="V_ictcomp_pct">
+      <txt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">The term 'employees' refers to the people that work in this establishment that are not managers.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_disc" name="disc" type="grid" var="V_disc_help V_disc_hours V_disc_sugg">
+      <txt>To be evaluated positively, how important is it that employees at this establishment show the following behaviour?</txt>
+      <notes type="cdl:hint">For each question, Tick one box only.</notes>
+    </varGrp>
+    <varGrp ID="VG_moti" name="moti" type="grid" var="V_moti_mon V_moti_mis V_moti_chal V_moti_learn">
+      <txt>How often are the following practices used to motivate and retain employees at this establishment?</txt>
+      <notes type="cdl:hint">For each statement, Tick one box only.</notes>
+    </varGrp>
+    <varGrp ID="VG_compprobs_number" name="compprobs_number" type="grid" var="V_compprobs_n">
+      <txt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_compprobs_percentage" name="compprobs_percentage" type="grid" var="V_compprobs_pct">
+      <txt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_comorg_number" name="comorg_number" type="grid" var="V_comorg_n">
+      <txt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_comorg_percentage" name="comorg_percentage" type="grid" var="V_comorg_pct">
+      <txt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_pcwkmach_number" name="pcwkmach_number" type="grid" var="V_pcwkmach_n">
+      <txt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_pcwkmach_percentage" name="pcwkmach_percentage" type="grid" var="V_pcwkmach_pct">
+      <txt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_skill_pct" name="skill_pct" type="grid" var="V_skill_pct_skillsmatch V_skill_pct_overskill V_skill_pct_underskill">
+      <txt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</txt>
+      <notes type="cdl:hint">You can answer again with an exact number of employees, or by using the percentage of employees.
+QUESTION USING PERCENTAGES
+The answers to these three questions should add up to 100%. The term 'employees' refers to the people that work in this establishment that are not managers. Your best estimate is good enough.</notes>
+    </varGrp>
+    <varGrp ID="VG_skill_n" name="skill_n" type="grid" var="V_skill_n_skillsmatch V_skill_n_overskill V_skill_n_underskill">
+      <txt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</txt>
+      <notes type="cdl:hint">QUESTION USING AN EXACT NUMBER OF EMPLOYEES
+There are [WPSIZE_MM_N - MANAGER] people that work in this establishment that are not managers. The answers to these three questions should add up to this number. Your best estimate is good enough.</notes>
+    </varGrp>
+    <varGrp ID="VG_contr_number" name="contr_number" type="grid" var="V_contr_n">
+      <txt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_contr_percentage" name="contr_percentage" type="grid" var="V_contr_pct">
+      <txt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.
+Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_learnnoneed_number" name="learnnoneed_number" type="grid" var="V_learnnoneed_n">
+      <txt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_learnnoneed_percentage" name="learnnoneed_percentage" type="grid" var="V_learnnoneed_pct">
+      <txt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_trainlearn" name="trainlearn" type="grid" var="V_trainlearn_1 V_trainlearn_2 V_trainlearn_3">
+      <txt>What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.</txt>
+    </varGrp>
+    <varGrp ID="VG_paidtrain_number" name="paidtrain_number" type="grid" var="V_paidtrain_n">
+      <txt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_paidtrain_percentage" name="paidtrain_percentage" type="grid" var="V_paidtrain_pct">
+      <txt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_onjob_number" name="onjob_number" type="grid" var="V_onjob_n">
+      <txt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_onjob_percentage" name="onjob_percentage" type="grid" var="V_onjob_pct">
+      <txt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_tr" name="tr" type="grid" var="V_tr_ski V_tr_flex V_tr_inn V_tr_mot">
+      <txt>How important are the following reasons for providing training to employees in this establishment?</txt>
+      <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${trainatall} = '1'</notes>
+      <notes type="cdl:hint">For each statement, Tick one box only.</notes>
+    </varGrp>
+    <varGrp ID="VG_hirready_number" name="hirready_number" type="grid" var="V_hirready_n">
+      <txt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</txt>
+      <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${newlyhir} &gt;= 1</notes>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_hirready_percentage" name="hirready_percentage" type="grid" var="V_hirready_pct">
+      <txt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</txt>
+      <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${newlyhir} &gt;= 1</notes>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
+    </varGrp>
+    <varGrp ID="VG_hir" name="hir" type="grid" var="V_hir_att V_hir_qual V_hir_exp V_hir_ecando">
+      <txt>When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</txt>
+    </varGrp>
+    <varGrp ID="VG_vp_number" name="vp_number" type="grid" var="V_vpbres_n V_vpinper_n V_vpgrpe_n V_vpprsh_n">
+      <txt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.
+Number</notes>
+    </varGrp>
+    <varGrp ID="VG_vp_percentage" name="vp_percentage" type="grid" var="V_vpbres_pct V_vpinper_pct V_vpgrpe_pct V_vpprsh_pct">
+      <txt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</txt>
+      <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.
+Percentage</notes>
+    </varGrp>
+    <varGrp ID="VG_invol" name="invol" type="grid" var="V_invol_regmee V_invol_staffme V_invol_dissinf V_invol_somedi">
+      <txt>Which of the following practices are used to involve employees in this establishment in how work is organised?</txt>
+      <notes type="cdl:hint">For each statement, Tick one box only.</notes>
+    </varGrp>
+    <varGrp ID="VG_mmepin" name="mmepin" type="grid" var="V_mmepin_org V_mmepin_dism V_mmepin_train V_mmepin_time V_mmepin_pay">
+      <txt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</txt>
+      <notes type="cdl:hint">For each statement, Tick one box only.</notes>
+    </varGrp>
+    <varGrp ID="VG_mmerin" name="mmerin" type="grid" var="V_mmerin_org V_mmerin_dism V_mmerin_train V_mmerin_time V_mmerin_pay">
+      <txt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</txt>
+      <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerin_noer}, '1'))</notes>
+      <notes type="cdl:hint">For each statement, Tick one box only.</notes>
+    </varGrp>
+    <varGrp ID="VG_pmstrat" name="pmstrat" type="grid" var="V_pmstrat_lp V_pmstrat_bq V_pmstrat_cust V_pmstrat_nps">
+      <txt>How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</txt>
+    </varGrp>
+    <varGrp ID="VG_wpsize_mm_n_dk" name="wpsize_mm_n_dk" type="multipleResp" var="V_wpsize_mm_n_dk_1">
+      <txt>Indicate a number or tick the ‘Don’t know’ box.</txt>
+      <notes type="cdl:list">dk</notes>
+    </varGrp>
+    <varGrp ID="VG_ca" name="ca" type="multipleResp" var="V_ca_1 V_ca_2 V_ca_3 V_ca_4 V_ca_5 V_ca_6">
+      <txt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</txt>
+    </varGrp>
+    <varGrp ID="VG_mmerconfirm" name="mmerconfirm" type="multipleResp" var="V_mmerconfirm_1 V_mmerconfirm_2 V_mmerconfirm_3 V_mmerconfirm_4 V_mmerconfirm_5 V_mmerconfirm_6 V_mmerconfirm_7 V_mmerconfirm_8 V_mmerconfirm_9">
+      <txt>Which of the following forms of official employee representation currently exist in this establishment?</txt>
+      <notes type="cdl:constraint" subject="xlsform-xpath">not(selected(., '9') and count-selected(.) &gt; 1)</notes>
+    </varGrp>
+    <varGrp ID="VG_mmerin_noer" name="mmerin_noer" type="multipleResp" var="V_mmerin_noer_1">
+      <txt>If there is no employee representation at your establishment, tick the box below and continue with the next question.</txt>
+      <notes type="cdl:list">noer</notes>
+    </varGrp>
+    <var ID="V_wpsize_mm_n" name="wpsize_mm_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="1">
+        <qstnLit>Approximately how many people work in this establishment?</qstnLit>
+        <postQTxt>Please include all people that are employed by the establishment, regardless of the type of contract and regardless of whether they are physically present or carry out their work outside of the premises. Each employee is counted as one person, regardless whether they are working full-time or part-time. Your best estimate is good enough.
+When the term 'establishment' is used in this survey, it refers the local site at which you work.
+Indicate a number or tick the ‘Don’t know’ box.</postQTxt>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_wpsize_mm_n_dk_1" name="wpsize_mm_n_dk_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="2">
+        <preQTxt>Indicate a number or tick the ‘Don’t know’ box.</preQTxt>
+        <qstnLit>Don’t know</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mainact" name="mainact" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="3">
+        <qstnLit>Please select this establishment's main activity category from the list below.</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>nace</catValu>
+        <labl>[LIST OF NACE 1-DIGIT CODES]</labl>
+      </catgry>
+      <catgry>
+        <catValu>dk</catValu>
+        <labl>Don’t know</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>No answer</labl>
+      </catgry>
+      <varFormat type="character" schema="other"/>
+    </var>
+    <var ID="V_yearsop" name="yearsop" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="4">
+        <qstnLit>Since what year has this establishment been carrying out this activity?</qstnLit>
+        <postQTxt>Please disregard any changes in ownership structure or location.
+Indicate the year [format – YYYY].</postQTxt>
+      </qstn>
+      <valrng>
+        <range min="1000" max="9999"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1000 and . &lt;= 9999</notes>
+    </var>
+    <var ID="V_actprod" name="actprod" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="5">
+        <qstnLit>Is this establishment engaged in the production of goods, assembly of parts or delivery of services?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, this is mainly carried out internally at this establishment</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, this is mainly carried out in collaboration with one or more other establishments within our company</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Yes, this is mainly carried out in collaboration with one or more other companies</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Yes, this is mainly contracted out</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">activity</notes>
+    </var>
+    <var ID="V_actdede" name="actdede" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="6">
+        <qstnLit>Is this establishment engaged in the design or development of new products or services?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, this is mainly carried out internally at this establishment</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, this is mainly carried out in collaboration with one or more other establishments within our company</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Yes, this is mainly carried out in collaboration with one or more other companies</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Yes, this is mainly contracted out</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">activity</notes>
+    </var>
+    <var ID="V_ecommerce" name="ecommerce" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="7">
+        <qstnLit>Does this establishment buy or sell goods or services on the internet? For instance, by using business-to-business portals, e-commerce etc.</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_salesint" name="salesint" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="8">
+        <qstnLit>Since the beginning of 2016, what percentage of this establishment's sales were to customers in other countries?</qstnLit>
+        <postQTxt>If this establishment was set up after 2016, please answer the question for the period since the establishment was set up.
+If this establishment is not engaged in sales, please select ‘Not applicable’. If this establishment does sell its products or services, but does not sell them internationally, please select 'We do not engage in export (0%)'.
+Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>We do not engage in export (0%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>1% to 24%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>25% to 49%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>50% or more</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Not applicable - our establishment does not engage in sales</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chowner" name="chowner" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="9">
+        <qstnLit>Since the beginning of 2016, has there been any change in the ownership of the company to which this establishment belongs?</qstnLit>
+        <postQTxt>‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.
+Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, and it involved a change of management</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, but management remained the same</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_innoprod" name="innoprod" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="10">
+        <qstnLit>Since the beginning of 2016, has this establishment introduced any new or significantly changed products or services?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, new to the market</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, new to the establishment, but not new to the market</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">inno</notes>
+    </var>
+    <var ID="V_innoproc" name="innoproc" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="11">
+        <qstnLit>Since the beginning of 2016, has this establishment introduced any new or significantly changed processes either for producing goods or supplying services?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, new to the market</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, new to the establishment, but not new to the market</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">inno</notes>
+    </var>
+    <var ID="V_innomark" name="innomark" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="12">
+        <qstnLit>Since the beginning of 2016, has this establishment introduced any new or significantly changed marketing methods?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, new to the market</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, new to the establishment, but not new to the market</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">inno</notes>
+    </var>
+    <var ID="V_chemp" name="chemp" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="13">
+        <qstnLit>How has the total number of employees in this establishment changed since the beginning of 2016?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Increased by more than 10%</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Increased by up to 10%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Stayed about the same</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Decreased by up to 10%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Decreased by more than 10%</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_manager_n" name="manager_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="14">
+        <preQTxt>How many people that work in this establishment are managers? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_manager_pct" name="manager_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="15">
+        <preQTxt>How many people that work in this establishment are managers? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_empperm_n" name="empperm_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="16">
+        <preQTxt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_empperm_pct" name="empperm_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="17">
+        <preQTxt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_emppart_n" name="emppart_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="18">
+        <preQTxt>How many employees in this establishment work part-time? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_emppart_pct" name="emppart_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="19">
+        <preQTxt>How many employees in this establishment work part-time? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_teamex" name="teamex" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="20">
+        <qstnLit>A team is a group of people working together with a shared responsibility for the execution of allocated tasks. Team members can come from the same unit or from different units across the establishment. Do you have any teams fitting this definition in this establishment?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <ivuInstr>Yes ➔ GO TO QUESTION 17
+No ➔ GO TO QUESTION 19</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_teasin" name="teasin" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="21">
+        <qstnLit>With regard to the employees doing teamwork, do most of them work in a single team or do most of them work in more than one team?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_teamex"/>
+      </qstn>
+      <universe clusion="I">Only if “A team is a group of people working together with a shared responsibility for the execution of allocated tasks. Team members can come from the same unit or from different units across the establishment. Do you have any teams fitting this definition in this establishment?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Most of them work in a single team</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Most of them work in more than one team</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${teamex} = '1'</notes>
+    </var>
+    <var ID="V_tauton" name="tauton" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="22">
+        <qstnLit>Please think about the tasks to be performed by these teams. Who usually decides how the tasks are distributed within the team?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_teamex"/>
+      </qstn>
+      <universe clusion="I">Only if “A team is a group of people working together with a shared responsibility for the execution of allocated tasks. Team members can come from the same unit or from different units across the establishment. Do you have any teams fitting this definition in this establishment?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Team members decide among themselves</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Tasks are distributed by a superior</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${teamex} = '1'</notes>
+    </var>
+    <var ID="V_ictcomp_n" name="ictcomp_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="23">
+        <preQTxt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+        <ivuInstr>➔ IF 0, GO TO QUESTION 23
+➔ IF AT LEAST 1, GO TO QUESTION 20</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_ictcomp_pct" name="ictcomp_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="24">
+        <preQTxt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+        <ivuInstr>None at all ➔ GO TO QUESTION 23
+GO TO QUESTION 20</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_ictapp" name="ictapp" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="25">
+        <qstnLit>Since the beginning of 2016, did this establishment purchase any software that was specifically developed or customised to meet the needs of the establishment?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_ictcomp_n V_ictcomp_pct"/>
+      </qstn>
+      <universe clusion="I">Only if not (“Number” = 0 or “Percentage” = None at all)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')</notes>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_ictrob" name="ictrob" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="26">
+        <qstnLit>Robots are programmable machines that are capable of carrying out a complex series of actions automatically, which may include the interaction with people. Does this establishment use robots?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_ictcomp_n V_ictcomp_pct"/>
+      </qstn>
+      <universe clusion="I">Only if not (“Number” = 0 or “Percentage” = None at all)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')</notes>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_itprodimp" name="itprodimp" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="27">
+        <qstnLit>Does this establishment use data analytics to improve the processes of production or service delivery?</qstnLit>
+        <postQTxt>Data analytics refers to the use of digital tools for analysing data collected at this establishment or from other sources.
+Tick one box only.</postQTxt>
+        <backward qstn="V_ictcomp_n V_ictcomp_pct"/>
+      </qstn>
+      <universe clusion="I">Only if not (“Number” = 0 or “Percentage” = None at all)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">not(${ictcomp_n} = 0 or ${ictcomp_pct} = '1')</notes>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_itpermon" name="itpermon" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="28">
+        <qstnLit>Does this establishment use data analytics to monitor employee performance?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_itperfmonuse" name="itperfmonuse" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="29">
+        <qstnLit>Since the beginning of 2016, how would you say the use of data analytics in this establishment has changed?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_itprodimp V_itpermon"/>
+        <ivuInstr>(ASK IF QUESTION 22 = YES OR QUESTION 23 = YES)</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Does this establishment use data analytics to improve the processes of production or service delivery?” = Yes or “Does this establishment use data analytics to monitor employee performance?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>It has increased</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>It has stayed about the same</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>It has decreased</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>This establishment does not use data analytics</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${itprodimp} = '1' or ${itpermon} = '1'</notes>
+      <notes type="cdl:list">itchange</notes>
+    </var>
+    <var ID="V_hiera" name="hiera" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="30">
+        <qstnLit>Counting in the same way as is done in the examples below, how many hierarchical levels do you have in this establishment?</qstnLit>
+        <postQTxt>Indicate the number of hierarchical levels.</postQTxt>
+      </qstn>
+      <valrng>
+        <range min="1"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1</notes>
+    </var>
+    <var ID="V_supcheck" name="supcheck" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="31">
+        <qstnLit>Different establishments use different approaches to manage the way employees carry out their tasks. Which of these two statements best describes the general approach to management at this establishment? Please think about the approach that is used the most by managers.</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Managers control whether employees follow the tasks assigned to them</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Managers create an environment in which employees can autonomously carry out their tasks</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_disc_help" name="disc_help" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="32">
+        <preQTxt>To be evaluated positively, how important is it that employees at this establishment show the following behaviour?</preQTxt>
+        <qstnLit>Helping colleagues without being asked?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all important</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very important</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly important</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very important</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">important</notes>
+    </var>
+    <var ID="V_disc_hours" name="disc_hours" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="33">
+        <preQTxt>To be evaluated positively, how important is it that employees at this establishment show the following behaviour?</preQTxt>
+        <qstnLit>Staying longer when the work requires it?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all important</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very important</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly important</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very important</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">important</notes>
+    </var>
+    <var ID="V_disc_sugg" name="disc_sugg" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="34">
+        <preQTxt>To be evaluated positively, how important is it that employees at this establishment show the following behaviour?</preQTxt>
+        <qstnLit>Making suggestions for improving the way things are done in the company?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all important</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very important</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly important</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very important</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">important</notes>
+    </var>
+    <var ID="V_moti_mon" name="moti_mon" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="35">
+        <preQTxt>How often are the following practices used to motivate and retain employees at this establishment?</preQTxt>
+        <qstnLit>Offering monetary rewards</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Fairly often</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Not very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Never</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">often</notes>
+    </var>
+    <var ID="V_moti_mis" name="moti_mis" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="36">
+        <preQTxt>How often are the following practices used to motivate and retain employees at this establishment?</preQTxt>
+        <qstnLit>Communicating a strong mission and vision, providing meaning to our work</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Fairly often</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Not very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Never</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">often</notes>
+    </var>
+    <var ID="V_moti_chal" name="moti_chal" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="37">
+        <preQTxt>How often are the following practices used to motivate and retain employees at this establishment?</preQTxt>
+        <qstnLit>Providing interesting and stimulating work</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Fairly often</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Not very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Never</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">often</notes>
+    </var>
+    <var ID="V_moti_learn" name="moti_learn" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="38">
+        <preQTxt>How often are the following practices used to motivate and retain employees at this establishment?</preQTxt>
+        <qstnLit>Providing opportunities for training and development</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Fairly often</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Not very often</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Never</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">often</notes>
+    </var>
+    <var ID="V_compprobs_n" name="compprobs_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="39">
+        <preQTxt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_compprobs_pct" name="compprobs_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="40">
+        <preQTxt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_comorg_n" name="comorg_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="41">
+        <preQTxt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_comorg_pct" name="comorg_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="42">
+        <preQTxt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_pcwkmach_n" name="pcwkmach_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="43">
+        <preQTxt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_pcwkmach_pct" name="pcwkmach_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="44">
+        <preQTxt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_skill_pct_skillsmatch" name="skill_pct_skillsmatch" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="45">
+        <preQTxt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</preQTxt>
+        <qstnLit>What percentage of employees have the skills that are about right to do the job?</qstnLit>
+        <postQTxt>%</postQTxt>
+      </qstn>
+      <valrng>
+        <range min="0" max="100"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 100</notes>
+    </var>
+    <var ID="V_skill_pct_overskill" name="skill_pct_overskill" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="46">
+        <preQTxt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</preQTxt>
+        <qstnLit>What percentage of employees have a higher level of skills than is needed in their job?</qstnLit>
+        <postQTxt>%</postQTxt>
+      </qstn>
+      <valrng>
+        <range min="0" max="100"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 100</notes>
+    </var>
+    <var ID="V_skill_pct_underskill" name="skill_pct_underskill" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="47">
+        <preQTxt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</preQTxt>
+        <qstnLit>What percentage of employees have a lower level of skills than is needed in their job?</qstnLit>
+        <postQTxt>%</postQTxt>
+      </qstn>
+      <valrng>
+        <range min="0" max="100"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 100</notes>
+    </var>
+    <var ID="V_skill_n_skillsmatch" name="skill_n_skillsmatch" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="48">
+        <preQTxt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</preQTxt>
+        <qstnLit>How many employees have the skills that are about right to do the job?</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_skill_n_overskill" name="skill_n_overskill" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="49">
+        <preQTxt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</preQTxt>
+        <qstnLit>How many employees have a higher level of skills than is needed in their job?</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_skill_n_underskill" name="skill_n_underskill" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="50">
+        <preQTxt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
+Please think about the employees in this establishment, their current skills and the skills they need to do their job.</preQTxt>
+        <qstnLit>How many employees have a lower level of skills than is needed in their job?</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_skillch" name="skillch" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="51">
+        <qstnLit>How quickly do the knowledge and skills needed from the employees in this establishment change?</qstnLit>
+        <postQTxt>If this differs a lot between different groups of employees, please think of the largest group of employees in this establishment.
+Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No change at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very quickly</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly quickly</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very quickly</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_contr_n" name="contr_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="52">
+        <preQTxt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_contr_pct" name="contr_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="53">
+        <preQTxt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_learnnoneed_n" name="learnnoneed_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="54">
+        <preQTxt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_learnnoneed_pct" name="learnnoneed_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="55">
+        <preQTxt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_trainlearn_1" name="trainlearn_1" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="56">
+        <preQTxt>What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.</preQTxt>
+        <qstnLit>Participating in training (on-the-job training as well as training courses followed at work, on location or on the internet)</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="3"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 3</notes>
+    </var>
+    <var ID="V_trainlearn_2" name="trainlearn_2" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="57">
+        <preQTxt>What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.</preQTxt>
+        <qstnLit>Learning from more experienced colleagues and supervisors, for example, by asking for help, through conversations, or by observing</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="3"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 3</notes>
+    </var>
+    <var ID="V_trainlearn_3" name="trainlearn_3" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="58">
+        <preQTxt>What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.</preQTxt>
+        <qstnLit>Learning by doing (trying out different ways to carry out their tasks; trial and error)</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="3"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 3</notes>
+    </var>
+    <var ID="V_paidtrain_n" name="paidtrain_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="59">
+        <preQTxt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_paidtrain_pct" name="paidtrain_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="60">
+        <preQTxt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_onjob_n" name="onjob_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="61">
+        <preQTxt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_onjob_pct" name="onjob_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="62">
+        <preQTxt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_trainatall" name="trainatall" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="63">
+        <qstnLit>Since the beginning of 2016, has this establishment provided any training to any of its employees?</qstnLit>
+        <postQTxt>Training includes on-the-job training as well as training courses followed at work, on location or on the internet.
+Tick one box only.</postQTxt>
+        <ivuInstr>Yes ➔ GO TO QUESTION 40
+No ➔ GO TO QUESTION 42</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_wpsupp" name="wpsupp" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="64">
+        <qstnLit>Workload and work schedules can prevent the participation of employees in training activities. Which of the following statements best describes what happens in practice at this establishment?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_trainatall"/>
+      </qstn>
+      <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Participation in training and professional development activities is only possible if workload and work schedules allow for it</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Workload and work schedules are adjusted to allow employees to participate in training and professional development activities</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${trainatall} = '1'</notes>
+    </var>
+    <var ID="V_tr_ski" name="tr_ski" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="65">
+        <preQTxt>How important are the following reasons for providing training to employees in this establishment?</preQTxt>
+        <qstnLit>Ensuring that employees have the skills they need to do their current job</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all important</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very important</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly important</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very important</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">important</notes>
+    </var>
+    <var ID="V_tr_flex" name="tr_flex" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="66">
+        <preQTxt>How important are the following reasons for providing training to employees in this establishment?</preQTxt>
+        <qstnLit>Allowing employees to acquire skills they need to do other jobs than their current job. For instance, to allow for job rotation or career advancement.</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all important</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very important</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly important</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very important</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">important</notes>
+    </var>
+    <var ID="V_tr_inn" name="tr_inn" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="67">
+        <preQTxt>How important are the following reasons for providing training to employees in this establishment?</preQTxt>
+        <qstnLit>Increasing the capacity of employees to articulate ideas about improvements to the establishment</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all important</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very important</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly important</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very important</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">important</notes>
+    </var>
+    <var ID="V_tr_mot" name="tr_mot" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="68">
+        <preQTxt>How important are the following reasons for providing training to employees in this establishment?</preQTxt>
+        <qstnLit>Improving employee morale</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all important</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very important</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly important</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very important</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">important</notes>
+    </var>
+    <var ID="V_newlyhir" name="newlyhir" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="69">
+        <qstnLit>Since the beginning of 2016, how many new employees have been hired at this establishment?</qstnLit>
+        <postQTxt>Indicate a number.</postQTxt>
+        <ivuInstr>➔ IF 0, GO TO QUESTION 44
+➔ IF AT LEAST 1, GO TO QUESTION 43</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_hirready_n" name="hirready_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="70">
+        <preQTxt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Number</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_hirready_pct" name="hirready_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="71">
+        <preQTxt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Percentage</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_hirinter" name="hirinter" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="72">
+        <qstnLit>When recruiting, how often does management start by looking whether there are any suitable internal candidates?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Always</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Most of the time</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Sometimes</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Rarely</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Never</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_hir_att" name="hir_att" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="73">
+        <preQTxt>When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>The candidate has a personality that fits the company</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_hir_qual" name="hir_qual" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="74">
+        <preQTxt>When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>The candidate has all the educational and vocational qualifications that are required</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_hir_exp" name="hir_exp" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="75">
+        <preQTxt>When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>The candidate has professional experience in similar positions</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_hir_ecando" name="hir_ecando" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="76">
+        <preQTxt>When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>The candidate has the skills required to do the job and does not need any additional training</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_vpbres_n" name="vpbres_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="77">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Payment by results, for example piece rates, provisions, brokerages or commissions</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_vpinper_n" name="vpinper_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="78">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Variable extra pay linked to individual performance following management appraisal</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_vpgrpe_n" name="vpgrpe_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="79">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Variable extra pay linked to the performance of the team, working group or department</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_vpprsh_n" name="vpprsh_n" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="80">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Variable extra pay linked to the results of the company or establishment (profit sharing scheme)</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="0"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0</notes>
+    </var>
+    <var ID="V_vpbres_pct" name="vpbres_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="81">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Payment by results, for example piece rates, provisions, brokerages or commissions</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_vpinper_pct" name="vpinper_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="82">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Variable extra pay linked to individual performance following management appraisal</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_vpgrpe_pct" name="vpgrpe_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="83">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Variable extra pay linked to the performance of the team, working group or department</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_vpprsh_pct" name="vpprsh_pct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="84">
+        <preQTxt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</preQTxt>
+        <qstnLit>Variable extra pay linked to the results of the company or establishment (profit sharing scheme)</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>None at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than 20%</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>20% to 39%</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>40% to 59%</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>60% to 79%</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>80% to 99%</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>All</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">pct</notes>
+    </var>
+    <var ID="V_comemporg" name="comemporg" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="85">
+        <qstnLit>Is the company to which this establishment belongs a member of any employers' organisation which participates in the negotiation of collective agreements?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_ca_1" name="ca_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="86">
+        <preQTxt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</preQTxt>
+        <qstnLit>A collective agreement negotiated at the national or cross-sectoral level</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_ca_2" name="ca_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="86">
+        <preQTxt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</preQTxt>
+        <qstnLit>A collective agreement negotiated at the sectoral level</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_ca_3" name="ca_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="86">
+        <preQTxt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</preQTxt>
+        <qstnLit>A collective agreement at the regional level</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_ca_4" name="ca_4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="86">
+        <preQTxt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</preQTxt>
+        <qstnLit>A collective agreement negotiated at the establishment or company level</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_ca_5" name="ca_5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="86">
+        <preQTxt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</preQTxt>
+        <qstnLit>A collective agreement negotiated on behalf of employees with a specific occupation</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_ca_6" name="ca_6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="86">
+        <preQTxt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</preQTxt>
+        <qstnLit>Another type of collective agreement</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_1" name="mmerconfirm_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Trade union representation</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_2" name="mmerconfirm_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Trade union representative/shop steward</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_3" name="mmerconfirm_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Works council</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_4" name="mmerconfirm_4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Public sector equivalent of works council</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_5" name="mmerconfirm_5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Non-union staff representation</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_6" name="mmerconfirm_6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Non-union staff representative</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_7" name="mmerconfirm_7" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Other country-specific bodies</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_8" name="mmerconfirm_8" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>Other country-specific individuals</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerconfirm_9" name="mmerconfirm_9" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="87">
+        <preQTxt>Which of the following forms of official employee representation currently exist in this establishment?</preQTxt>
+        <qstnLit>There is no official employee representation</qstnLit>
+        <postQTxt>Tick all that apply.</postQTxt>
+        <ivuInstr>[COUNTRY SPECIFIC LIST]
+GO TO QUESTION 50
+There is no official employee representation ➔ GO TO QUESTION 53</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_eratt" name="eratt" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="88">
+        <qstnLit>How would you describe the general attitude of the employee representation at this establishment?</qstnLit>
+        <postQTxt>The term establishment' refers to the local site at which you work.
+Tick one box only.</postQTxt>
+        <backward qstn="VG_mmerconfirm"/>
+      </qstn>
+      <universe clusion="I">Only if not (“Which of the following forms of official employee representation currently exist in this establishment?” includes There is no official employee representation)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all constructive</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very constructive</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly constructive</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very constructive</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerconfirm}, '9'))</notes>
+      <notes type="cdl:list">constructive</notes>
+    </var>
+    <var ID="V_indir" name="indir" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="89">
+        <qstnLit>Would you say the management at this establishment prefers to consult with the employee representation or would management rather consult directly with employees?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="VG_mmerconfirm"/>
+      </qstn>
+      <universe clusion="I">Only if not (“Which of the following forms of official employee representation currently exist in this establishment?” includes There is no official employee representation)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Management prefers to consult with the employee representation</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Management prefers to consult with employees directly</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Management prefers to consult with the employee representation and with employees directly</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Management prefers not to consult with employees or their representatives</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerconfirm}, '9'))</notes>
+    </var>
+    <var ID="V_ertrus" name="ertrus" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="90">
+        <qstnLit>In your opinion, to what extent does management at this establishment trust the employee representation?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="VG_mmerconfirm"/>
+      </qstn>
+      <universe clusion="I">Only if not (“Which of the following forms of official employee representation currently exist in this establishment?” includes There is no official employee representation)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerconfirm}, '9'))</notes>
+      <notes type="cdl:list">extent</notes>
+    </var>
+    <var ID="V_invol_regmee" name="invol_regmee" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="91">
+        <preQTxt>Which of the following practices are used to involve employees in this establishment in how work is organised?</preQTxt>
+        <qstnLit>Meetings between employees and their immediate manager</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, on a regular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, on an irregular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">regular</notes>
+    </var>
+    <var ID="V_invol_staffme" name="invol_staffme" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="92">
+        <preQTxt>Which of the following practices are used to involve employees in this establishment in how work is organised?</preQTxt>
+        <qstnLit>Meetings open to all employees at the establishment</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, on a regular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, on an irregular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">regular</notes>
+    </var>
+    <var ID="V_invol_dissinf" name="invol_dissinf" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="93">
+        <preQTxt>Which of the following practices are used to involve employees in this establishment in how work is organised?</preQTxt>
+        <qstnLit>Dissemination of information through newsletters, website, notice boards, email etc.</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, on a regular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, on an irregular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">regular</notes>
+    </var>
+    <var ID="V_invol_somedi" name="invol_somedi" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="94">
+        <preQTxt>Which of the following practices are used to involve employees in this establishment in how work is organised?</preQTxt>
+        <qstnLit>Discussions with employees through social media or in online discussion boards</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, on a regular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Yes, on an irregular basis</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">regular</notes>
+    </var>
+    <var ID="V_suggs" name="suggs" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="95">
+        <qstnLit>Does this establishment make use of suggestion schemes?</qstnLit>
+        <postQTxt>Suggestion scheme: The collection of ideas and suggestions from the employees, voluntary and at any time, often by means of a physical or virtual ‘suggestion box’.
+Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_eidelay" name="eidelay" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="96">
+        <preQTxt>The following questions are about your experiences with the direct involvement of employees in decision-making in this establishment.</preQTxt>
+        <qstnLit>In your opinion, to what extent does involving employees cause delays in the implementation of changes?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent</notes>
+      <notes type="cdl:note_names">intro_ei</notes>
+    </var>
+    <var ID="V_eicomp" name="eicomp" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="97">
+        <qstnLit>In your opinion, to what extent does involving employees in work organisation changes give the establishment a competitive advantage?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent</notes>
+    </var>
+    <var ID="V_mmepin_org" name="mmepin_org" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="98">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>The organisation and efficiency of work processes</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmepin_dism" name="mmepin_dism" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="99">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Dismissals</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmepin_train" name="mmepin_train" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="100">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Training and skill development</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmepin_time" name="mmepin_time" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="101">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Working time arrangements</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmepin_pay" name="mmepin_pay" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="102">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Payment schemes</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmerin_noer_1" name="mmerin_noer_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="103">
+        <preQTxt>If there is no employee representation at your establishment, tick the box below and continue with the next question.</preQTxt>
+        <qstnLit>There is no employee representation at this establishment</qstnLit>
+        <ivuInstr>➔ GO TO QUESTION 59</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mmerin_org" name="mmerin_org" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="104">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>The organisation and efficiency of work processes</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmerin_dism" name="mmerin_dism" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="105">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Dismissals</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmerin_train" name="mmerin_train" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="106">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Training and skill development</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmerin_time" name="mmerin_time" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="107">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Working time arrangements</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_mmerin_pay" name="mmerin_pay" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="108">
+        <preQTxt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</preQTxt>
+        <qstnLit>Payment schemes</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>To a great extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>To a moderate extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>To a small extent</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not at all</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>No decisions were made in this area</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">extent_dec</notes>
+    </var>
+    <var ID="V_sickleave" name="sickleave" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="109">
+        <preQTxt>The following questions are about difficulties with human resource management that establishments might face.</preQTxt>
+        <qstnLit>Do you think the level of sickness leave in this establishment is too high?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+      <notes type="cdl:note_names">intro_hrm</notes>
+    </var>
+    <var ID="V_lowmot" name="lowmot" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="110">
+        <qstnLit>Overall, how motivated do you think employees in this establishment are?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all motivated</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very motivated</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly motivated</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very motivated</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">motivated</notes>
+    </var>
+    <var ID="V_findskill" name="findskill" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="111">
+        <qstnLit>How difficult is it for this establishment to find employees with the required skills?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all difficult</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very difficult</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly difficult</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very difficult</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">difficult</notes>
+    </var>
+    <var ID="V_retainemp" name="retainemp" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="112">
+        <qstnLit>How difficult is it for this establishment to retain employees?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all difficult</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very difficult</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly difficult</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very difficult</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">difficult</notes>
+    </var>
+    <var ID="V_qwprel" name="qwprel" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="113">
+        <qstnLit>How would you describe the relations between management and employees in this establishment in general?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Very bad</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Bad</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Neither good nor bad</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Good</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Very good</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">relations</notes>
+    </var>
+    <var ID="V_indact" name="indact" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="114">
+        <qstnLit>Since the beginning of 2016, did any industrial action (such as a strike, work-to-rule, or manifestation) take place that was directly related to an issue specific to this establishment?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_pmstrat_lp" name="pmstrat_lp" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="115">
+        <preQTxt>How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>Offering products or services at lower prices than the competition</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_pmstrat_bq" name="pmstrat_bq" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="116">
+        <preQTxt>How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>Offering products or services that are of better quality than those offered by the competition</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_pmstrat_cust" name="pmstrat_cust" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="117">
+        <preQTxt>How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>Customising products or services to meet specific customer requirements</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_pmstrat_nps" name="pmstrat_nps" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="118">
+        <preQTxt>How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</preQTxt>
+        <qstnLit>Regularly developing products, services or processes that are new to the market</qstnLit>
+      </qstn>
+      <valrng>
+        <range min="1" max="4"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 4</notes>
+    </var>
+    <var ID="V_competmark" name="competmark" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="119">
+        <qstnLit>How competitive would you say the market for the main products or services provided by this establishment is?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all competitive</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very competitive</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly competitive</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very competitive</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">competitive</notes>
+    </var>
+    <var ID="V_pdemstab" name="pdemstab" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="120">
+        <qstnLit>How predictable would you say that the demand for the main products or services of this establishment is?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Not at all predictable</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Not very predictable</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Fairly predictable</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Very predictable</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">predictable</notes>
+    </var>
+    <var ID="V_prodvol" name="prodvol" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="121">
+        <qstnLit>Since the beginning of 2016, how has the amount of goods or services produced by this establishment changed?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>It has increased</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>It has stayed about the same</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>It has decreased</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_profit" name="profit" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="122">
+        <qstnLit>In 2018, did this establishment make a profit?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <ivuInstr>GO TO QUESTION 70
+➔ GO TO QUESTION 71</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes, we made a profit</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No, we made loss</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>We broke even</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Not applicable, our company is a not-for-profit organisation</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_profplan" name="profplan" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="123">
+        <qstnLit>Did this establishment expect to make a profit in 2018?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_profit"/>
+      </qstn>
+      <universe clusion="I">Only if “In 2018, did this establishment make a profit?” ≠ Not applicable, our company is a not-for-profit organisation</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${profit} != '4'</notes>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_chempfut" name="chempfut" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="124">
+        <qstnLit>In the next three years, how do you expect the total number of employees in this establishment to change?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>It will increase</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>It will stay about the same</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>It will decrease</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_mainact2d" name="mainact2d" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="125">
+        <qstnLit>Please select this establishment's main activity category from the list below.</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+        <backward qstn="V_mainact"/>
+      </qstn>
+      <universe clusion="I">Only if “Please select this establishment's main activity category from the list below.” = [LIST OF NACE 1-DIGIT CODES]</universe>
+      <catgry>
+        <catValu>nace</catValu>
+        <labl>[LIST OF NACE 2-DIGIT CODES (FOR RELEVANT 1-DIFIT CODE SELECTED IN MAINACT)]</labl>
+      </catgry>
+      <catgry>
+        <catValu>dk</catValu>
+        <labl>Don’t know</labl>
+      </catgry>
+      <catgry>
+        <catValu>na</catValu>
+        <labl>No answer</labl>
+      </catgry>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${mainact} = 'nace'</notes>
+    </var>
+    <var ID="V_sexres" name="sexres" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="126">
+        <preQTxt>Thank you very much for completing this questionnaire. Could you finally answer a few questions about yourself?</preQTxt>
+        <qstnLit>Which of the following categories best captures how you think of yourself?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Woman</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Man</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Other</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">intro_res</notes>
+    </var>
+    <var ID="V_posres" name="posres" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="127">
+        <qstnLit>What position do you hold?</qstnLit>
+        <postQTxt>Tick one box only.</postQTxt>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>General manager</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Owner-manager</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Human Resource Manager (Personnel Manager)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Training Manager</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Finance/Accounting Manager</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Other</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+  </dataDscr>
+</codeBook>

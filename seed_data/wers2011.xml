@@ -1,0 +1,1649 @@
+<?xml version="1.0" ?>
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" xml:lang="en">
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work</titl>
+        <IDNo>q23-wers2011</IDNo>
+      </titlStmt><rspStmt><AuthEnty affiliation="UK Government">Department for Business, Innovation and Skills (BIS)</AuthEnty><AuthEnty affiliation="Acas">Advisory, Conciliation and Arbitration Service (Acas)</AuthEnty><AuthEnty affiliation="ESRC">Economic and Social Research Council (ESRC)</AuthEnty><AuthEnty affiliation="UKCES">UK Commission for Employment and Skills (UKCES)</AuthEnty><AuthEnty affiliation="NIESR">National Institute of Economic and Social Research (NIESR)</AuthEnty></rspStmt>
+      <prodStmt><producer affiliation="UK Government">Department for Business, Innovation and Skills (BIS)</producer><copyright>© Crown copyright</copyright>
+        <prodDate date="2026-10-28">2026-10-28</prodDate>
+      </prodStmt><biblCit>Department for Business, Innovation and Skills. (2011). Sixth Workplace Employment Relations Study (WERS6): Management questionnaire (MQ) (BIS/11/803). GOV.UK. https://www.gov.uk/government/publications/the-2011-workplace-employment-relations-study-wers</biblCit><holdings URI="https://www.gov.uk/government/publications/the-2011-workplace-employment-relations-study-wers">BIS/11/803, WERS6 Management Questionnaire (MQ), Section C and the EPQ items it depends on (GOV.UK)</holdings>
+    </citation><stdyInfo><subject><keyword>training</keyword><keyword>recruitment</keyword><keyword>skills</keyword><keyword>job autonomy</keyword><keyword>teamworking</keyword><keyword>employment relations</keyword><keyword>workplaces</keyword><keyword>WERS</keyword><topcClas>Employment</topcClas><topcClas>Labour relations</topcClas><topcClas>Education and training</topcClas></subject><abstract>This study contains Section C (recruitment, training and organisation of work) of the management interview of the sixth Workplace Employment Relations Study (WERS 2011), a CAPI interview with the most senior manager responsible for staff and employment relations at British workplaces, plus the employee-profile items it builds on (number of employees, occupational structure). The manager reports how vacancies are filled and which recruitment criteria, tests and channels are used, and, for the largest non-managerial occupational group, induction, the share given off-the-job training, training days and training content, multi-skilling, job autonomy and teamworking. A last item asks for the share of all employees using computers.</abstract><sumDscr><timePrd event="single">2011</timePrd><nation>United Kingdom (Great Britain)</nation><anlyUnit>Workplaces</anlyUnit><universe clusion="I">Workplaces in Great Britain with at least 5 employees; respondent: the most senior manager responsible for staff and employment relations at the workplace. Most of Section C refers to the largest non-managerial occupational group of the workplace.</universe><dataKind>Questionnaire (CAPI specification)</dataKind></sumDscr></stdyInfo><dataAccs><useStmt><conditions>Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). GOV.UK publication page (https://www.gov.uk/government/publications/the-2011-workplace-employment-relations-study-wers): &quot;All content is available under the Open Government Licence v3.0, except where otherwise stated&quot; &quot;© Crown copyright&quot;. The questionnaire PDF (https://assets.publishing.service.gov.uk/media/5a74f4a0e5274a59fa716449/11-803-wers6-sixth-workplace-study-management-questionnaire.pdf) states no other terms. Contains public sector information licensed under the Open Government Licence v3.0. Changes: format conversion of Section C and of the EPQ items ZALLEMPS, SOC_1 to SOC_9 and ZSOCDESC to DDI; wording unchanged; all other sections omitted. This DDI version was made by the qwac project (CorrelAid), not by the Department for Business, Innovation and Skills or the other WERS sponsors, and does not imply their endorsement.</conditions></useStmt></dataAccs>
+    <notes type="cdl:setting" subject="default_language">English (en)</notes>
+  </stdyDscr>
+  <fileDscr ID="F1" URI="data.csv">
+    <fileTxt>
+      <fileName>data.csv</fileName>
+      <dimensns>
+        <caseQnty>0</caseQnty>
+      </dimensns>
+      <fileType>Comma-separated values (CSV)</fileType>
+      <format>text/csv</format>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr>
+    <varGrp ID="VG_section_epq" name="section_epq" type="section" var="V_zallemps V_zsocdesc" varGrp="VG_section_epq_soc">
+      <txt>EMPLOYEE PROFILE QUESTIONNAIRE</txt>
+    </varGrp>
+    <varGrp ID="VG_section_c" name="section_c" type="section" var="V_cfillvac V_clogvac V_cinduct V_cstuckin V_coffjob V_coffchk V_ctrain V_cothjob V_cothjobt V_cothdo V_cothdot V_cteams V_cteamst V_ccomput V_ccomputt" varGrp="VG_cfactors VG_cspecix VG_catestw VG_cptestw VG_cchanx VG_chow VG_section_c_card_c9_grid VG_section_c_cteamho">
+      <txt>RECRUITMENT, TRAINING AND ORGANISATION OF WORK</txt>
+    </varGrp>
+    <varGrp ID="VG_section_epq_soc" name="section_epq/soc" type="grid" var="V_zmgr_male V_zmgr_fem V_zpro_male V_zpro_fem V_ztec_male V_ztec_fem V_zadm_male V_zadm_fem V_zskl_male V_zskl_fem V_zper_male V_zper_fem V_zsal_male V_zsal_fem V_zope_male V_zope_fem V_zrou_male V_zrou_fem">
+      <txt>How many male and female employees are in each of the following occupational groups?</txt>
+    </varGrp>
+    <varGrp ID="VG_section_c_card_c9_grid" name="section_c/card_c9_grid" type="grid" var="V_cvariety V_cdiscrete V_control V_cdesign">
+      <txt>Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...</txt>
+    </varGrp>
+    <varGrp ID="VG_section_c_cteamho" name="section_c/cteamho" type="grid" var="V_cteamhoa V_cteamhoc V_cteamhod">
+      <txt>Do each of the following statements apply to the way that teamworking operates among [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace?</txt>
+      <universe clusion="I">Only if “What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?” ≠ None (0%)</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${cteams} != '7'</notes>
+    </varGrp>
+    <varGrp ID="VG_cspecix" name="cspecix" type="multipleResp" var="V_cspecix_1 V_cspecix_2 V_cspecix_3 V_cspecix_4 V_cspecix_5 V_cspecix_6 V_cspecix_7 V_cspecix_8 V_cspecix_9">
+      <txt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</txt>
+      <notes type="cdl:exclusive">9</notes>
+    </varGrp>
+    <varGrp ID="VG_catestw" name="catestw" type="multipleResp" var="V_catestw_1 V_catestw_2 V_catestw_3">
+      <txt>When filling vacancies at this workplace, do you ever conduct any type of personality or attitude test for managerial positions, non-managerial positions or not at all?</txt>
+      <notes type="cdl:exclusive">3</notes>
+    </varGrp>
+    <varGrp ID="VG_cptestw" name="cptestw" type="multipleResp" var="V_cptestw_1 V_cptestw_2 V_cptestw_3">
+      <txt>When filling vacancies at this workplace, do you ever conduct any type of performance or competency test for managerial positions, non-managerial positions or not at all?</txt>
+      <notes type="cdl:exclusive">3</notes>
+    </varGrp>
+    <varGrp ID="VG_chow" name="chow" type="multipleResp" var="V_chow_1 V_chow_2 V_chow_3 V_chow_4 V_chow_5 V_chow_6 V_chow_7 V_chow_8 V_chow_9 V_chow_10 V_chow_11 V_chow_12">
+      <txt>Did this training cover any of the matters listed on this card?:</txt>
+      <notes type="cdl:relevant" subject="xlsform-xpath">(string-length(${coffjob}) &gt; 0 and ${coffjob} != '7') or ${coffchk} = '1'</notes>
+      <notes type="cdl:exclusive">12</notes>
+    </varGrp>
+    <varGrp ID="VG_cfactors" name="cfactors" type="other" var="V_cfactors_other" varGrp="VG_cfactors_choices">
+      <txt>Which of the following factors are important when recruiting new employees?</txt>
+      <notes type="cdl:other_label">Other (please specify CFACTOTH)</notes>
+    </varGrp>
+    <varGrp ID="VG_cfactors_choices" name="cfactors_choices" type="multipleResp" var="V_cfactors_1 V_cfactors_2 V_cfactors_3 V_cfactors_4 V_cfactors_5 V_cfactors_6 V_cfactors_7 V_cfactors_8">
+      <txt>Which of the following factors are important when recruiting new employees?</txt>
+    </varGrp>
+    <varGrp ID="VG_cchanx" name="cchanx" type="other" var="V_cchanx_other" varGrp="VG_cchanx_choices">
+      <txt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</txt>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${clogvac} = '1'</notes>
+      <notes type="cdl:other_label">Some other way (please specify COTHCHN)</notes>
+    </varGrp>
+    <varGrp ID="VG_cchanx_choices" name="cchanx_choices" type="multipleResp" var="V_cchanx_1 V_cchanx_2 V_cchanx_3 V_cchanx_4 V_cchanx_5 V_cchanx_6 V_cchanx_7 V_cchanx_8 V_cchanx_9 V_cchanx_10 V_cchanx_11 V_cchanx_12 V_cchanx_13">
+      <txt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</txt>
+    </varGrp>
+    <var ID="V_zallemps" name="zallemps" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="1">
+        <qstnLit>Currently how many employees do you have on the payroll at this workplace?</qstnLit>
+        <ivuInstr>INTERVIEWER: To start the interview, please enter the relevant data from the EPQ.
+INTERVIEWER: THIS IS Q1 IN THE PAPER EPQ
+PROMPT: Remember to include yourself if you are an employee at the workplace but do NOT include casual workers without a contract of employment, freelance, self-employed or agency workers.</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="5" max="999997"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 5 and . &lt;= 999997</notes>
+      <notes type="cdl:constraint_message">THERE MUST BE AT LEAST 5 EMPLOYEES AT THE WORKPLACE. PLEASE CHECK.</notes>
+      <notes type="cdl:required">yes</notes>
+    </var>
+    <var ID="V_zmgr_male" name="zmgr_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="2">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Managers and senior officials</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zmgr_fem" name="zmgr_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="3">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Managers and senior officials</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zpro_male" name="zpro_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="4">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Professional occupations</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zpro_fem" name="zpro_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="5">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Professional occupations</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_ztec_male" name="ztec_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="6">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Associate professional and technical occupations</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_ztec_fem" name="ztec_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="7">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Associate professional and technical occupations</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zadm_male" name="zadm_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="8">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Administrative and secretarial occupations</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zadm_fem" name="zadm_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="9">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Administrative and secretarial occupations</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zskl_male" name="zskl_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="10">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Skilled trades occupations</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zskl_fem" name="zskl_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="11">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Skilled trades occupations</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zper_male" name="zper_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="12">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Caring, leisure and other personal service occupations</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zper_fem" name="zper_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="13">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Caring, leisure and other personal service occupations</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zsal_male" name="zsal_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="14">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Sales and customer service occupations</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zsal_fem" name="zsal_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="15">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Sales and customer service occupations</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zope_male" name="zope_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="16">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Process, plant and machine operatives and drivers</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zope_fem" name="zope_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="17">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Process, plant and machine operatives and drivers</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zrou_male" name="zrou_male" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="18">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Routine occupations</qstnLit>
+        <postQTxt>Male</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zrou_fem" name="zrou_fem" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="19">
+        <preQTxt>How many male and female employees are in each of the following occupational groups?</preQTxt>
+        <qstnLit>Routine occupations</qstnLit>
+        <postQTxt>Female</postQTxt>
+        <ivuInstr>INTERVIEWER: THIS IS Q2 IN THE PAPER EPQ.
+PROMPT: Please refer to the accompanying information sheet for definitions of the occupations or SHOWCARD A1 for some examples.</ivuInstr>
+      </qstn>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &lt;= ${zallemps}</notes>
+      <notes type="cdl:constraint_message">THE NUMBER OF MEN / WOMEN GIVEN FOR THIS GROUP EXCEEDS THE TOTAL NUMBER OF EMPLOYEES.</notes>
+    </var>
+    <var ID="V_zsocdesc" name="zsocdesc" intrvl="discrete" files="F1">
+      <qstn responseDomainType="text" seqNo="20">
+        <qstnLit>From what you have said, the largest non-managerial group of employees at this workplace is classified as [LOGIDX: TITLE OF LARGEST OCCUPATIONAL GROUP].
+How would you describe the main tasks and activities of this largest group?</qstnLit>
+        <ivuInstr>INTERVIEWER: Probe for details about the most common job in this group, record verbatim: OPEN</ivuInstr>
+      </qstn>
+      <varFormat type="character" schema="other"/>
+    </var>
+    <var ID="V_cfillvac" name="cfillvac" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="21">
+        <qstnLit>Which of these statements best describes your approach to filling vacancies at this workplace?</qstnLit>
+        <ivuInstr>SHOW CARD C1
+INTERVIEWER: For larger public sector employers, individual departments and agencies should be treated as separate employers</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Internal applicants are only source, no external recruitment</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Internal applicants are given preference, other things being equal, over external applicants</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Applications from internal and external applicants are treated equally</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>External applicants are given preference, other things being equal, over internal applicants</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>External applicants are only source, no internal recruitment</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_1" name="cfactors_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>References</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_2" name="cfactors_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>Availability</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_3" name="cfactors_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>Recommended by another employee</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_4" name="cfactors_4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>Skills</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_5" name="cfactors_5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>Age</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_6" name="cfactors_6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>Qualifications</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_7" name="cfactors_7" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>Experience</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_8" name="cfactors_8" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="22">
+        <preQTxt>Which of the following factors are important when recruiting new employees?</preQTxt>
+        <qstnLit>Motivation</qstnLit>
+        <ivuInstr>SHOW CARD C2
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cfactors_other" name="cfactors_other" intrvl="discrete" files="F1">
+      <qstn responseDomainType="text" seqNo="23">
+        <qstnLit>Other (please specify CFACTOTH)</qstnLit>
+        <backward qstn="VG_cfactors"/>
+      </qstn>
+      <universe clusion="I">Only if “Which of the following factors are important when recruiting new employees?” includes Other (please specify CFACTOTH)</universe>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">selected(${cfactors}, 'other')</notes>
+    </var>
+    <var ID="V_cspecix_1" name="cspecix_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>Women returning to work after having children</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_2" name="cspecix_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>Women in general</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_3" name="cspecix_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>Members of minority ethnic groups</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_4" name="cspecix_4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>Older workers</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_5" name="cspecix_5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>Disabled people</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_6" name="cspecix_6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>People who have been unemployed for 12 months or more</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_7" name="cspecix_7" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>Part-time workers or job sharers</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_8" name="cspecix_8" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>Gay, lesbian and transgender communities</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cspecix_9" name="cspecix_9" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="24">
+        <preQTxt>When filling vacancies, do you have any special procedures to encourage applications from the following groups?</preQTxt>
+        <qstnLit>None of these</qstnLit>
+        <ivuInstr>SHOW CARD C3
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_catestw_1" name="catestw_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="25">
+        <preQTxt>When filling vacancies at this workplace, do you ever conduct any type of personality or attitude test for managerial positions, non-managerial positions or not at all?</preQTxt>
+        <qstnLit>Managerial</qstnLit>
+        <ivuInstr>CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_catestw_2" name="catestw_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="25">
+        <preQTxt>When filling vacancies at this workplace, do you ever conduct any type of personality or attitude test for managerial positions, non-managerial positions or not at all?</preQTxt>
+        <qstnLit>Non-managerial</qstnLit>
+        <ivuInstr>CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_catestw_3" name="catestw_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="25">
+        <preQTxt>When filling vacancies at this workplace, do you ever conduct any type of personality or attitude test for managerial positions, non-managerial positions or not at all?</preQTxt>
+        <qstnLit>No tests conducted</qstnLit>
+        <ivuInstr>CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cptestw_1" name="cptestw_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="26">
+        <preQTxt>When filling vacancies at this workplace, do you ever conduct any type of performance or competency test for managerial positions, non-managerial positions or not at all?</preQTxt>
+        <qstnLit>Managerial</qstnLit>
+        <ivuInstr>CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cptestw_2" name="cptestw_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="26">
+        <preQTxt>When filling vacancies at this workplace, do you ever conduct any type of performance or competency test for managerial positions, non-managerial positions or not at all?</preQTxt>
+        <qstnLit>Non-managerial</qstnLit>
+        <ivuInstr>CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cptestw_3" name="cptestw_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="26">
+        <preQTxt>When filling vacancies at this workplace, do you ever conduct any type of performance or competency test for managerial positions, non-managerial positions or not at all?</preQTxt>
+        <qstnLit>No tests conducted.</qstnLit>
+        <ivuInstr>CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_clogvac" name="clogvac" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="27">
+        <qstnLit>Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?</qstnLit>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_cchanx_1" name="cchanx_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Local or regional newspapers</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_2" name="cchanx_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Trade, professional or specialist press</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_3" name="cchanx_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Internal notices</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_4" name="cchanx_4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Notice in office or shop window</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_5" name="cchanx_5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Jobcentre / Employment Service office</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_6" name="cchanx_6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Careers Service (School/College/University)</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_7" name="cchanx_7" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Fee charging, private employment or recruitment agency</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_8" name="cchanx_8" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Direct approach to potential recruit(s)</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_9" name="cchanx_9" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Replying to speculative applications</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_10" name="cchanx_10" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Recommendation or enquiry by existing employee</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_11" name="cchanx_11" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Word of mouth</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_12" name="cchanx_12" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Intranet or own website</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_13" name="cchanx_13" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="28">
+        <preQTxt>This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?</preQTxt>
+        <qstnLit>Internet – external website(s)</qstnLit>
+        <backward qstn="V_clogvac"/>
+        <ivuInstr>SHOW CARD C4
+PROBE: Which others? UNTIL 'None'.</ivuInstr>
+      </qstn>
+      <universe clusion="I">Only if “Now I would like to ask you about the largest non-managerial group of employees here, that is, the [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP].
+Have there been any vacancies for [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] in the past 12 months?” = Yes</universe>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cchanx_other" name="cchanx_other" intrvl="discrete" files="F1">
+      <qstn responseDomainType="text" seqNo="29">
+        <qstnLit>Some other way (please specify COTHCHN)</qstnLit>
+        <backward qstn="VG_cchanx"/>
+      </qstn>
+      <universe clusion="I">Only if “This card shows a list of recruitment channels. What are the three most common channels used when trying to fill these vacancies?” includes Some other way (please specify COTHCHN)</universe>
+      <varFormat type="character" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">selected(${cchanx}, 'other')</notes>
+    </var>
+    <var ID="V_cinduct" name="cinduct" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="30">
+        <qstnLit>Is there a standard induction programme designed to introduce new [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] to this workplace?</qstnLit>
+        <ivuInstr>INTERVIEWER: Do not include probation periods.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_cstuckin" name="cstuckin" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="31">
+        <qstnLit>About how long does it normally take before new [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are able to do their job as well as more experienced employees already working here?</qstnLit>
+        <ivuInstr>SHOW CARD C5</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>One week or less</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>More than one week, up to one month</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>More than one month, up to six months</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>More than six months, up to one year</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>More than one year</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_coffjob" name="coffjob" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="32">
+        <preQTxt>I am now going to ask about training activities. I am interested in all training for which employees are given a break from their normal work duties, whether the training takes place at their immediate work position or elsewhere.</preQTxt>
+        <qstnLit>What proportion of experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] have been given time off from their normal daily work duties to undertake training over the past 12 months?</qstnLit>
+        <ivuInstr>SHOW CARD C6</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>All (100%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Almost all (80-99%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Most (60-79%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Around half (40-59%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Some (20-39%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Just a few (1-19%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>None (0%)</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:note_names">trintro</notes>
+    </var>
+    <var ID="V_coffchk" name="coffchk" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="33">
+        <qstnLit>Did any experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] have time off from their normal daily work duties to undertake training over the past 12 months?</qstnLit>
+        <backward qstn="V_coffjob"/>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">string-length(${coffjob}) = 0</notes>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_ctrain" name="ctrain" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="34">
+        <qstnLit>On average, how many days of training did experienced [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] undertake over the past 12 months?</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>No time</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Less than one day</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>1 to less than 2 days</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>2 to less than 5 days</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>5 to less than 10 days</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>10 days or more</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">(string-length(${coffjob}) &gt; 0 and ${coffjob} != '7') or ${coffchk} = '1'</notes>
+    </var>
+    <var ID="V_chow_1" name="chow_1" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Computing skills</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_2" name="chow_2" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Team working</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_3" name="chow_3" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Communication skills</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_4" name="chow_4" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Leadership skills</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_5" name="chow_5" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Operation of new equipment</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_6" name="chow_6" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Customer service/liaison</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_7" name="chow_7" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Health and safety</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_8" name="chow_8" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Problem-solving methods</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_9" name="chow_9" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Equal opportunities and diversity</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_10" name="chow_10" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Reliability and working to deadlines</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_11" name="chow_11" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>Quality control procedures</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_chow_12" name="chow_12" intrvl="discrete" files="F1">
+      <qstn responseDomainType="multiple" seqNo="35">
+        <preQTxt>Did this training cover any of the matters listed on this card?:</preQTxt>
+        <qstnLit>None of these</qstnLit>
+        <backward qstn="V_coffjob V_coffchk"/>
+        <ivuInstr>SHOW CARD C7
+PROBE: Which others? UNTIL 'None'.
+CODE ALL THAT APPLY.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>0</catValu>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cothjob" name="cothjob" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="36">
+        <qstnLit>Approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?</qstnLit>
+        <ivuInstr>SHOW CARD C8
+INTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>All (100%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Almost all (80-99%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Most (60-79%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Around half (40-59%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Some (20-39%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Just a few (1-19%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>None (0%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>97</catValu>
+        <labl>INTERVIEWER: Exact number to be entered.</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">card_c8</notes>
+    </var>
+    <var ID="V_cothjobt" name="cothjobt" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="37">
+        <qstnLit>(How many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?)</qstnLit>
+        <backward qstn="V_cothjob"/>
+        <ivuInstr>ENTER NUMBER
+SOFT CHECK if COTHJOBT&gt;ZALLEMPS: &quot;Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.&quot;</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="1" max="999997"/>
+      </valrng>
+      <universe clusion="I">Only if “Approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] are formally trained to be able to do jobs other than their own?” = INTERVIEWER: Exact number to be entered.</universe>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${cothjob} = '97'</notes>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>
+    </var>
+    <var ID="V_cothdo" name="cothdo" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="38">
+        <qstnLit>And approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?</qstnLit>
+        <ivuInstr>SHOW CARD C8
+INTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question.</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>All (100%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Almost all (80-99%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Most (60-79%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Around half (40-59%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Some (20-39%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Just a few (1-19%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>None (0%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>97</catValu>
+        <labl>INTERVIEWER: Exact number to be entered.</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">card_c8</notes>
+    </var>
+    <var ID="V_cothdot" name="cothdot" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="39">
+        <qstnLit>(And approximately, how many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?)</qstnLit>
+        <backward qstn="V_cothdo"/>
+        <ivuInstr>ENTER NUMBER
+SOFT CHECK if COTHDOT&gt;ZALLEMPS: &quot;Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.&quot;</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="1" max="999997"/>
+      </valrng>
+      <universe clusion="I">Only if “And approximately, what proportion of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] actually do jobs other than their own at least once a week?” = INTERVIEWER: Exact number to be entered.</universe>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${cothdo} = '97'</notes>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>
+    </var>
+    <var ID="V_cvariety" name="cvariety" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="40">
+        <preQTxt>Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...</preQTxt>
+        <qstnLit>...variety in their work?</qstnLit>
+        <ivuInstr>SHOW CARD C9</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>A lot</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Some</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>A little</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>None</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">card_c9</notes>
+    </var>
+    <var ID="V_cdiscrete" name="cdiscrete" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="41">
+        <preQTxt>Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...</preQTxt>
+        <qstnLit>...discretion over how they do their work? :</qstnLit>
+        <ivuInstr>SHOW CARD C9</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>A lot</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Some</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>A little</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>None</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">card_c9</notes>
+    </var>
+    <var ID="V_control" name="control" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="42">
+        <preQTxt>Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...</preQTxt>
+        <qstnLit>...control over the pace at which they work? :</qstnLit>
+        <ivuInstr>SHOW CARD C9</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>A lot</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Some</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>A little</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>None</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">card_c9</notes>
+    </var>
+    <var ID="V_cdesign" name="cdesign" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="43">
+        <preQTxt>Using the scale on this card, to what extent would you say that individual [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] here have...</preQTxt>
+        <qstnLit>...involvement in decisions over how their work is organised?</qstnLit>
+        <ivuInstr>SHOW CARD C9</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>A lot</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Some</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>A little</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>None</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">card_c9</notes>
+    </var>
+    <var ID="V_cteams" name="cteams" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="44">
+        <qstnLit>What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?</qstnLit>
+        <ivuInstr>SHOW CARD C10
+INTERVIEWER: If respondent gives answer as an exact number you can code “97” here and record the number at the next question</ivuInstr>
+      </qstn>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>All (100%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Almost all (80-99%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Most (60-79%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Around half (40-59%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Some (20-39%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Just a few (1-19%,</labl>
+      </catgry>
+      <catgry>
+        <catValu>7</catValu>
+        <labl>None (0%)</labl>
+      </catgry>
+      <catgry>
+        <catValu>97</catValu>
+        <labl>INTERVIEWER: Exact number to be entered</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+    </var>
+    <var ID="V_cteamst" name="cteamst" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="45">
+        <qstnLit>(How many [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?)</qstnLit>
+        <backward qstn="V_cteams"/>
+        <ivuInstr>ENTER NUMBER
+SOFT CHECK if CTEAMST&gt;ZALLEMPS: &quot;Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.&quot;</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="1" max="999997"/>
+      </valrng>
+      <universe clusion="I">Only if “What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?” = INTERVIEWER: Exact number to be entered</universe>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${cteams} = '97'</notes>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>
+    </var>
+    <var ID="V_cteamhoa" name="cteamhoa" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="46">
+        <preQTxt>Do each of the following statements apply to the way that teamworking operates among [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace?</preQTxt>
+        <qstnLit>...Team members depend on each other's work to be able to do their job.</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?” ≠ None (0%)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_cteamhoc" name="cteamhoc" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="47">
+        <preQTxt>Do each of the following statements apply to the way that teamworking operates among [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace?</preQTxt>
+        <qstnLit>...Team members jointly decide how the work is to be done.</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?” ≠ None (0%)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_cteamhod" name="cteamhod" intrvl="discrete" files="F1">
+      <qstn responseDomainType="category" seqNo="48">
+        <preQTxt>Do each of the following statements apply to the way that teamworking operates among [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace?</preQTxt>
+        <qstnLit>...Teams are given responsibility for specific products or services.</qstnLit>
+      </qstn>
+      <universe clusion="I">Only if “What proportion, if any, of [LOGIDX: TITLE OF THE LARGEST OCCUPATIONAL GROUP] at this workplace work in formally designated teams?” ≠ None (0%)</universe>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Yes</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>No</labl>
+      </catgry>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:list">yes_no</notes>
+    </var>
+    <var ID="V_ccomput" name="ccomput" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="49">
+        <qstnLit>I would now like you to think about the whole workforce at this workplace.
+In this workplace, what percentage of all employees use computers as part of their normal work duties? Please answer to the nearest 10%.</qstnLit>
+        <ivuInstr>INTERVIEWER: If respondent gives answer as an exact number you can code “997” here and record the number at the next question.
+SOFT CHECK if CCOMPUT&gt;100 and CCOMPUT≠997: &quot;The number entered here is a percentage. It should not be greater than 100.&quot;</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="0" max="997"/>
+      </valrng>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 0 and . &lt;= 997</notes>
+    </var>
+    <var ID="V_ccomputt" name="ccomputt" intrvl="contin" dcml="0" files="F1">
+      <qstn responseDomainType="numeric" seqNo="50">
+        <qstnLit>(In this workplace, how many employees use computers as part of their normal work duties?)</qstnLit>
+        <backward qstn="V_ccomput"/>
+        <ivuInstr>ENTER NUMBER
+SOFT CHECK if CCOMPUTT&gt;ZALLEMPS: &quot;Are you sure? The number recorded here is greater than the total number of employees recorded at the start of the interview.&quot;</ivuInstr>
+      </qstn>
+      <valrng>
+        <range min="1" max="999997"/>
+      </valrng>
+      <universe clusion="I">Only if “I would now like you to think about the whole workforce at this workplace.
+In this workplace, what percentage of all employees use computers as part of their normal work duties? Please answer to the nearest 10%.” = 997</universe>
+      <varFormat type="numeric" schema="other"/>
+      <notes type="cdl:relevant" subject="xlsform-xpath">${ccomput} = 997</notes>
+      <notes type="cdl:constraint" subject="xlsform-xpath">. &gt;= 1 and . &lt;= 999997</notes>
+    </var>
+  </dataDscr>
+</codeBook>
