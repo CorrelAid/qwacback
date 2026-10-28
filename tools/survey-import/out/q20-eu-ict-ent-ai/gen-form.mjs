@@ -165,7 +165,7 @@ const study = {
   id: 'q20-eu-ict-ent-ai',
   authors: [{ name: 'Eurostat', affiliation: 'European Commission, Eurostat' }],
   producer: { name: 'Eurostat' },
-  citation: `Eurostat. (2025, December 17). European businesses statistics compilers' manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 edition; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. ${URL_DOC}`,
+  citation: "Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073",
   url: URL_DOC,
   sourceLabel: 'KS-01-25-065, Annex 1 – Model questionnaire (ICT-ENT 2025 V1.5), Module E "Artificial Intelligence" (Eurostat)',
   abstract:
