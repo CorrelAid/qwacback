@@ -4,7 +4,7 @@ This guide defines the conventions for mapping survey questionnaires to DDI 2.5 
 
 ### Validation
 
-This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines structure and element ordering but is permissive — most elements are optional. The project-specific **Schematron rules** (shipped in the `ghcr.io/correlaid/schematron-worker` image, version pinned via `.registry-version`) enforce stricter conventions on top: required elements (e.g. `labl` on every `catgry` of a category variable), forbidden elements (e.g. `labl` on `var`/`varGrp`), restricted `varGrp` types, category/label requirements, and consistency checks (e.g. `preQTxt` matching `varGrp/txt`). The rules in this guide reflect both layers combined.
+This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines structure and element ordering but is permissive — most elements are optional. The project-specific **Schematron rules** (shipped in the `ghcr.io/correlaid/schematron-worker` image, version pinned via `.registry-version`) enforce stricter conventions on top: required elements (e.g. `labl` on every `catgry` of a category variable), forbidden elements (e.g. `labl` on `var`), restricted `varGrp` types, category/label requirements, and consistency checks (e.g. `preQTxt` matching `varGrp/txt`). The rules in this guide reflect both layers combined.
 
 ### Examples
 
@@ -57,7 +57,11 @@ qwac lists a question by its concept, and by its text only when there is none. I
 
 ### `labl`
 
-`labl` is used **only on `catgry`** elements — it provides the human-readable label for a response value (e.g. "Strongly Agree", "Male"). It is **never** placed on `var` or `varGrp`; use `concept` there instead.
+On a `catgry`, `labl` is the human-readable label for a response value (e.g. "Strongly Agree", "Male").
+
+On a `varGrp` (formtransform v0.9.0), `labl` is the group's **short printed name**, e.g. a scale's name (`ATTARI-12`). It comes from the XLSForm `label_short` column (`label_short::<Language (code)>` per language) on a `begin_group` group (section or grid), a `select_multiple`, or a semi-open question's `other` group, and is written before `txt`. The CDL Schematron allows at most one per language. It is not a concept and not the question text: set it only to a name the source prints for that group, else leave it out. For the imported instruments in `seed_data/` the rule is stricter: only a printed scale or instrument name (ATTARI-12, MAILS, TEI, SNAIL, GAAIS), no question numbers or section designators. qwacback stores it as the group's `label` (other languages under `translations[lang].label`) and returns it as the question's `label` (see §5).
+
+`labl` is **never** placed on `var`; a `label_short` on a row that doesn't become a `varGrp` stays an XLSForm column (`cdl:column`).
 
 `labl` is **required** for `responseDomainType="category"` (single choice, grid) but **omitted** for `responseDomainType="multiple"` (checkboxes). Checkbox variables are binary 0/1 — the variable name and `qstnLit` already describe what the checkbox means.
 
@@ -281,10 +285,10 @@ Clients show a study by its short name in tags and question cards, and by its fu
 *   `titl` is the study's full title as published. qwacback derives the study's and its questions' record IDs from it, so changing it later changes every link to them.
 *   For a published instrument, set `subTitl` and `altTitl` only to text the source prints for it: its acronym or short name, its subtitle as printed. Don't abbreviate or coin a name; without one, leave the element out, and clients show `titl`.
 *   Don't repeat them in `titl`: `Attitudes Towards Artificial Intelligence Scale` with `altTitl` `ATTARI-12`, not `ATTARI-12 – Attitudes Towards Artificial Intelligence Scale`.
-*   The XSD order is `titl`, `subTitl`, `altTitl`, `parTitl`, `IDNo`. formtransform writes `titl` (the XLSForm `form_title`), `parTitl` and `IDNo`; `tools/survey-import/build-codebook.mjs` adds `subTitl` and `altTitl` from the study's `subtitle` and `shortTitle`.
+*   The XSD order is `titl`, `subTitl`, `altTitl`, `parTitl`, `IDNo`. formtransform writes all of them: `titl` from the XLSForm setting `form_title`, `subTitl` from `form_subtitle`, `altTitl` from `form_title_short` (v0.9.0; plain or one per language). `tools/survey-import/build-codebook.mjs` passes the study's `subtitle` and `shortTitle` as those settings.
 *   qwacback reads the first `subTitl` and `altTitl` in the base language (no `xml:lang`, or the codebook's).
 
-Question groups have no short name yet. DDI 2.5 has `varGrp/labl`, but the CDL Schematron rejects it (see §1) and formtransform doesn't write it (CorrelAid/formtransform#181).
+A question group's short printed name is its `varGrp/labl` (§1, XLSForm `label_short`), e.g. `ATTARI-12` on the scale's grid. qwacback returns it as `label` on the question in `/api/questions` and `/api/questions/{id}` (and as `group.label`), with `label_translations` for the other languages; clients show it as the question's title above `question_text`. It is empty for a group without one and for standalone variables. Sections are not questions in qwacback, so a section's `labl` stays in the stored codebook only.
 
 ---
 
@@ -329,6 +333,7 @@ Rules:
 | `ivuInstr` | `qstn` | Interviewer instructions (not shown to respondent) |
 | `catgry` | `var` | Response category; contains `catValu` and optionally `labl` |
 | `labl` | `catgry` | Human-readable label for a category value (required for `category`, omitted for `multiple`) |
+| `labl` | `varGrp` | The group's short printed name (XLSForm `label_short`), at most one per language; before `txt` |
 | `concept` | `var`, `varGrp` | Human-readable name of what the variable or group measures (optional, never the question text). Further `concept` elements are search tags |
 | `txt` | `varGrp` | Shared introductory question text for grid/checkbox groups |
 | `varFormat` | `var` | Technical data format (must appear second-to-last inside `var`) |

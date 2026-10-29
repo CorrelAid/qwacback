@@ -17,3 +17,7 @@
 ## Titles (#64, 2026-10-28)
 
 `titl` unchanged. `altTitl` „PSM“: English Wikipedia rev. 1289425806 „The Price Sensitivity Meter (PSM) is …“.
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+None: the four questions are standalone and the source prints no group name.

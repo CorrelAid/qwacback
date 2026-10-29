@@ -16,3 +16,7 @@
 ## Titles (#64, 2026-10-28)
 
 `titl` „General Attitudes towards Artificial Intelligence Scale“, `altTitl` „GAAIS“: title of the 2023 article, „The General Attitudes towards Artificial Intelligence Scale (GAAIS): …“.
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` `GAAIS` on the grid: title of the 2023 article, „The General Attitudes towards Artificial Intelligence Scale (GAAIS): …“.

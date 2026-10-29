@@ -200,3 +200,7 @@ Section C depends on Section A or other sections.
 ## Titles (#64, 2026-10-28)
 
 `titl` unchanged. `altTitl` „WERS6“: cover of the MQ, „Sixth Workplace Employment Relations Study (WERS6)“.
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. The MQ prints section headings ("SECTION C") and variable codes (CFACTORS), but no scale names.

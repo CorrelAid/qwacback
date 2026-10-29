@@ -53,6 +53,8 @@
   {
    "type": "begin_group",
    "name": "tei",
+   "label_short::Deutsch (de)": "TEI",
+   "label_short::English (en)": "TEI",
    "appearance": "table-list",
    "label::Deutsch (de)": "Training Evaluations Inventar (TEI)",
    "label::English (en)": "Training-Evaluation-Inventory (TEI)"

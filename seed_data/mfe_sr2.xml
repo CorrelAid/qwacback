@@ -3,11 +3,13 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>Münsteraner Fragebogen zur Evaluation von Seminaren</titl><subTitl>2. Revision</subTitl><altTitl>MFE-Sr2</altTitl>
+        <titl>Münsteraner Fragebogen zur Evaluation von Seminaren</titl>
+        <subTitl>2. Revision</subTitl>
+        <altTitl>MFE-Sr2</altTitl>
         <IDNo>q16-mfe-sr2</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="Universität Münster">Oberhoff, L.</AuthEnty><AuthEnty affiliation="Universität Münster">Schulze Tast, I.</AuthEnty><AuthEnty affiliation="Universität Münster">Humberg, S.</AuthEnty></rspStmt>
       <prodStmt><producer>GESIS – Leibniz-Institut für Sozialwissenschaften (ZIS)</producer><copyright>© Oberhoff, Schulze Tast &amp; Humberg 2025</copyright>
-        <prodDate date="2026-10-28">2026-10-28</prodDate>
+        <prodDate date="2026-10-29">2026-10-29</prodDate>
       </prodStmt><biblCit>Oberhoff, L., Schulze Tast, I., &amp; Humberg, S. (2025). Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2). Zusammenstellung sozialwissenschaftlicher Items und Skalen (ZIS). https://doi.org/10.6102/zis363</biblCit><holdings URI="https://doi.org/10.6102/zis363">ZIS – Open Access Repositorium für Messinstrumente</holdings>
     </citation><stdyInfo><subject><keyword>Lehrevaluation</keyword><keyword>Seminar</keyword><keyword>Lehre</keyword><keyword>Veranstaltungskritik</keyword><keyword>Hochschule</keyword><keyword>Weiterbildung</keyword><keyword>Evaluation</keyword><topcClas>Bildung</topcClas></subject><abstract>Fragebogen für die studentische Evaluation von Seminaren. Erfasst die Bewertung der Didaktik der Lehrperson, erlebte Über- bzw. Unterforderung, die Beteiligung der anderen Teilnehmenden, die Materialien und den subjektiven Lernerfolg, dazu Rahmenbedingungen der Teilnahme, eine Gesamtbewertung und offenes Feedback. 20 Items, 3–10 Minuten.</abstract><sumDscr><timePrd event="single">2025</timePrd><nation>Deutschland</nation><anlyUnit>Individuum</anlyUnit><universe clusion="I">Studierende, die ein Seminar besucht haben</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/). Für die Nutzung zu anderen Zwecken die Autor:innen kontaktieren.</conditions></useStmt></dataAccs>
     <notes type="cdl:setting" subject="default_language">Deutsch (de)</notes>

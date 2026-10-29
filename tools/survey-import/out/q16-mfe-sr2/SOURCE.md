@@ -17,3 +17,7 @@
 ## Titles (#64, 2026-10-28)
 
 `titl` „Münsteraner Fragebogen zur Evaluation von Seminaren“, `subTitl` „2. Revision“, `altTitl` „MFE-Sr2“: the ZIS entry title „Münsteraner Fragebogen zur Evaluation von Seminaren – 2. Revision (MFE-Sr2)“.
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+None: the only group (`mfe_3`, select_multiple) has no printed name, and the ZIS text was not kept to check its item number.

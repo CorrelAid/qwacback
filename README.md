@@ -62,6 +62,8 @@ A study's short name for lists and tags, e.g. `ATTARI-12`, is `short_title` on t
   - Matching ignores case and umlaut spelling (`Qualitaet` = `Qualität`), finds word forms via German and English stemming (`Zufriedenheit` finds "zufrieden", `Weiterempfehlung` finds "weiterempfehlen"), finds terms of 5+ letters inside compounds (`Vertrauen` finds "Institutionenvertrauen"). Tags are searched too: `<concept>` elements after the first one on a `<var>`/`<varGrp>`, e.g. `<concept xml:lang="de">Vertrauen</concept>` on an English item, make it findable in the other language without changing its wording.
   - `&study_id=<id>` (repeatable) limits the search to those studies; `&exclude_study=<id>` (repeatable) leaves studies out, e.g. the demographic standards. The MCP tool `search_questions` takes the same filters.
 
+A question that is a group with a short printed name, e.g. a scale's name like `ATTARI-12` (the codebook's `varGrp/labl`, XLSForm `label_short`), carries it as `label` (`label_translations` for the other languages); `/api/questions/{id}` also has it as `group.label`. Show it as the question's title, with `question_text` below. It is absent when the source prints no name for the group. The search matches it like the question's name.
+
 Questions of a multilingual study also carry `language` (the base language of `question_text`) and `translations` (the question text in the other languages, `{"en": "…"}`). `/api/questions/{id}` also returns the full `translations` of each variable and of the group. The search matches translated question text like the question text.
 
 ### Studies

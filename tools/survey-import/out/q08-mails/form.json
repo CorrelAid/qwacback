@@ -55,6 +55,8 @@
   {
    "type": "begin_group",
    "name": "mails",
+   "label_short::Deutsch (de)": "MAILS",
+   "label_short::English (en)": "MAILS",
    "appearance": "table-list",
    "label::Deutsch (de)": "Im Folgenden lesen Sie Beschreibungen verschiedener Fähigkeiten, die man im Umgang mit künstlicher Intelligenz haben kann. Diese Fähigkeiten können stärker oder schwächer ausgeprägt sein. Bitte bewerten Sie sich selbst: Wie stark sind Ihre Fähigkeiten ausgeprägt?",
    "label::English (en)": "In the following, you will read descriptions of different abilities that one can have when dealing with artificial intelligence. These abilities can be more or less pronounced. Please rate yourself: How pronounced are your abilities?",

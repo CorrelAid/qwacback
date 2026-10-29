@@ -3,11 +3,12 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>General Attitudes towards Artificial Intelligence Scale</titl><altTitl>GAAIS</altTitl>
+        <titl>General Attitudes towards Artificial Intelligence Scale</titl>
+        <altTitl>GAAIS</altTitl>
         <IDNo>q18-gaais</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="University of Chester">Schepman, A.</AuthEnty><AuthEnty affiliation="University of Chester">Rodway, P.</AuthEnty></rspStmt>
       <prodStmt><producer>Schepman &amp; Rodway, University of Chester</producer><copyright>© 2022 The Author(s)</copyright>
-        <prodDate date="2026-10-28">2026-10-28</prodDate>
+        <prodDate date="2026-10-29">2026-10-29</prodDate>
       </prodStmt><biblCit>Schepman, A., &amp; Rodway, P. (2023). The General Attitudes towards Artificial Intelligence Scale (GAAIS): Confirmatory validation and associations with personality, corporate distrust, and general trust. International Journal of Human–Computer Interaction, 39(13), 2724–2741. https://doi.org/10.1080/10447318.2022.2085400 — initial validation: Schepman, A., &amp; Rodway, P. (2020). Initial validation of the general attitudes towards artificial intelligence scale. Computers in Human Behavior Reports, 1, 100014. https://doi.org/10.1016/j.chbr.2020.100014</biblCit><holdings URI="https://doi.org/10.1080/10447318.2022.2085400">https://doi.org/10.1080/10447318.2022.2085400</holdings>
     </citation><stdyInfo><subject><keyword>Einstellung</keyword><keyword>attitudes</keyword><keyword>künstliche Intelligenz</keyword><keyword>artificial intelligence</keyword><keyword>KI</keyword><keyword>AI</keyword><topcClas>Einstellungen</topcClas></subject><abstract>20-item scale of general attitudes towards artificial intelligence with two subscales: positive attitudes (12 items: societal and personal utility, positive emotions) and negative attitudes (8 items: concerns, negative emotions). Validated with UK adults; five-point agreement scale. The negative items are reverse-scored; no overall score is formed.</abstract><sumDscr><timePrd event="single">2021</timePrd><nation>United Kingdom</nation><anlyUnit>Individual</anlyUnit><universe clusion="I">Adults (validation samples: UK residents aged 18+)</universe></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/): non-commercial re-use and reproduction, original properly cited, not altered or built upon. Items reproduced verbatim; this codebook changes the format only.</conditions></useStmt></dataAccs>
     <notes type="cdl:setting" subject="default_language">English (en)</notes>
@@ -24,6 +25,7 @@
   </fileDscr>
   <dataDscr>
     <varGrp ID="VG_gaais" name="gaais" type="grid" var="V_gaais_pos1 V_gaais_pos2 V_gaais_neg3 V_gaais_pos4 V_gaais_pos5 V_gaais_neg6 V_gaais_pos7 V_gaais_neg8 V_gaais_neg9 V_gaais_neg10 V_gaais_pos11 V_gaais_pos12 V_gaais_pos13 V_gaais_pos14 V_gaais_neg15 V_gaais_pos16 V_gaais_pos17 V_gaais_pos18 V_gaais_neg19 V_gaais_neg20">
+      <labl>GAAIS</labl>
       <txt>We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item.</txt>
       <notes type="cdl:end_column" subject="name">gaais</notes>
     </varGrp>

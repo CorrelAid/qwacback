@@ -70,3 +70,7 @@
 ## Titles (#64, 2026-10-28)
 
 `titl` unchanged. `altTitl` „CVTS 7“: Statistikamt Nord prints the survey as „Weiterbildung CVTS 7“ (site navigation, statistik-nord.de); the form itself prints „CVTS“ on every page. No `subTitl`: the parts of `titl` („Europäische Erhebung …“, „Fragebogen“) are not printed as a title on the form.
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. The questionnaire prints parts ("Teil 1") and question numbers ("1.1"), but no scale names.

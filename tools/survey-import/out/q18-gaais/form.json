@@ -39,6 +39,7 @@
   {
    "type": "begin_group",
    "name": "gaais",
+   "label_short": "GAAIS",
    "appearance": "table-list",
    "label": "We are interested in your attitudes towards Artificial Intelligence. By Artificial Intelligence we mean devices that can perform tasks that would usually require human intelligence. Please note that these can be computers, robots or other hardware devices, possibly augmented with sensors or cameras, etc. Please complete the following scale, indicating your response to each item."
   },

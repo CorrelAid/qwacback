@@ -79,3 +79,7 @@ Scoring: mean per dimension, interpreted separately; the documents mention no re
 ## Titles (#64, 2026-10-28)
 
 `titl` „Training Evaluations Inventar“, `altTitl` „TEI“: cover of the German form (tei-de.pdf) and the Verfahrensdokumentation, „TEI / Training Evaluations Inventar“.
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` `TEI` (de + en) on the grid: cover of tei-de.pdf and tei-en.pdf, „TEI / Training Evaluations Inventar“ / „TEI / Training-Evaluation-Inventory“.

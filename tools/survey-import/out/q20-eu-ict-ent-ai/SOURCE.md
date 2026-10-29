@@ -216,3 +216,7 @@ E5 a–h). This matches Annex 1's own count: "E Artificial Intelligence 15 / 14"
 ## Titles (#64, 2026-10-28)
 
 `titl` „EU Survey on ICT Usage and e-Commerce in Enterprises 2025“ (Annex 1 heading „EU SURVEY ON ICT USAGE AND E-COMMERCE IN ENTERPRISES 2025“), `subTitl` „Module E: Artificial Intelligence“ (Annex 1 module heading), `altTitl` „ICT-ENT 2025“ (Annex 1, „ICT-ENT 2025 - Model Questionnaire V1.5“).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. Annex 1 prints a module ("Module E") and question numbers ("E1."), but no scale names.

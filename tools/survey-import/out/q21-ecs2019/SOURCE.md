@@ -197,3 +197,7 @@
 ## Titles (#64, 2026-10-28)
 
 `titl` „European Company Survey 2019“, `subTitl` „Online questionnaire for Management respondents“, `altTitl` „ECS 2019“: page 1 of the questionnaire PDF (heading and „The European Company Survey 2019 (ECS 2019) …“).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. The questionnaire prints question numbers ("13. [MANAGER]"), but no scale names.
