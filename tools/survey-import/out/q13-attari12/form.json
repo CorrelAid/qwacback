@@ -54,6 +54,8 @@
   {
    "type": "begin_group",
    "name": "attari12",
+   "label_short::Deutsch (de)": "ATTARI-12",
+   "label_short::English (en)": "ATTARI-12",
    "appearance": "table-list",
    "label::Deutsch (de)": "Im Folgenden interessieren wir uns für Ihre Einstellungen gegenüber Künstlicher Intelligenz (KI). Künstliche Intelligenz kann Aufgaben ausführen, die üblicherweise menschliche Intelligenz erfordern. Sie befähigt Maschinen dazu, selbstständig und ähnlich dem Menschen, ihre Umwelt wahrzunehmen, zu handeln, zu lernen und sich anzupassen. Künstliche Intelligenz kann Teil eines Computers oder einer Onlineplattform sein – man kann ihr aber auch in verschiedenen anderen technischen Geräten, wie etwa Robotern, begegnen.",
    "label::English (en)": "In the following, we are interested in your attitudes towards artificial intelligence (AI). AI can execute tasks that typically require human intelligence. It enables machines to sense, act, learn, and adapt in an autonomous, human-like way. AI may be part of a computer or online platform—but it can also be encountered in various other hardware devices such as robots."

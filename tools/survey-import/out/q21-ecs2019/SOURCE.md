@@ -197,3 +197,7 @@
 ## Titles (#64, 2026-10-28)
 
 `titl` „European Company Survey 2019“, `subTitl` „Online questionnaire for Management respondents“, `altTitl` „ECS 2019“: page 1 of the questionnaire PDF (heading and „The European Company Survey 2019 (ECS 2019) …“).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` from the questionnaire PDF: the number printed before each question („13. [MANAGER]“ → `13`) on every group: 1, 13, 14, 15, 19, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 41, 43, 45, 46, 48, 49, 53, 57, 58, 65. The number and percentage tables of one question share it; `mmerin_noer` and `mmerin` are both 58. Set in gen-form.mjs (`LABEL_SHORT`).

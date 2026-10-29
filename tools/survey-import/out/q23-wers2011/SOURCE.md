@@ -200,3 +200,7 @@ Section C depends on Section A or other sections.
 ## Titles (#64, 2026-10-28)
 
 `titl` unchanged. `altTitl` „WERS6“: cover of the MQ, „Sixth Workplace Employment Relations Study (WERS6)“.
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` `SECTION EPQ` and `SECTION C` on the sections (the MQ's section headings). Questions carry printed variable codes (CFACTORS), not numbers; they are the `name`s already, so the groups get no label. Set in gen-form.mjs (`LABEL_SHORT`).

@@ -275,6 +275,29 @@ for (const r of S) {
 const DE_CHOICES = { 1: 'Ja', 0: 'Nein' };
 for (const c of C) if (c.list_name === 'yes_no') c[`label::${DE_LANG}`] = DE_CHOICES[c.name];
 
+// label_short (formtransform 0.9.0, varGrp/labl): the short name the source
+// prints for a group, here the module ("Module E") and the question numbers ("E1.") of
+// Annex 1. English only: the Destatis German version leaves its numbers out
+// (and numbers E4/E5 as E3/E4). Only groups (sections, grids,
+// select_multiple) carry it: qwacback shows group labels only, so a standalone
+// question's number is left out. A number's trailing period is dropped.
+const LABEL_SHORT = {
+  module_e: "Module E",
+  e1: "E1",
+  e2: "E2",
+  e3: "E3",
+  e5: "E5",
+};
+for (const r of S) {
+  const short = LABEL_SHORT[r.name];
+  if (!short || !/^(begin_group|select_multiple)/.test(r.type ?? '')) continue;
+  const { type, name, ...rest } = r;
+  for (const k of Object.keys(r)) delete r[k];
+  Object.assign(r, { type, name, label_short: short, ...rest });
+  delete LABEL_SHORT[name];
+}
+if (Object.keys(LABEL_SHORT).length) throw new Error(`label_short: no group ${Object.keys(LABEL_SHORT)}`);
+
 const study = {
   title: 'EU Survey on ICT Usage and e-Commerce in Enterprises 2025',
   subtitle: 'Module E: Artificial Intelligence',

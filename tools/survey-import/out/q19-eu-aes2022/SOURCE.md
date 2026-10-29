@@ -148,3 +148,7 @@
 ## Titles (#64, 2026-10-28)
 
 `titl` unchanged. `altTitl` „2022 AES“: the manual's own name for the survey (title „2022 AES manual“, passim).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+None. The manual prints a "Variable name" per variable (e.g. GUIDESOURCE „Source of guidance on learning received during the last 12 months“), a descriptive label rather than a short name; not used (user decision pending). Sections are topics without a designator.

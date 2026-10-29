@@ -51,6 +51,8 @@
   {
    "type": "begin_group",
    "name": "snail",
+   "label_short::Deutsch (de)": "SNAIL",
+   "label_short::English (en)": "SNAIL",
    "appearance": "table-list",
    "label::Deutsch (de)": "Scale for the assessment of non-experts' AI literacy (SNAIL)",
    "label::English (en)": "Scale for the assessment of non-experts' AI literacy (SNAIL)"

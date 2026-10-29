@@ -545,6 +545,64 @@ const URL_PDF =
   'https://assets.eurofound.europa.eu/f/279033/9287637f70/ecs_2019_-_mm_questionnaire_for_publication_-_clean_14_july_2020.pdf';
 const URL_PAGE = 'https://www.eurofound.europa.eu/en/surveys-and-data/surveys/european-company-survey/ecs-2019';
 
+// label_short (formtransform 0.9.0, varGrp/labl): the short name the source
+// prints for a group, here the number printed before each question ("13. [MANAGER]"); the
+// number and percentage tables of one question share it. Only groups (sections, grids,
+// select_multiple) carry it: qwacback shows group labels only, so a standalone
+// question's number is left out. A number's trailing period is dropped.
+const LABEL_SHORT = {
+  wpsize_mm_n_dk: "1",
+  manager_number: "13",
+  manager_percentage: "13",
+  empperm_number: "14",
+  empperm_percentage: "14",
+  emppart_number: "15",
+  emppart_percentage: "15",
+  ictcomp_number: "19",
+  ictcomp_percentage: "19",
+  disc: "27",
+  moti: "28",
+  compprobs_number: "29",
+  compprobs_percentage: "29",
+  comorg_number: "30",
+  comorg_percentage: "30",
+  pcwkmach_number: "31",
+  pcwkmach_percentage: "31",
+  skill_pct: "32",
+  skill_n: "32",
+  contr_number: "34",
+  contr_percentage: "34",
+  learnnoneed_number: "35",
+  learnnoneed_percentage: "35",
+  trainlearn: "36",
+  paidtrain_number: "37",
+  paidtrain_percentage: "37",
+  onjob_number: "38",
+  onjob_percentage: "38",
+  tr: "41",
+  hirready_number: "43",
+  hirready_percentage: "43",
+  hir: "45",
+  vp_number: "46",
+  vp_percentage: "46",
+  ca: "48",
+  mmerconfirm: "49",
+  invol: "53",
+  mmepin: "57",
+  mmerin_noer: "58",
+  mmerin: "58",
+  pmstrat: "65",
+};
+for (const r of S) {
+  const short = LABEL_SHORT[r.name];
+  if (!short || !/^(begin_group|select_multiple)/.test(r.type ?? '')) continue;
+  const { type, name, ...rest } = r;
+  for (const k of Object.keys(r)) delete r[k];
+  Object.assign(r, { type, name, label_short: short, ...rest });
+  delete LABEL_SHORT[name];
+}
+if (Object.keys(LABEL_SHORT).length) throw new Error(`label_short: no group ${Object.keys(LABEL_SHORT)}`);
+
 const study = {
   title: 'European Company Survey 2019',
   subtitle: 'Online questionnaire for Management respondents',

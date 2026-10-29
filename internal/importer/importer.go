@@ -392,7 +392,9 @@ const (
 // seed_hash, so raising it makes the next start re-import all seed studies,
 // e.g. after the importer learns to extract a new field. Uploads need a
 // backfill migration instead.
-const Revision = 1
+//
+//   - 2: group labels (varGrp/labl, formtransform 0.9.0 label_short).
+const Revision = 2
 
 // SeedHash is the seed_hash of a seed file: the importer revision and the
 // file's sha256, e.g. "1:9f86d0…".
@@ -700,6 +702,7 @@ func ImportStudy(app core.App, mv mxj.Map, rawXML []byte, source, seedHash strin
 			concept     string
 			tags        []ConceptTag
 			txt         string
+			label       string
 			translations translations
 		}
 		var parsed []grpInfo
@@ -722,6 +725,13 @@ func ImportStudy(app core.App, mv mxj.Map, rawXML []byte, source, seedHash strin
 			gi.translations = translations{}
 			for lang, text := range translationsAt(gM, "txt", baseLang) {
 				gi.translations.add(lang, "description", text)
+			}
+			// The group's short printed name (formtransform 0.9.0
+			// label_short): at most one labl per language. On a semi-open
+			// question formtransform puts it on the `other` parent.
+			gi.label = textAtLang(gM, "labl", baseLang)
+			for lang, text := range translationsAt(gM, "labl", baseLang) {
+				gi.translations.add(lang, "label", text)
 			}
 			parsed = append(parsed, gi)
 		}
@@ -759,6 +769,7 @@ func ImportStudy(app core.App, mv mxj.Map, rawXML []byte, source, seedHash strin
 			groupRecord.Set("tags", gi.tags)
 			groupRecord.Set("translations", gi.translations.value())
 			groupRecord.Set("description", gi.txt)
+			groupRecord.Set("label", gi.label)
 			groupRecord.Set("type", gi.grpType)
 			groupRecord.Set("order", grpOrder)
 			grpOrder++

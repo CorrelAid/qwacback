@@ -3,11 +3,13 @@
   <stdyDscr>
     <citation>
       <titlStmt>
-        <titl>EU Survey on ICT Usage and e-Commerce in Enterprises 2025</titl><subTitl>Module E: Artificial Intelligence</subTitl><altTitl>ICT-ENT 2025</altTitl>
+        <titl>EU Survey on ICT Usage and e-Commerce in Enterprises 2025</titl>
+        <subTitl>Module E: Artificial Intelligence</subTitl>
+        <altTitl>ICT-ENT 2025</altTitl>
         <IDNo>q20-eu-ict-ent-ai</IDNo>
       </titlStmt><rspStmt><AuthEnty affiliation="European Commission, Eurostat">Eurostat</AuthEnty></rspStmt>
       <prodStmt><producer>Eurostat</producer><copyright>© European Union, 2025 (Eurostat); German texts © Statistisches Bundesamt (Destatis), 2025</copyright>
-        <prodDate date="2026-10-28">2026-10-28</prodDate>
+        <prodDate date="2026-10-29">2026-10-29</prodDate>
       </prodStmt><biblCit>Eurostat. (2025). European business statistics compiler's manual for ICT usage and e-commerce in enterprises, 2025 survey (2025 ed.; Manuals and guidelines, KS-01-25-065). Publications Office of the European Union. https://doi.org/10.2785/2641073 — German wording: Statistisches Bundesamt (Destatis). (2025). Qualitätsbericht: IKT-Erhebung in Unternehmen 2025 [Fragebogen, Abschnitt E]. https://www.destatis.de/DE/Methoden/Qualitaet/Qualitaetsberichte/Unternehmen/ikt-unternehmen-2025.pdf</biblCit><holdings URI="https://ec.europa.eu/eurostat/web/products-manuals-and-guidelines/w/ks-01-25-065">KS-01-25-065, Annex 1 – Model questionnaire (ICT-ENT 2025 V1.5), Module E &quot;Artificial Intelligence&quot; (Eurostat)</holdings>
     </citation><stdyInfo><subject><keyword>artificial intelligence</keyword><keyword>AI adoption</keyword><keyword>barriers to AI use</keyword><keyword>machine learning</keyword><keyword>data protection</keyword><keyword>enterprises</keyword><keyword>ICT usage</keyword><keyword>official statistics</keyword><topcClas>Information society</topcClas><topcClas>Digital economy</topcClas><topcClas>Artificial intelligence</topcClas></subject><abstract>This study contains only Module E (Artificial Intelligence) of the Eurostat model questionnaire for the 2025 EU survey on ICT usage and e-commerce in enterprises, as printed in the 2025 compilers' manual; national statistical institutes adapt it for their own surveys. The enterprise reports which AI technologies it uses, for which business purposes, and how it acquired the AI software or systems. Enterprises not using AI are asked whether they ever considered it and, if so, why they do not use it (for example costs, lack of expertise, data protection concerns or unclear legal consequences). The German texts are Destatis’ wording of these questions in its national questionnaire for 2025, which does not ask E3 (how AI was acquired).</abstract><sumDscr><timePrd event="single">2025</timePrd><nation>European Union</nation><anlyUnit>Enterprises</anlyUnit><universe clusion="I">Enterprises with 10 or more employees and self-employed persons (NACE Rev. 2 sections C–J, L–N and group 95.1; optional: 0–9). Module E: enterprises with access to the internet.</universe><dataKind>Model questionnaire</dataKind></sumDscr></stdyInfo><dataAccs><useStmt><conditions>CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). © European Union, 2025. Manual KS-01-25-065: &quot;Except otherwise noted, the reuse of this document is authorised under a Creative Commons Attribution 4.0 International (CC-BY 4.0) licence https://creativecommons.org/licenses/by/4.0/). This means that reuse is allowed provided appropriate credit is given and any changes are indicated.&quot; Eurostat copyright notice (https://ec.europa.eu/eurostat/help/copyright-notice): &quot;The copyright for the editorial content of this website, which is owned by the EU, is licensed under the Creative Commons Attribution 4.0 International licence. This means that you can re-use the content provided you acknowledge the source and indicate any changes you have made.&quot; &quot;Reuse of statistical data, metadata, publications, and other dissemination tools published on this website for commercial or non-commercial purposes is authorised provided the source is acknowledged. The reuse policy of the European Commission is implemented by the Decision of 12 December 2011.&quot; (Commission Decision 2011/833/EU). &quot;When reuse involves translations of publications or modifications to the data or text, this must be stated clearly to the end user of the information. A disclaimer regarding the non-responsibility of Eurostat shall be included.&quot; Changes: format conversion of Module E &quot;Artificial Intelligence&quot; of the 2025 model questionnaire (Annex 1 of manual KS-01-25-065) to DDI; wording unchanged; all other modules, explanatory notes and layout omitted; glossary definitions of the named AI techniques attached to the E1 items as hints. Disclaimer: this DDI version was made by the qwac project (CorrelAid), not by Eurostat; Eurostat bears no responsibility for it. German texts: Destatis, Qualitätsbericht &quot;IKT-Erhebung in Unternehmen 2025&quot; (questionnaire, section E): &quot;© Statistisches Bundesamt (Destatis), 2025. Vervielfältigung und Verbreitung, auch auszugsweise, mit Quellenangabe gestattet.&quot; They are attached as the German version of the matching Eurostat questions (Destatis E3/E4 = Eurostat E4/E5); item numbers and routing lines omitted.</conditions></useStmt></dataAccs>
     <notes type="instruction" subject="e_intro">Artificial intelligence refers to systems that use technologies such as: text mining, computer vision, speech recognition, natural language generation, machine learning, deep learning to gather and/or use data to predict, recommend or decide, with varying levels of autonomy, the best action to achieve specific goals.
@@ -30,6 +32,7 @@ oder in Geräten eingebettet sein z. B.
 – Autonome Drohnen zur Produktionsüberwachung oder Paketabfertigung</notes>
     <notes type="cdl:position" subject="e_intro">in=module_e after=</notes>
     <notes type="cdl:setting" subject="default_language">English (en)</notes>
+    <notes type="cdl:language" subject="de">Deutsch (de)</notes>
   </stdyDscr>
   <fileDscr ID="F1" URI="data.csv">
     <fileTxt>
@@ -43,16 +46,19 @@ oder in Geräten eingebettet sein z. B.
   </fileDscr>
   <dataDscr>
     <varGrp ID="VG_module_e" name="module_e" type="section" var="V_e4" varGrp="VG_module_e_e1 VG_module_e_e2 VG_module_e_e3 VG_module_e_e5">
+      <labl>Module E</labl>
       <txt>Module E: Artificial Intelligence</txt>
       <txt xml:lang="de">Künstliche Intelligenz (KI)</txt>
       <notes type="cdl:hint">(Scope: enterprises with access to the internet, i.e. if A1&gt;0)</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e1" name="module_e/e1" type="grid" var="V_e1_a V_e1_b V_e1_c V_e1_d V_e1_e V_e1_f V_e1_g V_e1_h">
+      <labl>E1</labl>
       <txt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</txt>
       <txt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</txt>
       <notes type="cdl:hint">E1 a) to h) = “No” then go to E4 (if optional included) else go to F1.</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e2" name="module_e/e2" type="grid" var="V_e2_a V_e2_b V_e2_c V_e2_d V_e2_e V_e2_f V_e2_g">
+      <labl>E2</labl>
       <txt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</txt>
       <txt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</txt>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
@@ -60,6 +66,7 @@ oder in Geräten eingebettet sein z. B.
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e3" name="module_e/e3" type="grid" var="V_e3_a V_e3_b V_e3_c V_e3_d V_e3_e">
+      <labl>E3</labl>
       <txt>How did you enterprise acquire the Artificial Intelligence software or systems that it uses?</txt>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
       <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
@@ -67,6 +74,7 @@ oder in Geräten eingebettet sein z. B.
       <notes type="cdl:hint">– Optional</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e5" name="module_e/e5" type="grid" var="V_e5_a V_e5_b V_e5_c V_e5_d V_e5_e V_e5_f V_e5_g V_e5_h">
+      <labl>E5</labl>
       <txt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</txt>
       <txt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</txt>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>

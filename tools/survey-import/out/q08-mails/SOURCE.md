@@ -68,3 +68,7 @@ The user decided that a verbatim conversion to DDI is a format change, not an al
 ## Titles (#64, 2026-10-28)
 
 `titl` „Meta AI Literacy Scale“, `altTitl` „MAILS“: printed in the published article (abstract: „the Meta AI Literacy Scale (MAILS)“; title „MAILS - Meta AI literacy scale: …“).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` `MAILS` (de + en) on the grid: header of both questionnaire PDFs (MAILS-questionnaire-german.pdf, MAILS-qustionnaire-english.pdf), „MAILS“ above „Meta-Artificial Intelligence Literacy Scale“.

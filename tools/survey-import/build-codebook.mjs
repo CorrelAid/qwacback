@@ -28,6 +28,10 @@ const study = form.study ?? {};
 const settings = Array.isArray(form.settings) ? (form.settings[0] ?? {}) : (form.settings ?? {});
 if (!settings.form_title && study.title) settings.form_title = study.title;
 if (!settings.form_id && study.id) settings.form_id = study.id;
+// The study's printed subtitle and short title (acronym) go to titlStmt as
+// subTitl / altTitl through formtransform's settings (v0.9.0, #181).
+if (!settings.form_subtitle && study.subtitle) settings.form_subtitle = study.subtitle;
+if (!settings.form_title_short && study.shortTitle) settings.form_title_short = study.shortTitle;
 
 let xml;
 try {
@@ -62,8 +66,7 @@ const insert = (after, content) => {
 
 // Inserted in DDI 2.5 sequence order: citation (titlStmt, rspStmt, prodStmt,
 // …, biblCit, holdings), then stdyInfo and dataAccs before stdyDscr/notes.
-// titlStmt: titl, subTitl, altTitl, then formtransform's parTitl and IDNo.
-insert('</titl>', el('subTitl', study.subtitle) + el('altTitl', study.shortTitle));
+// titlStmt (titl, subTitl, altTitl, parTitl, IDNo) is formtransform's.
 const authors = (study.authors ?? []).map((a) =>
   typeof a === 'string' ? el('AuthEnty', a) : el('AuthEnty', a.name, { affiliation: a.affiliation }),
 );

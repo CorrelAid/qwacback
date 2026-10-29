@@ -65,3 +65,7 @@ Matches the German S1 factor lists (Technisches Verständnis / Kritische Beurtei
 ## Titles (#64, 2026-10-28)
 
 `titl` „Scale for the assessment of non-experts’ AI literacy“, `altTitl` „SNAIL“: CHBR article, „“Scale for the assessment of non-experts’ AI literacy” (SNAIL)“ (curly apostrophe as printed).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` `SNAIL` (de + en) on the grid: MDPI S1, „the "Scale for the assessment of non-experts' AI literacy" (SNAIL)“ (the acronym is printed in S1's English text only).

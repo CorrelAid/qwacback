@@ -30,3 +30,7 @@ Stein, J.-P., Messingschlager, T., Gnambs, T., Hutmacher, F., & Appel, M. (2024)
 ## Titles (#64, 2026-10-28)
 
 `titl` „Attitudes Towards Artificial Intelligence Scale“, `altTitl` „ATTARI-12“: heading of both OSF item lists, „Attitudes Towards Artificial Intelligence Scale (ATTARI-12)“. No `subTitl` („Deutsche Version“ / „English version“ name one language each).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` `ATTARI-12` (de + en) on the grid: heading of both OSF item lists, „Attitudes Towards Artificial Intelligence Scale (ATTARI-12)“ (osf-ATTARI-12-German.pdf / -English.pdf).

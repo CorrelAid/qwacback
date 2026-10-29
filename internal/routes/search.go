@@ -204,7 +204,15 @@ func (q Question) fieldTexts() [6]string {
 	for _, t := range q.Translations {
 		translated = append(translated, t)
 	}
-	return [6]string{q.QuestionText, q.Concept, strings.Join(tags, ", "), q.Name, q.AnswerType, strings.Join(translated, " ")}
+	// The group's printed name ("ATTARI-12", "E1") is searched like the name.
+	names := []string{q.Name}
+	if q.Label != "" {
+		names = append(names, q.Label)
+	}
+	for _, l := range q.LabelTranslations {
+		names = append(names, l)
+	}
+	return [6]string{q.QuestionText, q.Concept, strings.Join(tags, ", "), strings.Join(names, " "), q.AnswerType, strings.Join(translated, " ")}
 }
 
 // FilterAndRankQuestions filters questions by the query and ranks them

@@ -139,6 +139,12 @@ type Question struct {
 	// study's other languages, lang → text (#35).
 	Language     string            `json:"language,omitempty"`
 	Translations map[string]string `json:"translations,omitempty"`
+	// Label is the group's short printed name (varGrp/labl, e.g. "ATTARI-12"
+	// or a question number), to show as a title above QuestionText; empty
+	// when the source prints none and for standalone variables.
+	// LabelTranslations holds it in the study's other languages.
+	Label             string            `json:"label,omitempty"`
+	LabelTranslations map[string]string `json:"label_translations,omitempty"`
 }
 
 // textTranslations reads one field ("question", "description", …) of a
@@ -256,6 +262,8 @@ func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 			GroupID:      g.Id,
 			Order:        g.GetFloat("order"),
 		}
+		q.Label = g.GetString("label")
+		q.LabelTranslations = textTranslations(g, "label")
 
 		q.Tags = recordTags(g)
 		for _, v := range varsByGroup[g.Id] {
@@ -1046,9 +1054,12 @@ func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
 	}
 
 	// Embed group info (nil for standalone variables)
+	// Label is the group's short printed name (varGrp/labl), empty when
+	// the source prints none; its translations are translations[lang].label.
 	type groupInfo struct {
 		ID          string `json:"id"`
 		Type        string `json:"type"`
+		Label       string `json:"label"`
 		Concept     string `json:"concept"`
 		Description string `json:"description"`
 		Translations any   `json:"translations,omitempty"`
@@ -1058,6 +1069,7 @@ func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
 		group = &groupInfo{
 			ID:           grpRecord.Id,
 			Type:         grpRecord.GetString("type"),
+			Label:        grpRecord.GetString("label"),
 			Concept:      grpRecord.GetString("concept"),
 			Description:  grpRecord.GetString("description"),
 			Translations: grpRecord.Get("translations"),
@@ -1133,6 +1145,7 @@ func QuestionDetail(app core.App, qId string) (map[string]interface{}, error) {
 		"question_text": q.QuestionText,
 		"answer_type":  q.AnswerType,
 		"order":        q.Order,
+		"label":        q.Label,
 		"study":        study,
 		"group":        group,
 		"variables":    variables,

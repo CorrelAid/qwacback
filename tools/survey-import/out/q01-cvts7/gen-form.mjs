@@ -357,6 +357,49 @@ jnGrid('f7_2', 'Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine A
 ], { relevant: yes('f7_1_146a'), hint: 'Falls Sie normalerweise Auszubildende haben, beantworten Sie bitte noch die nachfolgende Frage 7.2.' });
 end();
 
+// label_short (formtransform 0.9.0, varGrp/labl): the short name the source
+// prints for a group, here the part ("Teil 1", page headers) and the number printed with each
+// question ("1.1") in CVTS7_Fragebogen.pdf; a question's follow-up grid
+// ("Falls „Ja“, …") carries the question's number. Only groups (sections, grids,
+// select_multiple) carry it: qwacback shows group labels only, so a standalone
+// question's number is left out. A number's trailing period is dropped.
+const LABEL_SHORT = {
+  teil1: "Teil 1",
+  f1_1: "1.1",
+  teil2: "Teil 2",
+  f2_3: "2.3",
+  f2_4: "2.4",
+  f2_8: "2.8",
+  teil3: "Teil 3",
+  f3_3: "3.3",
+  f3_3_anteil: "3.3",
+  f3_6: "3.6",
+  f3_7: "3.7",
+  teil4: "Teil 4",
+  f4_1: "4.1",
+  f4_2: "4.2",
+  f4_3: "4.3",
+  f4_4: "4.4",
+  f4_5: "4.5",
+  f4_6: "4.6",
+  teil5: "Teil 5",
+  f5_1: "5.1",
+  f5_2: "5.2",
+  teil6: "Teil 6",
+  f6: "6",
+  teil7: "Teil 7",
+  f7_2: "7.2",
+};
+for (const r of S) {
+  const short = LABEL_SHORT[r.name];
+  if (!short || !/^(begin_group|select_multiple)/.test(r.type ?? '')) continue;
+  const { type, name, ...rest } = r;
+  for (const k of Object.keys(r)) delete r[k];
+  Object.assign(r, { type, name, label_short: short, ...rest });
+  delete LABEL_SHORT[name];
+}
+if (Object.keys(LABEL_SHORT).length) throw new Error(`label_short: no group ${Object.keys(LABEL_SHORT)}`);
+
 const study = {
   title: 'Europäische Erhebung über die berufliche Weiterbildung in Unternehmen (CVTS7): Fragebogen',
   shortTitle: 'CVTS 7',

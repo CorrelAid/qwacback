@@ -216,3 +216,7 @@ E5 a–h). This matches Annex 1's own count: "E Artificial Intelligence 15 / 14"
 ## Titles (#64, 2026-10-28)
 
 `titl` „EU Survey on ICT Usage and e-Commerce in Enterprises 2025“ (Annex 1 heading „EU SURVEY ON ICT USAGE AND E-COMMERCE IN ENTERPRISES 2025“), `subTitl` „Module E: Artificial Intelligence“ (Annex 1 module heading), `altTitl` „ICT-ENT 2025“ (Annex 1, „ICT-ENT 2025 - Model Questionnaire V1.5“).
+
+## Group labels (formtransform 0.9.0, 2026-10-29)
+
+`label_short` from Annex 1 of KS-01-25-065: `Module E` on the section („Module E: Artificial Intelligence“) and the question numbers `E1`, `E2`, `E3`, `E5` on the grids („E1.“ …; trailing period dropped). E4 is a standalone question and keeps none. English only: the Destatis German version leaves its numbers out and numbers E4/E5 as E3/E4. Set in gen-form.mjs (`LABEL_SHORT`).
