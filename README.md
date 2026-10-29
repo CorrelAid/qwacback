@@ -80,7 +80,7 @@ Questions of a multilingual study also carry `language` (the base language of `q
 - **GET `/api/studies/{id}/export`** — Export study as validated DDI-XML download.
 - **GET `/api/studies/{id}/xlsform`** — Export study as XLSForm JSON.
 - **POST `/api/convert/ddi-to-xlsform`** — Convert a DDI XML fragment to XLSForm JSON.
-- **POST `/api/convert/xlsform-to-ddi`** — Convert XLSForm JSON to DDI XML.
+- **POST `/api/convert/xlsform-to-ddi`** — Convert XLSForm JSON to DDI XML: the `<dataDscr>` fragment by default, formtransform's whole `<codeBook>` with `?codebook=1`.
 
 For conversion details, see [CONVERSION_API.md](CONVERSION_API.md).
 

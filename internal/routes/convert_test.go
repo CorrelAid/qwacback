@@ -69,6 +69,66 @@ func TestConvertXLSFormToDDIRoute(t *testing.T) {
 		}).Test(t)
 	})
 
+	// #45: the fragment stays the default; ?codebook=1 returns the codebook.
+	const codebook = `<?xml version="1.0" encoding="UTF-8"?>
+<codeBook xmlns="ddi:codebook:2_5" version="2.5"><stdyDscr><citation><titlStmt><titl>Umfrage</titl></titlStmt></citation></stdyDscr><dataDscr><var ID="V_a" name="a"><concept>A</concept></var></dataDscr></codeBook>`
+	answerCodebook := func(w http.ResponseWriter, r *http.Request) { _, _ = w.Write([]byte(codebook)) }
+	intForm := `{"survey":[{"type":"integer","name":"a","label":"A"}]}`
+
+	t.Run("fragment by default", func(t *testing.T) {
+		useFakeEmitter(t, answerCodebook)
+		(&tests.ApiScenario{
+			Method:             http.MethodPost,
+			URL:                "/api/convert/xlsform-to-ddi",
+			Body:               strings.NewReader(intForm),
+			ExpectedStatus:     200,
+			ExpectedContent:    []string{`<var ID="V_a" name="a">`},
+			NotExpectedContent: []string{`<codeBook`, `<stdyDscr>`},
+			TestAppFactory:     setupTestApp,
+		}).Test(t)
+	})
+
+	for _, q := range []string{"1", "true"} {
+		t.Run("whole codebook with codebook="+q, func(t *testing.T) {
+			useFakeEmitter(t, answerCodebook)
+			(&tests.ApiScenario{
+				Method:          http.MethodPost,
+				URL:             "/api/convert/xlsform-to-ddi?codebook=" + q,
+				Body:            strings.NewReader(intForm),
+				ExpectedStatus:  200,
+				ExpectedContent: []string{`<codeBook xmlns="ddi:codebook:2_5"`, `<titl>Umfrage</titl>`, `<var ID="V_a" name="a">`},
+				TestAppFactory:  setupTestApp,
+			}).Test(t)
+		})
+	}
+
+	t.Run("codebook=0 is the fragment", func(t *testing.T) {
+		useFakeEmitter(t, answerCodebook)
+		(&tests.ApiScenario{
+			Method:             http.MethodPost,
+			URL:                "/api/convert/xlsform-to-ddi?codebook=0",
+			Body:               strings.NewReader(intForm),
+			ExpectedStatus:     200,
+			NotExpectedContent: []string{`<codeBook`},
+			TestAppFactory:     setupTestApp,
+		}).Test(t)
+	})
+
+	t.Run("codebook mode keeps input errors 400", func(t *testing.T) {
+		useFakeEmitter(t, func(w http.ResponseWriter, r *http.Request) {
+			w.WriteHeader(http.StatusBadRequest)
+			_, _ = w.Write([]byte(`{"error":"type \"rank\" (question \"a\") is not in the registry"}`))
+		})
+		(&tests.ApiScenario{
+			Method:          http.MethodPost,
+			URL:             "/api/convert/xlsform-to-ddi?codebook=1",
+			Body:            strings.NewReader(`{"survey":[{"type":"rank","name":"a","label":"A"}]}`),
+			ExpectedStatus:  400,
+			ExpectedContent: []string{`is not in the registry`},
+			TestAppFactory:  setupTestApp,
+		}).Test(t)
+	})
+
 	t.Run("sidecar down is 503, not 400", func(t *testing.T) {
 		useFakeEmitter(t, nil)
 		(&tests.ApiScenario{

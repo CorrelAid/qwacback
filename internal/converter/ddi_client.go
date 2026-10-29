@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"encoding/xml"
 	"errors"
 	"fmt"
 	"io"
@@ -60,6 +61,68 @@ type DDIEmitterError struct {
 // or <varGrp> is returned as a bare fragment, anything else is wrapped in
 // <dataDscr> (ddixml.Fragment).
 func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
+	codebook, err := emitCodebook(xlsformJSON)
+	if err != nil {
+		return nil, err
+	}
+
+	// Copied, not parsed into Go structs: whatever formtransform emits
+	// reaches the client, including elements qwacback doesn't model. The
+	// codeBook's xml:lang (the base language of a multilingual form) moves
+	// to the fragment's root.
+	lang, children, err := ddixml.DataDscr(codebook)
+	if err != nil {
+		return nil, fmt.Errorf("%w: ddi-emitter returned %v", ErrConverterUnavailable, err)
+	}
+	if len(children) == 0 {
+		// Notes store no response, so formtransform emits no <var> for them.
+		return nil, fmt.Errorf("the form has no questions that store an answer (notes produce no DDI variables)")
+	}
+
+	return ddixml.Fragment(children, lang)
+}
+
+// XLSFormToCodebook converts XLSForm sheet-based JSON to formtransform's whole
+// <codeBook>, unchanged (#45). Unlike XLSFormToDDI it keeps what formtransform
+// writes outside <dataDscr> (title, IDNo, settings, languages, trailing notes,
+// metadata rows on <stdyDscr>), so DDIToXLSForm gives the form back. A form of
+// only notes is not an error here: its codebook still carries them.
+func XLSFormToCodebook(xlsformJSON []byte) ([]byte, error) {
+	codebook, err := emitCodebook(xlsformJSON)
+	if err != nil {
+		return nil, err
+	}
+	if err := checkCodebook(codebook); err != nil {
+		return nil, fmt.Errorf("%w: ddi-emitter returned %v", ErrConverterUnavailable, err)
+	}
+	return codebook, nil
+}
+
+// checkCodebook reports whether doc is well-formed XML with a <codeBook> root.
+func checkCodebook(doc []byte) error {
+	dec := xml.NewDecoder(bytes.NewReader(doc))
+	root := ""
+	for {
+		tok, err := dec.Token()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return fmt.Errorf("malformed XML: %w", err)
+		}
+		if t, ok := tok.(xml.StartElement); ok && root == "" {
+			root = t.Name.Local
+		}
+	}
+	if root != "codeBook" {
+		return fmt.Errorf("no <codeBook> root")
+	}
+	return nil
+}
+
+// emitCodebook checks the XLSForm JSON and has the sidecar convert it to a
+// whole <codeBook>.
+func emitCodebook(xlsformJSON []byte) ([]byte, error) {
 	if len(bytes.TrimSpace(xlsformJSON)) == 0 {
 		return nil, fmt.Errorf("empty request body")
 	}
@@ -80,25 +143,7 @@ func XLSFormToDDI(xlsformJSON []byte) ([]byte, error) {
 		return nil, fmt.Errorf("failed to marshal XLSForm payload: %w", err)
 	}
 
-	codebook, err := callDDIEmitter("/xlsform-to-ddi", "application/json", payload)
-	if err != nil {
-		return nil, err
-	}
-
-	// Copied, not parsed into Go structs: whatever formtransform emits
-	// reaches the client, including elements qwacback doesn't model. The
-	// codeBook's xml:lang (the base language of a multilingual form) moves
-	// to the fragment's root.
-	lang, children, err := ddixml.DataDscr(codebook)
-	if err != nil {
-		return nil, fmt.Errorf("%w: ddi-emitter returned %v", ErrConverterUnavailable, err)
-	}
-	if len(children) == 0 {
-		// Notes store no response, so formtransform emits no <var> for them.
-		return nil, fmt.Errorf("the form has no questions that store an answer (notes produce no DDI variables)")
-	}
-
-	return ddixml.Fragment(children, lang)
+	return callDDIEmitter("/xlsform-to-ddi", "application/json", payload)
 }
 
 // DDIToXLSForm converts DDI XML (a whole codebook, a <dataDscr>, or bare

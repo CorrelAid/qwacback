@@ -69,11 +69,23 @@ curl -X POST http://localhost:8090/api/convert/ddi-to-xlsform \
 - Content-Type: `application/json`
 - Body: `{"survey": [...], "choices": [...], "settings": {...}}`. `settings` may be an object or a one-row list. The sheets are forwarded to formtransform unchanged, so every column it reads reaches it.
 
+**Query parameters:**
+- `codebook` (optional): `1` (or `true`) returns formtransform's whole `<codeBook>` instead of the fragment. Default: the fragment.
+
 **Response:**
 - Content-Type: `application/xml`
-- Body: the children of formtransform's `<dataDscr>`: a single `<var>` or `<varGrp>` bare, anything else wrapped in `<dataDscr>`
+- Body (default): the children of formtransform's `<dataDscr>`: a single `<var>` or `<varGrp>` bare, anything else wrapped in `<dataDscr>`
+- Body (`?codebook=1`): formtransform's `<codeBook>`, unchanged
 
-**Response shape note.** The endpoint returns a DDI fragment, not the full `<codeBook>` formtransform writes. The elements inside `<dataDscr>` are passed through as formtransform emits them, in its order; only the DDI namespace declaration and the `files` attributes (which point at the dropped `<fileDscr>`) are removed. What formtransform puts on `<stdyDscr>` (settings, languages, note rows without a question) is not part of the fragment.
+**Response shape note.** By default the endpoint returns a DDI fragment, not the full `<codeBook>` formtransform writes. The elements inside `<dataDscr>` are passed through as formtransform emits them, in its order; only the DDI namespace declaration and the `files` attributes (which point at the dropped `<fileDscr>`) are removed. What formtransform puts on `<stdyDscr>` (title and `IDNo`, settings, languages, note rows without a question after them, metadata rows such as `start` or `deviceid`) is not part of the fragment.
+
+**Whole codebook.** With `?codebook=1` nothing is cut, so `POST /api/convert/ddi-to-xlsform` gives the form back, as formtransform's own round trip does. Use it when you need the whole form; use the fragment to embed questions in another codebook. A form of only notes is not refused in this mode (its codebook carries the notes); input errors and sidecar outages answer 400 and 503 as for the fragment.
+
+```bash
+curl -X POST 'http://localhost:8090/api/convert/xlsform-to-ddi?codebook=1' \
+  -H "Content-Type: application/json" \
+  --data '{"survey": [{"type": "integer", "name": "age", "label": "How old are you?"}], "settings": {"form_title": "Survey", "form_id": "survey"}}'
+```
 
 **Example:**
 
