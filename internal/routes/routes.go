@@ -228,7 +228,12 @@ func AssembleQuestions(app core.App, studyID string) ([]Question, error) {
 		return nil, err
 	}
 
-	allVars, err := app.FindRecordsByFilter("variables", "study = {:sid}", "order", 0, 0, dbx.Params{"sid": studyID})
+	// A hidden field (answer_type "hidden", formtransform 0.10.0) is a data
+	// column respondents never see, not a question to reuse: it stays in the
+	// study's variables and codebook but is no question (#78). Every
+	// catalogue view (/api/questions, search, MCP, QuestionDetail) is built
+	// here, so this is the one place that leaves it out.
+	allVars, err := app.FindRecordsByFilter("variables", "study = {:sid} && answer_type != 'hidden'", "order", 0, 0, dbx.Params{"sid": studyID})
 	if err != nil {
 		return nil, err
 	}
