@@ -22,6 +22,7 @@ func TestImportAnswerTypes(t *testing.T) {
     <var ID="V_f" name="f" intrvl="discrete"><qstn responseDomainType="text" seqNo="6"><qstnLit>F</qstnLit></qstn><concept>F</concept><varFormat type="character" schema="other"/></var>
     <var ID="V_g" name="g" intrvl="contin"><qstn responseDomainType="numeric" seqNo="7"><qstnLit>G</qstnLit></qstn><valrng><range maxExclusive="120"/></valrng><concept>G</concept><varFormat type="numeric" schema="other"/><notes type="cdl:constraint" subject="xlsform-xpath">. &lt; 120</notes></var>
     <var ID="V_h" name="h" intrvl="contin" dcml="0"><qstn responseDomainType="numeric" seqNo="8"><qstnLit>H</qstnLit></qstn><valrng><range maxExclusive="120"/></valrng><concept>H</concept><varFormat type="numeric" schema="other"/><notes type="cdl:constraint" subject="xlsform-xpath">. &lt; 120</notes><notes type="cdl:required">yes</notes></var>
+    <var ID="V_i" name="i" intrvl="discrete"><qstn responseDomainType="other" otherResponseDomainType="hidden" seqNo="9"><qstnLit>I</qstnLit></qstn><varFormat type="character" schema="other"/></var>
   </dataDscr>
 </codeBook>`
 	app, err := tests.NewTestApp(t.TempDir())
@@ -45,6 +46,7 @@ func TestImportAnswerTypes(t *testing.T) {
 		"f": "text",
 		"g": "decimal", // valrng from a constraint
 		"h": "integer", // integer with a constraint (two notes)
+		"i": "hidden",  // formtransform 0.10.0: a hidden row is a var
 	}
 	for name, at := range want {
 		v, err := app.FindFirstRecordByFilter("variables", "name = {:n}", map[string]any{"n": name})

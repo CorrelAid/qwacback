@@ -137,6 +137,7 @@ On import, the application captures each element's position as a numeric `order`
 | `time` | `discrete` | `text` | `character`, `category="time"` | `<var>` |
 | `single_choice` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<var>` + `<catgry>` per option |
 | `multiple_choice` | `discrete` | `multiple` | `numeric` (0/1 binaries) | `<varGrp type="multipleResp">` + binary `<var>` per option |
+| `hidden` | `discrete` | `other`, `otherResponseDomainType="hidden"` | `character` | `<var>`; an XLSForm `hidden` field, not shown to respondents |
 | `grid` | `discrete` | `category` | `numeric` if every code is a number, else `character` | `<varGrp type="grid">` + `<var>` per item (categories repeated). A grid of number fields has `integer`/`decimal` members instead; the question's answer type is still `grid` |
 
 ### Subcategory flags
@@ -352,4 +353,4 @@ Rules:
 | `type` | `varGrp` | Group semantics: `grid`, `multipleResp`, `other`, or `section` |
 | `var` | `varGrp` | Space-separated list of member variable IDs |
 | `varGrp` | `varGrp` | Space-separated list of child varGrp IDs (for hierarchical grouping) |
-| `responseDomainType` | `qstn` | Response type: `numeric`, `text`, `category`, or `multiple` |
+| `responseDomainType` | `qstn` | Response type: `numeric`, `text`, `category`, `multiple`, or `other` (with `otherResponseDomainType="hidden"` for a hidden field) |

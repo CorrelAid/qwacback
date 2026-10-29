@@ -342,6 +342,9 @@ func conceptsAt(m mxj.Map) (concept, vocab string, tags []ConceptTag) {
 //   - text: date or time by varFormat/@category, else text
 //   - category: grid inside a grid group, else single_choice
 //   - multiple: multiple_choice
+//   - other with otherResponseDomainType="hidden": hidden, an XLSForm hidden
+//     field (formtransform 0.10.0). Respondents never see it; it is kept, and
+//     labelled, so clients can tell it from a question.
 func inferAnswerType(vM mxj.Map, groupType string) string {
 	domain, _ := vM.ValueForPathString("qstn.-responseDomainType")
 	switch domain {
@@ -363,6 +366,11 @@ func inferAnswerType(vM mxj.Map, groupType string) string {
 			return "grid"
 		}
 		return "single_choice"
+	case "other":
+		if other, _ := vM.ValueForPathString("qstn.-otherResponseDomainType"); other == "hidden" {
+			return "hidden"
+		}
+		return ""
 	default:
 		return ""
 	}
