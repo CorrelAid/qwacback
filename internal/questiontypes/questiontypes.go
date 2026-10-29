@@ -92,6 +92,9 @@ var answerTypes = map[string]struct {
 	"text":                      {"text", Presentation{}},
 	"date":                      {"date", Presentation{}},
 	"time":                      {"time", Presentation{}},
+	// A hidden field: a <var> since formtransform 0.10.0, but not shown to
+	// respondents.
+	"hidden":                    {"hidden", Presentation{}},
 }
 
 // retryAfter is how long a failed load is remembered before the next request
