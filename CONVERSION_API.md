@@ -175,7 +175,7 @@ On import, qwacback stores the base-language text (the untagged element, or the 
 
 The converter is `@correlaid/formtransform`. The release tag is pinned in `.registry-version` at the repo root and consumed by:
 
-- `ddi-emitter/package.json` and `ddi-emitter/package-lock.json` (download the prebuilt tarball — no build step, no `git` in the image)
+- `ddi-emitter/package.json` and `ddi-emitter/package-lock.json` (download the prebuilt tarball — no build step, no `git` in the image). The sidecar's own `version` field follows the formtransform release it wraps, so logs and image labels name the right generation.
 - `docker-compose.yml` pulls `ghcr.io/correlaid/schematron-worker:<tag>`
 
-Bump `.registry-version` and update every consumer in the same PR (`cd ddi-emitter && npm install <new tarball URL>` refreshes both npm files). `scripts/check-registry-version.sh` checks that they agree and runs in the release workflow. Never pin to a branch or `latest`.
+Bump `.registry-version` and update every consumer in the same PR (`cd ddi-emitter && npm install <new tarball URL> && npm version <x.y.z> --no-git-tag-version` refreshes both npm files and the sidecar's version). `scripts/check-registry-version.sh` checks that they agree and runs in the release workflow. Never pin to a branch or `latest`.
