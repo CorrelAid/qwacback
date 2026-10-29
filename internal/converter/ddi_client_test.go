@@ -1,6 +1,7 @@
 package converter
 
 import (
+	"encoding/json"
 	"errors"
 	"io"
 	"net/http"
@@ -285,4 +286,93 @@ func TestDDIToXLSForm_Errors(t *testing.T) {
 			t.Errorf("got %v", err)
 		}
 	})
+}
+
+// #45: XLSFormToCodebook returns formtransform's codebook byte for byte, with
+// <stdyDscr> (title, settings, languages, trailing notes) and <fileDscr>.
+func TestXLSFormToCodebook_ReturnsCodebookUnchanged(t *testing.T) {
+	cb := codeBook(`<var ID="V_a" name="a" files="F1"><concept>A</concept></var>`)
+	fakeEmitter(t, http.StatusOK, cb)
+
+	out, err := XLSFormToCodebook([]byte(minimalForm))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(out) != cb {
+		t.Errorf("codebook changed:\n%s", out)
+	}
+}
+
+// A codebook of only notes still carries the form, so it isn't refused the
+// way the fragment is.
+func TestXLSFormToCodebook_NotesOnlyIsNotAnError(t *testing.T) {
+	fakeEmitter(t, http.StatusOK, codeBook(``))
+	if _, err := XLSFormToCodebook([]byte(`{"survey":[{"type":"note","name":"n","label":"Hi"}]}`)); err != nil {
+		t.Errorf("got %v", err)
+	}
+}
+
+// #45, against a live ddi-emitter: the codebook keeps what the fragment cuts
+// (title, IDNo, metadata rows, a trailing note), so DDIToXLSForm gives the
+// form back.
+func TestXLSFormToCodebook_RoundTrip(t *testing.T) {
+	resp, err := http.Get(strings.TrimRight(DDIEmitterURL, "/") + "/healthz")
+	if err != nil {
+		t.Skip("ddi-emitter sidecar not reachable")
+	}
+	resp.Body.Close()
+
+	form := `{"survey":[{"type":"start","name":"start"},{"type":"integer","name":"a","label":"Alter?"},{"type":"note","name":"bye","label":"Danke!"}],"choices":[],"settings":{"form_title":"Umfrage X","form_id":"umf_x"}}`
+	cb, err := XLSFormToCodebook([]byte(form))
+	if err != nil {
+		t.Fatal(err)
+	}
+	back, err := DDIToXLSForm(cb)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var got struct {
+		Survey   []map[string]string `json:"survey"`
+		Settings []map[string]string `json:"settings"`
+	}
+	if err := json.Unmarshal(back, &got); err != nil {
+		t.Fatal(err)
+	}
+	var names []string
+	for _, r := range got.Survey {
+		names = append(names, r["type"]+":"+r["name"])
+	}
+	if strings.Join(names, ",") != "start:start,integer:a,note:bye" {
+		t.Errorf("survey not given back: %v", names)
+	}
+	if len(got.Settings) != 1 || got.Settings[0]["form_title"] != "Umfrage X" || got.Settings[0]["form_id"] != "umf_x" {
+		t.Errorf("settings not given back: %v", got.Settings)
+	}
+}
+
+func TestXLSFormToCodebook_Errors(t *testing.T) {
+	t.Run("rejection keeps library message", func(t *testing.T) {
+		fakeEmitter(t, http.StatusBadRequest, `{"error":"rank is not in the registry"}`)
+		_, err := XLSFormToCodebook([]byte(minimalForm))
+		if err == nil || errors.Is(err, ErrConverterUnavailable) || err.Error() != "rank is not in the registry" {
+			t.Errorf("got %v", err)
+		}
+	})
+	t.Run("empty survey is an input error", func(t *testing.T) {
+		_, err := XLSFormToCodebook([]byte(`{"survey":[]}`))
+		if err == nil || errors.Is(err, ErrConverterUnavailable) {
+			t.Errorf("got %v", err)
+		}
+	})
+	for name, body := range map[string]string{
+		"malformed response": "<codeBook><dataDscr>",
+		"not a codebook":     "<dataDscr/>",
+	} {
+		t.Run(name, func(t *testing.T) {
+			fakeEmitter(t, http.StatusOK, body)
+			if _, err := XLSFormToCodebook([]byte(minimalForm)); !errors.Is(err, ErrConverterUnavailable) {
+				t.Errorf("expected ErrConverterUnavailable, got %v", err)
+			}
+		})
+	}
 }

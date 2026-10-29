@@ -915,8 +915,13 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 			return apis.NewBadRequestError("Failed to read request body", nil)
 		}
 
-		// Convert XLSForm to DDI
-		ddiXML, err := converter.XLSFormToDDI(xlsformJSON)
+		// Convert XLSForm to DDI: the <dataDscr> fragment by default, the
+		// whole codebook with ?codebook=1 (#45).
+		convert := converter.XLSFormToDDI
+		if wantCodebook(e.Request.URL.Query().Get("codebook")) {
+			convert = converter.XLSFormToCodebook
+		}
+		ddiXML, err := convert(xlsformJSON)
 		if errors.Is(err, converter.ErrConverterUnavailable) {
 			log.Printf("ERROR: XLSForm to DDI conversion unavailable: %v", err)
 			return apis.NewApiError(http.StatusServiceUnavailable, "XLSForm to DDI conversion is temporarily unavailable", nil)
@@ -933,6 +938,15 @@ func RegisterRoutes(app core.App, se *core.ServeEvent, schClient schematron.Clie
 	})
 
 	return nil
+}
+
+// wantCodebook reads the ?codebook= flag of /api/convert/xlsform-to-ddi.
+func wantCodebook(v string) bool {
+	switch strings.ToLower(v) {
+	case "1", "true", "yes":
+		return true
+	}
+	return false
 }
 
 // xlsformError answers a failed conversion of stored DDI to XLSForm: 503
