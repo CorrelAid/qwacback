@@ -26,95 +26,78 @@
   </fileDscr>
   <dataDscr>
     <varGrp ID="VG_manager_number" name="manager_number" type="grid" var="V_manager_n">
-      <labl>13</labl>
       <txt>How many people that work in this establishment are managers? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.
 Enter the exact number of managers or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_manager_percentage" name="manager_percentage" type="grid" var="V_manager_pct">
-      <labl>13</labl>
       <txt>How many people that work in this establishment are managers? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.
 Enter the exact number of managers or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_empperm_number" name="empperm_number" type="grid" var="V_empperm_n">
-      <labl>14</labl>
       <txt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_empperm_percentage" name="empperm_percentage" type="grid" var="V_empperm_pct">
-      <labl>14</labl>
       <txt>How many employees in this establishment have an open-ended contract? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_emppart_number" name="emppart_number" type="grid" var="V_emppart_n">
-      <labl>15</labl>
       <txt>How many employees in this establishment work part-time? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">‘Part-time’ refers to working less than 35 hours per week.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_emppart_percentage" name="emppart_percentage" type="grid" var="V_emppart_pct">
-      <labl>15</labl>
       <txt>How many employees in this establishment work part-time? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">‘Part-time’ refers to working less than 35 hours per week.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_ictcomp_number" name="ictcomp_number" type="grid" var="V_ictcomp_n">
-      <labl>19</labl>
       <txt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">The term 'employees' refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_ictcomp_percentage" name="ictcomp_percentage" type="grid" var="V_ictcomp_pct">
-      <labl>19</labl>
       <txt>How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">The term 'employees' refers to the people that work in this establishment that are not managers.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_disc" name="disc" type="grid" var="V_disc_help V_disc_hours V_disc_sugg">
-      <labl>27</labl>
       <txt>To be evaluated positively, how important is it that employees at this establishment show the following behaviour?</txt>
       <notes type="cdl:hint">For each question, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_moti" name="moti" type="grid" var="V_moti_mon V_moti_mis V_moti_chal V_moti_learn">
-      <labl>28</labl>
       <txt>How often are the following practices used to motivate and retain employees at this establishment?</txt>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_compprobs_number" name="compprobs_number" type="grid" var="V_compprobs_n">
-      <labl>29</labl>
       <txt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_compprobs_percentage" name="compprobs_percentage" type="grid" var="V_compprobs_pct">
-      <labl>29</labl>
       <txt>For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_comorg_number" name="comorg_number" type="grid" var="V_comorg_n">
-      <labl>30</labl>
       <txt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_comorg_percentage" name="comorg_percentage" type="grid" var="V_comorg_pct">
-      <labl>30</labl>
       <txt>For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_pcwkmach_number" name="pcwkmach_number" type="grid" var="V_pcwkmach_n">
-      <labl>31</labl>
       <txt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_pcwkmach_percentage" name="pcwkmach_percentage" type="grid" var="V_pcwkmach_pct">
-      <labl>31</labl>
       <txt>For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_skill_pct" name="skill_pct" type="grid" var="V_skill_pct_skillsmatch V_skill_pct_overskill V_skill_pct_underskill">
-      <labl>32</labl>
       <txt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
 Please think about the employees in this establishment, their current skills and the skills they need to do their job.</txt>
       <notes type="cdl:hint">You can answer again with an exact number of employees, or by using the percentage of employees.
@@ -122,132 +105,108 @@ QUESTION USING PERCENTAGES
 The answers to these three questions should add up to 100%. The term 'employees' refers to the people that work in this establishment that are not managers. Your best estimate is good enough.</notes>
     </varGrp>
     <varGrp ID="VG_skill_n" name="skill_n" type="grid" var="V_skill_n_skillsmatch V_skill_n_overskill V_skill_n_underskill">
-      <labl>32</labl>
       <txt>Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.
 Please think about the employees in this establishment, their current skills and the skills they need to do their job.</txt>
       <notes type="cdl:hint">QUESTION USING AN EXACT NUMBER OF EMPLOYEES
 There are [WPSIZE_MM_N - MANAGER] people that work in this establishment that are not managers. The answers to these three questions should add up to this number. Your best estimate is good enough.</notes>
     </varGrp>
     <varGrp ID="VG_contr_number" name="contr_number" type="grid" var="V_contr_n">
-      <labl>34</labl>
       <txt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_contr_percentage" name="contr_percentage" type="grid" var="V_contr_pct">
-      <labl>34</labl>
       <txt>How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.
 Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_learnnoneed_number" name="learnnoneed_number" type="grid" var="V_learnnoneed_n">
-      <labl>35</labl>
       <txt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_learnnoneed_percentage" name="learnnoneed_percentage" type="grid" var="V_learnnoneed_pct">
-      <labl>35</labl>
       <txt>How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_trainlearn" name="trainlearn" type="grid" var="V_trainlearn_1 V_trainlearn_2 V_trainlearn_3">
-      <labl>36</labl>
       <txt>What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.</txt>
     </varGrp>
     <varGrp ID="VG_paidtrain_number" name="paidtrain_number" type="grid" var="V_paidtrain_n">
-      <labl>37</labl>
       <txt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_paidtrain_percentage" name="paidtrain_percentage" type="grid" var="V_paidtrain_pct">
-      <labl>37</labl>
       <txt>In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_onjob_number" name="onjob_number" type="grid" var="V_onjob_n">
-      <labl>38</labl>
       <txt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_onjob_percentage" name="onjob_percentage" type="grid" var="V_onjob_pct">
-      <labl>38</labl>
       <txt>In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_tr" name="tr" type="grid" var="V_tr_ski V_tr_flex V_tr_inn V_tr_mot">
-      <labl>41</labl>
       <txt>How important are the following reasons for providing training to employees in this establishment?</txt>
       <universe clusion="I">Only if “Since the beginning of 2016, has this establishment provided any training to any of its employees?” = Yes</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${trainatall} = '1'</notes>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_hirready_number" name="hirready_number" type="grid" var="V_hirready_n">
-      <labl>43</labl>
       <txt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</txt>
       <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${newlyhir} &gt;= 1</notes>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_hirready_percentage" name="hirready_percentage" type="grid" var="V_hirready_pct">
-      <labl>43</labl>
       <txt>How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.</txt>
       <universe clusion="I">Only if “Since the beginning of 2016, how many new employees have been hired at this establishment?” ≥ 1</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">${newlyhir} &gt;= 1</notes>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.</notes>
     </varGrp>
     <varGrp ID="VG_hir" name="hir" type="grid" var="V_hir_att V_hir_qual V_hir_exp V_hir_ecando">
-      <labl>45</labl>
       <txt>When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</txt>
     </varGrp>
     <varGrp ID="VG_vp_number" name="vp_number" type="grid" var="V_vpbres_n V_vpinper_n V_vpgrpe_n V_vpprsh_n">
-      <labl>46</labl>
       <txt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.
 Number</notes>
     </varGrp>
     <varGrp ID="VG_vp_percentage" name="vp_percentage" type="grid" var="V_vpbres_pct V_vpinper_pct V_vpgrpe_pct V_vpprsh_pct">
-      <labl>46</labl>
       <txt>In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.</txt>
       <notes type="cdl:hint">Enter the exact number of employees or tick one of the percentage categories.
 Percentage</notes>
     </varGrp>
     <varGrp ID="VG_invol" name="invol" type="grid" var="V_invol_regmee V_invol_staffme V_invol_dissinf V_invol_somedi">
-      <labl>53</labl>
       <txt>Which of the following practices are used to involve employees in this establishment in how work is organised?</txt>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_mmepin" name="mmepin" type="grid" var="V_mmepin_org V_mmepin_dism V_mmepin_train V_mmepin_time V_mmepin_pay">
-      <labl>57</labl>
       <txt>Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?</txt>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_mmerin" name="mmerin" type="grid" var="V_mmerin_org V_mmerin_dism V_mmerin_train V_mmerin_time V_mmerin_pay">
-      <labl>58</labl>
       <txt>Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?</txt>
       <universe clusion="I">Only if not (“If there is no employee representation at your establishment, tick the box below and continue with the next question.” includes There is no employee representation at this establishment)</universe>
       <notes type="cdl:relevant" subject="xlsform-xpath">not(selected(${mmerin_noer}, '1'))</notes>
       <notes type="cdl:hint">For each statement, Tick one box only.</notes>
     </varGrp>
     <varGrp ID="VG_pmstrat" name="pmstrat" type="grid" var="V_pmstrat_lp V_pmstrat_bq V_pmstrat_cust V_pmstrat_nps">
-      <labl>65</labl>
       <txt>How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.</txt>
     </varGrp>
     <varGrp ID="VG_wpsize_mm_n_dk" name="wpsize_mm_n_dk" type="multipleResp" var="V_wpsize_mm_n_dk_1">
-      <labl>1</labl>
       <txt>Indicate a number or tick the ‘Don’t know’ box.</txt>
       <notes type="cdl:list">dk</notes>
     </varGrp>
     <varGrp ID="VG_ca" name="ca" type="multipleResp" var="V_ca_1 V_ca_2 V_ca_3 V_ca_4 V_ca_5 V_ca_6">
-      <labl>48</labl>
       <txt>Are the wages of any employees in this establishment set by any of the following types of collective agreements?</txt>
     </varGrp>
     <varGrp ID="VG_mmerconfirm" name="mmerconfirm" type="multipleResp" var="V_mmerconfirm_1 V_mmerconfirm_2 V_mmerconfirm_3 V_mmerconfirm_4 V_mmerconfirm_5 V_mmerconfirm_6 V_mmerconfirm_7 V_mmerconfirm_8 V_mmerconfirm_9">
-      <labl>49</labl>
       <txt>Which of the following forms of official employee representation currently exist in this establishment?</txt>
       <notes type="cdl:constraint" subject="xlsform-xpath">not(selected(., '9') and count-selected(.) &gt; 1)</notes>
     </varGrp>
     <varGrp ID="VG_mmerin_noer" name="mmerin_noer" type="multipleResp" var="V_mmerin_noer_1">
-      <labl>58</labl>
       <txt>If there is no employee representation at your establishment, tick the box below and continue with the next question.</txt>
       <notes type="cdl:list">noer</notes>
     </varGrp>

@@ -203,4 +203,4 @@ Section C depends on Section A or other sections.
 
 ## Group labels (formtransform 0.9.0, 2026-10-29)
 
-`label_short` `SECTION EPQ` and `SECTION C` on the sections (the MQ's section headings). Questions carry printed variable codes (CFACTORS), not numbers; they are the `name`s already, so the groups get no label. Set in gen-form.mjs (`LABEL_SHORT`).
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. The MQ prints section headings ("SECTION C") and variable codes (CFACTORS), but no scale names.

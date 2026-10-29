@@ -403,26 +403,6 @@ end();
 const URL = 'https://www.gov.uk/government/publications/the-2011-workplace-employment-relations-study-wers';
 const PDF =
   'https://assets.publishing.service.gov.uk/media/5a74f4a0e5274a59fa716449/11-803-wers6-sixth-workplace-study-management-questionnaire.pdf';
-// label_short (formtransform 0.9.0, varGrp/labl): the short name the source
-// prints for a group, here the designator of the MQ's section headings ("SECTION C").
-// Its questions carry printed variable codes (CFACTORS), not numbers; those
-// are the names. Only groups (sections, grids,
-// select_multiple) carry it: qwacback shows group labels only, so a standalone
-// question's number is left out. A number's trailing period is dropped.
-const LABEL_SHORT = {
-  section_epq: "SECTION EPQ",
-  section_c: "SECTION C",
-};
-for (const r of S) {
-  const short = LABEL_SHORT[r.name];
-  if (!short || !/^(begin_group|select_multiple)/.test(r.type ?? '')) continue;
-  const { type, name, ...rest } = r;
-  for (const k of Object.keys(r)) delete r[k];
-  Object.assign(r, { type, name, label_short: short, ...rest });
-  delete LABEL_SHORT[name];
-}
-if (Object.keys(LABEL_SHORT).length) throw new Error(`label_short: no group ${Object.keys(LABEL_SHORT)}`);
-
 const study = {
   title: 'Workplace Employment Relations Study 2011 (WERS6): Management Questionnaire, Section C Recruitment, training and organisation of work',
   shortTitle: 'WERS6',

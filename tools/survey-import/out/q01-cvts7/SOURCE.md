@@ -73,4 +73,4 @@
 
 ## Group labels (formtransform 0.9.0, 2026-10-29)
 
-`label_short` (→ `varGrp/labl`) from CVTS7_Fragebogen.pdf: the parts `Teil 1` … `Teil 7` (page headers) on the sections, and on every group the number printed with its question (`1.1`, `2.3`, `2.4`, `2.8`, `3.3`, `3.6`, `3.7`, `4.1`–`4.6`, `5.1`, `5.2`, `6`, `7.2`). A question's follow-up grid ("Falls „Ja“, …", `f2_8`, `f3_3_anteil`, `f5_1`) carries the number of its question. Standalone questions keep no number (qwacback shows group labels only). Set in gen-form.mjs (`LABEL_SHORT`).
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. The questionnaire prints parts ("Teil 1") and question numbers ("1.1"), but no scale names.

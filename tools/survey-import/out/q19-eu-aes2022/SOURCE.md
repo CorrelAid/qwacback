@@ -151,4 +151,4 @@
 
 ## Group labels (formtransform 0.9.0, 2026-10-29)
 
-None. The manual prints a "Variable name" per variable (e.g. GUIDESOURCE „Source of guidance on learning received during the last 12 months“), a descriptive label rather than a short name; not used (user decision pending). Sections are topics without a designator.
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. The manual's per-variable "Variable name" entries (e.g. GUIDESOURCE „Source of guidance on learning received during the last 12 months“) are descriptive labels, not scale names.

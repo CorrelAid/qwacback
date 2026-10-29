@@ -219,4 +219,4 @@ E5 a–h). This matches Annex 1's own count: "E Artificial Intelligence 15 / 14"
 
 ## Group labels (formtransform 0.9.0, 2026-10-29)
 
-`label_short` from Annex 1 of KS-01-25-065: `Module E` on the section („Module E: Artificial Intelligence“) and the question numbers `E1`, `E2`, `E3`, `E5` on the grids („E1.“ …; trailing period dropped). E4 is a standalone question and keeps none. English only: the Destatis German version leaves its numbers out and numbers E4/E5 as E3/E4. Set in gen-form.mjs (`LABEL_SHORT`).
+None. Rule (user decision): `label_short` only for a printed scale or instrument name; no question numbers, no section designators. Annex 1 prints a module ("Module E") and question numbers ("E1."), but no scale names.

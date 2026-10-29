@@ -58,7 +58,6 @@
     {
       "type": "select_multiple dk",
       "name": "wpsize_mm_n_dk",
-      "label_short": "1",
       "label": "Indicate a number or tick the ‘Don’t know’ box."
     },
     {
@@ -131,7 +130,6 @@
     {
       "type": "begin_group",
       "name": "manager_number",
-      "label_short": "13",
       "label": "How many people that work in this establishment are managers? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.\nEnter the exact number of managers or tick one of the percentage categories."
@@ -148,7 +146,6 @@
     {
       "type": "begin_group",
       "name": "manager_percentage",
-      "label_short": "13",
       "label": "How many people that work in this establishment are managers? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "‘Management’ refers to the people that direct the establishment or a subset of it, e.g. units or departments focusing on different geographical markets or on specific functions (sales, human resources, logistic, purchases, production or lines of production). Managers have employees reporting to them, and are responsible for pay increases, bonuses or promotion of these employees.\nEnter the exact number of managers or tick one of the percentage categories."
@@ -164,7 +161,6 @@
     {
       "type": "begin_group",
       "name": "empperm_number",
-      "label_short": "14",
       "label": "How many employees in this establishment have an open-ended contract? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -181,7 +177,6 @@
     {
       "type": "begin_group",
       "name": "empperm_percentage",
-      "label_short": "14",
       "label": "How many employees in this establishment have an open-ended contract? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "When the term 'employees' is used in this survey, it refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -197,7 +192,6 @@
     {
       "type": "begin_group",
       "name": "emppart_number",
-      "label_short": "15",
       "label": "How many employees in this establishment work part-time? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "‘Part-time’ refers to working less than 35 hours per week.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -214,7 +208,6 @@
     {
       "type": "begin_group",
       "name": "emppart_percentage",
-      "label_short": "15",
       "label": "How many employees in this establishment work part-time? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "‘Part-time’ refers to working less than 35 hours per week.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -251,7 +244,6 @@
     {
       "type": "begin_group",
       "name": "ictcomp_number",
-      "label_short": "19",
       "label": "How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "The term 'employees' refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -269,7 +261,6 @@
     {
       "type": "begin_group",
       "name": "ictcomp_percentage",
-      "label_short": "19",
       "label": "How many employees in this establishment use personal computers or laptops to carry out their daily tasks? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "The term 'employees' refers to the people that work in this establishment that are not managers.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -334,7 +325,6 @@
     {
       "type": "begin_group",
       "name": "disc",
-      "label_short": "27",
       "label": "To be evaluated positively, how important is it that employees at this establishment show the following behaviour?",
       "appearance": "table-list",
       "hint": "For each question, Tick one box only."
@@ -360,7 +350,6 @@
     {
       "type": "begin_group",
       "name": "moti",
-      "label_short": "28",
       "label": "How often are the following practices used to motivate and retain employees at this establishment?",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only."
@@ -391,7 +380,6 @@
     {
       "type": "begin_group",
       "name": "compprobs_number",
-      "label_short": "29",
       "label": "For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -408,7 +396,6 @@
     {
       "type": "begin_group",
       "name": "compprobs_percentage",
-      "label_short": "29",
       "label": "For how many employees in this establishment does their job include finding solutions to unfamiliar problems they are confronted with? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -424,7 +411,6 @@
     {
       "type": "begin_group",
       "name": "comorg_number",
-      "label_short": "30",
       "label": "For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -441,7 +427,6 @@
     {
       "type": "begin_group",
       "name": "comorg_percentage",
-      "label_short": "30",
       "label": "For how many employees in this establishment does their job include independently organising their own time and scheduling their own tasks? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -457,7 +442,6 @@
     {
       "type": "begin_group",
       "name": "pcwkmach_number",
-      "label_short": "31",
       "label": "For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -474,7 +458,6 @@
     {
       "type": "begin_group",
       "name": "pcwkmach_percentage",
-      "label_short": "31",
       "label": "For how many employees at this establishment is the pace of work determined by machines or computers? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -490,7 +473,6 @@
     {
       "type": "begin_group",
       "name": "skill_pct",
-      "label_short": "32",
       "label": "Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.\nPlease think about the employees in this establishment, their current skills and the skills they need to do their job.",
       "appearance": "table-list",
       "hint": "You can answer again with an exact number of employees, or by using the percentage of employees.\nQUESTION USING PERCENTAGES\nThe answers to these three questions should add up to 100%. The term 'employees' refers to the people that work in this establishment that are not managers. Your best estimate is good enough."
@@ -522,7 +504,6 @@
     {
       "type": "begin_group",
       "name": "skill_n",
-      "label_short": "32",
       "label": "Some employees have about the right skills required to do their job, while others have a lower level of skills than needed and would need additional training. There can also be employees who have a higher level of skills than is needed in their job and can take on more demanding duties.\nPlease think about the employees in this establishment, their current skills and the skills they need to do their job.",
       "appearance": "table-list",
       "hint": "QUESTION USING AN EXACT NUMBER OF EMPLOYEES\nThere are [WPSIZE_MM_N - MANAGER] people that work in this establishment that are not managers. The answers to these three questions should add up to this number. Your best estimate is good enough."
@@ -557,7 +538,6 @@
     {
       "type": "begin_group",
       "name": "contr_number",
-      "label_short": "34",
       "label": "How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -574,7 +554,6 @@
     {
       "type": "begin_group",
       "name": "contr_percentage",
-      "label_short": "34",
       "label": "How many employees in this establishment are in jobs that require continuous training? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Continuous training: training that is received at a frequent, regular basis, and that is required to keep up with changes in the equipment that is being used, or changes in the requirements that come along with the certification that is needed to carry out the job.\nEnter the exact number of employees or tick one of the percentage categories."
@@ -590,7 +569,6 @@
     {
       "type": "begin_group",
       "name": "learnnoneed_number",
-      "label_short": "35",
       "label": "How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -607,7 +585,6 @@
     {
       "type": "begin_group",
       "name": "learnnoneed_percentage",
-      "label_short": "35",
       "label": "How many employees in this establishment are in jobs that offer limited opportunities to learn new things? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -623,7 +600,6 @@
     {
       "type": "begin_group",
       "name": "trainlearn",
-      "label_short": "36",
       "label": "What are the most important ways through which employees in this establishment can become more skilled at their jobs? Please order them from most to least important, entering 1 for the most important down to 3 for the least important.",
       "appearance": "table-list"
     },
@@ -651,7 +627,6 @@
     {
       "type": "begin_group",
       "name": "paidtrain_number",
-      "label_short": "37",
       "label": "In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -668,7 +643,6 @@
     {
       "type": "begin_group",
       "name": "paidtrain_percentage",
-      "label_short": "37",
       "label": "In 2018, how many employees in this establishment participated in training sessions on the establishment premises or at other locations during paid working time? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -684,7 +658,6 @@
     {
       "type": "begin_group",
       "name": "onjob_number",
-      "label_short": "38",
       "label": "In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -701,7 +674,6 @@
     {
       "type": "begin_group",
       "name": "onjob_percentage",
-      "label_short": "38",
       "label": "In 2018, how many employees in this establishment have received on-the-job training or other forms of direct instruction in the workplace from more experienced colleagues? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories."
@@ -731,7 +703,6 @@
     {
       "type": "begin_group",
       "name": "tr",
-      "label_short": "41",
       "label": "How important are the following reasons for providing training to employees in this establishment?",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only.",
@@ -771,7 +742,6 @@
     {
       "type": "begin_group",
       "name": "hirready_number",
-      "label_short": "43",
       "label": "How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.",
@@ -789,7 +759,6 @@
     {
       "type": "begin_group",
       "name": "hirready_percentage",
-      "label_short": "43",
       "label": "How many of these newly recruited employees did not yet have the skills needed to do their job to the required level? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.",
@@ -812,7 +781,6 @@
     {
       "type": "begin_group",
       "name": "hir",
-      "label_short": "45",
       "label": "When recruiting new employees, how important are the following four characteristics? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.",
       "appearance": "table-list"
     },
@@ -846,7 +814,6 @@
     {
       "type": "begin_group",
       "name": "vp_number",
-      "label_short": "46",
       "label": "In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.\nNumber"
@@ -881,7 +848,6 @@
     {
       "type": "begin_group",
       "name": "vp_percentage",
-      "label_short": "46",
       "label": "In 2018, how many employees at this establishment received the following types of variable pay? Your best estimate is good enough.",
       "appearance": "table-list",
       "hint": "Enter the exact number of employees or tick one of the percentage categories.\nPercentage"
@@ -918,7 +884,6 @@
     {
       "type": "select_multiple ca",
       "name": "ca",
-      "label_short": "48",
       "label": "Are the wages of any employees in this establishment set by any of the following types of collective agreements?",
       "hint": "Tick all that apply.",
       "guidance_hint": "[COUNTRY SPECIFIC LIST]"
@@ -926,7 +891,6 @@
     {
       "type": "select_multiple mmerconfirm",
       "name": "mmerconfirm",
-      "label_short": "49",
       "label": "Which of the following forms of official employee representation currently exist in this establishment?",
       "hint": "Tick all that apply.",
       "guidance_hint": "[COUNTRY SPECIFIC LIST]\nGO TO QUESTION 50\nThere is no official employee representation ➔ GO TO QUESTION 53",
@@ -956,7 +920,6 @@
     {
       "type": "begin_group",
       "name": "invol",
-      "label_short": "53",
       "label": "Which of the following practices are used to involve employees in this establishment in how work is organised?",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only."
@@ -1010,7 +973,6 @@
     {
       "type": "begin_group",
       "name": "mmepin",
-      "label_short": "57",
       "label": "Please think of the period since the beginning of 2016. In your opinion, to what extent have employees directly influenced management decisions in the following areas?",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only."
@@ -1046,14 +1008,12 @@
     {
       "type": "select_multiple noer",
       "name": "mmerin_noer",
-      "label_short": "58",
       "label": "If there is no employee representation at your establishment, tick the box below and continue with the next question.",
       "guidance_hint": "➔ GO TO QUESTION 59"
     },
     {
       "type": "begin_group",
       "name": "mmerin",
-      "label_short": "58",
       "label": "Please think of the period since the beginning of 2016. In your opinion, to what extent has the employee representation influenced management decisions in the following areas?",
       "appearance": "table-list",
       "hint": "For each statement, Tick one box only.",
@@ -1131,7 +1091,6 @@
     {
       "type": "begin_group",
       "name": "pmstrat",
-      "label_short": "65",
       "label": "How important are the following four factors for the competitive success of this establishment? Please order them from most to least important, entering 1 for the most important down to 4 for the least important.",
       "appearance": "table-list"
     },

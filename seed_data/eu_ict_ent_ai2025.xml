@@ -46,19 +46,16 @@ oder in Geräten eingebettet sein z. B.
   </fileDscr>
   <dataDscr>
     <varGrp ID="VG_module_e" name="module_e" type="section" var="V_e4" varGrp="VG_module_e_e1 VG_module_e_e2 VG_module_e_e3 VG_module_e_e5">
-      <labl>Module E</labl>
       <txt>Module E: Artificial Intelligence</txt>
       <txt xml:lang="de">Künstliche Intelligenz (KI)</txt>
       <notes type="cdl:hint">(Scope: enterprises with access to the internet, i.e. if A1&gt;0)</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e1" name="module_e/e1" type="grid" var="V_e1_a V_e1_b V_e1_c V_e1_d V_e1_e V_e1_f V_e1_g V_e1_h">
-      <labl>E1</labl>
       <txt>Does your enterprise use any of the following Artificial Intelligence (AI) technologies?</txt>
       <txt xml:lang="de">Nutzt Ihr Unternehmen eine der folgenden Technologien der künstlichen Intelligenz (KI)?</txt>
       <notes type="cdl:hint">E1 a) to h) = “No” then go to E4 (if optional included) else go to F1.</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e2" name="module_e/e2" type="grid" var="V_e2_a V_e2_b V_e2_c V_e2_d V_e2_e V_e2_f V_e2_g">
-      <labl>E2</labl>
       <txt>Does your enterprise use Artificial Intelligence software or systems for any of the following purposes?</txt>
       <txt xml:lang="de">Nutzt Ihr Unternehmen Software oder Systeme für künstliche Intelligenz für einen der folgenden Zwecke?</txt>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
@@ -66,7 +63,6 @@ oder in Geräten eingebettet sein z. B.
       <notes type="cdl:relevant" subject="xlsform-xpath">${e1_a} = '1' or ${e1_b} = '1' or ${e1_c} = '1' or ${e1_d} = '1' or ${e1_e} = '1' or ${e1_f} = '1' or ${e1_g} = '1' or ${e1_h} = '1'</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e3" name="module_e/e3" type="grid" var="V_e3_a V_e3_b V_e3_c V_e3_d V_e3_e">
-      <labl>E3</labl>
       <txt>How did you enterprise acquire the Artificial Intelligence software or systems that it uses?</txt>
       <universe clusion="I">Only if “a) AI technologies performing analysis of written language (e.g. text mining)” = Yes or “b) AI Technologies converting spoken language into machine-readable format (speech recognition)” = Yes or “c) AI Technologies generating written or spoken language (natural language generation, speech synthesis)” = Yes or “d) AI Technologies generating pictures, videos, sound/audio” = Yes or “e) AI Technologies identifying objects or persons based on images or videos (image recognition, image processing)” = Yes or “f) Machine learning (e.g. deep learning) for data analysis” = Yes or “g) AI Technologies automating different workflows or assisting in decision making (e.g. AI based software robotic process automation)” = Yes or “h) AI Technologies enabling physical movement of machines via autonomous decisions based on observation of surroundings (autonomous robots, self-driving vehicles, autonomous drones)” = Yes</universe>
       <universe clusion="I" xml:lang="de">Nur wenn „Technologien zur Analyse von Schriftsprache (Text Mining)“ = Ja oder „Technologien zur Umwandlung gesprochener Sprache in maschinenlesbare Form (Spracherkennung)“ = Ja oder „Technologien, die geschriebene oder gesprochene Sprache oder Programmiercodes erzeugen (Erzeugung natürlicher Sprache)“ = Ja oder „Technologien zur Erzeugung von Bildern, Videos, Ton/Audio“ = Ja oder „Technologien zur Identifizierung von Objekten oder Personen anhand von Bildern oder Videos (Bilderkennung, Bildverarbeitung)“ = Ja oder „Maschinelles Lernen (z. B. Tiefenlernen /Deep Learning) zur Datenanalyse“ = Ja oder „Technologien, die unterschiedliche Arbeitsabläufe automatisieren oder bei der Entscheidungsfindung helfen (z. B. Prozessautomatisierung durch Roboter auf der Grundlage von KI-basierter Software)“ = Ja oder „Technologien, die die physische Bewegung von Maschinen anhand autonomer Entscheidungen ermöglichen, die auf der Beobachtung der Umgebung basieren (autonome Roboter, selbstfahrende Fahrzeuge, autonome Drohnen)“ = Ja</universe>
@@ -74,7 +70,6 @@ oder in Geräten eingebettet sein z. B.
       <notes type="cdl:hint">– Optional</notes>
     </varGrp>
     <varGrp ID="VG_module_e_e5" name="module_e/e5" type="grid" var="V_e5_a V_e5_b V_e5_c V_e5_d V_e5_e V_e5_f V_e5_g V_e5_h">
-      <labl>E5</labl>
       <txt>What are the reasons for your enterprise not to use any of the Artificial Intelligence technologies listed in question E1?</txt>
       <txt xml:lang="de">Aus welchen Gründen verwendet Ihr Unternehmen keine der in Frage E1 aufgeführten Technologien der künstlichen Intelligenz?</txt>
       <universe clusion="I">Only if “Has your enterprise ever considered using any of the Artificial Intelligence technologies listed in question E1?” = Yes</universe>

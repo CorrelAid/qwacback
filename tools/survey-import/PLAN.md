@@ -58,12 +58,12 @@ alone touches `seed_data/` and git.
      them (acronym, printed subtitle; DDI_MARKUP_GUIDE.md §5), never coined. No `concept`
      cells of our own: an imported instrument carries only text the source prints.
      build-codebook.mjs passes them to formtransform as `form_title_short` / `form_subtitle`.
-   - `label_short` (`label_short::<Language (code)>` per language) on a group row
-     (`begin_group`, `select_multiple`): the short name the source prints for that
-     group, e.g. a scale's name (`ATTARI-12`), a part or module (`Teil 1`, `Module E`)
-     or the number printed with the question (`E1`, `2.3`). It becomes `varGrp/labl`,
-     which qwac shows as the question's title. Leave it out when the source prints none;
-     never abbreviate or coin one. Record where it is printed in SOURCE.md.
+   - `label_short` (`label_short::<Language (code)>` per language) on the scale's
+     group row: only the scale or instrument name as the source prints it
+     (`ATTARI-12`, `MAILS`). No question numbers (`E1`, `2.3`), no section designators
+     (`Teil 1`, `Module E`) (user decision). It becomes `varGrp/labl`, which qwac shows
+     as the question's title. Leave it out when the source prints none; never abbreviate
+     or coin one. Record where it is printed in SOURCE.md.
 4. **Build:** `node tools/survey-import/build-codebook.mjs tools/survey-import/out/<id>/form.json`
    → `out/<id>/codebook.xml`. Fix every `error:`. Read the `round-trip warning:` lines: they name fields
    that won't survive export. Fix what's yours to fix.

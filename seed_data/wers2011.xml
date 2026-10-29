@@ -25,11 +25,9 @@
   </fileDscr>
   <dataDscr>
     <varGrp ID="VG_section_epq" name="section_epq" type="section" var="V_zallemps V_zsocdesc" varGrp="VG_section_epq_soc">
-      <labl>SECTION EPQ</labl>
       <txt>EMPLOYEE PROFILE QUESTIONNAIRE</txt>
     </varGrp>
     <varGrp ID="VG_section_c" name="section_c" type="section" var="V_cfillvac V_clogvac V_cinduct V_cstuckin V_coffjob V_coffchk V_ctrain V_cothjob V_cothjobt V_cothdo V_cothdot V_cteams V_cteamst V_ccomput V_ccomputt" varGrp="VG_cfactors VG_cspecix VG_catestw VG_cptestw VG_cchanx VG_chow VG_section_c_card_c9_grid VG_section_c_cteamho">
-      <labl>SECTION C</labl>
       <txt>RECRUITMENT, TRAINING AND ORGANISATION OF WORK</txt>
     </varGrp>
     <varGrp ID="VG_section_epq_soc" name="section_epq/soc" type="grid" var="V_zmgr_male V_zmgr_fem V_zpro_male V_zpro_fem V_ztec_male V_ztec_fem V_zadm_male V_zadm_fem V_zskl_male V_zskl_fem V_zper_male V_zper_fem V_zsal_male V_zsal_fem V_zope_male V_zope_fem V_zrou_male V_zrou_fem">

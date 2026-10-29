@@ -52,13 +52,11 @@
     {
       "type": "begin_group",
       "name": "teil1",
-      "label_short": "Teil 1",
       "label": "Teil 1: Fragen an alle Unternehmen – Strukturdaten des Unternehmens"
     },
     {
       "type": "begin_group",
       "name": "f1_1",
-      "label_short": "1.1",
       "label": "Wie viele in Deutschland Beschäftigte (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) hatte Ihr Unternehmen insgesamt?",
       "appearance": "table-list"
     },
@@ -118,7 +116,6 @@
     {
       "type": "begin_group",
       "name": "teil2",
-      "label_short": "Teil 2",
       "label": "Teil 2: Fragen an alle Unternehmen – Weiterbildungsstrategien des Unternehmens"
     },
     {
@@ -134,7 +131,6 @@
     {
       "type": "begin_group",
       "name": "f2_3",
-      "label_short": "2.3",
       "label": "Welche Maßnahmen ergreift Ihr Unternehmen normalerweise, um einem zukünftigen Bedarf an Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) zu begegnen?",
       "appearance": "table-list"
     },
@@ -164,7 +160,6 @@
     {
       "type": "select_multiple quali_wichtig",
       "name": "f2_4",
-      "label_short": "2.4",
       "label": "Welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) der Beschäftigten werden in Ihrem Unternehmen im Allgemeinen für die Unternehmensentwicklung der nächsten Jahre als am wichtigsten erachtet?",
       "hint": "Kreuzen Sie bitte bis zu drei Qualifikationen an.",
       "constraint": "count-selected(.) <= 3"
@@ -200,7 +195,6 @@
     {
       "type": "begin_group",
       "name": "f2_8",
-      "label_short": "2.8",
       "label": "Falls „Ja“, an welchen Aspekten der Planung oder Durchführung der betrieblichen Weiterbildung ist die Arbeitnehmervertretung normalerweise beteiligt?",
       "appearance": "table-list",
       "relevant": "${f2_8_039} = '1'"
@@ -249,7 +243,6 @@
     {
       "type": "begin_group",
       "name": "teil3",
-      "label_short": "Teil 3",
       "label": "Teil 3: Fragen an alle Unternehmen – Weiterbildungsaktivitäten des Unternehmens"
     },
     {
@@ -272,7 +265,6 @@
     {
       "type": "begin_group",
       "name": "f3_3",
-      "label_short": "3.3",
       "label": "Haben Beschäftigte Ihres Unternehmens (ohne Auszubildende, Studierende in Dualen Studiengängen und an Berufsakademien sowie Praktikanten/Trainees mit einem Ausbildungsvertrag) 2025 an den folgenden geplanten Weiterbildungsaktivitäten teilgenommen?",
       "appearance": "table-list",
       "hint": "Die nächste Frage bezieht sich auf andere Formen der betrieblichen Weiterbildung für Beschäftigte Ihres Unternehmens."
@@ -308,7 +300,6 @@
     {
       "type": "begin_group",
       "name": "f3_3_anteil",
-      "label_short": "3.3",
       "label": "Falls Beschäftigte Ihres Unternehmens an folgenden Weiterbildungsaktivitäten teilgenommen haben, kreuzen Sie bitte zusätzlich die jeweils zutreffende Kategorie zum Anteil der Teilnehmenden an den Beschäftigten an.",
       "appearance": "table-list"
     },
@@ -358,7 +349,6 @@
     {
       "type": "begin_group",
       "name": "f3_6",
-      "label_short": "3.6",
       "label": "Beiträge und Einnahmen für Weiterbildungsaktivitäten"
     },
     {
@@ -397,7 +387,6 @@
     {
       "type": "begin_group",
       "name": "f3_7",
-      "label_short": "3.7",
       "label": "Falls „Ja“, welche Fördermaßnahmen nimmt Ihr Unternehmen in Anspruch?",
       "appearance": "table-list",
       "relevant": "${f3_6_068} = '1'"
@@ -431,7 +420,6 @@
     {
       "type": "begin_group",
       "name": "teil4",
-      "label_short": "Teil 4",
       "label": "Teil 4: Fragen an Unternehmen, die 2025 Lehrveranstaltungen angeboten haben",
       "relevant": "(${f3_1_052} = '1' or ${f3_2_053} = '1')"
     },
@@ -448,7 +436,6 @@
     {
       "type": "begin_group",
       "name": "f4_1",
-      "label_short": "4.1",
       "label": "Teilnehmende an internen und externen Lehrveranstaltungen",
       "appearance": "table-list"
     },
@@ -528,7 +515,6 @@
     {
       "type": "begin_group",
       "name": "f4_2",
-      "label_short": "4.2",
       "label": "Geben Sie bitte die Gesamtzahl der Teilnahmestunden im Jahr 2025 an. Unterscheiden Sie dabei auch nach internen und externen Lehrveranstaltungen.",
       "appearance": "table-list"
     },
@@ -553,7 +539,6 @@
     {
       "type": "select_multiple quali_stunden",
       "name": "f4_3",
-      "label_short": "4.3",
       "label": "Auf welche Qualifikationen (Fertigkeiten, Kenntnisse und Fähigkeiten) entfielen in Ihrem Unternehmen die meisten Stunden interner und externer Lehrveranstaltungen?",
       "hint": "Bitte kreuzen Sie bis zu drei Qualifikationen an.",
       "constraint": "count-selected(.) <= 3"
@@ -561,7 +546,6 @@
     {
       "type": "begin_group",
       "name": "f4_4",
-      "label_short": "4.4",
       "label": "Wie hoch war der Anteil der gesetzlich oder anderweitig vorgeschriebenen Lehrveranstaltungen aus dem Bereich „Gesundheit und Arbeitsschutz“ (gemessen in Teilnahmestunden an Lehrveranstaltungen) im Jahr 2025?",
       "appearance": "table-list"
     },
@@ -583,7 +567,6 @@
     {
       "type": "select_multiple anbieter",
       "name": "f4_5",
-      "label_short": "4.5",
       "label": "Auf welche Anbieter externer Lehrveranstaltungen entfielen im Jahr 2025 die meisten Stunden?",
       "hint": "Falls Ihr Unternehmen externe Lehrveranstaltungen angeboten hat (siehe Frage 3.2), beantworten Sie bitte die folgende Frage 4.5. Bitte kreuzen Sie bis zu drei Anbieter an.",
       "constraint": "count-selected(.) <= 3",
@@ -592,7 +575,6 @@
     {
       "type": "begin_group",
       "name": "f4_6",
-      "label_short": "4.6",
       "label": "Kosten für interne und externe Lehrveranstaltungen"
     },
     {
@@ -675,7 +657,6 @@
     {
       "type": "begin_group",
       "name": "teil5",
-      "label_short": "Teil 5",
       "label": "Teil 5: Fragen an Unternehmen, die 2025 Lehrveranstaltungen und/oder andere Formen der Weiterbildung angeboten haben",
       "relevant": "(${f3_1_052} = '1' or ${f3_2_053} = '1' or ${f3_3_054} = '1' or ${f3_3_056} = '1' or ${f3_3_058} = '1' or ${f3_3_060} = '1' or ${f3_3_062} = '1')"
     },
@@ -693,7 +674,6 @@
     {
       "type": "begin_group",
       "name": "f5_1",
-      "label_short": "5.1",
       "label": "Falls „Ja“, welche Methode verwendet Ihr Unternehmen zur Bewertung der Weiterbildungsergebnisse?",
       "appearance": "table-list",
       "relevant": "${f5_1_123} = '1' or ${f5_1_123} = '2'"
@@ -729,7 +709,6 @@
     {
       "type": "begin_group",
       "name": "f5_2",
-      "label_short": "5.2",
       "label": "Wurde im Jahr 2025 das Weiterbildungsangebot Ihres Unternehmens durch einen oder mehrere der folgenden Gründe eingeschränkt?",
       "appearance": "table-list",
       "hint": "Beantworten Sie bitte als nächstes Teil 7 des Fragebogens."
@@ -788,7 +767,6 @@
     {
       "type": "begin_group",
       "name": "teil6",
-      "label_short": "Teil 6",
       "label": "Teil 6: Fragen an Unternehmen, die 2025 keine Weiterbildung angeboten haben",
       "relevant": "not((${f3_1_052} = '1' or ${f3_2_053} = '1' or ${f3_3_054} = '1' or ${f3_3_056} = '1' or ${f3_3_058} = '1' or ${f3_3_060} = '1' or ${f3_3_062} = '1'))"
     },
@@ -800,7 +778,6 @@
     {
       "type": "begin_group",
       "name": "f6",
-      "label_short": "6",
       "label": "Was sind die Gründe dafür, dass Sie im Jahr 2025 keine berufliche Weiterbildung angeboten haben?",
       "appearance": "table-list"
     },
@@ -858,7 +835,6 @@
     {
       "type": "begin_group",
       "name": "teil7",
-      "label_short": "Teil 7",
       "label": "Teil 7: Fragen an alle Unternehmen zur betrieblichen Erstausbildung"
     },
     {
@@ -874,7 +850,6 @@
     {
       "type": "begin_group",
       "name": "f7_2",
-      "label_short": "7.2",
       "label": "Aus welchen Gründen bietet Ihr Unternehmen normalerweise eine Ausbildung im Dualen System an?",
       "appearance": "table-list",
       "relevant": "${f7_1_146a} = '1'",

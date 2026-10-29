@@ -60,7 +60,6 @@
     {
       "type": "begin_group",
       "name": "section_epq",
-      "label_short": "SECTION EPQ",
       "label": "EMPLOYEE PROFILE QUESTIONNAIRE"
     },
     {
@@ -255,7 +254,6 @@
     {
       "type": "begin_group",
       "name": "section_c",
-      "label_short": "SECTION C",
       "label": "RECRUITMENT, TRAINING AND ORGANISATION OF WORK"
     },
     {
