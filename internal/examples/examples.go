@@ -12,6 +12,8 @@ import (
 )
 
 // Example represents a complete answer type example with both XLSForm and DDI representations.
+// Type is the formtransform registry slug (select_one, grid, …), the name the
+// converters, /api/question-types and the DDI output use (#49).
 type Example struct {
 	Type    string  `json:"answer_type"`
 	Label   string  `json:"label"`
@@ -47,9 +49,21 @@ type exampleDef struct {
 	XLSForm XLSForm
 }
 
+// legacyIDs maps the ids examples had before they were keyed by registry slug
+// (#49) to the slug. They stay served as aliases until the survey site
+// (CorrelAid/cdl-wp-eins#30) has switched; then this map goes.
+var legacyIDs = map[string]string{
+	"single_choice":             "select_one",
+	"multiple_choice":           "select_multiple",
+	"single_choice_other":       "select_one_other",
+	"multiple_choice_other":     "select_multiple_other",
+	"single_choice_long_list":   "select_one_long_list",
+	"multiple_choice_long_list": "select_multiple_long_list",
+}
+
 var defs = []exampleDef{
 	{
-		Type:  "single_choice",
+		Type:  "select_one",
 		Label: "Single Choice — Bildungsgrad",
 		XLSForm: XLSForm{
 			Survey: []SurveyRow{
@@ -65,7 +79,7 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "multiple_choice",
+		Type:  "select_multiple",
 		Label: "Multiple Choice — Wochenendtage",
 		XLSForm: XLSForm{
 			Survey: []SurveyRow{
@@ -78,7 +92,7 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "single_choice_other",
+		Type:  "select_one_other",
 		Label: "Single Choice mit Sonstiges — Aufmerksamkeitsquelle",
 		XLSForm: XLSForm{
 			Survey: []SurveyRow{
@@ -94,7 +108,7 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "multiple_choice_other",
+		Type:  "select_multiple_other",
 		Label: "Multiple Choice mit Sonstiges — Gerätebesitz",
 		XLSForm: XLSForm{
 			Survey: []SurveyRow{
@@ -149,7 +163,7 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "single_choice_long_list",
+		Type:  "select_one_long_list",
 		Label: "Single Choice (Lange Liste) — Geburtsland",
 		XLSForm: XLSForm{
 			Survey: []SurveyRow{
@@ -158,7 +172,7 @@ var defs = []exampleDef{
 		},
 	},
 	{
-		Type:  "multiple_choice_long_list",
+		Type:  "select_multiple_long_list",
 		Label: "Multiple Choice (Lange Liste) — Besuchte Länder",
 		XLSForm: XLSForm{
 			Survey: []SurveyRow{
@@ -251,12 +265,16 @@ func GetAll() ([]Example, error) {
 	return load()
 }
 
-// GetByType returns a single example by type identifier, or nil if not found.
-// The error is set only when the examples couldn't be loaded.
+// GetByType returns a single example by registry slug, or nil if not found.
+// A legacy id (single_choice, …) resolves to its slug. The error is set only
+// when the examples couldn't be loaded.
 func GetByType(t string) (*Example, error) {
 	all, err := load()
 	if err != nil {
 		return nil, err
+	}
+	if slug, ok := legacyIDs[t]; ok {
+		t = slug
 	}
 	for _, e := range all {
 		if e.Type == t {

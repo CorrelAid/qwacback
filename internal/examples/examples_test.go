@@ -20,15 +20,15 @@ func TestGetAll(t *testing.T) {
 	}
 
 	expectedTypes := []string{
-		"single_choice",
-		"multiple_choice",
-		"single_choice_other",
-		"multiple_choice_other",
+		"select_one",
+		"select_multiple",
+		"select_one_other",
+		"select_multiple_other",
 		"grid",
 		"integer",
 		"text",
-		"single_choice_long_list",
-		"multiple_choice_long_list",
+		"select_one_long_list",
+		"select_multiple_long_list",
 	}
 
 	if len(all) != len(expectedTypes) {
@@ -60,12 +60,12 @@ func TestGetByType(t *testing.T) {
 		t.Skip("ddi-emitter sidecar not reachable; examples not populated")
 	}
 
-	ex, err := GetByType("single_choice")
+	ex, err := GetByType("select_one")
 	if err != nil || ex == nil {
-		t.Fatal("Expected single_choice example")
+		t.Fatal("Expected select_one example")
 	}
-	if ex.Type != "single_choice" {
-		t.Errorf("Expected type single_choice, got %s", ex.Type)
+	if ex.Type != "select_one" {
+		t.Errorf("Expected type select_one, got %s", ex.Type)
 	}
 
 	missing, err := GetByType("nonexistent")
@@ -135,8 +135,57 @@ func TestGetAll_KeepsExamplesThatConvert(t *testing.T) {
 		t.Fatalf("expected %d examples, got %d", len(defs)-1, len(all))
 	}
 	for _, e := range all {
-		if e.Type == "multiple_choice" {
+		if e.Type == "select_multiple" {
 			t.Error("rejected example should be left out")
+		}
+	}
+}
+
+// Examples are keyed by registry slug; the ids from before #49 still resolve
+// to the same example while the survey site switches over.
+func TestGetByType_LegacyAliases(t *testing.T) {
+	fakeEmitter(t, func(w http.ResponseWriter, r *http.Request) {
+		_, _ = w.Write([]byte(oneVar))
+	})
+
+	for old, slug := range legacyIDs {
+		ex, err := GetByType(old)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if ex == nil {
+			t.Errorf("%s: alias of %s not found", old, slug)
+			continue
+		}
+		if ex.Type != slug {
+			t.Errorf("%s: got example %s, want %s", old, ex.Type, slug)
+		}
+		bySlug, _ := GetByType(slug)
+		if bySlug == nil || bySlug.Label != ex.Label {
+			t.Errorf("%s and %s should serve the same example", old, slug)
+		}
+	}
+}
+
+// Every example id is a registry slug, not an old id, and there is no range
+// example: the answer type was dropped (#69).
+func TestDefs_KeyedBySlug(t *testing.T) {
+	seen := map[string]bool{}
+	for _, d := range defs {
+		if _, old := legacyIDs[d.Type]; old {
+			t.Errorf("example %s uses a legacy id", d.Type)
+		}
+		if d.Type == "range" {
+			t.Error("range was dropped (#69); there must be no range example")
+		}
+		if seen[d.Type] {
+			t.Errorf("duplicate example %s", d.Type)
+		}
+		seen[d.Type] = true
+	}
+	for old, slug := range legacyIDs {
+		if !seen[slug] {
+			t.Errorf("alias %s points at %s, which has no example", old, slug)
 		}
 	}
 }

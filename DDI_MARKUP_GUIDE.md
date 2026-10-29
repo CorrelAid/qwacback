@@ -11,7 +11,7 @@ This project validates DDI XML in two layers. The **DDI 2.5 XSD** defines struct
 Each answer type has a complete example with both the **XLSForm input** and the **DDI Codebook output**, defined in `internal/examples/examples.go`. These are available at runtime via the API:
 
 *   `GET /api/examples` — list all examples (XLSForm + DDI pairs)
-*   `GET /api/examples/{answer_type}` — get a single example by type (e.g. `single_choice`, `multiple_choice`, `grid`)
+*   `GET /api/examples/{type}` — get a single example by formtransform registry slug: `select_one`, `select_multiple`, `select_one_other`, `select_multiple_other`, `select_one_long_list`, `select_multiple_long_list`, `grid`, `integer`, `text`. The older ids (`single_choice`, `multiple_choice`, `single_choice_other`, `multiple_choice_other`, `single_choice_long_list`, `multiple_choice_long_list`) still work as aliases during a transition and will be dropped.
 
 ---
 
